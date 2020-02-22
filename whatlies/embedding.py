@@ -1,5 +1,3 @@
-import numpy as np
-import matplotlib.pylab as plt
 from operator import add, sub, rshift, or_
 
 

@@ -7,8 +7,8 @@ develop: install
 	pip install -r dev-requirements.txt
 
 flake:
-	flake8 setup.py
-	flake8 whatlies
+	flake8 setup.py --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+	flake8 whatlies --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics --exclude __init__.py
 
 test:
 	pytest

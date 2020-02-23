@@ -1,8 +1,9 @@
 site_name: whatlies
 nav:
+  - Home: /
   - Getting Started:
-    - tokens: intro-with-tokens.ipynb
-    - embeddings: towards-embeddings.ipynb
+    - 1. Tokens: intro-with-tokens-render.ipynb
+    - 2. TokenSets: towards-embeddings-render.ipynb
   - API: /api/
 
 plugins:
@@ -13,5 +14,5 @@ plugins:
 theme:
   name: material
   palette:
-    primary: black
+    primary: white
     accent: purple

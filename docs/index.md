@@ -1,12 +1,13 @@
-<img src="docs/logo.png" width=225 height=225 align="right">
-
 # whatlies 
+
+<img src="logo.png">
 
 A library that tries help you to understand. "What lies in word embeddings?"
 
 This small library offers tools to make visualisation easier of both
 word embeddings as well as operations on them. This should be considered
-an alpha project. 
+an alpha project.
+ 
 
 ## Installation 
 

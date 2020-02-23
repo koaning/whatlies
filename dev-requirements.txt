@@ -1,0 +1,3 @@
+pytest
+flake
+nbval==0.9.5

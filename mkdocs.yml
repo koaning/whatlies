@@ -1,0 +1,18 @@
+site_name: whatlies
+nav:
+  - Home: /
+  - Getting Started:
+    - 1. Tokens: intro-with-tokens-render.ipynb
+    - 2. TokenSets: towards-embeddings-render.ipynb
+  - API: /api/
+
+plugins:
+  - mkdocs-jupyter
+  - inari:
+      module: whatlies
+      out-name: api
+theme:
+  name: material
+  palette:
+    primary: white
+    accent: purple

@@ -2,6 +2,13 @@ import matplotlib.pylab as plt
 
 
 def handle_2d_plot(token, kind, color=None):
+    """
+    Generate a 2d plot of a token.
+    :param token:
+    :param kind:
+    :param color:
+    :return:
+    """
     if kind == "scatter":
         if color is None:
             color = "steelblue"

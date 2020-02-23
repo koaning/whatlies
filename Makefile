@@ -1,3 +1,5 @@
+.PHONY: docs
+
 install:
 	python setup.py install
 
@@ -14,3 +16,13 @@ test:
 	pytest
 
 check: flake test
+
+docs:
+	nbstripout notebooks/*.ipynb
+	pytest --nbval --disable-warnings notebooks/*.ipynb
+	jupyter nbconvert --to notebook notebooks/intro-with-tokens.ipynb --output ../docs/intro-with-tokens.ipynb
+	jupyter nbconvert --to notebook notebooks/towards-embeddings.ipynb --output ../docs/towards-embeddings.ipynb
+	mkdocs build --clean --site-dir public
+
+serve-docs:
+	mkdocs serve

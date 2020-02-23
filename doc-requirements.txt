@@ -2,4 +2,5 @@ mkdocs==1.0.4
 mkdocs-jupyter==0.10.2
 mkdocs-material==4.6.3
 inari==0.1.0
-flake8
+nbstripout==0.3.7
+nbval==0.9.5

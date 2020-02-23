@@ -29,3 +29,6 @@ serve-docs:
 	jupyter nbconvert --to notebook --execute notebooks/intro-with-tokens.ipynb --output ../docs/intro-with-tokens-render.ipynb
 	jupyter nbconvert --to notebook --execute notebooks/towards-embeddings.ipynb --output ../docs/towards-embeddings-render.ipynb
 	mkdocs serve
+
+gh-pages: docs
+	git subtree push --prefix public origin gh-pages

@@ -18,16 +18,22 @@ test:
 
 check: flake test
 
-docs:
+render-notebooks:
 	nbstripout notebooks/*.ipynb
-	pytest --nbval --disable-warnings notebooks/*.ipynb
 	jupyter nbconvert --to notebook --execute notebooks/intro-with-tokens.ipynb --output ../docs/intro-with-tokens-render.ipynb
 	jupyter nbconvert --to notebook --execute notebooks/towards-embeddings.ipynb --output ../docs/towards-embeddings-render.ipynb
+	jupyter nbconvert --to notebook --execute notebooks/other-transformations.ipynb --output ../docs/other-transformations-render.ipynb
+	jupyter nbconvert --to notebook --execute notebooks/other-visualisations.ipynb --output ../docs/other-visualisations-render.ipynb
+	jupyter nbconvert --to notebook --execute notebooks/selecting-backends.ipynb --output ../docs/selecting-backends-render.ipynb
+	jupyter nbconvert --to notebook --execute notebooks/embeddings-with-context.ipynb --output ../docs/embeddings-with-context-render.ipynb
+
+test-notebooks:
+	pytest --nbval --disable-warnings notebooks/*.ipynb
+
+docs: test-notebooks render-notebooks
 	mkdocs build --clean --site-dir public
 
-serve-docs:
-	jupyter nbconvert --to notebook --execute notebooks/intro-with-tokens.ipynb --output ../docs/intro-with-tokens-render.ipynb
-	jupyter nbconvert --to notebook --execute notebooks/towards-embeddings.ipynb --output ../docs/towards-embeddings-render.ipynb
+serve-docs: render-notebooks
 	mkdocs serve
 
 gh-pages: docs

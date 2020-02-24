@@ -2,5 +2,5 @@
 Whatlies library
 """
 
-from whatlies.embedding import Embedding
+from whatlies.tokenset import TokenSet
 from whatlies.token import Token

@@ -6,6 +6,6 @@ Whatlies library
 
 [whatlies.common](common-py)
 
-[whatlies.embedding](embedding-py)
-
 [whatlies.token](token-py)
+
+[whatlies.tokenset](tokenset-py)

@@ -1,4 +1,4 @@
-<img src="docs/logo.png" width=225 height=225 align="right">
+<img src="docs/logo.png" width=255 height=255 align="right">
 
 # whatlies 
 

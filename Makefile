@@ -38,3 +38,8 @@ serve-docs: render-notebooks
 
 gh-pages: docs
 	git subtree push --prefix public origin gh-pages
+
+clean:
+	rm -rf .ipynb_checkpoints
+	rm -rf **/.ipynb_checkpoints
+	rm -rf .pytest_cache

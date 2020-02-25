@@ -1,6 +1,6 @@
 site_name: whatlies
 nav:
-  - Home: /
+  - Home: /whatlies
   - Getting Started:
     - 1. Embeddings: intro-with-tokens-render.ipynb
     - 2. EmbeddingSets: towards-embeddings-render.ipynb

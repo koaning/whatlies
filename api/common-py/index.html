@@ -153,7 +153,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/" title="Home" class="md-nav__link">
+    <a href="/whatlies" title="Home" class="md-nav__link">
       Home
     </a>
   </li>
@@ -208,7 +208,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../towards-embeddings-render/" title="3. Contexual Embeddings" class="md-nav__link">
+    <a href="../../embeddings-with-context-render/" title="3. Contexual Embeddings" class="md-nav__link">
       3. Contexual Embeddings
     </a>
   </li>
@@ -220,7 +220,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../selecting-backends-render.ipynb" title="4. Selecting Backends" class="md-nav__link">
+    <a href="../../selecting-backends-render/" title="4. Selecting Backends" class="md-nav__link">
       4. Selecting Backends
     </a>
   </li>
@@ -232,7 +232,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../other-transformations-render.ipynb" title="5. Transformations" class="md-nav__link">
+    <a href="../../other-transformations-render/" title="5. Transformations" class="md-nav__link">
       5. Transformations
     </a>
   </li>
@@ -244,7 +244,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../other-visualisations-render.ipynb" title="6. Visualisations" class="md-nav__link">
+    <a href="../../other-visualisations-render/" title="6. Visualisations" class="md-nav__link">
       6. Visualisations
     </a>
   </li>
@@ -327,14 +327,17 @@
                 <h1 id="module-whatliescommon">Module whatlies.common</h1>
 <h2 id="functions">Functions</h2>
 <h3 id="handle_2d_plot">handle_2d_plot</h3>
-<pre><code class="python">def handle_2d_plot(token, kind, color=None, xlabel=None, ylabel=None, show_operations=False)
+<pre><code class="python">def handle_2d_plot(embedding, kind, color=None, xlabel=None, ylabel=None, show_operations=False)
 </code></pre>
 
-<p>Generate a 2d plot of a token.
-:param token:
-:param kind:
-:param color:
-:return:</p>
+<p>Handles the logic to perform a 2d plot in matplotlib.</p>
+<p><strong>Input</strong>
+- embedding: a <code>whatlies.Embedding</code> object to plot
+- kind: what kind of plot to make, can be <code>scatter</code>, <code>arrow</code> or <code>text</code>
+- color: the color to apply, only works for <code>scatter</code> and <code>arrow</code>
+- xlabel: manually override the xlabel
+- ylabel: manually override the ylabel
+- show_operations: setting to also show the applied operations, only works for <code>text</code></p>
                 
                   
                 

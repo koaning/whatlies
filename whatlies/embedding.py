@@ -1,40 +1,64 @@
-from operator import add, sub, rshift, or_
+import numpy as np
+from whatlies.common import handle_2d_plot
 
 
 class Embedding:
     """
-    An embedding object that you can play with.
+    This object represents a word embedding.
+
+    **Inputs**
+
+    - name: the name of the embedding
+    - vector: the numeric encoding of the embedding
+    - orig: the original name of the original embedding, is handled automatically
     """
-
-    def __init__(self, language, operations=None):
-        self.language = language
-        if not operations:
-            operations = None
-        self.operations = operations
-
-    def operate(self, other, operation):
-        return Embedding(language=self.language,
-                         operations=self.operations + [(other, operation)])
+    def __init__(self, name, vector, orig=None):
+        self.orig = name if not orig else orig
+        self.name = name
+        self.vector = np.array(vector)
 
     def __add__(self, other):
-        return self.operate(other, add)
+        return self.__class__(name=f"({self.name} + {other.name})",
+                              vector=self.vector + other.vector,
+                              orig=self.orig)
 
     def __sub__(self, other):
-        return self.operate(other, sub)
+        return self.__class__(name=f"({self.name} - {other.name})",
+                              vector=self.vector - other.vector,
+                              orig=self.orig)
 
-    def __or__(self, other):
-        return self.operate(other, or_)
+    def __gt__(self, other):
+        return (self.vector.dot(other.vector)) / (other.vector.dot(other.vector))
 
     def __rshift__(self, other):
-        return self.operate(other, rshift)
+        new_vec = (self.vector.dot(other.vector)) / (other.vector.dot(other.vector)) * other.vector
+        return self.__class__(name=f"({self.name} >> {other.name})", vector=new_vec, orig=self.orig)
 
-    def __getitem__(self, thing):
-        if isinstance(self.language, dict):
-            return self.language[thing]
+    def __or__(self, other):
+        new_vec = self.vector - (self >> other).vector
+        return self.__class__(name=f"({self.name} | {other.name})", vector=new_vec, orig=self.orig)
 
     def __repr__(self):
-        result = "Embedding"
-        translator = {add: '+', sub: '-', or_: '|', rshift: '>>'}
-        for tok, op in self.operations:
-            result = f"({result} {translator[op]} {tok.name})"
-        return result
+        return f"Emb[{self.name}]"
+
+    def plot(self, kind="scatter", x_axis=None, y_axis=None, color=None, show_operations=False):
+        """
+        Handles the logic to perform a 2d plot in matplotlib.
+
+        **Input**
+
+        - kind: what kind of plot to make, can be `scatter`, `arrow` or `text`
+        - color: the color to apply, only works for `scatter` and `arrow`
+        - xlabel: manually override the xlabel
+        - ylabel: manually override the ylabel
+        - show_operations: setting to also show the applied operations, only works for `text`
+        """
+        if len(self.vector) == 2:
+            handle_2d_plot(self, kind=kind, color=color, show_operations=show_operations)
+        else:
+            x_val = self > x_axis
+            y_val = self > y_axis
+            intermediate = Embedding(name=self.name, vector=[x_val, y_val], orig=self.orig)
+            handle_2d_plot(intermediate, kind=kind, color=color,
+                           xlabel=x_axis.name, ylabel=y_axis.name, show_operations=show_operations)
+        return self

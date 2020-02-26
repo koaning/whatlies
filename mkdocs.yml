@@ -1,16 +1,16 @@
 site_name: whatlies
 nav:
-  - Home: /
+  - Home: /whatlies
   - Getting Started:
-    - 1. Tokens: intro-with-tokens-render.ipynb
-    - 2. TokenSets: towards-embeddings-render.ipynb
-  - API: /api/
+    - 1. Embeddings: intro-with-tokens-render.ipynb
+    - 2. EmbeddingSets: towards-embeddings-render.ipynb
+    - 3. Contexual Embeddings: embeddings-with-context-render.ipynb
+    - 4. Selecting Backends: selecting-backends-render.ipynb
+    - 5. Transformations: other-transformations-render.ipynb
+    - 6. Visualisations: other-visualisations-render.ipynb
 
 plugins:
   - mkdocs-jupyter
-  - inari:
-      module: whatlies
-      out-name: api
 theme:
   name: material
   palette:

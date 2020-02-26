@@ -14,7 +14,7 @@ an alpha project.
 For now we allow for installation with pip but only via git.
 
 ```bash
-pip install pip install git+git@github.com:RasaHQ/whatlies.git
+pip install git+git@github.com:RasaHQ/whatlies.git
 ```
 
 ## Local Development
@@ -32,3 +32,7 @@ This is generated via
 ```
 make docs
 ```
+
+## Produced 
+
+This project was initiated at [![](rasa.png)](https://rasa.com) 

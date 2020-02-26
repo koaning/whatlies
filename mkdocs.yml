@@ -8,13 +8,9 @@ nav:
     - 4. Selecting Backends: selecting-backends-render.ipynb
     - 5. Transformations: other-transformations-render.ipynb
     - 6. Visualisations: other-visualisations-render.ipynb
-  - API: /api/
 
 plugins:
   - mkdocs-jupyter
-  - inari:
-      module: whatlies
-      out-name: api
 theme:
   name: material
   palette:

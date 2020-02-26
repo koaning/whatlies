@@ -20,12 +20,12 @@ check: flake test
 
 render-notebooks:
 	nbstripout notebooks/*.ipynb
-	jupyter nbconvert --to notebook --execute notebooks/intro-with-tokens.ipynb --output ../docs/intro-with-tokens-render.ipynb
-	jupyter nbconvert --to notebook --execute notebooks/towards-embeddings.ipynb --output ../docs/towards-embeddings-render.ipynb
-	jupyter nbconvert --to notebook --execute notebooks/other-transformations.ipynb --output ../docs/other-transformations-render.ipynb
-	jupyter nbconvert --to notebook --execute notebooks/other-visualisations.ipynb --output ../docs/other-visualisations-render.ipynb
-	jupyter nbconvert --to notebook --execute notebooks/selecting-backends.ipynb --output ../docs/selecting-backends-render.ipynb
-	jupyter nbconvert --to notebook --execute notebooks/embeddings-with-context.ipynb --output ../docs/embeddings-with-context-render.ipynb
+	jupyter nbconvert --to notebook --execute notebooks/01-intro-with-tokens.ipynb --output ../docs/intro-with-tokens-render.ipynb
+	jupyter nbconvert --to notebook --execute notebooks/02-towards-embeddings.ipynb --output ../docs/towards-embeddings-render.ipynb
+	jupyter nbconvert --to notebook --execute notebooks/03-embeddings-with-context.ipynb --output ../docs/embeddings-with-context-render.ipynb
+	jupyter nbconvert --to notebook --execute notebooks/04-selecting-backends.ipynb --output ../docs/selecting-backends-render.ipynb
+	jupyter nbconvert --to notebook --execute notebooks/05-other-transformations.ipynb --output ../docs/other-transformations-render.ipynb
+	jupyter nbconvert --to notebook --execute notebooks/06-other-visualisations.ipynb --output ../docs/other-visualisations-render.ipynb
 
 test-notebooks:
 	pytest --nbval --disable-warnings notebooks/*.ipynb

@@ -12,6 +12,7 @@ def handle_2d_plot(embedding, kind, color=None, xlabel=None, ylabel=None, show_o
 Handles the logic to perform a 2d plot in matplotlib.
 
 **Input**
+
 - embedding: a `whatlies.Embedding` object to plot
 - kind: what kind of plot to make, can be `scatter`, `arrow` or `text`
 - color: the color to apply, only works for `scatter` and `arrow`

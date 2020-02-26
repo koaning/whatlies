@@ -4,9 +4,20 @@
 
 A library that tries help you to understand. "What lies in word embeddings?"
 
-This small library offers tools to make visualisation easier of both
+This small library   offers tools to make visualisation easier of both
 word embeddings as well as operations on them. This should be considered
-an alpha project. 
+an experimental project. 
+
+## Maintainers
+
+This project was initiated at [![](docs/rasa.png)](https://rasa.com)
+
+This project was initiated as a fun side project at Rasa. 
+It is maintained by Vincent D. Warmerdam, Research Advocate at Rasa.
+
+## Documentation 
+
+The docs can be found [here](https://rasahq.github.io/whatlies/).
 
 ## Installation 
 

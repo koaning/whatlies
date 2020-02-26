@@ -33,7 +33,7 @@ def plot(self, kind="scatter", x_axis=None, y_axis=None, color=None, show_operat
 Handles the logic to perform a 2d plot in matplotlib.
 
 **Input**
-- embedding: a `whatlies.Embedding` object to plot
+
 - kind: what kind of plot to make, can be `scatter`, `arrow` or `text`
 - color: the color to apply, only works for `scatter` and `arrow`
 - xlabel: manually override the xlabel

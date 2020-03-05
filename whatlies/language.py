@@ -29,6 +29,7 @@ class SpacyLanguage:
     def __getitem__(self, string):
         self._input_str_legal(string)
         doc = self.nlp(string)
+        vec = doc.vector
         start, end = 0, -1
         split_string = string.split(" ")
         for idx, word in enumerate(split_string):
@@ -36,4 +37,7 @@ class SpacyLanguage:
                 start = idx
             if word[-1] == "]":
                 end = idx + 1
-        return Embedding(string, doc[start:end].vector)
+        if start != 0:
+            if end != -1:
+                vec = doc[start:end].vector
+        return Embedding(string, vec)

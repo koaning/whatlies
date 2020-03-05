@@ -71,7 +71,7 @@ The docs can be found [here](https://rasahq.github.io/whatlies/).
 For now we allow for installation with pip but only via git.
 
 ```bash
-pip install git+git@github.com:RasaHQ/whatlies.git
+pip install git+https://github.com/RasaHQ/whatlies
 ```
 
 ## Local Development

@@ -28,16 +28,20 @@ class SpacyLanguage:
 
     def __getitem__(self, string):
         self._input_str_legal(string)
-        doc = self.nlp(string)
-        vec = doc.vector
+        bert = False
         start, end = 0, -1
         split_string = string.split(" ")
         for idx, word in enumerate(split_string):
             if word[0] == "[":
+                bert = True
                 start = idx
             if word[-1] == "]":
                 end = idx + 1
-        if start != 0:
-            if end != -1:
-                vec = doc[start:end].vector
-        return Embedding(string, vec)
+        if end == -1:
+            end = start + 1
+        if bert:
+            new_str = string.replace("[", "").replace("]", "")
+            return Embedding(string, self.nlp(new_str)[start].vector)
+        else:
+            new_str = "".join(split_string[start:end]).replace("[", "").replace("]", "")
+            return Embedding(string, self.nlp(new_str).vector)

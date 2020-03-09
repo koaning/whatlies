@@ -1,4 +1,6 @@
 from operator import add, sub, rshift, or_
+from whatlies.common import plot_graph_layout
+
 
 
 class EmbeddingSet:
@@ -70,4 +72,12 @@ class EmbeddingSet:
         """
         for k, token in self.embeddings.items():
             token.plot(kind=kind, x_axis=x_axis, y_axis=y_axis, color=color, show_operations=show_operations, **kwargs)
+        return self
+
+    def plot_graph_layout(self, kind='cosine', **kwargs):
+        """
+        Handles the logic to plot a 2d graph using cosine distance
+        :return:
+        """
+        plot_graph_layout(self.embeddings, kind, **kwargs)
         return self

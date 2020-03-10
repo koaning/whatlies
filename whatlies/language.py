@@ -7,7 +7,6 @@ class SpacyLanguage:
     This object is used to lazily fetch `Embedding`s from a spaCy language
     backend. Note that it is different than an `EmbeddingSet` in the sense
     it does not have anything precomputed.
-
     **Usage**:
     ```
     lang = SpacyLanguage("en_core_web_md")
@@ -28,20 +27,16 @@ class SpacyLanguage:
 
     def __getitem__(self, string):
         self._input_str_legal(string)
-        bert = False
+        doc = self.nlp(string)
+        vec = doc.vector
         start, end = 0, -1
         split_string = string.split(" ")
         for idx, word in enumerate(split_string):
             if word[0] == "[":
-                bert = True
                 start = idx
             if word[-1] == "]":
                 end = idx + 1
-        if end == -1:
-            end = start + 1
-        if bert:
-            new_str = string.replace("[", "").replace("]", "")
-            return Embedding(string, self.nlp(new_str)[start].vector)
-        else:
-            new_str = "".join(split_string[start:end]).replace("[", "").replace("]", "")
-            return Embedding(string, self.nlp(new_str).vector)
+        if start != 0:
+            if end != -1:
+                vec = doc[start:end].vector
+        return Embedding(string, vec)

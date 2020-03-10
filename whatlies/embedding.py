@@ -41,7 +41,8 @@ class Embedding:
     def __repr__(self):
         return f"Emb[{self.name}]"
 
-    def plot(self, kind="scatter", x_axis=None, y_axis=None, color=None, show_operations=False):
+    def plot(self, kind="scatter", x_axis=None, y_axis=None, color=None, show_operations=False,
+             annot=False):
         """
         Handles the logic to perform a 2d plot in matplotlib.
 
@@ -54,11 +55,12 @@ class Embedding:
         - show_operations: setting to also show the applied operations, only works for `text`
         """
         if len(self.vector) == 2:
-            handle_2d_plot(self, kind=kind, color=color, show_operations=show_operations)
+            handle_2d_plot(self, kind=kind, color=color, show_operations=show_operations,
+                           xlabel=x_axis.name, ylabel=y_axis.name, annot=annot)
         else:
             x_val = self > x_axis
             y_val = self > y_axis
             intermediate = Embedding(name=self.name, vector=[x_val, y_val], orig=self.orig)
             handle_2d_plot(intermediate, kind=kind, color=color,
-                           xlabel=x_axis.name, ylabel=y_axis.name, show_operations=show_operations)
+                           xlabel=x_axis.name, ylabel=y_axis.name, show_operations=show_operations, annot=annot)
         return self

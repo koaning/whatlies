@@ -22,10 +22,9 @@ render-notebooks:
 	nbstripout notebooks/*.ipynb
 	jupyter nbconvert --to notebook --execute notebooks/01-intro-with-tokens.ipynb --output ../docs/intro-with-tokens-render.ipynb
 	jupyter nbconvert --to notebook --execute notebooks/02-towards-embeddings.ipynb --output ../docs/towards-embeddings-render.ipynb
-	jupyter nbconvert --to notebook --execute notebooks/03-embeddings-with-context.ipynb --output ../docs/embeddings-with-context-render.ipynb
-	jupyter nbconvert --to notebook --execute notebooks/04-selecting-backends.ipynb --output ../docs/selecting-backends-render.ipynb
-	jupyter nbconvert --to notebook --execute notebooks/05-other-transformations.ipynb --output ../docs/other-transformations-render.ipynb
-	jupyter nbconvert --to notebook --execute notebooks/06-other-visualisations.ipynb --output ../docs/other-visualisations-render.ipynb
+	jupyter nbconvert --to notebook --execute notebooks/03-interactive-transformations.ipynb --output ../docs/interactive-transformations-render.ipynb
+	jupyter nbconvert --to notebook --execute notebooks/04-more-tokens-and-context.ipynb --output ../docs/more-tokens-and-context-render.ipynb
+	jupyter nbconvert --to notebook --execute notebooks/05-language-backends.ipynb --output ../docs/language-backends-render.ipynb
 
 test-notebooks:
 	pytest --nbval --nbval-lax --disable-warnings notebooks/*.ipynb

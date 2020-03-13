@@ -4,11 +4,9 @@ nav:
   - Getting Started:
     - 1. Embeddings: intro-with-tokens-render.ipynb
     - 2. EmbeddingSets: towards-embeddings-render.ipynb
-    - 3. Contexual Embeddings: embeddings-with-context-render.ipynb
-    - 4. Selecting Backends: selecting-backends-render.ipynb
-    - 5. Transformations: other-transformations-render.ipynb
-    - 6. Visualisations: other-visualisations-render.ipynb
-
+    - 3. Transform and Interact: towards-embeddings-render.ipynb
+    - 4. Contexual Embeddings: embeddings-with-context-render.ipynb
+    - 5. Languages: selecting-backends-render.ipynb
 plugins:
   - mkdocs-jupyter
 theme:

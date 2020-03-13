@@ -1,6 +1,9 @@
 from operator import add, sub, rshift, or_
-from whatlies.common import plot_graph_layout
 
+import pandas as pd
+import altair as alt
+
+from whatlies.common import plot_graph_layout
 
 
 class EmbeddingSet:
@@ -46,6 +49,13 @@ class EmbeddingSet:
     def __rshift__(self, other):
         return self.operate(other, rshift)
 
+    def compare_against(self, other, mapping='direct'):
+        if mapping == 'direct':
+            return [v > other for k, v in self.embeddings.items()]
+
+    def transform(self, transformer):
+        return transformer(self)
+
     def __getitem__(self, thing):
         return self.embeddings[thing]
 
@@ -81,3 +91,67 @@ class EmbeddingSet:
         """
         plot_graph_layout(self.embeddings, kind, **kwargs)
         return self
+
+    def plot_interactive(self, x_axis, y_axis, annot=True, show_axis_point=False):
+        if isinstance(x_axis, str):
+            x_axis = self[x_axis]
+        if isinstance(y_axis, str):
+            y_axis = self[y_axis]
+
+        plot_df = pd.DataFrame({
+            'x_axis': self.compare_against(x_axis),
+            'y_axis': self.compare_against(y_axis),
+            'name': [v.name for v in self.embeddings.values()],
+            'original': [v.orig for v in self.embeddings.values()]
+        })
+
+        if not show_axis_point:
+            plot_df = plot_df.loc[lambda d: ~d['name'].isin([x_axis.name, y_axis.name])]
+
+        result = alt.Chart(plot_df).mark_circle(size=60).encode(
+            x=alt.X('x_axis', axis=alt.Axis(title=x_axis.name)),
+            y=alt.X('y_axis', axis=alt.Axis(title=y_axis.name)),
+            tooltip=['name', 'original'],
+        ).properties(title=f"{x_axis.name} vs. {y_axis.name}").interactive()
+
+        if annot:
+            text = alt.Chart(plot_df).mark_text(dx=-15, dy=3, color='black').encode(
+                x=alt.X('x_axis', axis=alt.Axis(title=x_axis.name)),
+                y=alt.X('y_axis', axis=alt.Axis(title=y_axis.name)),
+                text='original'
+            )
+            result = result + text
+        return result
+
+    def plot_interactive_matrix(self, *axes, annot=True, show_axis_point=False, width=200, height=200):
+        plot_df = pd.DataFrame({ax: self.compare_against(self[ax]) for ax in axes})
+        plot_df['name'] = [v.name for v in self.embeddings.values()]
+        plot_df['original'] = [v.orig for v in self.embeddings.values()]
+
+        if not show_axis_point:
+            plot_df = plot_df.loc[lambda d: ~d['name'].isin(axes)]
+
+        result = alt.Chart(plot_df).mark_circle().encode(
+            x=alt.X(alt.repeat("column"), type='quantitative'),
+            y=alt.Y(alt.repeat("row"), type='quantitative'),
+            tooltip=['name', 'original'],
+            text='original',
+        )
+        if annot:
+            text_stuff = result.mark_text(dx=-15, dy=3, color='black').encode(
+                x=alt.X(alt.repeat("column"), type='quantitative'),
+                y=alt.Y(alt.repeat("row"), type='quantitative'),
+                tooltip=['name', 'original'],
+                text='original',
+            )
+            result = result + text_stuff
+
+        result = result.properties(
+            width=width,
+            height=height
+        ).repeat(
+            row=axes[::-1],
+            column=axes
+        ).interactive()
+
+        return result

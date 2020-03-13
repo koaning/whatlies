@@ -7,7 +7,6 @@ import pandas as pd
 from sklearn.metrics.pairwise import distance_metrics
 
 
-
 def handle_2d_plot(embedding, kind, color=None, xlabel=None, ylabel=None, show_operations=False,
                    annot=False):
     """
@@ -39,7 +38,7 @@ def handle_2d_plot(embedding, kind, color=None, xlabel=None, ylabel=None, show_o
     plt.ylabel("y" if not ylabel else ylabel)
 
 
-def plot_graph_layout(embeddings, kind='cosine', **kwargs):
+def plot_graph_layout(embedding_set, kind='cosine', **kwargs):
     """
     Handles the plotting of a layout graph using the embeddings in an embeddingset as input.
 
@@ -49,8 +48,8 @@ def plot_graph_layout(embeddings, kind='cosine', **kwargs):
     - kind: distance metric options: 'cityblock', 'cosine', 'euclidean', 'l2', 'l1', 'manhattan',
     """
 
-    vectors = [token.vector for k, token in embeddings.items()]
-    label_dict = {i: w for i, (w, _) in enumerate(embeddings.items())}
+    vectors = [token.vector for k, token in embedding_set.items()]
+    label_dict = {i: w for i, (w, _) in enumerate(embedding_set.items())}
     dist_fnc = distance_metrics()[kind]
     dist = dist_fnc(np.array(vectors), np.array(vectors))
     # Greate graph

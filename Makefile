@@ -14,7 +14,7 @@ flake:
 	flake8 tests --count --statistics --max-complexity=10 --max-line-length=127 --exclude __init__.py
 
 test:
-	pytest --nbval --disable-warnings tests notebooks/*.ipynb
+	pytest --nbval --nbval-lax --disable-warnings tests notebooks/*.ipynb
 
 check: flake test
 
@@ -28,7 +28,7 @@ render-notebooks:
 	jupyter nbconvert --to notebook --execute notebooks/06-other-visualisations.ipynb --output ../docs/other-visualisations-render.ipynb
 
 test-notebooks:
-	pytest --nbval --disable-warnings notebooks/*.ipynb
+	pytest --nbval --nbval-lax --disable-warnings notebooks/*.ipynb
 
 docs: test-notebooks render-notebooks
 	mkdocs build --clean --site-dir public

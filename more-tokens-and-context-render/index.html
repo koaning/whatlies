@@ -36,7 +36,7 @@
     
     
       
-        <title>Selecting backends render - whatlies</title>
+        <title>4. Contexual Embeddings - whatlies</title>
       
     
     
@@ -83,6 +83,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#multi-token-embeddings" tabindex="0" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -105,7 +109,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Selecting backends render
+                4. Contexual Embeddings
               
             </span>
           
@@ -159,10 +163,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
       Getting Started
@@ -214,11 +220,52 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../more-tokens-and-context-render/" title="4. Contexual Embeddings" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        4. Contexual Embeddings
+      </label>
+    
+    <a href="./" title="4. Contexual Embeddings" class="md-nav__link md-nav__link--active">
       4. Contexual Embeddings
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#multi-token-embeddings" class="md-nav__link">
+    Multi-Token Embeddings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embeddings-of-tokens-with-context" class="md-nav__link">
+    Embeddings of Tokens with Context
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -246,13 +293,49 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#multi-token-embeddings" class="md-nav__link">
+    Multi-Token Embeddings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embeddings-of-tokens-with-context" class="md-nav__link">
+    Embeddings of Tokens with Context
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>Selecting backends render</h1>
+                  <h1>4. Contexual Embeddings</h1>
                 
                 
 <div class="notebook-content">
@@ -6402,17 +6485,569 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This is a placeholder on how to select backends.</p>
-<p>We'd like to have a <code>Language</code> object that behaves like a lazy-<code>EmbeddingSet</code>. It might have features like "select closest" but it should also allow you to easily select different models.</p>
-<p>Think;</p>
-
-<pre><code>Language.from_spacy("en")
-Language.from_spacy("en_trf_robertabase_lg") &lt;- transformer style! 
-Language.from_gensim("glove")
-Language.from_rasa_model("&lt;path-to-model&gt;")</code></pre>
+<p>The previous two notebooks might have gotten your attention but usually we get the response;</p>
+<blockquote><p>But what about BERT-embeddings?</p>
+</blockquote>
+<p>Let's explain how to get there, but first ... we should explain languages.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+    
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="o">%</span><span class="n">load_ext</span> <span class="n">autoreload</span>
+<span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+    
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">whatlies</span> <span class="kn">import</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">EmbeddingSet</span>
+<span class="kn">import</span> <span class="nn">spacy</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="multi-token-embeddings">Multi-Token Embeddings<a class="anchor-link" href="#Multi-Token-Embeddings">&#182;</a></h2><p>We can also have embeddings that represent more than one token. If we'd do this via spacy, we'd have a an average of all the word embeddings.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+    
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
+
+<span class="n">contexts</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;this snake is a python&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;i like to program in python&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;programming is super fun!&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;i go to the supermarket&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;i like to code&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;i love animals&quot;</span><span class="p">)</span>
+
+<span class="n">emb</span> <span class="o">=</span> <span class="n">EmbeddingSet</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">nlp</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">contexts</span><span class="p">})</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+    
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">x_str</span><span class="p">,</span> <span class="n">y_str</span> <span class="o">=</span> <span class="s2">&quot;python is for programming&quot;</span><span class="p">,</span> <span class="s2">&quot;snakes are slimy creatures&quot;</span>
+<span class="n">x_axis</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">x_str</span><span class="p">,</span> <span class="n">nlp</span><span class="p">(</span><span class="n">x_str</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span>
+<span class="n">y_axis</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">y_str</span><span class="p">,</span> <span class="n">nlp</span><span class="p">(</span><span class="n">y_str</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span>
+<span class="n">emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="n">x_axis</span><span class="o">=</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="n">y_axis</span><span class="p">)</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[4]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<div id="altair-viz-08e44afedef444e883ebc34dcc0ca511"></div>
+<script type="text/javascript">
+  (function(spec, embedOpt){
+    const outputDiv = document.getElementById("altair-viz-08e44afedef444e883ebc34dcc0ca511");
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@4.0.2?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
+    };
+
+    function loadScript(lib) {
+      return new Promise(function(resolve, reject) {
+        var s = document.createElement('script');
+        s.src = paths[lib];
+        s.async = true;
+        s.onload = () => resolve(paths[lib]);
+        s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+        document.getElementsByTagName("head")[0].appendChild(s);
+      });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else if (typeof vegaEmbed === "function") {
+      displayChart(vegaEmbed);
+    } else {
+      loadScript("vega")
+        .then(() => loadScript("vega-lite"))
+        .then(() => loadScript("vega-embed"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "layer": [{"mark": {"type": "circle", "size": 60}, "encoding": {"tooltip": [{"type": "nominal", "field": "name"}, {"type": "nominal", "field": "original"}], "x": {"type": "quantitative", "axis": {"title": "python is for programming"}, "field": "x_axis"}, "y": {"type": "quantitative", "axis": {"title": "snakes are slimy creatures"}, "field": "y_axis"}}, "selection": {"selector001": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}}, "title": "python is for programming vs. snakes are slimy creatures"}, {"mark": {"type": "text", "color": "black", "dx": -15, "dy": 3}, "encoding": {"text": {"type": "nominal", "field": "original"}, "x": {"type": "quantitative", "axis": {"title": "python is for programming"}, "field": "x_axis"}, "y": {"type": "quantitative", "axis": {"title": "snakes are slimy creatures"}, "field": "y_axis"}}}], "data": {"name": "data-89f652deee286e31f69fc65ef9734079"}, "$schema": "https://vega.github.io/schema/vega-lite/v4.0.2.json", "datasets": {"data-89f652deee286e31f69fc65ef9734079": [{"x_axis": 0.7620851397514343, "y_axis": 0.46533307433128357, "name": "this snake is a python", "original": "this snake is a python"}, {"x_axis": 0.725583016872406, "y_axis": 0.3643815517425537, "name": "i like to program in python", "original": "i like to program in python"}, {"x_axis": 0.7156033515930176, "y_axis": 0.3570227324962616, "name": "programming is super fun!", "original": "programming is super fun!"}, {"x_axis": 0.4657047390937805, "y_axis": 0.3518235683441162, "name": "i go to the supermarket", "original": "i go to the supermarket"}, {"x_axis": 0.6384759545326233, "y_axis": 0.3584940731525421, "name": "i like to code", "original": "i like to code"}, {"x_axis": 0.55930495262146, "y_axis": 0.6445141434669495, "name": "i love animals", "original": "i love animals"}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="embeddings-of-tokens-with-context">Embeddings of Tokens with Context<a class="anchor-link" href="#Embeddings-of-Tokens-with-Context">&#182;</a></h2><p>But maybe we'd like to have BERT-style models. These models work differently. Luckily ... spaCy also supports this these days.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+    
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;en_trf_robertabase_lg&quot;</span><span class="p">)</span>
+
+<span class="n">contexts</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;this snake is a python&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;i like to program in python&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;programming is super fun!&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;i go to the supermarket&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;i like to code&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;i love animals&quot;</span><span class="p">)</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">EmbeddingSet</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">nlp</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">contexts</span><span class="p">})</span>
+
+<span class="n">x_str</span><span class="p">,</span> <span class="n">y_str</span> <span class="o">=</span> <span class="s2">&quot;python is for programming&quot;</span><span class="p">,</span> <span class="s2">&quot;dogs are cool&quot;</span>
+<span class="n">x_axis</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">x_str</span><span class="p">,</span> <span class="n">nlp</span><span class="p">(</span><span class="n">x_str</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span>
+<span class="n">y_axis</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">y_str</span><span class="p">,</span> <span class="n">nlp</span><span class="p">(</span><span class="n">y_str</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="n">x_axis</span><span class="o">=</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="n">y_axis</span><span class="p">)</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<div id="altair-viz-285a2685e3cc485ebf9cbc9b940cdcd0"></div>
+<script type="text/javascript">
+  (function(spec, embedOpt){
+    const outputDiv = document.getElementById("altair-viz-285a2685e3cc485ebf9cbc9b940cdcd0");
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@4.0.2?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
+    };
+
+    function loadScript(lib) {
+      return new Promise(function(resolve, reject) {
+        var s = document.createElement('script');
+        s.src = paths[lib];
+        s.async = true;
+        s.onload = () => resolve(paths[lib]);
+        s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+        document.getElementsByTagName("head")[0].appendChild(s);
+      });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else if (typeof vegaEmbed === "function") {
+      displayChart(vegaEmbed);
+    } else {
+      loadScript("vega")
+        .then(() => loadScript("vega-lite"))
+        .then(() => loadScript("vega-embed"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "layer": [{"mark": {"type": "circle", "size": 60}, "encoding": {"tooltip": [{"type": "nominal", "field": "name"}, {"type": "nominal", "field": "original"}], "x": {"type": "quantitative", "axis": {"title": "python is for programming"}, "field": "x_axis"}, "y": {"type": "quantitative", "axis": {"title": "dogs are cool"}, "field": "y_axis"}}, "selection": {"selector002": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}}, "title": "python is for programming vs. dogs are cool"}, {"mark": {"type": "text", "color": "black", "dx": -15, "dy": 3}, "encoding": {"text": {"type": "nominal", "field": "original"}, "x": {"type": "quantitative", "axis": {"title": "python is for programming"}, "field": "x_axis"}, "y": {"type": "quantitative", "axis": {"title": "dogs are cool"}, "field": "y_axis"}}}], "data": {"name": "data-ee7849759e706042e23f69940bb8fba0"}, "$schema": "https://vega.github.io/schema/vega-lite/v4.0.2.json", "datasets": {"data-ee7849759e706042e23f69940bb8fba0": [{"x_axis": 1.144073724746704, "y_axis": 1.3308799266815186, "name": "this snake is a python", "original": "this snake is a python"}, {"x_axis": 1.300294041633606, "y_axis": 1.5033687353134155, "name": "i like to program in python", "original": "i like to program in python"}, {"x_axis": 1.3160514831542969, "y_axis": 1.5487240552902222, "name": "programming is super fun!", "original": "programming is super fun!"}, {"x_axis": 1.0894197225570679, "y_axis": 1.2830896377563477, "name": "i go to the supermarket", "original": "i go to the supermarket"}, {"x_axis": 0.9419794678688049, "y_axis": 1.1170157194137573, "name": "i like to code", "original": "i like to code"}, {"x_axis": 0.8128737807273865, "y_axis": 0.9750963449478149, "name": "i love animals", "original": "i love animals"}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can go a step further too. If we have the sentence <code>this snake is a python</code> then an algorithm like Bert will not apply seperate word embeddings for each token. Rather, the entire document will first learn it's representation before assigning it to seperate tokens. If you are interested in a Bert representation of a word given the context that it is in ... you can get them with a special syntax.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+    
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">contexts</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;i put my money on the [bank]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;i put my money on the bank&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;the water flows on the river [bank]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;the water flows on the river bank&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;i really like [to swim] in water&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;i want to be so rich that i am [drowning] in money&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;i have plenty of [cash] on me&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;money is important to my [cash] flow&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;a beach is next to the ocean&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;google gives me a wealth of information&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;that banker person is very wealthy&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;i like cats and dogs&quot;</span><span class="p">)</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>But to make use of this syntax we need a new object; the <code>Language</code> object. This is a tool for <code>whatlies</code> to grab the appropriate word embeddings on your behalf. It will handle the context but can also be seen as a lazy <code>EmbeddingSet</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+    
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">SpacyLanguage</span>
+
+<span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_trf_robertabase_lg&quot;</span><span class="p">)</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+    
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">lang</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[8]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([-0.10710682,  0.02091791,  0.06176348, -0.21725698,  0.6821515 ,
+       -0.39927804, -0.05537288,  0.14486104, -0.00605936, -0.07999073],
+      dtype=float32)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that these embeddings are kind of special, they depend on the context around the token of interest!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+    
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">lang</span><span class="p">[</span><span class="s1">&#39;Going to the [store]&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span><span class="p">,</span> 
+               <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;[store] this in the drawer please.&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[9]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>But we can also use the <code>EmbeddingSet</code> again.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+    
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">umap</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">EmbeddingSet</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="n">lang</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">contexts</span><span class="p">})</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">umap</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/vincent/Development/whatlies/venv/lib/python3.7/site-packages/umap/umap_.py:1383: UserWarning: n_neighbors is larger than the dataset size; truncating to X.shape[0] - 1
+  &#34;n_neighbors is larger than the dataset size; truncating to &#34;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+    
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s2">&quot;i like cats and dogs&quot;</span><span class="p">,</span> <span class="s2">&quot;i put my money on the [bank]&quot;</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s2">&quot;i like cats and dogs&quot;</span><span class="p">,</span> <span class="s2">&quot;i put my money on the bank&quot;</span><span class="p">)</span>
+<span class="n">p1</span> <span class="o">|</span> <span class="n">p2</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[11]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+<div id="altair-viz-6fd4a3a791ec43ad8f1b3a13a6bfda67"></div>
+<script type="text/javascript">
+  (function(spec, embedOpt){
+    const outputDiv = document.getElementById("altair-viz-6fd4a3a791ec43ad8f1b3a13a6bfda67");
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@4.0.2?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
+    };
+
+    function loadScript(lib) {
+      return new Promise(function(resolve, reject) {
+        var s = document.createElement('script');
+        s.src = paths[lib];
+        s.async = true;
+        s.onload = () => resolve(paths[lib]);
+        s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+        document.getElementsByTagName("head")[0].appendChild(s);
+      });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else if (typeof vegaEmbed === "function") {
+      displayChart(vegaEmbed);
+    } else {
+      loadScript("vega")
+        .then(() => loadScript("vega-lite"))
+        .then(() => loadScript("vega-embed"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "hconcat": [{"layer": [{"mark": {"type": "circle", "size": 60}, "encoding": {"tooltip": [{"type": "nominal", "field": "name"}, {"type": "nominal", "field": "original"}], "x": {"type": "quantitative", "axis": {"title": "i like cats and dogs"}, "field": "x_axis"}, "y": {"type": "quantitative", "axis": {"title": "i put my money on the [bank]"}, "field": "y_axis"}}, "selection": {"selector003": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}}, "title": "i like cats and dogs vs. i put my money on the [bank]"}, {"mark": {"type": "text", "color": "black", "dx": -15, "dy": 3}, "encoding": {"text": {"type": "nominal", "field": "original"}, "x": {"type": "quantitative", "axis": {"title": "i like cats and dogs"}, "field": "x_axis"}, "y": {"type": "quantitative", "axis": {"title": "i put my money on the [bank]"}, "field": "y_axis"}}}], "data": {"name": "data-75cf3b2dd6bcd8f38ec30b26d50a5073"}}, {"layer": [{"mark": {"type": "circle", "size": 60}, "encoding": {"tooltip": [{"type": "nominal", "field": "name"}, {"type": "nominal", "field": "original"}], "x": {"type": "quantitative", "axis": {"title": "i like cats and dogs"}, "field": "x_axis"}, "y": {"type": "quantitative", "axis": {"title": "i put my money on the bank"}, "field": "y_axis"}}, "selection": {"selector004": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}}, "title": "i like cats and dogs vs. i put my money on the bank"}, {"mark": {"type": "text", "color": "black", "dx": -15, "dy": 3}, "encoding": {"text": {"type": "nominal", "field": "original"}, "x": {"type": "quantitative", "axis": {"title": "i like cats and dogs"}, "field": "x_axis"}, "y": {"type": "quantitative", "axis": {"title": "i put my money on the bank"}, "field": "y_axis"}}}], "data": {"name": "data-f89d1d08bd18ff1fa367457fb2416843"}}], "$schema": "https://vega.github.io/schema/vega-lite/v4.0.2.json", "datasets": {"data-75cf3b2dd6bcd8f38ec30b26d50a5073": [{"x_axis": 0.9532508485348843, "y_axis": -1.4399551774063304, "name": "i put my money on the bank", "original": "i put my money on the bank"}, {"x_axis": -0.2531949198320457, "y_axis": 0.9626197510279563, "name": "the water flows on the river [bank]", "original": "the water flows on the river [bank]"}, {"x_axis": 0.9951122624616089, "y_axis": -1.5153613226252616, "name": "the water flows on the river bank", "original": "the water flows on the river bank"}, {"x_axis": -0.19707125301726813, "y_axis": 0.8772449692629158, "name": "i really like [to swim] in water", "original": "i really like [to swim] in water"}, {"x_axis": -0.21836164010813944, "y_axis": 0.8758584036014901, "name": "i want to be so rich that i am [drowning] in money", "original": "i want to be so rich that i am [drowning] in money"}, {"x_axis": -0.21506332073731227, "y_axis": 0.9397453042420469, "name": "i have plenty of [cash] on me", "original": "i have plenty of [cash] on me"}, {"x_axis": -0.24367473810441767, "y_axis": 0.9057540608295127, "name": "money is important to my [cash] flow", "original": "money is important to my [cash] flow"}, {"x_axis": 1.0210046721214823, "y_axis": -1.5855893465791937, "name": "a beach is next to the ocean", "original": "a beach is next to the ocean"}, {"x_axis": 0.9716333031226672, "y_axis": -1.5151468521549007, "name": "google gives me a wealth of information", "original": "google gives me a wealth of information"}, {"x_axis": 0.9766864000317756, "y_axis": -1.5782464426700709, "name": "that banker person is very wealthy", "original": "that banker person is very wealthy"}, {"x_axis": -0.016024278710211594, "y_axis": -0.06197504529008688, "name": "umap_0", "original": "umap_0"}, {"x_axis": 0.0430845463978683, "y_axis": -0.10137239718526057, "name": "umap_1", "original": "umap_1"}], "data-f89d1d08bd18ff1fa367457fb2416843": [{"x_axis": -0.2390319484157646, "y_axis": -0.2367613404849074, "name": "i put my money on the [bank]", "original": "i put my money on the [bank]"}, {"x_axis": -0.2531949198320457, "y_axis": -0.2529061161721025, "name": "the water flows on the river [bank]", "original": "the water flows on the river [bank]"}, {"x_axis": 0.9951122624616089, "y_axis": 1.0436478059814442, "name": "the water flows on the river bank", "original": "the water flows on the river bank"}, {"x_axis": -0.19707125301726813, "y_axis": -0.19404309322524899, "name": "i really like [to swim] in water", "original": "i really like [to swim] in water"}, {"x_axis": -0.21836164010813944, "y_axis": -0.21711232200989208, "name": "i want to be so rich that i am [drowning] in money", "original": "i want to be so rich that i am [drowning] in money"}, {"x_axis": -0.21506332073731227, "y_axis": -0.2121439331899502, "name": "i have plenty of [cash] on me", "original": "i have plenty of [cash] on me"}, {"x_axis": -0.24367473810441767, "y_axis": -0.24384951131916716, "name": "money is important to my [cash] flow", "original": "money is important to my [cash] flow"}, {"x_axis": 1.0210046721214823, "y_axis": 1.070128558899791, "name": "a beach is next to the ocean", "original": "a beach is next to the ocean"}, {"x_axis": 0.9716333031226672, "y_axis": 1.0182453328047985, "name": "google gives me a wealth of information", "original": "google gives me a wealth of information"}, {"x_axis": 0.9766864000317756, "y_axis": 1.022331463815698, "name": "that banker person is very wealthy", "original": "that banker person is very wealthy"}, {"x_axis": -0.016024278710211594, "y_axis": -0.018697596577565364, "name": "umap_0", "original": "umap_0"}, {"x_axis": 0.0430845463978683, "y_axis": 0.0444026982451239, "name": "umap_1", "original": "umap_1"}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+    
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
 </div>
  
 
@@ -6465,6 +7100,41 @@ Language.from_rasa_model("&lt;path-to-model&gt;")</code></pre>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../interactive-transformations-render/" title="3. Transform and Interact" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                3. Transform and Interact
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../language-backends-render/" title="5. Languages" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                5. Languages
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

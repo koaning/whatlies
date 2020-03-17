@@ -292,8 +292,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../embeddings-with-context-render/" title="3. Contexual Embeddings" class="md-nav__link">
-      3. Contexual Embeddings
+    <a href="../interactive-transformations-render/" title="3. Transform and Interact" class="md-nav__link">
+      3. Transform and Interact
     </a>
   </li>
 
@@ -304,8 +304,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../selecting-backends-render/" title="4. Selecting Backends" class="md-nav__link">
-      4. Selecting Backends
+    <a href="../more-tokens-and-context-render/" title="4. Contexual Embeddings" class="md-nav__link">
+      4. Contexual Embeddings
     </a>
   </li>
 
@@ -316,38 +316,14 @@
 
 
   <li class="md-nav__item">
-    <a href="../other-transformations-render/" title="5. Transformations" class="md-nav__link">
-      5. Transformations
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../other-visualisations-render/" title="6. Visualisations" class="md-nav__link">
-      6. Visualisations
+    <a href="../language-backends-render/" title="5. Languages" class="md-nav__link">
+      5. Languages
     </a>
   </li>
 
         
       </ul>
     </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="/api/" title="API" class="md-nav__link">
-      API
-    </a>
   </li>
 
     
@@ -6912,24 +6888,6 @@ h6:hover .anchor-link {
 
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>To use data.metrics please install scikit-learn. See https://scikit-learn.org/stable/index.html
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -7232,7 +7190,7 @@ h6:hover .anchor-link {
         
         
         <div class="input_area">
-            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">new_ts</span> <span class="o">=</span> <span class="n">t</span> <span class="o">|</span> <span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;man&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;woman&#39;</span><span class="p">])</span>
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span><span class="n">new_ts</span> <span class="o">=</span> <span class="n">t</span> <span class="o">|</span> <span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;king&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;queen&#39;</span><span class="p">])</span>
 <span class="n">x_axis</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;man&#39;</span><span class="p">]</span> <span class="o">|</span> <span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;king&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;queen&#39;</span><span class="p">])</span>
 <span class="n">y_axis</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;woman&#39;</span><span class="p">]</span> <span class="o">|</span> <span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;king&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;queen&#39;</span><span class="p">])</span>
 <span class="p">(</span><span class="n">new_ts</span>
@@ -7275,6 +7233,23 @@ h6:hover .anchor-link {
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+    
+    <div class="inner_cell">
+        
+        
+        <div class="input_area">
+            <div class=" highlight highlight-ipynb hl-python"><pre><span></span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+
 </div>
  
 
@@ -7346,13 +7321,13 @@ h6:hover .anchor-link {
           </a>
         
         
-          <a href="../embeddings-with-context-render/" title="3. Contexual Embeddings" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../interactive-transformations-render/" title="3. Transform and Interact" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                3. Contexual Embeddings
+                3. Transform and Interact
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

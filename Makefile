@@ -35,8 +35,8 @@ docs: test-notebooks render-notebooks
 serve-docs: render-notebooks
 	mkdocs serve
 
-gh-pages: docs
-	git subtree push --prefix public origin gh-pages
+pages: docs
+	mkdocs gh-deploy --clean
 
 clean:
 	rm -rf .ipynb_checkpoints

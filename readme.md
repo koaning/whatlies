@@ -1,7 +1,7 @@
 ![](https://img.shields.io/pypi/v/whatlies)
 ![](https://img.shields.io/pypi/pyversions/whatlies)
 ![](https://img.shields.io/github/contributors/koaning/whatlies)
-
+![](https://img.shields.io/github/license/rasahq/whatlies)
 
 <img src="docs/logo.png" width=255 height=255 align="right">
 

@@ -24,3 +24,9 @@ def test_operator_name():
     assert str(emb - emb["red"]) == "(Emb - Emb[red])"
     assert str(emb | (emb["red"] - emb["blue"])) == "(Emb | (Emb[red] - Emb[blue]))"
     assert str((emb | emb["red"]) - emb["blue"]) == "((Emb | Emb[red]) - Emb[blue])"
+
+
+def test_merge_basic():
+    emb1 = lang[['red', 'blue', 'orange']]
+    emb2 = lang[['pink', 'purple', 'brown']]
+    assert len(emb1.merge(emb2)) == 6

@@ -17,7 +17,6 @@ class EmbeddingSet:
     **Parameters**
 
     - **embeddings**: list of embeddings or dictionary with name: embedding.md pairs
-    - **operations**: deprecated
     - **name**: custom name of embeddingset
 
     Usage:
@@ -28,9 +27,9 @@ class EmbeddingSet:
     ```
     """
 
-    def __init__(self, *embeddings, operations=None, name=None):
+    def __init__(self, *embeddings, name=None):
         if not name:
-            name = "EmbSet"
+            name = "Emb"
         self.name = name
         if len(embeddings) == 1:
             # we assume it is a dictionary here
@@ -38,27 +37,7 @@ class EmbeddingSet:
         else:
             # we assume it is a tuple of tokens
             self.embeddings = {t.name: t for t in embeddings}
-        self.operations = [] if not operations else operations
-
-    def operate(self, other, operation):
-        """
-        Attaches an operation to perform on the `EmbeddingSet`.
-
-        **Inputs**
-
-        - other: the other `Embedding`
-        - operation: the operation to apply to all embeddings in the set, can be `+`, `-`, `|`, `>>`, `>`
-
-        **Output**
-
-        A new `EmbeddingSet`
-        """
-        new_embeddings = {
-            k: operation(emb, other) for k, emb in self.embeddings.items()
-        }
-        return EmbeddingSet(
-            new_embeddings, operations=self.operations + [(other, operation)]
-        )
+        self.embeddings = {k: Embedding(name=f"{name}[{v.orig}]", vector=v.vector, orig=v.orig) for k, v in self.embeddings.items()}
 
     def __add__(self, other):
         """
@@ -79,7 +58,8 @@ class EmbeddingSet:
         (emb + buz).plot(kind="arrow")
         ```
         """
-        return self.operate(other, add)
+        new_embeddings = {k: emb + other for k, emb in self.embeddings.items()}
+        return EmbeddingSet(new_embeddings, name=f"({self.name} + {other.name})")
 
     def __sub__(self, other):
         """
@@ -100,7 +80,8 @@ class EmbeddingSet:
         (emb - buz).plot(kind="arrow")
         ```
         """
-        return self.operate(other, sub)
+        new_embeddings = {k: emb - other for k, emb in self.embeddings.items()}
+        return EmbeddingSet(new_embeddings, name=f"({self.name} - {other.name})")
 
     def __or__(self, other):
         """
@@ -121,7 +102,8 @@ class EmbeddingSet:
         (emb | buz).plot(kind="arrow")
         ```
         """
-        return self.operate(other, or_)
+        new_embeddings = {k: emb | other for k, emb in self.embeddings.items()}
+        return EmbeddingSet(new_embeddings, name=f"({self.name} | {other.name})")
 
     def __rshift__(self, other):
         """
@@ -142,7 +124,8 @@ class EmbeddingSet:
         (emb >> buz).plot(kind="arrow")
         ```
         """
-        return self.operate(other, rshift)
+        new_embeddings = {k: emb >> other for k, emb in self.embeddings.items()}
+        return EmbeddingSet(new_embeddings, name=f"({self.name} >> {other.name})")
 
     def compare_against(self, other, mapping="direct"):
         if mapping == "direct":
@@ -189,11 +172,13 @@ class EmbeddingSet:
         return EmbeddingSet(new_embeddings, name=f"{self.name}.subset({names})")
 
     def __repr__(self):
-        result = self.name
-        translator = {add: "+", sub: "-", or_: "|", rshift: ">>"}
-        for tok, op in self.operations:
-            result = f"({result} {translator[op]} {tok.name})"
-        return result
+        return self.name
+
+    def __str__(self):
+        return self.name
+
+    def __len__(self):
+        return len(self.embeddings.keys())
 
     def merge(self, other):
         """

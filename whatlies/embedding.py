@@ -1,8 +1,6 @@
 import numpy as np
 from whatlies.common import handle_2d_plot
 
-from typing import Union
-
 
 class Embedding:
     """

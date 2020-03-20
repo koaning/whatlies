@@ -4,6 +4,20 @@ from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
 
 
+def _selected_idx_spacy(string):
+    if "[" not in string:
+        if "]" not in string:
+            return 0, len(string.split(" "))
+    start, end = 0, -1
+    split_string = string.split(" ")
+    for idx, word in enumerate(split_string):
+        if word[0] == "[":
+            start = idx
+        if word[-1] == "]":
+            end = idx + 1
+    return start, end
+
+
 class SpacyLanguage:
     """
     This object is used to lazily fetch [Embedding][whatlies.embedding.Embedding]s or
@@ -34,18 +48,9 @@ class SpacyLanguage:
     def __getitem__(self, string):
         if isinstance(string, str):
             self._input_str_legal(string)
-            doc = self.nlp(string)
-            vec = doc.vector
-            start, end = 0, -1
-            split_string = string.split(" ")
-            for idx, word in enumerate(split_string):
-                if word[0] == "[":
-                    start = idx
-                if word[-1] == "]":
-                    end = idx + 1
-            if start != 0:
-                if end != -1:
-                    vec = doc[start:end].vector
+            start, end = _selected_idx_spacy(string)
+            clean_string = string.replace("[", "").replace("]", "")
+            vec = self.nlp(clean_string)[start:end].vector
             return Embedding(string, vec)
         return EmbeddingSet(*[self[tok] for tok in string])
 

@@ -8,7 +8,7 @@ This small library  offers tools to make visualisation easier of both
 word embeddings as well as operations on them. This should be considered
 an experimental project that is in preview mode. Feedback is super welcome. 
 
-<img src="square-logo.svg" width=200 height=200 align="right">
+<img src="docs/square-logo.svg" width=200 height=200 align="right">
 
 ## Produced 
 
@@ -28,32 +28,39 @@ lang = SpacyLanguage("en_core_web_md")
 words = ["cat", "dog", "fish", "kitten", "man", "woman", 
          "king", "queen", "doctor", "nurse"]
 emb = EmbeddingSet(*[lang[w] for w in words])
-emb.plot(x_axis=emb["man"], y_axis=emb["woman"])
+emb.plot_interactive(x_axis=emb["man"], y_axis=emb["woman"])
 ```
 
-![](docs/plot1.png)
-
-We also allow for mappings and operations! 
-
-```python
-royalty = emb['king'] - emb['queen']
-gender = emb['man'] - emb['woman']
-emb.plot(emb["man"], emb["woman"])
-```
-
-![](docs/plot2.png)
+![](docs/gif-zero.gif)
 
 You can even do fancy operations. Like projecting unto and away
 from vector embeddings! You can perform these on embeddings as 
-well as sets of embeddings. 
+well as sets of embeddings.  
 
 ```python
-emb['man'] | (emb['man'] - emb['woman'])
-# Emb[(man | (man - woman))]
-emb | (emb['man'] - emb['woman'])
-# (EmbSet | (man - woman))
+orig_chart = emb.plot_interactive('man', 'woman')
+
+new_ts = emb | (emb['king'] - emb['queen'])
+new_chart = new_ts.plot_interactive('man', 'woman')
 ```
-But we also allow for BERT-style embeddings. Just use the square brackets. 
+
+![](docs/gif-one.gif)
+
+There's also things like **pca** and **umap**.
+
+```python
+from whatlies.transformers import pca, umap
+
+orig_chart = emb.plot_interactive('man', 'woman')
+pca_plot = emb.transform(pca(2)).plot_interactive('pca_0', 'pca_1')
+umap_plot = emb.transform(umap(2)).plot_interactive('umap_0', 'umap_1')
+
+pca_plot | umap_plot
+```
+
+![](docs/gif-two.gif)
+
+But even allow for BERT-style embeddings. Just use the square brackets. 
 
 ```python
 lang = SpacyLanguage("en_trf_robertabase_lg")

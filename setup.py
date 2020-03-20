@@ -7,7 +7,8 @@ base_packages = [
     "umap-learn>=0.3.10",
     "altair>=4.0.1",
     "matplotlib>=3.2.0rc3",
-    "spacy>=2.2.3"
+    "spacy>=2.2.3",
+    "networkx>=2.4"
 ]
 
 docs_packages = [

@@ -529,7 +529,7 @@ of getting sets of embeddings (typically more performant too).</p>
 <div id="vis1"></div>
 
 <script>
-fetch('/charts/tut2-chart1.json')
+fetch('../charts/tut2-chart1.json')
 .then(res => res.json())
 .then((out) => {
   vegaEmbed('#vis1', out);
@@ -549,7 +549,7 @@ fetch('/charts/tut2-chart1.json')
 <div id="vis2"></div>
 
 <script>
-fetch('/charts/tut2-chart2.json')
+fetch('../charts/tut2-chart2.json')
 .then(res => res.json())
 .then((out) => {
   vegaEmbed('#vis2', out);

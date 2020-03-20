@@ -2,7 +2,7 @@ site_name: whatlies
 nav:
   - Home: index.md
   - What Are Embeddings: tutorial/embeddings.md
-  - Chaining Operations: index.md
+  - Interactive Visualisation: tutorial/embeddingsets.md
   - Language Options: index.md
   - API:
     - Embedding: api/embedding.md

@@ -2,11 +2,15 @@
 
 # whatlies 
 
-A library that tries help you to understand. "What lies in word embeddings?"
+A library that tries help you to understand. 
+
+> "What lies in word embeddings?"
 
 This small library  offers tools to make visualisation easier of both
 word embeddings as well as operations on them. This should be considered
-an experimental project that is in preview mode. Feedback is super welcome. 
+an experimental project that is in preview mode. 
+
+Feedback is welcome. 
 
 <img src="docs/square-logo.svg" width=200 height=200 align="right">
 
@@ -24,9 +28,11 @@ and use mathematical operations on it.
 ```python
 from whatlies import EmbeddingSet
 from whatlies.language import SpacyLanguage
+
 lang = SpacyLanguage("en_core_web_md")
 words = ["cat", "dog", "fish", "kitten", "man", "woman", 
          "king", "queen", "doctor", "nurse"]
+
 emb = EmbeddingSet(*[lang[w] for w in words])
 emb.plot_interactive(x_axis=emb["man"], y_axis=emb["woman"])
 ```

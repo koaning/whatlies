@@ -83,6 +83,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#whatlies.embedding.Embedding.9595add9595" tabindex="0" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -185,7 +189,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="Language Options" class="md-nav__link">
+    <a href="../../tutorial/languages/" title="Language Options" class="md-nav__link">
       Language Options
     </a>
   </li>
@@ -224,9 +228,71 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Embedding
+      </label>
+    
     <a href="./" title="Embedding" class="md-nav__link md-nav__link--active">
       Embedding
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.embedding.Embedding.9595add9595" class="md-nav__link">
+    __add__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.embedding.Embedding.9595gt9595" class="md-nav__link">
+    __gt__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.embedding.Embedding.9595or9595" class="md-nav__link">
+    __or__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.embedding.Embedding.9595rshift9595" class="md-nav__link">
+    __rshift__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.embedding.Embedding.9595sub9595" class="md-nav__link">
+    __sub__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.embedding.Embedding.plot" class="md-nav__link">
+    plot()
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -279,6 +345,70 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.embedding.Embedding.9595add9595" class="md-nav__link">
+    __add__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.embedding.Embedding.9595gt9595" class="md-nav__link">
+    __gt__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.embedding.Embedding.9595or9595" class="md-nav__link">
+    __or__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.embedding.Embedding.9595rshift9595" class="md-nav__link">
+    __rshift__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.embedding.Embedding.9595sub9595" class="md-nav__link">
+    __sub__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.embedding.Embedding.plot" class="md-nav__link">
+    plot()
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -287,7 +417,431 @@
                 
                   <h1>Embedding</h1>
                 
-                <p>::: whatlies.embedding.Embedding</p>
+                <p>This object represents a word embedding. It contains a vector and a name.</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td></td>
+<td>the name of this embedding, includes operations</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>vector</code></td>
+<td></td>
+<td>the numerical representation of the embedding</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>orig</code></td>
+<td></td>
+<td>original name of embedding, is left alone</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+<p>Usage:</p>
+<div class="codehilite"><pre><span></span><code>from whatlies.embedding import Embedding
+
+foo = Embedding(&quot;foo&quot;, [0.1, 0.3])
+bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
+
+foo | bar
+foo - bar + bar
+</code></pre></div>
+
+<h2 id="whatlies.embedding.Embedding.__add__"><code class="codehilite"><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__add__" title="Permanent link">&para;</a></h2>
+<div class="autodoc">
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add two embeddings together.</span>
+
+<span class="sd">        Usage:</span>
+
+<span class="sd">        ```</span>
+<span class="sd">        from whatlies.embedding import Embedding</span>
+
+<span class="sd">        foo = Embedding(&quot;foo&quot;, [0.1, 0.3])</span>
+<span class="sd">        bar = Embedding(&quot;bar&quot;, [0.7, 0.2])</span>
+
+<span class="sd">        foo + bar</span>
+<span class="sd">        ```</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{self.name}</span><span class="s2"> + </span><span class="si">{other.name}</span><span class="s2">)&quot;</span><span class="p">,</span>
+                              <span class="n">vector</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">vector</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">vector</span><span class="p">,</span>
+                              <span class="n">orig</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">orig</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+</details>
+<p>Add two embeddings together.</p>
+<p>Usage:</p>
+<div class="codehilite"><pre><span></span><code>from whatlies.embedding import Embedding
+
+foo = Embedding(&quot;foo&quot;, [0.1, 0.3])
+bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
+
+foo + bar
+</code></pre></div>
+
+</div>
+<h2 id="whatlies.embedding.Embedding.__gt__"><code class="codehilite"><span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__gt__" title="Permanent link">&para;</a></h2>
+<div class="autodoc">
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Measures the size of one embedding to another one.</span>
+
+<span class="sd">        Usage:</span>
+
+<span class="sd">        ```</span>
+<span class="sd">        from whatlies.embedding import Embedding</span>
+
+<span class="sd">        foo = Embedding(&quot;foo&quot;, [0.1, 0.3])</span>
+<span class="sd">        bar = Embedding(&quot;bar&quot;, [0.7, 0.2])</span>
+
+<span class="sd">        foo &gt; bar</span>
+<span class="sd">        ```</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">vector</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">vector</span><span class="p">))</span>
+</code></pre></div>
+</td></tr></table>
+
+</details>
+<p>Measures the size of one embedding to another one.</p>
+<p>Usage:</p>
+<div class="codehilite"><pre><span></span><code>from whatlies.embedding import Embedding
+
+foo = Embedding(&quot;foo&quot;, [0.1, 0.3])
+bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
+
+foo &gt; bar
+</code></pre></div>
+
+</div>
+<h2 id="whatlies.embedding.Embedding.__or__"><code class="codehilite"><span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__or__" title="Permanent link">&para;</a></h2>
+<div class="autodoc">
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Makes one embedding orthogonal to the other one.</span>
+
+<span class="sd">        Usage:</span>
+
+<span class="sd">        ```</span>
+<span class="sd">        from whatlies.embedding import Embedding</span>
+
+<span class="sd">        foo = Embedding(&quot;foo&quot;, [0.1, 0.3])</span>
+<span class="sd">        bar = Embedding(&quot;bar&quot;, [0.7, 0.2])</span>
+
+<span class="sd">        foo | bar</span>
+<span class="sd">        ```</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vector</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span> <span class="o">&gt;&gt;</span> <span class="n">other</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{self.name}</span><span class="s2"> | </span><span class="si">{other.name}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">vector</span><span class="o">=</span><span class="n">new_vec</span><span class="p">,</span> <span class="n">orig</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">orig</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+</details>
+<p>Makes one embedding orthogonal to the other one.</p>
+<p>Usage:</p>
+<div class="codehilite"><pre><span></span><code>from whatlies.embedding import Embedding
+
+foo = Embedding(&quot;foo&quot;, [0.1, 0.3])
+bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
+
+foo | bar
+</code></pre></div>
+
+</div>
+<h2 id="whatlies.embedding.Embedding.__rshift__"><code class="codehilite"><span class="fm">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__rshift__" title="Permanent link">&para;</a></h2>
+<div class="autodoc">
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Maps an embedding unto another one.</span>
+
+<span class="sd">        Usage:</span>
+
+<span class="sd">        ```</span>
+<span class="sd">        from whatlies.embedding import Embedding</span>
+
+<span class="sd">        foo = Embedding(&quot;foo&quot;, [0.1, 0.3])</span>
+<span class="sd">        bar = Embedding(&quot;bar&quot;, [0.7, 0.2])</span>
+
+<span class="sd">        foo &gt;&gt; bar</span>
+<span class="sd">        ```</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_vec</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">vector</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">vector</span><span class="p">))</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">vector</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{self.name}</span><span class="s2"> &gt;&gt; </span><span class="si">{other.name}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">vector</span><span class="o">=</span><span class="n">new_vec</span><span class="p">,</span> <span class="n">orig</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">orig</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+</details>
+<p>Maps an embedding unto another one.</p>
+<p>Usage:</p>
+<div class="codehilite"><pre><span></span><code>from whatlies.embedding import Embedding
+
+foo = Embedding(&quot;foo&quot;, [0.1, 0.3])
+bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
+
+foo &gt;&gt; bar
+</code></pre></div>
+
+</div>
+<h2 id="whatlies.embedding.Embedding.__sub__"><code class="codehilite"><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__sub__" title="Permanent link">&para;</a></h2>
+<div class="autodoc">
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Subtract two embeddings.</span>
+
+<span class="sd">        Usage:</span>
+
+<span class="sd">        ```</span>
+<span class="sd">        from whatlies.embedding import Embedding</span>
+
+<span class="sd">        foo = Embedding(&quot;foo&quot;, [0.1, 0.3])</span>
+<span class="sd">        bar = Embedding(&quot;bar&quot;, [0.7, 0.2])</span>
+
+<span class="sd">        foo - bar</span>
+<span class="sd">        ```</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{self.name}</span><span class="s2"> - </span><span class="si">{other.name}</span><span class="s2">)&quot;</span><span class="p">,</span>
+                              <span class="n">vector</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">vector</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">vector</span><span class="p">,</span>
+                              <span class="n">orig</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">orig</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+</details>
+<p>Subtract two embeddings.</p>
+<p>Usage:</p>
+<div class="codehilite"><pre><span></span><code>from whatlies.embedding import Embedding
+
+foo = Embedding(&quot;foo&quot;, [0.1, 0.3])
+bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
+
+foo - bar
+</code></pre></div>
+
+</div>
+<h2 id="whatlies.embedding.Embedding.plot"><code class="codehilite"><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_ops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.plot" title="Permanent link">&para;</a></h2>
+<div class="autodoc">
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">,</span> <span class="n">x_axis</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_axis</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_ops</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">annot</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handles the logic to perform a 2d plot in matplotlib.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            kind: what kind of plot to make, can be `scatter`, `arrow` or `text`</span>
+<span class="sd">            x_axis: the x-axis to be used, must be given when dim &gt; 2</span>
+<span class="sd">            x_axis: the y-axis to be used, must be given when dim &gt; 2</span>
+<span class="sd">            color: the color of the dots</span>
+<span class="sd">            show_ops: setting to also show the applied operations, only works for `text`</span>
+<span class="sd">            annot: should the points be annotated</span>
+
+<span class="sd">        **Usage**</span>
+<span class="sd">        ```python</span>
+<span class="sd">        from whatlies.embedding import Embedding</span>
+
+<span class="sd">        foo = Embedding(&quot;foo&quot;, [0.1, 0.3])</span>
+<span class="sd">        bar = Embedding(&quot;bar&quot;, [0.7, 0.2])</span>
+
+<span class="sd">        foo.plot(kind=&quot;arrow&quot;, annot=True)</span>
+<span class="sd">        bar.plot(kind=&quot;arrow&quot;, annot=True)</span>
+<span class="sd">        ```</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">handle_2d_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">show_operations</span><span class="o">=</span><span class="n">show_ops</span><span class="p">,</span>
+                           <span class="n">xlabel</span><span class="o">=</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">y_axis</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="n">annot</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="n">x_val</span> <span class="o">=</span> <span class="bp">self</span> <span class="o">&gt;</span> <span class="n">x_axis</span>
+        <span class="n">y_val</span> <span class="o">=</span> <span class="bp">self</span> <span class="o">&gt;</span> <span class="n">y_axis</span>
+        <span class="n">intermediate</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">vector</span><span class="o">=</span><span class="p">[</span><span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">],</span> <span class="n">orig</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">orig</span><span class="p">)</span>
+        <span class="n">handle_2d_plot</span><span class="p">(</span><span class="n">intermediate</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+                       <span class="n">xlabel</span><span class="o">=</span><span class="n">x_axis</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">y_axis</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">show_operations</span><span class="o">=</span><span class="n">show_ops</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="n">annot</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+</code></pre></div>
+</td></tr></table>
+
+</details>
+<p>Handles the logic to perform a 2d plot in matplotlib.</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kind</code></td>
+<td><code>str</code></td>
+<td>what kind of plot to make, can be <code>scatter</code>, <code>arrow</code> or <code>text</code></td>
+<td><code>'scatter'</code></td>
+</tr>
+<tr>
+<td><code>x_axis</code></td>
+<td><code>str</code></td>
+<td>the x-axis to be used, must be given when dim &gt; 2</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>x_axis</code></td>
+<td><code>str</code></td>
+<td>the y-axis to be used, must be given when dim &gt; 2</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td><code>str</code></td>
+<td>the color of the dots</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>show_ops</code></td>
+<td><code>bool</code></td>
+<td>setting to also show the applied operations, only works for <code>text</code></td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>annot</code></td>
+<td><code>bool</code></td>
+<td>should the points be annotated</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage</strong>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.embedding</span> <span class="kn">import</span> <span class="n">Embedding</span>
+
+<span class="n">foo</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
+<span class="n">bar</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+
+<span class="n">foo</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">bar</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div></p>
+</div>
                 
                   
                 
@@ -309,7 +863,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../.." title="Language Options" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../tutorial/languages/" title="Language Options" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>

@@ -189,7 +189,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="Language Options" class="md-nav__link">
+    <a href="../../tutorial/languages/" title="Language Options" class="md-nav__link">
       Language Options
     </a>
   </li>
@@ -307,7 +307,7 @@
                 
                 
                 <h1 id="spacylanguage">SpacyLanguage<a class="headerlink" href="#spacylanguage" title="Permanent link">&para;</a></h1>
-<p>This object is used to lazily fetch [Embedding][whatlies.embedding.Embedding]s or
+<p>This object is used to lazily fetch <a href="None#whatlies.embedding.Embedding">Embedding</a>s or
 <a href="None#whatlies.embeddingset.EmbeddingSet">EmbeddingSet</a>s from a sense2vec language
 backend. This object is meant for retreival, not plotting.</p>
 <p><strong>Usage</strong>:</p>
@@ -319,9 +319,28 @@ backend. This object is meant for retreival, not plotting.</p>
 </code></pre></div>
 
 <h1 id="sense2veclanguage">Sense2VecLanguage<a class="headerlink" href="#sense2veclanguage" title="Permanent link">&para;</a></h1>
-<p>This object is used to lazily fetch [Embedding][whatlies.embedding.Embedding]s or
+<p>This object is used to lazily fetch <a href="None#whatlies.embedding.Embedding">Embedding</a>s or
 <a href="None#whatlies.embeddingset.EmbeddingSet">EmbeddingSet</a>s from a sense2vec language
 backend. This object is meant for retreival, not plotting.</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sense2vec_path</code></td>
+<td></td>
+<td>path to downloaded vectors</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
 <p><strong>Usage</strong>:</p>
 <div class="codehilite"><pre><span></span><code><span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">Sense2VecLanguage</span><span class="p">(</span><span class="n">sense2vec_path</span><span class="o">=</span><span class="s2">&quot;/path/to/reddit_vectors-1.1.0&quot;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;bank|NOUN&#39;</span><span class="p">]</span>
@@ -335,19 +354,19 @@ You can find the download link <a href="https://github.com/explosion/sense2vec#p
 </div>
 <h2 id="whatlies.language.Sense2VecLangauge.embset_similar"><code class="codehilite"><span class="n">embset_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.Sense2VecLangauge.embset_similar" title="Permanent link">&para;</a></h2>
 <div class="autodoc">
-<details class="note"><summary>Show source code in <code>whatlies/language.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>76
-77
-78
-79
-80
-81
+<details class="note"><summary>Show source code in <code>whatlies/language.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>81
 82
 83
 84
 85
 86
 87
-88</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+88
+89
+90
+91
+92
+93</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retreive an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] that are the most simmilar to the passed query.</span>
 
@@ -408,18 +427,18 @@ You can find the download link <a href="https://github.com/explosion/sense2vec#p
 </div>
 <h2 id="whatlies.language.Sense2VecLangauge.score_similar"><code class="codehilite"><span class="n">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.Sense2VecLangauge.score_similar" title="Permanent link">&para;</a></h2>
 <div class="autodoc">
-<details class="note"><summary>Show source code in <code>whatlies/language.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 90
- 91
- 92
- 93
- 94
- 95
+<details class="note"><summary>Show source code in <code>whatlies/language.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 95
  96
  97
  98
  99
 100
-101</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+101
+102
+103
+104
+105
+106</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retreive an EmbeddingSet that are the most simmilar to the passed query.</span>
 
@@ -472,7 +491,7 @@ You can find the download link <a href="https://github.com/explosion/sense2vec#p
 <tbody>
 <tr>
 <td>``</td>
-<td>An list of ([Embedding][whatlies.embedding.Embedding], score) tuples.</td>
+<td>An list of (<a href="None#whatlies.embedding.Embedding">Embedding</a>, score) tuples.</td>
 </tr>
 </tbody>
 </table>

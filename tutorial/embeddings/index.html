@@ -538,7 +538,7 @@ to make it visual. </p>
     <span class="n">t</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">);</span>
 </code></pre></div>
 
-<p><img alt="" src="../images/tut1-img1.png" /></p>
+<p><img alt="" src="tut1-img1.png" /></p>
 <h2 id="meaning">Meaning<a class="headerlink" href="#meaning" title="Permanent link">&para;</a></h2>
 <p>Let's come up with imaginary embeddings for <code>man</code>, <code>woman</code>, <code>king</code> and <code>queen</code>. </p>
 <p>We will plot them using the <code>arrow</code> plotting type.</p>
@@ -554,7 +554,7 @@ to make it visual. </p>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
 </code></pre></div>
 
-<p><img alt="" src="../images/tut1-img2.png" /></p>
+<p><img alt="" src="tut1-img2.png" /></p>
 <h3 id="king-man-woman">King - Man + Woman<a class="headerlink" href="#king-man-woman" title="Permanent link">&para;</a></h3>
 <p>We can confirm the classic approximation that everybody likes to mention.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">man</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
@@ -567,7 +567,7 @@ to make it visual. </p>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
 </code></pre></div>
 
-<p><img alt="" src="../images/tut1-img3.png" /></p>
+<p><img alt="" src="tut1-img3.png" /></p>
 <h3 id="king-queen">King - Queen<a class="headerlink" href="#king-queen" title="Permanent link">&para;</a></h3>
 <p>But maybe I am interested in the vector that spans between <code>queen</code> and <code>king</code>. I'll use the <code>-</code> operator here to indicate the connection between the two tokens. </p>
 <blockquote>
@@ -581,7 +581,7 @@ to make it visual. </p>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
 </code></pre></div>
 
-<p><img alt="" src="../images/tut1-img4.png" /></p>
+<p><img alt="" src="tut1-img4.png" /></p>
 <h3 id="man-queen-king">Man | (Queen - King)<a class="headerlink" href="#man-queen-king" title="Permanent link">&para;</a></h3>
 <p>But that space <code>queen-king</code> ... we can also filter all that information out of our words. Linear algebra would call this "making it orthogonal". The <code>|</code> operator makes sense here.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">man</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
@@ -594,7 +594,7 @@ to make it visual. </p>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
 </code></pre></div>
 
-<p><img alt="" src="../images/tut1-img5.png" /></p>
+<p><img alt="" src="tut1-img5.png" /></p>
 <h2 id="embedding-mathmatics">Embedding Mathmatics<a class="headerlink" href="#embedding-mathmatics" title="Permanent link">&para;</a></h2>
 <p>This is interesting. We have our original tokens and can filter away 
 the <code>(man-woman)</code> axis. By doing this we get "new" embeddings with 
@@ -625,7 +625,7 @@ make new embeddings. </p>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
 </code></pre></div>
 
-<p><img alt="" src="../images/tut1-img6.png" /></p>
+<p><img alt="" src="tut1-img6.png" /></p>
 <h2 id="mapping-unto-tokens">Mapping Unto Tokens<a class="headerlink" href="#mapping-unto-tokens" title="Permanent link">&para;</a></h2>
 <p>In the previous example we demonstrated how to map "away" from vectors. 
 But we can also map "unto" vectors. For this we introduce the <code>&gt;&gt;</code> operator.</p>
@@ -640,7 +640,7 @@ But we can also map "unto" vectors. For this we introduce the <code>&gt;&gt;</co
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
 </code></pre></div>
 
-<p><img alt="" src="../images/tut1-img7.png" /></p>
+<p><img alt="" src="tut1-img7.png" /></p>
 <h3 id="measuring-the-mapping">Measuring the Mapping<a class="headerlink" href="#measuring-the-mapping" title="Permanent link">&para;</a></h3>
 <p>Note that the <code>woman</code> vector in our embedding maps partially unto <code>man</code> and 
 overshoots a bit on <code>king</code>. We can quantify this by measuring what percentage 
@@ -672,7 +672,7 @@ An axis could be a vector of a token, or a token that has had operations on it. 
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
 </code></pre></div>
 
-<p><img alt="" src="../images/tut1-img8.png" /></p>
+<p><img alt="" src="tut1-img8.png" /></p>
 <div class="codehilite"><pre><span></span><code><span class="n">foo</span> <span class="o">&gt;</span> <span class="n">woman</span> <span class="c1"># -0.6769</span>
 </code></pre></div>
 
@@ -690,7 +690,7 @@ An axis could be a vector of a token, or a token that has had operations on it. 
     <span class="n">t</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="o">=</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="n">y_axis</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="n">x_axis</span><span class="o">=</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="n">y_axis</span><span class="p">)</span>
 </code></pre></div>
 
-<p><img alt="" src="../images/tut1-img9.png" /></p>
+<p><img alt="" src="tut1-img9.png" /></p>
 <p>The interesting thing here is that we can also perform operations on these words
 before plotting them. </p>
 <div class="codehilite"><pre><span></span><code><span class="n">royalty</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">[</span><span class="s1">&#39;king&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">tokens</span><span class="p">[</span><span class="s1">&#39;queen&#39;</span><span class="p">]</span>
@@ -701,7 +701,7 @@ before plotting them. </p>
       <span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="n">x_axis</span><span class="o">=</span><span class="n">royalty</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="n">gender</span><span class="p">))</span>
 </code></pre></div>
 
-<p><img alt="" src="../images/tut1-img10.png" /></p>
+<p><img alt="" src="tut1-img10.png" /></p>
 <p>The idea seems to work. But maybe we can introduce cooler charts and easier was
 to deal with collections of embeddings.</p>
                 

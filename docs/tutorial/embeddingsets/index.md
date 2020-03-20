@@ -58,7 +58,7 @@ emb.plot_interactive('man', 'woman')
 <div id="vis1"></div>
 
 <script>
-fetch('/charts/tut2-chart1.json')
+fetch('tut2-chart1.json')
 .then(res => res.json())
 .then((out) => {
   vegaEmbed('#vis1', out);
@@ -82,7 +82,7 @@ new_emb.plot_interactive('man', 'woman')
 <div id="vis2"></div>
 
 <script>
-fetch('/charts/tut2-chart2.json')
+fetch('tut2-chart2.json')
 .then(res => res.json())
 .then((out) => {
   vegaEmbed('#vis2', out);
@@ -104,7 +104,7 @@ orig_chart | new_chart
 <div id="vis3"></div>
 
 <script>
-fetch('/charts/tut2-chart3.json')
+fetch('tut2-chart3.json')
 .then(res => res.json())
 .then((out) => {
   vegaEmbed('#vis3', out);
@@ -143,7 +143,7 @@ plot_pca | plot_umap
 <div id="vis4"></div>
 
 <script>
-fetch('/charts/tut2-chart4.json')
+fetch('tut2-chart4.json')
 .then(res => res.json())
 .then((out) => {
   vegaEmbed('#vis4', out);
@@ -165,7 +165,7 @@ p1 | p2
 <div id="vis5"></div>
 
 <script>
-fetch('/charts/tut2-chart5.json')
+fetch('tut2-chart5.json')
 .then(res => res.json())
 .then((out) => {
   vegaEmbed('#vis5', out);
@@ -183,7 +183,7 @@ pca_emb.plot_interactive_matrix('pca_0', 'pca_1', 'pca_2')
 <div id="vis6"></div>
 
 <script>
-fetch('/charts/tut2-chart6.json')
+fetch('tut2-chart6.json')
 .then(res => res.json())
 .then((out) => {
   vegaEmbed('#vis6', out);

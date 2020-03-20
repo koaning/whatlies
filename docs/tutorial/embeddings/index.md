@@ -38,7 +38,7 @@ for t in [foo, bar, buz]:
     t.plot(kind="scatter").plot(kind="text");
 ```
 
-![](/images/tut1-img1.png)
+![](tut1-img1.png)
 
 ## Meaning
 
@@ -59,7 +59,7 @@ queen.plot(kind="arrow", color="red")
 plt.axis('off');
 ```
 
-![](/images/tut1-img2.png)
+![](tut1-img2.png)
 
 ### King - Man + Woman
 
@@ -76,7 +76,7 @@ queen.plot(kind="arrow", color="red")
 plt.axis('off');
 ```
 
-![](/images/tut1-img3.png)
+![](tut1-img3.png)
 
 ### King - Queen
 
@@ -93,7 +93,7 @@ queen.plot(kind="arrow", color="red")
 plt.axis('off');
 ```
 
-![](/images/tut1-img4.png)
+![](tut1-img4.png)
 
 ### Man | (Queen - King)
 
@@ -110,7 +110,7 @@ queen.plot(kind="arrow", color="red")
 plt.axis('off');
 ```
 
-![](/images/tut1-img5.png)
+![](tut1-img5.png)
 
 ## Embedding Mathmatics
 
@@ -150,7 +150,7 @@ plt.ylim(0, 0.5)
 plt.axis('off');
 ```
 
-![](/images/tut1-img6.png)
+![](tut1-img6.png)
 
 ## Mapping Unto Tokens
 
@@ -169,7 +169,7 @@ plt.ylim(0, 0.5)
 plt.axis('off');
 ```
 
-![](/images/tut1-img7.png)
+![](tut1-img7.png)
 
 ### Measuring the Mapping
 
@@ -212,7 +212,7 @@ plt.ylim(-.3, 0.4)
 plt.axis('off');
 ```
 
-![](/images/tut1-img8.png)
+![](tut1-img8.png)
 
 ```python 
 foo > woman # -0.6769
@@ -235,7 +235,7 @@ for name, t in tokens.items():
     t.plot(x_axis=x_axis, y_axis=y_axis).plot(kind="text", x_axis=x_axis, y_axis=y_axis)
 ```
 
-![](/images/tut1-img9.png)
+![](tut1-img9.png)
 
 The interesting thing here is that we can also perform operations on these words
 before plotting them. 
@@ -249,7 +249,7 @@ for n, t in tokens.items():
       .plot(kind="text", x_axis=royalty, y_axis=gender))
 ```
 
-![](/images/tut1-img10.png)
+![](tut1-img10.png)
 
 The idea seems to work. But maybe we can introduce cooler charts and easier was
 to deal with collections of embeddings.

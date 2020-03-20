@@ -1,6 +1,7 @@
 from operator import add, sub, rshift, or_
 from typing import Union
 
+import numpy as np
 import pandas as pd
 import altair as alt
 
@@ -188,6 +189,10 @@ class EmbeddingSet:
             other: another embeddingset
         """
         return EmbeddingSet({**self.embeddings, **other.embeddings})
+
+    def average(self):
+        x = np.array([v.vector for v in self.embeddings.values()])
+        return Embedding(f"{self.name}.average()", np.mean(x, axis=0))
 
     def plot(
         self,

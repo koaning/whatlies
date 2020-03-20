@@ -9,6 +9,7 @@ nav:
     - EmbeddingSet: api/embeddingset.md
     - Transformers: api/transformers.md
     - Language: api/language.md
+  - Roadmap: roadmap.md
 plugins:
   - mkdocstrings
 theme:

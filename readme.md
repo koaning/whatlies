@@ -2,11 +2,11 @@
 
 # whatlies 
 
-A library that tries help you to understand. 
+A library that tries help you to understand (note the pun). 
 
 > "What lies in word embeddings?"
 
-This small library  offers tools to make visualisation easier of both
+This small library offers tools to make visualisation easier of both
 word embeddings as well as operations on them. This should be considered
 an experimental project that is in preview mode. 
 
@@ -73,11 +73,11 @@ lang = SpacyLanguage("en_trf_robertabase_lg")
 lang['programming in [python]']
 ```
 
-To learn more about this in detail; check out the [documentation](https://rasahq.github.io/whatlies/)! 
+You'll now get the embedding for the token "python" but in context of "programming in python".
 
 ## Documentation 
 
-The docs can be found [here](https://rasahq.github.io/whatlies/).
+To learn more and for a getting started guide, check out the [documentation](https://rasahq.github.io/whatlies/).
 
 ## Installation 
 

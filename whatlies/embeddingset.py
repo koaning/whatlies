@@ -1,8 +1,10 @@
 from operator import add, sub, rshift, or_
+from typing import Union
 
 import pandas as pd
 import altair as alt
 
+from whatlies.embedding import Embedding
 from whatlies.common import plot_graph_layout
 
 
@@ -54,15 +56,87 @@ class EmbeddingSet:
         return EmbeddingSet(new_embeddings, operations=self.operations + [(other, operation)])
 
     def __add__(self, other):
+        """
+        Adds an embedding to each element in the embeddingset.
+
+        Usage:
+
+        ```python
+        from whatlies.embedding import Embedding
+        from whatlies.embeddingset import EmbeddingSet
+
+        foo = Embedding("foo", [0.1, 0.3])
+        bar = Embedding("bar", [0.7, 0.2])
+        buz = Embedding("buz", [0.1, 0.9])
+        emb = EmbeddingSet(foo, bar)
+
+        (emb).plot(kind="arrow")
+        (emb + buz).plot(kind="arrow")
+        ```
+        """
         return self.operate(other, add)
 
     def __sub__(self, other):
+        """
+        Subtracts an embedding from each element in the embeddingset.
+
+        Usage:
+
+        ```python
+        from whatlies.embedding import Embedding
+        from whatlies.embeddingset import EmbeddingSet
+
+        foo = Embedding("foo", [0.1, 0.3])
+        bar = Embedding("bar", [0.7, 0.2])
+        buz = Embedding("buz", [0.1, 0.9])
+        emb = EmbeddingSet(foo, bar)
+
+        (emb).plot(kind="arrow")
+        (emb - buz).plot(kind="arrow")
+        ```
+        """
         return self.operate(other, sub)
 
     def __or__(self, other):
+        """
+        Makes every element in the embeddingset othogonal to the passed embedding.
+
+        Usage:
+
+        ```python
+        from whatlies.embedding import Embedding
+        from whatlies.embeddingset import EmbeddingSet
+
+        foo = Embedding("foo", [0.1, 0.3])
+        bar = Embedding("bar", [0.7, 0.2])
+        buz = Embedding("buz", [0.1, 0.9])
+        emb = EmbeddingSet(foo, bar)
+
+        (emb).plot(kind="arrow")
+        (emb | buz).plot(kind="arrow")
+        ```
+        """
         return self.operate(other, or_)
 
     def __rshift__(self, other):
+        """
+        Maps every embedding in the embedding set unto the passed embedding.
+
+        Usage:
+
+        ```python
+        from whatlies.embedding import Embedding
+        from whatlies.embeddingset import EmbeddingSet
+
+        foo = Embedding("foo", [0.1, 0.3])
+        bar = Embedding("bar", [0.7, 0.2])
+        buz = Embedding("buz", [0.1, 0.9])
+        emb = EmbeddingSet(foo, bar)
+
+        (emb).plot(kind="arrow")
+        (emb >> buz).plot(kind="arrow")
+        ```
+        """
         return self.operate(other, rshift)
 
     def compare_against(self, other, mapping='direct'):
@@ -70,9 +144,39 @@ class EmbeddingSet:
             return [v > other for k, v in self.embeddings.items()]
 
     def transform(self, transformer):
+        """
+        Applies a transformation on the entire set.
+
+        Usage:
+
+        ```python
+        from whatlies.embeddingset import EmbeddingSet
+        from whatlies.transformers import pca
+
+        foo = Embedding("foo", [0.1, 0.3, 0.10])
+        bar = Embedding("bar", [0.7, 0.2, 0.11])
+        buz = Embedding("buz", [0.1, 0.9, 0.12])
+        emb = EmbeddingSet(foo, bar, buz).transform(pca(2))
+        ```
+        """
         return transformer(self)
 
     def __getitem__(self, thing):
+        """
+        Retreive a single embedding from the embeddingset.
+
+        Usage:
+        ```python
+        from whatlies.embeddingset import EmbeddingSet
+
+        foo = Embedding("foo", [0.1, 0.3, 0.10])
+        bar = Embedding("bar", [0.7, 0.2, 0.11])
+        buz = Embedding("buz", [0.1, 0.9, 0.12])
+        emb = EmbeddingSet(foo, bar, buz)
+
+        emb["buz"]
+        ```
+        """
         if not isinstance(thing, list):
             return self.embeddings[thing]
         new_embeddings = {k: emb for k, emb in self.embeddings.items()}
@@ -86,33 +190,52 @@ class EmbeddingSet:
             result = f"({result} {translator[op]} {tok.name})"
         return result
 
-    def plot(self, kind="scatter", x_axis=None, y_axis=None, color=None, show_operations=False, **kwargs):
+    def plot(self, kind: str="scatter", x_axis:str=None, y_axis:str=None, color:str=None, show_ops:str=False, **kwargs):
         """
-        Handles the logic to perform a 2d plot in matplotlib.
+        Makes (perhaps inferior) matplotlib plot. Consider using `plot_interactive` instead.
 
-        **Input**
-
-        - kind: what kind of plot to make, can be `scatter`, `arrow` or `text`
-        - x_axis: what embedding.md to use as a x-axis
-        - y_axis: what embedding.md to us as a y-axis
-        - color: the color to apply, only works for `scatter` and `arrow`
-        - xlabel: manually override the xlabel
-        - ylabel: manually override the ylabel
-        - show_operations: setting to also show the applied operations, only works for `text`
+        Arguments:
+            kind: what kind of plot to make, can be `scatter`, `arrow` or `text`
+            x_axis: the x-axis to be used, must be given when dim > 2
+            y_axis: the y-axis to be used, must be given when dim > 2
+            color: the color of the dots
+            show_ops: setting to also show the applied operations, only works for `text`
         """
         for k, token in self.embeddings.items():
-            token.plot(kind=kind, x_axis=x_axis, y_axis=y_axis, color=color, show_operations=show_operations, **kwargs)
+            token.plot(kind=kind, x_axis=x_axis, y_axis=y_axis, color=color, show_ops=show_ops, **kwargs)
         return self
 
     def plot_graph_layout(self, kind='cosine', **kwargs):
-        """
-        Handles the logic to plot a 2d graph using cosine distance
-        :return:
-        """
         plot_graph_layout(self.embeddings, kind, **kwargs)
         return self
 
-    def plot_interactive(self, x_axis, y_axis, annot=True, show_axis_point=False):
+    def plot_interactive(self, x_axis:Union[str, Embedding], y_axis:Union[str, Embedding],
+                         annot:bool=True, show_axis_point:bool=False):
+        """
+        Makes highly interactive plot of the set of embeddings.
+
+        Arguments:
+            x_axis: the x-axis to be used, must be given when dim > 2
+            y_axis: the y-axis to be used, must be given when dim > 2
+            annot: drawn points should be annotated
+            show_axis_point: ensure that the axis are drawn
+
+        **Usage**
+
+        ```python
+        from whatlies.language import SpacyLanguage
+
+        words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
+                 "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
+                 "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+                 "person", "family", "brother", "sister"]
+
+        lang = SpacyLanguage("en_core_web_md")
+        emb = lang[words]
+
+        emb.plot_interactive('man', 'woman')
+        ```
+        """
         if isinstance(x_axis, str):
             x_axis = self[x_axis]
         if isinstance(y_axis, str):
@@ -143,7 +266,34 @@ class EmbeddingSet:
             result = result + text
         return result
 
-    def plot_interactive_matrix(self, *axes, annot=True, show_axis_point=False, width=200, height=200):
+    def plot_interactive_matrix(self, *axes, annot:bool=True, show_axis_point:bool=False, width:int=200, height:int=200):
+        """
+        Makes highly interactive plot of the set of embeddings.
+
+        Arguments:
+            axes: the axes that we wish to plot, these should be in the embeddingset
+            annot: drawn points should be annotated
+            show_axis_point: ensure that the axis are drawn
+            width: width of the visual
+            height: height of the visual
+
+        **Usage**
+
+        ```python
+        from whatlies.language import SpacyLanguage
+        from whatlies.transformers import pca
+
+        words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
+                 "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
+                 "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+                 "person", "family", "brother", "sister"]
+
+        lang = SpacyLanguage("en_core_web_md")
+        emb = lang[words]
+
+        emb.transform(pca(3)).plot_interactive_matrix('pca_0', 'pca_1', 'pca_2')
+        ```
+        """
         plot_df = pd.DataFrame({ax: self.compare_against(self[ax]) for ax in axes})
         plot_df['name'] = [v.name for v in self.embeddings.values()]
         plot_df['original'] = [v.orig for v in self.embeddings.values()]

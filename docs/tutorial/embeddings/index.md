@@ -89,7 +89,7 @@ man.plot(kind="arrow", color="blue")
 woman.plot(kind="arrow", color="red")
 king.plot(kind="arrow", color="blue")
 queen.plot(kind="arrow", color="red")
-(queen - king).plot(kind="arrow", color="pink", show_operations=True)
+(queen - king).plot(kind="arrow", color="pink", show_ops=True)
 plt.axis('off');
 ```
 
@@ -105,8 +105,8 @@ woman.plot(kind="arrow", color="red")
 king.plot(kind="arrow", color="blue")
 queen.plot(kind="arrow", color="red")
 
-(queen - king).plot(kind="arrow", color="pink", show_operations=True)
-(man | (queen - king)).plot(kind="arrow", color="pink", show_operations=True)
+(queen - king).plot(kind="arrow", color="pink", show_ops=True)
+(man | (queen - king)).plot(kind="arrow", color="pink", show_ops=True)
 plt.axis('off');
 ```
 
@@ -205,7 +205,7 @@ foo = Embedding("foo", [-0.2, -0.2])
 foo.plot(kind="arrow", color="pink")
 woman.plot(kind="arrow", color="red")
 king.plot(kind="arrow", color="green")
-(foo >> woman).plot(kind="arrow", color="red", show_operations=True)
+(foo >> woman).plot(kind="arrow", color="red", show_ops=True)
 
 plt.xlim(-.3, 0.4)
 plt.ylim(-.3, 0.4)

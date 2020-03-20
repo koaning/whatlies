@@ -53,6 +53,9 @@ class Sense2VecLangauge:
     [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]s from a sense2vec language
     backend. This object is meant for retreival, not plotting.
 
+    Arguments:
+        sense2vec_path: path to downloaded vectors
+
     **Usage**:
 
     ```python

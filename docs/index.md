@@ -4,12 +4,13 @@
 
 A library that tries help you to understand. "What lies in word embeddings?"
 
-<img src="square-logo.svg" width=200 height=200 align="right">
-
 ## Produced 
+
+<img src="square-logo.svg" width=150 height=150 align="right">
 
 This project was initiated at [Rasa](https://rasa.com) as a fun side project
 that supports the research and developer advocacy teams at Rasa. 
+
 It is maintained by Vincent D. Warmerdam, Research Advocate at Rasa.
 
 ## What it Does

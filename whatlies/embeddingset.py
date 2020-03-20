@@ -190,6 +190,15 @@ class EmbeddingSet:
             result = f"({result} {translator[op]} {tok.name})"
         return result
 
+    def merge(self, other):
+        """
+        Concatenates two embeddingssets together
+
+        Arguments:
+            other: another embeddingset
+        """
+        return EmbeddingSet({**self.embeddings, **other.embeddings})
+
     def plot(self, kind: str="scatter", x_axis:str=None, y_axis:str=None, color:str=None, show_ops:str=False, **kwargs):
         """
         Makes (perhaps inferior) matplotlib plot. Consider using `plot_interactive` instead.

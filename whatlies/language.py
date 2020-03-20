@@ -31,20 +31,22 @@ class SpacyLanguage:
             raise ValueError("only one opener `]` allowed ")
 
     def __getitem__(self, string):
-        self._input_str_legal(string)
-        doc = self.nlp(string)
-        vec = doc.vector
-        start, end = 0, -1
-        split_string = string.split(" ")
-        for idx, word in enumerate(split_string):
-            if word[0] == "[":
-                start = idx
-            if word[-1] == "]":
-                end = idx + 1
-        if start != 0:
-            if end != -1:
-                vec = doc[start:end].vector
-        return Embedding(string, vec)
+        if isinstance(string, str):
+            self._input_str_legal(string)
+            doc = self.nlp(string)
+            vec = doc.vector
+            start, end = 0, -1
+            split_string = string.split(" ")
+            for idx, word in enumerate(split_string):
+                if word[0] == "[":
+                    start = idx
+                if word[-1] == "]":
+                    end = idx + 1
+            if start != 0:
+                if end != -1:
+                    vec = doc[start:end].vector
+            return Embedding(string, vec)
+        return EmbeddingSet(*[self[tok] for tok in string])
 
 
 class Sense2VecLangauge:
@@ -73,8 +75,10 @@ class Sense2VecLangauge:
         self.s2v = Sense2Vec().from_disk(sense2vec_path)
 
     def __getitem__(self, string):
-        vec = self.s2v[string]
-        return Embedding(string, vec)
+        if isinstance(string, str):
+            vec = self.s2v[string]
+            return Embedding(string, vec)
+        return EmbeddingSet(*[self[tok] for tok in string])
 
     def embset_similar(self, query, n=10):
         """

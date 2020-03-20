@@ -11,8 +11,24 @@ class EmbeddingSet:
     This object represents a set of `Embedding`s. You can use the same operations
     as an `Embedding` but here we apply it to the entire set instead of a single
     `Embedding`.
+
+    **Parameters**
+
+    - **embeddings**: list of embeddings or dictionary with name: embedding pairs
+    - **operations**: deprecated
+    - **name**: custom name of embeddingset
+
+    Usage:
+
+    ```
+    from whatlies.embedding import Embedding
+    from whatlies.embeddingset import EmbeddingSet
+    ```
     """
-    def __init__(self, *embeddings, operations=None):
+    def __init__(self, *embeddings, operations=None, name=None):
+        if not name:
+            name = 'EmbSet'
+        self.name = name
         if len(embeddings) == 1:
             # we assume it is a dictionary here
             self.embeddings = embeddings[0]
@@ -57,10 +73,14 @@ class EmbeddingSet:
         return transformer(self)
 
     def __getitem__(self, thing):
-        return self.embeddings[thing]
+        if not isinstance(thing, list):
+            return self.embeddings[thing]
+        new_embeddings = {k: emb for k, emb in self.embeddings.items()}
+        names = ','.join(thing)
+        return EmbeddingSet(new_embeddings, name=f"{self.name}.subset({names})")
 
     def __repr__(self):
-        result = "EmbSet"
+        result = self.name
         translator = {add: '+', sub: '-', or_: '|', rshift: '>>'}
         for tok, op in self.operations:
             result = f"({result} {translator[op]} {tok.name})"

@@ -42,3 +42,8 @@ clean:
 	rm -rf .ipynb_checkpoints
 	rm -rf **/.ipynb_checkpoints
 	rm -rf .pytest_cache
+
+pypi: clean
+	python setup.py sdist
+	python setup.py bdist_wheel --universal
+	twine upload dist/*

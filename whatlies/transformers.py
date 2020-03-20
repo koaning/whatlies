@@ -27,7 +27,8 @@ def pca(n_components=2, **kwargs):
         new_vecs = tfm.fit_transform(embs)
         names_out = names + [f'pca_{i}' for i in range(n_components)]
         vectors_out = np.concatenate([new_vecs, np.eye(n_components)])
-        return EmbeddingSet({k: Embedding(k, v, orig=k) for k, v in zip(names_out, vectors_out)})
+        return EmbeddingSet({k: Embedding(k, v, orig=k) for k, v in zip(names_out, vectors_out)},
+                            name=f"{embset.name}.pca_{n_components}()")
     return wrapper
 
 
@@ -38,5 +39,6 @@ def umap(n_components=2, **kwargs):
         new_vecs = tfm.fit_transform(embs)
         names_out = names + [f'umap_{i}' for i in range(n_components)]
         vectors_out = np.concatenate([new_vecs, np.eye(n_components)])
-        return EmbeddingSet({k: Embedding(k, v, orig=k) for k, v in zip(names_out, vectors_out)})
+        return EmbeddingSet({k: Embedding(k, v, orig=k) for k, v in zip(names_out, vectors_out)},
+                            name=f"{embset.name}.umap_{n_components}")
     return wrapper

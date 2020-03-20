@@ -1,3 +1,8 @@
+![](https://img.shields.io/pypi/v/whatlies)
+![](https://img.shields.io/pypi/pyversions/whatlies)
+![](https://img.shields.io/github/contributors/koaning/whatlies)
+
+
 <img src="docs/logo.png" width=255 height=255 align="right">
 
 # whatlies 
@@ -67,7 +72,7 @@ pca_plot | umap_plot
 
 ![](docs/gif-two.gif)
 
-But even allow for BERT-style embeddings. Just use the square brackets. 
+We even allow for BERT-style embeddings. Just use the square brackets. 
 
 ```python
 lang = SpacyLanguage("en_trf_robertabase_lg")
@@ -82,10 +87,10 @@ To learn more and for a getting started guide, check out the [documentation](htt
 
 ## Installation 
 
-For now we allow for installation with pip but only via git.
+To install the package as well as all the dependencies, simply run;
 
 ```bash
-pip install git+https://github.com/RasaHQ/whatlies
+pip install whatlies
 ```
 
 ## Local Development

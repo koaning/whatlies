@@ -1,0 +1,438 @@
+{
+  "config": {"view": {"continuousWidth": 400, "continuousHeight": 300}},
+  "hconcat": [
+    {
+      "layer": [
+        {
+          "mark": {"type": "circle", "size": 60},
+          "encoding": {
+            "tooltip": [
+              {"type": "nominal", "field": "name"},
+              {"type": "nominal", "field": "original"}
+            ],
+            "x": {
+              "type": "quantitative",
+              "axis": {"title": "pca_0"},
+              "field": "x_axis"
+            },
+            "y": {
+              "type": "quantitative",
+              "axis": {"title": "pca_1"},
+              "field": "y_axis"
+            }
+          },
+          "selection": {
+            "selector032": {
+              "type": "interval",
+              "bind": "scales",
+              "encodings": ["x", "y"]
+            }
+          },
+          "title": "pca_0 vs. pca_1"
+        },
+        {
+          "mark": {"type": "text", "color": "black", "dx": -15, "dy": 3},
+          "encoding": {
+            "text": {"type": "nominal", "field": "original"},
+            "x": {
+              "type": "quantitative",
+              "axis": {"title": "pca_0"},
+              "field": "x_axis"
+            },
+            "y": {
+              "type": "quantitative",
+              "axis": {"title": "pca_1"},
+              "field": "y_axis"
+            }
+          }
+        }
+      ],
+      "data": {"name": "data-34161eebc7e6103e8e00b60ac821ba4b"},
+      "height": 250,
+      "width": 250
+    },
+    {
+      "layer": [
+        {
+          "mark": {"type": "circle", "size": 60},
+          "encoding": {
+            "tooltip": [
+              {"type": "nominal", "field": "name"},
+              {"type": "nominal", "field": "original"}
+            ],
+            "x": {
+              "type": "quantitative",
+              "axis": {"title": "pca_2"},
+              "field": "x_axis"
+            },
+            "y": {
+              "type": "quantitative",
+              "axis": {"title": "pca_1"},
+              "field": "y_axis"
+            }
+          },
+          "selection": {
+            "selector033": {
+              "type": "interval",
+              "bind": "scales",
+              "encodings": ["x", "y"]
+            }
+          },
+          "title": "pca_2 vs. pca_1"
+        },
+        {
+          "mark": {"type": "text", "color": "black", "dx": -15, "dy": 3},
+          "encoding": {
+            "text": {"type": "nominal", "field": "original"},
+            "x": {
+              "type": "quantitative",
+              "axis": {"title": "pca_2"},
+              "field": "x_axis"
+            },
+            "y": {
+              "type": "quantitative",
+              "axis": {"title": "pca_1"},
+              "field": "y_axis"
+            }
+          }
+        }
+      ],
+      "data": {"name": "data-9f0900497201e19fb0785dd92e78e04e"},
+      "height": 250,
+      "width": 250
+    }
+  ],
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.0.2.json",
+  "datasets": {
+    "data-34161eebc7e6103e8e00b60ac821ba4b": [
+      {
+        "x_axis": -1.2535821199417114,
+        "y_axis": 3.586676597595215,
+        "name": "prince",
+        "original": "prince"
+      },
+      {
+        "x_axis": -0.9741005897521973,
+        "y_axis": 3.7290642261505127,
+        "name": "princess",
+        "original": "princess"
+      },
+      {
+        "x_axis": -1.0501278638839722,
+        "y_axis": -2.0268447399139404,
+        "name": "nurse",
+        "original": "nurse"
+      },
+      {
+        "x_axis": -0.9151343703269958,
+        "y_axis": -2.0640790462493896,
+        "name": "doctor",
+        "original": "doctor"
+      },
+      {
+        "x_axis": 0.8430215716362,
+        "y_axis": -0.06272825598716736,
+        "name": "banker",
+        "original": "banker"
+      },
+      {
+        "x_axis": -0.43132147192955017,
+        "y_axis": -1.5975831747055054,
+        "name": "man",
+        "original": "man"
+      },
+      {
+        "x_axis": -1.073258876800537,
+        "y_axis": -1.6417843103408813,
+        "name": "woman",
+        "original": "woman"
+      },
+      {
+        "x_axis": -3.006711006164551,
+        "y_axis": 0.08844566345214844,
+        "name": "cousin",
+        "original": "cousin"
+      },
+      {
+        "x_axis": -3.256138563156128,
+        "y_axis": -0.2640823423862457,
+        "name": "neice",
+        "original": "neice"
+      },
+      {
+        "x_axis": -0.8844128251075745,
+        "y_axis": 4.284396648406982,
+        "name": "king",
+        "original": "king"
+      },
+      {
+        "x_axis": -0.9637596607208252,
+        "y_axis": 3.8633878231048584,
+        "name": "queen",
+        "original": "queen"
+      },
+      {
+        "x_axis": -0.37136709690093994,
+        "y_axis": -1.4314926862716675,
+        "name": "dude",
+        "original": "dude"
+      },
+      {
+        "x_axis": -0.33022043108940125,
+        "y_axis": -2.0039174556732178,
+        "name": "guy",
+        "original": "guy"
+      },
+      {
+        "x_axis": 0.005235184449702501,
+        "y_axis": -1.1506175994873047,
+        "name": "gal",
+        "original": "gal"
+      },
+      {
+        "x_axis": 2.1890616416931152,
+        "y_axis": -0.3874746263027191,
+        "name": "fire",
+        "original": "fire"
+      },
+      {
+        "x_axis": 0.8451134562492371,
+        "y_axis": -1.5011231899261475,
+        "name": "dog",
+        "original": "dog"
+      },
+      {
+        "x_axis": 0.9290971755981445,
+        "y_axis": -0.6315348148345947,
+        "name": "cat",
+        "original": "cat"
+      },
+      {
+        "x_axis": 1.9717415571212769,
+        "y_axis": 0.1653272807598114,
+        "name": "mouse",
+        "original": "mouse"
+      },
+      {
+        "x_axis": 3.6464710235595703,
+        "y_axis": 0.8340242505073547,
+        "name": "red",
+        "original": "red"
+      },
+      {
+        "x_axis": 0.6217125654220581,
+        "y_axis": -0.011615407653152943,
+        "name": "bluee",
+        "original": "bluee"
+      },
+      {
+        "x_axis": 4.070711135864258,
+        "y_axis": 0.8428587913513184,
+        "name": "green",
+        "original": "green"
+      },
+      {
+        "x_axis": 3.9739019870758057,
+        "y_axis": 0.8420842289924622,
+        "name": "yellow",
+        "original": "yellow"
+      },
+      {
+        "x_axis": 3.1992409229278564,
+        "y_axis": -0.76308274269104,
+        "name": "water",
+        "original": "water"
+      },
+      {
+        "x_axis": -0.4370383024215698,
+        "y_axis": -1.8055583238601685,
+        "name": "person",
+        "original": "person"
+      },
+      {
+        "x_axis": -1.5232115983963013,
+        "y_axis": -0.6766523718833923,
+        "name": "family",
+        "original": "family"
+      },
+      {
+        "x_axis": -2.889375925064087,
+        "y_axis": -0.0504235103726387,
+        "name": "brother",
+        "original": "brother"
+      },
+      {
+        "x_axis": -2.935547351837158,
+        "y_axis": -0.16567137837409973,
+        "name": "sister",
+        "original": "sister"
+      },
+      {"x_axis": 0, "y_axis": 0, "name": "pca_2", "original": "pca_2"}
+    ],
+    "data-9f0900497201e19fb0785dd92e78e04e": [
+      {
+        "x_axis": 1.4101698398590088,
+        "y_axis": 3.586676597595215,
+        "name": "prince",
+        "original": "prince"
+      },
+      {
+        "x_axis": -0.901466965675354,
+        "y_axis": 3.7290642261505127,
+        "name": "princess",
+        "original": "princess"
+      },
+      {
+        "x_axis": -0.3621392846107483,
+        "y_axis": -2.0268447399139404,
+        "name": "nurse",
+        "original": "nurse"
+      },
+      {
+        "x_axis": 0.6259651184082031,
+        "y_axis": -2.0640790462493896,
+        "name": "doctor",
+        "original": "doctor"
+      },
+      {
+        "x_axis": 3.4233667850494385,
+        "y_axis": -0.06272825598716736,
+        "name": "banker",
+        "original": "banker"
+      },
+      {
+        "x_axis": 2.392763376235962,
+        "y_axis": -1.5975831747055054,
+        "name": "man",
+        "original": "man"
+      },
+      {
+        "x_axis": 0.78555828332901,
+        "y_axis": -1.6417843103408813,
+        "name": "woman",
+        "original": "woman"
+      },
+      {
+        "x_axis": -1.788364291191101,
+        "y_axis": 0.08844566345214844,
+        "name": "cousin",
+        "original": "cousin"
+      },
+      {
+        "x_axis": -2.4958081245422363,
+        "y_axis": -0.2640823423862457,
+        "name": "neice",
+        "original": "neice"
+      },
+      {
+        "x_axis": 2.366339683532715,
+        "y_axis": 4.284396648406982,
+        "name": "king",
+        "original": "king"
+      },
+      {
+        "x_axis": 0.6199108362197876,
+        "y_axis": 3.8633878231048584,
+        "name": "queen",
+        "original": "queen"
+      },
+      {
+        "x_axis": 1.8008068799972534,
+        "y_axis": -1.4314926862716675,
+        "name": "dude",
+        "original": "dude"
+      },
+      {
+        "x_axis": 1.8941237926483154,
+        "y_axis": -2.0039174556732178,
+        "name": "guy",
+        "original": "guy"
+      },
+      {
+        "x_axis": -0.7789923548698425,
+        "y_axis": -1.1506175994873047,
+        "name": "gal",
+        "original": "gal"
+      },
+      {
+        "x_axis": 1.607983112335205,
+        "y_axis": -0.3874746263027191,
+        "name": "fire",
+        "original": "fire"
+      },
+      {
+        "x_axis": -1.3364670276641846,
+        "y_axis": -1.5011231899261475,
+        "name": "dog",
+        "original": "dog"
+      },
+      {
+        "x_axis": -1.6327675580978394,
+        "y_axis": -0.6315348148345947,
+        "name": "cat",
+        "original": "cat"
+      },
+      {
+        "x_axis": -1.6748226881027222,
+        "y_axis": 0.1653272807598114,
+        "name": "mouse",
+        "original": "mouse"
+      },
+      {
+        "x_axis": -1.3793258666992188,
+        "y_axis": 0.8340242505073547,
+        "name": "red",
+        "original": "red"
+      },
+      {
+        "x_axis": 0.22887346148490906,
+        "y_axis": -0.011615407653152943,
+        "name": "bluee",
+        "original": "bluee"
+      },
+      {
+        "x_axis": -1.1082818508148193,
+        "y_axis": 0.8428587913513184,
+        "name": "green",
+        "original": "green"
+      },
+      {
+        "x_axis": -1.7831952571868896,
+        "y_axis": 0.8420842289924622,
+        "name": "yellow",
+        "original": "yellow"
+      },
+      {
+        "x_axis": 0.22754229605197906,
+        "y_axis": -0.76308274269104,
+        "name": "water",
+        "original": "water"
+      },
+      {
+        "x_axis": 1.5558571815490723,
+        "y_axis": -1.8055583238601685,
+        "name": "person",
+        "original": "person"
+      },
+      {
+        "x_axis": -0.9982203841209412,
+        "y_axis": -0.6766523718833923,
+        "name": "family",
+        "original": "family"
+      },
+      {
+        "x_axis": -0.49075862765312195,
+        "y_axis": -0.0504235103726387,
+        "name": "brother",
+        "original": "brother"
+      },
+      {
+        "x_axis": -2.2086501121520996,
+        "y_axis": -0.16567137837409973,
+        "name": "sister",
+        "original": "sister"
+      },
+      {"x_axis": 0, "y_axis": 0, "name": "pca_0", "original": "pca_0"}
+    ]
+  }
+}

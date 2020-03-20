@@ -1,0 +1,721 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>Interactive Visualisation - whatlies</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="purple">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#sets-of-embeddings" tabindex="0" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="whatlies" aria-label="whatlies" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              whatlies
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Interactive Visualisation
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="whatlies" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    whatlies
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../embeddings/" title="What Are Embeddings" class="md-nav__link">
+      What Are Embeddings
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Interactive Visualisation
+      </label>
+    
+    <a href="./" title="Interactive Visualisation" class="md-nav__link md-nav__link--active">
+      Interactive Visualisation
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sets-of-embeddings" class="md-nav__link">
+    Sets of Embeddings
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#direct-creation" class="md-nav__link">
+    Direct Creation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#via-languages" class="md-nav__link">
+    Via Languages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotting" class="md-nav__link">
+    Plotting
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#combining-charts" class="md-nav__link">
+    Combining Charts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-transformation" class="md-nav__link">
+    More Transformation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#more-components" class="md-nav__link">
+    More Components
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-charts" class="md-nav__link">
+    More Charts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Language Options" class="md-nav__link">
+      Language Options
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/embedding/" title="Embedding" class="md-nav__link">
+      Embedding
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/embeddingset/" title="EmbeddingSet" class="md-nav__link">
+      EmbeddingSet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/transformers/" title="Transformers" class="md-nav__link">
+      Transformers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/" title="Language" class="md-nav__link">
+      Language
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sets-of-embeddings" class="md-nav__link">
+    Sets of Embeddings
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#direct-creation" class="md-nav__link">
+    Direct Creation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#via-languages" class="md-nav__link">
+    Via Languages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotting" class="md-nav__link">
+    Plotting
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#combining-charts" class="md-nav__link">
+    Combining Charts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-transformation" class="md-nav__link">
+    More Transformation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#more-components" class="md-nav__link">
+    More Components
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-charts" class="md-nav__link">
+    More Charts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Interactive Visualisation</h1>
+                
+                <script src="https://cdn.jsdelivr.net/npm/vega@5.10.0"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@4.6.0"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.3.2"></script>
+
+<h2 id="sets-of-embeddings">Sets of Embeddings<a class="headerlink" href="#sets-of-embeddings" title="Permanent link">&para;</a></h2>
+<p>The <code>Embedding</code> object merely has support for matplotlib, but the 
+<code>EmbeddingSet</code> has support for interactive tools. It is also more
+convenient. You can create an </p>
+<h3 id="direct-creation">Direct Creation<a class="headerlink" href="#direct-creation" title="Permanent link">&para;</a></h3>
+<p>You can create these objects directly. </p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">spacy</span> 
+<span class="kn">from</span> <span class="nn">whatlies.embedding</span> <span class="kn">import</span> <span class="n">Embedding</span>
+<span class="kn">from</span> <span class="nn">whatlies.embeddingset</span> <span class="kn">import</span> <span class="n">EmbeddingSet</span>
+
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
+
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;prince&quot;</span><span class="p">,</span> <span class="s2">&quot;princess&quot;</span><span class="p">,</span> <span class="s2">&quot;nurse&quot;</span><span class="p">,</span> <span class="s2">&quot;doctor&quot;</span><span class="p">,</span> <span class="s2">&quot;banker&quot;</span><span class="p">,</span> <span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;woman&quot;</span><span class="p">,</span> 
+         <span class="s2">&quot;cousin&quot;</span><span class="p">,</span> <span class="s2">&quot;neice&quot;</span><span class="p">,</span> <span class="s2">&quot;king&quot;</span><span class="p">,</span> <span class="s2">&quot;queen&quot;</span><span class="p">,</span> <span class="s2">&quot;dude&quot;</span><span class="p">,</span> <span class="s2">&quot;guy&quot;</span><span class="p">,</span> <span class="s2">&quot;gal&quot;</span><span class="p">,</span> <span class="s2">&quot;fire&quot;</span><span class="p">,</span> 
+         <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;mouse&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;bluee&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">,</span> 
+         <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;family&quot;</span><span class="p">,</span> <span class="s2">&quot;brother&quot;</span><span class="p">,</span> <span class="s2">&quot;sister&quot;</span><span class="p">]</span>
+
+<span class="n">emb</span> <span class="o">=</span> <span class="n">EmbeddingSet</span><span class="p">({</span><span class="n">t</span><span class="o">.</span><span class="n">text</span><span class="p">:</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">nlp</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">words</span><span class="p">)})</span>
+</code></pre></div>
+
+<p>This can be especially useful if you're creating your own embeddings. </p>
+<h3 id="via-languages">Via Languages<a class="headerlink" href="#via-languages" title="Permanent link">&para;</a></h3>
+<p>But odds are that you just want to grab a language model from elsewhere. 
+We've added backends to our library and this can be a convenient method
+of getting sets of embeddings (typically more performant too).</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">SpacyLanguage</span>
+
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;prince&quot;</span><span class="p">,</span> <span class="s2">&quot;princess&quot;</span><span class="p">,</span> <span class="s2">&quot;nurse&quot;</span><span class="p">,</span> <span class="s2">&quot;doctor&quot;</span><span class="p">,</span> <span class="s2">&quot;banker&quot;</span><span class="p">,</span> <span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;woman&quot;</span><span class="p">,</span> 
+         <span class="s2">&quot;cousin&quot;</span><span class="p">,</span> <span class="s2">&quot;neice&quot;</span><span class="p">,</span> <span class="s2">&quot;king&quot;</span><span class="p">,</span> <span class="s2">&quot;queen&quot;</span><span class="p">,</span> <span class="s2">&quot;dude&quot;</span><span class="p">,</span> <span class="s2">&quot;guy&quot;</span><span class="p">,</span> <span class="s2">&quot;gal&quot;</span><span class="p">,</span> <span class="s2">&quot;fire&quot;</span><span class="p">,</span> 
+         <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;mouse&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;bluee&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">,</span> 
+         <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;family&quot;</span><span class="p">,</span> <span class="s2">&quot;brother&quot;</span><span class="p">,</span> <span class="s2">&quot;sister&quot;</span><span class="p">]</span>
+
+<span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
+<span class="n">emb</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">words</span><span class="p">]</span>
+</code></pre></div>
+
+<h2 id="plotting">Plotting<a class="headerlink" href="#plotting" title="Permanent link">&para;</a></h2>
+<p>Either way, with an <code>EmbeddingSet</code> you can create meaningful interactive charts.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;man&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<div id="vis1"></div>
+
+<script>
+fetch('/charts/tut2-chart1.json')
+.then(res => res.json())
+.then((out) => {
+  vegaEmbed('#vis1', out);
+})
+.catch(err => { throw err });
+</script>
+
+<p>We can also retreive embeddings from the embeddingset. </p>
+<div class="codehilite"><pre><span></span><code><span class="n">emb</span><span class="p">[</span><span class="s1">&#39;king&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Remember the operations we did before? We can also do that on these sets! </p>
+<div class="codehilite"><pre><span></span><code><span class="n">new_emb</span> <span class="o">=</span> <span class="n">emb</span> <span class="o">|</span> <span class="p">(</span><span class="n">emb</span><span class="p">[</span><span class="s1">&#39;king&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">emb</span><span class="p">[</span><span class="s1">&#39;queen&#39;</span><span class="p">])</span>
+<span class="n">new_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;man&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<div id="vis2"></div>
+
+<script>
+fetch('/charts/tut2-chart2.json')
+.then(res => res.json())
+.then((out) => {
+  vegaEmbed('#vis2', out);
+})
+.catch(err => { throw err });
+</script>
+
+<h3 id="combining-charts">Combining Charts<a class="headerlink" href="#combining-charts" title="Permanent link">&para;</a></h3>
+<p>Often you'd like to compare the effect of a mapping. Since we make our interactive
+charts with altair we get a nice api to stack charts next to eachother. </p>
+<div class="codehilite"><pre><span></span><code><span class="n">orig_chart</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;man&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">)</span>
+<span class="n">new_chart</span> <span class="o">=</span> <span class="n">new_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;man&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">)</span>
+<span class="n">orig_chart</span> <span class="o">|</span> <span class="n">new_chart</span>
+</code></pre></div>
+
+<div id="vis3"></div>
+
+<script>
+fetch('/charts/tut2-chart3.json')
+.then(res => res.json())
+.then((out) => {
+  vegaEmbed('#vis3', out);
+})
+.catch(err => { throw err });
+</script>
+
+<p>You may have noticed that these charts appear in the documentation, fully interactively. 
+This is another nice feature of Altair, the charts can be serialized in a json format and
+hosted on the web.</p>
+<h2 id="more-transformation">More Transformation<a class="headerlink" href="#more-transformation" title="Permanent link">&para;</a></h2>
+<p>But there are more transformations that we might visualise. Let's demonstrate two here. </p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">pca</span><span class="p">,</span> <span class="n">umap</span>
+
+<span class="n">orig_chart</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;man&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">)</span>
+<span class="n">pca_emb</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pca</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">umap_emb</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">umap</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The transform method is able to take a transformation, let's say <code>pca(2)</code> and this will change
+the embeddings in the set. It might also create new embeddings. In case of <code>pca(2)</code> it will 
+also add two embeddings which represent the principal components. This is nice because
+that means that we can plot along those axes.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">plot_pca</span> <span class="o">=</span> <span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;pca_0&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">)</span> 
+<span class="n">plot_umap</span> <span class="o">=</span> <span class="n">umap_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;umap_0&#39;</span><span class="p">,</span> <span class="s1">&#39;umap_1&#39;</span><span class="p">)</span>
+<span class="n">plot_pca</span> <span class="o">|</span> <span class="n">plot_umap</span>
+</code></pre></div>
+
+<div id="vis4"></div>
+
+<script>
+fetch('/charts/tut2-chart4.json')
+.then(res => res.json())
+.then((out) => {
+  vegaEmbed('#vis4', out);
+})
+.catch(err => { throw err });
+</script>
+
+<h3 id="more-components">More Components<a class="headerlink" href="#more-components" title="Permanent link">&para;</a></h3>
+<p>Suppose now that we'd like to visualise three principal components. We could do this.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pca_emb</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pca</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;pca_0&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">)</span> 
+<span class="n">p2</span> <span class="o">=</span> <span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;pca_2&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">)</span>
+<span class="n">p1</span> <span class="o">|</span> <span class="n">p2</span>
+</code></pre></div>
+
+<div id="vis5"></div>
+
+<script>
+fetch('/charts/tut2-chart5.json')
+.then(res => res.json())
+.then((out) => {
+  vegaEmbed('#vis5', out);
+})
+.catch(err => { throw err });
+</script>
+
+<h3 id="more-charts">More Charts<a class="headerlink" href="#more-charts" title="Permanent link">&para;</a></h3>
+<p>Let's not draw two components at a time, let's draw all of them.</p>
+<p><div class="codehilite"><pre><span></span><code><span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive_matrix</span><span class="p">(</span><span class="s1">&#39;pca_0&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_2&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div id="vis6"></div></p>
+<script>
+fetch('/charts/tut2-chart6.json')
+.then(res => res.json())
+.then((out) => {
+  vegaEmbed('#vis6', out);
+})
+.catch(err => { throw err });
+</script>
+
+<p>Zoom in on that chart. Don't forget to click and drag. Can we interpret the components?</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../embeddings/" title="What Are Embeddings" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                What Are Embeddings
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../.." title="Language Options" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Language Options
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      
+      <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>

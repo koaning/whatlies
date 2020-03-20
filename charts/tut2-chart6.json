@@ -1,0 +1,239 @@
+{
+  "config": {"view": {"continuousWidth": 400, "continuousHeight": 300}},
+  "repeat": {
+    "column": ["pca_0", "pca_1", "pca_2"],
+    "row": ["pca_2", "pca_1", "pca_0"]
+  },
+  "spec": {
+    "layer": [
+      {
+        "mark": "circle",
+        "encoding": {
+          "text": {"type": "nominal", "field": "original"},
+          "tooltip": [
+            {"type": "nominal", "field": "name"},
+            {"type": "nominal", "field": "original"}
+          ],
+          "x": {"type": "quantitative", "field": {"repeat": "column"}},
+          "y": {"type": "quantitative", "field": {"repeat": "row"}}
+        },
+        "selection": {
+          "selector038": {
+            "type": "interval",
+            "bind": "scales",
+            "encodings": ["x", "y"]
+          }
+        }
+      },
+      {
+        "mark": {"type": "text", "color": "black", "dx": -15, "dy": 3},
+        "encoding": {
+          "text": {"type": "nominal", "field": "original"},
+          "tooltip": [
+            {"type": "nominal", "field": "name"},
+            {"type": "nominal", "field": "original"}
+          ],
+          "x": {"type": "quantitative", "field": {"repeat": "column"}},
+          "y": {"type": "quantitative", "field": {"repeat": "row"}}
+        }
+      }
+    ],
+    "data": {"name": "data-ac1cd0032046acd832aa21b6b882d4c0"},
+    "height": 200,
+    "width": 200
+  },
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.0.2.json",
+  "datasets": {
+    "data-ac1cd0032046acd832aa21b6b882d4c0": [
+      {
+        "pca_0": -1.2535821199417114,
+        "pca_1": 3.586676597595215,
+        "pca_2": 1.4101698398590088,
+        "name": "prince",
+        "original": "prince"
+      },
+      {
+        "pca_0": -0.9741005897521973,
+        "pca_1": 3.7290642261505127,
+        "pca_2": -0.901466965675354,
+        "name": "princess",
+        "original": "princess"
+      },
+      {
+        "pca_0": -1.0501278638839722,
+        "pca_1": -2.0268447399139404,
+        "pca_2": -0.3621392846107483,
+        "name": "nurse",
+        "original": "nurse"
+      },
+      {
+        "pca_0": -0.9151343703269958,
+        "pca_1": -2.0640790462493896,
+        "pca_2": 0.6259651184082031,
+        "name": "doctor",
+        "original": "doctor"
+      },
+      {
+        "pca_0": 0.8430215716362,
+        "pca_1": -0.06272825598716736,
+        "pca_2": 3.4233667850494385,
+        "name": "banker",
+        "original": "banker"
+      },
+      {
+        "pca_0": -0.43132147192955017,
+        "pca_1": -1.5975831747055054,
+        "pca_2": 2.392763376235962,
+        "name": "man",
+        "original": "man"
+      },
+      {
+        "pca_0": -1.073258876800537,
+        "pca_1": -1.6417843103408813,
+        "pca_2": 0.78555828332901,
+        "name": "woman",
+        "original": "woman"
+      },
+      {
+        "pca_0": -3.006711006164551,
+        "pca_1": 0.08844566345214844,
+        "pca_2": -1.788364291191101,
+        "name": "cousin",
+        "original": "cousin"
+      },
+      {
+        "pca_0": -3.256138563156128,
+        "pca_1": -0.2640823423862457,
+        "pca_2": -2.4958081245422363,
+        "name": "neice",
+        "original": "neice"
+      },
+      {
+        "pca_0": -0.8844128251075745,
+        "pca_1": 4.284396648406982,
+        "pca_2": 2.366339683532715,
+        "name": "king",
+        "original": "king"
+      },
+      {
+        "pca_0": -0.9637596607208252,
+        "pca_1": 3.8633878231048584,
+        "pca_2": 0.6199108362197876,
+        "name": "queen",
+        "original": "queen"
+      },
+      {
+        "pca_0": -0.37136709690093994,
+        "pca_1": -1.4314926862716675,
+        "pca_2": 1.8008068799972534,
+        "name": "dude",
+        "original": "dude"
+      },
+      {
+        "pca_0": -0.33022043108940125,
+        "pca_1": -2.0039174556732178,
+        "pca_2": 1.8941237926483154,
+        "name": "guy",
+        "original": "guy"
+      },
+      {
+        "pca_0": 0.005235184449702501,
+        "pca_1": -1.1506175994873047,
+        "pca_2": -0.7789923548698425,
+        "name": "gal",
+        "original": "gal"
+      },
+      {
+        "pca_0": 2.1890616416931152,
+        "pca_1": -0.3874746263027191,
+        "pca_2": 1.607983112335205,
+        "name": "fire",
+        "original": "fire"
+      },
+      {
+        "pca_0": 0.8451134562492371,
+        "pca_1": -1.5011231899261475,
+        "pca_2": -1.3364670276641846,
+        "name": "dog",
+        "original": "dog"
+      },
+      {
+        "pca_0": 0.9290971755981445,
+        "pca_1": -0.6315348148345947,
+        "pca_2": -1.6327675580978394,
+        "name": "cat",
+        "original": "cat"
+      },
+      {
+        "pca_0": 1.9717415571212769,
+        "pca_1": 0.1653272807598114,
+        "pca_2": -1.6748226881027222,
+        "name": "mouse",
+        "original": "mouse"
+      },
+      {
+        "pca_0": 3.6464710235595703,
+        "pca_1": 0.8340242505073547,
+        "pca_2": -1.3793258666992188,
+        "name": "red",
+        "original": "red"
+      },
+      {
+        "pca_0": 0.6217125654220581,
+        "pca_1": -0.011615407653152943,
+        "pca_2": 0.22887346148490906,
+        "name": "bluee",
+        "original": "bluee"
+      },
+      {
+        "pca_0": 4.070711135864258,
+        "pca_1": 0.8428587913513184,
+        "pca_2": -1.1082818508148193,
+        "name": "green",
+        "original": "green"
+      },
+      {
+        "pca_0": 3.9739019870758057,
+        "pca_1": 0.8420842289924622,
+        "pca_2": -1.7831952571868896,
+        "name": "yellow",
+        "original": "yellow"
+      },
+      {
+        "pca_0": 3.1992409229278564,
+        "pca_1": -0.76308274269104,
+        "pca_2": 0.22754229605197906,
+        "name": "water",
+        "original": "water"
+      },
+      {
+        "pca_0": -0.4370383024215698,
+        "pca_1": -1.8055583238601685,
+        "pca_2": 1.5558571815490723,
+        "name": "person",
+        "original": "person"
+      },
+      {
+        "pca_0": -1.5232115983963013,
+        "pca_1": -0.6766523718833923,
+        "pca_2": -0.9982203841209412,
+        "name": "family",
+        "original": "family"
+      },
+      {
+        "pca_0": -2.889375925064087,
+        "pca_1": -0.0504235103726387,
+        "pca_2": -0.49075862765312195,
+        "name": "brother",
+        "original": "brother"
+      },
+      {
+        "pca_0": -2.935547351837158,
+        "pca_1": -0.16567137837409973,
+        "pca_2": -2.2086501121520996,
+        "name": "sister",
+        "original": "sister"
+      }
+    ]
+  }
+}

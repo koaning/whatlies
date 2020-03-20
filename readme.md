@@ -41,7 +41,8 @@ emb.plot_interactive(x_axis=emb["man"], y_axis=emb["woman"])
 
 You can even do fancy operations. Like projecting unto and away
 from vector embeddings! You can perform these on embeddings as 
-well as sets of embeddings.  
+well as sets of embeddings.  In the example below we attempt
+to filter away gender bias using linear algebra operations.
 
 ```python
 orig_chart = emb.plot_interactive('man', 'woman')

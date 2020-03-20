@@ -5,6 +5,7 @@ install:
 
 develop: install
 	python setup.py develop
+	pre-commit install
 	pip install -r doc-requirements.txt
 	pip install -r dev-requirements.txt
 

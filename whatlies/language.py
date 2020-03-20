@@ -20,6 +20,7 @@ class SpacyLanguage:
     > lang['programming in [python]']
     ```
     """
+
     def __init__(self, model_name):
         self.nlp = spacy.load(model_name)
 
@@ -71,6 +72,7 @@ class Sense2VecLangauge:
         You can find the download link [here](https://github.com/explosion/sense2vec#pretrained-vectors).
 
     """
+
     def __init__(self, sense2vec_path):
         self.s2v = Sense2Vec().from_disk(sense2vec_path)
 
@@ -91,8 +93,10 @@ class Sense2VecLangauge:
         Returns:
             An [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] containing the similar embeddings.
         """
-        return EmbeddingSet(*[self[tok] for tok, sim in self.s2v.most_similar(query, n=n)],
-                            name=f"Embset[s2v similar_{n}:{query}]")
+        return EmbeddingSet(
+            *[self[tok] for tok, sim in self.s2v.most_similar(query, n=n)],
+            name=f"Embset[s2v similar_{n}:{query}]",
+        )
 
     def score_similar(self, query, n=10):
         """
@@ -120,6 +124,7 @@ class Sense2VecSpacyLanguage:
     lang['bank|VERB']
     ```
     """
+
     def __init__(self, model_name, sense2vec_path):
         self.nlp = spacy.load(model_name)
         s2v = Sense2VecComponent(self.nlp.vocab).from_disk(sense2vec_path)

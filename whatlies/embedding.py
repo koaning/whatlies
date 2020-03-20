@@ -3,6 +3,7 @@ from whatlies.common import handle_2d_plot
 
 from typing import Union
 
+
 class Embedding:
     """
     This object represents a word embedding. It contains a vector and a name.
@@ -24,6 +25,7 @@ class Embedding:
     foo - bar + bar
     ```
     """
+
     def __init__(self, name, vector, orig=None):
         self.orig = name if not orig else orig
         self.name = name
@@ -44,9 +46,11 @@ class Embedding:
         foo + bar
         ```
         """
-        return self.__class__(name=f"({self.name} + {other.name})",
-                              vector=self.vector + other.vector,
-                              orig=self.orig)
+        return self.__class__(
+            name=f"({self.name} + {other.name})",
+            vector=self.vector + other.vector,
+            orig=self.orig,
+        )
 
     def __sub__(self, other):
         """
@@ -63,9 +67,11 @@ class Embedding:
         foo - bar
         ```
         """
-        return self.__class__(name=f"({self.name} - {other.name})",
-                              vector=self.vector - other.vector,
-                              orig=self.orig)
+        return self.__class__(
+            name=f"({self.name} - {other.name})",
+            vector=self.vector - other.vector,
+            orig=self.orig,
+        )
 
     def __gt__(self, other):
         """
@@ -99,8 +105,14 @@ class Embedding:
         foo >> bar
         ```
         """
-        new_vec = (self.vector.dot(other.vector)) / (other.vector.dot(other.vector)) * other.vector
-        return self.__class__(name=f"({self.name} >> {other.name})", vector=new_vec, orig=self.orig)
+        new_vec = (
+            (self.vector.dot(other.vector))
+            / (other.vector.dot(other.vector))
+            * other.vector
+        )
+        return self.__class__(
+            name=f"({self.name} >> {other.name})", vector=new_vec, orig=self.orig
+        )
 
     def __or__(self, other):
         """
@@ -118,12 +130,22 @@ class Embedding:
         ```
         """
         new_vec = self.vector - (self >> other).vector
-        return self.__class__(name=f"({self.name} | {other.name})", vector=new_vec, orig=self.orig)
+        return self.__class__(
+            name=f"({self.name} | {other.name})", vector=new_vec, orig=self.orig
+        )
 
     def __repr__(self):
         return f"Emb[{self.name}]"
 
-    def plot(self, kind:str="scatter", x_axis:str=None, y_axis:str=None, color:str=None, show_ops:bool=False, annot:bool=False):
+    def plot(
+        self,
+        kind: str = "scatter",
+        x_axis: str = None,
+        y_axis: str = None,
+        color: str = None,
+        show_ops: bool = False,
+        annot: bool = False,
+    ):
         """
         Handles the logic to perform a 2d plot in matplotlib.
 
@@ -147,12 +169,26 @@ class Embedding:
         ```
         """
         if len(self.vector) == 2:
-            handle_2d_plot(self, kind=kind, color=color, show_operations=show_ops,
-                           xlabel=x_axis, ylabel=y_axis, annot=annot)
+            handle_2d_plot(
+                self,
+                kind=kind,
+                color=color,
+                show_operations=show_ops,
+                xlabel=x_axis,
+                ylabel=y_axis,
+                annot=annot,
+            )
             return self
         x_val = self > x_axis
         y_val = self > y_axis
         intermediate = Embedding(name=self.name, vector=[x_val, y_val], orig=self.orig)
-        handle_2d_plot(intermediate, kind=kind, color=color,
-                       xlabel=x_axis.name, ylabel=y_axis.name, show_operations=show_ops, annot=annot)
+        handle_2d_plot(
+            intermediate,
+            kind=kind,
+            color=color,
+            xlabel=x_axis.name,
+            ylabel=y_axis.name,
+            show_operations=show_ops,
+            annot=annot,
+        )
         return self

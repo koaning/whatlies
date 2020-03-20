@@ -27,9 +27,10 @@ class EmbeddingSet:
     from whatlies.embeddingset import EmbeddingSet
     ```
     """
+
     def __init__(self, *embeddings, operations=None, name=None):
         if not name:
-            name = 'EmbSet'
+            name = "EmbSet"
         self.name = name
         if len(embeddings) == 1:
             # we assume it is a dictionary here
@@ -52,8 +53,12 @@ class EmbeddingSet:
 
         A new `EmbeddingSet`
         """
-        new_embeddings = {k: operation(emb, other) for k, emb in self.embeddings.items()}
-        return EmbeddingSet(new_embeddings, operations=self.operations + [(other, operation)])
+        new_embeddings = {
+            k: operation(emb, other) for k, emb in self.embeddings.items()
+        }
+        return EmbeddingSet(
+            new_embeddings, operations=self.operations + [(other, operation)]
+        )
 
     def __add__(self, other):
         """
@@ -139,8 +144,8 @@ class EmbeddingSet:
         """
         return self.operate(other, rshift)
 
-    def compare_against(self, other, mapping='direct'):
-        if mapping == 'direct':
+    def compare_against(self, other, mapping="direct"):
+        if mapping == "direct":
             return [v > other for k, v in self.embeddings.items()]
 
     def transform(self, transformer):
@@ -180,12 +185,12 @@ class EmbeddingSet:
         if not isinstance(thing, list):
             return self.embeddings[thing]
         new_embeddings = {k: emb for k, emb in self.embeddings.items()}
-        names = ','.join(thing)
+        names = ",".join(thing)
         return EmbeddingSet(new_embeddings, name=f"{self.name}.subset({names})")
 
     def __repr__(self):
         result = self.name
-        translator = {add: '+', sub: '-', or_: '|', rshift: '>>'}
+        translator = {add: "+", sub: "-", or_: "|", rshift: ">>"}
         for tok, op in self.operations:
             result = f"({result} {translator[op]} {tok.name})"
         return result
@@ -199,7 +204,15 @@ class EmbeddingSet:
         """
         return EmbeddingSet({**self.embeddings, **other.embeddings})
 
-    def plot(self, kind: str="scatter", x_axis:str=None, y_axis:str=None, color:str=None, show_ops:str=False, **kwargs):
+    def plot(
+        self,
+        kind: str = "scatter",
+        x_axis: str = None,
+        y_axis: str = None,
+        color: str = None,
+        show_ops: str = False,
+        **kwargs,
+    ):
         """
         Makes (perhaps inferior) matplotlib plot. Consider using `plot_interactive` instead.
 
@@ -211,15 +224,27 @@ class EmbeddingSet:
             show_ops: setting to also show the applied operations, only works for `text`
         """
         for k, token in self.embeddings.items():
-            token.plot(kind=kind, x_axis=x_axis, y_axis=y_axis, color=color, show_ops=show_ops, **kwargs)
+            token.plot(
+                kind=kind,
+                x_axis=x_axis,
+                y_axis=y_axis,
+                color=color,
+                show_ops=show_ops,
+                **kwargs,
+            )
         return self
 
-    def plot_graph_layout(self, kind='cosine', **kwargs):
+    def plot_graph_layout(self, kind="cosine", **kwargs):
         plot_graph_layout(self.embeddings, kind, **kwargs)
         return self
 
-    def plot_interactive(self, x_axis:Union[str, Embedding], y_axis:Union[str, Embedding],
-                         annot:bool=True, show_axis_point:bool=False):
+    def plot_interactive(
+        self,
+        x_axis: Union[str, Embedding],
+        y_axis: Union[str, Embedding],
+        annot: bool = True,
+        show_axis_point: bool = False,
+    ):
         """
         Makes highly interactive plot of the set of embeddings.
 
@@ -250,32 +275,51 @@ class EmbeddingSet:
         if isinstance(y_axis, str):
             y_axis = self[y_axis]
 
-        plot_df = pd.DataFrame({
-            'x_axis': self.compare_against(x_axis),
-            'y_axis': self.compare_against(y_axis),
-            'name': [v.name for v in self.embeddings.values()],
-            'original': [v.orig for v in self.embeddings.values()]
-        })
+        plot_df = pd.DataFrame(
+            {
+                "x_axis": self.compare_against(x_axis),
+                "y_axis": self.compare_against(y_axis),
+                "name": [v.name for v in self.embeddings.values()],
+                "original": [v.orig for v in self.embeddings.values()],
+            }
+        )
 
         if not show_axis_point:
-            plot_df = plot_df.loc[lambda d: ~d['name'].isin([x_axis.name, y_axis.name])]
+            plot_df = plot_df.loc[lambda d: ~d["name"].isin([x_axis.name, y_axis.name])]
 
-        result = alt.Chart(plot_df).mark_circle(size=60).encode(
-            x=alt.X('x_axis', axis=alt.Axis(title=x_axis.name)),
-            y=alt.X('y_axis', axis=alt.Axis(title=y_axis.name)),
-            tooltip=['name', 'original'],
-        ).properties(title=f"{x_axis.name} vs. {y_axis.name}").interactive()
+        result = (
+            alt.Chart(plot_df)
+            .mark_circle(size=60)
+            .encode(
+                x=alt.X("x_axis", axis=alt.Axis(title=x_axis.name)),
+                y=alt.X("y_axis", axis=alt.Axis(title=y_axis.name)),
+                tooltip=["name", "original"],
+            )
+            .properties(title=f"{x_axis.name} vs. {y_axis.name}")
+            .interactive()
+        )
 
         if annot:
-            text = alt.Chart(plot_df).mark_text(dx=-15, dy=3, color='black').encode(
-                x=alt.X('x_axis', axis=alt.Axis(title=x_axis.name)),
-                y=alt.X('y_axis', axis=alt.Axis(title=y_axis.name)),
-                text='original'
+            text = (
+                alt.Chart(plot_df)
+                .mark_text(dx=-15, dy=3, color="black")
+                .encode(
+                    x=alt.X("x_axis", axis=alt.Axis(title=x_axis.name)),
+                    y=alt.X("y_axis", axis=alt.Axis(title=y_axis.name)),
+                    text="original",
+                )
             )
             result = result + text
         return result
 
-    def plot_interactive_matrix(self, *axes, annot:bool=True, show_axis_point:bool=False, width:int=200, height:int=200):
+    def plot_interactive_matrix(
+        self,
+        *axes,
+        annot: bool = True,
+        show_axis_point: bool = False,
+        width: int = 200,
+        height: int = 200,
+    ):
         """
         Makes highly interactive plot of the set of embeddings.
 
@@ -304,33 +348,35 @@ class EmbeddingSet:
         ```
         """
         plot_df = pd.DataFrame({ax: self.compare_against(self[ax]) for ax in axes})
-        plot_df['name'] = [v.name for v in self.embeddings.values()]
-        plot_df['original'] = [v.orig for v in self.embeddings.values()]
+        plot_df["name"] = [v.name for v in self.embeddings.values()]
+        plot_df["original"] = [v.orig for v in self.embeddings.values()]
 
         if not show_axis_point:
-            plot_df = plot_df.loc[lambda d: ~d['name'].isin(axes)]
+            plot_df = plot_df.loc[lambda d: ~d["name"].isin(axes)]
 
-        result = alt.Chart(plot_df).mark_circle().encode(
-            x=alt.X(alt.repeat("column"), type='quantitative'),
-            y=alt.Y(alt.repeat("row"), type='quantitative'),
-            tooltip=['name', 'original'],
-            text='original',
+        result = (
+            alt.Chart(plot_df)
+            .mark_circle()
+            .encode(
+                x=alt.X(alt.repeat("column"), type="quantitative"),
+                y=alt.Y(alt.repeat("row"), type="quantitative"),
+                tooltip=["name", "original"],
+                text="original",
+            )
         )
         if annot:
-            text_stuff = result.mark_text(dx=-15, dy=3, color='black').encode(
-                x=alt.X(alt.repeat("column"), type='quantitative'),
-                y=alt.Y(alt.repeat("row"), type='quantitative'),
-                tooltip=['name', 'original'],
-                text='original',
+            text_stuff = result.mark_text(dx=-15, dy=3, color="black").encode(
+                x=alt.X(alt.repeat("column"), type="quantitative"),
+                y=alt.Y(alt.repeat("row"), type="quantitative"),
+                tooltip=["name", "original"],
+                text="original",
             )
             result = result + text_stuff
 
-        result = result.properties(
-            width=width,
-            height=height
-        ).repeat(
-            row=axes[::-1],
-            column=axes
-        ).interactive()
+        result = (
+            result.properties(width=width, height=height)
+            .repeat(row=axes[::-1], column=axes)
+            .interactive()
+        )
 
         return result

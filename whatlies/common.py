@@ -7,8 +7,15 @@ import pandas as pd
 from sklearn.metrics.pairwise import distance_metrics
 
 
-def handle_2d_plot(embedding, kind, color=None, xlabel=None, ylabel=None, show_operations=False,
-                   annot=False):
+def handle_2d_plot(
+    embedding,
+    kind,
+    color=None,
+    xlabel=None,
+    ylabel=None,
+    show_operations=False,
+    annot=False,
+):
     """
     Handles the logic to perform a 2d plot in matplotlib.
 
@@ -28,8 +35,16 @@ def handle_2d_plot(embedding, kind, color=None, xlabel=None, ylabel=None, show_o
         plt.scatter([embedding.vector[0]], [embedding.vector[1]], c=color)
     if kind == "arrow":
         plt.scatter([embedding.vector[0]], [embedding.vector[1]], c="white", s=0.01)
-        plt.quiver([0], [0], [embedding.vector[0]], [embedding.vector[1]], color=color,
-                   angles='xy', scale_units='xy', scale=1)
+        plt.quiver(
+            [0],
+            [0],
+            [embedding.vector[0]],
+            [embedding.vector[1]],
+            color=color,
+            angles="xy",
+            scale_units="xy",
+            scale=1,
+        )
         plt.text(embedding.vector[0] + 0.01, embedding.vector[1], name)
     if (kind == "text") or annot:
         plt.text(embedding.vector[0] + 0.01, embedding.vector[1], name)
@@ -38,7 +53,7 @@ def handle_2d_plot(embedding, kind, color=None, xlabel=None, ylabel=None, show_o
     plt.ylabel("y" if not ylabel else ylabel)
 
 
-def plot_graph_layout(embedding_set, kind='cosine', **kwargs):
+def plot_graph_layout(embedding_set, kind="cosine", **kwargs):
     """
     Handles the plotting of a layout graph using the embeddings in an embeddingset as input.
 
@@ -58,5 +73,5 @@ def plot_graph_layout(embedding_set, kind='cosine', **kwargs):
     # Chhange layout positions of the graph
     pos = nx.kamada_kawai_layout(graph, dist=distance)
     # Draw nodes and labels
-    nx.draw_networkx_nodes(graph, pos, node_color='b', alpha=0.5)
+    nx.draw_networkx_nodes(graph, pos, node_color="b", alpha=0.5)
     nx.draw_networkx_labels(graph, pos, labels=label_dict, **kwargs)

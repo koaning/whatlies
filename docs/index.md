@@ -4,6 +4,16 @@
 
 A library that tries help you to understand. "What lies in word embeddings?"
 
+<img src="square-logo.svg" width=200 height=200 align="right">
+
+## Produced 
+
+This project was initiated at [Rasa](https://rasa.com) as a fun side project
+that supports the research and developer advocacy teams at Rasa. 
+It is maintained by Vincent D. Warmerdam, Research Advocate at Rasa.
+
+## What it Does
+
 This small library offers tools to make visualisation easier of both
 word embeddings as well as operations on them. This should be considered
 an alpha project.
@@ -25,14 +35,6 @@ But we also support other operations. Like **pca**  and **umap**;
 <script src="interactive1.js"></script>
 <script src="interactive2.js"></script>
 
-<img src="square-logo.svg" width=200 height=200 align="right">
-
-## Produced 
-
-This project was initiated at [Rasa](https://rasa.com) as a fun side project
-that supports the research and developer advocacy teams at Rasa. 
-It is maintained by Vincent D. Warmerdam, Research Advocate at Rasa.
-
 
 ## Installation 
 
@@ -49,12 +51,3 @@ If you want to develop locally you can start by running this command.
 ```bash
 make develop
 ```
-
-### Documentation 
-
-This is generated via
-
-```
-make docs
-```
-

@@ -14,14 +14,14 @@ class EmbeddingSet:
 
     **Parameters**
 
-    - **embeddings**: list of embeddings or dictionary with name: embedding pairs
+    - **embeddings**: list of embeddings or dictionary with name: embedding.md pairs
     - **operations**: deprecated
     - **name**: custom name of embeddingset
 
     Usage:
 
     ```
-    from whatlies.embedding import Embedding
+    from whatlies.embedding.md import Embedding
     from whatlies.embeddingset import EmbeddingSet
     ```
     """
@@ -93,8 +93,8 @@ class EmbeddingSet:
         **Input**
 
         - kind: what kind of plot to make, can be `scatter`, `arrow` or `text`
-        - x_axis: what embedding to use as a x-axis
-        - y_axis: what embedding to us as a y-axis
+        - x_axis: what embedding.md to use as a x-axis
+        - y_axis: what embedding.md to us as a y-axis
         - color: the color to apply, only works for `scatter` and `arrow`
         - xlabel: manually override the xlabel
         - ylabel: manually override the ylabel

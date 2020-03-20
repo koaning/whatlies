@@ -1,14 +1,16 @@
 site_name: whatlies
 nav:
-  - Home: /whatlies
-  - Getting Started:
-    - 1. Embeddings: intro-with-tokens-render.ipynb
-    - 2. EmbeddingSets: towards-embeddings-render.ipynb
-    - 3. Transform and Interact: interactive-transformations-render.ipynb
-    - 4. Contexual Embeddings: more-tokens-and-context-render.ipynb
-    - 5. Languages: language-backends-render.ipynb
+  - Home: index.md
+  - What Are Embeddings: tutorial/embeddings.md
+  - Chaining Operations: index.md
+  - Language Options: index.md
+  - API:
+    - Embedding: api/embedding.md
+    - EmbeddingSet: api/embeddingset.md
+    - Transformers: api/transformers.md
+    - Language: api/language.md
 plugins:
-  - mkdocs-jupyter
+  - mkdocstrings
 theme:
   name: material
   palette:

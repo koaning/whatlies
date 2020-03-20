@@ -4,13 +4,13 @@ from whatlies.common import handle_2d_plot
 
 class Embedding:
     """
-    This object represents a word embedding.
+    This object represents a word embedding.md.
 
     **Inputs**
 
-    - name: the name of the embedding
-    - vector: the numeric encoding of the embedding
-    - orig: the original name of the original embedding, is handled automatically
+    - name: the name of the embedding.md
+    - vector: the numeric encoding of the embedding.md
+    - orig: the original name of the original embedding.md, is handled automatically
     """
     def __init__(self, name, vector, orig=None):
         self.orig = name if not orig else orig

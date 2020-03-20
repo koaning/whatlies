@@ -8,6 +8,14 @@ This small library  offers tools to make visualisation easier of both
 word embeddings as well as operations on them. This should be considered
 an experimental project that is in preview mode. Feedback is super welcome. 
 
+<img src="square-logo.svg" width=200 height=200 align="right">
+
+## Produced 
+
+This project was initiated at [Rasa](https://rasa.com) as a fun side project
+that supports the research and developer advocacy teams at Rasa. 
+It is maintained by Vincent D. Warmerdam, Research Advocate at Rasa.
+
 ## Features
 
 The idea is that you can load embeddings from a language backend 
@@ -20,7 +28,7 @@ lang = SpacyLanguage("en_core_web_md")
 words = ["cat", "dog", "fish", "kitten", "man", "woman", 
          "king", "queen", "doctor", "nurse"]
 emb = EmbeddingSet(*[lang[w] for w in words])
-emb.plot(emb["man"], emb["woman"])
+emb.plot(x_axis=emb["man"], y_axis=emb["woman"])
 ```
 
 ![](docs/plot1.png)
@@ -53,14 +61,6 @@ lang['programming in [python]']
 ```
 
 To learn more about this in detail; check out the [documentation](https://rasahq.github.io/whatlies/)! 
-
-## Maintainers
-
-<img src="docs/rasa.png" width=225 align="right">
-
-This project was initiated at [Rasa](https://rasa.com) as a fun side project
-that supports the research and developer advocacy teams at Rasa. 
-It is maintained by Vincent D. Warmerdam, Research Advocate at Rasa.
 
 ## Documentation 
 

@@ -42,6 +42,12 @@ But we also support other operations. Like **pca**  and **umap**;
 For now we allow for installation with pip but only via git.
 
 ```bash
+pip install whatlies
+```
+
+For the latests and less stable version you can run; 
+
+```bash
 pip install git+git@github.com:RasaHQ/whatlies.git
 ```
 

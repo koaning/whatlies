@@ -39,11 +39,13 @@ But we also support other operations. Like **pca**  and **umap**;
 
 ## Installation 
 
-For now we allow for installation with pip but only via git.
+You can install the package via pip;
 
 ```bash
 pip install whatlies
 ```
+
+This will install dependencies but it **won't** install all the language models you might want to visualise. 
 
 For the latests and less stable version you can run; 
 

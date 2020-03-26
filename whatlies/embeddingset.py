@@ -37,7 +37,6 @@ class EmbeddingSet:
         else:
             # we assume it is a tuple of tokens
             self.embeddings = {t.name: t for t in embeddings}
-        self.embeddings = {k: Embedding(name=f"{name}[{v.orig}]", vector=v.vector, orig=v.orig) for k, v in self.embeddings.items()}
 
     def __add__(self, other):
         """
@@ -189,6 +188,15 @@ class EmbeddingSet:
         """
         return EmbeddingSet({**self.embeddings, **other.embeddings})
 
+    def add_property(self, name, func):
+        """
+        Adds a property to every embedding in the set. Very useful for plotting
+        Arguments:
+            name: name of the property to add
+            func: function that receives an embedding and needs to output the property value
+        """
+        return EmbeddingSet({k: e.add_property(name, func) for k, e in self.embeddings.items()})
+
     def average(self):
         x = np.array([v.vector for v in self.embeddings.values()])
         return Embedding(f"{self.name}.average()", np.mean(x, axis=0))
@@ -233,6 +241,7 @@ class EmbeddingSet:
         y_axis: Union[str, Embedding],
         annot: bool = True,
         show_axis_point: bool = False,
+        color: Union[None, str] = None
     ):
         """
         Makes highly interactive plot of the set of embeddings.
@@ -242,6 +251,7 @@ class EmbeddingSet:
             y_axis: the y-axis to be used, must be given when dim > 2
             annot: drawn points should be annotated
             show_axis_point: ensure that the axis are drawn
+            color: a property that will be used for plotting
 
         **Usage**
 
@@ -273,6 +283,9 @@ class EmbeddingSet:
             }
         )
 
+        if color:
+            plot_df[color] = [getattr(v, color) for v in self.embeddings.values()]
+
         if not show_axis_point:
             plot_df = plot_df.loc[lambda d: ~d["name"].isin([x_axis.name, y_axis.name])]
 
@@ -283,6 +296,7 @@ class EmbeddingSet:
                 x=alt.X("x_axis", axis=alt.Axis(title=x_axis.name)),
                 y=alt.X("y_axis", axis=alt.Axis(title=y_axis.name)),
                 tooltip=["name", "original"],
+                color=alt.Color(':N', legend=None) if not color else alt.Color(color)
             )
             .properties(title=f"{x_axis.name} vs. {y_axis.name}")
             .interactive()

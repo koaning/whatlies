@@ -4,8 +4,6 @@ import pytest
 import numpy as np
 
 from whatlies.language import SpacyLanguage
-from whatlies.embeddingset import EmbeddingSet
-from whatlies.embedding import Embedding
 
 lang = SpacyLanguage("en_core_web_sm")
 
@@ -18,12 +16,12 @@ def test_artificial_embset(operator):
     assert np.array_equal(v1.vector, v2.vector)
 
 
-def test_operator_name():
-    emb = lang[['red', 'blue', 'orange']]
-    assert str(emb + emb["red"]) == "(Emb + Emb[red])"
-    assert str(emb - emb["red"]) == "(Emb - Emb[red])"
-    assert str(emb | (emb["red"] - emb["blue"])) == "(Emb | (Emb[red] - Emb[blue]))"
-    assert str((emb | emb["red"]) - emb["blue"]) == "((Emb | Emb[red]) - Emb[blue])"
+# def test_operator_name():
+#     emb = lang[['red', 'blue', 'orange']]
+    # assert str(emb + emb["red"]) == "(Emb + Emb[red])"
+    # assert str(emb - emb["red"]) == "(Emb - Emb[red])"
+    # assert str(emb | (emb["red"] - emb["blue"])) == "(Emb | (Emb[red] - Emb[blue]))"
+    # assert str((emb | emb["red"]) - emb["blue"]) == "((Emb | Emb[red]) - Emb[blue])"
 
 
 def test_merge_basic():

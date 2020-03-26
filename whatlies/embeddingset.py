@@ -1,4 +1,3 @@
-from operator import add, sub, rshift, or_
 from typing import Union
 
 import numpy as np

@@ -22,7 +22,7 @@ class Umap:
 
     words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
              "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
-             "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+             "dog", "cat", "mouse", "red", "blue", "green", "yellow", "water",
              "person", "family", "brother", "sister"]
 
     lang = SpacyLanguage("en_core_web_md")
@@ -50,9 +50,9 @@ class Umap:
     def transform(self, embset):
         names, X = embset_to_X(embset=embset)
         new_vecs = self.tfm.transform(X)
-        names_out = names + [f"pca_{i}" for i in range(self.n_components)]
+        names_out = names + [f"umap_{i}" for i in range(self.n_components)]
         vectors_out = np.concatenate([new_vecs, np.eye(self.n_components)])
         return EmbeddingSet(
             {k: Embedding(k, v, orig=k) for k, v in zip(names_out, vectors_out)},
-            name=f"{embset.name}.pca_{self.n_components}()",
+            name=f"{embset.name}.umap_{self.n_components}()",
         )

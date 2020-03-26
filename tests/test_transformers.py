@@ -13,9 +13,13 @@ emb = lang[words]
 
 
 @pytest.mark.parametrize(
-    "tfm",
-    [Umap(2), Umap(3), Pca(2), Pca(3), Noise(0.1), Noise(0.01), AddRandom()],
+    "params",
+    zip(
+        [Umap(2), Umap(3), Pca(2), Pca(3), Noise(0.1), Noise(0.01), AddRandom(n=4), AddRandom(n=1)],
+        [2, 3, 2, 3, 0, 0, 4, 1],
+    ),
 )
-def test_transformations_no_error(tfm):
-    emb_new = emb.transform(tfm)
-    assert len(emb_new) >= len(emb)
+def test_transformations_new_size(params):
+    transformer, extra_size = params
+    emb_new = emb.transform(transformer)
+    assert len(emb_new) == len(emb) + extra_size

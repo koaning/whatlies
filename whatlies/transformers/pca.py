@@ -32,6 +32,7 @@ class Pca:
     emb.transform(Pca(3)).plot_interactive_matrix('pca_0', 'pca_1', 'pca_2')
     ```
     """
+
     def __init__(self, n_components=2, **kwargs):
         self.is_fitted = False
         self.n_components = n_components

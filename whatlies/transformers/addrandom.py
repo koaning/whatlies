@@ -28,6 +28,7 @@ class AddRandom:
     emb.transform(AddRandom(3)).plot_interactive_matrix('rand_0', 'rand_1', 'rand_2')
     ```
     """
+
     def __init__(self, n=1, sigma=0.1, seed=42):
         self.n = n
         self.sigma = sigma
@@ -48,7 +49,9 @@ class AddRandom:
         np.random.seed(self.seed)
         orig_dict = embset.embeddings.copy()
         new_dict = {
-            f"rand_{k}": Embedding(f"rand_{k}", np.random.normal(0, self.sigma, X.shape[1]))
+            f"rand_{k}": Embedding(
+                f"rand_{k}", np.random.normal(0, self.sigma, X.shape[1])
+            )
             for k in range(self.n)
         }
         return EmbeddingSet({**orig_dict, **new_dict})

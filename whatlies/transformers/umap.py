@@ -31,6 +31,7 @@ class Umap:
     emb.transform(Umap(3)).plot_interactive_matrix('umap_0', 'umap_1', 'umap_2')
     ```
     """
+
     def __init__(self, n_components=2, **kwargs):
         self.is_fitted = False
         self.n_components = n_components

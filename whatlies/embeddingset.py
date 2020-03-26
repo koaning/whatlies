@@ -195,7 +195,9 @@ class EmbeddingSet:
             name: name of the property to add
             func: function that receives an embedding and needs to output the property value
         """
-        return EmbeddingSet({k: e.add_property(name, func) for k, e in self.embeddings.items()})
+        return EmbeddingSet(
+            {k: e.add_property(name, func) for k, e in self.embeddings.items()}
+        )
 
     def average(self):
         x = np.array([v.vector for v in self.embeddings.values()])
@@ -241,7 +243,7 @@ class EmbeddingSet:
         y_axis: Union[str, Embedding],
         annot: bool = True,
         show_axis_point: bool = False,
-        color: Union[None, str] = None
+        color: Union[None, str] = None,
     ):
         """
         Makes highly interactive plot of the set of embeddings.
@@ -296,7 +298,7 @@ class EmbeddingSet:
                 x=alt.X("x_axis", axis=alt.Axis(title=x_axis.name)),
                 y=alt.X("y_axis", axis=alt.Axis(title=y_axis.name)),
                 tooltip=["name", "original"],
-                color=alt.Color(':N', legend=None) if not color else alt.Color(color)
+                color=alt.Color(":N", legend=None) if not color else alt.Color(color),
             )
             .properties(title=f"{x_axis.name} vs. {y_axis.name}")
             .interactive()

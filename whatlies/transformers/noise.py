@@ -30,10 +30,13 @@ class Noise:
     emb.transform(Noise(3))
     ```
     """
+
     def __init__(self, sigma=0.1, seed=42):
         self.is_fitted = False
         self.seed = seed
-        self.tfm = FunctionTransformer(lambda X: X + np.random.normal(0, sigma, X.shape))
+        self.tfm = FunctionTransformer(
+            lambda X: X + np.random.normal(0, sigma, X.shape)
+        )
 
     def __call__(self, embset):
         if not self.is_fitted:

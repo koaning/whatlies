@@ -1,0 +1,218 @@
+{
+  "config": {"view": {"continuousWidth": 400, "continuousHeight": 300}},
+  "layer": [
+    {
+      "mark": {"type": "circle", "size": 60},
+      "encoding": {
+        "color": {"type": "nominal", "field": "set"},
+        "tooltip": [
+          {"type": "nominal", "field": "name"},
+          {"type": "nominal", "field": "original"}
+        ],
+        "x": {
+          "type": "quantitative",
+          "axis": {"title": "umap_0"},
+          "field": "x_axis"
+        },
+        "y": {
+          "type": "quantitative",
+          "axis": {"title": "umap_1"},
+          "field": "y_axis"
+        }
+      },
+      "selection": {
+        "selector123": {
+          "type": "interval",
+          "bind": "scales",
+          "encodings": ["x", "y"]
+        }
+      },
+      "title": "umap_0 vs. umap_1"
+    },
+    {
+      "mark": {"type": "text", "color": "black", "dx": -15, "dy": 3},
+      "encoding": {
+        "text": {"type": "nominal", "field": "original"},
+        "x": {
+          "type": "quantitative",
+          "axis": {"title": "umap_0"},
+          "field": "x_axis"
+        },
+        "y": {
+          "type": "quantitative",
+          "axis": {"title": "umap_1"},
+          "field": "y_axis"
+        }
+      }
+    }
+  ],
+  "data": {"name": "data-b83658cd334b20d99a3ad3c5b8beaef6"},
+  "height": 400,
+  "width": 400,
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.0.2.json",
+  "datasets": {
+    "data-b83658cd334b20d99a3ad3c5b8beaef6": [
+      {
+        "x_axis": -3.40106463432312,
+        "y_axis": -11.66666316986084,
+        "name": "dog",
+        "original": "dog",
+        "set": "set-one"
+      },
+      {
+        "x_axis": -2.7120110988616943,
+        "y_axis": -8.476396560668945,
+        "name": "cat",
+        "original": "cat",
+        "set": "set-one"
+      },
+      {
+        "x_axis": -3.7015602588653564,
+        "y_axis": -9.028027534484863,
+        "name": "mouse",
+        "original": "mouse",
+        "set": "set-one"
+      },
+      {
+        "x_axis": -1.9034435749053955,
+        "y_axis": -10.522196769714355,
+        "name": "deer",
+        "original": "deer",
+        "set": "set-one"
+      },
+      {
+        "x_axis": -3.202488899230957,
+        "y_axis": -9.629018783569336,
+        "name": "elephant",
+        "original": "elephant",
+        "set": "set-one"
+      },
+      {
+        "x_axis": -1.7053391933441162,
+        "y_axis": -9.15750503540039,
+        "name": "zebra",
+        "original": "zebra",
+        "set": "set-one"
+      },
+      {
+        "x_axis": -4.3344035148620605,
+        "y_axis": -9.67066478729248,
+        "name": "fish",
+        "original": "fish",
+        "set": "set-one"
+      },
+      {
+        "x_axis": -4.06570291519165,
+        "y_axis": -11.048672676086426,
+        "name": "rabbit",
+        "original": "rabbit",
+        "set": "set-one"
+      },
+      {
+        "x_axis": -3.076932191848755,
+        "y_axis": -11.126470565795898,
+        "name": "rat",
+        "original": "rat",
+        "set": "set-one"
+      },
+      {
+        "x_axis": -2.798363447189331,
+        "y_axis": -9.177349090576172,
+        "name": "tomato",
+        "original": "tomato",
+        "set": "set-one"
+      },
+      {
+        "x_axis": -3.4682180881500244,
+        "y_axis": -10.515446662902832,
+        "name": "banana",
+        "original": "banana",
+        "set": "set-one"
+      },
+      {
+        "x_axis": -4.2078142166137695,
+        "y_axis": -10.335184097290039,
+        "name": "coffee",
+        "original": "coffee",
+        "set": "set-one"
+      },
+      {
+        "x_axis": -2.5684633255004883,
+        "y_axis": -10.860858917236328,
+        "name": "tea",
+        "original": "tea",
+        "set": "set-one"
+      },
+      {
+        "x_axis": -2.178508996963501,
+        "y_axis": -9.498160362243652,
+        "name": "apple",
+        "original": "apple",
+        "set": "set-one"
+      },
+      {
+        "x_axis": -2.8064944744110107,
+        "y_axis": -10.00903034210205,
+        "name": "union",
+        "original": "union",
+        "set": "set-one"
+      },
+      {
+        "x_axis": -4.408961772918701,
+        "y_axis": -8.281095504760742,
+        "name": "run",
+        "original": "run",
+        "set": "set-two"
+      },
+      {
+        "x_axis": -2.045915365219116,
+        "y_axis": -12.021759033203125,
+        "name": "swim",
+        "original": "swim",
+        "set": "set-two"
+      },
+      {
+        "x_axis": -1.665149211883545,
+        "y_axis": -7.85771369934082,
+        "name": "dance",
+        "original": "dance",
+        "set": "set-two"
+      },
+      {
+        "x_axis": -5.235236644744873,
+        "y_axis": -9.353075981140137,
+        "name": "sit",
+        "original": "sit",
+        "set": "set-two"
+      },
+      {
+        "x_axis": -1.7881513833999634,
+        "y_axis": -11.907727241516113,
+        "name": "eat",
+        "original": "eat",
+        "set": "set-two"
+      },
+      {
+        "x_axis": -1.8895201683044434,
+        "y_axis": -11.857871055603027,
+        "name": "hear",
+        "original": "hear",
+        "set": "set-two"
+      },
+      {
+        "x_axis": -0.7978286147117615,
+        "y_axis": -10.278539657592773,
+        "name": "look",
+        "original": "look",
+        "set": "set-two"
+      },
+      {
+        "x_axis": -1.4946112632751465,
+        "y_axis": -11.516491889953613,
+        "name": "stand",
+        "original": "stand",
+        "set": "set-two"
+      }
+    ]
+  }
+}

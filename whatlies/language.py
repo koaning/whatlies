@@ -24,12 +24,16 @@ class SpacyLanguage:
     [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]s from a sense2vec language
     backend. This object is meant for retreival, not plotting.
 
+    Arguments:
+        model_name: name of the model to load, be sure that it's downloaded beforehand
+
     **Usage**:
 
     ```python
     > lang = SpacyLanguage("en_core_web_md")
     > lang['python']
     > lang[['python', 'snake', 'dog']]
+
     > lang = SpacyLanguage("en_trf_robertabase_lg")
     > lang['programming in [python]']
     ```

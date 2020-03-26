@@ -4,11 +4,16 @@ nav:
   - What Are Embeddings: tutorial/embeddings/index.md
   - Interactive Visualisation: tutorial/embeddingsets/index.md
   - Language Options: tutorial/languages/index.md
+  - Transformation Viz: tutorial/transformations/index.md
   - API:
     - Embedding: api/embedding.md
     - EmbeddingSet: api/embeddingset.md
-    - Transformers: api/transformers.md
-    - Language: api/language.md
+    - Transformers:
+      - Pca: api/transformers/pca.md
+      - Umap: api/transformers/umap.md
+    - Language:
+        - spaCy: api/language/spacy_lang.md
+        - Sense2Vec: api/language/s2v_lang.md
   - Roadmap: roadmap.md
 plugins:
   - mkdocstrings

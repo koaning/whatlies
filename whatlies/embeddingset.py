@@ -273,7 +273,7 @@ class EmbeddingSet:
             {k: e.add_property(name, func) for k, e in self.embeddings.items()}
         )
 
-    def average(self, name):
+    def average(self, name=None):
         """
         Takes the average over all the embedding vectors in the embeddingset. Turns it into
         a new `Embedding`.
@@ -292,8 +292,9 @@ class EmbeddingSet:
         emb.average(name="the-average").vector # [0.5, 0.5]
         ```
         """
+        name = f"{self.name}.average()" if not name else name
         x = np.array([v.vector for v in self.embeddings.values()])
-        return Embedding(f"{self.name}.average()", np.mean(x, axis=0))
+        return Embedding(name, np.mean(x, axis=0))
 
     def plot(
         self,

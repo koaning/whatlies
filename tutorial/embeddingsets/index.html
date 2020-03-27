@@ -255,6 +255,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#operators" class="md-nav__link">
+    Operators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#more-components" class="md-nav__link">
     More Components
   </a>
@@ -301,15 +308,27 @@
       
 
 
+  <li class="md-nav__item">
+    <a href="../transformations/" title="Transformation Viz" class="md-nav__link">
+      Transformation Viz
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
-    <label class="md-nav__link" for="nav-5">
+    <label class="md-nav__link" for="nav-6">
       API
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
+      <label class="md-nav__title" for="nav-6">
         API
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -344,9 +363,28 @@
           
 
 
-  <li class="md-nav__item">
-    <a href="../../api/transformers/" title="Transformers" class="md-nav__link">
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
       Transformers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        Transformers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/transformers/pca/" title="Pca" class="md-nav__link">
+      Pca
     </a>
   </li>
 
@@ -357,14 +395,103 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/language/" title="Language" class="md-nav__link">
-      Language
+    <a href="../../api/transformers/umap/" title="Umap" class="md-nav__link">
+      Umap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/transformers/noise/" title="Noise" class="md-nav__link">
+      Noise
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/transformers/addrandom/" title="Add Random" class="md-nav__link">
+      Add Random
     </a>
   </li>
 
         
       </ul>
     </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+    
+    <label class="md-nav__link" for="nav-6-4">
+      Language
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-4">
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/spacy_lang/" title="spaCy" class="md-nav__link">
+      spaCy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/s2v_lang/" title="Sense2Vec" class="md-nav__link">
+      Sense2Vec
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../roadmap/" title="Roadmap" class="md-nav__link">
+      Roadmap
+    </a>
   </li>
 
     
@@ -442,6 +569,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#operators" class="md-nav__link">
+    Operators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#more-components" class="md-nav__link">
     More Components
   </a>
@@ -486,35 +620,35 @@
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.3.2"></script>
 
 <h2 id="sets-of-embeddings">Sets of Embeddings<a class="headerlink" href="#sets-of-embeddings" title="Permanent link">&para;</a></h2>
-<p>The <code>Embedding</code> object merely has support for matplotlib, but the 
+<p>The <code>Embedding</code> object merely has support for matplotlib, but the
 <code>EmbeddingSet</code> has support for interactive tools. It is also more
-convenient. You can create an </p>
+convenient. You can create an</p>
 <h3 id="direct-creation">Direct Creation<a class="headerlink" href="#direct-creation" title="Permanent link">&para;</a></h3>
-<p>You can create these objects directly. </p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">spacy</span> 
+<p>You can create these objects directly.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">spacy</span>
 <span class="kn">from</span> <span class="nn">whatlies.embedding</span> <span class="kn">import</span> <span class="n">Embedding</span>
 <span class="kn">from</span> <span class="nn">whatlies.embeddingset</span> <span class="kn">import</span> <span class="n">EmbeddingSet</span>
 
 <span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
 
-<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;prince&quot;</span><span class="p">,</span> <span class="s2">&quot;princess&quot;</span><span class="p">,</span> <span class="s2">&quot;nurse&quot;</span><span class="p">,</span> <span class="s2">&quot;doctor&quot;</span><span class="p">,</span> <span class="s2">&quot;banker&quot;</span><span class="p">,</span> <span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;woman&quot;</span><span class="p">,</span> 
-         <span class="s2">&quot;cousin&quot;</span><span class="p">,</span> <span class="s2">&quot;neice&quot;</span><span class="p">,</span> <span class="s2">&quot;king&quot;</span><span class="p">,</span> <span class="s2">&quot;queen&quot;</span><span class="p">,</span> <span class="s2">&quot;dude&quot;</span><span class="p">,</span> <span class="s2">&quot;guy&quot;</span><span class="p">,</span> <span class="s2">&quot;gal&quot;</span><span class="p">,</span> <span class="s2">&quot;fire&quot;</span><span class="p">,</span> 
-         <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;mouse&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;bluee&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">,</span> 
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;prince&quot;</span><span class="p">,</span> <span class="s2">&quot;princess&quot;</span><span class="p">,</span> <span class="s2">&quot;nurse&quot;</span><span class="p">,</span> <span class="s2">&quot;doctor&quot;</span><span class="p">,</span> <span class="s2">&quot;banker&quot;</span><span class="p">,</span> <span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;woman&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;cousin&quot;</span><span class="p">,</span> <span class="s2">&quot;neice&quot;</span><span class="p">,</span> <span class="s2">&quot;king&quot;</span><span class="p">,</span> <span class="s2">&quot;queen&quot;</span><span class="p">,</span> <span class="s2">&quot;dude&quot;</span><span class="p">,</span> <span class="s2">&quot;guy&quot;</span><span class="p">,</span> <span class="s2">&quot;gal&quot;</span><span class="p">,</span> <span class="s2">&quot;fire&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;mouse&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;bluee&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">,</span>
          <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;family&quot;</span><span class="p">,</span> <span class="s2">&quot;brother&quot;</span><span class="p">,</span> <span class="s2">&quot;sister&quot;</span><span class="p">]</span>
 
 <span class="n">emb</span> <span class="o">=</span> <span class="n">EmbeddingSet</span><span class="p">({</span><span class="n">t</span><span class="o">.</span><span class="n">text</span><span class="p">:</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">nlp</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">words</span><span class="p">)})</span>
 </code></pre></div>
 
-<p>This can be especially useful if you're creating your own embeddings. </p>
+<p>This can be especially useful if you're creating your own embeddings.</p>
 <h3 id="via-languages">Via Languages<a class="headerlink" href="#via-languages" title="Permanent link">&para;</a></h3>
-<p>But odds are that you just want to grab a language model from elsewhere. 
+<p>But odds are that you just want to grab a language model from elsewhere.
 We've added backends to our library and this can be a convenient method
 of getting sets of embeddings (typically more performant too).</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">SpacyLanguage</span>
 
-<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;prince&quot;</span><span class="p">,</span> <span class="s2">&quot;princess&quot;</span><span class="p">,</span> <span class="s2">&quot;nurse&quot;</span><span class="p">,</span> <span class="s2">&quot;doctor&quot;</span><span class="p">,</span> <span class="s2">&quot;banker&quot;</span><span class="p">,</span> <span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;woman&quot;</span><span class="p">,</span> 
-         <span class="s2">&quot;cousin&quot;</span><span class="p">,</span> <span class="s2">&quot;neice&quot;</span><span class="p">,</span> <span class="s2">&quot;king&quot;</span><span class="p">,</span> <span class="s2">&quot;queen&quot;</span><span class="p">,</span> <span class="s2">&quot;dude&quot;</span><span class="p">,</span> <span class="s2">&quot;guy&quot;</span><span class="p">,</span> <span class="s2">&quot;gal&quot;</span><span class="p">,</span> <span class="s2">&quot;fire&quot;</span><span class="p">,</span> 
-         <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;mouse&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;bluee&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">,</span> 
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;prince&quot;</span><span class="p">,</span> <span class="s2">&quot;princess&quot;</span><span class="p">,</span> <span class="s2">&quot;nurse&quot;</span><span class="p">,</span> <span class="s2">&quot;doctor&quot;</span><span class="p">,</span> <span class="s2">&quot;banker&quot;</span><span class="p">,</span> <span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;woman&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;cousin&quot;</span><span class="p">,</span> <span class="s2">&quot;neice&quot;</span><span class="p">,</span> <span class="s2">&quot;king&quot;</span><span class="p">,</span> <span class="s2">&quot;queen&quot;</span><span class="p">,</span> <span class="s2">&quot;dude&quot;</span><span class="p">,</span> <span class="s2">&quot;guy&quot;</span><span class="p">,</span> <span class="s2">&quot;gal&quot;</span><span class="p">,</span> <span class="s2">&quot;fire&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;mouse&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;bluee&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">,</span>
          <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;family&quot;</span><span class="p">,</span> <span class="s2">&quot;brother&quot;</span><span class="p">,</span> <span class="s2">&quot;sister&quot;</span><span class="p">]</span>
 
 <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
@@ -537,11 +671,11 @@ fetch('tut2-chart1.json')
 .catch(err => { throw err });
 </script>
 
-<p>We can also retreive embeddings from the embeddingset. </p>
+<p>We can also retreive embeddings from the embeddingset.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">emb</span><span class="p">[</span><span class="s1">&#39;king&#39;</span><span class="p">]</span>
 </code></pre></div>
 
-<p>Remember the operations we did before? We can also do that on these sets! </p>
+<p>Remember the operations we did before? We can also do that on these sets!</p>
 <div class="codehilite"><pre><span></span><code><span class="n">new_emb</span> <span class="o">=</span> <span class="n">emb</span> <span class="o">|</span> <span class="p">(</span><span class="n">emb</span><span class="p">[</span><span class="s1">&#39;king&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">emb</span><span class="p">[</span><span class="s1">&#39;queen&#39;</span><span class="p">])</span>
 <span class="n">new_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;man&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">)</span>
 </code></pre></div>
@@ -559,7 +693,7 @@ fetch('tut2-chart2.json')
 
 <h3 id="combining-charts">Combining Charts<a class="headerlink" href="#combining-charts" title="Permanent link">&para;</a></h3>
 <p>Often you'd like to compare the effect of a mapping. Since we make our interactive
-charts with altair we get a nice api to stack charts next to eachother. </p>
+charts with altair we get a nice api to stack charts next to eachother.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">orig_chart</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;man&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">)</span>
 <span class="n">new_chart</span> <span class="o">=</span> <span class="n">new_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;man&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">)</span>
 <span class="n">orig_chart</span> <span class="o">|</span> <span class="n">new_chart</span>
@@ -576,23 +710,23 @@ fetch('tut2-chart3.json')
 .catch(err => { throw err });
 </script>
 
-<p>You may have noticed that these charts appear in the documentation, fully interactively. 
+<p>You may have noticed that these charts appear in the documentation, fully interactively.
 This is another nice feature of Altair, the charts can be serialized in a json format and
 hosted on the web.</p>
 <h2 id="more-transformation">More Transformation<a class="headerlink" href="#more-transformation" title="Permanent link">&para;</a></h2>
-<p>But there are more transformations that we might visualise. Let's demonstrate two here. </p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">pca</span><span class="p">,</span> <span class="n">umap</span>
+<p>But there are more transformations that we might visualise. Let's demonstrate two here.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">Pca</span><span class="p">,</span> <span class="n">Umap</span>
 
 <span class="n">orig_chart</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;man&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">)</span>
-<span class="n">pca_emb</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pca</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">umap_emb</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">umap</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">pca_emb</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">umap_emb</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Umap</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 </code></pre></div>
 
 <p>The transform method is able to take a transformation, let's say <code>pca(2)</code> and this will change
-the embeddings in the set. It might also create new embeddings. In case of <code>pca(2)</code> it will 
+the embeddings in the set. It might also create new embeddings. In case of <code>pca(2)</code> it will
 also add two embeddings which represent the principal components. This is nice because
 that means that we can plot along those axes.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">plot_pca</span> <span class="o">=</span> <span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;pca_0&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">)</span> 
+<div class="codehilite"><pre><span></span><code><span class="n">plot_pca</span> <span class="o">=</span> <span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;pca_0&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">)</span>
 <span class="n">plot_umap</span> <span class="o">=</span> <span class="n">umap_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;umap_0&#39;</span><span class="p">,</span> <span class="s1">&#39;umap_1&#39;</span><span class="p">)</span>
 <span class="n">plot_pca</span> <span class="o">|</span> <span class="n">plot_umap</span>
 </code></pre></div>
@@ -608,10 +742,17 @@ fetch('tut2-chart4.json')
 .catch(err => { throw err });
 </script>
 
+<h3 id="operators">Operators<a class="headerlink" href="#operators" title="Permanent link">&para;</a></h3>
+<p>Note that the operators that we've seen before can also be added to a
+transformation pipeline.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span> <span class="o">|</span> <span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;man&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">e</span><span class="p">[</span><span class="s2">&quot;woman&quot;</span><span class="p">]))</span>
+<span class="c1"># (Emb | (Emb[man] - Emb[woman])).pca_2()</span>
+</code></pre></div>
+
 <h3 id="more-components">More Components<a class="headerlink" href="#more-components" title="Permanent link">&para;</a></h3>
 <p>Suppose now that we'd like to visualise three principal components. We could do this.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">pca_emb</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pca</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-<span class="n">p1</span> <span class="o">=</span> <span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;pca_0&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">)</span> 
+<div class="codehilite"><pre><span></span><code><span class="n">pca_emb</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;pca_0&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">)</span>
 <span class="n">p2</span> <span class="o">=</span> <span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;pca_2&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">)</span>
 <span class="n">p1</span> <span class="o">|</span> <span class="n">p2</span>
 </code></pre></div>

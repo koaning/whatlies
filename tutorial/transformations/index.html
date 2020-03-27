@@ -36,7 +36,7 @@
     
     
       
-        <title>Language Options - whatlies</title>
+        <title>Transformation Viz - whatlies</title>
       
     
     
@@ -83,7 +83,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#multiple-tokens" tabindex="0" class="md-skip">
+      <a href="#state-and-colors" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -109,7 +109,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Language Options
+                Transformation Viz
               
             </span>
           
@@ -187,6 +187,18 @@
       
       
 
+
+  <li class="md-nav__item">
+    <a href="../languages/" title="Language Options" class="md-nav__link">
+      Language Options
+    </a>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
@@ -196,11 +208,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Language Options
+        Transformation Viz
       </label>
     
-    <a href="./" title="Language Options" class="md-nav__link md-nav__link--active">
-      Language Options
+    <a href="./" title="Transformation Viz" class="md-nav__link md-nav__link--active">
+      Transformation Viz
     </a>
     
       
@@ -212,36 +224,9 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#multiple-tokens" class="md-nav__link">
-    Multiple Tokens
+  <a href="#state-and-colors" class="md-nav__link">
+    State and Colors
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bert-style" class="md-nav__link">
-    Bert Style
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sense-to-vec" class="md-nav__link">
-    Sense to Vec
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#similarity" class="md-nav__link">
-    Similarity
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -253,18 +238,6 @@
   
 </nav>
     
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../transformations/" title="Transformation Viz" class="md-nav__link">
-      Transformation Viz
-    </a>
   </li>
 
     
@@ -467,36 +440,9 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#multiple-tokens" class="md-nav__link">
-    Multiple Tokens
+  <a href="#state-and-colors" class="md-nav__link">
+    State and Colors
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bert-style" class="md-nav__link">
-    Bert Style
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sense-to-vec" class="md-nav__link">
-    Sense to Vec
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#similarity" class="md-nav__link">
-    Similarity
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -517,7 +463,7 @@
               
                 
                 
-                  <h1>Language Options</h1>
+                  <h1>Transformation Viz</h1>
                 
                 <script src="https://cdn.jsdelivr.net/npm/vega@5.10.0"></script>
 
@@ -525,131 +471,36 @@
 
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.3.2"></script>
 
-<p>In this tool we have support for different language backends and
-depending on the language backend you may get slightly different behavior.</p>
-<h2 id="multiple-tokens">Multiple Tokens<a class="headerlink" href="#multiple-tokens" title="Permanent link">&para;</a></h2>
-<p>We can have spaCy summerize multiple tokens if we'd like.</p>
+<h2 id="state-and-colors">State and Colors<a class="headerlink" href="#state-and-colors" title="Permanent link">&para;</a></h2>
+<p>A goal of this package is to be able to compare the effect of transformations.</p>
+<p>That is why some of our transformations carry state. Umap is one such example.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">SpacyLanguage</span>
-<span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">Pca</span>
+<span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s1">&#39;en_core_web_sm&#39;</span><span class="p">)</span>
 
-<span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_sm&quot;</span><span class="p">)</span>
+<span class="n">words1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;mouse&quot;</span><span class="p">,</span> <span class="s2">&quot;deer&quot;</span><span class="p">,</span> <span class="s2">&quot;elephant&quot;</span><span class="p">,</span> <span class="s2">&quot;zebra&quot;</span><span class="p">,</span> <span class="s2">&quot;fish&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;rabbit&quot;</span><span class="p">,</span> <span class="s2">&quot;rat&quot;</span><span class="p">,</span> <span class="s2">&quot;tomato&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;coffee&quot;</span><span class="p">,</span> <span class="s2">&quot;tea&quot;</span><span class="p">,</span> <span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;union&quot;</span><span class="p">]</span>
+<span class="n">words2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;run&quot;</span><span class="p">,</span> <span class="s2">&quot;swim&quot;</span><span class="p">,</span> <span class="s2">&quot;dance&quot;</span><span class="p">,</span> <span class="s2">&quot;sit&quot;</span><span class="p">,</span> <span class="s2">&quot;eat&quot;</span><span class="p">,</span> <span class="s2">&quot;hear&quot;</span><span class="p">,</span> <span class="s2">&quot;look&quot;</span><span class="p">,</span> <span class="s2">&quot;run&quot;</span><span class="p">,</span> <span class="s2">&quot;stand&quot;</span><span class="p">]</span>
 
-<span class="n">contexts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;i am super duper happy&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;happy happy joy joy&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;programming is super fun!&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;i am going crazy i hate it&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;boo and hiss&quot;</span><span class="p">,]</span>
+<span class="n">umap</span> <span class="o">=</span> <span class="n">Umap</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">emb1</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">words1</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">umap</span><span class="p">)</span><span class="o">.</span><span class="n">add_property</span><span class="p">(</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="s1">&#39;set-one&#39;</span><span class="p">)</span>
+<span class="n">emb2</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">words2</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">umap</span><span class="p">)</span><span class="o">.</span><span class="n">add_property</span><span class="p">(</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="s1">&#39;set-two&#39;</span><span class="p">)</span>
 
-<span class="n">emb</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">contexts</span><span class="p">]</span>
-<span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;pca_0&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">)</span>
+<span class="n">both</span> <span class="o">=</span> <span class="n">emb1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">emb2</span><span class="p">)</span>
 </code></pre></div>
 
-<div id="c1"></div>
+<p>In this code the transformer is trained on <code>emb1</code> and applied on both <code>emb1</code> and <code>emb2</code>.
+We use the <code>.add_property</code> helper to indicate from which set the embeddings came.
+This way we can use it as a color in an interactive plot.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">both</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;umap_0&#39;</span><span class="p">,</span> <span class="s1">&#39;umap_1&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;set&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<div id="vis1"></div>
 
 <script>
-fetch('spacyvec-1.json')
+fetch('colors.json')
 .then(res => res.json())
 .then((out) => {
-  vegaEmbed('#c1', out);
-})
-.catch(err => { throw err });
-</script>
-
-<p>Under the hood it will be calculating the averages of the
-embeddings but we can still plot these.</p>
-<h2 id="bert-style">Bert Style<a class="headerlink" href="#bert-style" title="Permanent link">&para;</a></h2>
-<p>But spaCy also offers transformers these days, which means that
-we can play with a extra bit of context.</p>
-<div class="codehilite"><pre><span></span><code>pip install spacy-transformers
-python -m spacy download en_trf_robertabase_lg
-</code></pre></div>
-
-<p>With these installed we can now use the same spaCy language
-backend to play with transformers. Here's an example of
-two embeddings selected with context.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_trf_robertabase_lg&quot;</span><span class="p">)</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">lang</span><span class="p">[</span><span class="s1">&#39;Going to the [store]&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span><span class="p">,</span>
-               <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;[store] this in the drawer please.&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span>  <span class="c1"># False</span>
-</code></pre></div>
-
-<p>In the first case we get the embedding for <code>store</code> in the context of
-<code>Going to the store</code> while in the second case we have <code>store</code> in the
-context of <code>store this in the drawer please</code>.</p>
-<h2 id="sense-to-vec">Sense to Vec<a class="headerlink" href="#sense-to-vec" title="Permanent link">&para;</a></h2>
-<p>We also have support for the <a href="https://github.com/explosion/sense2vec">sense2vec model</a>. To
-get it to work you first need to download and unzip the pretrained vectors
-found <a href="https://github.com/explosion/sense2vec#pretrained-vectors">here</a> but after
-that you should be able to retreive tokens with context. They way you fetch these
-tokens is a bit ... different though.</p>
-<p><div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">Sense2VecLangauge</span>
-<span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">Pca</span>
-
-<span class="n">lang</span> <span class="o">=</span> <span class="n">Sense2VecLangauge</span><span class="p">(</span><span class="s2">&quot;path/downloaded/s2v&quot;</span><span class="p">)</span>
-
-<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;bank|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;bank|VERB&quot;</span><span class="p">,</span> <span class="s2">&quot;duck|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;duck|VERB&quot;</span><span class="p">,</span>
-         <span class="s2">&quot;dog|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;cat|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;jump|VERB&quot;</span><span class="p">,</span> <span class="s2">&quot;run|VERB&quot;</span><span class="p">,</span>
-         <span class="s2">&quot;chicken|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;puppy|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;kitten|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;carrot|NOUN&quot;</span><span class="p">]</span>
-<span class="n">emb</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">words</span><span class="p">]</span>
-</code></pre></div>
-From here one we're back to normal embeddingsets though. So we can
-plot whatever we feel like.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">p1</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s2">&quot;dog|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;jump|VERB&quot;</span><span class="p">)</span>
-<span class="n">p2</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s2">&quot;pca_0&quot;</span><span class="p">,</span> <span class="s2">&quot;pca_1&quot;</span><span class="p">)</span>
-<span class="n">p1</span> <span class="o">|</span> <span class="n">p2</span>
-</code></pre></div>
-
-<div id="s1"></div>
-
-<script>
-fetch('sense2vec-1.json')
-.then(res => res.json())
-.then((out) => {
-  vegaEmbed('#s1', out);
-})
-.catch(err => { throw err });
-</script>
-
-<p>Notice how <code>duck|VERB</code> is certainly different from <code>duck|NOUN</code>.</p>
-<h3 id="similarity">Similarity<a class="headerlink" href="#similarity" title="Permanent link">&para;</a></h3>
-<p>Another nice feature of <code>sense2vec</code> is the ability to find
-tokens that are nearby. We could do the following.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">lang</span><span class="o">.</span><span class="n">score_similar</span><span class="p">(</span><span class="s2">&quot;duck|VERB&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<p>This will result in a long list with embedding-score tuples.</p>
-<div class="codehilite"><pre><span></span><code>[(Emb[crouch|VERB], 0.8064),
- (Emb[ducking|VERB], 0.7877),
- (Emb[sprint|VERB], 0.7653),
- (Emb[scoot|VERB], 0.7647),
- (Emb[dart|VERB], 0.7621),
- (Emb[jump|VERB], 0.7528),
- (Emb[peek|VERB], 0.7518),
- (Emb[ducked|VERB], 0.7504),
- (Emb[bonk|VERB], 0.7495),
- (Emb[backflip|VERB], 0.746)]
-</code></pre></div>
-
-<p>We can also ask it to return an <code>EmbeddingSet</code> instead. That's what we're doing
-below. We take our original embeddingset and we merge it with two more before
-we visualise it.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">emb_bank_verb</span> <span class="o">=</span> <span class="n">lang</span><span class="o">.</span><span class="n">embset_similar</span><span class="p">(</span><span class="s2">&quot;bank|VERB&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">emb_bank_noun</span> <span class="o">=</span> <span class="n">lang</span><span class="o">.</span><span class="n">embset_similar</span><span class="p">(</span><span class="s2">&quot;bank|NOUN&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="p">(</span><span class="n">emb</span>
- <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">emb_bank_verb</span><span class="p">)</span>
- <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">emb_bank_noun</span><span class="p">)</span>
- <span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
- <span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s2">&quot;pca_0&quot;</span><span class="p">,</span> <span class="s2">&quot;pca_1&quot;</span><span class="p">))</span>
-</code></pre></div>
-
-<div id="sense2"></div>
-
-<script>
-fetch('sense2vec-2.json')
-.then(res => res.json())
-.then((out) => {
-  vegaEmbed('#sense2', out);
+  vegaEmbed('#vis1', out);
 })
 .catch(err => { throw err });
 </script>
@@ -674,7 +525,7 @@ fetch('sense2vec-2.json')
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../embeddingsets/" title="Interactive Visualisation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../languages/" title="Language Options" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -683,19 +534,19 @@ fetch('sense2vec-2.json')
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Interactive Visualisation
+                Language Options
               </span>
             </div>
           </a>
         
         
-          <a href="../transformations/" title="Transformation Viz" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../api/embedding/" title="Embedding" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Transformation Viz
+                Embedding
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

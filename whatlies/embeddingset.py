@@ -233,21 +233,65 @@ class EmbeddingSet:
 
         Arguments:
             other: another embeddingset
+
+        Usage:
+
+        ```python
+        from whatlies.embeddingset import EmbeddingSet
+
+        foo = Embedding("foo", [0.1, 0.3, 0.10])
+        bar = Embedding("bar", [0.7, 0.2, 0.11])
+        buz = Embedding("buz", [0.1, 0.9, 0.12])
+        xyz = Embedding("xyz", [0.1, 0.9, 0.12])
+        emb1 = EmbeddingSet(foo, bar)
+        emb2 = EmbeddingSet(xyz, buz)
+
+        both = em1.merge(emb2)
+        ```
         """
         return EmbeddingSet({**self.embeddings, **other.embeddings})
 
     def add_property(self, name, func):
         """
-        Adds a property to every embedding in the set. Very useful for plotting
+        Adds a property to every embedding in the set. Very useful for plotting because
+        a property can be used to assign colors.
+
         Arguments:
             name: name of the property to add
             func: function that receives an embedding and needs to output the property value
+
+        ```python
+        from whatlies.embeddingset import EmbeddingSet
+
+        foo = Embedding("foo", [0.1, 0.3, 0.10])
+        bar = Embedding("bar", [0.7, 0.2, 0.11])
+        emb = EmbeddingSet(foo, bar)
+        emb_with_property = emb.add_property('example', lambda d: 'group-one')
+        ```
         """
         return EmbeddingSet(
             {k: e.add_property(name, func) for k, e in self.embeddings.items()}
         )
 
-    def average(self):
+    def average(self, name):
+        """
+        Takes the average over all the embedding vectors in the embeddingset. Turns it into
+        a new `Embedding`.
+
+        Arguments:
+            name: manually specify the name of the average embedding
+
+        ```python
+        from whatlies.embeddingset import EmbeddingSet
+
+        foo = Embedding("foo", [1.0, 0.0])
+        bar = Embedding("bar", [0.0, 1.0])
+        emb = EmbeddingSet(foo, bar)
+
+        emb.average().vector                   # [0.5, 0,5]
+        emb.average(name="the-average").vector # [0.5, 0.5]
+        ```
+        """
         x = np.array([v.vector for v in self.embeddings.values()])
         return Embedding(f"{self.name}.average()", np.mean(x, axis=0))
 

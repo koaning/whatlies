@@ -12,7 +12,7 @@ We can have spaCy summerize multiple tokens if we'd like.
 
 ```python
 from whatlies.language import SpacyLanguage
-from whatlies.transformers import pca
+from whatlies.transformers import Pca
 
 lang = SpacyLanguage("en_core_web_sm")
 
@@ -23,7 +23,7 @@ contexts = ["i am super duper happy",
             "boo and hiss",]
 
 emb = lang[contexts]
-emb.transform(pca(2)).plot_interactive('pca_0', 'pca_1')
+emb.transform(Pca(2)).plot_interactive('pca_0', 'pca_1')
 ```
 
 <div id="c1"></div>

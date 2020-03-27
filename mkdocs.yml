@@ -11,6 +11,8 @@ nav:
     - Transformers:
       - Pca: api/transformers/pca.md
       - Umap: api/transformers/umap.md
+      - Noise: api/transformers/noise.md
+      - Add Random: api/transformers/addrandom.md
     - Language:
         - spaCy: api/language/spacy_lang.md
         - Sense2Vec: api/language/s2v_lang.md

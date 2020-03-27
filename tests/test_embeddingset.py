@@ -3,6 +3,7 @@ from operator import add, rshift, sub, or_
 import pytest
 import numpy as np
 
+from whatlies import Embedding, EmbeddingSet
 from whatlies.language import SpacyLanguage
 
 lang = SpacyLanguage("en_core_web_sm")
@@ -37,3 +38,18 @@ def test_average():
     v1 = av.vector
     v2 = (lang["red"].vector + lang["blue"].vector + lang["orange"].vector) / 3
     assert np.array_equal(v1, v2)
+
+
+def test_to_x_y():
+    foo = Embedding("foo", [0.1, 0.3])
+    bar = Embedding("bar", [0.7, 0.2])
+    buz = Embedding("buz", [0.1, 0.9])
+    bla = Embedding("bla", [0.2, 0.8])
+
+    emb1 = EmbeddingSet(foo, bar).add_property("label", lambda d: 'group-one')
+    emb2 = EmbeddingSet(buz, bla).add_property("label", lambda d: 'group-two')
+    emb = emb1.merge(emb2)
+
+    X, y = emb.to_X_y(y_label='label')
+    assert X.shape == emb.to_X().shape == (4, 2)
+    assert list(y) == ['group-one', 'group-one', 'group-two', 'group-two']

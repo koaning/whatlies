@@ -130,6 +130,54 @@ class EmbeddingSet:
         if mapping == "direct":
             return [v > other for k, v in self.embeddings.items()]
 
+    def to_X(self):
+        """
+        Takes every vector in each embedding and turns it into a scikit-learn compatible `X` matrix.
+
+        Usage:
+
+        ```python
+        from whatlies.embedding import Embedding
+        from whatlies.embeddingset import EmbeddingSet
+
+        foo = Embedding("foo", [0.1, 0.3])
+        bar = Embedding("bar", [0.7, 0.2])
+        buz = Embedding("buz", [0.1, 0.9])
+        emb = EmbeddingSet(foo, bar, buz)
+
+        X = emb.to_X()
+        ```
+        """
+        X = np.array([i.vector for i in self.embeddings.values()])
+        return X
+
+    def to_X_y(self, y_label):
+        """
+        Takes every vector in each embedding and turns it into a scikit-learn compatible `X` matrix.
+        Also retreives an array with potential labels.
+
+        Usage:
+
+        ```python
+        from whatlies.embedding import Embedding
+        from whatlies.embeddingset import EmbeddingSet
+
+        foo = Embedding("foo", [0.1, 0.3])
+        bar = Embedding("bar", [0.7, 0.2])
+        buz = Embedding("buz", [0.1, 0.9])
+        bla = Embedding("bla", [0.2, 0.8])
+
+        emb1 = EmbeddingSet(foo, bar).add_property("label", lambda d: 'group-one')
+        emb2 = EmbeddingSet(buz, bla).add_property("label", lambda d: 'group-two')
+        emb = emb1.merge(emb2)
+
+        X, y = emb.to_X_y(y_label='label')
+        ```
+        """
+        X = np.array([e.vector for e in self.embeddings.values()])
+        y = np.array([getattr(e, y_label) for e in self.embeddings.values()])
+        return X, y
+
     def transform(self, transformer):
         """
         Applies a transformation on the entire set.
@@ -138,12 +186,12 @@ class EmbeddingSet:
 
         ```python
         from whatlies.embeddingset import EmbeddingSet
-        from whatlies.transformers import pca
+        from whatlies.transformers import Pca
 
         foo = Embedding("foo", [0.1, 0.3, 0.10])
         bar = Embedding("bar", [0.7, 0.2, 0.11])
         buz = Embedding("buz", [0.1, 0.9, 0.12])
-        emb = EmbeddingSet(foo, bar, buz).transform(pca(2))
+        emb = EmbeddingSet(foo, bar, buz).transform(Pca(2))
         ```
         """
         return transformer(self)
@@ -339,7 +387,7 @@ class EmbeddingSet:
 
         ```python
         from whatlies.language import SpacyLanguage
-        from whatlies.transformers import pca
+        from whatlies.transformers import Pca
 
         words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
                  "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
@@ -349,7 +397,7 @@ class EmbeddingSet:
         lang = SpacyLanguage("en_core_web_md")
         emb = lang[words]
 
-        emb.transform(pca(3)).plot_interactive_matrix('pca_0', 'pca_1', 'pca_2')
+        emb.transform(Pca(3)).plot_interactive_matrix('pca_0', 'pca_1', 'pca_2')
         ```
         """
         plot_df = pd.DataFrame({ax: self.compare_against(self[ax]) for ax in axes})

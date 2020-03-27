@@ -17,7 +17,7 @@ class Noise:
 
     ```python
     from whatlies.language import SpacyLanguage
-    from whatlies.transformers import pca
+    from whatlies.transformers import Noise
 
     words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
              "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",

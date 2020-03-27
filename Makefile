@@ -4,10 +4,9 @@ install:
 	python setup.py install
 
 develop: install
+	pip install -e ".[dev]"
 	python setup.py develop
 	pre-commit install
-	pip install -r doc-requirements.txt
-	pip install -r dev-requirements.txt
 
 flake:
 	flake8 setup.py --count --statistics --max-complexity=10 --max-line-length=127
@@ -35,6 +34,8 @@ clean:
 	rm -rf .ipynb_checkpoints
 	rm -rf **/.ipynb_checkpoints
 	rm -rf .pytest_cache
+	nbstripout notebooks/*
+
 
 pypi: clean
 	python setup.py sdist

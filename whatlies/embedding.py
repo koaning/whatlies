@@ -29,7 +29,12 @@ class Embedding:
         self.name = name
         self.vector = np.array(vector)
 
-    def __add__(self, other):
+    def add_property(self, name, func):
+        result = Embedding(name=self.name, vector=self.vector, orig=self.orig,)
+        setattr(result, name, func(result))
+        return result
+
+    def __add__(self, other) -> "Embedding":
         """
         Add two embeddings together.
 

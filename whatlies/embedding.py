@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 import numpy as np
 from whatlies.common import handle_2d_plot
 
@@ -49,11 +51,10 @@ class Embedding:
         foo + bar
         ```
         """
-        return self.__class__(
-            name=f"({self.name} + {other.name})",
-            vector=self.vector + other.vector,
-            orig=self.orig,
-        )
+        copied = deepcopy(self)
+        copied.name = f"({self.name} + {other.name})"
+        copied.vector = self.vector + other.vector
+        return copied
 
     def __sub__(self, other):
         """
@@ -70,11 +71,11 @@ class Embedding:
         foo - bar
         ```
         """
-        return self.__class__(
-            name=f"({self.name} - {other.name})",
-            vector=self.vector - other.vector,
-            orig=self.orig,
-        )
+        copied = deepcopy(self)
+        copied.name = f"({self.name} - {other.name})"
+        copied.vector = self.vector - other.vector
+        return copied
+
 
     def __gt__(self, other):
         """
@@ -108,14 +109,16 @@ class Embedding:
         foo >> bar
         ```
         """
+        copied = deepcopy(self)
         new_vec = (
             (self.vector.dot(other.vector))
             / (other.vector.dot(other.vector))
             * other.vector
         )
-        return self.__class__(
-            name=f"({self.name} >> {other.name})", vector=new_vec, orig=self.orig
-        )
+        copied.name = f"({self.name} >> {other.name})"
+        copied.vector = new_vec
+        return copied
+
 
     def __or__(self, other):
         """
@@ -132,10 +135,10 @@ class Embedding:
         foo | bar
         ```
         """
-        new_vec = self.vector - (self >> other).vector
-        return self.__class__(
-            name=f"({self.name} | {other.name})", vector=new_vec, orig=self.orig
-        )
+        copied = deepcopy(self)
+        copied.name = f"({self.name} | {other.name})"
+        copied.vector = self.vector - (self >> other).vector
+        return copied
 
     def __repr__(self):
         return f"Emb[{self.name}]"

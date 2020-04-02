@@ -2,7 +2,7 @@ from umap import UMAP
 import numpy as np
 
 from whatlies import Embedding, EmbeddingSet
-from whatlies.transformers.common import embset_to_X
+from whatlies.transformers.common import embset_to_X, new_embedding_dict
 
 
 class Umap:
@@ -53,7 +53,5 @@ class Umap:
         new_vecs = self.tfm.transform(X)
         names_out = names + [f"umap_{i}" for i in range(self.n_components)]
         vectors_out = np.concatenate([new_vecs, np.eye(self.n_components)])
-        return EmbeddingSet(
-            {k: Embedding(k, v, orig=k) for k, v in zip(names_out, vectors_out)},
-            name=f"{embset.name}.umap_{self.n_components}()",
-        )
+        new_dict = new_embedding_dict(names_out, vectors_out, embset)
+        return EmbeddingSet(new_dict, name=f"{embset.name}.umap_{self.n_components}()")

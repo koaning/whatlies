@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.preprocessing import FunctionTransformer
 
 from whatlies import Embedding, EmbeddingSet
-from whatlies.transformers.common import embset_to_X
+from whatlies.transformers.common import embset_to_X, new_embedding_dict
 
 
 class Noise:
@@ -52,7 +52,5 @@ class Noise:
         names, X = embset_to_X(embset=embset)
         np.random.seed(self.seed)
         new_vecs = self.tfm.transform(X)
-        return EmbeddingSet(
-            {k: Embedding(k, v, orig=k) for k, v in zip(names, new_vecs)},
-            name=f"{embset.name}",
-        )
+        new_dict = new_embedding_dict(names, new_vecs, embset)
+        return EmbeddingSet(new_dict, name=f"{embset.name}",)

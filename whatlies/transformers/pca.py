@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.decomposition import PCA
 
 from whatlies import Embedding, EmbeddingSet
-from whatlies.transformers.common import embset_to_X
+from whatlies.transformers.common import embset_to_X, new_embedding_dict
 
 
 class Pca:
@@ -54,7 +54,5 @@ class Pca:
         new_vecs = self.tfm.transform(X)
         names_out = names + [f"pca_{i}" for i in range(self.n_components)]
         vectors_out = np.concatenate([new_vecs, np.eye(self.n_components)])
-        return EmbeddingSet(
-            {k: Embedding(k, v, orig=k) for k, v in zip(names_out, vectors_out)},
-            name=f"{embset.name}.pca_{self.n_components}()",
-        )
+        new_dict = new_embedding_dict(names_out, vectors_out, embset)
+        return EmbeddingSet(new_dict, name=f"{embset.name}.pca_{self.n_components}()")

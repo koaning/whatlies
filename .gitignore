@@ -135,6 +135,7 @@ dmypy.json
 .pytype/
 .DS_Store
 .idea
+.vscode
 public
 
 s2v_reddit_2015_md.tar.gz

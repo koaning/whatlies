@@ -59,9 +59,7 @@ def test_transformations_new_size(transformer, extra_size):
     assert len(emb_new) == len(emb) + extra_size
 
 
-@pytest.mark.parametrize(
-    "transformer",[Umap(2), Pca(2), Noise(0.1), AddRandom(n=4)],
-)
+@pytest.mark.parametrize("transformer",[Umap(2), Pca(2), Noise(0.1), AddRandom(n=4)])
 def test_transformations_keep_props(transformer):
     emb_new = emb.add_property("group", lambda d: "one").transform(transformer)
     for w in words:

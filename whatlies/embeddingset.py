@@ -369,17 +369,15 @@ class EmbeddingSet:
         if isinstance(y_axis, str):
             y_axis = self[y_axis]
 
-        plot_df = pd.DataFrame(
-            {
-                "x_axis": self.compare_against(x_axis),
-                "y_axis": self.compare_against(y_axis),
-                "name": [v.name for v in self.embeddings.values()],
-                "original": [v.orig for v in self.embeddings.values()],
-            }
-        )
+        plot_df = pd.DataFrame({
+            "x_axis": self.compare_against(x_axis),
+            "y_axis": self.compare_against(y_axis),
+            "name": [v.name for v in self.embeddings.values()],
+            "original": [v.orig for v in self.embeddings.values()],
+        })
 
         if color:
-            plot_df[color] = [getattr(v, color) for v in self.embeddings.values()]
+            plot_df[color] = [getattr(v, color) if hasattr(v, color) else '' for v in self.embeddings.values()]
 
         if not show_axis_point:
             plot_df = plot_df.loc[lambda d: ~d["name"].isin([x_axis.name, y_axis.name])]

@@ -10,7 +10,13 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
+        <meta name="description" content="A python package to discover "what lies" in word embeddings.">
       
+      
+        <link rel="canonical" href="https://rasahq.github.io/whatlies/api/embedding/">
+      
+      
+        <meta name="author" content="Vincent D. Warmerdam @ Rasa Research">
       
       
         <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -63,6 +69,8 @@
     <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
+      <link rel="stylesheet" href="../../style.css">
+    
     
       
     
@@ -76,6 +84,8 @@
     <svg class="md-svg">
       <defs>
         
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
         
       </defs>
     </svg>
@@ -92,7 +102,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../.." title="whatlies" aria-label="whatlies" class="md-header-nav__button md-logo">
+        <a href="https://rasahq.github.io/whatlies/" title="whatlies" aria-label="whatlies" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -117,7 +127,54 @@
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
       </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/RasaHQ/whatlies/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
       
     </div>
   </nav>
@@ -137,13 +194,33 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../.." title="whatlies" class="md-nav__button md-logo">
+    <a href="https://rasahq.github.io/whatlies/" title="whatlies" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
     </a>
     whatlies
   </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/RasaHQ/whatlies/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -164,16 +241,35 @@
       
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Getting Started
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Getting Started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
   <li class="md-nav__item">
     <a href="../../tutorial/embeddings/" title="What Are Embeddings" class="md-nav__link">
       What Are Embeddings
     </a>
   </li>
 
-    
-      
-      
-      
+        
+          
+          
+          
 
 
   <li class="md-nav__item">
@@ -182,10 +278,10 @@
     </a>
   </li>
 
-    
-      
-      
-      
+        
+          
+          
+          
 
 
   <li class="md-nav__item">
@@ -194,16 +290,21 @@
     </a>
   </li>
 
-    
-      
-      
-      
+        
+          
+          
+          
 
 
   <li class="md-nav__item">
     <a href="../../tutorial/transformations/" title="Transformation Viz" class="md-nav__link">
       Transformation Viz
     </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -216,13 +317,13 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-3">
       API
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-3">
         API
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -332,13 +433,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
     
-    <label class="md-nav__link" for="nav-6-3">
+    <label class="md-nav__link" for="nav-3-3">
       Transformers
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-6-3">
+      <label class="md-nav__title" for="nav-3-3">
         Transformers
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -404,13 +505,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
     
-    <label class="md-nav__link" for="nav-6-4">
+    <label class="md-nav__link" for="nav-3-4">
       Language
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-6-4">
+      <label class="md-nav__title" for="nav-3-4">
         Language
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -540,6 +641,8 @@
             <article class="md-content__inner md-typeset">
               
                 
+                  <a href="https://github.com/RasaHQ/whatlies/edit/master/docs/api/embedding.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
                 
                 <h1 id="whatliesembeddingembedding"><code>whatlies.embedding.Embedding</code><a class="headerlink" href="#whatliesembeddingembedding" title="Permanent link">&para;</a></h1>
 <p>This object represents a word embedding. It contains a vector and a name.</p>
@@ -586,9 +689,7 @@ foo - bar + bar
 
 <h2 id="whatlies.embedding.Embedding.__add__"><code class="codehilite"><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__add__" title="Permanent link">&para;</a></h2>
 <div class="autodoc">
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>37
-38
-39
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>39
 40
 41
 42
@@ -605,7 +706,8 @@ foo - bar + bar
 53
 54
 55
-56</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Embedding&quot;</span><span class="p">:</span>
+56
+57</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Embedding&quot;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add two embeddings together.</span>
 
@@ -620,11 +722,10 @@ foo - bar + bar
 <span class="sd">        foo + bar</span>
 <span class="sd">        ```</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{self.name}</span><span class="s2"> + </span><span class="si">{other.name}</span><span class="s2">)&quot;</span><span class="p">,</span>
-            <span class="n">vector</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">vector</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">vector</span><span class="p">,</span>
-            <span class="n">orig</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">orig</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="n">copied</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">copied</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{self.name}</span><span class="s2"> + </span><span class="si">{other.name}</span><span class="s2">)&quot;</span>
+        <span class="n">copied</span><span class="o">.</span><span class="n">vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vector</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">vector</span>
+        <span class="k">return</span> <span class="n">copied</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -642,8 +743,7 @@ foo + bar
 </div>
 <h2 id="whatlies.embedding.Embedding.__gt__"><code class="codehilite"><span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__gt__" title="Permanent link">&para;</a></h2>
 <div class="autodoc">
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>79
-80
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>80
 81
 82
 83
@@ -657,7 +757,8 @@ foo + bar
 91
 92
 93
-94</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+94
+95</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Measures the size of one embedding to another one.</span>
 
@@ -690,10 +791,7 @@ foo &gt; bar
 </div>
 <h2 id="whatlies.embedding.Embedding.__or__"><code class="codehilite"><span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__or__" title="Permanent link">&para;</a></h2>
 <div class="autodoc">
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>120
-121
-122
-123
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>123
 124
 125
 126
@@ -708,7 +806,10 @@ foo &gt; bar
 135
 136
 137
-138</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+138
+139
+140
+141</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Makes one embedding orthogonal to the other one.</span>
 
@@ -723,10 +824,10 @@ foo &gt; bar
 <span class="sd">        foo | bar</span>
 <span class="sd">        ```</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">new_vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vector</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span> <span class="o">&gt;&gt;</span> <span class="n">other</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{self.name}</span><span class="s2"> | </span><span class="si">{other.name}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">vector</span><span class="o">=</span><span class="n">new_vec</span><span class="p">,</span> <span class="n">orig</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">orig</span>
-        <span class="p">)</span>
+        <span class="n">copied</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">copied</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{self.name}</span><span class="s2"> | </span><span class="si">{other.name}</span><span class="s2">)&quot;</span>
+        <span class="n">copied</span><span class="o">.</span><span class="n">vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vector</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span> <span class="o">&gt;&gt;</span> <span class="n">other</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span>
+        <span class="k">return</span> <span class="n">copied</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -744,8 +845,7 @@ foo | bar
 </div>
 <h2 id="whatlies.embedding.Embedding.__rshift__"><code class="codehilite"><span class="fm">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__rshift__" title="Permanent link">&para;</a></h2>
 <div class="autodoc">
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 96
- 97
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 97
  98
  99
 100
@@ -766,7 +866,9 @@ foo | bar
 115
 116
 117
-118</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+118
+119
+120</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Maps an embedding unto another one.</span>
 
@@ -781,14 +883,15 @@ foo | bar
 <span class="sd">        foo &gt;&gt; bar</span>
 <span class="sd">        ```</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">copied</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">new_vec</span> <span class="o">=</span> <span class="p">(</span>
             <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">vector</span><span class="p">))</span>
             <span class="o">/</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">vector</span><span class="p">))</span>
             <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">vector</span>
         <span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{self.name}</span><span class="s2"> &gt;&gt; </span><span class="si">{other.name}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">vector</span><span class="o">=</span><span class="n">new_vec</span><span class="p">,</span> <span class="n">orig</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">orig</span>
-        <span class="p">)</span>
+        <span class="n">copied</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{self.name}</span><span class="s2"> &gt;&gt; </span><span class="si">{other.name}</span><span class="s2">)&quot;</span>
+        <span class="n">copied</span><span class="o">.</span><span class="n">vector</span> <span class="o">=</span> <span class="n">new_vec</span>
+        <span class="k">return</span> <span class="n">copied</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -806,8 +909,7 @@ foo &gt;&gt; bar
 </div>
 <h2 id="whatlies.embedding.Embedding.__sub__"><code class="codehilite"><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__sub__" title="Permanent link">&para;</a></h2>
 <div class="autodoc">
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>58
-59
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>59
 60
 61
 62
@@ -840,11 +942,10 @@ foo &gt;&gt; bar
 <span class="sd">        foo - bar</span>
 <span class="sd">        ```</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{self.name}</span><span class="s2"> - </span><span class="si">{other.name}</span><span class="s2">)&quot;</span><span class="p">,</span>
-            <span class="n">vector</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">vector</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">vector</span><span class="p">,</span>
-            <span class="n">orig</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">orig</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="n">copied</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">copied</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{self.name}</span><span class="s2"> - </span><span class="si">{other.name}</span><span class="s2">)&quot;</span>
+        <span class="n">copied</span><span class="o">.</span><span class="n">vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vector</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">vector</span>
+        <span class="k">return</span> <span class="n">copied</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -862,10 +963,7 @@ foo - bar
 </div>
 <h2 id="whatlies.embedding.Embedding.plot"><code class="codehilite"><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_ops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.plot" title="Permanent link">&para;</a></h2>
 <div class="autodoc">
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>143
-144
-145
-146
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>146
 147
 148
 149
@@ -916,7 +1014,10 @@ foo - bar
 194
 195
 196
-197</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span>
+197
+198
+199
+200</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;scatter&quot;</span><span class="p">,</span>
         <span class="n">x_axis</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1091,6 +1192,10 @@ foo - bar
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 <a href="https://twitter.com/Rasa_HQ">Rasa</a>, Maintained by <a href="https://twitter.com/fishnets88">Vincent</a>.
+          </div>
         
         powered by
         <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>

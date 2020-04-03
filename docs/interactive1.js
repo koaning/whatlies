@@ -1,6 +1,3 @@
-<div id="vis1"></div>
-
-<script>
 var spec1 = {
   "config": {"view": {"continuousWidth": 400, "continuousHeight": 300}},
   "hconcat": [
@@ -410,4 +407,3 @@ var spec1 = {
 }
 
 vegaEmbed('#vis1', spec1);
-</script>

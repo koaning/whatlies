@@ -5,7 +5,15 @@ a discussion on these topics in github.
 
 At the moment we only project onto axes to get x/y coordinates.
 It might make sense to show the cosine distance to these
-axes instead. We might allow for flexible distance metrics.
+axes instead.
+
+And if we're allowing cosine distance ... we might allow for
+flexible distance metrics in general.
+
+**Table Summaries**
+
+We've got a focus on charts now, but one imagines that calculating
+tables with summary statistics is also relevant.
 
 **Difference Charts**
 
@@ -28,3 +36,10 @@ download manually.
 - it would be nice to have a good way of testing the charts
 - it would be nice to be able to test multiple models without
 having to download gigabytes into github actions
+
+**More plots**
+
+There may be visualisations worth adding that we've not considered.
+Like the bar chart discussed in [this github issue](https://github.com/RasaHQ/whatlies/issues/8).
+
+![](https://user-images.githubusercontent.com/1019791/76018898-2b1b7280-5f21-11ea-83b1-ec764eb4d5e3.png)

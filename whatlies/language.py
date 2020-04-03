@@ -21,7 +21,7 @@ def _selected_idx_spacy(string):
 class SpacyLanguage:
     """
     This object is used to lazily fetch [Embedding][whatlies.embedding.Embedding]s or
-    [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]s from a sense2vec language
+    [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]s from a spaCy language
     backend. This object is meant for retreival, not plotting.
 
     Arguments:

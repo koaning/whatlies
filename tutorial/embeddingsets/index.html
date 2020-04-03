@@ -774,11 +774,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.3.2"></script>
 
-<h2 id="sets-of-embeddings">Sets of Embeddings</h2>
-<p>The <code class="codehilite"><span class="err">Embedding</span></code> object merely has support for matplotlib, but the
-<code class="codehilite"><span class="err">EmbeddingSet</span></code> has support for interactive tools. It is also more
+<h2 id="sets-of-embeddings">Sets of Embeddings<a class="headerlink" href="#sets-of-embeddings" title="Permanent link">&para;</a></h2>
+<p>The <code>Embedding</code> object merely has support for matplotlib, but the
+<code>EmbeddingSet</code> has support for interactive tools. It is also more
 convenient. You can create an</p>
-<h3 id="direct-creation">Direct Creation</h3>
+<h3 id="direct-creation">Direct Creation<a class="headerlink" href="#direct-creation" title="Permanent link">&para;</a></h3>
 <p>You can create these objects directly.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">spacy</span>
 <span class="kn">from</span> <span class="nn">whatlies.embedding</span> <span class="kn">import</span> <span class="n">Embedding</span>
@@ -795,7 +795,7 @@ convenient. You can create an</p>
 </code></pre></div>
 
 <p>This can be especially useful if you're creating your own embeddings.</p>
-<h3 id="via-languages">Via Languages</h3>
+<h3 id="via-languages">Via Languages<a class="headerlink" href="#via-languages" title="Permanent link">&para;</a></h3>
 <p>But odds are that you just want to grab a language model from elsewhere.
 We've added backends to our library and this can be a convenient method
 of getting sets of embeddings (typically more performant too).</p>
@@ -810,8 +810,8 @@ of getting sets of embeddings (typically more performant too).</p>
 <span class="n">emb</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">words</span><span class="p">]</span>
 </code></pre></div>
 
-<h2 id="plotting">Plotting</h2>
-<p>Either way, with an <code class="codehilite"><span class="err">EmbeddingSet</span></code> you can create meaningful interactive charts.</p>
+<h2 id="plotting">Plotting<a class="headerlink" href="#plotting" title="Permanent link">&para;</a></h2>
+<p>Either way, with an <code>EmbeddingSet</code> you can create meaningful interactive charts.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;man&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">)</span>
 </code></pre></div>
 
@@ -846,7 +846,7 @@ fetch('tut2-chart2.json')
 .catch(err => { throw err });
 </script>
 
-<h3 id="combining-charts">Combining Charts</h3>
+<h3 id="combining-charts">Combining Charts<a class="headerlink" href="#combining-charts" title="Permanent link">&para;</a></h3>
 <p>Often you'd like to compare the effect of a mapping. Since we make our interactive
 charts with altair we get a nice api to stack charts next to eachother.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">orig_chart</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;man&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">)</span>
@@ -868,7 +868,7 @@ fetch('tut2-chart3.json')
 <p>You may have noticed that these charts appear in the documentation, fully interactively.
 This is another nice feature of Altair, the charts can be serialized in a json format and
 hosted on the web.</p>
-<h2 id="more-transformation">More Transformation</h2>
+<h2 id="more-transformation">More Transformation<a class="headerlink" href="#more-transformation" title="Permanent link">&para;</a></h2>
 <p>But there are more transformations that we might visualise. Let's demonstrate two here.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">Pca</span><span class="p">,</span> <span class="n">Umap</span>
 
@@ -877,8 +877,8 @@ hosted on the web.</p>
 <span class="n">umap_emb</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Umap</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 </code></pre></div>
 
-<p>The transform method is able to take a transformation, let's say <code class="codehilite"><span class="err">pca(2)</span></code> and this will change
-the embeddings in the set. It might also create new embeddings. In case of <code class="codehilite"><span class="err">pca(2)</span></code> it will
+<p>The transform method is able to take a transformation, let's say <code>pca(2)</code> and this will change
+the embeddings in the set. It might also create new embeddings. In case of <code>pca(2)</code> it will
 also add two embeddings which represent the principal components. This is nice because
 that means that we can plot along those axes.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">plot_pca</span> <span class="o">=</span> <span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;pca_0&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">)</span>
@@ -897,14 +897,14 @@ fetch('tut2-chart4.json')
 .catch(err => { throw err });
 </script>
 
-<h3 id="operators">Operators</h3>
+<h3 id="operators">Operators<a class="headerlink" href="#operators" title="Permanent link">&para;</a></h3>
 <p>Note that the operators that we've seen before can also be added to a
 transformation pipeline.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span> <span class="o">|</span> <span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;man&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">e</span><span class="p">[</span><span class="s2">&quot;woman&quot;</span><span class="p">]))</span>
 <span class="c1"># (Emb | (Emb[man] - Emb[woman])).pca_2()</span>
 </code></pre></div>
 
-<h3 id="more-components">More Components</h3>
+<h3 id="more-components">More Components<a class="headerlink" href="#more-components" title="Permanent link">&para;</a></h3>
 <p>Suppose now that we'd like to visualise three principal components. We could do this.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">pca_emb</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">p1</span> <span class="o">=</span> <span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;pca_0&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">)</span>
@@ -923,7 +923,7 @@ fetch('tut2-chart5.json')
 .catch(err => { throw err });
 </script>
 
-<h3 id="more-charts">More Charts</h3>
+<h3 id="more-charts">More Charts<a class="headerlink" href="#more-charts" title="Permanent link">&para;</a></h3>
 <p>Let's not draw two components at a time, let's draw all of them.</p>
 <p><div class="codehilite"><pre><span></span><code><span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive_matrix</span><span class="p">(</span><span class="s1">&#39;pca_0&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_2&#39;</span><span class="p">)</span>
 </code></pre></div>
@@ -954,61 +954,62 @@ fetch('tut2-chart6.json')
       </main>
       
         
-<footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../embeddings/" title="What Are Embeddings" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
+  <footer class="md-footer">
+    
+      <div class="md-footer-nav">
+        <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="../embeddings/" title="What Are Embeddings" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span class="md-footer-nav__direction">
+                    Previous
+                  </span>
+                  What Are Embeddings
                 </span>
-                What Are Embeddings
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../languages/" title="Language Options" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
+              </div>
+            </a>
+          
+          
+            <a href="../languages/" title="Language Options" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span class="md-footer-nav__direction">
+                    Next
+                  </span>
+                  Language Options
                 </span>
-                Language Options
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2020 <a href="https://twitter.com/Rasa_HQ">Rasa</a>, Maintained by <a href="https://twitter.com/fishnets88">Vincent</a>.
-          </div>
-        
-        powered by
-        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
-        and
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs</a>
+              </div>
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+              </div>
+            </a>
+          
+        </nav>
       </div>
-      
+    
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          
+            <div class="md-footer-copyright__highlight">
+              Copyright &copy; 2020 <a href="https://twitter.com/Rasa_HQ">Rasa</a>, Maintained by <a href="https://twitter.com/fishnets88">Vincent</a>.
+            </div>
+          
+          powered by
+          <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+          and
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs</a>
+        </div>
+        
+      </div>
     </div>
-  </div>
-</footer>
+    <script async defer data-domain="rasahq.github.io/whatlies" src="https://plausible.io/js/plausible.js"></script>
+  </footer>
       
     </div>
     

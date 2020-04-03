@@ -682,7 +682,7 @@
 
 <p>In this tool we have support for different language backends and
 depending on the language backend you may get slightly different behavior.</p>
-<h2 id="multiple-tokens">Multiple Tokens</h2>
+<h2 id="multiple-tokens">Multiple Tokens<a class="headerlink" href="#multiple-tokens" title="Permanent link">&para;</a></h2>
 <p>We can have spaCy summerize multiple tokens if we'd like.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">SpacyLanguage</span>
 <span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">Pca</span>
@@ -712,7 +712,7 @@ fetch('spacyvec-1.json')
 
 <p>Under the hood it will be calculating the averages of the
 embeddings but we can still plot these.</p>
-<h2 id="bert-style">Bert Style</h2>
+<h2 id="bert-style">Bert Style<a class="headerlink" href="#bert-style" title="Permanent link">&para;</a></h2>
 <p>But spaCy also offers transformers these days, which means that
 we can play with a extra bit of context.</p>
 <div class="codehilite"><pre><span></span><code>pip install spacy-transformers
@@ -728,10 +728,10 @@ two embeddings selected with context.</p>
                <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;[store] this in the drawer please.&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span>  <span class="c1"># False</span>
 </code></pre></div>
 
-<p>In the first case we get the embedding for <code class="codehilite"><span class="err">store</span></code> in the context of
-<code class="codehilite"><span class="err">Going to the store</span></code> while in the second case we have <code class="codehilite"><span class="err">store</span></code> in the
-context of <code class="codehilite"><span class="err">store this in the drawer please</span></code>.</p>
-<h2 id="sense-to-vec">Sense to Vec</h2>
+<p>In the first case we get the embedding for <code>store</code> in the context of
+<code>Going to the store</code> while in the second case we have <code>store</code> in the
+context of <code>store this in the drawer please</code>.</p>
+<h2 id="sense-to-vec">Sense to Vec<a class="headerlink" href="#sense-to-vec" title="Permanent link">&para;</a></h2>
 <p>We also have support for the <a href="https://github.com/explosion/sense2vec">sense2vec model</a>. To
 get it to work you first need to download and unzip the pretrained vectors
 found <a href="https://github.com/explosion/sense2vec#pretrained-vectors">here</a> but after
@@ -765,27 +765,27 @@ fetch('sense2vec-1.json')
 .catch(err => { throw err });
 </script>
 
-<p>Notice how <code class="codehilite"><span class="err">duck|VERB</span></code> is certainly different from <code class="codehilite"><span class="err">duck|NOUN</span></code>.</p>
-<h3 id="similarity">Similarity</h3>
-<p>Another nice feature of <code class="codehilite"><span class="err">sense2vec</span></code> is the ability to find
+<p>Notice how <code>duck|VERB</code> is certainly different from <code>duck|NOUN</code>.</p>
+<h3 id="similarity">Similarity<a class="headerlink" href="#similarity" title="Permanent link">&para;</a></h3>
+<p>Another nice feature of <code>sense2vec</code> is the ability to find
 tokens that are nearby. We could do the following.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">lang</span><span class="o">.</span><span class="n">score_similar</span><span class="p">(</span><span class="s2">&quot;duck|VERB&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <p>This will result in a long list with embedding-score tuples.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">[(Emb[crouch|VERB], 0.8064),</span>
-<span class="err"> (Emb[ducking|VERB], 0.7877),</span>
-<span class="err"> (Emb[sprint|VERB], 0.7653),</span>
-<span class="err"> (Emb[scoot|VERB], 0.7647),</span>
-<span class="err"> (Emb[dart|VERB], 0.7621),</span>
-<span class="err"> (Emb[jump|VERB], 0.7528),</span>
-<span class="err"> (Emb[peek|VERB], 0.7518),</span>
-<span class="err"> (Emb[ducked|VERB], 0.7504),</span>
-<span class="err"> (Emb[bonk|VERB], 0.7495),</span>
-<span class="err"> (Emb[backflip|VERB], 0.746)]</span>
+<div class="codehilite"><pre><span></span><code>[(Emb[crouch|VERB], 0.8064),
+ (Emb[ducking|VERB], 0.7877),
+ (Emb[sprint|VERB], 0.7653),
+ (Emb[scoot|VERB], 0.7647),
+ (Emb[dart|VERB], 0.7621),
+ (Emb[jump|VERB], 0.7528),
+ (Emb[peek|VERB], 0.7518),
+ (Emb[ducked|VERB], 0.7504),
+ (Emb[bonk|VERB], 0.7495),
+ (Emb[backflip|VERB], 0.746)]
 </code></pre></div>
 
-<p>We can also ask it to return an <code class="codehilite"><span class="err">EmbeddingSet</span></code> instead. That's what we're doing
+<p>We can also ask it to return an <code>EmbeddingSet</code> instead. That's what we're doing
 below. We take our original embeddingset and we merge it with two more before
 we visualise it.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">emb_bank_verb</span> <span class="o">=</span> <span class="n">lang</span><span class="o">.</span><span class="n">embset_similar</span><span class="p">(</span><span class="s2">&quot;bank|VERB&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -824,61 +824,62 @@ fetch('sense2vec-2.json')
       </main>
       
         
-<footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../embeddingsets/" title="Interactive Visualisation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
+  <footer class="md-footer">
+    
+      <div class="md-footer-nav">
+        <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="../embeddingsets/" title="Interactive Visualisation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span class="md-footer-nav__direction">
+                    Previous
+                  </span>
+                  Interactive Visualisation
                 </span>
-                Interactive Visualisation
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../transformations/" title="Transformation Viz" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
+              </div>
+            </a>
+          
+          
+            <a href="../transformations/" title="Transformation Viz" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span class="md-footer-nav__direction">
+                    Next
+                  </span>
+                  Transformation Viz
                 </span>
-                Transformation Viz
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2020 <a href="https://twitter.com/Rasa_HQ">Rasa</a>, Maintained by <a href="https://twitter.com/fishnets88">Vincent</a>.
-          </div>
-        
-        powered by
-        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
-        and
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs</a>
+              </div>
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+              </div>
+            </a>
+          
+        </nav>
       </div>
-      
+    
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          
+            <div class="md-footer-copyright__highlight">
+              Copyright &copy; 2020 <a href="https://twitter.com/Rasa_HQ">Rasa</a>, Maintained by <a href="https://twitter.com/fishnets88">Vincent</a>.
+            </div>
+          
+          powered by
+          <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+          and
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs</a>
+        </div>
+        
+      </div>
     </div>
-  </div>
-</footer>
+    <script async defer data-domain="rasahq.github.io/whatlies" src="https://plausible.io/js/plausible.js"></script>
+  </footer>
       
     </div>
     

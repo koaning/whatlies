@@ -784,8 +784,8 @@
                 
                   <h1>What Are Embeddings</h1>
                 
-                <h2 id="imaginary-tokens">Imaginary Tokens</h2>
-<p>Let's make a few word-embeddings. The basic object for this is a <code class="codehilite"><span class="err">Token</span></code> object.</p>
+                <h2 id="imaginary-tokens">Imaginary Tokens<a class="headerlink" href="#imaginary-tokens" title="Permanent link">&para;</a></h2>
+<p>Let's make a few word-embeddings. The basic object for this is a <code>Token</code> object.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies</span> <span class="kn">import</span> <span class="n">Embedding</span>
 
 <span class="n">foo</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span> 
@@ -814,9 +814,9 @@ to make it visual. </p>
 </code></pre></div>
 
 <p><img alt="" src="tut1-img1.png" /></p>
-<h2 id="meaning">Meaning</h2>
-<p>Let's come up with imaginary embeddings for <code class="codehilite"><span class="err">man</span></code>, <code class="codehilite"><span class="err">woman</span></code>, <code class="codehilite"><span class="err">king</span></code> and <code class="codehilite"><span class="err">queen</span></code>. </p>
-<p>We will plot them using the <code class="codehilite"><span class="err">arrow</span></code> plotting type.</p>
+<h2 id="meaning">Meaning<a class="headerlink" href="#meaning" title="Permanent link">&para;</a></h2>
+<p>Let's come up with imaginary embeddings for <code>man</code>, <code>woman</code>, <code>king</code> and <code>queen</code>. </p>
+<p>We will plot them using the <code>arrow</code> plotting type.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">man</span>   <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
 <span class="n">woman</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;woman&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">])</span>
 <span class="n">king</span>  <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;king&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">])</span>
@@ -830,7 +830,7 @@ to make it visual. </p>
 </code></pre></div>
 
 <p><img alt="" src="tut1-img2.png" /></p>
-<h3 id="king-man-woman">King - Man + Woman</h3>
+<h3 id="king-man-woman">King - Man + Woman<a class="headerlink" href="#king-man-woman" title="Permanent link">&para;</a></h3>
 <p>We can confirm the classic approximation that everybody likes to mention.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">man</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
 <span class="n">woman</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
@@ -843,8 +843,8 @@ to make it visual. </p>
 </code></pre></div>
 
 <p><img alt="" src="tut1-img3.png" /></p>
-<h3 id="king-queen">King - Queen</h3>
-<p>But maybe I am interested in the vector that spans between <code class="codehilite"><span class="err">queen</span></code> and <code class="codehilite"><span class="err">king</span></code>. I'll use the <code class="codehilite"><span class="err">-</span></code> operator here to indicate the connection between the two tokens. </p>
+<h3 id="king-queen">King - Queen<a class="headerlink" href="#king-queen" title="Permanent link">&para;</a></h3>
+<p>But maybe I am interested in the vector that spans between <code>queen</code> and <code>king</code>. I'll use the <code>-</code> operator here to indicate the connection between the two tokens. </p>
 <blockquote>
 <p>Notice the poetry there... </p>
 </blockquote>
@@ -857,8 +857,8 @@ to make it visual. </p>
 </code></pre></div>
 
 <p><img alt="" src="tut1-img4.png" /></p>
-<h3 id="man-queen-king">Man | (Queen - King)</h3>
-<p>But that space <code class="codehilite"><span class="err">queen-king</span></code> ... we can also filter all that information out of our words. Linear algebra would call this "making it orthogonal". The <code class="codehilite"><span class="err">|</span></code> operator makes sense here.</p>
+<h3 id="man-queen-king">Man | (Queen - King)<a class="headerlink" href="#man-queen-king" title="Permanent link">&para;</a></h3>
+<p>But that space <code>queen-king</code> ... we can also filter all that information out of our words. Linear algebra would call this "making it orthogonal". The <code>|</code> operator makes sense here.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">man</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
 <span class="n">woman</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 <span class="n">king</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
@@ -870,21 +870,21 @@ to make it visual. </p>
 </code></pre></div>
 
 <p><img alt="" src="tut1-img5.png" /></p>
-<h2 id="embedding-mathmatics">Embedding Mathmatics</h2>
+<h2 id="embedding-mathmatics">Embedding Mathmatics<a class="headerlink" href="#embedding-mathmatics" title="Permanent link">&para;</a></h2>
 <p>This is interesting. We have our original tokens and can filter away 
-the <code class="codehilite"><span class="err">(man-woman)</span></code> axis. By doing this we get "new" embeddings with 
+the <code>(man-woman)</code> axis. By doing this we get "new" embeddings with 
 different properties. Numerically we can confirm in our example that 
-this new space maps <code class="codehilite"><span class="err">Emb(man)</span></code> to be very similar to <code class="codehilite"><span class="err">Emb(woman)</span></code>.</p>
+this new space maps <code>Emb(man)</code> to be very similar to <code>Emb(woman)</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">man</span> <span class="o">|</span> <span class="p">(</span><span class="n">queen</span> <span class="o">-</span> <span class="n">king</span><span class="p">))</span><span class="o">.</span><span class="n">vector</span>    <span class="c1"># array([0.5, 0. ]</span>
 <span class="p">(</span><span class="n">woman</span> <span class="o">|</span> <span class="p">(</span><span class="n">queen</span> <span class="o">-</span> <span class="n">king</span><span class="p">))</span><span class="o">.</span><span class="n">vector</span>  <span class="c1"># array([0.49999999, 1e-16. ]</span>
 </code></pre></div>
 
-<p>The same holds for <code class="codehilite"><span class="err">Emb(queen)</span></code> and <code class="codehilite"><span class="err">Emb(man)</span></code>.</p>
+<p>The same holds for <code>Emb(queen)</code> and <code>Emb(man)</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">queen</span> <span class="o">|</span> <span class="p">(</span><span class="n">man</span> <span class="o">-</span> <span class="n">woman</span><span class="p">))</span><span class="o">.</span><span class="n">vector</span>   <span class="c1"># array([0.7, 0. ]</span>
 <span class="p">(</span><span class="n">king</span> <span class="o">|</span> <span class="p">(</span><span class="n">man</span> <span class="o">-</span> <span class="n">woman</span><span class="p">))</span><span class="o">.</span><span class="n">vector</span>    <span class="c1"># array([0.7, 0. ]</span>
 </code></pre></div>
 
-<h2 id="more-operations">More Operations</h2>
+<h2 id="more-operations">More Operations<a class="headerlink" href="#more-operations" title="Permanent link">&para;</a></h2>
 <p>Let's consider some other operations. For this we will 
 make new embeddings. </p>
 <div class="codehilite"><pre><span></span><code><span class="n">man</span>   <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">])</span>
@@ -901,9 +901,9 @@ make new embeddings. </p>
 </code></pre></div>
 
 <p><img alt="" src="tut1-img6.png" /></p>
-<h2 id="mapping-unto-tokens">Mapping Unto Tokens</h2>
+<h2 id="mapping-unto-tokens">Mapping Unto Tokens<a class="headerlink" href="#mapping-unto-tokens" title="Permanent link">&para;</a></h2>
 <p>In the previous example we demonstrated how to map "away" from vectors. 
-But we can also map "unto" vectors. For this we introduce the <code class="codehilite"><span class="err">&gt;&gt;</span></code> operator.</p>
+But we can also map "unto" vectors. For this we introduce the <code>&gt;&gt;</code> operator.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">man</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
 <span class="n">woman</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 <span class="p">(</span><span class="n">woman</span> <span class="o">&gt;&gt;</span> <span class="n">man</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
@@ -916,25 +916,25 @@ But we can also map "unto" vectors. For this we introduce the <code class="codeh
 </code></pre></div>
 
 <p><img alt="" src="tut1-img7.png" /></p>
-<h3 id="measuring-the-mapping">Measuring the Mapping</h3>
-<p>Note that the <code class="codehilite"><span class="err">woman</span></code> vector in our embedding maps partially unto <code class="codehilite"><span class="err">man</span></code> and 
-overshoots a bit on <code class="codehilite"><span class="err">king</span></code>. We can quantify this by measuring what percentage 
-of the vector is covered. This factor can be retreived by using the <code class="codehilite"><span class="err">&gt;</span></code> operator.</p>
+<h3 id="measuring-the-mapping">Measuring the Mapping<a class="headerlink" href="#measuring-the-mapping" title="Permanent link">&para;</a></h3>
+<p>Note that the <code>woman</code> vector in our embedding maps partially unto <code>man</code> and 
+overshoots a bit on <code>king</code>. We can quantify this by measuring what percentage 
+of the vector is covered. This factor can be retreived by using the <code>&gt;</code> operator.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">woman</span> <span class="o">&gt;</span> <span class="n">king</span>  <span class="c1"># 1.3749</span>
 <span class="n">woman</span> <span class="o">&gt;</span> <span class="n">man</span>   <span class="c1"># 0.7522</span>
 </code></pre></div>
 
-<h2 id="interesting">Interesting</h2>
-<p>This suggests that perhaps ... <code class="codehilite"><span class="err">king</span></code> and <code class="codehilite"><span class="err">man</span></code> can be used as axes for plotting? </p>
+<h2 id="interesting">Interesting<a class="headerlink" href="#interesting" title="Permanent link">&para;</a></h2>
+<p>This suggests that perhaps ... <code>king</code> and <code>man</code> can be used as axes for plotting? </p>
 <p>It would also work if the embeddings were in a very high dimensional plane. </p>
-<p>No matter how large the embedding, we could've said <code class="codehilite"><span class="err">woman</span></code> spans 1.375 of 
-<code class="codehilite"><span class="err">king</span></code> and 0.752 of <code class="codehilite"><span class="err">man</span></code>. Given <code class="codehilite"><span class="err">king</span></code> as the x-axis and <code class="codehilite"><span class="err">man</span></code> as the y-axis, 
-we can map the token of <code class="codehilite"><span class="err">man</span></code> to a 2d representation (1.375, 0.752) 
+<p>No matter how large the embedding, we could've said <code>woman</code> spans 1.375 of 
+<code>king</code> and 0.752 of <code>man</code>. Given <code>king</code> as the x-axis and <code>man</code> as the y-axis, 
+we can map the token of <code>man</code> to a 2d representation (1.375, 0.752) 
 which is easy to plot.</p>
 <p>This is an interesting way of thinking about it. We can plot high 
 dimensional vectors in 2d as long as we can plot it along two axes. 
 An axis could be a vector of a token, or a token that has had operations on it. </p>
-<p>Note that this <code class="codehilite"><span class="err">&gt;</span></code> mapping can also cause negative values. </p>
+<p>Note that this <code>&gt;</code> mapping can also cause negative values. </p>
 <div class="codehilite"><pre><span></span><code><span class="n">foo</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">])</span>
 
 <span class="n">foo</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;pink&quot;</span><span class="p">)</span>
@@ -951,7 +951,7 @@ An axis could be a vector of a token, or a token that has had operations on it. 
 <div class="codehilite"><pre><span></span><code><span class="n">foo</span> <span class="o">&gt;</span> <span class="n">woman</span> <span class="c1"># -0.6769</span>
 </code></pre></div>
 
-<h2 id="plotting-high-dimensions">Plotting High Dimensions</h2>
+<h2 id="plotting-high-dimensions">Plotting High Dimensions<a class="headerlink" href="#plotting-high-dimensions" title="Permanent link">&para;</a></h2>
 <p>Let's confirm this idea by using some spaCy word-vectors.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">spacy</span> 
 <span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;en_core_web_md&#39;</span><span class="p">)</span>
@@ -995,61 +995,62 @@ to deal with collections of embeddings.</p>
       </main>
       
         
-<footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../.." title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
+  <footer class="md-footer">
+    
+      <div class="md-footer-nav">
+        <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="../.." title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span class="md-footer-nav__direction">
+                    Previous
+                  </span>
+                  Home
                 </span>
-                Home
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../embeddingsets/" title="Interactive Visualisation" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
+              </div>
+            </a>
+          
+          
+            <a href="../embeddingsets/" title="Interactive Visualisation" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span class="md-footer-nav__direction">
+                    Next
+                  </span>
+                  Interactive Visualisation
                 </span>
-                Interactive Visualisation
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2020 <a href="https://twitter.com/Rasa_HQ">Rasa</a>, Maintained by <a href="https://twitter.com/fishnets88">Vincent</a>.
-          </div>
-        
-        powered by
-        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
-        and
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs</a>
+              </div>
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+              </div>
+            </a>
+          
+        </nav>
       </div>
-      
+    
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          
+            <div class="md-footer-copyright__highlight">
+              Copyright &copy; 2020 <a href="https://twitter.com/Rasa_HQ">Rasa</a>, Maintained by <a href="https://twitter.com/fishnets88">Vincent</a>.
+            </div>
+          
+          powered by
+          <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+          and
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs</a>
+        </div>
+        
+      </div>
     </div>
-  </div>
-</footer>
+    <script async defer data-domain="rasahq.github.io/whatlies" src="https://plausible.io/js/plausible.js"></script>
+  </footer>
       
     </div>
     

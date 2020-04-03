@@ -37,7 +37,7 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../images/fig.png">
       <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
     
     
@@ -100,7 +100,7 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href="https://rasahq.github.io/whatlies/" title="whatlies" aria-label="whatlies" class="md-header-nav__button md-logo">
           
-            <i class="md-icon"></i>
+            <i class="md-icon">album</i>
           
         </a>
       </div>
@@ -181,6 +181,54 @@
         
       
       
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../tutorial/embeddings/" class="md-tabs__link">
+          Getting Started
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../api/embedding/" class="md-tabs__link">
+          API
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
       <main class="md-main" role="main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
@@ -192,7 +240,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="https://rasahq.github.io/whatlies/" title="whatlies" class="md-nav__button md-logo">
       
-        <i class="md-icon"></i>
+        <i class="md-icon">album</i>
       
     </a>
     whatlies
@@ -513,7 +561,12 @@ a discussion on these topics in github.</p>
 <p><strong>Multiple Plot Metrics</strong></p>
 <p>At the moment we only project onto axes to get x/y coordinates.
 It might make sense to show the cosine distance to these
-axes instead. We might allow for flexible distance metrics.</p>
+axes instead.</p>
+<p>And if we're allowing cosine distance ... we might allow for
+flexible distance metrics in general.</p>
+<p><strong>Table Summaries</strong></p>
+<p>We've got a focus on charts now, but one imagines that calculating
+tables with summary statistics is also relevant.</p>
 <p><strong>Difference Charts</strong></p>
 <p>It might be nice to show where a point was <em>before</em> a transformation
 and then show where it is <em>after</em>. Especially in the realm of de-biasing
@@ -533,6 +586,10 @@ download manually.</p>
 <li>it would be nice to be able to test multiple models without
 having to download gigabytes into github actions</li>
 </ul>
+<p><strong>More plots</strong></p>
+<p>There may be visualisations worth adding that we've not considered.
+Like the bar chart discussed in <a href="https://github.com/RasaHQ/whatlies/issues/8">this github issue</a>.</p>
+<p><img alt="" src="https://user-images.githubusercontent.com/1019791/76018898-2b1b7280-5f21-11ea-83b1-ec764eb4d5e3.png" /></p>
                 
                   
                 

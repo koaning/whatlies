@@ -1,10 +1,17 @@
 site_name: whatlies
+extra_css: [style.css]
+repo_url: https://github.com/RasaHQ/whatlies
+site_url: https://rasahq.github.io/whatlies/
+site_description: A python package to discover "what lies" in word embeddings.
+site_author: Vincent D. Warmerdam @ Rasa Research
+
 nav:
   - Home: index.md
-  - What Are Embeddings: tutorial/embeddings/index.md
-  - Interactive Visualisation: tutorial/embeddingsets/index.md
-  - Language Options: tutorial/languages/index.md
-  - Transformation Viz: tutorial/transformations/index.md
+  - Getting Started:
+    - What Are Embeddings: tutorial/embeddings/index.md
+    - Interactive Visualisation: tutorial/embeddingsets/index.md
+    - Language Options: tutorial/languages/index.md
+    - Transformation Viz: tutorial/transformations/index.md
   - API:
     - Embedding: api/embedding.md
     - EmbeddingSet: api/embeddingset.md
@@ -19,6 +26,8 @@ nav:
   - Roadmap: roadmap.md
 plugins:
   - mkdocstrings
+  - search
+copyright: Copyright &copy; 2020 <a href="https://twitter.com/Rasa_HQ">Rasa</a>, Maintained by <a href="https://twitter.com/fishnets88">Vincent</a>.
 theme:
   name: material
   palette:

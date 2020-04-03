@@ -1,4 +1,4 @@
-# whatlies
+# WhatLies
 
 <img src="logo.png">
 
@@ -33,6 +33,8 @@ operators.
 
 But we also support other operations. Like **pca**  and **umap**;
 
+<small>Just like before. Click. Drag. Zoom in. Zoom out.</small>
+
 <div id="vis2"></div>
 
 <script src="interactive1.js"></script>
@@ -47,7 +49,7 @@ You can install the package via pip;
 pip install whatlies
 ```
 
-This will install dependencies but it **won't** install all the language models you might want to visualise. 
+This will install dependencies but it **won't** install all the language models you might want to visualise.
 
 ## Local Development
 

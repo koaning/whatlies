@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+from whatlies import __version__ as version
 
 base_packages = [
     "numpy>=1.16.0",
@@ -35,7 +36,7 @@ dev_packages = docs_packages + test_packages
 
 setup(
     name='whatlies',
-    version='0.2.1',
+    version=version,
     author="Vincent D. Warmerdam",
     packages=find_packages(exclude=['notebooks', 'docs']),
     description="Make visualisations to learn `what lies` in word embeddings.",

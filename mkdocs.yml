@@ -30,6 +30,7 @@ plugins:
 copyright: Copyright &copy; 2020 <a href="https://twitter.com/Rasa_HQ">Rasa</a>, Maintained by <a href="https://twitter.com/fishnets88">Vincent</a>.
 theme:
   name: material
+  custom_dir: theme/
   favicon: images/fig.png
   logo:
     icon: album
@@ -38,3 +39,6 @@ theme:
   palette:
     primary: white
     accent: purple
+markdown_extensions:
+  - toc:
+      permalink: true

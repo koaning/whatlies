@@ -1,10 +1,12 @@
 .PHONY: docs
 
 install:
-	python setup.py install
+	python -m pip install --upgrade pip
+	python -m pip install -e .
 
 develop: install
-	pip install -e ".[dev]"
+	python -m pip install -e ".[dev]"
+	python -m pip install --upgrade pip wheel setuptools twine
 	python setup.py develop
 	pre-commit install
 

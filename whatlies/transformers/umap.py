@@ -1,5 +1,8 @@
+import warnings
+
 from umap import UMAP
 import numpy as np
+from numba import NumbaPerformanceWarning
 
 from whatlies import Embedding, EmbeddingSet
 from whatlies.transformers.common import embset_to_X, new_embedding_dict
@@ -45,12 +48,17 @@ class Umap:
 
     def fit(self, embset):
         names, X = embset_to_X(embset=embset)
-        self.tfm.fit(X)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", category=UserWarning)
+            warnings.simplefilter("ignore", category=NumbaPerformanceWarning)
+            self.tfm.fit(X)
         self.is_fitted = True
 
     def transform(self, embset):
         names, X = embset_to_X(embset=embset)
-        new_vecs = self.tfm.transform(X)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", category=NumbaPerformanceWarning)
+            new_vecs = self.tfm.transform(X)
         names_out = names + [f"umap_{i}" for i in range(self.n_components)]
         vectors_out = np.concatenate([new_vecs, np.eye(self.n_components)])
         new_dict = new_embedding_dict(names_out, vectors_out, embset)

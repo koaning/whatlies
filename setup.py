@@ -1,5 +1,4 @@
 from setuptools import setup, find_packages
-from whatlies import __version__ as version
 
 base_packages = [
     "numpy>=1.16.0",
@@ -7,10 +6,10 @@ base_packages = [
     "scikit-learn>=0.20.2",
     "umap-learn>=0.3.10",
     "altair>=4.0.1",
-    "matplotlib>=3.2.0rc3",
+    "matplotlib>=3.2.0",
     "spacy>=2.2.3",
     "networkx>=2.4",
-    "sense2vec>=1.0.2"
+    "sense2vec>=1.0.2",
 ]
 
 docs_packages = [
@@ -29,14 +28,15 @@ test_packages = [
     "pytest>=4.0.2",
     "black>=19.3b0",
     "pytest-cov>=2.6.1",
-    "nbval>=0.9.5"
+    "nbval>=0.9.5",
+    "pre-commit>=2.2.0"
 ]
 
 dev_packages = docs_packages + test_packages
 
 setup(
     name='whatlies',
-    version=version,
+    version="0.2.2",
     author="Vincent D. Warmerdam",
     packages=find_packages(exclude=['notebooks', 'docs']),
     description="Make visualisations to learn `what lies` in word embeddings.",

@@ -13,13 +13,12 @@ base_packages = [
 ]
 
 docs_packages = [
-    "mkdocs>=1.0.4",
-    "mkdocs-material>=4.6.3",
-    "mkdocs-jupyter>=0.10.2",
+    "mkdocs==1.1",
+    "mkdocs-material==4.6.3",
+    "mkdocstrings==0.8.0",
     "jupyterlab>=0.35.4",
     "nbstripout>=0.3.7",
     "nbval>=0.9.5",
-    "mkautodoc>=0.1.0"
 ]
 
 test_packages = [

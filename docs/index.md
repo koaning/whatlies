@@ -4,6 +4,12 @@
 
 A library that tries help you to understand. "What lies in word embeddings?"
 
+## Brief Introduction
+
+If you prefer a video tutorial before reading the getting started guide watch this;
+
+<iframe width="100%" height=450 src="https://www.youtube-nocookie.com/embed/FwkwC7IJWO0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Produced
 
 <img src="square-logo.svg" width=150 height=150 align="right">

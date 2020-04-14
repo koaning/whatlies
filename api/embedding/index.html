@@ -728,7 +728,7 @@
 </tbody>
 </table>
 <p>Usage:</p>
-<div class="codehilite"><pre><span></span><code>from whatlies.embedding import Embedding
+<div class="highlight"><pre><span></span><code>from whatlies.embedding import Embedding
 
 foo = Embedding(&quot;foo&quot;, [0.1, 0.3])
 bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
@@ -737,9 +737,8 @@ foo | bar
 foo - bar + bar
 </code></pre></div>
 
-<h2 id="whatlies.embedding.Embedding.__add__"><code class="codehilite"><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__add__" title="Permanent link">&para;</a></h2>
-<div class="autodoc">
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>39
+<h2 id="whatlies.embedding.Embedding.__add__"><code class="highlight"><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__add__" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>39
 40
 41
 42
@@ -757,7 +756,7 @@ foo - bar + bar
 54
 55
 56
-57</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Embedding&quot;</span><span class="p">:</span>
+57</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Embedding&quot;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add two embeddings together.</span>
 
@@ -773,7 +772,7 @@ foo - bar + bar
 <span class="sd">        ```</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">copied</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="n">copied</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{self.name}</span><span class="s2"> + </span><span class="si">{other.name}</span><span class="s2">)&quot;</span>
+        <span class="n">copied</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">other</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">)&quot;</span>
         <span class="n">copied</span><span class="o">.</span><span class="n">vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vector</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">vector</span>
         <span class="k">return</span> <span class="n">copied</span>
 </code></pre></div>
@@ -782,7 +781,7 @@ foo - bar + bar
 </details>
 <p>Add two embeddings together.</p>
 <p>Usage:</p>
-<div class="codehilite"><pre><span></span><code>from whatlies.embedding import Embedding
+<div class="highlight"><pre><span></span><code>from whatlies.embedding import Embedding
 
 foo = Embedding(&quot;foo&quot;, [0.1, 0.3])
 bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
@@ -790,10 +789,8 @@ bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
 foo + bar
 </code></pre></div>
 
-</div>
-<h2 id="whatlies.embedding.Embedding.__gt__"><code class="codehilite"><span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__gt__" title="Permanent link">&para;</a></h2>
-<div class="autodoc">
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>80
+<h2 id="whatlies.embedding.Embedding.__gt__"><code class="highlight"><span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__gt__" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>80
 81
 82
 83
@@ -808,7 +805,7 @@ foo + bar
 92
 93
 94
-95</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+95</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Measures the size of one embedding to another one.</span>
 
@@ -830,7 +827,7 @@ foo + bar
 </details>
 <p>Measures the size of one embedding to another one.</p>
 <p>Usage:</p>
-<div class="codehilite"><pre><span></span><code>from whatlies.embedding import Embedding
+<div class="highlight"><pre><span></span><code>from whatlies.embedding import Embedding
 
 foo = Embedding(&quot;foo&quot;, [0.1, 0.3])
 bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
@@ -838,10 +835,8 @@ bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
 foo &gt; bar
 </code></pre></div>
 
-</div>
-<h2 id="whatlies.embedding.Embedding.__or__"><code class="codehilite"><span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__or__" title="Permanent link">&para;</a></h2>
-<div class="autodoc">
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>123
+<h2 id="whatlies.embedding.Embedding.__or__"><code class="highlight"><span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__or__" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>123
 124
 125
 126
@@ -859,7 +854,7 @@ foo &gt; bar
 138
 139
 140
-141</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+141</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Makes one embedding orthogonal to the other one.</span>
 
@@ -875,7 +870,7 @@ foo &gt; bar
 <span class="sd">        ```</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">copied</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="n">copied</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{self.name}</span><span class="s2"> | </span><span class="si">{other.name}</span><span class="s2">)&quot;</span>
+        <span class="n">copied</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">other</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">)&quot;</span>
         <span class="n">copied</span><span class="o">.</span><span class="n">vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vector</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span> <span class="o">&gt;&gt;</span> <span class="n">other</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span>
         <span class="k">return</span> <span class="n">copied</span>
 </code></pre></div>
@@ -884,7 +879,7 @@ foo &gt; bar
 </details>
 <p>Makes one embedding orthogonal to the other one.</p>
 <p>Usage:</p>
-<div class="codehilite"><pre><span></span><code>from whatlies.embedding import Embedding
+<div class="highlight"><pre><span></span><code>from whatlies.embedding import Embedding
 
 foo = Embedding(&quot;foo&quot;, [0.1, 0.3])
 bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
@@ -892,10 +887,8 @@ bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
 foo | bar
 </code></pre></div>
 
-</div>
-<h2 id="whatlies.embedding.Embedding.__rshift__"><code class="codehilite"><span class="fm">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__rshift__" title="Permanent link">&para;</a></h2>
-<div class="autodoc">
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 97
+<h2 id="whatlies.embedding.Embedding.__rshift__"><code class="highlight"><span class="fm">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__rshift__" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 97
  98
  99
 100
@@ -918,7 +911,7 @@ foo | bar
 117
 118
 119
-120</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+120</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Maps an embedding unto another one.</span>
 
@@ -939,7 +932,7 @@ foo | bar
             <span class="o">/</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">vector</span><span class="p">))</span>
             <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">vector</span>
         <span class="p">)</span>
-        <span class="n">copied</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{self.name}</span><span class="s2"> &gt;&gt; </span><span class="si">{other.name}</span><span class="s2">)&quot;</span>
+        <span class="n">copied</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> &gt;&gt; </span><span class="si">{</span><span class="n">other</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">)&quot;</span>
         <span class="n">copied</span><span class="o">.</span><span class="n">vector</span> <span class="o">=</span> <span class="n">new_vec</span>
         <span class="k">return</span> <span class="n">copied</span>
 </code></pre></div>
@@ -948,7 +941,7 @@ foo | bar
 </details>
 <p>Maps an embedding unto another one.</p>
 <p>Usage:</p>
-<div class="codehilite"><pre><span></span><code>from whatlies.embedding import Embedding
+<div class="highlight"><pre><span></span><code>from whatlies.embedding import Embedding
 
 foo = Embedding(&quot;foo&quot;, [0.1, 0.3])
 bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
@@ -956,10 +949,8 @@ bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
 foo &gt;&gt; bar
 </code></pre></div>
 
-</div>
-<h2 id="whatlies.embedding.Embedding.__sub__"><code class="codehilite"><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__sub__" title="Permanent link">&para;</a></h2>
-<div class="autodoc">
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>59
+<h2 id="whatlies.embedding.Embedding.__sub__"><code class="highlight"><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__sub__" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>59
 60
 61
 62
@@ -977,7 +968,7 @@ foo &gt;&gt; bar
 74
 75
 76
-77</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+77</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Subtract two embeddings.</span>
 
@@ -993,7 +984,7 @@ foo &gt;&gt; bar
 <span class="sd">        ```</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">copied</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="n">copied</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{self.name}</span><span class="s2"> - </span><span class="si">{other.name}</span><span class="s2">)&quot;</span>
+        <span class="n">copied</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">other</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">)&quot;</span>
         <span class="n">copied</span><span class="o">.</span><span class="n">vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vector</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">vector</span>
         <span class="k">return</span> <span class="n">copied</span>
 </code></pre></div>
@@ -1002,7 +993,7 @@ foo &gt;&gt; bar
 </details>
 <p>Subtract two embeddings.</p>
 <p>Usage:</p>
-<div class="codehilite"><pre><span></span><code>from whatlies.embedding import Embedding
+<div class="highlight"><pre><span></span><code>from whatlies.embedding import Embedding
 
 foo = Embedding(&quot;foo&quot;, [0.1, 0.3])
 bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
@@ -1010,10 +1001,8 @@ bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
 foo - bar
 </code></pre></div>
 
-</div>
-<h2 id="whatlies.embedding.Embedding.plot"><code class="codehilite"><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_ops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.plot" title="Permanent link">&para;</a></h2>
-<div class="autodoc">
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>146
+<h2 id="whatlies.embedding.Embedding.plot"><code class="highlight"><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_ops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.plot" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>146
 147
 148
 149
@@ -1067,7 +1056,7 @@ foo - bar
 197
 198
 199
-200</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span>
+200</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;scatter&quot;</span><span class="p">,</span>
         <span class="n">x_axis</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1177,7 +1166,7 @@ foo - bar
 </tbody>
 </table>
 <p><strong>Usage</strong>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.embedding</span> <span class="kn">import</span> <span class="n">Embedding</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.embedding</span> <span class="kn">import</span> <span class="n">Embedding</span>
 
 <span class="n">foo</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
 <span class="n">bar</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
@@ -1185,7 +1174,6 @@ foo - bar
 <span class="n">foo</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">bar</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div></p>
-</div>
                 
                   
                 

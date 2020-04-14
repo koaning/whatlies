@@ -629,7 +629,7 @@
 <h2 id="state-and-colors">State and Colors<a class="headerlink" href="#state-and-colors" title="Permanent link">&para;</a></h2>
 <p>A goal of this package is to be able to compare the effect of transformations.</p>
 <p>That is why some of our transformations carry state. Umap is one such example.</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">SpacyLanguage</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">SpacyLanguage</span>
 <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s1">&#39;en_core_web_sm&#39;</span><span class="p">)</span>
 
 <span class="n">words1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;mouse&quot;</span><span class="p">,</span> <span class="s2">&quot;deer&quot;</span><span class="p">,</span> <span class="s2">&quot;elephant&quot;</span><span class="p">,</span> <span class="s2">&quot;zebra&quot;</span><span class="p">,</span> <span class="s2">&quot;fish&quot;</span><span class="p">,</span>
@@ -646,7 +646,7 @@
 <p>In this code the transformer is trained on <code>emb1</code> and applied on both <code>emb1</code> and <code>emb2</code>.
 We use the <code>.add_property</code> helper to indicate from which set the embeddings came.
 This way we can use it as a color in an interactive plot.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">both</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;umap_0&#39;</span><span class="p">,</span> <span class="s1">&#39;umap_1&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;set&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">both</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;umap_0&#39;</span><span class="p">,</span> <span class="s1">&#39;umap_1&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;set&#39;</span><span class="p">)</span>
 </code></pre></div>
 
 <div id="vis1"></div>

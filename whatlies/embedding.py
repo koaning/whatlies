@@ -1,6 +1,7 @@
 from copy import deepcopy
 
 import numpy as np
+from typing import Union
 from whatlies.common import handle_2d_plot
 
 
@@ -76,7 +77,6 @@ class Embedding:
         copied.vector = self.vector - other.vector
         return copied
 
-
     def __gt__(self, other):
         """
         Measures the size of one embedding to another one.
@@ -119,7 +119,6 @@ class Embedding:
         copied.vector = new_vec
         return copied
 
-
     def __or__(self, other):
         """
         Makes one embedding orthogonal to the other one.
@@ -143,11 +142,14 @@ class Embedding:
     def __repr__(self):
         return f"Emb[{self.name}]"
 
+    def __str__(self):
+        return self.name
+
     def plot(
         self,
         kind: str = "scatter",
-        x_axis: str = None,
-        y_axis: str = None,
+        x_axis: Union[str, 'Embedding'] = None,
+        y_axis: Union[str, 'Embedding'] = None,
         color: str = None,
         show_ops: bool = False,
         annot: bool = False,
@@ -158,7 +160,7 @@ class Embedding:
         Arguments:
             kind: what kind of plot to make, can be `scatter`, `arrow` or `text`
             x_axis: the x-axis to be used, must be given when dim > 2
-            x_axis: the y-axis to be used, must be given when dim > 2
+            y_axis: the y-axis to be used, must be given when dim > 2
             color: the color of the dots
             show_ops: setting to also show the applied operations, only works for `text`
             annot: should the points be annotated

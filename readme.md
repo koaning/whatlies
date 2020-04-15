@@ -98,6 +98,27 @@ To install the package as well as all the dependencies, simply run;
 pip install whatlies
 ```
 
+## Similar Projects
+
+There are some projects out there who are working on similar tools and we figured it fair to mention and compare them here.
+
+##### Tensorflow Projector
+
+From google there's the [tensorflow projector project](https://projector.tensorflow.org/). It offers highly interactive 3d visualisations as well as some transformations via tensorboard.
+
+- The tensorflow projector will create projections in tensorboard, which you can also load into jupyter notebook but whatlies makes visualisations directly.
+- The tensorflow projector supports interactive 3d visuals, which whatlies currently doesn't.
+- Whatlies offers lego bricks that you can chain together to get a visualisation started. This also means that you're more flexible when it comes to transforming data before visualising it.
+
+##### Parallax
+
+From uberlabs there's [parallax](https://github.com/uber-research/parallax). There's a lot of overlap but some differences that are worth to mention.
+
+- It relies on bokeh as a visualisation backend and offers a lot of visualisation types. Whatlies uses altair which might have preferable export options but it will not scale as well if you've drawing many points at the same time.
+- Parallax is meant to be run from the command line while Whatlies is meant to be run from the jupyter notebook.
+- Parallax gives a full overview/dashboard while Whatlies offers lego bricks that you can chain together to get a visualisation started.
+- Whatlies relies on language backends to fetch word embeddings. Parallax allows you to instead fetch raw files on disk.
+
 ## Local Development
 
 If you want to develop locally you can start by running this command.

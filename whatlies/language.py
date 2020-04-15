@@ -2,6 +2,7 @@ from typing import Union
 
 import spacy
 import numpy as np
+from typing import Union, List
 from sklearn.metrics import pairwise_distances
 from sense2vec import Sense2Vec, Sense2VecComponent
 
@@ -54,14 +55,30 @@ class SpacyLanguage:
         if sum(1 for c in string if c == "]") > 1:
             raise ValueError("only one opener `]` allowed ")
 
-    def __getitem__(self, string):
-        if isinstance(string, str):
-            self._input_str_legal(string)
-            start, end = _selected_idx_spacy(string)
-            clean_string = string.replace("[", "").replace("]", "")
+    def __getitem__(self, query: Union[str, List[str]]):
+        """
+        Retreive a single embedding or a set of embeddings. Depending on the spaCy model
+        the strings can support multiple tokens of text but they can also use the Bert DSL.
+        See the Language Options documentation: https://rasahq.github.io/whatlies/tutorial/languages/#bert-style.
+
+        Arguments:
+            query: single string or list of strings
+
+        **Usage**
+        ```python
+        > lang = SpacyLanguage("en_core_web_md")
+        > lang['python']
+        > lang[['python'], ['snake']]
+        > lang[['nobody expects'], ['the spanish inquisition']]
+        ```
+        """
+        if isinstance(query, str):
+            self._input_str_legal(query)
+            start, end = _selected_idx_spacy(query)
+            clean_string = query.replace("[", "").replace("]", "")
             vec = self.nlp(clean_string)[start:end].vector
-            return Embedding(string, vec)
-        return EmbeddingSet(*[self[tok] for tok in string])
+            return Embedding(query, vec)
+        return EmbeddingSet(*[self[tok] for tok in query])
 
     def embset_similar(self, emb: Union[str, Embedding], n: int = 10, prob_limit=-15, lower=True, metric='cosine'):
         """
@@ -140,11 +157,24 @@ class Sense2VecLangauge:
     def __init__(self, sense2vec_path):
         self.s2v = Sense2Vec().from_disk(sense2vec_path)
 
-    def __getitem__(self, string):
-        if isinstance(string, str):
-            vec = self.s2v[string]
-            return Embedding(string, vec)
-        return EmbeddingSet(*[self[tok] for tok in string])
+    def __getitem__(self, query):
+        """
+        Retreive a single embedding or a set of embeddings.
+
+        Arguments:
+            query: single string or list of strings
+
+        **Usage**
+        ```python
+        > lang = SpacyLanguage("en_core_web_md")
+        > lang['duck|NOUN']
+        > lang[['duck|NOUN'], ['duck|VERB']]
+        ```
+        """
+        if isinstance(query, str):
+            vec = self.s2v[query]
+            return Embedding(query, vec)
+        return EmbeddingSet(*[self[tok] for tok in query])
 
     def embset_similar(self, query, n=10):
         """

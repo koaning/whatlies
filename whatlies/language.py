@@ -63,7 +63,7 @@ class SpacyLanguage:
             return Embedding(string, vec)
         return EmbeddingSet(*[self[tok] for tok in string])
 
-    def embset_similar(self, emb: Union[str, Embedding], n: int = 10, prob_limit=-15, metric='cosine'):
+    def embset_similar(self, emb: Union[str, Embedding], n: int = 10, prob_limit=-15, lower=True, metric='cosine'):
         """
         Retreive an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] that are the most simmilar to the passed query.
 
@@ -72,6 +72,7 @@ class SpacyLanguage:
             n: the number of items you'd like to see returned
             prob_limit: likelihood limit that sets the subset of words to search
             metric: metric to use to calculate distance, must be scipy or sklearn compatible
+            lower: only fetch lower case tokens
 
         Returns:
             An [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] containing the similar embeddings.
@@ -79,15 +80,16 @@ class SpacyLanguage:
         embs = [w[0] for w in self.score_similar(emb, n, prob_limit, metric)]
         return EmbeddingSet({w.name: w for w in embs})
 
-    def score_similar(self, emb: Union[str, Embedding], n: int = 10, prob_limit=-15, metric='cosine'):
+    def score_similar(self, emb: Union[str, Embedding], n: int = 10, prob_limit=-15, lower=True, metric='cosine'):
         """
         Retreive a list of (Embedding, score) tuples that are the most simmilar to the passed query.
 
         Arguments:
             emb: query to use
             n: the number of items you'd like to see returned
-            prob_limit: likelihood limit that sets the subset of words to search
+            prob_limit: likelihood limit that sets the subset of words to search, to ignore set to `None`
             metric: metric to use to calculate distance, must be scipy or sklearn compatible
+            lower: only fetch lower case tokens
 
         Returns:
             An list of ([Embedding][whatlies.embedding.Embedding], score) tuples.
@@ -96,7 +98,14 @@ class SpacyLanguage:
             emb = self[emb]
 
         vec = emb.vector
-        queries = [w for w in self.nlp.vocab if w.is_lower and w.prob >= prob_limit]
+        queries = [w for w in self.nlp.vocab]
+        if prob_limit is not None:
+            queries = [w for w in queries if w.prob >= prob_limit]
+        if lower:
+            queries = [w for w in queries if w.is_lower]
+        if len(queries) == 0:
+            raise ValueError(f"Language model has no tokens for this setting. Consider raising prob_limit={prob_limit}")
+
         vector_matrix = np.array([w.vector for w in queries])
         print(queries)
         distances = pairwise_distances(vector_matrix, vec.reshape(1, -1), metric=metric)

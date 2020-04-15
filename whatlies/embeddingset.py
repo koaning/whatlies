@@ -324,6 +324,12 @@ class EmbeddingSet:
         Returns:
             An list of ([Embedding][whatlies.embedding.Embedding], score) tuples.
         """
+        if n > len(self):
+            raise ValueError(f"You cannot retreive (n={n}) more items than exist in the Embeddingset (len={len(self)})")
+
+        if str(emb) not in self.embeddings.keys():
+            raise ValueError(f"Embedding for `{str(emb)}` does not exist in this EmbeddingSet")
+
         if isinstance(emb, str):
             emb = self[emb]
 

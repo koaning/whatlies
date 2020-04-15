@@ -64,3 +64,15 @@ def test_embset_similar_simple_distance():
     emb = lang[["red", "blue", "orange", "cat", "dog"]]
     emb_red, score_red = emb.score_similar("red", 5)[0]
     assert np.isclose(score_red, 0.0)
+
+
+def test_embset_raise_value_error_n():
+    emb = lang[["red", "blue", "orange", "cat", "dog"]]
+    with pytest.raises(ValueError):
+        emb.score_similar("red", 10)
+
+
+def test_embset_raise_value_error_emb():
+    emb = lang[["red", "blue", "orange", "cat", "dog"]]
+    with pytest.raises(ValueError):
+        emb.score_similar("dinosaurhead", 1)

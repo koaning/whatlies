@@ -98,6 +98,7 @@ class SpacyLanguage:
         vec = emb.vector
         queries = [w for w in self.nlp.vocab if w.is_lower and w.prob >= prob_limit]
         vector_matrix = np.array([w.vector for w in queries])
+        print(queries)
         distances = pairwise_distances(vector_matrix, vec.reshape(1, -1), metric=metric)
         by_similarity = sorted(zip(queries, distances), key=lambda z: z[1])
 

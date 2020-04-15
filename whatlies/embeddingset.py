@@ -3,6 +3,7 @@ from typing import Union
 import numpy as np
 import pandas as pd
 import altair as alt
+from sklearn.metrics import pairwise_distances
 
 from whatlies.embedding import Embedding
 from whatlies.common import plot_graph_layout
@@ -295,6 +296,43 @@ class EmbeddingSet:
         name = f"{self.name}.average()" if not name else name
         x = np.array([v.vector for v in self.embeddings.values()])
         return Embedding(name, np.mean(x, axis=0))
+
+    def embset_similar(self, emb: Union[str, Embedding], n: int = 10, metric='cosine'):
+        """
+        Retreive an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] that are the most simmilar to the passed query.
+
+        Arguments:
+            emb: query to use
+            n: the number of items you'd like to see returned
+            metric: metric to use to calculate distance, must be scipy or sklearn compatible
+
+        Returns:
+            An [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] containing the similar embeddings.
+        """
+        embs = [w[0] for w in self.score_similar(emb, n, metric)]
+        return EmbeddingSet({w.name: w for w in embs})
+
+    def score_similar(self, emb: Union[str, Embedding], n: int = 10, metric='cosine'):
+        """
+        Retreive a list of (Embedding, score) tuples that are the most similar to the passed query.
+
+        Arguments:
+            emb: query to use
+            n: the number of items you'd like to see returned
+            metric: metric to use to calculate distance, must be scipy or sklearn compatible
+
+        Returns:
+            An list of ([Embedding][whatlies.embedding.Embedding], score) tuples.
+        """
+        if isinstance(emb, str):
+            emb = self[emb]
+
+        vec = emb.vector
+        queries = [w for w in self.embeddings.keys()]
+        vector_matrix = np.array([w.vector for w in self.embeddings.values()])
+        distances = pairwise_distances(vector_matrix, vec.reshape(1, -1), metric=metric)
+        by_similarity = sorted(zip(queries, distances), key=lambda z: z[1])
+        return [(self[q], float(d)) for q, d in by_similarity[:n]]
 
     def plot(
         self,

@@ -1,10 +1,8 @@
-from operator import add, rshift, sub, or_
-
 import pytest
 import numpy as np
 
 from whatlies import Embedding, EmbeddingSet
-from whatlies.language import SpacyLanguage
+
 
 @pytest.fixture
 def emb():
@@ -18,21 +16,26 @@ def test_emb_add(emb):
     new_emb = emb["x"] + emb["y"]
     assert np.isclose(new_emb.vector, np.array([1.0, 1.0])).all()
 
+
 def test_emb_subtract(emb):
     new_emb = emb["x"] - emb["y"]
     assert np.isclose(new_emb.vector, np.array([-1.0, 1.0])).all()
+
 
 def test_emb_proj_unto1(emb):
     new_emb = emb["z"] >> emb["y"]
     assert np.isclose(new_emb.vector, np.array([0.5, 0.0])).all()
 
+
 def test_emb_proj_unto2(emb):
     new_emb = emb["z"] >> emb["x"]
     assert np.isclose(new_emb.vector, np.array([0.0, 0.5])).all()
 
+
 def test_emb_proj_away1(emb):
     new_emb = emb["z"] | emb["y"]
     assert np.isclose(new_emb.vector, np.array([0.0, 0.5])).all()
+
 
 def test_emb_proj_away2(emb):
     new_emb = emb["z"] | emb["x"]

@@ -94,7 +94,7 @@ class SpacyLanguage:
         Returns:
             An [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] containing the similar embeddings.
         """
-        embs = [w[0] for w in self.score_similar(emb, n, prob_limit, metric)]
+        embs = [w[0] for w in self.score_similar(emb, n, prob_limit, lower, metric)]
         return EmbeddingSet({w.name: w for w in embs})
 
     def score_similar(self, emb: Union[str, Embedding], n: int = 10, prob_limit=-15, lower=True, metric='cosine'):
@@ -124,7 +124,6 @@ class SpacyLanguage:
             raise ValueError(f"Language model has no tokens for this setting. Consider raising prob_limit={prob_limit}")
 
         vector_matrix = np.array([w.vector for w in queries])
-        print(queries)
         distances = pairwise_distances(vector_matrix, vec.reshape(1, -1), metric=metric)
         by_similarity = sorted(zip(queries, distances), key=lambda z: z[1])
 

@@ -68,7 +68,7 @@ class SpacyLanguage:
         Retreive an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] that are the most simmilar to the passed query.
 
         Arguments:
-            query: query to use
+            emb: query to use
             n: the number of items you'd like to see returned
             prob_limit: likelihood limit that sets the subset of words to search
             metric: metric to use to calculate distance, must be scipy or sklearn compatible
@@ -84,7 +84,7 @@ class SpacyLanguage:
         Retreive a list of (Embedding, score) tuples that are the most simmilar to the passed query.
 
         Arguments:
-            query: query to use
+            emb: query to use
             n: the number of items you'd like to see returned
             prob_limit: likelihood limit that sets the subset of words to search
             metric: metric to use to calculate distance, must be scipy or sklearn compatible

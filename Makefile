@@ -37,7 +37,8 @@ clean:
 	rm -rf **/.ipynb_checkpoints
 	rm -rf .pytest_cache
 	nbstripout notebooks/*
-
+	rm -rf build
+	rm -rf dist
 
 pypi: clean
 	python setup.py sdist

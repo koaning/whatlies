@@ -39,6 +39,47 @@ class EmbeddingSet:
             # we assume it is a tuple of tokens
             self.embeddings = {t.name: t for t in embeddings}
 
+    def __contains__(self, item):
+        """
+        Checks if an item is in the embeddingset.
+
+        Usage:
+
+        ```python
+        from whatlies.embedding import Embedding
+        from whatlies.embeddingset import EmbeddingSet
+
+        foo = Embedding("foo", [0.1, 0.3])
+        bar = Embedding("bar", [0.7, 0.2])
+        buz = Embedding("buz", [0.1, 0.9])
+        emb = EmbeddingSet(foo, bar)
+
+        "foo" in emb # True
+        "dinosaur" in emb # False
+        ```
+        """
+        return item in self.embeddings.keys()
+
+    def __iter__(self):
+        """
+        Iterate over all the embeddings in the embeddingset.
+
+        Usage:
+
+        ```python
+        from whatlies.embedding import Embedding
+        from whatlies.embeddingset import EmbeddingSet
+
+        foo = Embedding("foo", [0.1, 0.3])
+        bar = Embedding("bar", [0.7, 0.2])
+        buz = Embedding("buz", [0.1, 0.9])
+        emb = EmbeddingSet(foo, bar)
+
+        [e for e in emb]
+        ```
+        """
+        return self.embeddings.values().__iter__()
+
     def __add__(self, other):
         """
         Adds an embedding to each element in the embeddingset.

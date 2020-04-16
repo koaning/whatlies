@@ -75,7 +75,7 @@ def test_embset_similar_simple_contains(lang):
 def test_embset_similar_simple_distance(lang):
     emb = lang[["red", "blue", "orange", "cat", "dog"]]
     emb_red, score_red = emb.score_similar("red", 5)[0]
-    assert np.isclose(score_red, 0.0)
+    assert np.isclose(score_red, 0.0, atol=0.0001)
 
 
 def test_embset_raise_value_error_n(lang):

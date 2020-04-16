@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import altair as alt
 from sklearn.metrics import pairwise_distances
+from sklearn.metrics.pairwise import paired_distances
 
 from whatlies.embedding import Embedding
 from whatlies.common import plot_graph_layout
@@ -383,6 +384,18 @@ class EmbeddingSet:
         by_similarity = sorted(zip(queries, distances), key=lambda z: z[1])
         return [(self[q], float(d)) for q, d in by_similarity[:n]]
 
+    def to_matrix(self):
+        return np.array([w.vector for w in self.embeddings.values()])
+
+    def movement_df(self, other, metric="euclidean"):
+        overlap = list(set(self.embeddings.keys()).union(set(other.embeddings.keys())))
+        mat1 = np.array([w.vector for w in self[overlap]])
+        mat2 = np.array([w.vector for w in other[overlap]])
+        return pd.DataFrame({
+            'name': overlap,
+            'movement': paired_distances(mat1, mat2, metric)
+        }).sort_values(['movement'], ascending=False).reset_index()
+
     def to_axis_df(self, x_axis, y_axis):
         if isinstance(x_axis, str):
             x_axis = self[x_axis]
@@ -433,15 +446,45 @@ class EmbeddingSet:
         x_axis: Union[str, Embedding],
         y_axis: Union[str, Embedding],
         annot: bool = True,
-        show_axis_point: bool = False,
     ):
+        """
+        Makes highly interactive plot of the difference between two sets of embeddings.
+
+        Arguments:
+            other: the other embeddingset
+            x_axis: the x-axis to be used, must be given when dim > 2
+            y_axis: the y-axis to be used, must be given when dim > 2
+            annot: drawn points should be annotated
+
+        **Usage**
+
+        ```python
+        from whatlies.language import SpacyLanguage
+
+        words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
+                 "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
+                 "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+                 "person", "family", "brother", "sister"]
+
+        lang = SpacyLanguage("en_core_web_md")
+        emb = lang[words]
+        emb_new = emb - emb['king']
+
+        emb.plot_difference(emb_new, 'man', 'woman')
+        ```
+        """
         if isinstance(x_axis, str):
             x_axis = self[x_axis]
         if isinstance(y_axis, str):
             y_axis = self[y_axis]
 
-        df1 = self.to_axis_df(x_axis, y_axis).set_index('original').drop(columns=['name'])
-        df2 = other.to_axis_df(x_axis, y_axis).set_index('original').drop(columns=['name'])
+        df1 = (self.to_axis_df(x_axis, y_axis)
+               .set_index('original')
+               .drop(columns=['name']))
+        df2 = (other.to_axis_df(x_axis, y_axis)
+               .set_index('original')
+               .drop(columns=['name'])
+               .loc[lambda d: d.index.isin(df1.index)])
         df_draw = (pd.concat([df1, df2])
                    .reset_index()
                    .sort_values(['original'])
@@ -457,10 +500,10 @@ class EmbeddingSet:
 
         p1 = (deepcopy(self)
               .add_property("group", lambda d: "before")
-              .plot_interactive(x_axis, y_axis, annot=annot, show_axis_point=show_axis_point, color="group"))
+              .plot_interactive(x_axis, y_axis, annot=annot, show_axis_point=True, color="group"))
         p2 = (deepcopy(other)
               .add_property("group", lambda d: "after")
-              .plot_interactive(x_axis, y_axis, annot=annot, show_axis_point=show_axis_point, color="group"))
+              .plot_interactive(x_axis, y_axis, annot=annot, show_axis_point=True, color="group"))
         return p0 + p1 + p2
 
     def plot_interactive(

@@ -115,7 +115,7 @@ also means that you're more flexible when it comes to transforming data before v
 
 ##### Parallax
 
-From uberlabs there's [parallax](https://github.com/uber-research/parallax) which is described
+From Uber AI Labs there's [parallax](https://github.com/uber-research/parallax) which is described
 in a paper [here](https://arxiv.org/abs/1905.12099). There's a common mindset in the two tools;
 the goal is to use arbitrary user defined projections to understand embedding spaces better.
 That said, some differences that are worth to mention.

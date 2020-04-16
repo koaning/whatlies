@@ -1,6 +1,7 @@
 from typing import Union
 
 import spacy
+from spacy.language import Language
 import numpy as np
 from typing import Union, List
 from sklearn.metrics import pairwise_distances
@@ -31,7 +32,7 @@ class SpacyLanguage:
     backend. This object is meant for retreival, not plotting.
 
     Arguments:
-        model_name: name of the model to load, be sure that it's downloaded beforehand
+        model: name of the model to load, be sure that it's downloaded beforehand
 
     **Usage**:
 
@@ -45,8 +46,13 @@ class SpacyLanguage:
     ```
     """
 
-    def __init__(self, model_name):
-        self.nlp = spacy.load(model_name)
+    def __init__(self, model: Union[str, Language]):
+        if isinstance(model, str):
+            self.nlp = spacy.load(model)
+        elif isinstance(model, Language):
+            self.nlp = model
+        else:
+            raise ValueError("Language must be started with `str` or spaCy-langauge object.")
 
     @staticmethod
     def _input_str_legal(string):

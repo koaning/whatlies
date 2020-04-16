@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-import spacy
+
 from spacy.vocab import Vocab
 from spacy.language import Language
 from whatlies.language import SpacyLanguage, _selected_idx_spacy

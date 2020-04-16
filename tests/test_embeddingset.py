@@ -2,28 +2,40 @@ from operator import add, rshift, sub, or_
 
 import pytest
 import numpy as np
+from spacy.vocab import Vocab
+from spacy.language import Language
 
 from whatlies import Embedding, EmbeddingSet
 from whatlies.language import SpacyLanguage
 
-lang = SpacyLanguage("en_core_web_sm")
+
+@pytest.fixture()
+def lang():
+    vector_data = {k: np.random.normal(0, 1, (2,)) for k in ["red", "blue", "cat", "dog", "green", "purple"]}
+    vector_data['cat'] += 10
+    vector_data['dog'] += 10
+    vocab = Vocab(strings=vector_data.keys())
+    for word, vector in vector_data.items():
+        vocab.set_vector(word, vector)
+    nlp = Language(vocab=vocab)
+    return SpacyLanguage(nlp)
 
 
 @pytest.mark.parametrize("operator", [add, rshift, sub, or_])
-def test_artificial_embset(operator):
+def test_artificial_embset(lang, operator):
     emb = lang[["red", "blue", "orange"]]
     v1 = operator(emb["red"], emb["blue"])
     v2 = operator(lang["red"], lang["blue"])
     assert np.array_equal(v1.vector, v2.vector)
 
 
-def test_merge_basic():
+def test_merge_basic(lang):
     emb1 = lang[["red", "blue", "orange"]]
     emb2 = lang[["pink", "purple", "brown"]]
     assert len(emb1.merge(emb2)) == 6
 
 
-def test_average():
+def test_average(lang):
     emb = lang[["red", "blue", "orange"]]
     av = emb.average()
     assert av.name == "Emb.average()"
@@ -47,32 +59,32 @@ def test_to_x_y():
     assert list(y) == ["group-one", "group-one", "group-two", "group-two"]
 
 
-def test_embset_similar_simple_len():
+def test_embset_similar_simple_len(lang):
     emb = lang[["red", "blue", "orange"]]
     assert len(emb.embset_similar("red", 1)) == 1
     assert len(emb.embset_similar("red", 2)) == 2
 
 
-def test_embset_similar_simple_contains():
+def test_embset_similar_simple_contains(lang):
     emb = lang[["red", "blue", "orange", "cat", "dog"]]
     subset_cat = emb.embset_similar("cat", 2).embeddings.keys()
     assert "cat" in subset_cat
     assert "dog" in subset_cat
 
 
-def test_embset_similar_simple_distance():
+def test_embset_similar_simple_distance(lang):
     emb = lang[["red", "blue", "orange", "cat", "dog"]]
     emb_red, score_red = emb.score_similar("red", 5)[0]
     assert np.isclose(score_red, 0.0)
 
 
-def test_embset_raise_value_error_n():
+def test_embset_raise_value_error_n(lang):
     emb = lang[["red", "blue", "orange", "cat", "dog"]]
     with pytest.raises(ValueError):
         emb.score_similar("red", 10)
 
 
-def test_embset_raise_value_error_emb():
+def test_embset_raise_value_error_emb(lang):
     emb = lang[["red", "blue", "orange", "cat", "dog"]]
     with pytest.raises(ValueError):
         emb.score_similar("dinosaurhead", 1)

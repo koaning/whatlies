@@ -1,39 +1,13 @@
 import pytest
-
+from spacy.vocab import Vocab
+from spacy.language import Language
 from whatlies.language import SpacyLanguage
 from whatlies.transformers import Umap, Pca, Noise, AddRandom
 
-words = [
-    "prince",
-    "princess",
-    "nurse",
-    "doctor",
-    "banker",
-    "man",
-    "woman",
-    "cousin",
-    "neice",
-    "king",
-    "queen",
-    "dude",
-    "guy",
-    "gal",
-    "fire",
-    "dog",
-    "cat",
-    "mouse",
-    "red",
-    "bluee",
-    "green",
-    "yellow",
-    "water",
-    "person",
-    "family",
-    "brother",
-    "sister",
-]
 
-lang = SpacyLanguage("en_core_web_sm")
+vocab = Vocab().from_disk("tests/custom_test_vocab/")
+words = [v.text for v in vocab]
+lang = SpacyLanguage(model=Language(vocab=vocab, meta={"lang": "en"}))
 emb = lang[words]
 
 

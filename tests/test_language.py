@@ -20,12 +20,6 @@ def color_lang():
     return SpacyLanguage(nlp)
 
 
-@pytest.fixture()
-def king_queen_lang():
-    nlp = spacy.load("tests/custom_test_model")
-    return SpacyLanguage(nlp)
-
-
 def test_score_similar_one(color_lang):
     scores = color_lang.score_similar("blue", n=2, prob_limit=None, lower=False)
     print(scores)

@@ -42,4 +42,4 @@ if __name__ == "__main__":
     for word, vector in vec_data.items():
         vocab.set_vector(word, vector)
     nlp = Language(vocab=vocab, meta={"lang": "en"})
-    nlp.to_disk("custom_test_model")
+    vocab.to_disk("custom_test_vocab")

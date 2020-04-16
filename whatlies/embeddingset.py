@@ -1,4 +1,6 @@
 from typing import Union
+from copy import deepcopy
+from functools import reduce
 
 import numpy as np
 import pandas as pd
@@ -381,6 +383,18 @@ class EmbeddingSet:
         by_similarity = sorted(zip(queries, distances), key=lambda z: z[1])
         return [(self[q], float(d)) for q, d in by_similarity[:n]]
 
+    def to_axis_df(self, x_axis, y_axis):
+        if isinstance(x_axis, str):
+            x_axis = self[x_axis]
+        if isinstance(y_axis, str):
+            y_axis = self[y_axis]
+        return pd.DataFrame({
+            "x_axis": self.compare_against(x_axis),
+            "y_axis": self.compare_against(y_axis),
+            "name": [v.name for v in self.embeddings.values()],
+            "original": [v.orig for v in self.embeddings.values()],
+        })
+
     def plot(
         self,
         kind: str = "scatter",
@@ -414,6 +428,40 @@ class EmbeddingSet:
     def plot_graph_layout(self, kind="cosine", **kwargs):
         plot_graph_layout(self.embeddings, kind, **kwargs)
         return self
+
+    def plot_difference(self, other,
+        x_axis: Union[str, Embedding],
+        y_axis: Union[str, Embedding],
+        annot: bool = True,
+        show_axis_point: bool = False,
+    ):
+        if isinstance(x_axis, str):
+            x_axis = self[x_axis]
+        if isinstance(y_axis, str):
+            y_axis = self[y_axis]
+
+        df1 = self.to_axis_df(x_axis, y_axis).set_index('original').drop(columns=['name'])
+        df2 = other.to_axis_df(x_axis, y_axis).set_index('original').drop(columns=['name'])
+        df_draw = (pd.concat([df1, df2])
+                   .reset_index()
+                   .sort_values(['original'])
+                   .assign(constant=1))
+
+        plots = []
+        for idx, grp_df in df_draw.groupby('original'):
+            _ = (alt.Chart(grp_df)
+                 .mark_line(color="gray", strokeDash=[2, 1])
+                 .encode(x='x_axis:Q', y='y_axis:Q'))
+            plots.append(_)
+        p0 = reduce(lambda x, y: x + y, plots)
+
+        p1 = (deepcopy(self)
+              .add_property("group", lambda d: "before")
+              .plot_interactive(x_axis, y_axis, annot=annot, show_axis_point=show_axis_point, color="group"))
+        p2 = (deepcopy(other)
+              .add_property("group", lambda d: "after")
+              .plot_interactive(x_axis, y_axis, annot=annot, show_axis_point=show_axis_point, color="group"))
+        return p0 + p1 + p2
 
     def plot_interactive(
         self,

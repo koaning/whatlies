@@ -510,9 +510,52 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        spaCy
+      </label>
+    
     <a href="./" title="spaCy" class="md-nav__link md-nav__link--active">
       spaCy
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.language.SpacyLanguage.9595getitem9595" class="md-nav__link">
+    __getitem__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.language.SpacyLanguage.embset_similar" class="md-nav__link">
+    embset_similar()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.language.SpacyLanguage.score_similar" class="md-nav__link">
+    score_similar()
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -568,6 +611,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.language.SpacyLanguage.9595getitem9595" class="md-nav__link">
+    __getitem__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.language.SpacyLanguage.embset_similar" class="md-nav__link">
+    embset_similar()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.language.SpacyLanguage.score_similar" class="md-nav__link">
+    score_similar()
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -612,6 +685,307 @@ backend. This object is meant for retreival, not plotting.</p>
 <span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_trf_robertabase_lg&quot;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;programming in [python]&#39;</span><span class="p">]</span>
 </code></pre></div>
+
+<h2 id="whatlies.language.SpacyLanguage.__getitem__"><code class="highlight"><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.SpacyLanguage.__getitem__" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>whatlies/language.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retreive a single embedding or a set of embeddings. Depending on the spaCy model</span>
+<span class="sd">        the strings can support multiple tokens of text but they can also use the Bert DSL.</span>
+<span class="sd">        See the Language Options documentation: https://rasahq.github.io/whatlies/tutorial/languages/#bert-style.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            query: single string or list of strings</span>
+
+<span class="sd">        **Usage**</span>
+<span class="sd">        ```python</span>
+<span class="sd">        &gt; lang = SpacyLanguage(&quot;en_core_web_md&quot;)</span>
+<span class="sd">        &gt; lang[&#39;python&#39;]</span>
+<span class="sd">        &gt; lang[[&#39;python&#39;], [&#39;snake&#39;]]</span>
+<span class="sd">        &gt; lang[[&#39;nobody expects&#39;], [&#39;the spanish inquisition&#39;]]</span>
+<span class="sd">        ```</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_input_str_legal</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+            <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_selected_idx_spacy</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+            <span class="n">clean_string</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="p">(</span><span class="n">clean_string</span><span class="p">)[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span>
+            <span class="k">return</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">vec</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">EmbeddingSet</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">tok</span><span class="p">]</span> <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">query</span><span class="p">])</span>
+</code></pre></div>
+</td></tr></table>
+
+</details>
+<p>Retreive a single embedding or a set of embeddings. Depending on the spaCy model
+the strings can support multiple tokens of text but they can also use the Bert DSL.
+See the Language Options documentation: https://rasahq.github.io/whatlies/tutorial/languages/#bert-style.</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>query</code></td>
+<td><code>Union[str, List[str]]</code></td>
+<td>single string or list of strings</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage</strong>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;python&#39;</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;python&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;snake&#39;</span><span class="p">]]</span>
+<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;nobody expects&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;the spanish inquisition&#39;</span><span class="p">]]</span>
+</code></pre></div></p>
+<h2 id="whatlies.language.SpacyLanguage.embset_similar"><code class="highlight"><span class="n">embset_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">prob_limit</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.SpacyLanguage.embset_similar" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>whatlies/language.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">prob_limit</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retreive an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] that are the most simmilar to the passed query.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            emb: query to use</span>
+<span class="sd">            n: the number of items you&#39;d like to see returned</span>
+<span class="sd">            prob_limit: likelihood limit that sets the subset of words to search</span>
+<span class="sd">            metric: metric to use to calculate distance, must be scipy or sklearn compatible</span>
+<span class="sd">            lower: only fetch lower case tokens</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            An [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] containing the similar embeddings.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">embs</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">score_similar</span><span class="p">(</span><span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">prob_limit</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">metric</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">EmbeddingSet</span><span class="p">({</span><span class="n">w</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">embs</span><span class="p">})</span>
+</code></pre></div>
+</td></tr></table>
+
+</details>
+<p>Retreive an <a href="/whatlies/api/embeddingset/#whatlies.embeddingset.EmbeddingSet">EmbeddingSet</a> that are the most simmilar to the passed query.</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>emb</code></td>
+<td><code>Union[str, whatlies.embedding.Embedding]</code></td>
+<td>query to use</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td><code>int</code></td>
+<td>the number of items you'd like to see returned</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>prob_limit</code></td>
+<td></td>
+<td>likelihood limit that sets the subset of words to search</td>
+<td><code>-15</code></td>
+</tr>
+<tr>
+<td><code>metric</code></td>
+<td></td>
+<td>metric to use to calculate distance, must be scipy or sklearn compatible</td>
+<td><code>'cosine'</code></td>
+</tr>
+<tr>
+<td><code>lower</code></td>
+<td></td>
+<td>only fetch lower case tokens</td>
+<td><code>True</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>``</td>
+<td>An <a href="/whatlies/api/embeddingset/#whatlies.embeddingset.EmbeddingSet">EmbeddingSet</a> containing the similar embeddings.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="whatlies.language.SpacyLanguage.score_similar"><code class="highlight"><span class="n">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">prob_limit</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.SpacyLanguage.score_similar" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>whatlies/language.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">prob_limit</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retreive a list of (Embedding, score) tuples that are the most simmilar to the passed query.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            emb: query to use</span>
+<span class="sd">            n: the number of items you&#39;d like to see returned</span>
+<span class="sd">            prob_limit: likelihood limit that sets the subset of words to search, to ignore set to `None`</span>
+<span class="sd">            metric: metric to use to calculate distance, must be scipy or sklearn compatible</span>
+<span class="sd">            lower: only fetch lower case tokens</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            An list of ([Embedding][whatlies.embedding.Embedding], score) tuples.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">emb</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">emb</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">emb</span><span class="p">]</span>
+
+        <span class="n">vec</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">vector</span>
+        <span class="n">queries</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">vocab</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">prob_limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">queries</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">queries</span> <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">prob</span> <span class="o">&gt;=</span> <span class="n">prob_limit</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">lower</span><span class="p">:</span>
+            <span class="n">queries</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">queries</span> <span class="k">if</span> <span class="n">w</span><span class="o">.</span><span class="n">is_lower</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">queries</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Language model has no tokens for this setting. Consider raising prob_limit=</span><span class="si">{</span><span class="n">prob_limit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">vector_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">w</span><span class="o">.</span><span class="n">vector</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">queries</span><span class="p">])</span>
+        <span class="n">distances</span> <span class="o">=</span> <span class="n">pairwise_distances</span><span class="p">(</span><span class="n">vector_matrix</span><span class="p">,</span> <span class="n">vec</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">)</span>
+        <span class="n">by_similarity</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">queries</span><span class="p">,</span> <span class="n">distances</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="p">[(</span><span class="bp">self</span><span class="p">[</span><span class="n">q</span><span class="o">.</span><span class="n">text</span><span class="p">],</span> <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">by_similarity</span><span class="p">[:</span><span class="n">n</span><span class="p">]]</span>
+</code></pre></div>
+</td></tr></table>
+
+</details>
+<p>Retreive a list of (Embedding, score) tuples that are the most simmilar to the passed query.</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>emb</code></td>
+<td><code>Union[str, whatlies.embedding.Embedding]</code></td>
+<td>query to use</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td><code>int</code></td>
+<td>the number of items you'd like to see returned</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>prob_limit</code></td>
+<td></td>
+<td>likelihood limit that sets the subset of words to search, to ignore set to <code>None</code></td>
+<td><code>-15</code></td>
+</tr>
+<tr>
+<td><code>metric</code></td>
+<td></td>
+<td>metric to use to calculate distance, must be scipy or sklearn compatible</td>
+<td><code>'cosine'</code></td>
+</tr>
+<tr>
+<td><code>lower</code></td>
+<td></td>
+<td>only fetch lower case tokens</td>
+<td><code>True</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>``</td>
+<td>An list of (<a href="/whatlies/api/embedding/#whatlies.embedding.Embedding">Embedding</a>, score) tuples.</td>
+</tr>
+</tbody>
+</table>
                 
                   
                 

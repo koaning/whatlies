@@ -738,8 +738,7 @@ foo - bar + bar
 </code></pre></div>
 
 <h2 id="whatlies.embedding.Embedding.__add__"><code class="highlight"><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__add__" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>39
-40
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>40
 41
 42
 43
@@ -756,7 +755,8 @@ foo - bar + bar
 54
 55
 56
-57</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Embedding&quot;</span><span class="p">:</span>
+57
+58</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Embedding&quot;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add two embeddings together.</span>
 
@@ -836,7 +836,8 @@ foo &gt; bar
 </code></pre></div>
 
 <h2 id="whatlies.embedding.Embedding.__or__"><code class="highlight"><span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__or__" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>123
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>122
+123
 124
 125
 126
@@ -853,8 +854,7 @@ foo &gt; bar
 137
 138
 139
-140
-141</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+140</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Makes one embedding orthogonal to the other one.</span>
 
@@ -950,8 +950,7 @@ foo &gt;&gt; bar
 </code></pre></div>
 
 <h2 id="whatlies.embedding.Embedding.__sub__"><code class="highlight"><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__sub__" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>59
-60
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>60
 61
 62
 63
@@ -968,7 +967,8 @@ foo &gt;&gt; bar
 74
 75
 76
-77</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+77
+78</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Subtract two embeddings.</span>
 
@@ -1002,9 +1002,7 @@ foo - bar
 </code></pre></div>
 
 <h2 id="whatlies.embedding.Embedding.plot"><code class="highlight"><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_ops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.plot" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>146
-147
-148
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>148
 149
 150
 151
@@ -1056,11 +1054,13 @@ foo - bar
 197
 198
 199
-200</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span>
+200
+201
+202</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;scatter&quot;</span><span class="p">,</span>
-        <span class="n">x_axis</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">y_axis</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">x_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;Embedding&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">y_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;Embedding&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">show_ops</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">annot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -1071,7 +1071,7 @@ foo - bar
 <span class="sd">        Arguments:</span>
 <span class="sd">            kind: what kind of plot to make, can be `scatter`, `arrow` or `text`</span>
 <span class="sd">            x_axis: the x-axis to be used, must be given when dim &gt; 2</span>
-<span class="sd">            x_axis: the y-axis to be used, must be given when dim &gt; 2</span>
+<span class="sd">            y_axis: the y-axis to be used, must be given when dim &gt; 2</span>
 <span class="sd">            color: the color of the dots</span>
 <span class="sd">            show_ops: setting to also show the applied operations, only works for `text`</span>
 <span class="sd">            annot: should the points be annotated</span>
@@ -1135,13 +1135,13 @@ foo - bar
 </tr>
 <tr>
 <td><code>x_axis</code></td>
-<td><code>str</code></td>
+<td><code>Union[str, ForwardRef('Embedding')]</code></td>
 <td>the x-axis to be used, must be given when dim &gt; 2</td>
 <td><code>None</code></td>
 </tr>
 <tr>
-<td><code>x_axis</code></td>
-<td><code>str</code></td>
+<td><code>y_axis</code></td>
+<td><code>Union[str, ForwardRef('Embedding')]</code></td>
 <td>the y-axis to be used, must be given when dim &gt; 2</td>
 <td><code>None</code></td>
 </tr>

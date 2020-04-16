@@ -541,6 +541,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#whatlies.language.Sense2VecLangauge.9595getitem9595" class="md-nav__link">
+    __getitem__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#whatlies.language.Sense2VecLangauge.embset_similar" class="md-nav__link">
     embset_similar()
   </a>
@@ -606,6 +613,13 @@
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.language.Sense2VecLangauge.9595getitem9595" class="md-nav__link">
+    __getitem__()
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#whatlies.language.Sense2VecLangauge.embset_similar" class="md-nav__link">
@@ -674,22 +688,87 @@ backend. This object is meant for retreival, not plotting.</p>
 <p>The reddit vectors are not given by this library.
 You can find the download link <a href="https://github.com/explosion/sense2vec#pretrained-vectors">here</a>.</p>
 </div>
+<h2 id="whatlies.language.Sense2VecLangauge.__getitem__"><code class="highlight"><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.Sense2VecLangauge.__getitem__" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>whatlies/language.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retreive a single embedding or a set of embeddings.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            query: single string or list of strings</span>
+
+<span class="sd">        **Usage**</span>
+<span class="sd">        ```python</span>
+<span class="sd">        &gt; lang = SpacyLanguage(&quot;en_core_web_md&quot;)</span>
+<span class="sd">        &gt; lang[&#39;duck|NOUN&#39;]</span>
+<span class="sd">        &gt; lang[[&#39;duck|NOUN&#39;], [&#39;duck|VERB&#39;]]</span>
+<span class="sd">        ```</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s2v</span><span class="p">[</span><span class="n">query</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">vec</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">EmbeddingSet</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">tok</span><span class="p">]</span> <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">query</span><span class="p">])</span>
+</code></pre></div>
+</td></tr></table>
+
+</details>
+<p>Retreive a single embedding or a set of embeddings.</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>query</code></td>
+<td></td>
+<td>single string or list of strings</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage</strong>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;duck|NOUN&#39;</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;duck|NOUN&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;duck|VERB&#39;</span><span class="p">]]</span>
+</code></pre></div></p>
 <h2 id="whatlies.language.Sense2VecLangauge.embset_similar"><code class="highlight"><span class="n">embset_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.Sense2VecLangauge.embset_similar" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/language.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 94
- 95
- 96
- 97
- 98
- 99
-100
-101
-102
-103
-104
-105
-106
-107
-108</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<details class="note"><summary>Show source code in <code>whatlies/language.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retreive an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] that are the most simmilar to the passed query.</span>
 
@@ -750,18 +829,18 @@ You can find the download link <a href="https://github.com/explosion/sense2vec#p
 </tbody>
 </table>
 <h2 id="whatlies.language.Sense2VecLangauge.score_similar"><code class="highlight"><span class="n">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.Sense2VecLangauge.score_similar" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/language.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<details class="note"><summary>Show source code in <code>whatlies/language.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retreive an EmbeddingSet that are the most simmilar to the passed query.</span>
 

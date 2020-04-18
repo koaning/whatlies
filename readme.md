@@ -102,6 +102,12 @@ pip install whatlies
 
 There are some projects out there who are working on similar tools and we figured it fair to mention and compare them here.
 
+##### Julia Bazińska & Piotr Migdal Web App
+
+The original inspiration for this project came from [this web app](https://lamyiowce.github.io/word2viz/). It is a web app that takes a while to slow
+but it is really fun to play with. The goal of this project is to make it
+easier to make similar charts from jupyter using different language backends.
+
 ##### Tensorflow Projector
 
 From google there's the [tensorflow projector project](https://projector.tensorflow.org/). It offers
@@ -115,7 +121,7 @@ also means that you're more flexible when it comes to transforming data before v
 
 ##### Parallax
 
-From uberlabs there's [parallax](https://github.com/uber-research/parallax) which is described
+From Uber AI Labs there's [parallax](https://github.com/uber-research/parallax) which is described
 in a paper [here](https://arxiv.org/abs/1905.12099). There's a common mindset in the two tools;
 the goal is to use arbitrary user defined projections to understand embedding spaces better.
 That said, some differences that are worth to mention.

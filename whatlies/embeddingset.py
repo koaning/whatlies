@@ -442,18 +442,23 @@ class EmbeddingSet:
         plot_graph_layout(self.embeddings, kind, **kwargs)
         return self
 
-    def plot_difference(self, other,
+    def plot_movement(self, other,
         x_axis: Union[str, Embedding],
         y_axis: Union[str, Embedding],
+        first_group_name="before",
+        second_group_name="after",
         annot: bool = True,
     ):
         """
-        Makes highly interactive plot of the difference between two sets of embeddings.
+        Makes highly interactive plot of the movement of embeddings
+        between two sets of embeddings.
 
         Arguments:
             other: the other embeddingset
             x_axis: the x-axis to be used, must be given when dim > 2
             y_axis: the y-axis to be used, must be given when dim > 2
+            first_group_name: the name to give to the first set of embeddings (default: "before")
+            second_group_name: the name to give to the second set of embeddings (default: "after")
             annot: drawn points should be annotated
 
         **Usage**
@@ -499,10 +504,10 @@ class EmbeddingSet:
         p0 = reduce(lambda x, y: x + y, plots)
 
         p1 = (deepcopy(self)
-              .add_property("group", lambda d: "before")
+              .add_property("group", lambda d: first_group_name)
               .plot_interactive(x_axis, y_axis, annot=annot, show_axis_point=True, color="group"))
         p2 = (deepcopy(other)
-              .add_property("group", lambda d: "after")
+              .add_property("group", lambda d: second_group_name)
               .plot_interactive(x_axis, y_axis, annot=annot, show_axis_point=True, color="group"))
         return p0 + p1 + p2
 

@@ -508,13 +508,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.embeddingset.EmbeddingSet.plot_difference" class="md-nav__link">
-    plot_difference()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#whatlies.embeddingset.EmbeddingSet.plot_interactive" class="md-nav__link">
     plot_interactive()
   </a>
@@ -524,6 +517,13 @@
         <li class="md-nav__item">
   <a href="#whatlies.embeddingset.EmbeddingSet.plot_interactive_matrix" class="md-nav__link">
     plot_interactive_matrix()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.embeddingset.EmbeddingSet.plot_movement" class="md-nav__link">
+    plot_movement()
   </a>
   
 </li>
@@ -809,13 +809,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.embeddingset.EmbeddingSet.plot_difference" class="md-nav__link">
-    plot_difference()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#whatlies.embeddingset.EmbeddingSet.plot_interactive" class="md-nav__link">
     plot_interactive()
   </a>
@@ -825,6 +818,13 @@
         <li class="md-nav__item">
   <a href="#whatlies.embeddingset.EmbeddingSet.plot_interactive_matrix" class="md-nav__link">
     plot_interactive_matrix()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.embeddingset.EmbeddingSet.plot_movement" class="md-nav__link">
+    plot_movement()
   </a>
   
 </li>
@@ -1728,196 +1728,8 @@ a new <code>Embedding</code>.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="whatlies.embeddingset.EmbeddingSet.plot_difference"><code class="highlight"><span class="n">plot_difference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embeddingset.EmbeddingSet.plot_difference" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>445
-446
-447
-448
-449
-450
-451
-452
-453
-454
-455
-456
-457
-458
-459
-460
-461
-462
-463
-464
-465
-466
-467
-468
-469
-470
-471
-472
-473
-474
-475
-476
-477
-478
-479
-480
-481
-482
-483
-484
-485
-486
-487
-488
-489
-490
-491
-492
-493
-494
-495
-496
-497
-498
-499
-500
-501
-502
-503
-504
-505
-506
-507</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot_difference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span>
-        <span class="n">x_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span>
-        <span class="n">y_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span>
-        <span class="n">annot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Makes highly interactive plot of the difference between two sets of embeddings.</span>
-
-<span class="sd">        Arguments:</span>
-<span class="sd">            other: the other embeddingset</span>
-<span class="sd">            x_axis: the x-axis to be used, must be given when dim &gt; 2</span>
-<span class="sd">            y_axis: the y-axis to be used, must be given when dim &gt; 2</span>
-<span class="sd">            annot: drawn points should be annotated</span>
-
-<span class="sd">        **Usage**</span>
-
-<span class="sd">        ```python</span>
-<span class="sd">        from whatlies.language import SpacyLanguage</span>
-
-<span class="sd">        words = [&quot;prince&quot;, &quot;princess&quot;, &quot;nurse&quot;, &quot;doctor&quot;, &quot;banker&quot;, &quot;man&quot;, &quot;woman&quot;,</span>
-<span class="sd">                 &quot;cousin&quot;, &quot;neice&quot;, &quot;king&quot;, &quot;queen&quot;, &quot;dude&quot;, &quot;guy&quot;, &quot;gal&quot;, &quot;fire&quot;,</span>
-<span class="sd">                 &quot;dog&quot;, &quot;cat&quot;, &quot;mouse&quot;, &quot;red&quot;, &quot;bluee&quot;, &quot;green&quot;, &quot;yellow&quot;, &quot;water&quot;,</span>
-<span class="sd">                 &quot;person&quot;, &quot;family&quot;, &quot;brother&quot;, &quot;sister&quot;]</span>
-
-<span class="sd">        lang = SpacyLanguage(&quot;en_core_web_md&quot;)</span>
-<span class="sd">        emb = lang[words]</span>
-<span class="sd">        emb_new = emb - emb[&#39;king&#39;]</span>
-
-<span class="sd">        emb.plot_difference(emb_new, &#39;man&#39;, &#39;woman&#39;)</span>
-<span class="sd">        ```</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">x_axis</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">x_axis</span><span class="p">]</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y_axis</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">y_axis</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">y_axis</span><span class="p">]</span>
-
-        <span class="n">df1</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_axis_df</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="p">)</span>
-               <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;original&#39;</span><span class="p">)</span>
-               <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]))</span>
-        <span class="n">df2</span> <span class="o">=</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">to_axis_df</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="p">)</span>
-               <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;original&#39;</span><span class="p">)</span>
-               <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
-               <span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">index</span><span class="p">)])</span>
-        <span class="n">df_draw</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">])</span>
-                   <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-                   <span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;original&#39;</span><span class="p">])</span>
-                   <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">constant</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-
-        <span class="n">plots</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">grp_df</span> <span class="ow">in</span> <span class="n">df_draw</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;original&#39;</span><span class="p">):</span>
-            <span class="n">_</span> <span class="o">=</span> <span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">grp_df</span><span class="p">)</span>
-                 <span class="o">.</span><span class="n">mark_line</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">strokeDash</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-                 <span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x_axis:Q&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y_axis:Q&#39;</span><span class="p">))</span>
-            <span class="n">plots</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_</span><span class="p">)</span>
-        <span class="n">p0</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">plots</span><span class="p">)</span>
-
-        <span class="n">p1</span> <span class="o">=</span> <span class="p">(</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-              <span class="o">.</span><span class="n">add_property</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="s2">&quot;before&quot;</span><span class="p">)</span>
-              <span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="n">annot</span><span class="p">,</span> <span class="n">show_axis_point</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;group&quot;</span><span class="p">))</span>
-        <span class="n">p2</span> <span class="o">=</span> <span class="p">(</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-              <span class="o">.</span><span class="n">add_property</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="s2">&quot;after&quot;</span><span class="p">)</span>
-              <span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="n">annot</span><span class="p">,</span> <span class="n">show_axis_point</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;group&quot;</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">p0</span> <span class="o">+</span> <span class="n">p1</span> <span class="o">+</span> <span class="n">p2</span>
-</code></pre></div>
-</td></tr></table>
-
-</details>
-<p>Makes highly interactive plot of the difference between two sets of embeddings.</p>
-<p><strong>Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>other</code></td>
-<td></td>
-<td>the other embeddingset</td>
-<td><em>required</em></td>
-</tr>
-<tr>
-<td><code>x_axis</code></td>
-<td><code>Union[str, whatlies.embedding.Embedding]</code></td>
-<td>the x-axis to be used, must be given when dim &gt; 2</td>
-<td><em>required</em></td>
-</tr>
-<tr>
-<td><code>y_axis</code></td>
-<td><code>Union[str, whatlies.embedding.Embedding]</code></td>
-<td>the y-axis to be used, must be given when dim &gt; 2</td>
-<td><em>required</em></td>
-</tr>
-<tr>
-<td><code>annot</code></td>
-<td><code>bool</code></td>
-<td>drawn points should be annotated</td>
-<td><code>True</code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Usage</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">SpacyLanguage</span>
-
-<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;prince&quot;</span><span class="p">,</span> <span class="s2">&quot;princess&quot;</span><span class="p">,</span> <span class="s2">&quot;nurse&quot;</span><span class="p">,</span> <span class="s2">&quot;doctor&quot;</span><span class="p">,</span> <span class="s2">&quot;banker&quot;</span><span class="p">,</span> <span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;woman&quot;</span><span class="p">,</span>
-         <span class="s2">&quot;cousin&quot;</span><span class="p">,</span> <span class="s2">&quot;neice&quot;</span><span class="p">,</span> <span class="s2">&quot;king&quot;</span><span class="p">,</span> <span class="s2">&quot;queen&quot;</span><span class="p">,</span> <span class="s2">&quot;dude&quot;</span><span class="p">,</span> <span class="s2">&quot;guy&quot;</span><span class="p">,</span> <span class="s2">&quot;gal&quot;</span><span class="p">,</span> <span class="s2">&quot;fire&quot;</span><span class="p">,</span>
-         <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;mouse&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;bluee&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">,</span>
-         <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;family&quot;</span><span class="p">,</span> <span class="s2">&quot;brother&quot;</span><span class="p">,</span> <span class="s2">&quot;sister&quot;</span><span class="p">]</span>
-
-<span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
-<span class="n">emb</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">words</span><span class="p">]</span>
-<span class="n">emb_new</span> <span class="o">=</span> <span class="n">emb</span> <span class="o">-</span> <span class="n">emb</span><span class="p">[</span><span class="s1">&#39;king&#39;</span><span class="p">]</span>
-
-<span class="n">emb</span><span class="o">.</span><span class="n">plot_difference</span><span class="p">(</span><span class="n">emb_new</span><span class="p">,</span> <span class="s1">&#39;man&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">)</span>
-</code></pre></div>
-
 <h2 id="whatlies.embeddingset.EmbeddingSet.plot_interactive"><code class="highlight"><span class="n">plot_interactive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_axis_point</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embeddingset.EmbeddingSet.plot_interactive" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>509
-510
-511
-512
-513
-514
+<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>514
 515
 516
 517
@@ -1988,7 +1800,12 @@ a new <code>Embedding</code>.</p>
 582
 583
 584
-585</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot_interactive</span><span class="p">(</span>
+585
+586
+587
+588
+589
+590</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot_interactive</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">x_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span>
         <span class="n">y_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span>
@@ -2128,12 +1945,7 @@ a new <code>Embedding</code>.</p>
 </code></pre></div>
 
 <h2 id="whatlies.embeddingset.EmbeddingSet.plot_interactive_matrix"><code class="highlight"><span class="n">plot_interactive_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">axes</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_axis_point</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embeddingset.EmbeddingSet.plot_interactive_matrix" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>587
-588
-589
-590
-591
-592
+<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>592
 593
 594
 595
@@ -2195,7 +2007,12 @@ a new <code>Embedding</code>.</p>
 651
 652
 653
-654</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot_interactive_matrix</span><span class="p">(</span>
+654
+655
+656
+657
+658
+659</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot_interactive_matrix</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="n">axes</span><span class="p">,</span>
         <span class="n">annot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -2324,6 +2141,212 @@ a new <code>Embedding</code>.</p>
 <span class="n">emb</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">words</span><span class="p">]</span>
 
 <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive_matrix</span><span class="p">(</span><span class="s1">&#39;pca_0&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_2&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="whatlies.embeddingset.EmbeddingSet.plot_movement"><code class="highlight"><span class="n">plot_movement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="p">,</span> <span class="n">first_group_name</span><span class="o">=</span><span class="s1">&#39;before&#39;</span><span class="p">,</span> <span class="n">second_group_name</span><span class="o">=</span><span class="s1">&#39;after&#39;</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embeddingset.EmbeddingSet.plot_movement" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot_movement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span>
+        <span class="n">x_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span>
+        <span class="n">y_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span>
+        <span class="n">first_group_name</span><span class="o">=</span><span class="s2">&quot;before&quot;</span><span class="p">,</span>
+        <span class="n">second_group_name</span><span class="o">=</span><span class="s2">&quot;after&quot;</span><span class="p">,</span>
+        <span class="n">annot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Makes highly interactive plot of the movement of embeddings</span>
+<span class="sd">        between two sets of embeddings.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            other: the other embeddingset</span>
+<span class="sd">            x_axis: the x-axis to be used, must be given when dim &gt; 2</span>
+<span class="sd">            y_axis: the y-axis to be used, must be given when dim &gt; 2</span>
+<span class="sd">            first_group_name: the name to give to the first set of embeddings (default: &quot;before&quot;)</span>
+<span class="sd">            second_group_name: the name to give to the second set of embeddings (default: &quot;after&quot;)</span>
+<span class="sd">            annot: drawn points should be annotated</span>
+
+<span class="sd">        **Usage**</span>
+
+<span class="sd">        ```python</span>
+<span class="sd">        from whatlies.language import SpacyLanguage</span>
+
+<span class="sd">        words = [&quot;prince&quot;, &quot;princess&quot;, &quot;nurse&quot;, &quot;doctor&quot;, &quot;banker&quot;, &quot;man&quot;, &quot;woman&quot;,</span>
+<span class="sd">                 &quot;cousin&quot;, &quot;neice&quot;, &quot;king&quot;, &quot;queen&quot;, &quot;dude&quot;, &quot;guy&quot;, &quot;gal&quot;, &quot;fire&quot;,</span>
+<span class="sd">                 &quot;dog&quot;, &quot;cat&quot;, &quot;mouse&quot;, &quot;red&quot;, &quot;bluee&quot;, &quot;green&quot;, &quot;yellow&quot;, &quot;water&quot;,</span>
+<span class="sd">                 &quot;person&quot;, &quot;family&quot;, &quot;brother&quot;, &quot;sister&quot;]</span>
+
+<span class="sd">        lang = SpacyLanguage(&quot;en_core_web_md&quot;)</span>
+<span class="sd">        emb = lang[words]</span>
+<span class="sd">        emb_new = emb - emb[&#39;king&#39;]</span>
+
+<span class="sd">        emb.plot_difference(emb_new, &#39;man&#39;, &#39;woman&#39;)</span>
+<span class="sd">        ```</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">x_axis</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">x_axis</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y_axis</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">y_axis</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">y_axis</span><span class="p">]</span>
+
+        <span class="n">df1</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_axis_df</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="p">)</span>
+               <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;original&#39;</span><span class="p">)</span>
+               <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]))</span>
+        <span class="n">df2</span> <span class="o">=</span> <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">to_axis_df</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="p">)</span>
+               <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;original&#39;</span><span class="p">)</span>
+               <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+               <span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">index</span><span class="p">)])</span>
+        <span class="n">df_draw</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">])</span>
+                   <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+                   <span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;original&#39;</span><span class="p">])</span>
+                   <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">constant</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+        <span class="n">plots</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">grp_df</span> <span class="ow">in</span> <span class="n">df_draw</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;original&#39;</span><span class="p">):</span>
+            <span class="n">_</span> <span class="o">=</span> <span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">grp_df</span><span class="p">)</span>
+                 <span class="o">.</span><span class="n">mark_line</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">strokeDash</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+                 <span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x_axis:Q&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y_axis:Q&#39;</span><span class="p">))</span>
+            <span class="n">plots</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_</span><span class="p">)</span>
+        <span class="n">p0</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">plots</span><span class="p">)</span>
+
+        <span class="n">p1</span> <span class="o">=</span> <span class="p">(</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">add_property</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">first_group_name</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="n">annot</span><span class="p">,</span> <span class="n">show_axis_point</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;group&quot;</span><span class="p">))</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="p">(</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">add_property</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">second_group_name</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="n">annot</span><span class="p">,</span> <span class="n">show_axis_point</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;group&quot;</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">p0</span> <span class="o">+</span> <span class="n">p1</span> <span class="o">+</span> <span class="n">p2</span>
+</code></pre></div>
+</td></tr></table>
+
+</details>
+<p>Makes highly interactive plot of the movement of embeddings
+between two sets of embeddings.</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>other</code></td>
+<td></td>
+<td>the other embeddingset</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>x_axis</code></td>
+<td><code>Union[str, whatlies.embedding.Embedding]</code></td>
+<td>the x-axis to be used, must be given when dim &gt; 2</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>y_axis</code></td>
+<td><code>Union[str, whatlies.embedding.Embedding]</code></td>
+<td>the y-axis to be used, must be given when dim &gt; 2</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>first_group_name</code></td>
+<td></td>
+<td>the name to give to the first set of embeddings (default: "before")</td>
+<td><code>'before'</code></td>
+</tr>
+<tr>
+<td><code>second_group_name</code></td>
+<td></td>
+<td>the name to give to the second set of embeddings (default: "after")</td>
+<td><code>'after'</code></td>
+</tr>
+<tr>
+<td><code>annot</code></td>
+<td><code>bool</code></td>
+<td>drawn points should be annotated</td>
+<td><code>True</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">SpacyLanguage</span>
+
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;prince&quot;</span><span class="p">,</span> <span class="s2">&quot;princess&quot;</span><span class="p">,</span> <span class="s2">&quot;nurse&quot;</span><span class="p">,</span> <span class="s2">&quot;doctor&quot;</span><span class="p">,</span> <span class="s2">&quot;banker&quot;</span><span class="p">,</span> <span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;woman&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;cousin&quot;</span><span class="p">,</span> <span class="s2">&quot;neice&quot;</span><span class="p">,</span> <span class="s2">&quot;king&quot;</span><span class="p">,</span> <span class="s2">&quot;queen&quot;</span><span class="p">,</span> <span class="s2">&quot;dude&quot;</span><span class="p">,</span> <span class="s2">&quot;guy&quot;</span><span class="p">,</span> <span class="s2">&quot;gal&quot;</span><span class="p">,</span> <span class="s2">&quot;fire&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;mouse&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;bluee&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;family&quot;</span><span class="p">,</span> <span class="s2">&quot;brother&quot;</span><span class="p">,</span> <span class="s2">&quot;sister&quot;</span><span class="p">]</span>
+
+<span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
+<span class="n">emb</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">words</span><span class="p">]</span>
+<span class="n">emb_new</span> <span class="o">=</span> <span class="n">emb</span> <span class="o">-</span> <span class="n">emb</span><span class="p">[</span><span class="s1">&#39;king&#39;</span><span class="p">]</span>
+
+<span class="n">emb</span><span class="o">.</span><span class="n">plot_difference</span><span class="p">(</span><span class="n">emb_new</span><span class="p">,</span> <span class="s1">&#39;man&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">)</span>
 </code></pre></div>
 
 <h2 id="whatlies.embeddingset.EmbeddingSet.score_similar"><code class="highlight"><span class="n">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embeddingset.EmbeddingSet.score_similar" title="Permanent link">&para;</a></h2>

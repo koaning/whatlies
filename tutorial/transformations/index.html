@@ -378,6 +378,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#visualising-differences" class="md-nav__link">
+    Visualising Differences
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#movement" class="md-nav__link">
+    Movement
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -599,6 +619,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#visualising-differences" class="md-nav__link">
+    Visualising Differences
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#movement" class="md-nav__link">
+    Movement
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -656,6 +696,77 @@ fetch('colors.json')
 .then(res => res.json())
 .then((out) => {
   vegaEmbed('#vis1', out);
+})
+.catch(err => { throw err });
+</script>
+
+<h2 id="visualising-differences">Visualising Differences<a class="headerlink" href="#visualising-differences" title="Permanent link">&para;</a></h2>
+<p>Let's create two embeddings.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">SpacyLanguage</span>
+
+<span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;prince&quot;</span><span class="p">,</span> <span class="s2">&quot;princess&quot;</span><span class="p">,</span> <span class="s2">&quot;nurse&quot;</span><span class="p">,</span> <span class="s2">&quot;doctor&quot;</span><span class="p">,</span> <span class="s2">&quot;banker&quot;</span><span class="p">,</span> <span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;woman&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;cousin&quot;</span><span class="p">,</span> <span class="s2">&quot;neice&quot;</span><span class="p">,</span> <span class="s2">&quot;king&quot;</span><span class="p">,</span> <span class="s2">&quot;queen&quot;</span><span class="p">,</span> <span class="s2">&quot;dude&quot;</span><span class="p">,</span> <span class="s2">&quot;guy&quot;</span><span class="p">,</span> <span class="s2">&quot;gal&quot;</span><span class="p">,</span> <span class="s2">&quot;fire&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;mouse&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;family&quot;</span><span class="p">,</span> <span class="s2">&quot;brother&quot;</span><span class="p">,</span> <span class="s2">&quot;sister&quot;</span><span class="p">,</span> <span class="s2">&quot;happy prince&quot;</span><span class="p">,</span> <span class="s2">&quot;sad prince&quot;</span><span class="p">]</span>
+
+<span class="n">emb1</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">words</span><span class="p">]</span>
+<span class="n">emb2</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">words</span><span class="p">]</span> <span class="o">|</span> <span class="p">(</span><span class="n">lang</span><span class="p">[</span><span class="s2">&quot;king&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">lang</span><span class="p">[</span><span class="s2">&quot;queen&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>The two embeddings should be similar but we can show that they are different.</p>
+<div class="highlight"><pre><span></span><code><span class="n">p1</span> <span class="o">=</span> <span class="n">emb1</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;woman&quot;</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">emb2</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;woman&quot;</span><span class="p">)</span>
+
+<span class="n">p1</span> <span class="o">|</span> <span class="n">p2</span>
+</code></pre></div>
+
+<div id="vis2"></div>
+
+<script>
+fetch('two-groups-one.json')
+.then(res => res.json())
+.then((out) => {
+  vegaEmbed('#vis2', out);
+})
+.catch(err => { throw err });
+</script>
+
+<p>In this case, both plots will plot their embeddings with regards
+to their own embedding for <code>man</code> and <code>woman</code>. But we can also
+explicitly tell them to compare against the original vectors
+from <code>emb1</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">p1</span> <span class="o">=</span> <span class="n">emb1</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="n">emb1</span><span class="p">[</span><span class="s2">&quot;man&quot;</span><span class="p">],</span> <span class="n">emb1</span><span class="p">[</span><span class="s2">&quot;woman&quot;</span><span class="p">])</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">emb2</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="n">emb1</span><span class="p">[</span><span class="s2">&quot;man&quot;</span><span class="p">],</span> <span class="n">emb1</span><span class="p">[</span><span class="s2">&quot;woman&quot;</span><span class="p">])</span>
+
+<span class="n">p1</span> <span class="o">|</span> <span class="n">p2</span>
+</code></pre></div>
+
+<div id="vis3"></div>
+
+<script>
+fetch('two-groups-two.json')
+.then(res => res.json())
+.then((out) => {
+  vegaEmbed('#vis3', out);
+})
+.catch(err => { throw err });
+</script>
+
+<p>It's subtle but it is important to recognize.</p>
+<h3 id="movement">Movement<a class="headerlink" href="#movement" title="Permanent link">&para;</a></h3>
+<p>If you want to highlight the movement that occurs because of
+a transformation then you might prefer to show a movement plot.</p>
+<div class="highlight"><pre><span></span><code><span class="n">emb1</span><span class="o">.</span><span class="n">plot_movement</span><span class="p">(</span><span class="n">emb2</span><span class="p">,</span> <span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;woman&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">)</span>
+</code></pre></div>
+
+<div id="vis4"></div>
+
+<script>
+fetch('movement.json')
+.then(res => res.json())
+.then((out) => {
+  vegaEmbed('#vis4', out);
 })
 .catch(err => { throw err });
 </script>

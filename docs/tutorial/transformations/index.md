@@ -41,3 +41,85 @@ fetch('colors.json')
 })
 .catch(err => { throw err });
 </script>
+
+## Visualising Differences
+
+Let's create two embeddings.
+
+```python
+from whatlies.language import SpacyLanguage
+
+lang = SpacyLanguage("en_core_web_md")
+words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
+         "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
+         "dog", "cat", "mouse", "red", "blue", "green", "yellow", "water",
+         "person", "family", "brother", "sister", "happy prince", "sad prince"]
+
+emb1 = lang[words]
+emb2 = lang[words] | (lang["king"] - lang["queen"])
+```
+
+The two embeddings should be similar but we can show that they are different.
+
+```python
+p1 = emb1.plot_interactive("man", "woman")
+p2 = emb2.plot_interactive("man", "woman")
+
+p1 | p2
+```
+
+<div id="vis2"></div>
+
+<script>
+fetch('two-groups-one.json')
+.then(res => res.json())
+.then((out) => {
+  vegaEmbed('#vis2', out);
+})
+.catch(err => { throw err });
+</script>
+
+In this case, both plots will plot their embeddings with regards
+to their own embedding for `man` and `woman`. But we can also
+explicitly tell them to compare against the original vectors
+from `emb1`.
+
+```python
+p1 = emb1.plot_interactive(emb1["man"], emb1["woman"])
+p2 = emb2.plot_interactive(emb1["man"], emb1["woman"])
+
+p1 | p2
+```
+
+<div id="vis3"></div>
+
+<script>
+fetch('two-groups-two.json')
+.then(res => res.json())
+.then((out) => {
+  vegaEmbed('#vis3', out);
+})
+.catch(err => { throw err });
+</script>
+
+It's subtle but it is important to recognize.
+
+### Movement
+
+If you want to highlight the movement that occurs because of
+a transformation then you might prefer to show a movement plot.
+
+```python
+emb1.plot_movement(emb2, "man", "woman").properties(width=600, height=450)
+```
+
+<div id="vis4"></div>
+
+<script>
+fetch('movement.json')
+.then(res => res.json())
+.then((out) => {
+  vegaEmbed('#vis4', out);
+})
+.catch(err => { throw err });
+</script>

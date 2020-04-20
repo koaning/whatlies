@@ -1,0 +1,2333 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "background": "white",
+  "padding": 5,
+  "width": 600,
+  "height": 450,
+  "title": {"text": "man vs. woman", "frame": "group"},
+  "style": "cell",
+  "data": [
+    {"name": "selector032_store"},
+    {"name": "selector033_store"},
+    {
+      "name": "data-83dabc4e62982dec5d1d5d2a35d14a1a",
+      "values": [
+        {
+          "original": "banker",
+          "x_axis": 0.19353565573692322,
+          "y_axis": 0.09302382916212082,
+          "constant": 1
+        },
+        {
+          "original": "banker",
+          "x_axis": 0.16581667959690094,
+          "y_axis": 0.11405861377716064,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-fb763bac787ab31da5c2064d30a3afe4",
+      "values": [
+        {
+          "original": "blue",
+          "x_axis": 0.2937301993370056,
+          "y_axis": 0.2844599485397339,
+          "constant": 1
+        },
+        {
+          "original": "blue",
+          "x_axis": 0.30336686968803406,
+          "y_axis": 0.2771471440792084,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-9b817b376e99df8702c743cf0b9b338d",
+      "values": [
+        {
+          "original": "brother",
+          "x_axis": 0.5326083898544312,
+          "y_axis": 0.4300210475921631,
+          "constant": 1
+        },
+        {
+          "original": "brother",
+          "x_axis": 0.5816835165023804,
+          "y_axis": 0.39277997612953186,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-f30bb4fd5f9ba97dfa0a4860ce8bed72",
+      "values": [
+        {
+          "original": "cat",
+          "x_axis": 0.3812119960784912,
+          "y_axis": 0.3420807719230652,
+          "constant": 1
+        },
+        {
+          "original": "cat",
+          "x_axis": 0.3758322596549988,
+          "y_axis": 0.34616324305534363,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-e1af502a5e83aacb4a7ee9130364ace0",
+      "values": [
+        {
+          "original": "cousin",
+          "x_axis": 0.37753042578697205,
+          "y_axis": 0.3373553156852722,
+          "constant": 1
+        },
+        {
+          "original": "cousin",
+          "x_axis": 0.38155144453048706,
+          "y_axis": 0.33430397510528564,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-041a90d72ea5b0730286efc23268aa85",
+      "values": [
+        {
+          "original": "doctor",
+          "x_axis": 0.4489893317222595,
+          "y_axis": 0.4943573474884033,
+          "constant": 1
+        },
+        {
+          "original": "doctor",
+          "x_axis": 0.4474800229072571,
+          "y_axis": 0.4955027401447296,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-fe4dd1c22ba3ccdec5eec8e7193f2625",
+      "values": [
+        {
+          "original": "dog",
+          "x_axis": 0.45522749423980713,
+          "y_axis": 0.4065905213356018,
+          "constant": 1
+        },
+        {
+          "original": "dog",
+          "x_axis": 0.4621913731098175,
+          "y_axis": 0.4013059139251709,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-a5908ff9a6e3ef098c88d8d32184af59",
+      "values": [
+        {
+          "original": "dude",
+          "x_axis": 0.6140859127044678,
+          "y_axis": 0.38672125339508057,
+          "constant": 1
+        },
+        {
+          "original": "dude",
+          "x_axis": 0.6322574615478516,
+          "y_axis": 0.37293168902397156,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-74afa645cbb0394b0bcc684ac72deb68",
+      "values": [
+        {
+          "original": "family",
+          "x_axis": 0.3393386900424957,
+          "y_axis": 0.3449077904224396,
+          "constant": 1
+        },
+        {
+          "original": "family",
+          "x_axis": 0.3436667323112488,
+          "y_axis": 0.3416234254837036,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-0a241746afa9b821e81e412a4e91632f",
+      "values": [
+        {
+          "original": "fire",
+          "x_axis": 0.44420018792152405,
+          "y_axis": 0.3259018063545227,
+          "constant": 1
+        },
+        {
+          "original": "fire",
+          "x_axis": 0.4537816643714905,
+          "y_axis": 0.31863078474998474,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-e45002d9c66c0695467f0cba1edcb3b3",
+      "values": [
+        {
+          "original": "gal",
+          "x_axis": 0.30102455615997314,
+          "y_axis": 0.3522968888282776,
+          "constant": 1
+        },
+        {
+          "original": "gal",
+          "x_axis": 0.352500319480896,
+          "y_axis": 0.3132341504096985,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-c72161d59fc95ab665233e12bb9d0e63",
+      "values": [
+        {
+          "original": "green",
+          "x_axis": 0.25164204835891724,
+          "y_axis": 0.215010866522789,
+          "constant": 1
+        },
+        {
+          "original": "green",
+          "x_axis": 0.2504224181175232,
+          "y_axis": 0.21593639254570007,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-f32eb920c0a564c404999b703b034d00",
+      "values": [
+        {
+          "original": "guy",
+          "x_axis": 0.689598560333252,
+          "y_axis": 0.4880948066711426,
+          "constant": 1
+        },
+        {
+          "original": "guy",
+          "x_axis": 0.6688559055328369,
+          "y_axis": 0.5038354992866516,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-30e058b930183b804051fb0e2ee7cf25",
+      "values": [
+        {
+          "original": "happy prince",
+          "x_axis": 0.374970942735672,
+          "y_axis": 0.3451749384403229,
+          "constant": 1
+        },
+        {
+          "original": "happy prince",
+          "x_axis": 0.4034731090068817,
+          "y_axis": 0.3235458433628082,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-8fa309e86d59f19ac6be7cf98e8291e1",
+      "values": [
+        {
+          "original": "king",
+          "x_axis": 0.3618968427181244,
+          "y_axis": 0.34907034039497375,
+          "constant": 1
+        },
+        {
+          "original": "king",
+          "x_axis": 0.45961007475852966,
+          "y_axis": 0.27491992712020874,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-33434396afb6ff6527d75efc92b3e6f3",
+      "values": [
+        {
+          "original": "man",
+          "x_axis": 0.9575647115707397,
+          "y_axis": 0.7138159871101379,
+          "constant": 1
+        },
+        {
+          "original": "man",
+          "x_axis": 1,
+          "y_axis": 0.6816136837005615,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-b16f00e34cd48b047db205fbbd9f8224",
+      "values": [
+        {
+          "original": "mouse",
+          "x_axis": 0.2176199108362198,
+          "y_axis": 0.18362130224704742,
+          "constant": 1
+        },
+        {
+          "original": "mouse",
+          "x_axis": 0.22008487582206726,
+          "y_axis": 0.18175068497657776,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-cd6e97efac2c30fd612b60fa1d94f934",
+      "values": [
+        {
+          "original": "neice",
+          "x_axis": 0.29427674412727356,
+          "y_axis": 0.41036874055862427,
+          "constant": 1
+        },
+        {
+          "original": "neice",
+          "x_axis": 0.32560500502586365,
+          "y_axis": 0.38659507036209106,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-e81de8cc73c6655f05f1b9fbc12eecd1",
+      "values": [
+        {
+          "original": "nurse",
+          "x_axis": 0.36865338683128357,
+          "y_axis": 0.4896145164966583,
+          "constant": 1
+        },
+        {
+          "original": "nurse",
+          "x_axis": 0.3271060585975647,
+          "y_axis": 0.5211429595947266,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-d389290f68aebebfe0fd230cfa1bb47f",
+      "values": [
+        {
+          "original": "person",
+          "x_axis": 0.5323284864425659,
+          "y_axis": 0.5064259171485901,
+          "constant": 1
+        },
+        {
+          "original": "person",
+          "x_axis": 0.538722574710846,
+          "y_axis": 0.5015737414360046,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-06d2284d99ceb1e89b8fef27e13b9ac4",
+      "values": [
+        {
+          "original": "prince",
+          "x_axis": 0.40951526165008545,
+          "y_axis": 0.3261851966381073,
+          "constant": 1
+        },
+        {
+          "original": "prince",
+          "x_axis": 0.3563494384288788,
+          "y_axis": 0.36653050780296326,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-20a3082cc9530de0dcc27908c6d0e8ca",
+      "values": [
+        {
+          "original": "princess",
+          "x_axis": 0.30717265605926514,
+          "y_axis": 0.379460871219635,
+          "constant": 1
+        },
+        {
+          "original": "princess",
+          "x_axis": 0.27098548412323,
+          "y_axis": 0.4069218039512634,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-488b107388315e13d128c2d17bc25d63",
+      "values": [
+        {
+          "original": "queen",
+          "x_axis": 0.2914373576641083,
+          "y_axis": 0.40253907442092896,
+          "constant": 1
+        },
+        {
+          "original": "queen",
+          "x_axis": 0.3618968427181244,
+          "y_axis": 0.34907034039497375,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-5617229efff1ad53eb1fdef21d3c8b2a",
+      "values": [
+        {
+          "original": "red",
+          "x_axis": 0.2972288429737091,
+          "y_axis": 0.3045094907283783,
+          "constant": 1
+        },
+        {
+          "original": "red",
+          "x_axis": 0.3029142916202545,
+          "y_axis": 0.30019503831863403,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-ecc625590fc857d37982fa2dc1394711",
+      "values": [
+        {
+          "original": "sad prince",
+          "x_axis": 0.42418035864830017,
+          "y_axis": 0.3388368487358093,
+          "constant": 1
+        },
+        {
+          "original": "sad prince",
+          "x_axis": 0.39729440212249756,
+          "y_axis": 0.35923945903778076,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-333ed8e6a4d480244b3fb7320020d175",
+      "values": [
+        {
+          "original": "sister",
+          "x_axis": 0.3568364381790161,
+          "y_axis": 0.4736946225166321,
+          "constant": 1
+        },
+        {
+          "original": "sister",
+          "x_axis": 0.3892207741737366,
+          "y_axis": 0.44911956787109375,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-aa848328a132d2e4a410fa8762dccf43",
+      "values": [
+        {
+          "original": "water",
+          "x_axis": 0.32726311683654785,
+          "y_axis": 0.2750879228115082,
+          "constant": 1
+        },
+        {
+          "original": "water",
+          "x_axis": 0.335124671459198,
+          "y_axis": 0.2691221237182617,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-3ed1d327f17cf4fbcfda09e1596b879d",
+      "values": [
+        {
+          "original": "woman",
+          "x_axis": 0.8037664890289307,
+          "y_axis": 1,
+          "constant": 1
+        },
+        {
+          "original": "woman",
+          "x_axis": 0.8417398929595947,
+          "y_axis": 0.9711836576461792,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-9f8d139ea4c579f5affd6e4efe5ff105",
+      "values": [
+        {
+          "original": "yellow",
+          "x_axis": 0.27957814931869507,
+          "y_axis": 0.24573951959609985,
+          "constant": 1
+        },
+        {
+          "original": "yellow",
+          "x_axis": 0.2725669741630554,
+          "y_axis": 0.25106003880500793,
+          "constant": 1
+        }
+      ]
+    },
+    {
+      "name": "data-18f471781a07be68c2e6a512c3a60b56",
+      "values": [
+        {
+          "x_axis": 0.40951526165008545,
+          "y_axis": 0.3261851966381073,
+          "name": "prince",
+          "original": "prince",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.27098548412323,
+          "y_axis": 0.4069218039512634,
+          "name": "princess",
+          "original": "princess",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.3271060585975647,
+          "y_axis": 0.5211429595947266,
+          "name": "nurse",
+          "original": "nurse",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.4489893317222595,
+          "y_axis": 0.4943573474884033,
+          "name": "doctor",
+          "original": "doctor",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.19353565573692322,
+          "y_axis": 0.09302382916212082,
+          "name": "banker",
+          "original": "banker",
+          "group": "before"
+        },
+        {
+          "x_axis": 1,
+          "y_axis": 0.6816136837005615,
+          "name": "man",
+          "original": "man",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.8037664890289307,
+          "y_axis": 1,
+          "name": "woman",
+          "original": "woman",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.38155144453048706,
+          "y_axis": 0.33430397510528564,
+          "name": "cousin",
+          "original": "cousin",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.29427674412727356,
+          "y_axis": 0.41036874055862427,
+          "name": "neice",
+          "original": "neice",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.45961007475852966,
+          "y_axis": 0.27491992712020874,
+          "name": "king",
+          "original": "king",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.2914373576641083,
+          "y_axis": 0.40253907442092896,
+          "name": "queen",
+          "original": "queen",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.6322574615478516,
+          "y_axis": 0.37293168902397156,
+          "name": "dude",
+          "original": "dude",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.689598560333252,
+          "y_axis": 0.4880948066711426,
+          "name": "guy",
+          "original": "guy",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.30102455615997314,
+          "y_axis": 0.3522968888282776,
+          "name": "gal",
+          "original": "gal",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.4537816643714905,
+          "y_axis": 0.31863078474998474,
+          "name": "fire",
+          "original": "fire",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.4621913731098175,
+          "y_axis": 0.4013059139251709,
+          "name": "dog",
+          "original": "dog",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.3758322596549988,
+          "y_axis": 0.34616324305534363,
+          "name": "cat",
+          "original": "cat",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.2176199108362198,
+          "y_axis": 0.18362130224704742,
+          "name": "mouse",
+          "original": "mouse",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.2972288429737091,
+          "y_axis": 0.3045094907283783,
+          "name": "red",
+          "original": "red",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.2937301993370056,
+          "y_axis": 0.2844599485397339,
+          "name": "blue",
+          "original": "blue",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.25164204835891724,
+          "y_axis": 0.215010866522789,
+          "name": "green",
+          "original": "green",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.2725669741630554,
+          "y_axis": 0.25106003880500793,
+          "name": "yellow",
+          "original": "yellow",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.335124671459198,
+          "y_axis": 0.2691221237182617,
+          "name": "water",
+          "original": "water",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.538722574710846,
+          "y_axis": 0.5015737414360046,
+          "name": "person",
+          "original": "person",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.3436667323112488,
+          "y_axis": 0.3416234254837036,
+          "name": "family",
+          "original": "family",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.5816835165023804,
+          "y_axis": 0.39277997612953186,
+          "name": "brother",
+          "original": "brother",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.3568364381790161,
+          "y_axis": 0.4736946225166321,
+          "name": "sister",
+          "original": "sister",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.4034731090068817,
+          "y_axis": 0.3235458433628082,
+          "name": "happy prince",
+          "original": "happy prince",
+          "group": "before"
+        },
+        {
+          "x_axis": 0.42418035864830017,
+          "y_axis": 0.3388368487358093,
+          "name": "sad prince",
+          "original": "sad prince",
+          "group": "before"
+        }
+      ]
+    },
+    {
+      "name": "data-8ff066b16ef82333a3959afdea6243f9",
+      "values": [
+        {
+          "x_axis": 0.3563494384288788,
+          "y_axis": 0.36653050780296326,
+          "name": "(prince | (king - queen))",
+          "original": "prince",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.30717265605926514,
+          "y_axis": 0.379460871219635,
+          "name": "(princess | (king - queen))",
+          "original": "princess",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.36865338683128357,
+          "y_axis": 0.4896145164966583,
+          "name": "(nurse | (king - queen))",
+          "original": "nurse",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.4474800229072571,
+          "y_axis": 0.4955027401447296,
+          "name": "(doctor | (king - queen))",
+          "original": "doctor",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.16581667959690094,
+          "y_axis": 0.11405861377716064,
+          "name": "(banker | (king - queen))",
+          "original": "banker",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.9575647115707397,
+          "y_axis": 0.7138159871101379,
+          "name": "(man | (king - queen))",
+          "original": "man",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.8417398929595947,
+          "y_axis": 0.9711836576461792,
+          "name": "(woman | (king - queen))",
+          "original": "woman",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.37753042578697205,
+          "y_axis": 0.3373553156852722,
+          "name": "(cousin | (king - queen))",
+          "original": "cousin",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.32560500502586365,
+          "y_axis": 0.38659507036209106,
+          "name": "(neice | (king - queen))",
+          "original": "neice",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.3618968427181244,
+          "y_axis": 0.34907034039497375,
+          "name": "(king | (king - queen))",
+          "original": "king",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.3618968427181244,
+          "y_axis": 0.34907034039497375,
+          "name": "(queen | (king - queen))",
+          "original": "queen",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.6140859127044678,
+          "y_axis": 0.38672125339508057,
+          "name": "(dude | (king - queen))",
+          "original": "dude",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.6688559055328369,
+          "y_axis": 0.5038354992866516,
+          "name": "(guy | (king - queen))",
+          "original": "guy",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.352500319480896,
+          "y_axis": 0.3132341504096985,
+          "name": "(gal | (king - queen))",
+          "original": "gal",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.44420018792152405,
+          "y_axis": 0.3259018063545227,
+          "name": "(fire | (king - queen))",
+          "original": "fire",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.45522749423980713,
+          "y_axis": 0.4065905213356018,
+          "name": "(dog | (king - queen))",
+          "original": "dog",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.3812119960784912,
+          "y_axis": 0.3420807719230652,
+          "name": "(cat | (king - queen))",
+          "original": "cat",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.22008487582206726,
+          "y_axis": 0.18175068497657776,
+          "name": "(mouse | (king - queen))",
+          "original": "mouse",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.3029142916202545,
+          "y_axis": 0.30019503831863403,
+          "name": "(red | (king - queen))",
+          "original": "red",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.30336686968803406,
+          "y_axis": 0.2771471440792084,
+          "name": "(blue | (king - queen))",
+          "original": "blue",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.2504224181175232,
+          "y_axis": 0.21593639254570007,
+          "name": "(green | (king - queen))",
+          "original": "green",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.27957814931869507,
+          "y_axis": 0.24573951959609985,
+          "name": "(yellow | (king - queen))",
+          "original": "yellow",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.32726311683654785,
+          "y_axis": 0.2750879228115082,
+          "name": "(water | (king - queen))",
+          "original": "water",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.5323284864425659,
+          "y_axis": 0.5064259171485901,
+          "name": "(person | (king - queen))",
+          "original": "person",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.3393386900424957,
+          "y_axis": 0.3449077904224396,
+          "name": "(family | (king - queen))",
+          "original": "family",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.5326083898544312,
+          "y_axis": 0.4300210475921631,
+          "name": "(brother | (king - queen))",
+          "original": "brother",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.3892207741737366,
+          "y_axis": 0.44911956787109375,
+          "name": "(sister | (king - queen))",
+          "original": "sister",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.374970942735672,
+          "y_axis": 0.3451749384403229,
+          "name": "(happy prince | (king - queen))",
+          "original": "happy prince",
+          "group": "after"
+        },
+        {
+          "x_axis": 0.39729440212249756,
+          "y_axis": 0.35923945903778076,
+          "name": "(sad prince | (king - queen))",
+          "original": "sad prince",
+          "group": "after"
+        }
+      ]
+    },
+    {
+      "name": "data_0",
+      "source": "data-83dabc4e62982dec5d1d5d2a35d14a1a",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_1",
+      "source": "data-fb763bac787ab31da5c2064d30a3afe4",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_2",
+      "source": "data-9b817b376e99df8702c743cf0b9b338d",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_3",
+      "source": "data-f30bb4fd5f9ba97dfa0a4860ce8bed72",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_4",
+      "source": "data-e1af502a5e83aacb4a7ee9130364ace0",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_5",
+      "source": "data-041a90d72ea5b0730286efc23268aa85",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_6",
+      "source": "data-fe4dd1c22ba3ccdec5eec8e7193f2625",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_7",
+      "source": "data-a5908ff9a6e3ef098c88d8d32184af59",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_8",
+      "source": "data-74afa645cbb0394b0bcc684ac72deb68",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_9",
+      "source": "data-0a241746afa9b821e81e412a4e91632f",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_10",
+      "source": "data-e45002d9c66c0695467f0cba1edcb3b3",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_11",
+      "source": "data-c72161d59fc95ab665233e12bb9d0e63",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_12",
+      "source": "data-f32eb920c0a564c404999b703b034d00",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_13",
+      "source": "data-30e058b930183b804051fb0e2ee7cf25",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_14",
+      "source": "data-8fa309e86d59f19ac6be7cf98e8291e1",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_15",
+      "source": "data-33434396afb6ff6527d75efc92b3e6f3",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_16",
+      "source": "data-b16f00e34cd48b047db205fbbd9f8224",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_17",
+      "source": "data-cd6e97efac2c30fd612b60fa1d94f934",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_18",
+      "source": "data-e81de8cc73c6655f05f1b9fbc12eecd1",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_19",
+      "source": "data-d389290f68aebebfe0fd230cfa1bb47f",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_20",
+      "source": "data-06d2284d99ceb1e89b8fef27e13b9ac4",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_21",
+      "source": "data-20a3082cc9530de0dcc27908c6d0e8ca",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_22",
+      "source": "data-488b107388315e13d128c2d17bc25d63",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_23",
+      "source": "data-5617229efff1ad53eb1fdef21d3c8b2a",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_24",
+      "source": "data-ecc625590fc857d37982fa2dc1394711",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_25",
+      "source": "data-333ed8e6a4d480244b3fb7320020d175",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_26",
+      "source": "data-aa848328a132d2e4a410fa8762dccf43",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_27",
+      "source": "data-3ed1d327f17cf4fbcfda09e1596b879d",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_28",
+      "source": "data-9f8d139ea4c579f5affd6e4efe5ff105",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toNumber(datum[\"x_axis\"])",
+          "as": "x_axis"
+        }
+      ]
+    },
+    {
+      "name": "data_29",
+      "source": "data-18f471781a07be68c2e6a512c3a60b56",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+        }
+      ]
+    },
+    {
+      "name": "data_30",
+      "source": "data-8ff066b16ef82333a3959afdea6243f9",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+        }
+      ]
+    }
+  ],
+  "signals": [
+    {
+      "name": "unit",
+      "value": {},
+      "on": [
+        {"events": "mousemove", "update": "isTuple(group()) ? group() : unit"}
+      ]
+    },
+    {
+      "name": "selector032",
+      "update": "{\"x_axis\": selector032_x_axis, \"y_axis\": selector032_y_axis}"
+    },
+    {"name": "selector032_x_axis"},
+    {"name": "selector032_y_axis"},
+    {
+      "name": "selector033",
+      "update": "{\"x_axis\": selector033_x_axis, \"y_axis\": selector033_y_axis}"
+    },
+    {"name": "selector033_x_axis"},
+    {"name": "selector033_y_axis"},
+    {
+      "name": "selector032_x_axis",
+      "on": [
+        {
+          "events": {"signal": "selector032_translate_delta"},
+          "update": "panLinear(selector032_translate_anchor.extent_x, -selector032_translate_delta.x / width)"
+        },
+        {
+          "events": {"signal": "selector032_zoom_delta"},
+          "update": "zoomLinear(domain(\"x\"), selector032_zoom_anchor.x, selector032_zoom_delta)"
+        },
+        {"events": [{"source": "scope", "type": "dblclick"}], "update": "null"}
+      ],
+      "push": "outer"
+    },
+    {
+      "name": "selector032_y_axis",
+      "on": [
+        {
+          "events": {"signal": "selector032_translate_delta"},
+          "update": "panLinear(selector032_translate_anchor.extent_y, selector032_translate_delta.y / height)"
+        },
+        {
+          "events": {"signal": "selector032_zoom_delta"},
+          "update": "zoomLinear(domain(\"y\"), selector032_zoom_anchor.y, selector032_zoom_delta)"
+        },
+        {"events": [{"source": "scope", "type": "dblclick"}], "update": "null"}
+      ],
+      "push": "outer"
+    },
+    {
+      "name": "selector032_tuple",
+      "on": [
+        {
+          "events": [{"signal": "selector032_x_axis || selector032_y_axis"}],
+          "update": "selector032_x_axis && selector032_y_axis ? {unit: \"layer_29_layer_0\", fields: selector032_tuple_fields, values: [selector032_x_axis,selector032_y_axis]} : null"
+        }
+      ]
+    },
+    {
+      "name": "selector032_tuple_fields",
+      "value": [
+        {"field": "x_axis", "channel": "x", "type": "R"},
+        {"field": "y_axis", "channel": "y", "type": "R"}
+      ]
+    },
+    {
+      "name": "selector032_translate_anchor",
+      "value": {},
+      "on": [
+        {
+          "events": [{"source": "scope", "type": "mousedown"}],
+          "update": "{x: x(unit), y: y(unit), extent_x: domain(\"x\"), extent_y: domain(\"y\")}"
+        }
+      ]
+    },
+    {
+      "name": "selector032_translate_delta",
+      "value": {},
+      "on": [
+        {
+          "events": [
+            {
+              "source": "window",
+              "type": "mousemove",
+              "consume": true,
+              "between": [
+                {"source": "scope", "type": "mousedown"},
+                {"source": "window", "type": "mouseup"}
+              ]
+            }
+          ],
+          "update": "{x: selector032_translate_anchor.x - x(unit), y: selector032_translate_anchor.y - y(unit)}"
+        }
+      ]
+    },
+    {
+      "name": "selector032_zoom_anchor",
+      "on": [
+        {
+          "events": [{"source": "scope", "type": "wheel", "consume": true}],
+          "update": "{x: invert(\"x\", x(unit)), y: invert(\"y\", y(unit))}"
+        }
+      ]
+    },
+    {
+      "name": "selector032_zoom_delta",
+      "on": [
+        {
+          "events": [{"source": "scope", "type": "wheel", "consume": true}],
+          "force": true,
+          "update": "pow(1.001, event.deltaY * pow(16, event.deltaMode))"
+        }
+      ]
+    },
+    {
+      "name": "selector032_modify",
+      "on": [
+        {
+          "events": {"signal": "selector032_tuple"},
+          "update": "modify(\"selector032_store\", selector032_tuple, true)"
+        }
+      ]
+    },
+    {
+      "name": "selector033_x_axis",
+      "on": [
+        {
+          "events": {"signal": "selector033_translate_delta"},
+          "update": "panLinear(selector033_translate_anchor.extent_x, -selector033_translate_delta.x / width)"
+        },
+        {
+          "events": {"signal": "selector033_zoom_delta"},
+          "update": "zoomLinear(domain(\"x\"), selector033_zoom_anchor.x, selector033_zoom_delta)"
+        },
+        {"events": [{"source": "scope", "type": "dblclick"}], "update": "null"}
+      ],
+      "push": "outer"
+    },
+    {
+      "name": "selector033_y_axis",
+      "on": [
+        {
+          "events": {"signal": "selector033_translate_delta"},
+          "update": "panLinear(selector033_translate_anchor.extent_y, selector033_translate_delta.y / height)"
+        },
+        {
+          "events": {"signal": "selector033_zoom_delta"},
+          "update": "zoomLinear(domain(\"y\"), selector033_zoom_anchor.y, selector033_zoom_delta)"
+        },
+        {"events": [{"source": "scope", "type": "dblclick"}], "update": "null"}
+      ],
+      "push": "outer"
+    },
+    {
+      "name": "selector033_tuple",
+      "on": [
+        {
+          "events": [{"signal": "selector033_x_axis || selector033_y_axis"}],
+          "update": "selector033_x_axis && selector033_y_axis ? {unit: \"layer_30_layer_0\", fields: selector033_tuple_fields, values: [selector033_x_axis,selector033_y_axis]} : null"
+        }
+      ]
+    },
+    {
+      "name": "selector033_tuple_fields",
+      "value": [
+        {"field": "x_axis", "channel": "x", "type": "R"},
+        {"field": "y_axis", "channel": "y", "type": "R"}
+      ]
+    },
+    {
+      "name": "selector033_translate_anchor",
+      "value": {},
+      "on": [
+        {
+          "events": [{"source": "scope", "type": "mousedown"}],
+          "update": "{x: x(unit), y: y(unit), extent_x: domain(\"x\"), extent_y: domain(\"y\")}"
+        }
+      ]
+    },
+    {
+      "name": "selector033_translate_delta",
+      "value": {},
+      "on": [
+        {
+          "events": [
+            {
+              "source": "window",
+              "type": "mousemove",
+              "consume": true,
+              "between": [
+                {"source": "scope", "type": "mousedown"},
+                {"source": "window", "type": "mouseup"}
+              ]
+            }
+          ],
+          "update": "{x: selector033_translate_anchor.x - x(unit), y: selector033_translate_anchor.y - y(unit)}"
+        }
+      ]
+    },
+    {
+      "name": "selector033_zoom_anchor",
+      "on": [
+        {
+          "events": [{"source": "scope", "type": "wheel", "consume": true}],
+          "update": "{x: invert(\"x\", x(unit)), y: invert(\"y\", y(unit))}"
+        }
+      ]
+    },
+    {
+      "name": "selector033_zoom_delta",
+      "on": [
+        {
+          "events": [{"source": "scope", "type": "wheel", "consume": true}],
+          "force": true,
+          "update": "pow(1.001, event.deltaY * pow(16, event.deltaMode))"
+        }
+      ]
+    },
+    {
+      "name": "selector033_modify",
+      "on": [
+        {
+          "events": {"signal": "selector033_tuple"},
+          "update": "modify(\"selector033_store\", selector033_tuple, true)"
+        }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "name": "layer_0_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_0"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_1_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_1"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_2_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_2"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_3_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_3"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_4_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_4"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_5_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_5"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_6_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_6"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_7_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_7"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_8_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_8"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_9_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_9"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_10_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_10"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_11_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_11"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_12_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_12"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_13_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_13"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_14_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_14"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_15_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_15"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_16_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_16"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_17_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_17"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_18_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_18"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_19_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_19"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_20_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_20"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_21_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_21"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_22_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_22"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_23_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_23"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_24_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_24"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_25_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_25"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_26_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_26"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_27_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_27"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_28_marks",
+      "type": "line",
+      "clip": true,
+      "style": ["line"],
+      "sort": {"field": "datum[\"x_axis\"]"},
+      "interactive": false,
+      "from": {"data": "data_28"},
+      "encode": {
+        "update": {
+          "strokeDash": {"value": [2, 1]},
+          "stroke": {"value": "gray"},
+          "x": {"scale": "x", "field": "x_axis"},
+          "y": {"scale": "y", "field": "y_axis"},
+          "defined": {
+            "signal": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+          }
+        }
+      }
+    },
+    {
+      "name": "layer_29_layer_0_marks",
+      "type": "symbol",
+      "clip": true,
+      "style": ["circle"],
+      "interactive": true,
+      "from": {"data": "data_29"},
+      "encode": {
+        "update": {
+          "opacity": {"value": 0.7},
+          "size": {"value": 60},
+          "fill": {"scale": "color", "field": "group"},
+          "tooltip": {
+            "signal": "{\"name\": ''+datum[\"name\"], \"original\": ''+datum[\"original\"]}"
+          },
+          "x": [
+            {
+              "test": "!isValid(datum[\"x_axis\"]) || !isFinite(+datum[\"x_axis\"])",
+              "value": 0
+            },
+            {"scale": "x", "field": "x_axis"}
+          ],
+          "y": {"scale": "y", "field": "y_axis"},
+          "shape": {"value": "circle"}
+        }
+      }
+    },
+    {
+      "name": "layer_29_layer_1_marks",
+      "type": "text",
+      "clip": true,
+      "style": ["text"],
+      "interactive": false,
+      "from": {"data": "data_29"},
+      "encode": {
+        "update": {
+          "dx": {"value": -15},
+          "dy": {"value": 3},
+          "fill": {"value": "black"},
+          "x": [
+            {
+              "test": "!isValid(datum[\"x_axis\"]) || !isFinite(+datum[\"x_axis\"])",
+              "value": 0
+            },
+            {"scale": "x", "field": "x_axis"}
+          ],
+          "y": {"scale": "y", "field": "y_axis"},
+          "text": {"signal": "''+datum[\"original\"]"},
+          "align": {"value": "center"},
+          "baseline": {"value": "middle"}
+        }
+      }
+    },
+    {
+      "name": "layer_30_layer_0_marks",
+      "type": "symbol",
+      "clip": true,
+      "style": ["circle"],
+      "interactive": true,
+      "from": {"data": "data_30"},
+      "encode": {
+        "update": {
+          "opacity": {"value": 0.7},
+          "size": {"value": 60},
+          "fill": {"scale": "color", "field": "group"},
+          "tooltip": {
+            "signal": "{\"name\": ''+datum[\"name\"], \"original\": ''+datum[\"original\"]}"
+          },
+          "x": [
+            {
+              "test": "!isValid(datum[\"x_axis\"]) || !isFinite(+datum[\"x_axis\"])",
+              "value": 0
+            },
+            {"scale": "x", "field": "x_axis"}
+          ],
+          "y": {"scale": "y", "field": "y_axis"},
+          "shape": {"value": "circle"}
+        }
+      }
+    },
+    {
+      "name": "layer_30_layer_1_marks",
+      "type": "text",
+      "clip": true,
+      "style": ["text"],
+      "interactive": false,
+      "from": {"data": "data_30"},
+      "encode": {
+        "update": {
+          "dx": {"value": -15},
+          "dy": {"value": 3},
+          "fill": {"value": "black"},
+          "x": [
+            {
+              "test": "!isValid(datum[\"x_axis\"]) || !isFinite(+datum[\"x_axis\"])",
+              "value": 0
+            },
+            {"scale": "x", "field": "x_axis"}
+          ],
+          "y": {"scale": "y", "field": "y_axis"},
+          "text": {"signal": "''+datum[\"original\"]"},
+          "align": {"value": "center"},
+          "baseline": {"value": "middle"}
+        }
+      }
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "linear",
+      "domain": {
+        "fields": [
+          {"data": "data_0", "field": "x_axis"},
+          {"data": "data_1", "field": "x_axis"},
+          {"data": "data_2", "field": "x_axis"},
+          {"data": "data_3", "field": "x_axis"},
+          {"data": "data_4", "field": "x_axis"},
+          {"data": "data_5", "field": "x_axis"},
+          {"data": "data_6", "field": "x_axis"},
+          {"data": "data_7", "field": "x_axis"},
+          {"data": "data_8", "field": "x_axis"},
+          {"data": "data_9", "field": "x_axis"},
+          {"data": "data_10", "field": "x_axis"},
+          {"data": "data_11", "field": "x_axis"},
+          {"data": "data_12", "field": "x_axis"},
+          {"data": "data_13", "field": "x_axis"},
+          {"data": "data_14", "field": "x_axis"},
+          {"data": "data_15", "field": "x_axis"},
+          {"data": "data_16", "field": "x_axis"},
+          {"data": "data_17", "field": "x_axis"},
+          {"data": "data_18", "field": "x_axis"},
+          {"data": "data_19", "field": "x_axis"},
+          {"data": "data_20", "field": "x_axis"},
+          {"data": "data_21", "field": "x_axis"},
+          {"data": "data_22", "field": "x_axis"},
+          {"data": "data_23", "field": "x_axis"},
+          {"data": "data_24", "field": "x_axis"},
+          {"data": "data_25", "field": "x_axis"},
+          {"data": "data_26", "field": "x_axis"},
+          {"data": "data_27", "field": "x_axis"},
+          {"data": "data_28", "field": "x_axis"},
+          {"data": "data_29", "field": "x_axis"},
+          {"data": "data_30", "field": "x_axis"}
+        ]
+      },
+      "domainRaw": {"signal": "selector033[\"x_axis\"]"},
+      "range": [0, {"signal": "width"}],
+      "nice": true,
+      "zero": false
+    },
+    {
+      "name": "y",
+      "type": "linear",
+      "domain": {
+        "fields": [
+          {"data": "data_0", "field": "y_axis"},
+          {"data": "data_1", "field": "y_axis"},
+          {"data": "data_2", "field": "y_axis"},
+          {"data": "data_3", "field": "y_axis"},
+          {"data": "data_4", "field": "y_axis"},
+          {"data": "data_5", "field": "y_axis"},
+          {"data": "data_6", "field": "y_axis"},
+          {"data": "data_7", "field": "y_axis"},
+          {"data": "data_8", "field": "y_axis"},
+          {"data": "data_9", "field": "y_axis"},
+          {"data": "data_10", "field": "y_axis"},
+          {"data": "data_11", "field": "y_axis"},
+          {"data": "data_12", "field": "y_axis"},
+          {"data": "data_13", "field": "y_axis"},
+          {"data": "data_14", "field": "y_axis"},
+          {"data": "data_15", "field": "y_axis"},
+          {"data": "data_16", "field": "y_axis"},
+          {"data": "data_17", "field": "y_axis"},
+          {"data": "data_18", "field": "y_axis"},
+          {"data": "data_19", "field": "y_axis"},
+          {"data": "data_20", "field": "y_axis"},
+          {"data": "data_21", "field": "y_axis"},
+          {"data": "data_22", "field": "y_axis"},
+          {"data": "data_23", "field": "y_axis"},
+          {"data": "data_24", "field": "y_axis"},
+          {"data": "data_25", "field": "y_axis"},
+          {"data": "data_26", "field": "y_axis"},
+          {"data": "data_27", "field": "y_axis"},
+          {"data": "data_28", "field": "y_axis"},
+          {"data": "data_29", "field": "y_axis"},
+          {"data": "data_30", "field": "y_axis"}
+        ]
+      },
+      "domainRaw": {"signal": "selector033[\"y_axis\"]"},
+      "range": [{"signal": "height"}, 0],
+      "nice": true,
+      "zero": true
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": {
+        "fields": [
+          {"data": "data_29", "field": "group"},
+          {"data": "data_30", "field": "group"}
+        ],
+        "sort": true
+      },
+      "range": "category"
+    }
+  ],
+  "axes": [
+    {
+      "scale": "x",
+      "orient": "bottom",
+      "gridScale": "y",
+      "grid": true,
+      "tickCount": {"signal": "ceil(width/40)"},
+      "domain": false,
+      "labels": false,
+      "maxExtent": 0,
+      "minExtent": 0,
+      "ticks": false,
+      "zindex": 0
+    },
+    {
+      "scale": "y",
+      "orient": "left",
+      "gridScale": "x",
+      "grid": true,
+      "tickCount": {"signal": "ceil(height/40)"},
+      "domain": false,
+      "labels": false,
+      "maxExtent": 0,
+      "minExtent": 0,
+      "ticks": false,
+      "zindex": 0
+    },
+    {
+      "scale": "x",
+      "orient": "bottom",
+      "grid": false,
+      "title": "man",
+      "labelFlush": true,
+      "labelOverlap": true,
+      "tickCount": {"signal": "ceil(width/40)"},
+      "zindex": 0
+    },
+    {
+      "scale": "y",
+      "orient": "left",
+      "grid": false,
+      "title": "woman",
+      "labelOverlap": true,
+      "tickCount": {"signal": "ceil(height/40)"},
+      "zindex": 0
+    }
+  ],
+  "legends": [
+    {
+      "fill": "color",
+      "symbolType": "circle",
+      "title": "group",
+      "encode": {"symbols": {"update": {"opacity": {"value": 0.7}}}}
+    }
+  ]
+}

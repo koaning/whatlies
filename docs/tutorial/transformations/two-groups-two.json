@@ -1,0 +1,862 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "background": "white",
+  "padding": 5,
+  "data": [
+    {"name": "selector028_store"},
+    {"name": "selector029_store"},
+    {
+      "name": "data-e9792eba8eb6aeda716a035c3906927c",
+      "values": [
+        {
+          "x_axis": 0.40951526165008545,
+          "y_axis": 0.3261851966381073,
+          "name": "prince",
+          "original": "prince"
+        },
+        {
+          "x_axis": 0.27098548412323,
+          "y_axis": 0.4069218039512634,
+          "name": "princess",
+          "original": "princess"
+        },
+        {
+          "x_axis": 0.3271060585975647,
+          "y_axis": 0.5211429595947266,
+          "name": "nurse",
+          "original": "nurse"
+        },
+        {
+          "x_axis": 0.4489893317222595,
+          "y_axis": 0.4943573474884033,
+          "name": "doctor",
+          "original": "doctor"
+        },
+        {
+          "x_axis": 0.19353565573692322,
+          "y_axis": 0.09302382916212082,
+          "name": "banker",
+          "original": "banker"
+        },
+        {
+          "x_axis": 0.38155144453048706,
+          "y_axis": 0.33430397510528564,
+          "name": "cousin",
+          "original": "cousin"
+        },
+        {
+          "x_axis": 0.29427674412727356,
+          "y_axis": 0.41036874055862427,
+          "name": "neice",
+          "original": "neice"
+        },
+        {
+          "x_axis": 0.45961007475852966,
+          "y_axis": 0.27491992712020874,
+          "name": "king",
+          "original": "king"
+        },
+        {
+          "x_axis": 0.2914373576641083,
+          "y_axis": 0.40253907442092896,
+          "name": "queen",
+          "original": "queen"
+        },
+        {
+          "x_axis": 0.6322574615478516,
+          "y_axis": 0.37293168902397156,
+          "name": "dude",
+          "original": "dude"
+        },
+        {
+          "x_axis": 0.689598560333252,
+          "y_axis": 0.4880948066711426,
+          "name": "guy",
+          "original": "guy"
+        },
+        {
+          "x_axis": 0.30102455615997314,
+          "y_axis": 0.3522968888282776,
+          "name": "gal",
+          "original": "gal"
+        },
+        {
+          "x_axis": 0.4537816643714905,
+          "y_axis": 0.31863078474998474,
+          "name": "fire",
+          "original": "fire"
+        },
+        {
+          "x_axis": 0.4621913731098175,
+          "y_axis": 0.4013059139251709,
+          "name": "dog",
+          "original": "dog"
+        },
+        {
+          "x_axis": 0.3758322596549988,
+          "y_axis": 0.34616324305534363,
+          "name": "cat",
+          "original": "cat"
+        },
+        {
+          "x_axis": 0.2176199108362198,
+          "y_axis": 0.18362130224704742,
+          "name": "mouse",
+          "original": "mouse"
+        },
+        {
+          "x_axis": 0.2972288429737091,
+          "y_axis": 0.3045094907283783,
+          "name": "red",
+          "original": "red"
+        },
+        {
+          "x_axis": 0.2937301993370056,
+          "y_axis": 0.2844599485397339,
+          "name": "blue",
+          "original": "blue"
+        },
+        {
+          "x_axis": 0.25164204835891724,
+          "y_axis": 0.215010866522789,
+          "name": "green",
+          "original": "green"
+        },
+        {
+          "x_axis": 0.2725669741630554,
+          "y_axis": 0.25106003880500793,
+          "name": "yellow",
+          "original": "yellow"
+        },
+        {
+          "x_axis": 0.335124671459198,
+          "y_axis": 0.2691221237182617,
+          "name": "water",
+          "original": "water"
+        },
+        {
+          "x_axis": 0.538722574710846,
+          "y_axis": 0.5015737414360046,
+          "name": "person",
+          "original": "person"
+        },
+        {
+          "x_axis": 0.3436667323112488,
+          "y_axis": 0.3416234254837036,
+          "name": "family",
+          "original": "family"
+        },
+        {
+          "x_axis": 0.5816835165023804,
+          "y_axis": 0.39277997612953186,
+          "name": "brother",
+          "original": "brother"
+        },
+        {
+          "x_axis": 0.3568364381790161,
+          "y_axis": 0.4736946225166321,
+          "name": "sister",
+          "original": "sister"
+        },
+        {
+          "x_axis": 0.4034731090068817,
+          "y_axis": 0.3235458433628082,
+          "name": "happy prince",
+          "original": "happy prince"
+        },
+        {
+          "x_axis": 0.42418035864830017,
+          "y_axis": 0.3388368487358093,
+          "name": "sad prince",
+          "original": "sad prince"
+        }
+      ]
+    },
+    {
+      "name": "data-381ab519376bb9a3c538fd68b353d626",
+      "values": [
+        {
+          "x_axis": 0.3721413016319275,
+          "y_axis": 0.37740591168403625,
+          "name": "(prince | (king - queen))",
+          "original": "prince"
+        },
+        {
+          "x_axis": 0.32078519463539124,
+          "y_axis": 0.3907199800014496,
+          "name": "(princess | (king - queen))",
+          "original": "princess"
+        },
+        {
+          "x_axis": 0.38499051332473755,
+          "y_axis": 0.5041420459747314,
+          "name": "(nurse | (king - queen))",
+          "original": "nurse"
+        },
+        {
+          "x_axis": 0.46731048822402954,
+          "y_axis": 0.5102049708366394,
+          "name": "(doctor | (king - queen))",
+          "original": "doctor"
+        },
+        {
+          "x_axis": 0.1731649786233902,
+          "y_axis": 0.11744287610054016,
+          "name": "(banker | (king - queen))",
+          "original": "banker"
+        },
+        {
+          "x_axis": 0.3942609429359436,
+          "y_axis": 0.3473650813102722,
+          "name": "(cousin | (king - queen))",
+          "original": "cousin"
+        },
+        {
+          "x_axis": 0.3400344252586365,
+          "y_axis": 0.39806586503982544,
+          "name": "(neice | (king - queen))",
+          "original": "neice"
+        },
+        {
+          "x_axis": 0.3779345750808716,
+          "y_axis": 0.3594277501106262,
+          "name": "(king | (king - queen))",
+          "original": "king"
+        },
+        {
+          "x_axis": 0.3779345750808716,
+          "y_axis": 0.35942772030830383,
+          "name": "(queen | (king - queen))",
+          "original": "queen"
+        },
+        {
+          "x_axis": 0.6412995457649231,
+          "y_axis": 0.3981958031654358,
+          "name": "(dude | (king - queen))",
+          "original": "dude"
+        },
+        {
+          "x_axis": 0.6984968185424805,
+          "y_axis": 0.5187848806381226,
+          "name": "(guy | (king - queen))",
+          "original": "guy"
+        },
+        {
+          "x_axis": 0.3681216537952423,
+          "y_axis": 0.32252824306488037,
+          "name": "(gal | (king - queen))",
+          "original": "gal"
+        },
+        {
+          "x_axis": 0.46388524770736694,
+          "y_axis": 0.3355717957019806,
+          "name": "(fire | (king - queen))",
+          "original": "fire"
+        },
+        {
+          "x_axis": 0.47540125250816345,
+          "y_axis": 0.4186546504497528,
+          "name": "(dog | (king - queen))",
+          "original": "dog"
+        },
+        {
+          "x_axis": 0.398105651140213,
+          "y_axis": 0.3522307574748993,
+          "name": "(cat | (king - queen))",
+          "original": "cat"
+        },
+        {
+          "x_axis": 0.22983808815479279,
+          "y_axis": 0.187143474817276,
+          "name": "(mouse | (king - queen))",
+          "original": "mouse"
+        },
+        {
+          "x_axis": 0.3163382112979889,
+          "y_axis": 0.30910223722457886,
+          "name": "(red | (king - queen))",
+          "original": "red"
+        },
+        {
+          "x_axis": 0.3168107867240906,
+          "y_axis": 0.28537046909332275,
+          "name": "(blue | (king - queen))",
+          "original": "blue"
+        },
+        {
+          "x_axis": 0.26152005791664124,
+          "y_axis": 0.2223435342311859,
+          "name": "(green | (king - queen))",
+          "original": "green"
+        },
+        {
+          "x_axis": 0.29196789860725403,
+          "y_axis": 0.253030925989151,
+          "name": "(yellow | (king - queen))",
+          "original": "yellow"
+        },
+        {
+          "x_axis": 0.34176596999168396,
+          "y_axis": 0.2832501232624054,
+          "name": "(water | (king - queen))",
+          "original": "water"
+        },
+        {
+          "x_axis": 0.5559191107749939,
+          "y_axis": 0.5214522480964661,
+          "name": "(person | (king - queen))",
+          "original": "person"
+        },
+        {
+          "x_axis": 0.3543766736984253,
+          "y_axis": 0.35514166951179504,
+          "name": "(family | (king - queen))",
+          "original": "family"
+        },
+        {
+          "x_axis": 0.5562112927436829,
+          "y_axis": 0.4427803158760071,
+          "name": "(brother | (king - queen))",
+          "original": "brother"
+        },
+        {
+          "x_axis": 0.40646934509277344,
+          "y_axis": 0.46244552731513977,
+          "name": "(sister | (king - queen))",
+          "original": "sister"
+        },
+        {
+          "x_axis": 0.3915880620479584,
+          "y_axis": 0.3554167151451111,
+          "name": "(happy prince | (king - queen))",
+          "original": "happy prince"
+        },
+        {
+          "x_axis": 0.4149007201194763,
+          "y_axis": 0.36989855766296387,
+          "name": "(sad prince | (king - queen))",
+          "original": "sad prince"
+        }
+      ]
+    },
+    {
+      "name": "data_0",
+      "source": "data-e9792eba8eb6aeda716a035c3906927c",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+        }
+      ]
+    },
+    {
+      "name": "data_1",
+      "source": "data-381ab519376bb9a3c538fd68b353d626",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+        }
+      ]
+    }
+  ],
+  "signals": [
+    {"name": "childWidth", "value": 300},
+    {"name": "childHeight", "value": 300},
+    {
+      "name": "unit",
+      "value": {},
+      "on": [
+        {"events": "mousemove", "update": "isTuple(group()) ? group() : unit"}
+      ]
+    },
+    {
+      "name": "selector028",
+      "update": "{\"x_axis\": selector028_x_axis, \"y_axis\": selector028_y_axis}"
+    },
+    {"name": "selector028_x_axis"},
+    {"name": "selector028_y_axis"},
+    {
+      "name": "selector029",
+      "update": "{\"x_axis\": selector029_x_axis, \"y_axis\": selector029_y_axis}"
+    },
+    {"name": "selector029_x_axis"},
+    {"name": "selector029_y_axis"}
+  ],
+  "layout": {"padding": 20, "bounds": "full", "align": "each"},
+  "marks": [
+    {
+      "type": "group",
+      "name": "concat_0_group",
+      "title": {"text": "man vs. woman", "frame": "group"},
+      "style": "cell",
+      "encode": {
+        "update": {
+          "width": {"signal": "childWidth"},
+          "height": {"signal": "childHeight"}
+        }
+      },
+      "signals": [
+        {
+          "name": "selector028_x_axis",
+          "on": [
+            {
+              "events": {"signal": "selector028_translate_delta"},
+              "update": "panLinear(selector028_translate_anchor.extent_x, -selector028_translate_delta.x / childWidth)"
+            },
+            {
+              "events": {"signal": "selector028_zoom_delta"},
+              "update": "zoomLinear(domain(\"concat_0_x\"), selector028_zoom_anchor.x, selector028_zoom_delta)"
+            },
+            {
+              "events": [{"source": "scope", "type": "dblclick"}],
+              "update": "null"
+            }
+          ],
+          "push": "outer"
+        },
+        {
+          "name": "selector028_y_axis",
+          "on": [
+            {
+              "events": {"signal": "selector028_translate_delta"},
+              "update": "panLinear(selector028_translate_anchor.extent_y, selector028_translate_delta.y / childHeight)"
+            },
+            {
+              "events": {"signal": "selector028_zoom_delta"},
+              "update": "zoomLinear(domain(\"concat_0_y\"), selector028_zoom_anchor.y, selector028_zoom_delta)"
+            },
+            {
+              "events": [{"source": "scope", "type": "dblclick"}],
+              "update": "null"
+            }
+          ],
+          "push": "outer"
+        },
+        {
+          "name": "selector028_tuple",
+          "on": [
+            {
+              "events": [
+                {"signal": "selector028_x_axis || selector028_y_axis"}
+              ],
+              "update": "selector028_x_axis && selector028_y_axis ? {unit: \"concat_0_layer_0\", fields: selector028_tuple_fields, values: [selector028_x_axis,selector028_y_axis]} : null"
+            }
+          ]
+        },
+        {
+          "name": "selector028_tuple_fields",
+          "value": [
+            {"field": "x_axis", "channel": "x", "type": "R"},
+            {"field": "y_axis", "channel": "y", "type": "R"}
+          ]
+        },
+        {
+          "name": "selector028_translate_anchor",
+          "value": {},
+          "on": [
+            {
+              "events": [{"source": "scope", "type": "mousedown"}],
+              "update": "{x: x(unit), y: y(unit), extent_x: domain(\"concat_0_x\"), extent_y: domain(\"concat_0_y\")}"
+            }
+          ]
+        },
+        {
+          "name": "selector028_translate_delta",
+          "value": {},
+          "on": [
+            {
+              "events": [
+                {
+                  "source": "window",
+                  "type": "mousemove",
+                  "consume": true,
+                  "between": [
+                    {"source": "scope", "type": "mousedown"},
+                    {"source": "window", "type": "mouseup"}
+                  ]
+                }
+              ],
+              "update": "{x: selector028_translate_anchor.x - x(unit), y: selector028_translate_anchor.y - y(unit)}"
+            }
+          ]
+        },
+        {
+          "name": "selector028_zoom_anchor",
+          "on": [
+            {
+              "events": [{"source": "scope", "type": "wheel", "consume": true}],
+              "update": "{x: invert(\"concat_0_x\", x(unit)), y: invert(\"concat_0_y\", y(unit))}"
+            }
+          ]
+        },
+        {
+          "name": "selector028_zoom_delta",
+          "on": [
+            {
+              "events": [{"source": "scope", "type": "wheel", "consume": true}],
+              "force": true,
+              "update": "pow(1.001, event.deltaY * pow(16, event.deltaMode))"
+            }
+          ]
+        },
+        {
+          "name": "selector028_modify",
+          "on": [
+            {
+              "events": {"signal": "selector028_tuple"},
+              "update": "modify(\"selector028_store\", selector028_tuple, true)"
+            }
+          ]
+        }
+      ],
+      "marks": [
+        {
+          "name": "concat_0_layer_0_marks",
+          "type": "symbol",
+          "clip": true,
+          "style": ["circle"],
+          "interactive": true,
+          "from": {"data": "data_0"},
+          "encode": {
+            "update": {
+              "opacity": {"value": 0.7},
+              "size": {"value": 60},
+              "fill": {"value": "#4c78a8"},
+              "tooltip": {
+                "signal": "{\"name\": ''+datum[\"name\"], \"original\": ''+datum[\"original\"]}"
+              },
+              "x": {"scale": "concat_0_x", "field": "x_axis"},
+              "y": {"scale": "concat_0_y", "field": "y_axis"},
+              "shape": {"value": "circle"}
+            }
+          }
+        },
+        {
+          "name": "concat_0_layer_1_marks",
+          "type": "text",
+          "clip": true,
+          "style": ["text"],
+          "interactive": false,
+          "from": {"data": "data_0"},
+          "encode": {
+            "update": {
+              "dx": {"value": -15},
+              "dy": {"value": 3},
+              "fill": {"value": "black"},
+              "x": {"scale": "concat_0_x", "field": "x_axis"},
+              "y": {"scale": "concat_0_y", "field": "y_axis"},
+              "text": {"signal": "''+datum[\"original\"]"},
+              "align": {"value": "center"},
+              "baseline": {"value": "middle"}
+            }
+          }
+        }
+      ],
+      "axes": [
+        {
+          "scale": "concat_0_x",
+          "orient": "bottom",
+          "gridScale": "concat_0_y",
+          "grid": true,
+          "tickCount": {"signal": "ceil(childWidth/40)"},
+          "domain": false,
+          "labels": false,
+          "maxExtent": 0,
+          "minExtent": 0,
+          "ticks": false,
+          "zindex": 0
+        },
+        {
+          "scale": "concat_0_y",
+          "orient": "left",
+          "gridScale": "concat_0_x",
+          "grid": true,
+          "tickCount": {"signal": "ceil(childHeight/40)"},
+          "domain": false,
+          "labels": false,
+          "maxExtent": 0,
+          "minExtent": 0,
+          "ticks": false,
+          "zindex": 0
+        },
+        {
+          "scale": "concat_0_x",
+          "orient": "bottom",
+          "grid": false,
+          "title": "man",
+          "labelFlush": true,
+          "labelOverlap": true,
+          "tickCount": {"signal": "ceil(childWidth/40)"},
+          "zindex": 0
+        },
+        {
+          "scale": "concat_0_y",
+          "orient": "left",
+          "grid": false,
+          "title": "woman",
+          "labelOverlap": true,
+          "tickCount": {"signal": "ceil(childHeight/40)"},
+          "zindex": 0
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "concat_1_group",
+      "title": {
+        "text": "(man | (king - queen)) vs. (woman | (king - queen))",
+        "frame": "group"
+      },
+      "style": "cell",
+      "encode": {
+        "update": {
+          "width": {"signal": "childWidth"},
+          "height": {"signal": "childHeight"}
+        }
+      },
+      "signals": [
+        {
+          "name": "selector029_x_axis",
+          "on": [
+            {
+              "events": {"signal": "selector029_translate_delta"},
+              "update": "panLinear(selector029_translate_anchor.extent_x, -selector029_translate_delta.x / childWidth)"
+            },
+            {
+              "events": {"signal": "selector029_zoom_delta"},
+              "update": "zoomLinear(domain(\"concat_1_x\"), selector029_zoom_anchor.x, selector029_zoom_delta)"
+            },
+            {
+              "events": [{"source": "scope", "type": "dblclick"}],
+              "update": "null"
+            }
+          ],
+          "push": "outer"
+        },
+        {
+          "name": "selector029_y_axis",
+          "on": [
+            {
+              "events": {"signal": "selector029_translate_delta"},
+              "update": "panLinear(selector029_translate_anchor.extent_y, selector029_translate_delta.y / childHeight)"
+            },
+            {
+              "events": {"signal": "selector029_zoom_delta"},
+              "update": "zoomLinear(domain(\"concat_1_y\"), selector029_zoom_anchor.y, selector029_zoom_delta)"
+            },
+            {
+              "events": [{"source": "scope", "type": "dblclick"}],
+              "update": "null"
+            }
+          ],
+          "push": "outer"
+        },
+        {
+          "name": "selector029_tuple",
+          "on": [
+            {
+              "events": [
+                {"signal": "selector029_x_axis || selector029_y_axis"}
+              ],
+              "update": "selector029_x_axis && selector029_y_axis ? {unit: \"concat_1_layer_0\", fields: selector029_tuple_fields, values: [selector029_x_axis,selector029_y_axis]} : null"
+            }
+          ]
+        },
+        {
+          "name": "selector029_tuple_fields",
+          "value": [
+            {"field": "x_axis", "channel": "x", "type": "R"},
+            {"field": "y_axis", "channel": "y", "type": "R"}
+          ]
+        },
+        {
+          "name": "selector029_translate_anchor",
+          "value": {},
+          "on": [
+            {
+              "events": [{"source": "scope", "type": "mousedown"}],
+              "update": "{x: x(unit), y: y(unit), extent_x: domain(\"concat_1_x\"), extent_y: domain(\"concat_1_y\")}"
+            }
+          ]
+        },
+        {
+          "name": "selector029_translate_delta",
+          "value": {},
+          "on": [
+            {
+              "events": [
+                {
+                  "source": "window",
+                  "type": "mousemove",
+                  "consume": true,
+                  "between": [
+                    {"source": "scope", "type": "mousedown"},
+                    {"source": "window", "type": "mouseup"}
+                  ]
+                }
+              ],
+              "update": "{x: selector029_translate_anchor.x - x(unit), y: selector029_translate_anchor.y - y(unit)}"
+            }
+          ]
+        },
+        {
+          "name": "selector029_zoom_anchor",
+          "on": [
+            {
+              "events": [{"source": "scope", "type": "wheel", "consume": true}],
+              "update": "{x: invert(\"concat_1_x\", x(unit)), y: invert(\"concat_1_y\", y(unit))}"
+            }
+          ]
+        },
+        {
+          "name": "selector029_zoom_delta",
+          "on": [
+            {
+              "events": [{"source": "scope", "type": "wheel", "consume": true}],
+              "force": true,
+              "update": "pow(1.001, event.deltaY * pow(16, event.deltaMode))"
+            }
+          ]
+        },
+        {
+          "name": "selector029_modify",
+          "on": [
+            {
+              "events": {"signal": "selector029_tuple"},
+              "update": "modify(\"selector029_store\", selector029_tuple, true)"
+            }
+          ]
+        }
+      ],
+      "marks": [
+        {
+          "name": "concat_1_layer_0_marks",
+          "type": "symbol",
+          "clip": true,
+          "style": ["circle"],
+          "interactive": true,
+          "from": {"data": "data_1"},
+          "encode": {
+            "update": {
+              "opacity": {"value": 0.7},
+              "size": {"value": 60},
+              "fill": {"value": "#4c78a8"},
+              "tooltip": {
+                "signal": "{\"name\": ''+datum[\"name\"], \"original\": ''+datum[\"original\"]}"
+              },
+              "x": {"scale": "concat_1_x", "field": "x_axis"},
+              "y": {"scale": "concat_1_y", "field": "y_axis"},
+              "shape": {"value": "circle"}
+            }
+          }
+        },
+        {
+          "name": "concat_1_layer_1_marks",
+          "type": "text",
+          "clip": true,
+          "style": ["text"],
+          "interactive": false,
+          "from": {"data": "data_1"},
+          "encode": {
+            "update": {
+              "dx": {"value": -15},
+              "dy": {"value": 3},
+              "fill": {"value": "black"},
+              "x": {"scale": "concat_1_x", "field": "x_axis"},
+              "y": {"scale": "concat_1_y", "field": "y_axis"},
+              "text": {"signal": "''+datum[\"original\"]"},
+              "align": {"value": "center"},
+              "baseline": {"value": "middle"}
+            }
+          }
+        }
+      ],
+      "axes": [
+        {
+          "scale": "concat_1_x",
+          "orient": "bottom",
+          "gridScale": "concat_1_y",
+          "grid": true,
+          "tickCount": {"signal": "ceil(childWidth/40)"},
+          "domain": false,
+          "labels": false,
+          "maxExtent": 0,
+          "minExtent": 0,
+          "ticks": false,
+          "zindex": 0
+        },
+        {
+          "scale": "concat_1_y",
+          "orient": "left",
+          "gridScale": "concat_1_x",
+          "grid": true,
+          "tickCount": {"signal": "ceil(childHeight/40)"},
+          "domain": false,
+          "labels": false,
+          "maxExtent": 0,
+          "minExtent": 0,
+          "ticks": false,
+          "zindex": 0
+        },
+        {
+          "scale": "concat_1_x",
+          "orient": "bottom",
+          "grid": false,
+          "title": "(man | (king - queen))",
+          "labelFlush": true,
+          "labelOverlap": true,
+          "tickCount": {"signal": "ceil(childWidth/40)"},
+          "zindex": 0
+        },
+        {
+          "scale": "concat_1_y",
+          "orient": "left",
+          "grid": false,
+          "title": "(woman | (king - queen))",
+          "labelOverlap": true,
+          "tickCount": {"signal": "ceil(childHeight/40)"},
+          "zindex": 0
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "concat_0_x",
+      "type": "linear",
+      "domain": {"data": "data_0", "field": "x_axis"},
+      "domainRaw": {"signal": "selector028[\"x_axis\"]"},
+      "range": [0, {"signal": "childWidth"}],
+      "nice": true,
+      "zero": true
+    },
+    {
+      "name": "concat_0_y",
+      "type": "linear",
+      "domain": {"data": "data_0", "field": "y_axis"},
+      "domainRaw": {"signal": "selector028[\"y_axis\"]"},
+      "range": [{"signal": "childHeight"}, 0],
+      "nice": true,
+      "zero": true
+    },
+    {
+      "name": "concat_1_x",
+      "type": "linear",
+      "domain": {"data": "data_1", "field": "x_axis"},
+      "domainRaw": {"signal": "selector029[\"x_axis\"]"},
+      "range": [0, {"signal": "childWidth"}],
+      "nice": true,
+      "zero": true
+    },
+    {
+      "name": "concat_1_y",
+      "type": "linear",
+      "domain": {"data": "data_1", "field": "y_axis"},
+      "domainRaw": {"signal": "selector029[\"y_axis\"]"},
+      "range": [{"signal": "childHeight"}, 0],
+      "nice": true,
+      "zero": true
+    }
+  ]
+}

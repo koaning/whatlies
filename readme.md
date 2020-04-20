@@ -104,9 +104,10 @@ There are some projects out there who are working on similar tools and we figure
 
 ##### Julia Bazińska & Piotr Migdal Web App
 
-The original inspiration for this project came from [this web app](https://lamyiowce.github.io/word2viz/). It is a web app that takes a while to slow
+The original inspiration for this project came from [this web app](https://lamyiowce.github.io/word2viz/) and [this pydata talk](https://www.youtube.com/watch?v=AGgCqpouKSs). It is a web app that takes a while to slow
 but it is really fun to play with. The goal of this project is to make it
 easier to make similar charts from jupyter using different language backends.
+
 
 ##### Tensorflow Projector
 

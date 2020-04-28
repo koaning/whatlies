@@ -1,4 +1,5 @@
 from typing import Union
+import os
 
 import spacy
 from spacy.language import Language
@@ -53,6 +54,37 @@ class SpacyLanguage:
             self.nlp = model
         else:
             raise ValueError("Language must be started with `str` or spaCy-langauge object.")
+
+    @classmethod
+    def from_fasttext(cls, language, output_dir, vectors_loc=None, force=False):
+        """
+        Will load downloaded fasttext vectors. It will try to load from disk, but if there is no local
+        spaCy model then we will first convert from the vec.gz file into a spaCy model. This
+        is saved on disk and then loaded as a spaCy model.
+
+        Important:
+            The fasttext vectors are not given by this library.
+            You can download the models [here](https://fasttext.cc/docs/en/crawl-vectors.html#models).
+            Note that these files are big that and loading this in can take a long time.
+
+        Arguments:
+            language: name of the language so that spaCy can grab correct tokenizer (example: "en" for english)
+            output_dir: directory to save spaCy model
+            vectors_loc: file containing the fasttext vectors
+            force: with this flag raised we will always recreate the model from the vec.gz file
+
+        **Usage**:
+
+        ```python
+        > lang = SpacyLanguage.from_texttext("~/Downloads/cc.nl.300.vec.gz")
+        ```
+        """
+        if not os.path.exists(output_dir):
+            spacy.cli.init_model(lang=language, output_dir=output_dir, vectors_loc=vectors_loc)
+        else:
+            if force:
+                spacy.cli.init_model(lang=language, output_dir=output_dir, vectors_loc=vectors_loc)
+        return SpacyLanguage(spacy.load(output_dir))
 
     @staticmethod
     def _input_str_legal(string):

@@ -1,4 +1,5 @@
 import os
+import warnings
 
 import spacy
 from spacy.language import Language
@@ -157,11 +158,15 @@ class SpacyLanguage:
             queries = [w for w in queries if w.prob >= prob_limit]
         if lower:
             queries = [w for w in queries if w.is_lower]
+
         if len(queries) == 0:
             raise ValueError(f"Language model has no tokens for this setting. Consider raising prob_limit={prob_limit}")
 
         vector_matrix = np.array([w.vector for w in queries])
         distances = pairwise_distances(vector_matrix, vec.reshape(1, -1), metric=metric)
         by_similarity = sorted(zip(queries, distances), key=lambda z: z[1])
+
+        if len(queries) < n:
+            warnings.warn(f"We could only find {len(queries)} feasible words. Consider changing `prob_limit` or `lower`", UserWarning)
 
         return [(self[q.text], float(d)) for q, d in by_similarity[:n]]

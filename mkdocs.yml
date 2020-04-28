@@ -23,6 +23,7 @@ nav:
     - Language:
         - spaCy: api/language/spacy_lang.md
         - Sense2Vec: api/language/s2v_lang.md
+        - fasttext: api/language/fasttext_lang.md
   - Roadmap: roadmap.md
 plugins:
   - mkdocstrings

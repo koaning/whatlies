@@ -3,7 +3,8 @@ import numpy as np
 
 from spacy.vocab import Vocab
 from spacy.language import Language
-from whatlies.language.language import SpacyLanguage, _selected_idx_spacy
+from whatlies.language import SpacyLanguage
+from whatlies.language.spacy_lang import _selected_idx_spacy
 
 
 @pytest.fixture()
@@ -42,6 +43,12 @@ def test_lang_retreival(color_lang, string, array):
 def test_single_token_words(color_lang):
     # test for issue here: https://github.com/RasaHQ/whatlies/issues/5
     assert np.sum(color_lang["red"].vector) > 0
+
+
+def test_raise_warning(color_lang):
+    print([w for w in color_lang.nlp.vocab])
+    with pytest.warns(UserWarning):
+        color_lang.score_similar("red", 100, prob_limit=None, lower=False)
 
 
 @pytest.mark.parametrize(

@@ -36,7 +36,7 @@ We've added backends to our library and this can be a convenient method
 of getting sets of embeddings (typically more performant too).
 
 ```python
-from whatlies.language import SpacyLanguage
+from whatlies.language.language import SpacyLanguage
 
 words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
          "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",

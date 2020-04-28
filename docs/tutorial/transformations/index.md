@@ -9,7 +9,7 @@ A goal of this package is to be able to compare the effect of transformations.
 That is why some of our transformations carry state. Umap is one such example.
 
 ```python
-from whatlies.language import SpacyLanguage
+from whatlies.language.language import SpacyLanguage
 lang = SpacyLanguage('en_core_web_sm')
 
 words1 = ["dog", "cat", "mouse", "deer", "elephant", "zebra", "fish",
@@ -47,7 +47,7 @@ fetch('colors.json')
 Let's create two embeddings.
 
 ```python
-from whatlies.language import SpacyLanguage
+from whatlies.language.language import SpacyLanguage
 
 lang = SpacyLanguage("en_core_web_md")
 words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",

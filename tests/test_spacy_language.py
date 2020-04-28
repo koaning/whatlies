@@ -45,6 +45,12 @@ def test_single_token_words(color_lang):
     assert np.sum(color_lang["red"].vector) > 0
 
 
+def test_raise_warning(color_lang):
+    print([w for w in color_lang.nlp.vocab])
+    with pytest.warns(UserWarning):
+        color_lang.score_similar("red", 100, prob_limit=None, lower=False)
+
+
 @pytest.mark.parametrize(
     "triplets",
     zip(

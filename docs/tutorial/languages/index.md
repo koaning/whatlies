@@ -11,7 +11,7 @@ depending on the language backend you may get slightly different behavior.
 We can have spaCy summerize multiple tokens if we'd like.
 
 ```python
-from whatlies.language import SpacyLanguage
+from whatlies.language.language import SpacyLanguage
 from whatlies.transformers import Pca
 
 lang = SpacyLanguage("en_core_web_sm")
@@ -75,7 +75,7 @@ that you should be able to retreive tokens with context. They way you fetch thes
 tokens is a bit ... different though.
 
 ```python
-from whatlies.language import Sense2VecLangauge
+from whatlies.language.language import Sense2VecLangauge
 from whatlies.transformers import Pca
 
 lang = Sense2VecLangauge("path/downloaded/s2v")

@@ -3,7 +3,8 @@ import numpy as np
 
 from spacy.vocab import Vocab
 from spacy.language import Language
-from whatlies.language.language import SpacyLanguage, _selected_idx_spacy
+from whatlies.language import SpacyLanguage
+from whatlies.language.spacy_lang import _selected_idx_spacy
 
 
 @pytest.fixture()

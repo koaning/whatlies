@@ -1,7 +1,7 @@
 import pytest
 from spacy.vocab import Vocab
 from spacy.language import Language
-from whatlies.language.language import SpacyLanguage
+from whatlies.language import SpacyLanguage
 from whatlies.transformers import Umap, Pca, Noise, AddRandom
 
 

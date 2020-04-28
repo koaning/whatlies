@@ -37,7 +37,7 @@ and use mathematical operations on it.
 
 ```python
 from whatlies import EmbeddingSet
-from whatlies.language import SpacyLanguage
+from whatlies.language.language import SpacyLanguage
 
 lang = SpacyLanguage("en_core_web_md")
 words = ["cat", "dog", "fish", "kitten", "man", "woman",

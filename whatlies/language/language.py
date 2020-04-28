@@ -58,7 +58,7 @@ class SpacyLanguage:
     @classmethod
     def from_fasttext(cls, language, output_dir, vectors_loc=None, force=False):
         """
-        Will load fastext tokens. It will try to load from disk, but if there is no local
+        Will load downloaded fasttext vectors. It will try to load from disk, but if there is no local
         spaCy model then we will first convert from the vec.gz file into a spaCy model. This
         is saved on disk and then loaded as a spaCy model.
 
@@ -72,6 +72,8 @@ class SpacyLanguage:
             output_dir: directory to save spaCy model
             vectors_loc: file containing the fasttext vectors
             force: with this flag raised we will always recreate the model from the vec.gz file
+
+        **Usage**:
 
         ```python
         > lang = SpacyLanguage.from_texttext("~/Downloads/cc.nl.300.vec.gz")

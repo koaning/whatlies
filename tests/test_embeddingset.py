@@ -6,7 +6,7 @@ from spacy.vocab import Vocab
 from spacy.language import Language
 
 from whatlies import Embedding, EmbeddingSet
-from whatlies.language import SpacyLanguage
+from whatlies.language.language import SpacyLanguage
 
 
 @pytest.fixture()

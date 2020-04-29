@@ -579,6 +579,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/fasttext_lang/" title="fasttext" class="md-nav__link">
+      fasttext
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -684,7 +696,7 @@
 depending on the language backend you may get slightly different behavior.</p>
 <h2 id="multiple-tokens">Multiple Tokens<a class="headerlink" href="#multiple-tokens" title="Permanent link">&para;</a></h2>
 <p>We can have spaCy summerize multiple tokens if we'd like.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">SpacyLanguage</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language.language</span> <span class="kn">import</span> <span class="n">SpacyLanguage</span>
 <span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">Pca</span>
 
 <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_sm&quot;</span><span class="p">)</span>
@@ -737,7 +749,7 @@ get it to work you first need to download and unzip the pretrained vectors
 found <a href="https://github.com/explosion/sense2vec#pretrained-vectors">here</a> but after
 that you should be able to retreive tokens with context. They way you fetch these
 tokens is a bit ... different though.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">Sense2VecLangauge</span>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language.language</span> <span class="kn">import</span> <span class="n">Sense2VecLangauge</span>
 <span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">Pca</span>
 
 <span class="n">lang</span> <span class="o">=</span> <span class="n">Sense2VecLangauge</span><span class="p">(</span><span class="s2">&quot;path/downloaded/s2v&quot;</span><span class="p">)</span>

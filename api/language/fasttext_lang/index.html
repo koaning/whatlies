@@ -689,20 +689,20 @@ backend. This object is meant for retreival, not plotting.</p>
 <p>The vectors are not given by this library they must be download upfront.
 You can find the download links <a href="https://fasttext.cc/docs/en/crawl-vectors.html">here</a>.</p>
 <p>You could use fasttext to train your own models with this code;</p>
-<div class="highlight"><pre><span></span><code>&gt; import fasttext
-&gt; model = fasttext.train_unsupervised(&#39;data.txt&#39;,
-                                      model=&#39;cbow&#39;,
-                                      dim=10)
-&gt; model = fasttext.train_unsupervised(&#39;data.txt&#39;,
-                                      model=&#39;skipgram&#39;,
-                                      dim=20,
-                                      epoch=20,
-                                      lr=0.1,
-                                      min_count=1)
-&gt; lang = FasttextLanguage(model)
-&gt; lang[&#39;python&#39;]
-&gt; model.save_model(&quot;result/data-skipgram-20.bin&quot;)
-&gt; lang = FasttextLanguage(&quot;result/data-skipgram-20.bin&quot;)
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">fasttext</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">train_unsupervised</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">,</span>
+                                    <span class="n">model</span><span class="o">=</span><span class="s1">&#39;cbow&#39;</span><span class="p">,</span>
+                                    <span class="n">dim</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">train_unsupervised</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">,</span>
+                                    <span class="n">model</span><span class="o">=</span><span class="s1">&#39;skipgram&#39;</span><span class="p">,</span>
+                                    <span class="n">dim</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                                    <span class="n">epoch</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                                    <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                                    <span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">lang</span> <span class="o">=</span> <span class="n">FasttextLanguage</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">lang</span><span class="p">[</span><span class="s1">&#39;python&#39;</span><span class="p">]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="s2">&quot;result/data-skipgram-20.bin&quot;</span><span class="p">)</span>
+<span class="n">lang</span> <span class="o">=</span> <span class="n">FasttextLanguage</span><span class="p">(</span><span class="s2">&quot;result/data-skipgram-20.bin&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <p>Our preferred usecase for fasttext is to use the pretrained vectors but you can train your own.

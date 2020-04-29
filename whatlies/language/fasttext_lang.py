@@ -20,30 +20,28 @@ class FasttextLanguage:
     Important:
         The vectors are not given by this library they must be download upfront.
         You can find the download links [here](https://fasttext.cc/docs/en/crawl-vectors.html).
-        To train your own fasttext model see the guide [here](https://fasttext.cc/docs/en/python-module.html#word-representation-model).
 
-    Warning:
-        You could theoretically use fasttext to train your own models with this code;
+        You could use fasttext to train your own models with this code;
 
-        ```
-        > import fasttext
-        > model = fasttext.train_unsupervised('data.txt',
-                                              model='cbow',
-                                              dim=10)
-        > model = fasttext.train_unsupervised('data.txt',
-                                              model='skipgram',
-                                              dim=20,
-                                              epoch=20,
-                                              lr=0.1,
-                                              min_count=1)
-        > lang = FasttextLanguage(model)
-        > lang['python']
-        > model.save_model("result/data-skipgram-20.bin")
-        > lang = FasttextLanguage("result/data-skipgram-20.bin")
+        ```python
+        import fasttext
+        model = fasttext.train_unsupervised('data.txt',
+                                            model='cbow',
+                                            dim=10)
+        model = fasttext.train_unsupervised('data.txt',
+                                            model='skipgram',
+                                            dim=20,
+                                            epoch=20,
+                                            lr=0.1,
+                                            min_count=1)
+        lang = FasttextLanguage(model)
+        lang['python']
+        model.save_model("result/data-skipgram-20.bin")
+        lang = FasttextLanguage("result/data-skipgram-20.bin")
         ```
 
-        But you need to be aware that the fasttext library from facebook has gone stale.
-        Last update on pypi was June 2019. Our preferred usecase for it is to use the pretrained vectors.
+        Our preferred usecase for fasttext is to use the pretrained vectors but you can train your own.
+        For more information on how to train your own fasttext model see the guide [here](https://fasttext.cc/docs/en/python-module.html#word-representation-model).
         Note that you can also import these via spaCy but this requires a packaging step.
 
     Arguments:

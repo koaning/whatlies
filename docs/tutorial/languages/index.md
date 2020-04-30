@@ -75,10 +75,10 @@ that you should be able to retreive tokens with context. They way you fetch thes
 tokens is a bit ... different though.
 
 ```python
-from whatlies.language.language import Sense2VecLangauge
+from whatlies.language.language import Sense2VecLanguage
 from whatlies.transformers import Pca
 
-lang = Sense2VecLangauge("path/downloaded/s2v")
+lang = Sense2VecLanguage("path/downloaded/s2v")
 
 words = ["bank|NOUN", "bank|VERB", "duck|NOUN", "duck|VERB",
          "dog|NOUN", "cat|NOUN", "jump|VERB", "run|VERB",

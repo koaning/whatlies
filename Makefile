@@ -9,6 +9,8 @@ develop: install
 	python -m pip install --upgrade pip wheel setuptools twine
 	python setup.py develop
 	pre-commit install
+	python -m spacy download en_core_web_sm
+	python -m spacy download en_trf_robertabase_lg
 
 flake:
 	flake8 setup.py --count --statistics --max-complexity=10 --max-line-length=127

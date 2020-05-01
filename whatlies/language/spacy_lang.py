@@ -52,7 +52,7 @@ class SpacyLanguage:
         elif isinstance(model, Language):
             self.nlp = model
         else:
-            raise ValueError("Language must be started with `str` or spaCy-langauge object.")
+            raise ValueError("Language must be started with `str` or spaCy-language object.")
 
     @classmethod
     def from_fasttext(cls, language, output_dir, vectors_loc=None, force=False):

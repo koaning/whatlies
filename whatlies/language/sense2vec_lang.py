@@ -5,7 +5,7 @@ from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
 
 
-class Sense2VecLangauge:
+class Sense2VecLanguage:
     """
     This object is used to lazily fetch [Embedding][whatlies.embedding.Embedding]s or
     [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]s from a sense2vec language

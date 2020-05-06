@@ -4,6 +4,7 @@ from functools import reduce
 
 import numpy as np
 import pandas as pd
+import matplotlib.pylab as plt
 import altair as alt
 from sklearn.metrics import pairwise_distances
 from sklearn.metrics.pairwise import paired_distances
@@ -305,6 +306,8 @@ class EmbeddingSet:
             name: name of the property to add
             func: function that receives an embedding and needs to output the property value
 
+        Usage:
+
         ```python
         from whatlies.embeddingset import EmbeddingSet
 
@@ -325,6 +328,8 @@ class EmbeddingSet:
 
         Arguments:
             name: manually specify the name of the average embedding
+
+        Usage:
 
         ```python
         from whatlies.embeddingset import EmbeddingSet
@@ -387,6 +392,10 @@ class EmbeddingSet:
     def to_matrix(self):
         return np.array([w.vector for w in self.embeddings.values()])
 
+    def to_dataframe(self):
+        mat = self.to_matrix()
+        return pd.DataFrame(mat, index=list(self.embeddings.keys()))
+
     def movement_df(self, other, metric="euclidean"):
         overlap = list(set(self.embeddings.keys()).union(set(other.embeddings.keys())))
         mat1 = np.array([w.vector for w in self[overlap]])
@@ -441,6 +450,40 @@ class EmbeddingSet:
     def plot_graph_layout(self, kind="cosine", **kwargs):
         plot_graph_layout(self.embeddings, kind, **kwargs)
         return self
+
+    def plot_correlaton(self, metric=None):
+        """
+        Make a correlation plot. Shows you the correlation between all the word embeddings. Can
+        also be configured to show distances instead.
+
+        Arguments:
+            metric: don't plot correlation but a distance measure, must be scipy compatible (cosine, euclidean, etc)
+
+        Usage:
+
+        ```python
+        from whatlies.language import SpacyLanguage
+
+        names = ['red', 'blue', 'green', 'yellow', 'cat', 'dog', 'mouse', 'rat', 'bike', 'car']
+        emb = lang[names]
+        emb.plot_correlaton()
+        ```
+
+        ![](/images/corrplot.png)
+        """
+        df = self.to_dataframe().T
+        corr_df = pairwise_distances(self.to_matrix(), metric=metric) if metric else df.corr()
+
+        fig, ax = plt.subplots()
+        plt.imshow(corr_df)
+        plt.xticks(range(len(df.columns)), df.columns)
+        plt.yticks(range(len(df.columns)), df.columns)
+        plt.colorbar()
+
+        # Rotate the tick labels and set their alignment.
+        plt.setp(ax.get_xticklabels(), rotation=90, ha="right",
+                 rotation_mode="anchor")
+        plt.show()
 
     def plot_movement(self, other,
         x_axis: Union[str, Embedding],

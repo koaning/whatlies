@@ -749,10 +749,10 @@ get it to work you first need to download and unzip the pretrained vectors
 found <a href="https://github.com/explosion/sense2vec#pretrained-vectors">here</a> but after
 that you should be able to retreive tokens with context. They way you fetch these
 tokens is a bit ... different though.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language.language</span> <span class="kn">import</span> <span class="n">Sense2VecLangauge</span>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language.language</span> <span class="kn">import</span> <span class="n">Sense2VecLanguage</span>
 <span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">Pca</span>
 
-<span class="n">lang</span> <span class="o">=</span> <span class="n">Sense2VecLangauge</span><span class="p">(</span><span class="s2">&quot;path/downloaded/s2v&quot;</span><span class="p">)</span>
+<span class="n">lang</span> <span class="o">=</span> <span class="n">Sense2VecLanguage</span><span class="p">(</span><span class="s2">&quot;path/downloaded/s2v&quot;</span><span class="p">)</span>
 
 <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;bank|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;bank|VERB&quot;</span><span class="p">,</span> <span class="s2">&quot;duck|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;duck|VERB&quot;</span><span class="p">,</span>
          <span class="s2">&quot;dog|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;cat|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;jump|VERB&quot;</span><span class="p">,</span> <span class="s2">&quot;run|VERB&quot;</span><span class="p">,</span>

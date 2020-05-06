@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://rasahq.github.io/whatlies/</loc>
-     <lastmod>2020-04-29</lastmod>
+     <lastmod>2020-05-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://rasahq.github.io/whatlies/tutorial/embeddings/</loc>
-     <lastmod>2020-04-29</lastmod>
+     <lastmod>2020-05-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://rasahq.github.io/whatlies/tutorial/embeddingsets/</loc>
-     <lastmod>2020-04-29</lastmod>
+     <lastmod>2020-05-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://rasahq.github.io/whatlies/tutorial/languages/</loc>
-     <lastmod>2020-04-29</lastmod>
+     <lastmod>2020-05-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://rasahq.github.io/whatlies/tutorial/transformations/</loc>
-     <lastmod>2020-04-29</lastmod>
+     <lastmod>2020-05-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://rasahq.github.io/whatlies/api/embedding/</loc>
-     <lastmod>2020-04-29</lastmod>
+     <lastmod>2020-05-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://rasahq.github.io/whatlies/api/embeddingset/</loc>
-     <lastmod>2020-04-29</lastmod>
+     <lastmod>2020-05-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://rasahq.github.io/whatlies/api/transformers/pca/</loc>
-     <lastmod>2020-04-29</lastmod>
+     <lastmod>2020-05-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://rasahq.github.io/whatlies/api/transformers/umap/</loc>
-     <lastmod>2020-04-29</lastmod>
+     <lastmod>2020-05-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://rasahq.github.io/whatlies/api/transformers/noise/</loc>
-     <lastmod>2020-04-29</lastmod>
+     <lastmod>2020-05-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://rasahq.github.io/whatlies/api/transformers/addrandom/</loc>
-     <lastmod>2020-04-29</lastmod>
+     <lastmod>2020-05-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://rasahq.github.io/whatlies/api/language/spacy_lang/</loc>
-     <lastmod>2020-04-29</lastmod>
+     <lastmod>2020-05-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://rasahq.github.io/whatlies/api/language/s2v_lang/</loc>
-     <lastmod>2020-04-29</lastmod>
+     <lastmod>2020-05-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://rasahq.github.io/whatlies/api/language/fasttext_lang/</loc>
-     <lastmod>2020-04-29</lastmod>
+     <lastmod>2020-05-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://rasahq.github.io/whatlies/roadmap/</loc>
-     <lastmod>2020-04-29</lastmod>
+     <lastmod>2020-05-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

@@ -88,3 +88,9 @@ def test_embset_raise_value_error_emb(lang):
     emb = lang[["red", "blue", "orange", "cat", "dog"]]
     with pytest.raises(ValueError):
         emb.score_similar("dinosaurhead", 1)
+
+
+def test_corrplot_raise_error(lang):
+    with pytest.raises(ValueError):
+        emb = lang[["red", "blue", "orange", "pink", "purple", "brown"]]
+        emb.plot_correlaton(metric='dinosaurhead')

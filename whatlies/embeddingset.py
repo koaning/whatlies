@@ -390,13 +390,39 @@ class EmbeddingSet:
         return [(self[q], float(d)) for q, d in by_similarity[:n]]
 
     def to_matrix(self):
-        return np.array([w.vector for w in self.embeddings.values()])
+        """
+        Does exactly the same as `.to_X`. It takes the embedding vectors and turns it into a numpy array.
+        """
+        return self.to_X()
 
     def to_dataframe(self):
+        """
+        Turns the embeddingset into a pandas dataframe.
+        """
         mat = self.to_matrix()
         return pd.DataFrame(mat, index=list(self.embeddings.keys()))
 
     def movement_df(self, other, metric="euclidean"):
+        """
+        Creates a dataframe that shows the movement from one embeddingset to another one.
+
+        Arguments:
+            other: the other embeddingset to compare against, will only keep the overlap
+            metric: metric to use to calculate movement, must be scipy or sklearn compatible
+
+        Usage:
+
+        ```python
+        from whatlies.language import SpacyLanguage
+        lang1 = SpacyLanguage("en_core_web_sm")
+        lang2 = SpacyLanguage("en_core_web_md")
+
+        names = ['red', 'blue', 'green', 'yellow', 'cat', 'dog', 'mouse', 'rat', 'bike', 'car']
+        emb1 = lang1[names]
+        emb2 = lang2[names]
+        emb1.movement_df(emb2)
+        ```
+        """
         overlap = list(set(self.embeddings.keys()).union(set(other.embeddings.keys())))
         mat1 = np.array([w.vector for w in self[overlap]])
         mat2 = np.array([w.vector for w in other[overlap]])
@@ -451,7 +477,7 @@ class EmbeddingSet:
         plot_graph_layout(self.embeddings, kind, **kwargs)
         return self
 
-    def plot_correlaton(self, metric=None):
+    def plot_correlation(self, metric=None):
         """
         Make a correlation plot. Shows you the correlation between all the word embeddings. Can
         also be configured to show distances instead.
@@ -463,13 +489,14 @@ class EmbeddingSet:
 
         ```python
         from whatlies.language import SpacyLanguage
+        lang = SpacyLanguage("en_core_web_md")
 
         names = ['red', 'blue', 'green', 'yellow', 'cat', 'dog', 'mouse', 'rat', 'bike', 'car']
         emb = lang[names]
-        emb.plot_correlaton()
+        emb.plot_correlation()
         ```
 
-        ![](/images/corrplot.png)
+        ![](https://rasahq.github.io/whatlies/images/corrplot.png)
         """
         df = self.to_dataframe().T
         corr_df = pairwise_distances(self.to_matrix(), metric=metric) if metric else df.corr()

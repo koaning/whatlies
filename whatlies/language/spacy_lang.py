@@ -9,6 +9,7 @@ from sklearn.metrics import pairwise_distances
 
 from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
+from whatlies.language.common import SklearnTransformerMixin
 
 
 def _selected_idx_spacy(string):
@@ -25,7 +26,7 @@ def _selected_idx_spacy(string):
     return start, end
 
 
-class SpacyLanguage:
+class SpacyLanguage(SklearnTransformerMixin):
     """
     This object is used to lazily fetch [Embedding][whatlies.embedding.Embedding]s or
     [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]s from a spaCy language

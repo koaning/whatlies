@@ -43,3 +43,4 @@ if __name__ == "__main__":
         vocab.set_vector(word, vector)
     nlp = Language(vocab=vocab, meta={"lang": "en"})
     vocab.to_disk("custom_test_vocab")
+    nlp.to_disk("custom_test_lang")

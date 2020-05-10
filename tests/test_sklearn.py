@@ -7,13 +7,6 @@ from spacy.language import Language
 from whatlies.language import SpacyLanguage
 
 
-transformer_checks = (
-    estimator_checks.check_transformer_data_not_an_array,
-    estimator_checks.check_transformer_general,
-    estimator_checks.check_transformers_unfitted,
-)
-
-
 @pytest.fixture()
 def color_lang():
     vector_data = {"red": np.array([1.0, 0.0]),
@@ -35,6 +28,27 @@ def test_check_sizes(color_lang, text):
     assert color_lang.fit_transform(X).shape == (len(text), 2)
 
 
-@pytest.mark.parametrize("test_fn", transformer_checks)
-def test_estimator_checks(test_fn, color_lang):
-    test_fn("spacy_lang", color_lang)
+def test_get_params():
+    assert 'nlp' in SpacyLanguage("tests/custom_test_lang/").get_params().keys()
+
+
+checks = (
+    estimator_checks.check_fit2d_predict1d,
+    estimator_checks.check_fit2d_1sample,
+    estimator_checks.check_fit2d_1feature,
+    estimator_checks.check_fit1d,
+    estimator_checks.check_get_params_invariance,
+    estimator_checks.check_set_params,
+    estimator_checks.check_dont_overwrite_parameters,
+    estimator_checks.check_transformers_unfitted,
+    # these checks won't work because they assume text data
+    # estimator_checks.check_transformer_data_not_an_array,
+    # estimator_checks.check_transformer_general,
+    # estimator_checks.check_methods_subset_invariance,
+    # estimator_checks.check_dict_unchanged,
+)
+
+
+@pytest.mark.parametrize("test_fn", checks)
+def test_estimator_checks(test_fn):
+    test_fn("spacy_lang", SpacyLanguage("tests/custom_test_lang/"))

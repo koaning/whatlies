@@ -33,7 +33,7 @@ class SpacyLanguage(SklearnTransformerMixin):
     backend. This object is meant for retreival, not plotting.
 
     Arguments:
-        model: name of the model to load, be sure that it's downloaded beforehand
+        nlp: name of the model to load, be sure that it's downloaded beforehand
 
     **Usage**:
 
@@ -47,11 +47,11 @@ class SpacyLanguage(SklearnTransformerMixin):
     ```
     """
 
-    def __init__(self, model: Union[str, Language]):
-        if isinstance(model, str):
-            self.nlp = spacy.load(model)
-        elif isinstance(model, Language):
-            self.nlp = model
+    def __init__(self, nlp: Union[str, Language]):
+        if isinstance(nlp, str):
+            self.nlp = spacy.load(nlp)
+        elif isinstance(nlp, Language):
+            self.nlp = nlp
         else:
             raise ValueError("Language must be started with `str` or spaCy-language object.")
 

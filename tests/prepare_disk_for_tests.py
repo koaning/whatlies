@@ -47,6 +47,3 @@ if __name__ == "__main__":
     print("local vocab saved for spacy")
     nlp.to_disk("tests/custom_test_lang")
     print("local nlp saved for spacy")
-    model = fasttext.train_unsupervised('tests/data/foobar.txt', model='cbow', dim=10)
-    model.save_model("tests/custom_fasttext_model.bin")
-    print("local model saved for fasttext")

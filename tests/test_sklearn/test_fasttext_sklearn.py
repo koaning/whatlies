@@ -2,6 +2,12 @@ import pytest
 
 from whatlies.language import FasttextLanguage
 
+import numpy as np
+from sklearn.pipeline import Pipeline
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import FeatureUnion
+from sklearn.feature_extraction.text import CountVectorizer
+
 
 @pytest.fixture()
 def lang():
@@ -40,3 +46,41 @@ checks = (
 @pytest.mark.parametrize("test_fn", checks)
 def test_estimator_checks(test_fn):
     test_fn("spacy_lang", FasttextLanguage('tests/custom_fasttext_model.bin'))
+
+
+def test_sklearn_pipeline_works(lang):
+    pipe = Pipeline([
+        ("embed", lang),
+        ("model", LogisticRegression())
+    ])
+
+    X = [
+        "i really like this post",
+        "thanks for that comment",
+        "i enjoy this friendly forum",
+        "this is a bad post",
+        "i dislike this article",
+        "this is not well written"
+    ]
+    y = np.array([1, 1, 1, 0, 0, 0])
+
+    pipe.fit(X, y)
+    assert pipe.predict(X).shape[0] == 6
+
+
+def test_sklearn_feature_union_works(lang):
+    X = [
+        "i really like this post",
+        "thanks for that comment",
+        "i enjoy this friendly forum",
+        "this is a bad post",
+        "i dislike this article",
+        "this is not well written"
+    ]
+
+    preprocess = FeatureUnion([
+        ("dense", lang),
+        ("sparse", CountVectorizer())
+    ])
+
+    assert preprocess.fit_transform(X).shape[0] == 6

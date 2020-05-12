@@ -48,10 +48,11 @@ class SpacyLanguage(SklearnTransformerMixin):
     """
 
     def __init__(self, nlp: Union[str, Language]):
+        self.nlp = nlp
         if isinstance(nlp, str):
-            self.nlp = spacy.load(nlp)
+            self.model = spacy.load(nlp)
         elif isinstance(nlp, Language):
-            self.nlp = nlp
+            self.model = nlp
         else:
             raise ValueError(
                 "Language must be started with `str` or spaCy-language object."
@@ -121,12 +122,12 @@ class SpacyLanguage(SklearnTransformerMixin):
             self._input_str_legal(query)
             start, end = _selected_idx_spacy(query)
             clean_string = query.replace("[", "").replace("]", "")
-            vec = self.nlp(clean_string)[start:end].vector
+            vec = self.model(clean_string)[start:end].vector
             return Embedding(query, vec)
         return EmbeddingSet(*[self[tok] for tok in query])
 
     def _prepare_queries(self, prob_limit, lower):
-        queries = [w for w in self.nlp.vocab]
+        queries = [w for w in self.model.vocab]
         if prob_limit is not None:
             queries = [w for w in queries if w.prob >= prob_limit]
         if lower:

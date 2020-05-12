@@ -10,7 +10,7 @@ def lang():
 
 @pytest.mark.parametrize('text', [("red red", "blue red"), ("red", "green", "blue"), ("dog", "cat")])
 def test_check_sizes(lang, text):
-    X = [text]
+    X = text
     assert lang.fit(X).transform(X).shape == (len(text), 10)
     assert lang.fit_transform(X).shape == (len(text), 10)
 

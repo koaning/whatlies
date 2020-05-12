@@ -22,6 +22,7 @@ class FasttextLanguage(SklearnTransformerMixin):
     Important:
         The vectors are not given by this library they must be download upfront.
         You can find the download links [here](https://fasttext.cc/docs/en/crawl-vectors.html).
+        Note: you'll want the `bin` file, **not** the `text` file.
         To train your own fasttext model see the guide
         [here](https://fasttext.cc/docs/en/python-module.html#word-representation-model).
 

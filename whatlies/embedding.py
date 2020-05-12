@@ -148,8 +148,8 @@ class Embedding:
     def plot(
         self,
         kind: str = "scatter",
-        x_axis: Union[str, 'Embedding'] = None,
-        y_axis: Union[str, 'Embedding'] = None,
+        x_axis: Union[str, "Embedding"] = None,
+        y_axis: Union[str, "Embedding"] = None,
         color: str = None,
         show_ops: bool = False,
         annot: bool = False,

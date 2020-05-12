@@ -10,8 +10,10 @@ import fasttext.util
 from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
 
+from whatlies.language.common import SklearnTransformerMixin
 
-class FasttextLanguage:
+
+class FasttextLanguage(SklearnTransformerMixin):
     """
     This object is used to lazily fetch [Embedding][whatlies.embedding.Embedding]s or
     [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]s from a fasttext language
@@ -20,7 +22,9 @@ class FasttextLanguage:
     Important:
         The vectors are not given by this library they must be download upfront.
         You can find the download links [here](https://fasttext.cc/docs/en/crawl-vectors.html).
-        To train your own fasttext model see the guide [here](https://fasttext.cc/docs/en/python-module.html#word-representation-model).
+        Note: you'll want the `bin` file, **not** the `text` file.
+        To train your own fasttext model see the guide
+        [here](https://fasttext.cc/docs/en/python-module.html#word-representation-model).
 
     Warning:
         You could theoretically use fasttext to train your own models with this code;
@@ -61,14 +65,17 @@ class FasttextLanguage:
     """
 
     def __init__(self, model, size=None):
+        self.size = size
         if isinstance(model, str):
-            self.ft = fasttext.load_model(model)
+            self.model = fasttext.load_model(model)
         elif isinstance(model, fasttext.FastText._FastText):
-            self.ft = model
+            self.model = model
         else:
-            raise ValueError("Language must be started with `str` or fasttext.FastText._FastText object.")
-        if size:
-            fasttext.util.reduce_model(self.ft, size)
+            raise ValueError(
+                "Language must be started with `str` or fasttext.FastText._FastText object."
+            )
+        if self.size:
+            fasttext.util.reduce_model(self.model, self.size)
 
     @staticmethod
     def _input_str_legal(string):
@@ -96,26 +103,35 @@ class FasttextLanguage:
         """
         if isinstance(query, str):
             self._input_str_legal(query)
-            vec = self.ft.get_word_vector(query)
+            vec = self.model.get_word_vector(query)
             return Embedding(query, vec)
         return EmbeddingSet(*[self[tok] for tok in query])
 
     def _prepare_queries(self, top_n, lower):
-        queries = [w for w in self.ft.get_words()]
+        queries = [w for w in self.model.get_words()]
         if lower:
             queries = [w for w in queries if w.is_lower]
         if top_n is not None:
             queries = queries[:top_n]
         if len(queries) == 0:
-            raise ValueError(f"Language model has no tokens for this setting. Consider raising top_n={top_n}")
+            raise ValueError(
+                f"Language model has no tokens for this setting. Consider raising top_n={top_n}"
+            )
         return queries
 
     def _calculate_distances(self, emb, queries, metric):
         vec = emb.vector
-        vector_matrix = np.array([self.ft.get_word_vector(w) for w in queries])
+        vector_matrix = np.array([self.model.get_word_vector(w) for w in queries])
         return pairwise_distances(vector_matrix, vec.reshape(1, -1), metric=metric)
 
-    def embset_proximity(self, emb: Union[str, Embedding], max_proximity: float = 0.1, top_n=20_000, lower=True, metric='cosine'):
+    def embset_proximity(
+        self,
+        emb: Union[str, Embedding],
+        max_proximity: float = 0.1,
+        top_n=20_000,
+        lower=True,
+        metric="cosine",
+    ):
         """
         Retreive an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] or embeddings that are within a proximity.
 
@@ -134,9 +150,18 @@ class FasttextLanguage:
 
         queries = self._prepare_queries(top_n, lower)
         distances = self._calculate_distances(emb, queries, metric)
-        return EmbeddingSet({w: self[w] for w, d in zip(queries, distances) if d <= max_proximity})
+        return EmbeddingSet(
+            {w: self[w] for w, d in zip(queries, distances) if d <= max_proximity}
+        )
 
-    def embset_similar(self, emb: Union[str, Embedding], n: int = 10, top_n=20_000, lower=False, metric='cosine'):
+    def embset_similar(
+        self,
+        emb: Union[str, Embedding],
+        n: int = 10,
+        top_n=20_000,
+        lower=False,
+        metric="cosine",
+    ):
         """
         Retreive an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] that are the most similar to the passed query.
 
@@ -148,7 +173,8 @@ class FasttextLanguage:
             lower: only fetch lower case tokens, note that the official english model only has lower case tokens
 
         Important:
-            This method is incredibly slow at the moment without a good `top_n` setting due to [this bug](https://github.com/facebookresearch/fastText/issues/1040).
+            This method is incredibly slow at the moment without a good `top_n` setting due to
+            [this bug](https://github.com/facebookresearch/fastText/issues/1040).
 
         Returns:
             An [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] containing the similar embeddings.
@@ -156,7 +182,14 @@ class FasttextLanguage:
         embs = [w[0] for w in self.score_similar(emb, n, top_n, lower, metric)]
         return EmbeddingSet({w.name: w for w in embs})
 
-    def score_similar(self, emb: Union[str, Embedding], n: int = 10, top_n=20_000, lower=False, metric='cosine'):
+    def score_similar(
+        self,
+        emb: Union[str, Embedding],
+        n: int = 10,
+        top_n=20_000,
+        lower=False,
+        metric="cosine",
+    ):
         """
         Retreive a list of (Embedding, score) tuples that are the most similar to the passed query.
 
@@ -168,7 +201,8 @@ class FasttextLanguage:
             lower: only fetch lower case tokens, note that the official english model only has lower case tokens
 
         Important:
-            This method is incredibly slow at the moment without a good `top_n` setting due to [this bug](https://github.com/facebookresearch/fastText/issues/1040).
+            This method is incredibly slow at the moment without a good `top_n` setting due
+            to [this bug](https://github.com/facebookresearch/fastText/issues/1040).
 
         Returns:
             An list of ([Embedding][whatlies.embedding.Embedding], score) tuples.
@@ -181,6 +215,9 @@ class FasttextLanguage:
         by_similarity = sorted(zip(queries, distances), key=lambda z: z[1])
 
         if len(queries) < n:
-            warnings.warn(f"We could only find {len(queries)} feasible words. Consider changing `top_n` or `lower`", UserWarning)
+            warnings.warn(
+                f"We could only find {len(queries)} feasible words. Consider changing `top_n` or `lower`",
+                UserWarning,
+            )
 
         return [(self[q], float(d)) for q, d in by_similarity[:n]]

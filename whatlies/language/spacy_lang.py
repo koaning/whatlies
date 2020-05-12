@@ -9,6 +9,7 @@ from sklearn.metrics import pairwise_distances
 
 from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
+from whatlies.language.common import SklearnTransformerMixin
 
 
 def _selected_idx_spacy(string):
@@ -25,14 +26,14 @@ def _selected_idx_spacy(string):
     return start, end
 
 
-class SpacyLanguage:
+class SpacyLanguage(SklearnTransformerMixin):
     """
     This object is used to lazily fetch [Embedding][whatlies.embedding.Embedding]s or
     [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]s from a spaCy language
     backend. This object is meant for retreival, not plotting.
 
     Arguments:
-        model: name of the model to load, be sure that it's downloaded beforehand
+        nlp: name of the model to load, be sure that it's downloaded beforehand
 
     **Usage**:
 
@@ -46,13 +47,16 @@ class SpacyLanguage:
     ```
     """
 
-    def __init__(self, model: Union[str, Language]):
-        if isinstance(model, str):
-            self.nlp = spacy.load(model)
-        elif isinstance(model, Language):
-            self.nlp = model
+    def __init__(self, nlp: Union[str, Language]):
+        self.nlp = nlp
+        if isinstance(nlp, str):
+            self.model = spacy.load(nlp)
+        elif isinstance(nlp, Language):
+            self.model = nlp
         else:
-            raise ValueError("Language must be started with `str` or spaCy-language object.")
+            raise ValueError(
+                "Language must be started with `str` or spaCy-language object."
+            )
 
     @classmethod
     def from_fasttext(cls, language, output_dir, vectors_loc=None, force=False):
@@ -80,10 +84,14 @@ class SpacyLanguage:
         ```
         """
         if not os.path.exists(output_dir):
-            spacy.cli.init_model(lang=language, output_dir=output_dir, vectors_loc=vectors_loc)
+            spacy.cli.init_model(
+                lang=language, output_dir=output_dir, vectors_loc=vectors_loc
+            )
         else:
             if force:
-                spacy.cli.init_model(lang=language, output_dir=output_dir, vectors_loc=vectors_loc)
+                spacy.cli.init_model(
+                    lang=language, output_dir=output_dir, vectors_loc=vectors_loc
+                )
         return SpacyLanguage(spacy.load(output_dir))
 
     @staticmethod
@@ -114,18 +122,20 @@ class SpacyLanguage:
             self._input_str_legal(query)
             start, end = _selected_idx_spacy(query)
             clean_string = query.replace("[", "").replace("]", "")
-            vec = self.nlp(clean_string)[start:end].vector
+            vec = self.model(clean_string)[start:end].vector
             return Embedding(query, vec)
         return EmbeddingSet(*[self[tok] for tok in query])
 
     def _prepare_queries(self, prob_limit, lower):
-        queries = [w for w in self.nlp.vocab]
+        queries = [w for w in self.model.vocab]
         if prob_limit is not None:
             queries = [w for w in queries if w.prob >= prob_limit]
         if lower:
             queries = [w for w in queries if w.is_lower]
         if len(queries) == 0:
-            raise ValueError(f"No tokens left for this setting. Consider raising prob_limit={prob_limit}")
+            raise ValueError(
+                f"No tokens left for this setting. Consider raising prob_limit={prob_limit}"
+            )
         return queries
 
     def _calculate_distances(self, emb, queries, metric):
@@ -133,7 +143,14 @@ class SpacyLanguage:
         vector_matrix = np.array([w.vector for w in queries])
         return pairwise_distances(vector_matrix, vec.reshape(1, -1), metric=metric)
 
-    def embset_similar(self, emb: Union[str, Embedding], n: int = 10, prob_limit=-15, lower=True, metric='cosine'):
+    def embset_similar(
+        self,
+        emb: Union[str, Embedding],
+        n: int = 10,
+        prob_limit=-15,
+        lower=True,
+        metric="cosine",
+    ):
         """
         Retreive an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] that are the most simmilar to the passed query.
 
@@ -150,7 +167,14 @@ class SpacyLanguage:
         embs = [w[0] for w in self.score_similar(emb, n, prob_limit, lower, metric)]
         return EmbeddingSet({w.name: w for w in embs})
 
-    def embset_proximity(self, emb: Union[str, Embedding], max_proximity: float = 0.1, prob_limit=-15, lower=True, metric='cosine'):
+    def embset_proximity(
+        self,
+        emb: Union[str, Embedding],
+        max_proximity: float = 0.1,
+        prob_limit=-15,
+        lower=True,
+        metric="cosine",
+    ):
         """
         Retreive an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] or embeddings that are within a proximity.
 
@@ -169,9 +193,18 @@ class SpacyLanguage:
 
         queries = self._prepare_queries(prob_limit, lower)
         distances = self._calculate_distances(emb, queries, metric)
-        return EmbeddingSet({w: self[w] for w, d in zip(queries, distances) if d <= max_proximity})
+        return EmbeddingSet(
+            {w: self[w] for w, d in zip(queries, distances) if d <= max_proximity}
+        )
 
-    def score_similar(self, emb: Union[str, Embedding], n: int = 10, prob_limit=-15, lower=True, metric='cosine'):
+    def score_similar(
+        self,
+        emb: Union[str, Embedding],
+        n: int = 10,
+        prob_limit=-15,
+        lower=True,
+        metric="cosine",
+    ):
         """
         Retreive a list of (Embedding, score) tuples that are the most simmilar to the passed query.
 
@@ -193,6 +226,9 @@ class SpacyLanguage:
         by_similarity = sorted(zip(queries, distances), key=lambda z: z[1])
 
         if len(queries) < n:
-            warnings.warn(f"We could only find {len(queries)} feasible words. Consider changing `prob_limit` or `lower`", UserWarning)
+            warnings.warn(
+                f"We could only find {len(queries)} feasible words. Consider changing `prob_limit` or `lower`",
+                UserWarning,
+            )
 
         return [(self[q.text], float(d)) for q, d in by_similarity[:n]]

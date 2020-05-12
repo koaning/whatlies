@@ -346,7 +346,7 @@ class EmbeddingSet:
         x = np.array([v.vector for v in self.embeddings.values()])
         return Embedding(name, np.mean(x, axis=0))
 
-    def embset_similar(self, emb: Union[str, Embedding], n: int = 10, metric='cosine'):
+    def embset_similar(self, emb: Union[str, Embedding], n: int = 10, metric="cosine"):
         """
         Retreive an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] that are the most simmilar to the passed query.
 
@@ -361,7 +361,7 @@ class EmbeddingSet:
         embs = [w[0] for w in self.score_similar(emb, n, metric)]
         return EmbeddingSet({w.name: w for w in embs})
 
-    def score_similar(self, emb: Union[str, Embedding], n: int = 10, metric='cosine'):
+    def score_similar(self, emb: Union[str, Embedding], n: int = 10, metric="cosine"):
         """
         Retreive a list of (Embedding, score) tuples that are the most similar to the passed query.
 
@@ -374,10 +374,14 @@ class EmbeddingSet:
             An list of ([Embedding][whatlies.embedding.Embedding], score) tuples.
         """
         if n > len(self):
-            raise ValueError(f"You cannot retreive (n={n}) more items than exist in the Embeddingset (len={len(self)})")
+            raise ValueError(
+                f"You cannot retreive (n={n}) more items than exist in the Embeddingset (len={len(self)})"
+            )
 
         if str(emb) not in self.embeddings.keys():
-            raise ValueError(f"Embedding for `{str(emb)}` does not exist in this EmbeddingSet")
+            raise ValueError(
+                f"Embedding for `{str(emb)}` does not exist in this EmbeddingSet"
+            )
 
         if isinstance(emb, str):
             emb = self[emb]
@@ -426,22 +430,27 @@ class EmbeddingSet:
         overlap = list(set(self.embeddings.keys()).union(set(other.embeddings.keys())))
         mat1 = np.array([w.vector for w in self[overlap]])
         mat2 = np.array([w.vector for w in other[overlap]])
-        return pd.DataFrame({
-            'name': overlap,
-            'movement': paired_distances(mat1, mat2, metric)
-        }).sort_values(['movement'], ascending=False).reset_index()
+        return (
+            pd.DataFrame(
+                {"name": overlap, "movement": paired_distances(mat1, mat2, metric)}
+            )
+            .sort_values(["movement"], ascending=False)
+            .reset_index()
+        )
 
     def to_axis_df(self, x_axis, y_axis):
         if isinstance(x_axis, str):
             x_axis = self[x_axis]
         if isinstance(y_axis, str):
             y_axis = self[y_axis]
-        return pd.DataFrame({
-            "x_axis": self.compare_against(x_axis),
-            "y_axis": self.compare_against(y_axis),
-            "name": [v.name for v in self.embeddings.values()],
-            "original": [v.orig for v in self.embeddings.values()],
-        })
+        return pd.DataFrame(
+            {
+                "x_axis": self.compare_against(x_axis),
+                "y_axis": self.compare_against(y_axis),
+                "name": [v.name for v in self.embeddings.values()],
+                "original": [v.orig for v in self.embeddings.values()],
+            }
+        )
 
     def plot(
         self,
@@ -499,7 +508,9 @@ class EmbeddingSet:
         ![](https://rasahq.github.io/whatlies/images/corrplot.png)
         """
         df = self.to_dataframe().T
-        corr_df = pairwise_distances(self.to_matrix(), metric=metric) if metric else df.corr()
+        corr_df = (
+            pairwise_distances(self.to_matrix(), metric=metric) if metric else df.corr()
+        )
 
         fig, ax = plt.subplots()
         plt.imshow(corr_df)
@@ -508,11 +519,12 @@ class EmbeddingSet:
         plt.colorbar()
 
         # Rotate the tick labels and set their alignment.
-        plt.setp(ax.get_xticklabels(), rotation=90, ha="right",
-                 rotation_mode="anchor")
+        plt.setp(ax.get_xticklabels(), rotation=90, ha="right", rotation_mode="anchor")
         plt.show()
 
-    def plot_movement(self, other,
+    def plot_movement(
+        self,
+        other,
         x_axis: Union[str, Embedding],
         y_axis: Union[str, Embedding],
         first_group_name="before",
@@ -553,32 +565,46 @@ class EmbeddingSet:
         if isinstance(y_axis, str):
             y_axis = self[y_axis]
 
-        df1 = (self.to_axis_df(x_axis, y_axis)
-               .set_index('original')
-               .drop(columns=['name']))
-        df2 = (other.to_axis_df(x_axis, y_axis)
-               .set_index('original')
-               .drop(columns=['name'])
-               .loc[lambda d: d.index.isin(df1.index)])
-        df_draw = (pd.concat([df1, df2])
-                   .reset_index()
-                   .sort_values(['original'])
-                   .assign(constant=1))
+        df1 = (
+            self.to_axis_df(x_axis, y_axis).set_index("original").drop(columns=["name"])
+        )
+        df2 = (
+            other.to_axis_df(x_axis, y_axis)
+            .set_index("original")
+            .drop(columns=["name"])
+            .loc[lambda d: d.index.isin(df1.index)]
+        )
+        df_draw = (
+            pd.concat([df1, df2])
+            .reset_index()
+            .sort_values(["original"])
+            .assign(constant=1)
+        )
 
         plots = []
-        for idx, grp_df in df_draw.groupby('original'):
-            _ = (alt.Chart(grp_df)
-                 .mark_line(color="gray", strokeDash=[2, 1])
-                 .encode(x='x_axis:Q', y='y_axis:Q'))
+        for idx, grp_df in df_draw.groupby("original"):
+            _ = (
+                alt.Chart(grp_df)
+                .mark_line(color="gray", strokeDash=[2, 1])
+                .encode(x="x_axis:Q", y="y_axis:Q")
+            )
             plots.append(_)
         p0 = reduce(lambda x, y: x + y, plots)
 
-        p1 = (deepcopy(self)
-              .add_property("group", lambda d: first_group_name)
-              .plot_interactive(x_axis, y_axis, annot=annot, show_axis_point=True, color="group"))
-        p2 = (deepcopy(other)
-              .add_property("group", lambda d: second_group_name)
-              .plot_interactive(x_axis, y_axis, annot=annot, show_axis_point=True, color="group"))
+        p1 = (
+            deepcopy(self)
+            .add_property("group", lambda d: first_group_name)
+            .plot_interactive(
+                x_axis, y_axis, annot=annot, show_axis_point=True, color="group"
+            )
+        )
+        p2 = (
+            deepcopy(other)
+            .add_property("group", lambda d: second_group_name)
+            .plot_interactive(
+                x_axis, y_axis, annot=annot, show_axis_point=True, color="group"
+            )
+        )
         return p0 + p1 + p2
 
     def plot_interactive(
@@ -620,15 +646,20 @@ class EmbeddingSet:
         if isinstance(y_axis, str):
             y_axis = self[y_axis]
 
-        plot_df = pd.DataFrame({
-            "x_axis": self.compare_against(x_axis),
-            "y_axis": self.compare_against(y_axis),
-            "name": [v.name for v in self.embeddings.values()],
-            "original": [v.orig for v in self.embeddings.values()],
-        })
+        plot_df = pd.DataFrame(
+            {
+                "x_axis": self.compare_against(x_axis),
+                "y_axis": self.compare_against(y_axis),
+                "name": [v.name for v in self.embeddings.values()],
+                "original": [v.orig for v in self.embeddings.values()],
+            }
+        )
 
         if color:
-            plot_df[color] = [getattr(v, color) if hasattr(v, color) else '' for v in self.embeddings.values()]
+            plot_df[color] = [
+                getattr(v, color) if hasattr(v, color) else ""
+                for v in self.embeddings.values()
+            ]
 
         if not show_axis_point:
             plot_df = plot_df.loc[lambda d: ~d["name"].isin([x_axis.name, y_axis.name])]

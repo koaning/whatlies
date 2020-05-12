@@ -11,6 +11,8 @@ develop: install
 	pre-commit install
 	python -m spacy download en_core_web_sm
 	python -m spacy download en_trf_robertabase_lg
+	python tests/prepare_disk_for_tests.py
+	python tests/prepare_fasttext_tests.py
 
 flake:
 	flake8 setup.py --count --statistics --max-complexity=10 --max-line-length=127
@@ -18,7 +20,8 @@ flake:
 	flake8 tests --count --statistics --max-complexity=10 --max-line-length=127 --exclude __init__.py
 
 test:
-	pytest --nbval --nbval-lax --disable-warnings tests notebooks/*.ipynb
+	# pytest --nbval --nbval-lax --disable-warnings tests notebooks/*.ipynb
+	pytest tests
 
 check: flake test
 

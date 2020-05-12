@@ -2,6 +2,7 @@
 This script adds a small spaCy model that is used in testing.
 """
 
+import fasttext
 import spacy
 from spacy.language import Language
 from spacy.vocab import Vocab
@@ -42,4 +43,7 @@ if __name__ == "__main__":
     for word, vector in vec_data.items():
         vocab.set_vector(word, vector)
     nlp = Language(vocab=vocab, meta={"lang": "en"})
-    vocab.to_disk("custom_test_vocab")
+    vocab.to_disk("tests/custom_test_vocab")
+    print("local vocab saved for spacy")
+    nlp.to_disk("tests/custom_test_lang")
+    print("local nlp saved for spacy")

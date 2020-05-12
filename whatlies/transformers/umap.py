@@ -4,7 +4,7 @@ from umap import UMAP
 import numpy as np
 from numba import NumbaPerformanceWarning
 
-from whatlies import Embedding, EmbeddingSet
+from whatlies import EmbeddingSet
 from whatlies.transformers.common import embset_to_X, new_embedding_dict
 
 

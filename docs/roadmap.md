@@ -15,13 +15,6 @@ flexible distance metrics in general.
 We've got a focus on charts now, but one imagines that calculating
 tables with summary statistics is also relevant.
 
-**Difference Charts**
-
-It might be nice to show where a point was *before* a transformation
-and then show where it is *after*. Especially in the realm of de-biasing
-this feels very interesting; show where the embeddig was before and then
-show where it is now.
-
 **Languages**
 
 It would be nice to have other language backends, given that we do not
@@ -29,7 +22,6 @@ download all backends. We want this package to be light and users should
 download manually.
 
 - language backends for huggingface models
-- language backends for gensim models
 
 **Testing**
 

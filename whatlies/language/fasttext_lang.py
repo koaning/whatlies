@@ -10,8 +10,10 @@ import fasttext.util
 from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
 
+from whatlies.language.common import SklearnTransformerMixin
 
-class FasttextLanguage:
+
+class FasttextLanguage(SklearnTransformerMixin):
     """
     This object is used to lazily fetch [Embedding][whatlies.embedding.Embedding]s or
     [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]s from a fasttext language
@@ -61,14 +63,15 @@ class FasttextLanguage:
     """
 
     def __init__(self, model, size=None):
+        self.size = size
         if isinstance(model, str):
-            self.ft = fasttext.load_model(model)
+            self.model = fasttext.load_model(model)
         elif isinstance(model, fasttext.FastText._FastText):
-            self.ft = model
+            self.model = model
         else:
             raise ValueError("Language must be started with `str` or fasttext.FastText._FastText object.")
-        if size:
-            fasttext.util.reduce_model(self.ft, size)
+        if self.size:
+            fasttext.util.reduce_model(self.model, self.size)
 
     @staticmethod
     def _input_str_legal(string):
@@ -96,12 +99,12 @@ class FasttextLanguage:
         """
         if isinstance(query, str):
             self._input_str_legal(query)
-            vec = self.ft.get_word_vector(query)
+            vec = self.model.get_word_vector(query)
             return Embedding(query, vec)
         return EmbeddingSet(*[self[tok] for tok in query])
 
     def _prepare_queries(self, top_n, lower):
-        queries = [w for w in self.ft.get_words()]
+        queries = [w for w in self.model.get_words()]
         if lower:
             queries = [w for w in queries if w.is_lower]
         if top_n is not None:
@@ -112,7 +115,7 @@ class FasttextLanguage:
 
     def _calculate_distances(self, emb, queries, metric):
         vec = emb.vector
-        vector_matrix = np.array([self.ft.get_word_vector(w) for w in queries])
+        vector_matrix = np.array([self.model.get_word_vector(w) for w in queries])
         return pairwise_distances(vector_matrix, vec.reshape(1, -1), metric=metric)
 
     def embset_proximity(self, emb: Union[str, Embedding], max_proximity: float = 0.1, top_n=20_000, lower=True, metric='cosine'):

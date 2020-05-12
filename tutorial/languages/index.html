@@ -393,6 +393,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#scikit-learn" class="md-nav__link">
+    Scikit-Learn
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caveats" class="md-nav__link">
+    Caveats
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -665,6 +685,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#scikit-learn" class="md-nav__link">
+    Scikit-Learn
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caveats" class="md-nav__link">
+    Caveats
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -820,6 +860,63 @@ fetch('sense2vec-2.json')
 })
 .catch(err => { throw err });
 </script>
+
+<h2 id="scikit-learn">Scikit-Learn<a class="headerlink" href="#scikit-learn" title="Permanent link">&para;</a></h2>
+<p>Some of the languages inside of this package can be used in scikit-learn pipelines.
+The spaCy and fasttext pipelines have compatible <code>.fit()</code> and <code>.transform()</code> methods
+implemented. That means that you could write code like this: </p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">SpacyLanguage</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">&quot;embed&quot;</span><span class="p">,</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)),</span> 
+    <span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">())</span>
+<span class="p">])</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;i really like this post&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;thanks for that comment&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;i enjoy this friendly forum&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;this is a bad post&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;i dislike this article&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;this is not well written&quot;</span>
+<span class="p">]</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+
+<p>This pipeline is using the embeddings from spaCy now and passing those 
+to the logistic regression.  </p>
+<div class="highlight"><pre><span></span><code>pipe.predict_proba(X)
+# array([[0.37862409, 0.62137591],
+#        [0.27858304, 0.72141696],
+#        [0.21386529, 0.78613471],
+#        [0.7155662 , 0.2844338 ],
+#        [0.64924579, 0.35075421],
+#        [0.76414156, 0.23585844]])
+</code></pre></div>
+
+<p>You could make a pipeline that generates both dense and sparse features by using a 
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.FeatureUnion.html">FeatureUnion</a>. </p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">FeatureUnion</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+
+<span class="n">preprocess</span> <span class="o">=</span> <span class="n">FeatureUnion</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">&quot;dense&quot;</span><span class="p">,</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s2">&quot;sparse&quot;</span><span class="p">,</span> <span class="n">CountVectorizer</span><span class="p">())</span>
+<span class="p">])</span>
+</code></pre></div>
+
+<h3 id="caveats">Caveats<a class="headerlink" href="#caveats" title="Permanent link">&para;</a></h3>
+<p>There's a few caveats to be aware of though. Fasttext as well as spaCy cannot be directly pickled
+so that means that you won't be able to save a pipeline if there's a whatlies component
+in it. It's also means that you cannot use a gridsearch. Where possible we try to 
+test against scikit-learn's testing utilities but for now the usecases should be limited 
+to exploration, not production.</p>
                 
                   
                 

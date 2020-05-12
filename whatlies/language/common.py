@@ -12,7 +12,7 @@ class SklearnTransformerMixin(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, X):
-        check_is_fitted(self, 'fitted_')
+        check_is_fitted(self, "fitted_")
         if np.array(X).dtype.type is np.string_:
             raise ValueError("You must give this preprocessor text as input.")
         X = check_array(X, dtype="object")

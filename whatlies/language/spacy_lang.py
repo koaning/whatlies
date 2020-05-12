@@ -53,7 +53,9 @@ class SpacyLanguage(SklearnTransformerMixin):
         elif isinstance(nlp, Language):
             self.nlp = nlp
         else:
-            raise ValueError("Language must be started with `str` or spaCy-language object.")
+            raise ValueError(
+                "Language must be started with `str` or spaCy-language object."
+            )
 
     @classmethod
     def from_fasttext(cls, language, output_dir, vectors_loc=None, force=False):
@@ -81,10 +83,14 @@ class SpacyLanguage(SklearnTransformerMixin):
         ```
         """
         if not os.path.exists(output_dir):
-            spacy.cli.init_model(lang=language, output_dir=output_dir, vectors_loc=vectors_loc)
+            spacy.cli.init_model(
+                lang=language, output_dir=output_dir, vectors_loc=vectors_loc
+            )
         else:
             if force:
-                spacy.cli.init_model(lang=language, output_dir=output_dir, vectors_loc=vectors_loc)
+                spacy.cli.init_model(
+                    lang=language, output_dir=output_dir, vectors_loc=vectors_loc
+                )
         return SpacyLanguage(spacy.load(output_dir))
 
     @staticmethod
@@ -126,7 +132,9 @@ class SpacyLanguage(SklearnTransformerMixin):
         if lower:
             queries = [w for w in queries if w.is_lower]
         if len(queries) == 0:
-            raise ValueError(f"No tokens left for this setting. Consider raising prob_limit={prob_limit}")
+            raise ValueError(
+                f"No tokens left for this setting. Consider raising prob_limit={prob_limit}"
+            )
         return queries
 
     def _calculate_distances(self, emb, queries, metric):
@@ -134,7 +142,14 @@ class SpacyLanguage(SklearnTransformerMixin):
         vector_matrix = np.array([w.vector for w in queries])
         return pairwise_distances(vector_matrix, vec.reshape(1, -1), metric=metric)
 
-    def embset_similar(self, emb: Union[str, Embedding], n: int = 10, prob_limit=-15, lower=True, metric='cosine'):
+    def embset_similar(
+        self,
+        emb: Union[str, Embedding],
+        n: int = 10,
+        prob_limit=-15,
+        lower=True,
+        metric="cosine",
+    ):
         """
         Retreive an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] that are the most simmilar to the passed query.
 
@@ -151,7 +166,14 @@ class SpacyLanguage(SklearnTransformerMixin):
         embs = [w[0] for w in self.score_similar(emb, n, prob_limit, lower, metric)]
         return EmbeddingSet({w.name: w for w in embs})
 
-    def embset_proximity(self, emb: Union[str, Embedding], max_proximity: float = 0.1, prob_limit=-15, lower=True, metric='cosine'):
+    def embset_proximity(
+        self,
+        emb: Union[str, Embedding],
+        max_proximity: float = 0.1,
+        prob_limit=-15,
+        lower=True,
+        metric="cosine",
+    ):
         """
         Retreive an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] or embeddings that are within a proximity.
 
@@ -170,9 +192,18 @@ class SpacyLanguage(SklearnTransformerMixin):
 
         queries = self._prepare_queries(prob_limit, lower)
         distances = self._calculate_distances(emb, queries, metric)
-        return EmbeddingSet({w: self[w] for w, d in zip(queries, distances) if d <= max_proximity})
+        return EmbeddingSet(
+            {w: self[w] for w, d in zip(queries, distances) if d <= max_proximity}
+        )
 
-    def score_similar(self, emb: Union[str, Embedding], n: int = 10, prob_limit=-15, lower=True, metric='cosine'):
+    def score_similar(
+        self,
+        emb: Union[str, Embedding],
+        n: int = 10,
+        prob_limit=-15,
+        lower=True,
+        metric="cosine",
+    ):
         """
         Retreive a list of (Embedding, score) tuples that are the most simmilar to the passed query.
 
@@ -194,6 +225,9 @@ class SpacyLanguage(SklearnTransformerMixin):
         by_similarity = sorted(zip(queries, distances), key=lambda z: z[1])
 
         if len(queries) < n:
-            warnings.warn(f"We could only find {len(queries)} feasible words. Consider changing `prob_limit` or `lower`", UserWarning)
+            warnings.warn(
+                f"We could only find {len(queries)} feasible words. Consider changing `prob_limit` or `lower`",
+                UserWarning,
+            )
 
         return [(self[q.text], float(d)) for q, d in by_similarity[:n]]

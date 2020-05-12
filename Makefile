@@ -18,7 +18,9 @@ flake:
 	flake8 tests --count --statistics --max-complexity=10 --max-line-length=127 --exclude __init__.py
 
 test:
-	pytest --nbval --nbval-lax --disable-warnings tests notebooks/*.ipynb
+	# pytest --nbval --nbval-lax --disable-warnings tests notebooks/*.ipynb
+	python tests/prepare_disk_for_tests.py
+	pytest tests
 
 check: flake test
 

@@ -1,9 +1,5 @@
 import pytest
-import numpy as np
-from sklearn.utils import estimator_checks
 
-from spacy.vocab import Vocab
-from spacy.language import Language
 from whatlies.language import FasttextLanguage
 
 

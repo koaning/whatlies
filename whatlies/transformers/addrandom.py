@@ -1,7 +1,7 @@
 import numpy as np
 
 from whatlies import Embedding, EmbeddingSet
-from whatlies.transformers.common import embset_to_X, new_embedding_dict
+from whatlies.transformers.common import embset_to_X
 
 
 class AddRandom:

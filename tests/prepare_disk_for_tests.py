@@ -2,7 +2,6 @@
 This script adds a small spaCy model that is used in testing.
 """
 
-import fasttext
 import spacy
 from spacy.language import Language
 from spacy.vocab import Vocab

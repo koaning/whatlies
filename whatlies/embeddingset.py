@@ -26,9 +26,14 @@ class EmbeddingSet:
 
     Usage:
 
-    ```
-    from whatlies.embedding.md import Embedding
+    ```python
+    from whatlies.embedding import Embedding
     from whatlies.embeddingset import EmbeddingSet
+
+    foo = Embedding("foo", [0.1, 0.3])
+    bar = Embedding("bar", [0.7, 0.2])
+    emb = EmbeddingSet(foo, bar)
+    emb = EmbeddingSet({'foo': foo, 'bar': bar)
     ```
     """
 
@@ -272,6 +277,26 @@ class EmbeddingSet:
 
     def __len__(self):
         return len(self.embeddings.keys())
+
+    def filter(self, func):
+        """
+        Filters the collection of embeddings based on a predicate function.
+
+        Arguments:
+             func: callable that accepts a single embedding and outputs a boolean
+
+        ```python
+        from whatlies.embeddingset import EmbeddingSet
+
+        foo = Embedding("foo", [0.1, 0.3, 0.10])
+        bar = Embedding("bar", [0.7, 0.2, 0.11])
+        buz = Embedding("buz", [0.1, 0.9, 0.12])
+        xyz = Embedding("xyz", [0.1, 0.9, 0.12])
+        emb = EmbeddingSet(foo, bar, buz, xyz)
+        emb.filter(lambda e: "foo" not in e.name)
+        ```
+        """
+        return EmbeddingSet({k: v for k, v in self.embeddings.items() if func(v)})
 
     def merge(self, other):
         """
@@ -521,6 +546,31 @@ class EmbeddingSet:
         # Rotate the tick labels and set their alignment.
         plt.setp(ax.get_xticklabels(), rotation=90, ha="right", rotation_mode="anchor")
         plt.show()
+
+    def plot_pixels(self):
+        """
+        Makes a pixelchart of every embedding in the set.
+
+        Usage:
+
+        ```python
+        from whatlies.language import SpacyLanguage
+        lang = SpacyLanguage("en_core_web_md")
+
+        names = ['red', 'blue', 'green', 'yellow',
+                 'cat', 'dog', 'mouse', 'rat',
+                 'bike', 'car', 'motor', 'cycle',
+                 'firehydrant', 'japan', 'germany', 'belgium']
+        emb = lang[names].transform(Pca(12)).filter(lambda e: 'pca' not in e.name)
+        emb.plot_pixels()
+        ```
+
+        ![](https://rasahq.github.io/whatlies/images/pixels.png)
+        """
+        names = self.embeddings.keys()
+        df = self.to_dataframe()
+        plt.matshow(df)
+        plt.yticks(range(len(names)), names)
 
     def plot_movement(
         self,

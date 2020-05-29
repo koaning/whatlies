@@ -12,8 +12,8 @@ from whatlies.language import SpacyLanguage
 @pytest.fixture()
 def lang():
     vector_data = {k: np.random.normal(0, 1, (2,)) for k in ["red", "blue", "cat", "dog", "green", "purple"]}
-    vector_data['cat'] += 10
-    vector_data['dog'] += 10
+    vector_data['cat'] += 21.
+    vector_data['dog'] += 20.
     vocab = Vocab(strings=vector_data.keys())
     for word, vector in vector_data.items():
         vocab.set_vector(word, vector)

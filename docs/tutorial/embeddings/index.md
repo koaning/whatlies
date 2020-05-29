@@ -251,5 +251,5 @@ for n, t in tokens.items():
 
 ![](tut1-img10.png)
 
-The idea seems to work. But maybe we can introduce cooler charts and easier was
+The idea seems to work. But maybe we can introduce cooler charts and easier ways
 to deal with collections of embeddings.

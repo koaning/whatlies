@@ -570,7 +570,7 @@ class EmbeddingSet:
         names = self.embeddings.keys()
         df = self.to_dataframe()
         plt.matshow(df)
-        plt.yticks(range(len(names)), names);
+        plt.yticks(range(len(names)), names)
 
     def plot_movement(
         self,

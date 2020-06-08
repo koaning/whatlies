@@ -1,6 +1,3 @@
-import pytest
-import numpy as np
-
 from whatlies.language import CountVectorLanguage
 
 

@@ -10,7 +10,7 @@ import fasttext.util
 from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
 
-from whatlies.language.common import SklearnTransformerMixin
+from whatlies.language.common import SklearnTransformerMixin, HiddenPrints
 
 
 class FasttextLanguage(SklearnTransformerMixin):
@@ -66,14 +66,16 @@ class FasttextLanguage(SklearnTransformerMixin):
 
     def __init__(self, model, size=None):
         self.size = size
-        if isinstance(model, str):
-            self.model = fasttext.load_model(model)
-        elif isinstance(model, fasttext.FastText._FastText):
-            self.model = model
-        else:
-            raise ValueError(
-                "Language must be started with `str` or fasttext.FastText._FastText object."
-            )
+        # we have to use this class to prevent the warning hidden as a print statement from the fasttext lib
+        with HiddenPrints():
+            if isinstance(model, str):
+                self.model = fasttext.load_model(model)
+            elif isinstance(model, fasttext.FastText._FastText):
+                self.model = model
+            else:
+                raise ValueError(
+                    "Language must be started with `str` or fasttext.FastText._FastText object."
+                )
         if self.size:
             fasttext.util.reduce_model(self.model, self.size)
 

@@ -1,6 +1,9 @@
+import os
+import sys
+
+import numpy as np
 from sklearn.utils.validation import check_is_fitted
 from sklearn.base import BaseEstimator, TransformerMixin
-import numpy as np
 
 
 class SklearnTransformerMixin(BaseEstimator, TransformerMixin):
@@ -23,3 +26,13 @@ class SklearnTransformerMixin(BaseEstimator, TransformerMixin):
         if not np.array(X).dtype.type is np.str_:
             raise ValueError("You must give this preprocessor text as input.")
         return np.array([self[x].vector for x in X])
+
+
+class HiddenPrints:
+    def __enter__(self):
+        self._original_stdout = sys.stderr
+        sys.stderr = open(os.devnull, 'w')
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        sys.stderr.close()
+        sys.stderr = self._original_stdout

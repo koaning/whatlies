@@ -12,6 +12,7 @@ nav:
     - Interactive Visualisation: tutorial/embeddingsets/index.md
     - Language Options: tutorial/languages/index.md
     - Transformation Viz: tutorial/transformations/index.md
+    - Observations: tutorial/observations/index.md
   - API:
     - Embedding: api/embedding.md
     - EmbeddingSet: api/embeddingset.md

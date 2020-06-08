@@ -12,6 +12,7 @@ nav:
     - Interactive Visualisation: tutorial/embeddingsets/index.md
     - Language Options: tutorial/languages/index.md
     - Transformation Viz: tutorial/transformations/index.md
+    - Observations: tutorial/observations/index.md
   - API:
     - Embedding: api/embedding.md
     - EmbeddingSet: api/embeddingset.md
@@ -24,6 +25,7 @@ nav:
         - spaCy: api/language/spacy_lang.md
         - Sense2Vec: api/language/s2v_lang.md
         - fasttext: api/language/fasttext_lang.md
+        - CountVector: api/language/countvector_lang.md
   - Roadmap: roadmap.md
 plugins:
   - mkdocstrings

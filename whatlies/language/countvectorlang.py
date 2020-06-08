@@ -4,6 +4,7 @@ import numpy as np
 from typing import Union, List
 from sklearn.metrics import pairwise_distances
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.decomposition import TruncatedSVD
 
 from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
@@ -17,6 +18,14 @@ class CountVectorLanguage(SklearnTransformerMixin):
     [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]s from a countvector language
     backend. This object is meant for retreival, not plotting.
 
+    This model will first train a scikit-learn
+    [CountVectorizer](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer)
+    after it will perform dimensionality reduction to make the numeric representation a vector. The reduction occurs via
+    [TruncatedSVD](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html#sklearn.decomposition.TruncatedSVD),
+    also from scikit-learn.
+
+    Warning:
+        To keep this system consistent with the rest of the api you train the system when you retreive vectors.
 
     Arguments:
         model: name of the model to load, be sure that it's downloaded or trained beforehand
@@ -30,10 +39,27 @@ class CountVectorLanguage(SklearnTransformerMixin):
     ```
     """
 
-    def __init__(self, size, lowercase=True, analyzer='char', ngram_range=(1, 1), max_df=1.0, min_df=1, binary=False, strip_accents=None):
-        self.size = size
-        self.cv = CountVectorizer(lowercase=lowercase, analyzer=analyzer, ngram_range=ngram_range,
-                                  min_df=min_df, max_df=max_df, binary=binary, strip_accents=strip_accents)
+    def __init__(
+        self,
+        n_components,
+        lowercase=True,
+        analyzer="char",
+        ngram_range=(1, 1),
+        max_df=1.0,
+        min_df=1,
+        binary=False,
+        strip_accents=None,
+    ):
+        self.svd = TruncatedSVD(n_components=n_components)
+        self.cv = CountVectorizer(
+            lowercase=lowercase,
+            analyzer=analyzer,
+            ngram_range=ngram_range,
+            min_df=min_df,
+            max_df=max_df,
+            binary=binary,
+            strip_accents=strip_accents,
+        )
 
     @staticmethod
     def _input_str_legal(string):
@@ -44,26 +70,22 @@ class CountVectorLanguage(SklearnTransformerMixin):
 
     def __getitem__(self, query: Union[str, List[str]]):
         """
-        Retreive a single embedding or a set of embeddings. Depending on the spaCy model
-        the strings can support multiple tokens of text but they can also use the Bert DSL.
-        See the Language Options documentation: https://rasahq.github.io/whatlies/tutorial/languages/#bert-style.
+        Retreive a set of embeddings.
 
         Arguments:
-            query: single string or list of strings
+            query: list of strings
 
         **Usage**
+
         ```python
-        > lang = FasttextLanguage("cc.en.300.bin")
-        > lang['python']
-        > lang[['python'], ['snake']]
-        > lang[['nobody expects'], ['the spanish inquisition']]
+        > from whatlies.language import CountVectorLanguage
+        > lang = CountVectorLanguage(size=20, ngram_range=(1, 2), analyzer="char")
+        > lang[['pizza', 'pizzas', 'pie', 'firehydrant']]
         ```
         """
-        if isinstance(query, str):
-            self._input_str_legal(query)
-            vec = self.model.get_word_vector(query)
-            return Embedding(query, vec)
-        return EmbeddingSet(*[self[tok] for tok in query])
+        X = self.cv.fit_transform(query)
+        X_vec = self.svd.fit_transform(X)
+        return EmbeddingSet(*[Embedding(name=n, vector=v) for n, v in zip(query, X_vec)])
 
     def _prepare_queries(self, top_n, lower):
         queries = [w for w in self.model.get_words()]

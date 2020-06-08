@@ -1,14 +1,10 @@
-import warnings
-
-import numpy as np
 from typing import Union, List, Tuple
-from sklearn.metrics import pairwise_distances
+
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.decomposition import TruncatedSVD
 
 from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
-
 from whatlies.language.common import SklearnTransformerMixin
 
 
@@ -30,7 +26,8 @@ class CountVectorLanguage(SklearnTransformerMixin):
         text. There is no notion of meaning that should be suggested.
 
         Also, in order to keep this system consistent with the rest of the api you train the system when you retreive
-        vectors
+        vectors if you just use `__getitem__`. If you want to seperate train/test you need to call `fit_manual`
+        yourself or use it in a scikit-learn pipeline.
 
     Arguments:
         n_components: Number of components that TruncatedSVD will reduce to.
@@ -41,6 +38,7 @@ class CountVectorLanguage(SklearnTransformerMixin):
         max_df: Ignore terms that have a document frequency strictly higher than the given threshold.
         binary: Determines if the counts are binary or if they can accumulate.
         strip_accents: Remove accents and perform normalisation. Can be set to "ascii" or "unicode".
+        random_state: Random state for SVD algorithm.
 
     For more elaborate explainers on these arguments, check out the scikit-learn
     [documentation](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer).
@@ -49,8 +47,8 @@ class CountVectorLanguage(SklearnTransformerMixin):
 
     ```python
     > from whatlies.language import CountVectorLanguage
-    > lang = CountVectorLanguage(n_components=20, ngram_range=(1, 2), analyzer="char")
-    > lang[['pizza', 'pizzas', 'pie', 'firehydrant']]
+    > lang = CountVectorLanguage(n_components=2, ngram_range=(1, 2), analyzer="char")
+    > lang[['pizza', 'pizzas', 'firehouse', 'firehydrant']]
     ```
     """
 
@@ -59,13 +57,14 @@ class CountVectorLanguage(SklearnTransformerMixin):
         n_components: int,
         lowercase: bool = True,
         analyzer: str = "char",
-        ngram_range: Tuple[int] = (1, 1),
-        max_df: Union[int, float] = 1.0,
+        ngram_range: Tuple[int, int] = (1, 2),
         min_df: Union[int, float] = 1,
+        max_df: Union[int, float] = 1.0,
         binary: bool = False,
         strip_accents: str = None,
+        random_state: int = 42
     ):
-        self.svd = TruncatedSVD(n_components=n_components)
+        self.svd = TruncatedSVD(n_components=n_components, random_state=random_state)
         self.cv = CountVectorizer(
             lowercase=lowercase,
             analyzer=analyzer,
@@ -75,15 +74,30 @@ class CountVectorLanguage(SklearnTransformerMixin):
             binary=binary,
             strip_accents=strip_accents,
         )
+        self.fitted_manual = False
 
-    @staticmethod
-    def _input_str_legal(string):
-        if sum(1 for c in string if c == "[") > 1:
-            raise ValueError("only one opener `[` allowed ")
-        if sum(1 for c in string if c == "]") > 1:
-            raise ValueError("only one opener `]` allowed ")
+    def fit_manual(self, query):
+        """
+        Fit the model manually. This way you can call `__getitem__` independantly of training.
 
-    def __getitem__(self, query: List[str]):
+        Arguments:
+            query: list of strings
+
+        **Usage**
+
+        ```python
+        > from whatlies.language import CountVectorLanguage
+        > lang = CountVectorLanguage(n_components=2, ngram_range=(1, 2), analyzer="char")
+        > lang.fit_manual(['pizza', 'pizzas', 'firehouse', 'firehydrant'])
+        > lang[['piza', 'pizza', 'pizzaz', 'fyrehouse', 'firehouse', 'fyrehidrant']]
+        ```
+        """
+        X = self.cv.fit_transform(query)
+        self.svd.fit(X)
+        self.fitted_manual = True
+        return self
+
+    def __getitem__(self, query: Union[str, List[str]]):
         """
         Retreive a set of embeddings.
 
@@ -94,10 +108,19 @@ class CountVectorLanguage(SklearnTransformerMixin):
 
         ```python
         > from whatlies.language import CountVectorLanguage
-        > lang = CountVectorLanguage(n_components=20, ngram_range=(1, 2), analyzer="char")
-        > lang[['pizza', 'pizzas', 'pie', 'firehydrant']]
+        > lang = CountVectorLanguage(n_components=2, ngram_range=(1, 2), analyzer="char")
+        > lang[['pizza', 'pizzas', 'firehouse', 'firehydrant']]
         ```
         """
-        X = self.cv.fit_transform(query)
-        X_vec = self.svd.fit_transform(X)
+        orig_str = isinstance(query, str)
+        if orig_str:
+            query = list(query)
+        if self.fitted_manual:
+            X = self.cv.transform(query)
+            X_vec = self.svd.transform(X)
+        else:
+            X = self.cv.fit_transform(query)
+            X_vec = self.svd.fit_transform(X)
+        if orig_str:
+            return Embedding(name=query[0], vector=X_vec[0])
         return EmbeddingSet(*[Embedding(name=n, vector=v) for n, v in zip(query, X_vec)])

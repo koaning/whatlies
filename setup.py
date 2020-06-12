@@ -10,7 +10,7 @@ base_packages = [
     "spacy>=2.2.3",
     "networkx>=2.4",
     "sense2vec>=1.0.2",
-    "fasttext>=0.9.1"
+    "fasttext>=0.9.1",
 ]
 
 docs_packages = [

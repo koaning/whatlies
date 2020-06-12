@@ -1,5 +1,8 @@
-from whatlies import Embedding, EmbeddingSet
+from typing import List
+
 from bpemb import BPEmb
+
+from whatlies import Embedding, EmbeddingSet
 
 
 class BPEmbLang:
@@ -15,7 +18,7 @@ class BPEmbLang:
         These vectors will auto-download. You can also specify "multi" to download
         embeddings for multiple language at the same time. A full list of available
         languages can be found [here](https://nlp.h-its.org/bpemb). The article that
-        belongs to this work can be found [here](http://www.lrec-conf.org/proceedings/lrec2018/pdf/1049.pdf)
+        belongs to this work can be found [here](http://www.lrec-conf.org/proceedings/lrec2018/pdf/1049.pdf).
 
     Arguments:
         lang: name of the model to load
@@ -39,14 +42,14 @@ class BPEmbLang:
         sub-tokens then we'll average them before retreival.
 
         Arguments:
-            query: single string or list of strings
+            item: single string or list of strings
 
         **Usage**
         ```python
         > lang = BPEmbLang(lang="en")
         > lang['python']
-        > lang[['python'], ['snake']]
-        > lang[['nobody expects'], ['the spanish inquisition']]
+        > lang[['python', 'snake']]
+        > lang[['nobody expects', 'the spanish inquisition']]
         ```
         """
         if isinstance(item, str):

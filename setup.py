@@ -10,7 +10,8 @@ base_packages = [
     "spacy>=2.2.3",
     "networkx>=2.4",
     "sense2vec>=1.0.2",
-    "fasttext>=0.9.1"
+    "fasttext>=0.9.1",
+    "bpemb>=0.3.0"
 ]
 
 docs_packages = [
@@ -36,7 +37,7 @@ dev_packages = docs_packages + test_packages
 
 setup(
     name='whatlies',
-    version="0.3.2",
+    version="0.3.3",
     author="Vincent D. Warmerdam",
     packages=find_packages(exclude=['notebooks', 'docs']),
     description="Make visualisations to learn `what lies` in word embeddings.",

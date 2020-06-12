@@ -5,7 +5,7 @@ from bpemb import BPEmb
 class BPEmbLang:
     """
     This object is used to lazily fetch [Embedding][whatlies.embedding.Embedding]s or
-    [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]s from a bpemb language
+    [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]s from a Byte-Pair Encoding
     backend. This object is meant for retreival, not plotting.
 
     This language represents token-free pre-trained subword embeddings. Originally created by

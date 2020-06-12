@@ -11,6 +11,7 @@ base_packages = [
     "networkx>=2.4",
     "sense2vec>=1.0.2",
     "fasttext>=0.9.1",
+    "bpemb>=0.3.0"
 ]
 
 docs_packages = [

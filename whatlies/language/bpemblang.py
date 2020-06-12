@@ -1,5 +1,3 @@
-from typing import List
-
 from bpemb import BPEmb
 
 from whatlies import Embedding, EmbeddingSet

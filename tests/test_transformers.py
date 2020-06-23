@@ -6,7 +6,7 @@ from whatlies.transformers import Umap, Pca, Noise, AddRandom
 
 
 vocab = Vocab().from_disk("tests/custom_test_vocab/")
-words = [v.text for v in vocab]
+words = list(vocab.strings)
 lang = SpacyLanguage(nlp=Language(vocab=vocab, meta={"lang": "en"}))
 emb = lang[words]
 

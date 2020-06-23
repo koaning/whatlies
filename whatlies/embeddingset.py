@@ -263,9 +263,9 @@ class EmbeddingSet:
         emb["buz"]
         ```
         """
-        if not isinstance(thing, list):
+        if isinstance(thing, str):
             return self.embeddings[thing]
-        new_embeddings = {k: emb for k, emb in self.embeddings.items()}
+        new_embeddings = {t: self[t] for t in thing}
         names = ",".join(thing)
         return EmbeddingSet(new_embeddings, name=f"{self.name}.subset({names})")
 

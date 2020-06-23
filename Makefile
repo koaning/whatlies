@@ -7,9 +7,8 @@ install:
 develop: install
 	python -m pip install -e ".[dev]"
 	python -m pip install --upgrade pip wheel setuptools twine
-	python setup.py develop
 	pre-commit install
-	python -m spacy download en_core_web_sm
+	python -m spacy download en_core_web_md
 	python -m spacy download en_trf_robertabase_lg
 	python tests/prepare_disk_for_tests.py
 	python tests/prepare_fasttext_tests.py

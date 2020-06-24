@@ -9,4 +9,3 @@ repos:
     rev: stable
     hooks:
     -   id: black
-        files: sklego

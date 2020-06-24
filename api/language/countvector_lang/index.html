@@ -601,6 +601,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bpemb_lang/" title="BPEmbLang" class="md-nav__link">
+      BPEmbLang
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -796,7 +808,9 @@ yourself or use it in a scikit-learn pipeline.</p>
 123
 124
 125
-126</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]):</span>
+126
+127
+128</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retreive a set of embeddings.</span>
 
@@ -822,7 +836,9 @@ yourself or use it in a scikit-learn pipeline.</p>
             <span class="n">X_vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">svd</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">orig_str</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">query</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vector</span><span class="o">=</span><span class="n">X_vec</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="k">return</span> <span class="n">EmbeddingSet</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">Embedding</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">vector</span><span class="o">=</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">X_vec</span><span class="p">)])</span>
+        <span class="k">return</span> <span class="n">EmbeddingSet</span><span class="p">(</span>
+            <span class="o">*</span><span class="p">[</span><span class="n">Embedding</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">vector</span><span class="o">=</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">X_vec</span><span class="p">)]</span>
+        <span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -959,13 +975,13 @@ yourself or use it in a scikit-learn pipeline.</p>
             </a>
           
           
-            <a href="../../../roadmap/" title="Roadmap" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <a href="../bpemb_lang/" title="BPEmbLang" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span class="md-footer-nav__direction">
                     Next
                   </span>
-                  Roadmap
+                  BPEmbLang
                 </span>
               </div>
               <div class="md-flex__cell md-flex__cell--shrink">

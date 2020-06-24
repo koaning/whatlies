@@ -5,7 +5,7 @@ import fasttext
 
 from whatlies.language import FasttextLanguage
 
-text_path = str(pathlib.Path(__file__).parent.absolute() / "data" / "foobar.txt")
+text_path = str(pathlib.Path(__file__).parent.parent.absolute() / "data" / "foobar.txt")
 model1 = fasttext.train_unsupervised(
     text_path, model="cbow", dim=20, epoch=20, min_count=1
 )

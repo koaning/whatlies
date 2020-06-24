@@ -1,3 +1,3 @@
-# `whatlies.language.BPEmbLang`
+# `whatlies.language.BytePairLang`
 
-::: whatlies.language.BPEmbLang
+::: whatlies.language.BytePairLang

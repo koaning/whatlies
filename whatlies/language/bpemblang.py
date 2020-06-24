@@ -31,6 +31,7 @@ class BPEmbLang:
     > lang[['hund', 'hond', 'dog']]
     ```
     """
+
     def __init__(self, lang):
         self.module = BPEmb(lang=lang)
 

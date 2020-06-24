@@ -6,18 +6,20 @@ import fasttext
 from whatlies.language import FasttextLanguage
 
 text_path = str(pathlib.Path(__file__).parent.absolute() / "data" / "foobar.txt")
-model1 = fasttext.train_unsupervised(text_path, model='cbow', dim=20, epoch=20, min_count=1)
-model2 = fasttext.train_unsupervised(text_path, model='skipgram', dim=10, min_count=1)
+model1 = fasttext.train_unsupervised(
+    text_path, model="cbow", dim=20, epoch=20, min_count=1
+)
+model2 = fasttext.train_unsupervised(text_path, model="skipgram", dim=10, min_count=1)
 
 
 def test_load_in_model1():
     lang = FasttextLanguage(model1)
-    assert lang['dog'].vector.shape[0] == 20
+    assert lang["dog"].vector.shape[0] == 20
 
 
 def test_load_in_model2():
     lang = FasttextLanguage(model2)
-    assert lang['dog'].vector.shape[0] == 10
+    assert lang["dog"].vector.shape[0] == 10
 
 
 def test_retreive_similar_len():

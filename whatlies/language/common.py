@@ -31,7 +31,7 @@ class SklearnTransformerMixin(BaseEstimator, TransformerMixin):
 class HiddenPrints:
     def __enter__(self):
         self._original_stdout = sys.stderr
-        sys.stderr = open(os.devnull, 'w')
+        sys.stderr = open(os.devnull, "w")
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         sys.stderr.close()

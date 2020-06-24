@@ -9,13 +9,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 from whatlies.language import CountVectorLanguage
 
 
-@pytest.mark.parametrize('components', range(1, 6))
+@pytest.mark.parametrize("components", range(1, 6))
 def test_sklearn_pipeline_works(components):
     lang = CountVectorLanguage(n_components=components)
-    pipe = Pipeline([
-        ("embed", lang),
-        ("model", LogisticRegression())
-    ])
+    pipe = Pipeline([("embed", lang), ("model", LogisticRegression())])
 
     X = [
         "i really like this post",
@@ -23,7 +20,7 @@ def test_sklearn_pipeline_works(components):
         "i enjoy this friendly forum",
         "this is a bad post",
         "i dislike this article",
-        "this is not well written"
+        "this is not well written",
     ]
     y = np.array([1, 1, 1, 0, 0, 0])
 
@@ -39,12 +36,9 @@ def test_sklearn_feature_union_works():
         "i enjoy this friendly forum",
         "this is a bad post",
         "i dislike this article",
-        "this is not well written"
+        "this is not well written",
     ]
 
-    preprocess = FeatureUnion([
-        ("dense", lang),
-        ("sparse", CountVectorizer())
-    ])
+    preprocess = FeatureUnion([("dense", lang), ("sparse", CountVectorizer())])
 
     assert preprocess.fit_transform(X).shape[0] == 6

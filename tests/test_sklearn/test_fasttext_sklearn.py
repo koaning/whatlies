@@ -11,10 +11,12 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 @pytest.fixture()
 def lang():
-    return FasttextLanguage('tests/custom_fasttext_model.bin')
+    return FasttextLanguage("tests/custom_fasttext_model.bin")
 
 
-@pytest.mark.parametrize('text', [("red red", "blue red"), ("red", "green", "blue"), ("dog", "cat")])
+@pytest.mark.parametrize(
+    "text", [("red red", "blue red"), ("red", "green", "blue"), ("dog", "cat")]
+)
 def test_check_sizes(lang, text):
     X = text
     assert lang.fit(X).transform(X).shape == (len(text), 10)
@@ -22,8 +24,8 @@ def test_check_sizes(lang, text):
 
 
 def test_get_params(lang):
-    assert 'model' in lang.get_params().keys()
-    assert 'size' in lang.get_params().keys()
+    assert "model" in lang.get_params().keys()
+    assert "size" in lang.get_params().keys()
 
 
 checks = (
@@ -45,14 +47,11 @@ checks = (
 
 @pytest.mark.parametrize("test_fn", checks)
 def test_estimator_checks(test_fn):
-    test_fn("spacy_lang", FasttextLanguage('tests/custom_fasttext_model.bin'))
+    test_fn("spacy_lang", FasttextLanguage("tests/custom_fasttext_model.bin"))
 
 
 def test_sklearn_pipeline_works(lang):
-    pipe = Pipeline([
-        ("embed", lang),
-        ("model", LogisticRegression())
-    ])
+    pipe = Pipeline([("embed", lang), ("model", LogisticRegression())])
 
     X = [
         "i really like this post",
@@ -60,7 +59,7 @@ def test_sklearn_pipeline_works(lang):
         "i enjoy this friendly forum",
         "this is a bad post",
         "i dislike this article",
-        "this is not well written"
+        "this is not well written",
     ]
     y = np.array([1, 1, 1, 0, 0, 0])
 
@@ -75,12 +74,9 @@ def test_sklearn_feature_union_works(lang):
         "i enjoy this friendly forum",
         "this is a bad post",
         "i dislike this article",
-        "this is not well written"
+        "this is not well written",
     ]
 
-    preprocess = FeatureUnion([
-        ("dense", lang),
-        ("sparse", CountVectorizer())
-    ])
+    preprocess = FeatureUnion([("dense", lang), ("sparse", CountVectorizer())])
 
     assert preprocess.fit_transform(X).shape[0] == 6

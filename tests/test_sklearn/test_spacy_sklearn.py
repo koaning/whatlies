@@ -14,10 +14,12 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 @pytest.fixture()
 def color_lang():
-    vector_data = {"red": np.array([1.0, 0.0]),
-                   "green": np.array([0.5, 0.5]),
-                   "blue": np.array([0.0, 1.0]),
-                   "purple": np.array([0.0, 1.0])}
+    vector_data = {
+        "red": np.array([1.0, 0.0]),
+        "green": np.array([0.5, 0.5]),
+        "blue": np.array([0.0, 1.0]),
+        "purple": np.array([0.0, 1.0]),
+    }
 
     vocab = Vocab(strings=vector_data.keys())
     for word, vector in vector_data.items():
@@ -26,14 +28,16 @@ def color_lang():
     return SpacyLanguage(nlp)
 
 
-@pytest.mark.parametrize('text', [("red red", "blue red"), ("red", "green", "blue"), ("dog", "cat")])
+@pytest.mark.parametrize(
+    "text", [("red red", "blue red"), ("red", "green", "blue"), ("dog", "cat")]
+)
 def test_check_sizes(color_lang, text):
     assert color_lang.fit(text).transform(text).shape == (len(text), 2)
     assert color_lang.fit_transform(text).shape == (len(text), 2)
 
 
 def test_get_params():
-    assert 'nlp' in SpacyLanguage("tests/custom_test_lang/").get_params().keys()
+    assert "nlp" in SpacyLanguage("tests/custom_test_lang/").get_params().keys()
 
 
 checks = (
@@ -59,10 +63,7 @@ def test_estimator_checks(test_fn):
 
 
 def test_sklearn_pipeline_works(color_lang):
-    pipe = Pipeline([
-        ("embed", color_lang),
-        ("model", LogisticRegression())
-    ])
+    pipe = Pipeline([("embed", color_lang), ("model", LogisticRegression())])
 
     X = [
         "i really like this post",
@@ -70,7 +71,7 @@ def test_sklearn_pipeline_works(color_lang):
         "i enjoy this friendly forum",
         "this is a bad post",
         "i dislike this article",
-        "this is not well written"
+        "this is not well written",
     ]
     y = np.array([1, 1, 1, 0, 0, 0])
 
@@ -85,12 +86,9 @@ def test_sklearn_feature_union_works(color_lang):
         "i enjoy this friendly forum",
         "this is a bad post",
         "i dislike this article",
-        "this is not well written"
+        "this is not well written",
     ]
 
-    preprocess = FeatureUnion([
-        ("dense", color_lang),
-        ("sparse", CountVectorizer())
-    ])
+    preprocess = FeatureUnion([("dense", color_lang), ("sparse", CountVectorizer())])
 
     assert preprocess.fit_transform(X).shape[0] == 6

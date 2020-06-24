@@ -62,7 +62,7 @@ class CountVectorLanguage(SklearnTransformerMixin):
         max_df: Union[int, float] = 1.0,
         binary: bool = False,
         strip_accents: str = None,
-        random_state: int = 42
+        random_state: int = 42,
     ):
         self.svd = TruncatedSVD(n_components=n_components, random_state=random_state)
         self.cv = CountVectorizer(
@@ -123,4 +123,6 @@ class CountVectorLanguage(SklearnTransformerMixin):
             X_vec = self.svd.fit_transform(X)
         if orig_str:
             return Embedding(name=query[0], vector=X_vec[0])
-        return EmbeddingSet(*[Embedding(name=n, vector=v) for n, v in zip(query, X_vec)])
+        return EmbeddingSet(
+            *[Embedding(name=n, vector=v) for n, v in zip(query, X_vec)]
+        )

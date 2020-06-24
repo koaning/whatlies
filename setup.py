@@ -11,7 +11,7 @@ base_packages = [
     "networkx>=2.4",
     "sense2vec>=1.0.2",
     "fasttext>=0.9.1",
-    "bpemb>=0.3.0"
+    "bpemb>=0.3.0",
 ]
 
 docs_packages = [
@@ -29,16 +29,16 @@ test_packages = [
     "black>=19.3b0",
     "pytest-cov>=2.6.1",
     "nbval>=0.9.5",
-    "pre-commit>=2.2.0"
+    "pre-commit>=2.2.0",
 ]
 
 dev_packages = docs_packages + test_packages
 
 setup(
-    name='whatlies',
+    name="whatlies",
     version="0.3.3",
     author="Vincent D. Warmerdam",
-    packages=find_packages(exclude=['notebooks', 'docs']),
+    packages=find_packages(exclude=["notebooks", "docs"]),
     description="Make visualisations to learn `what lies` in word embeddings.",
     install_requires=base_packages,
     extras_require={"docs": docs_packages, "dev": dev_packages, "test": test_packages},

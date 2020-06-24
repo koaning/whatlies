@@ -9,10 +9,12 @@ from whatlies.language.spacy_lang import _selected_idx_spacy
 
 @pytest.fixture()
 def color_lang():
-    vector_data = {"red": np.array([1.0, 0.0]),
-                   "green": np.array([0.5, 0.5]),
-                   "blue": np.array([0.0, 1.0]),
-                   "purple": np.array([0.0, 1.0])}
+    vector_data = {
+        "red": np.array([1.0, 0.0]),
+        "green": np.array([0.5, 0.5]),
+        "blue": np.array([0.0, 1.0]),
+        "purple": np.array([0.0, 1.0]),
+    }
 
     vocab = Vocab(strings=vector_data.keys())
     for word, vector in vector_data.items():

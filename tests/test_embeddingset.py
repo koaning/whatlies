@@ -11,9 +11,12 @@ from whatlies.language import SpacyLanguage
 
 @pytest.fixture()
 def lang():
-    vector_data = {k: np.random.normal(0, 1, (2,)) for k in ["red", "blue", "cat", "dog", "green", "purple"]}
-    vector_data['cat'] += 21.
-    vector_data['dog'] += 20.
+    vector_data = {
+        k: np.random.normal(0, 1, (2,))
+        for k in ["red", "blue", "cat", "dog", "green", "purple"]
+    }
+    vector_data["cat"] += 21.0
+    vector_data["dog"] += 20.0
     vocab = Vocab(strings=vector_data.keys())
     for word, vector in vector_data.items():
         vocab.set_vector(word, vector)
@@ -93,11 +96,11 @@ def test_embset_raise_value_error_emb(lang):
 def test_corrplot_raise_error(lang):
     with pytest.raises(ValueError):
         emb = lang[["red", "blue", "orange", "pink", "purple", "brown"]]
-        emb.plot_correlation(metric='dinosaurhead')
+        emb.plot_correlation(metric="dinosaurhead")
 
 
 def test_filter(lang):
     emb = lang[["red", "blue", "orange", "pink", "purple", "brown"]]
     assert len(emb) == 6
-    assert len(emb.filter(lambda e: 'pink' not in e.name)) == 5
-    assert len(emb.filter(lambda e: 'pink' in e.name)) == 1
+    assert len(emb.filter(lambda e: "pink" not in e.name)) == 5
+    assert len(emb.filter(lambda e: "pink" in e.name)) == 1

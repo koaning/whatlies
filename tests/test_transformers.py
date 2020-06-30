@@ -2,7 +2,7 @@ import pytest
 from spacy.vocab import Vocab
 from spacy.language import Language
 from whatlies.language import SpacyLanguage
-from whatlies.transformers import Umap, Pca, Noise, AddRandom
+from whatlies.transformers import Umap, Pca, Noise, AddRandom, Tsne, OpenTsne
 
 
 vocab = Vocab().from_disk("tests/custom_test_vocab/")
@@ -21,6 +21,9 @@ emb = lang[words]
             Pca(3),
             Noise(0.1),
             Noise(0.01),
+            Tsne(2, n_iter=250),
+            Tsne(3, n_iter=250),
+            OpenTsne(2, n_iter=100),
             AddRandom(n=4),
             AddRandom(n=1),
             lambda d: d | (d["man"] - d["woman"]),
@@ -39,6 +42,8 @@ def test_transformations_new_size(transformer, extra_size):
         Umap(2),
         Pca(2),
         Noise(0.1),
+        Tsne(2, n_iter=250),
+        OpenTsne(2, n_iter=100),
         AddRandom(n=4),
         lambda d: d | (d["man"] - d["woman"]),
     ],

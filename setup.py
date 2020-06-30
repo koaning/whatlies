@@ -5,6 +5,7 @@ base_packages = [
     "scipy>=1.2.0",
     "scikit-learn>=0.20.2",
     "umap-learn>=0.3.10",
+    "opentsne>=0.4.3",
     "altair>=4.0.1",
     "matplotlib>=3.2.0",
     "spacy>=2.2.3",

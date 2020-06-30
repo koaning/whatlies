@@ -19,6 +19,8 @@ nav:
     - Transformers:
       - Pca: api/transformers/pca.md
       - Umap: api/transformers/umap.md
+      - Tsne: api/transformers/tsne.md
+      - OpenTsne: api/transformers/opentsne.md
       - Noise: api/transformers/noise.md
       - Add Random: api/transformers/addrandom.md
     - Language:

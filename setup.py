@@ -5,6 +5,7 @@ base_packages = [
     "scipy>=1.2.0",
     "scikit-learn>=0.20.2",
     "umap-learn>=0.3.10",
+    "opentsne>=0.4.3",
     "altair>=4.0.1",
     "matplotlib>=3.2.0",
     "spacy>=2.2.3",
@@ -36,7 +37,7 @@ dev_packages = docs_packages + test_packages
 
 setup(
     name="whatlies",
-    version="0.4.0",
+    version="0.4.1",
     author="Vincent D. Warmerdam",
     packages=find_packages(exclude=["notebooks", "docs"]),
     description="Make visualisations to learn `what lies` in word embeddings.",

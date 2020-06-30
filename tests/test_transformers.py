@@ -10,26 +10,26 @@ words = list(vocab.strings)
 lang = SpacyLanguage(nlp=Language(vocab=vocab, meta={"lang": "en"}))
 emb = lang[words]
 
+transformers = [
+    Umap(2),
+    Umap(3),
+    Pca(2),
+    Pca(3),
+    Noise(0.1),
+    Noise(0.01),
+    AddRandom(n=4),
+    AddRandom(n=1),
+    lambda d: d | (d["man"] - d["woman"]),
+    Tsne(2, n_iter=250),
+    Tsne(3, n_iter=250),
+    OpenTsne(2, n_iter=100),
+]
+extra_sizes = [2, 3, 2, 3, 0, 0, 4, 1, 0, 2, 3, 2]
+tfm_ids = [_.__class__.__name__ for _ in transformers]
+
 
 @pytest.mark.parametrize(
-    "transformer,extra_size",
-    zip(
-        [
-            Umap(2),
-            Umap(3),
-            Pca(2),
-            Pca(3),
-            Noise(0.1),
-            Noise(0.01),
-            Tsne(2, n_iter=250),
-            Tsne(3, n_iter=250),
-            OpenTsne(2, n_iter=100),
-            AddRandom(n=4),
-            AddRandom(n=1),
-            lambda d: d | (d["man"] - d["woman"]),
-        ],
-        [2, 3, 2, 3, 0, 0, 4, 1, 0],
-    ),
+    "transformer,extra_size", zip(transformers, extra_sizes), ids=tfm_ids
 )
 def test_transformations_new_size(transformer, extra_size):
     emb_new = emb.transform(transformer)

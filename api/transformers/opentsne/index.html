@@ -13,7 +13,7 @@
         <meta name="description" content="A python package to discover "what lies" in word embeddings.">
       
       
-        <link rel="canonical" href="https://rasahq.github.io/whatlies/api/transformers/addrandom/">
+        <link rel="canonical" href="https://rasahq.github.io/whatlies/api/transformers/opentsne/">
       
       
         <meta name="author" content="Vincent D. Warmerdam @ Rasa Research">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Add Random - whatlies</title>
+        <title>OpenTsne - whatlies</title>
       
     
     
@@ -93,7 +93,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#whatliestransformersaddrandom" tabindex="0" class="md-skip">
+      <a href="#whatliestransformersopentsne" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -119,7 +119,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Add Random
+                OpenTsne
               
             </span>
           
@@ -476,11 +476,20 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../opentsne/" title="OpenTsne" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="OpenTsne" class="md-nav__link md-nav__link--active">
       OpenTsne
     </a>
+    
   </li>
 
         
@@ -500,20 +509,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="./" title="Add Random" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../addrandom/" title="Add Random" class="md-nav__link">
       Add Random
     </a>
-    
   </li>
 
         
@@ -650,11 +650,17 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/RasaHQ/whatlies/edit/master/docs/api/transformers/addrandom.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/RasaHQ/whatlies/edit/master/docs/api/transformers/opentsne.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="whatliestransformersaddrandom"><code>whatlies.transformers.AddRandom</code><a class="headerlink" href="#whatliestransformersaddrandom" title="Permanent link">&para;</a></h1>
-<p>This transformer adds random embeddings to the embeddingset.</p>
+                <h1 id="whatliestransformersopentsne"><code>whatlies.transformers.OpenTsne</code><a class="headerlink" href="#whatliestransformersopentsne" title="Permanent link">&para;</a></h1>
+<p>This transformer transformers all vectors in an <a href="/whatlies/api/embeddingset/#whatlies.embeddingset.EmbeddingSet">EmbeddingSet</a>
+by means of tsne. This implementation used <a href="https://opentsne.readthedocs.io/en/latest/tsne_algorithm.html">open-tsne</a>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>OpenTSNE is a faster variant of TSNE but it only allows for &lt;2 components.
+You may also notice that it is relatively slow. This unfortunately is a fact of life.</p>
+</div>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -667,26 +673,32 @@
 </thead>
 <tbody>
 <tr>
-<td><code>n</code></td>
+<td><code>n_components</code></td>
 <td></td>
-<td>the number of random vectors to add</td>
-<td><code>1</code></td>
+<td>the number of compoments to create/add</td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>**kwargs</code></td>
+<td></td>
+<td>keyword arguments passed to the OpenTsne implementation, includes things like <code>perplexity</code> <a href="https://opentsne.readthedocs.io/en/latest/api/index.html">link</a></td>
+<td><code>{}</code></td>
 </tr>
 </tbody>
 </table>
 <p>Usage:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">SpacyLanguage</span>
-<span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">AddRandom</span>
+<span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">OpenTsne</span>
 
 <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;prince&quot;</span><span class="p">,</span> <span class="s2">&quot;princess&quot;</span><span class="p">,</span> <span class="s2">&quot;nurse&quot;</span><span class="p">,</span> <span class="s2">&quot;doctor&quot;</span><span class="p">,</span> <span class="s2">&quot;banker&quot;</span><span class="p">,</span> <span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="s2">&quot;woman&quot;</span><span class="p">,</span>
          <span class="s2">&quot;cousin&quot;</span><span class="p">,</span> <span class="s2">&quot;neice&quot;</span><span class="p">,</span> <span class="s2">&quot;king&quot;</span><span class="p">,</span> <span class="s2">&quot;queen&quot;</span><span class="p">,</span> <span class="s2">&quot;dude&quot;</span><span class="p">,</span> <span class="s2">&quot;guy&quot;</span><span class="p">,</span> <span class="s2">&quot;gal&quot;</span><span class="p">,</span> <span class="s2">&quot;fire&quot;</span><span class="p">,</span>
-         <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;mouse&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;bluee&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;mouse&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">,</span>
          <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;family&quot;</span><span class="p">,</span> <span class="s2">&quot;brother&quot;</span><span class="p">,</span> <span class="s2">&quot;sister&quot;</span><span class="p">]</span>
 
 <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
 <span class="n">emb</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">words</span><span class="p">]</span>
 
-<span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">AddRandom</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive_matrix</span><span class="p">(</span><span class="s1">&#39;rand_0&#39;</span><span class="p">,</span> <span class="s1">&#39;rand_1&#39;</span><span class="p">,</span> <span class="s1">&#39;rand_2&#39;</span><span class="p">)</span>
+<span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">OpenTsne</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive_matrix</span><span class="p">(</span><span class="s1">&#39;tsne_0&#39;</span><span class="p">,</span> <span class="s1">&#39;tsne_1&#39;</span><span class="p">)</span>
 </code></pre></div>
                 
                   
@@ -709,7 +721,7 @@
       <div class="md-footer-nav">
         <nav class="md-footer-nav__inner md-grid">
           
-            <a href="../noise/" title="Noise" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <a href="../tsne/" title="Tsne" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
                 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
               </div>
@@ -718,19 +730,19 @@
                   <span class="md-footer-nav__direction">
                     Previous
                   </span>
-                  Noise
+                  Tsne
                 </span>
               </div>
             </a>
           
           
-            <a href="../../language/spacy_lang/" title="spaCy" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <a href="../noise/" title="Noise" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span class="md-footer-nav__direction">
                     Next
                   </span>
-                  spaCy
+                  Noise
                 </span>
               </div>
               <div class="md-flex__cell md-flex__cell--shrink">

@@ -1,4 +1,6 @@
-# How do I save an interactive chart? 
+# F.A.Q. 
+
+### How do I save an interactive chart? 
 
 The interactive charts that our library produces are made with [altair](https://altair-viz.github.io/). 
 These charts use javascript for the interactivity and they are based on [vega](https://vega.github.io/vega-lite/).
@@ -23,7 +25,7 @@ p.to_json("plot.json")
 
 A tutorial on how this works exactly can be found [here](https://calmcode.io/altair/json.html).
 
-# How do I save an interactive chart for publication? 
+### How do I save an interactive chart for publication? 
 
 You can also choose to save an interactive chart as an svg/png/pdf if you're interested 
 in using an [altair](https://altair-viz.github.io/) visualisation in a publication. More

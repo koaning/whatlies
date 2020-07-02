@@ -29,9 +29,3 @@ download manually.
 - it would be nice to be able to test multiple models without
 having to download gigabytes into github actions
 
-**More plots**
-
-There may be visualisations worth adding that we've not considered.
-Like the bar chart discussed in [this github issue](https://github.com/RasaHQ/whatlies/issues/8).
-
-![](https://user-images.githubusercontent.com/1019791/76018898-2b1b7280-5f21-11ea-83b1-ec764eb4d5e3.png)

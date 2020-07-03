@@ -3,6 +3,7 @@ from .sense2vec_lang import Sense2VecLanguage
 from .fasttext_lang import FasttextLanguage
 from .countvector_lang import CountVectorLanguage
 from .bpemblang import BytePairLang
+from .gensim_lang import GensimLanguage
 
 __all__ = [
     "SpacyLanguage",
@@ -10,4 +11,5 @@ __all__ = [
     "FasttextLanguage",
     "CountVectorLanguage",
     "BytePairLang",
+    "GensimLanguage",
 ]

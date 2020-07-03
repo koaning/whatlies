@@ -13,6 +13,7 @@ base_packages = [
     "sense2vec>=1.0.2",
     "fasttext>=0.9.1",
     "bpemb>=0.3.0",
+    "gensim>=3.8.3",
 ]
 
 docs_packages = [

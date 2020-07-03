@@ -13,6 +13,7 @@ nav:
     - Language Options: tutorial/languages/index.md
     - Transformation Viz: tutorial/transformations/index.md
     - Observations: tutorial/observations/index.md
+    - FAQ: faq.md
   - API:
     - Embedding: api/embedding.md
     - EmbeddingSet: api/embeddingset.md

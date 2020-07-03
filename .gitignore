@@ -143,5 +143,7 @@ s2v_old/
 *.ipynb
 cc.*.bin
 tests/*.bin
-node_modules
+
 /package-lock.json
+/node_modules/
+

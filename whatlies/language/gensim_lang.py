@@ -33,10 +33,11 @@ class GensimLanguage(SklearnTransformerMixin):
         ```
 
         Note that if a word is not available in the keyed vectors file then we'll assume
-        a zero vector.
+        a zero vector. If you pass a sentence then we'll add together the embeddings vectors
+        of the seperate words.
 
     Arguments:
-        model: name of the model to load, be sure that it's downloaded or trained beforehand
+        keyedfile: name of the model to load, be sure that it's downloaded or trained beforehand
 
     **Usage**:
 
@@ -54,9 +55,7 @@ class GensimLanguage(SklearnTransformerMixin):
 
     def __getitem__(self, query: Union[str, List[str]]):
         """
-        Retreive a single embedding or a set of embeddings. Depending on the spaCy model
-        the strings can support multiple tokens of text but they can also use the Bert DSL.
-        See the Language Options documentation: https://rasahq.github.io/whatlies/tutorial/languages/#bert-style.
+        Retreive a single embedding or a set of embeddings.
 
         Arguments:
             query: single string or list of strings
@@ -81,21 +80,6 @@ class GensimLanguage(SklearnTransformerMixin):
                 vec = np.zeros(self.kv.vector_size)
             return Embedding(query, vec)
         return EmbeddingSet(*[self[tok] for tok in query])
-
-    def _prepare_queries(self, lower):
-        queries = [w for w in self.kv.vocab.keys()]
-        if lower:
-            queries = [w for w in queries if w.lower() == w]
-        return queries
-
-    def _calculate_distances(self, emb, queries, metric):
-        vec = emb.vector
-        vector_matrix = np.array([self[w].vector for w in queries])
-        # there are NaNs returned, good to investigate later why that might be
-        vector_matrix = np.array(
-            [np.zeros(v.shape) if np.any(np.isnan(v)) else v for v in vector_matrix]
-        )
-        return pairwise_distances(vector_matrix, vec.reshape(1, -1), metric=metric)
 
     def score_similar(
         self, emb: Union[str, Embedding], n: int = 10, metric="cosine", lower=False,
@@ -138,10 +122,6 @@ class GensimLanguage(SklearnTransformerMixin):
             n: the number of items you'd like to see returned
             metric: metric to use to calculate distance, must be scipy or sklearn compatible
             lower: only fetch lower case tokens
-
-        Important:
-            This method is incredibly slow at the moment without a good `top_n` setting due to
-            [this bug](https://github.com/facebookresearch/fastText/issues/1040).
 
         Returns:
             An [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] containing the similar embeddings.

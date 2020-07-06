@@ -400,16 +400,63 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#plotting" class="md-nav__link">
+    Plotting
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#how-do-i-save-an-interactive-chart" class="md-nav__link">
     How do I save an interactive chart?
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#how-do-i-save-an-interactive-chart-for-publication" class="md-nav__link">
     How do I save an interactive chart for publication?
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#languages" class="md-nav__link">
+    Languages
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-access-nearest-tokens-from-a-language-model" class="md-nav__link">
+    How do I access nearest tokens from a language model?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-access-nearest-tokens-from-a-language-model-using-an-embedding" class="md-nav__link">
+    How do I access nearest tokens from a language model using an embedding?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-retreive-an-embedding-set-from-language-model-using-similar-tokens" class="md-nav__link">
+    How do I retreive an embedding set from language model using similar tokens?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -647,6 +694,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/language/gensim_lang/" title="Gensim" class="md-nav__link">
+      Gensim
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -690,16 +749,63 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#plotting" class="md-nav__link">
+    Plotting
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#how-do-i-save-an-interactive-chart" class="md-nav__link">
     How do I save an interactive chart?
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#how-do-i-save-an-interactive-chart-for-publication" class="md-nav__link">
     How do I save an interactive chart for publication?
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#languages" class="md-nav__link">
+    Languages
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-access-nearest-tokens-from-a-language-model" class="md-nav__link">
+    How do I access nearest tokens from a language model?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-access-nearest-tokens-from-a-language-model-using-an-embedding" class="md-nav__link">
+    How do I access nearest tokens from a language model using an embedding?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-retreive-an-embedding-set-from-language-model-using-similar-tokens" class="md-nav__link">
+    How do I retreive an embedding set from language model using similar tokens?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -723,6 +829,7 @@
                 
                 
                 <h1 id="faq">F.A.Q.<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h1>
+<h2 id="plotting">Plotting<a class="headerlink" href="#plotting" title="Permanent link">&para;</a></h2>
 <h3 id="how-do-i-save-an-interactive-chart">How do I save an interactive chart?<a class="headerlink" href="#how-do-i-save-an-interactive-chart" title="Permanent link">&para;</a></h3>
 <p>The interactive charts that our library produces are made with <a href="https://altair-viz.github.io/">altair</a>. 
 These charts use javascript for the interactivity and they are based on <a href="https://vega.github.io/vega-lite/">vega</a>.
@@ -772,6 +879,65 @@ save(p, &quot;chart.png&quot;)
 
 <p>This saves the following chart on disk;</p>
 <p><img alt="" src="../images/chart.png" /></p>
+<h2 id="languages">Languages<a class="headerlink" href="#languages" title="Permanent link">&para;</a></h2>
+<h3 id="how-do-i-access-nearest-tokens-from-a-language-model">How do I access nearest tokens from a language model?<a class="headerlink" href="#how-do-i-access-nearest-tokens-from-a-language-model" title="Permanent link">&para;</a></h3>
+<p>This depends on the language model, please check the docs, but most 
+language models will have a <code>score_similar</code> method attached. </p>
+<pre><code class="python">from whatlies.language import BytePairLang
+lang = BytePairLang(&quot;en&quot;)
+lang.score_similar(&quot;king&quot;)
+</code></pre>
+
+<p>This code snippet will return yield;</p>
+<pre><code class="python">[(Emb[king], 1.1102230246251565e-16),
+ (Emb[▁king], 0.23501371664985227),
+ (Emb[iv], 0.33016763827104456),
+ (Emb[▁throne], 0.3366865106345296),
+ (Emb[iii], 0.33745878416967634),
+ (Emb[lord], 0.37137511153954517),
+ (Emb[▁prince], 0.3806569732193965),
+ (Emb[▁duke], 0.3889479082730939),
+ (Emb[son], 0.3892961048683081),
+ (Emb[ivals], 0.3904733871620414)]
+</code></pre>
+
+<p>In this case you'll see subword embeddings being return because that is what this
+language model uses internally. Language models using spaCy would use full tokens.</p>
+<h3 id="how-do-i-access-nearest-tokens-from-a-language-model-using-an-embedding">How do I access nearest tokens from a language model using an embedding?<a class="headerlink" href="#how-do-i-access-nearest-tokens-from-a-language-model-using-an-embedding" title="Permanent link">&para;</a></h3>
+<p>You can pass this method a string, but also an embedding object. Ths can contain
+a custom vector but you can also construct an embedding via operations. This makes the 
+API a lot more flexible. For example, we can construct this embedding;</p>
+<pre><code class="python">from whatlies.language import BytePairLang
+lang = BytePairLang(&quot;en&quot;)
+kmw = lang[&quot;king&quot;] - lang[&quot;man&quot;] + lang[&quot;woman&quot;]
+# Emb[((king - man) + woman)]
+</code></pre>
+
+<p>And use this embedding in our language model to retreive similar items.</p>
+<pre><code class="python">lang.score_similar(kmw, n=7)
+</code></pre>
+
+<p>This yields. </p>
+<pre><code class="python">[(Emb[king], 0.2620711370759745),
+ (Emb[mother], 0.36575381150291),
+ (Emb[father], 0.39737356910585997),
+ (Emb[▁queen], 0.43554929266740294),
+ (Emb[anne], 0.4583618203004909),
+ (Emb[▁throne], 0.47000919280368636),
+ (Emb[mary], 0.4771824121946612)]
+</code></pre>
+
+<p>Note that in general we're using cosine distance here but you can also pass the 
+<code>.score_similar</code> method a <code>metric</code> so select other metrics that are compatible with
+scikit-learn. </p>
+<h3 id="how-do-i-retreive-an-embedding-set-from-language-model-using-similar-tokens">How do I retreive an embedding set from language model using similar tokens?<a class="headerlink" href="#how-do-i-retreive-an-embedding-set-from-language-model-using-similar-tokens" title="Permanent link">&para;</a></h3>
+<p>You can use the same flow we used in the previous two questions to generate an
+embedding set that can be used for plotting.</p>
+<pre><code class="python">from whatlies.language import BytePairLang
+lang = BytePairLang(&quot;en&quot;)
+kmw = lang[&quot;king&quot;] - lang[&quot;man&quot;] + lang[&quot;woman&quot;]
+emb_king = lang.embset_similar(kmw, n=20)
+</code></pre>
                 
                   
                 

@@ -13,7 +13,7 @@
         <meta name="description" content="A python package to discover "what lies" in word embeddings.">
       
       
-        <link rel="canonical" href="https://rasahq.github.io/whatlies/api/language/bpemb_lang/">
+        <link rel="canonical" href="https://rasahq.github.io/whatlies/api/language/gensim_lang/">
       
       
         <meta name="author" content="Vincent D. Warmerdam @ Rasa Research">
@@ -42,7 +42,7 @@
     
     
       
-        <title>BPEmbLang - whatlies</title>
+        <title>Gensim - whatlies</title>
       
     
     
@@ -93,7 +93,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#whatlieslanguagebytepairlang" tabindex="0" class="md-skip">
+      <a href="#whatlieslanguagegensimlanguage" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -119,7 +119,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                BPEmbLang
+                Gensim
               
             </span>
           
@@ -596,6 +596,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../bpemb_lang/" title="BPEmbLang" class="md-nav__link">
+      BPEmbLang
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -607,11 +619,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        BPEmbLang
+        Gensim
       </label>
     
-    <a href="./" title="BPEmbLang" class="md-nav__link md-nav__link--active">
-      BPEmbLang
+    <a href="./" title="Gensim" class="md-nav__link md-nav__link--active">
+      Gensim
     </a>
     
       
@@ -625,21 +637,21 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.bpemblang.BytePairLang.9595getitem9595" class="md-nav__link">
+  <a href="#whatlies.language.gensim_lang.GensimLanguage.9595getitem9595" class="md-nav__link">
     __getitem__()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.bpemblang.BytePairLang.embset_similar" class="md-nav__link">
+  <a href="#whatlies.language.gensim_lang.GensimLanguage.embset_similar" class="md-nav__link">
     embset_similar()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.bpemblang.BytePairLang.score_similar" class="md-nav__link">
+  <a href="#whatlies.language.gensim_lang.GensimLanguage.score_similar" class="md-nav__link">
     score_similar()
   </a>
   
@@ -653,18 +665,6 @@
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../gensim_lang/" title="Gensim" class="md-nav__link">
-      Gensim
-    </a>
   </li>
 
         
@@ -711,21 +711,21 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.bpemblang.BytePairLang.9595getitem9595" class="md-nav__link">
+  <a href="#whatlies.language.gensim_lang.GensimLanguage.9595getitem9595" class="md-nav__link">
     __getitem__()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.bpemblang.BytePairLang.embset_similar" class="md-nav__link">
+  <a href="#whatlies.language.gensim_lang.GensimLanguage.embset_similar" class="md-nav__link">
     embset_similar()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.bpemblang.BytePairLang.score_similar" class="md-nav__link">
+  <a href="#whatlies.language.gensim_lang.GensimLanguage.score_similar" class="md-nav__link">
     score_similar()
   </a>
   
@@ -747,30 +747,29 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/RasaHQ/whatlies/edit/master/docs/api/language/bpemb_lang.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/RasaHQ/whatlies/edit/master/docs/api/language/gensim_lang.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="whatlieslanguagebytepairlang"><code>whatlies.language.BytePairLang</code><a class="headerlink" href="#whatlieslanguagebytepairlang" title="Permanent link">&para;</a></h1>
+                <h1 id="whatlieslanguagegensimlanguage"><code>whatlies.language.GensimLanguage</code><a class="headerlink" href="#whatlieslanguagegensimlanguage" title="Permanent link">&para;</a></h1>
 <p>This object is used to lazily fetch <a href="/whatlies/api/embedding/#whatlies.embedding.Embedding">Embedding</a>s or
-<a href="/whatlies/api/embeddingset/#whatlies.embeddingset.EmbeddingSet">EmbeddingSet</a>s from a Byte-Pair Encoding
-backend. This object is meant for retreival, not plotting.</p>
-<p>This language represents token-free pre-trained subword embeddings. Originally created by
-Benjamin Heinzerling and Michael Strube.</p>
+<a href="/whatlies/api/embeddingset/#whatlies.embeddingset.EmbeddingSet">EmbeddingSet</a>s from a keyed vector file.
+These files are generated by <a href="https://radimrehurek.com/gensim/models/word2vec.html">gensim</a>.
+This object is meant for retreival, not plotting.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>These vectors will auto-download by the <a href="https://nlp.h-its.org/bpemb/">BPEmb package</a>.
-You can also specify "multi" to download multi language embeddings. A full list of available
-languages can be found <a href="https://nlp.h-its.org/bpemb">here</a>. The article that
-belongs to this work can be found <a href="http://www.lrec-conf.org/proceedings/lrec2018/pdf/1049.pdf">here</a>.
-The availability of vocabulary size as well as dimensionality can be varified
-on the project website. See <a href="https://nlp.h-its.org/bpemb/en/">here</a> for an
-example link in English. Please credit the original authors if you use their work.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>These embeddings have been added in v0.4.0 and are still relatively experimental.
-It's the first pure subtoken embedding we've added so we may play around with
-internal behavior. When in doubt; be sure to hard code the version number.</p>
+<p>The vectors are not given by this library they must be download/created upfront.
+A potential benefit of this is that you can train your own embeddings using
+gensim and visualise them using this library.</p>
+<p>Here's a snippet that you can use to train your own (very limited) word2vec embeddings.</p>
+<div class="highlight"><pre><span></span><code>from gensim.test.utils import common_texts
+from gensim.models import Word2Vec
+model = Word2Vec(common_texts, size=10, window=5, min_count=1, workers=4)
+model.wv.save(&quot;wordvectors.kv&quot;)
+</code></pre></div>
+
+<p>Note that if a word is not available in the keyed vectors file then we'll assume
+a zero vector. If you pass a sentence then we'll add together the embeddings vectors
+of the seperate words.</p>
 </div>
 <p><strong>Parameters</strong></p>
 <table>
@@ -784,44 +783,28 @@ internal behavior. When in doubt; be sure to hard code the version number.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>lang</code></td>
+<td><code>keyedfile</code></td>
 <td></td>
-<td>name of the model to load</td>
+<td>name of the model to load, be sure that it's downloaded or trained beforehand</td>
 <td><em>required</em></td>
-</tr>
-<tr>
-<td><code>vs</code></td>
-<td></td>
-<td>vocabulary size of the byte pair model</td>
-<td><code>10000</code></td>
-</tr>
-<tr>
-<td><code>dim</code></td>
-<td></td>
-<td>the embedding dimensionality</td>
-<td><code>100</code></td>
-</tr>
-<tr>
-<td><code>cache_dir</code></td>
-<td></td>
-<td>The folder in which downloaded BPEmb files will be cached</td>
-<td><code>PosixPath('/Users/vincent/.cache/bpemb')</code></td>
 </tr>
 </tbody>
 </table>
-<p>Typically the vocabulary size given from this backend can be of size 1000,
-3000, 5000, 10000, 25000, 50000, 100000 or 200000. The available dimensionality
-of the embbeddings typically are 25, 50, 100, 200 and 300.</p>
 <p><strong>Usage</strong>:</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">BytePairLang</span>
-<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">BytePairLang</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;python&#39;</span><span class="p">]</span>
-<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">BytePairLang</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;multi&quot;</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;hund&#39;</span><span class="p">,</span> <span class="s1">&#39;hond&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">]]</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">GensimLanguage</span>
+<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">GensimLanguage</span><span class="p">(</span><span class="s2">&quot;wordvectors.kv&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;computer&#39;</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">GensimLanguage</span><span class="p">(</span><span class="s2">&quot;wordvectors.kv&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;computer&#39;</span><span class="p">,</span> <span class="s1">&#39;human&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">]]</span>
 </code></pre></div>
 
-<h2 id="whatlies.language.bpemblang.BytePairLang.__getitem__"><code class="highlight"><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.bpemblang.BytePairLang.__getitem__" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/bpemblang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>61
+<h2 id="whatlies.language.gensim_lang.GensimLanguage.__getitem__"><code class="highlight"><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.gensim_lang.GensimLanguage.__getitem__" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>language/gensim_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>56
+57
+58
+59
+60
+61
 62
 63
 64
@@ -841,33 +824,39 @@ of the embbeddings typically are 25, 50, 100, 200 and 300.</p>
 78
 79
 80
-81</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+81
+82</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Retreive a single embedding or a set of embeddings. If an embedding contains multiple</span>
-<span class="sd">        sub-tokens then we&#39;ll average them before retreival.</span>
+<span class="sd">        Retreive a single embedding or a set of embeddings.</span>
 
 <span class="sd">        Arguments:</span>
-<span class="sd">            item: single string or list of strings</span>
+<span class="sd">            query: single string or list of strings</span>
 
 <span class="sd">        **Usage**</span>
 <span class="sd">        ```python</span>
-<span class="sd">        &gt; lang = BytePairLang(lang=&quot;en&quot;)</span>
-<span class="sd">        &gt; lang[&#39;python&#39;]</span>
-<span class="sd">        &gt; lang[[&#39;python&#39;, &#39;snake&#39;]]</span>
-<span class="sd">        &gt; lang[[&#39;nobody expects&#39;, &#39;the spanish inquisition&#39;]]</span>
+<span class="sd">        &gt; from whatlies.language import GensimLanguage</span>
+<span class="sd">        &gt; lang = GensimLanguage(&quot;wordvectors.kv&quot;)</span>
+<span class="sd">        &gt; lang[&#39;computer&#39;]</span>
+<span class="sd">        &gt; lang = GensimLanguage(&quot;wordvectors.kv&quot;, size=10)</span>
+<span class="sd">        &gt; lang[[&#39;computer&#39;, &#39;human&#39;, &#39;dog&#39;]]</span>
 <span class="sd">        ```</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">EmbeddingSet</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">item</span><span class="p">])</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Item must be list of string got </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s2">&quot; &quot;</span> <span class="ow">in</span> <span class="n">query</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">Embedding</span><span class="p">(</span>
+                    <span class="n">query</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="bp">self</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">query</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">kv</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">query</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kv</span><span class="o">.</span><span class="n">vector_size</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">vec</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">EmbeddingSet</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">tok</span><span class="p">]</span> <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">query</span><span class="p">])</span>
 </code></pre></div>
 </td></tr></table>
 
 </details>
-<p>Retreive a single embedding or a set of embeddings. If an embedding contains multiple
-sub-tokens then we'll average them before retreival.</p>
+<p>Retreive a single embedding or a set of embeddings.</p>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -880,22 +869,22 @@ sub-tokens then we'll average them before retreival.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>item</code></td>
-<td></td>
+<td><code>query</code></td>
+<td><code>Union[str, List[str]]</code></td>
 <td>single string or list of strings</td>
 <td><em>required</em></td>
 </tr>
 </tbody>
 </table>
 <p><strong>Usage</strong>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">BytePairLang</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;python&#39;</span><span class="p">]</span>
-<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;snake&#39;</span><span class="p">]]</span>
-<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;nobody expects&#39;</span><span class="p">,</span> <span class="s1">&#39;the spanish inquisition&#39;</span><span class="p">]]</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">GensimLanguage</span>
+<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">GensimLanguage</span><span class="p">(</span><span class="s2">&quot;wordvectors.kv&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;computer&#39;</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">GensimLanguage</span><span class="p">(</span><span class="s2">&quot;wordvectors.kv&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;computer&#39;</span><span class="p">,</span> <span class="s1">&#39;human&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">]]</span>
 </code></pre></div></p>
-<h2 id="whatlies.language.bpemblang.BytePairLang.embset_similar"><code class="highlight"><span class="n">embset_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.bpemblang.BytePairLang.embset_similar" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/bpemblang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>128
-129
+<h2 id="whatlies.language.gensim_lang.GensimLanguage.embset_similar"><code class="highlight"><span class="n">embset_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.gensim_lang.GensimLanguage.embset_similar" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>language/gensim_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>129
 130
 131
 132
@@ -913,10 +902,7 @@ sub-tokens then we'll average them before retreival.</p>
 144
 145
 146
-147
-148
-149
-150</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_similar</span><span class="p">(</span>
+147</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_similar</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EmbeddingSet</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -927,10 +913,6 @@ sub-tokens then we'll average them before retreival.</p>
 <span class="sd">            n: the number of items you&#39;d like to see returned</span>
 <span class="sd">            metric: metric to use to calculate distance, must be scipy or sklearn compatible</span>
 <span class="sd">            lower: only fetch lower case tokens</span>
-
-<span class="sd">        Important:</span>
-<span class="sd">            This method is incredibly slow at the moment without a good `top_n` setting due to</span>
-<span class="sd">            [this bug](https://github.com/facebookresearch/fastText/issues/1040).</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            An [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] containing the similar embeddings.</span>
@@ -981,11 +963,6 @@ sub-tokens then we'll average them before retreival.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>This method is incredibly slow at the moment without a good <code>top_n</code> setting due to
-<a href="https://github.com/facebookresearch/fastText/issues/1040">this bug</a>.</p>
-</div>
 <p><strong>Returns</strong></p>
 <table>
 <thead>
@@ -1001,9 +978,8 @@ sub-tokens then we'll average them before retreival.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="whatlies.language.bpemblang.BytePairLang.score_similar"><code class="highlight"><span class="n">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.bpemblang.BytePairLang.score_similar" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/bpemblang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 98
- 99
+<h2 id="whatlies.language.gensim_lang.GensimLanguage.score_similar"><code class="highlight"><span class="n">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.gensim_lang.GensimLanguage.score_similar" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>language/gensim_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 99
 100
 101
 102
@@ -1030,7 +1006,8 @@ sub-tokens then we'll average them before retreival.</p>
 123
 124
 125
-126</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">score_similar</span><span class="p">(</span>
+126
+127</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">score_similar</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1137,7 +1114,7 @@ sub-tokens then we'll average them before retreival.</p>
       <div class="md-footer-nav">
         <nav class="md-footer-nav__inner md-grid">
           
-            <a href="../countvector_lang/" title="CountVector" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <a href="../bpemb_lang/" title="BPEmbLang" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
                 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
               </div>
@@ -1146,19 +1123,19 @@ sub-tokens then we'll average them before retreival.</p>
                   <span class="md-footer-nav__direction">
                     Previous
                   </span>
-                  CountVector
+                  BPEmbLang
                 </span>
               </div>
             </a>
           
           
-            <a href="../gensim_lang/" title="Gensim" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <a href="../../../roadmap/" title="Roadmap" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span class="md-footer-nav__direction">
                     Next
                   </span>
-                  Gensim
+                  Roadmap
                 </span>
               </div>
               <div class="md-flex__cell md-flex__cell--shrink">

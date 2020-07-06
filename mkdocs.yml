@@ -25,12 +25,12 @@ nav:
       - Noise: api/transformers/noise.md
       - Add Random: api/transformers/addrandom.md
     - Language:
-        - spaCy: api/language/spacy_lang.md
-        - Sense2Vec: api/language/s2v_lang.md
-        - fasttext: api/language/fasttext_lang.md
-        - CountVector: api/language/countvector_lang.md
-        - BPEmbLang: api/language/bpemb_lang.md
-        - Gensim: api/language/gensim_lang.md
+      - spaCy: api/language/spacy_lang.md
+      - Sense2Vec: api/language/s2v_lang.md
+      - fasttext: api/language/fasttext_lang.md
+      - CountVector: api/language/countvector_lang.md
+      - BPEmbLang: api/language/bpemb_lang.md
+      - Gensim: api/language/gensim_lang.md
   - Roadmap: roadmap.md
 plugins:
   - mkdocstrings

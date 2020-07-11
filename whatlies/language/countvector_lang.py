@@ -1,7 +1,10 @@
+import warnings
 from typing import Union, List, Tuple
 
-from sklearn.feature_extraction.text import CountVectorizer
+import numpy as np
+from sklearn.metrics import pairwise_distances
 from sklearn.decomposition import TruncatedSVD
+from sklearn.feature_extraction.text import CountVectorizer
 
 from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
@@ -75,6 +78,7 @@ class CountVectorLanguage(SklearnTransformerMixin):
             strip_accents=strip_accents,
         )
         self.fitted_manual = False
+        self.corpus = {}
 
     def fit_manual(self, query):
         """
@@ -92,9 +96,14 @@ class CountVectorLanguage(SklearnTransformerMixin):
         > lang[['piza', 'pizza', 'pizzaz', 'fyrehouse', 'firehouse', 'fyrehidrant']]
         ```
         """
+        if any([len(q) == 0 for q in query]):
+            raise ValueError(
+                "You've passed an empty string to the language model which is not allowed."
+            )
         X = self.cv.fit_transform(query)
         self.svd.fit(X)
         self.fitted_manual = True
+        self.corpus = query
         return self
 
     def __getitem__(self, query: Union[str, List[str]]):
@@ -114,7 +123,11 @@ class CountVectorLanguage(SklearnTransformerMixin):
         """
         orig_str = isinstance(query, str)
         if orig_str:
-            query = list(query)
+            query = [query]
+        if any([len(q) == 0 for q in query]):
+            raise ValueError(
+                "You've passed an empty string to the language model which is not allowed."
+            )
         if self.fitted_manual:
             X = self.cv.transform(query)
             X_vec = self.svd.transform(X)
@@ -126,3 +139,74 @@ class CountVectorLanguage(SklearnTransformerMixin):
         return EmbeddingSet(
             *[Embedding(name=n, vector=v) for n, v in zip(query, X_vec)]
         )
+
+    def _prepare_queries(self, lower):
+        queries = [w for w in self.corpus]
+        if lower:
+            queries = [w for w in queries if w.lower() == w]
+        return queries
+
+    def _calculate_distances(self, emb, queries, metric):
+        vec = emb.vector
+        vector_matrix = np.array([self[w].vector for w in queries])
+        # there are NaNs returned, good to investigate later why that might be
+        vector_matrix = np.array(
+            [np.zeros(v.shape) if np.any(np.isnan(v)) else v for v in vector_matrix]
+        )
+        return pairwise_distances(vector_matrix, vec.reshape(1, -1), metric=metric)
+
+    def score_similar(
+        self, emb: Union[str, Embedding], n: int = 10, metric="cosine", lower=False,
+    ) -> List:
+        """
+        Retreive a list of (Embedding, score) tuples that are the most similar to the passed query.
+        Note that we will only consider words that were passed in the `.fit_manual()` step.
+
+        Arguments:
+            emb: query to use
+            n: the number of items you'd like to see returned
+            metric: metric to use to calculate distance, must be scipy or sklearn compatible
+            lower: only fetch lower case tokens
+
+        Returns:
+            An list of ([Embedding][whatlies.embedding.Embedding], score) tuples.
+        """
+        if isinstance(emb, str):
+            emb = self[emb]
+
+        queries = self._prepare_queries(lower=lower)
+        distances = self._calculate_distances(emb=emb, queries=queries, metric=metric)
+        by_similarity = sorted(zip(queries, distances), key=lambda z: z[1])
+
+        if len(queries) < n:
+            warnings.warn(
+                f"We could only find {len(queries)} feasible words. Consider changing `top_n` or `lower`",
+                UserWarning,
+            )
+
+        return [(self[q], float(d)) for q, d in by_similarity[:n]]
+
+    def embset_similar(
+        self, emb: Union[str, Embedding], n: int = 10, lower=False, metric="cosine",
+    ) -> EmbeddingSet:
+        """
+        Retreive an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] that are the most similar to the passed query.
+        Note that we will only consider words that were passed in the `.fit_manual()` step.
+
+        Arguments:
+            emb: query to use
+            n: the number of items you'd like to see returned
+            metric: metric to use to calculate distance, must be scipy or sklearn compatible
+            lower: only fetch lower case tokens
+
+        Important:
+            This method is incredibly slow at the moment without a good `top_n` setting due to
+            [this bug](https://github.com/facebookresearch/fastText/issues/1040).
+
+        Returns:
+            An [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] containing the similar embeddings.
+        """
+        embs = [
+            w[0] for w in self.score_similar(emb=emb, n=n, lower=lower, metric=metric)
+        ]
+        return EmbeddingSet({w.name: w for w in embs})

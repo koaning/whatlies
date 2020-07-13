@@ -50,7 +50,7 @@ emb.plot_interactive(x_axis=emb["man"], y_axis=emb["woman"])
 
 ![](docs/gif-zero.gif)
 
-You can even do fancy operations. Like projecting unto and away
+You can even do fancy operations. Like projecting onto and away
 from vector embeddings! You can perform these on embeddings as
 well as sets of embeddings.  In the example below we attempt
 to filter away gender bias using linear algebra operations.

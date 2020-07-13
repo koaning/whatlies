@@ -747,7 +747,7 @@ class EmbeddingSet:
         show_axis_point: bool = False,
         width: int = 200,
         height: int = 200,
-    ):
+    ).configure(background='red'):
         """
         Makes highly interactive plot of the set of embeddings.
 

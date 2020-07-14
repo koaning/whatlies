@@ -13,7 +13,7 @@ class Ivis:
 
     Arguments:
         n_components: the number of compoments to create/add
-        kwargs: keyword arguments passed to the Ivis implementation 
+        kwargs: keyword arguments passed to the Ivis implementation
 
     Usage:
 
@@ -52,11 +52,11 @@ class Ivis:
                Must be less than one minus the number of rows in the dataset.
 
             batch_size: The size of mini-batches used during gradient
-                        descent while training the neural network. Must be less than or 
+                        descent while training the neural network. Must be less than or
                         equal to the num_rows in the dataset.
 
             verbose: Controls the volume of logging output the model
-                     produces when training. 
+                     produces when training.
         """
         size = len(embset.embeddings)
         if 'k' not in self.kwargs:

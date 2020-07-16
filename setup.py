@@ -14,6 +14,7 @@ base_packages = [
     "fasttext>=0.9.1",
     "bpemb>=0.3.0",
     "gensim>=3.8.3",
+    "ivis[cpu]",
 ]
 
 docs_packages = [

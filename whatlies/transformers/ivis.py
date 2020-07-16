@@ -37,33 +37,13 @@ class Ivis:
         self.is_fitted = False
         self.n_components = n_components
         self.kwargs = kwargs
+        self.kwargs['verbose'] = 0
+        self.tfm = IVIS(embedding_dims=self.n_components, **self.kwargs)
 
     def __call__(self, embset):
         if not self.is_fitted:
-            self.fill_arguments(embset)
-            self.tfm = IVIS(embedding_dims=self.n_components, **self.kwargs)
             self.fit(embset)
         return self.transform(embset)
-
-    def fill_arguments(self, embset):
-        """
-        Filling arguments for Ivis Fit function:
-            k: The number of neighbours to retrieve for each point.
-               Must be less than one minus the number of rows in the dataset.
-
-            batch_size: The size of mini-batches used during gradient
-                        descent while training the neural network. Must be less than or
-                        equal to the num_rows in the dataset.
-
-            verbose: Controls the volume of logging output the model
-                     produces when training.
-        """
-        size = len(embset.embeddings)
-        if 'k' not in self.kwargs:
-            self.kwargs['k'] = min(size-2, 150)
-        if 'batch_size' not in self.kwargs:
-            self.kwargs['batch_size'] = min(size, 128)
-        self.kwargs['verbose'] = 0
 
     def fit(self, embset):
         names, X = embset_to_X(embset=embset)

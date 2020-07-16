@@ -16,7 +16,8 @@ class OpenTsne:
 
     Arguments:
         n_components: the number of compoments to create/add
-        kwargs: keyword arguments passed to the OpenTsne implementation, includes things like `perplexity` [link](https://opentsne.readthedocs.io/en/latest/api/index.html)
+        kwargs: keyword arguments passed to the OpenTsne implementation, includes things like `perplexity`
+        [link](https://opentsne.readthedocs.io/en/latest/api/index.html)
 
     Usage:
 

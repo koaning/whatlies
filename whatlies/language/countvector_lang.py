@@ -178,6 +178,11 @@ class CountVectorLanguage(SklearnTransformerMixin):
         distances = self._calculate_distances(emb=emb, queries=queries, metric=metric)
         by_similarity = sorted(zip(queries, distances), key=lambda z: z[1])
 
+        if len(self.corpus) < n:
+            raise ValueError(
+                f"You're trying to retreive {n} items while the corpus only trained on {len(self.corpus)}."
+            )
+
         if len(queries) < n:
             warnings.warn(
                 f"We could only find {len(queries)} feasible words. Consider changing `top_n` or `lower`",
@@ -198,10 +203,6 @@ class CountVectorLanguage(SklearnTransformerMixin):
             n: the number of items you'd like to see returned
             metric: metric to use to calculate distance, must be scipy or sklearn compatible
             lower: only fetch lower case tokens
-
-        Important:
-            This method is incredibly slow at the moment without a good `top_n` setting due to
-            [this bug](https://github.com/facebookresearch/fastText/issues/1040).
 
         Returns:
             An [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] containing the similar embeddings.

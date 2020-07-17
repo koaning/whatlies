@@ -39,3 +39,16 @@ def test_value_errors1(lang):
 def test_value_errors2(lang):
     with pytest.raises(ValueError):
         lang.fit_manual(["", "cat", "dog"])
+
+
+def test_retreival1(lang):
+    assert lang.score_similar("doggg", n=1)[0][0].name == "dog"
+
+
+def test_retreival2(lang):
+    assert len(lang.score_similar("doggg", n=5)) == 5
+
+
+def test_retreival_error(lang):
+    with pytest.raises(ValueError):
+        lang.score_similar("doggg", n=50)

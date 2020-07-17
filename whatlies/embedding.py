@@ -1,7 +1,9 @@
+from typing import Union
 from copy import deepcopy
 
 import numpy as np
-from typing import Union
+from sklearn.metrics import pairwise_distances
+
 from whatlies.common import handle_2d_plot
 
 
@@ -144,6 +146,33 @@ class Embedding:
 
     def __str__(self):
         return self.name
+
+    @property
+    def norm(self):
+        """Gives the norm of the vector of the embedding"""
+        return np.linalg.norm(self.vector)
+
+    def distance(self, other, metric: str = "cosine"):
+        """
+        Calculates the vector distance between two embeddings.
+
+        Arguments:
+            other: the other embedding you're comparing against
+            metric: the distance metric to use, the list of valid options can be found [here](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html)
+
+        **Usage**
+
+        ```python
+        from whatlies.embedding import Embedding
+
+        foo = Embedding("foo", [1.0, 0.0])
+        bar = Embedding("bar", [0.0, 0.5])
+
+        foo.distance(bar)
+        foo.distance(bar, metric="euclidean")
+        foo.distance(bar, metric="cosine")
+        """
+        return pairwise_distances([self.vector], [other.vector], metric=metric)[0][0]
 
     def plot(
         self,

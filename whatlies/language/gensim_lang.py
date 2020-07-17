@@ -45,7 +45,7 @@ class GensimLanguage(SklearnTransformerMixin):
     > from whatlies.language import GensimLanguage
     > lang = GensimLanguage("wordvectors.kv")
     > lang['computer']
-    > lang = GensimLanguage("wordvectors.kv", size=10)
+    > lang = GensimLanguage("wordvectors.kv")
     > lang[['computer', 'human', 'dog']]
     ```
     """
@@ -65,7 +65,7 @@ class GensimLanguage(SklearnTransformerMixin):
         > from whatlies.language import GensimLanguage
         > lang = GensimLanguage("wordvectors.kv")
         > lang['computer']
-        > lang = GensimLanguage("wordvectors.kv", size=10)
+        > lang = GensimLanguage("wordvectors.kv")
         > lang[['computer', 'human', 'dog']]
         ```
         """

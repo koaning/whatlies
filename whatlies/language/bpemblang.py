@@ -22,7 +22,8 @@ class BytePairLang:
         These vectors will auto-download by the [BPEmb package](https://nlp.h-its.org/bpemb/).
         You can also specify "multi" to download multi language embeddings. A full list of available
         languages can be found [here](https://nlp.h-its.org/bpemb). The article that
-        belongs to this work can be found [here](http://www.lrec-conf.org/proceedings/lrec2018/pdf/1049.pdf).
+        belongs to this work can be found [here](http://www.lrec-conf.org/proceedings/lrec2018/pdf/1049.pdf)
+        Recognition should be given to Benjamin Heinzerling and Michael Strube for making these available.
         The availability of vocabulary size as well as dimensionality can be varified
         on the project website. See [here](https://nlp.h-its.org/bpemb/en/) for an
         example link in English. Please credit the original authors if you use their work.
@@ -75,7 +76,9 @@ class BytePairLang:
         ```
         """
         if isinstance(item, str):
-            return Embedding(item, self.module.embed(item).mean(axis=0))
+            with warnings.catch_warnings():
+                warnings.filterwarnings("ignore", category=RuntimeWarning)
+                return Embedding(item, self.module.embed(item).mean(axis=0))
         if isinstance(item, list):
             return EmbeddingSet(*[self[i] for i in item])
         raise ValueError(f"Item must be list of string got {item}.")

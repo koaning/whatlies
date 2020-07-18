@@ -452,7 +452,9 @@ class EmbeddingSet:
         emb1.movement_df(emb2)
         ```
         """
-        overlap = list(set(self.embeddings.keys()).union(set(other.embeddings.keys())))
+        overlap = list(
+            set(self.embeddings.keys()).intersection(set(other.embeddings.keys()))
+        )
         mat1 = np.array([w.vector for w in self[overlap]])
         mat2 = np.array([w.vector for w in other[overlap]])
         return (

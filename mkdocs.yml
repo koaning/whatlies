@@ -29,7 +29,7 @@ nav:
       - Sense2Vec: api/language/s2v_lang.md
       - fasttext: api/language/fasttext_lang.md
       - CountVector: api/language/countvector_lang.md
-      - BPEmbLang: api/language/bpemb_lang.md
+      - BytePair: api/language/bpemb_lang.md
       - Gensim: api/language/gensim_lang.md
   - Roadmap: roadmap.md
 plugins:

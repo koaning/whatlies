@@ -12,6 +12,18 @@ def emb():
     return EmbeddingSet(x, y, z)
 
 
+def test_emb_dist(emb):
+    assert np.isclose(emb["x"].distance(emb["x"]), 0.0)
+    assert np.isclose(emb["x"].distance(emb["y"], metric="euclidean"), np.sqrt(2))
+    assert np.isclose(emb["x"].distance(emb["z"], metric="euclidean"), np.sqrt(2) / 2)
+
+
+def test_emb_norm(emb):
+    assert np.isclose(emb["x"].norm, 1.0)
+    assert np.isclose(emb["y"].norm, 1.0)
+    assert np.isclose(emb["z"].norm, np.sqrt(0.5))
+
+
 def test_emb_add(emb):
     new_emb = emb["x"] + emb["y"]
     assert np.isclose(new_emb.vector, np.array([1.0, 1.0])).all()

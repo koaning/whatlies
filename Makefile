@@ -4,14 +4,17 @@ install:
 	python -m pip install --upgrade pip
 	python -m pip install -e .
 
-develop: install
-	python -m pip install -e ".[dev]"
+develop:
 	python -m pip install --upgrade pip wheel setuptools twine
+	python -m pip install -e ".[dev]"
 	pre-commit install
+	python tests/prepare_fasttext_tests.py
+	python tests/prepare_gensim_kv.py
+	python tests/prepare_spacy_tests.py
+
+download:
 	python -m spacy download en_core_web_md
 	python -m spacy download en_trf_robertabase_lg
-	python tests/prepare_disk_for_tests.py
-	python tests/prepare_fasttext_tests.py
 
 flake:
 	flake8 setup.py --count --statistics --max-complexity=10 --max-line-length=127

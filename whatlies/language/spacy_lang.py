@@ -68,7 +68,7 @@ class SpacyLanguage(SklearnTransformerMixin):
         Important:
             The fasttext vectors are not given by this library.
             You can download the models [here](https://fasttext.cc/docs/en/crawl-vectors.html#models).
-            Note that these files are big that and loading this in can take a long time.
+            Note that these files are large and loading them can take a long time.
 
         Arguments:
             language: name of the language so that spaCy can grab correct tokenizer (example: "en" for english)
@@ -79,8 +79,8 @@ class SpacyLanguage(SklearnTransformerMixin):
         **Usage**:
 
         ```python
-        > lang = SpacyLanguage.from_texttext("nl", "/path/spacy/model", "~/Downloads/cc.nl.300.vec.gz")
-        > lang = SpacyLanguage.from_texttext("en", "/path/spacy/model", "~/Downloads/cc.en.300.vec.gz")
+        > lang = SpacyLanguage.from_fasttext("nl", "/path/spacy/model", "~/Downloads/cc.nl.300.vec.gz")
+        > lang = SpacyLanguage.from_fasttext("en", "/path/spacy/model", "~/Downloads/cc.en.300.vec.gz")
         ```
         """
         if not os.path.exists(output_dir):

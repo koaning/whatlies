@@ -97,9 +97,9 @@ class SpacyLanguage(SklearnTransformerMixin):
     @staticmethod
     def _input_str_legal(string):
         if sum(1 for c in string if c == "[") > 1:
-            raise ValueError("only one opener `[` allowed ")
+            raise ValueError("Only one opening bracket (`[`) is allowed")
         if sum(1 for c in string if c == "]") > 1:
-            raise ValueError("only one opener `]` allowed ")
+            raise ValueError("Only one closing bracket (`]`) is allowed")
 
     def __getitem__(self, query: Union[str, List[str]]):
         """
@@ -114,8 +114,8 @@ class SpacyLanguage(SklearnTransformerMixin):
         ```python
         > lang = SpacyLanguage("en_core_web_md")
         > lang['python']
-        > lang[['python'], ['snake']]
-        > lang[['nobody expects'], ['the spanish inquisition']]
+        > lang[['python', 'snake']]
+        > lang[['nobody expects', 'the spanish inquisition']]
         ```
         """
         if isinstance(query, str):

@@ -71,7 +71,7 @@ This depends on the language model, please check the docs, but most
 language models will have a `score_similar` method attached. 
 
 ```python
-from whatlies.language import BytePairLang
+from whatlies.language import BytePairLanguage
 lang = BytePairLang("en")
 lang.score_similar("king")
 ``` 
@@ -101,7 +101,7 @@ a custom vector but you can also construct an embedding via operations. This mak
 API a lot more flexible. For example, we can construct this embedding;
 
 ```python
-from whatlies.language import BytePairLang
+from whatlies.language import BytePairLanguage
 lang = BytePairLang("en")
 kmw = lang["king"] - lang["man"] + lang["woman"]
 # Emb[((king - man) + woman)]
@@ -135,7 +135,7 @@ You can use the same flow we used in the previous two questions to generate an
 embedding set that can be used for plotting.
 
 ```python
-from whatlies.language import BytePairLang
+from whatlies.language import BytePairLanguage
 lang = BytePairLang("en")
 kmw = lang["king"] - lang["man"] + lang["woman"]
 emb_king = lang.embset_similar(kmw, n=20)

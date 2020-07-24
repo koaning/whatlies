@@ -814,6 +814,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../language/convert_lang/" title="ConveRT" class="md-nav__link">
+      ConveRT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../language/gensim_lang/" title="Gensim" class="md-nav__link">
       Gensim
     </a>
@@ -1617,7 +1629,7 @@ a property can be used to assign colors.</p>
 <span class="sd">        ```</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">.average()&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span> <span class="k">else</span> <span class="n">name</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">v</span><span class="o">.</span><span class="n">vector</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_X</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
 </code></pre></div>
 </td></tr></table>
@@ -1920,7 +1932,9 @@ a new <code>Embedding</code>.</p>
 461
 462
 463
-464</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">movement_df</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">):</span>
+464
+465
+466</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">movement_df</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a dataframe that shows the movement from one embeddingset to another one.</span>
 
@@ -1941,7 +1955,9 @@ a new <code>Embedding</code>.</p>
 <span class="sd">        emb1.movement_df(emb2)</span>
 <span class="sd">        ```</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">overlap</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">keys</span><span class="p">())))</span>
+        <span class="n">overlap</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+            <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+        <span class="p">)</span>
         <span class="n">mat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">w</span><span class="o">.</span><span class="n">vector</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[</span><span class="n">overlap</span><span class="p">]])</span>
         <span class="n">mat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">w</span><span class="o">.</span><span class="n">vector</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">other</span><span class="p">[</span><span class="n">overlap</span><span class="p">]])</span>
         <span class="k">return</span> <span class="p">(</span>
@@ -1993,9 +2009,7 @@ a new <code>Embedding</code>.</p>
 </code></pre></div>
 
 <h2 id="whatlies.embeddingset.EmbeddingSet.plot"><code class="highlight"><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_ops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embeddingset.EmbeddingSet.plot" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>480
-481
-482
+<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>482
 483
 484
 485
@@ -2021,7 +2035,9 @@ a new <code>Embedding</code>.</p>
 505
 506
 507
-508</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span>
+508
+509
+510</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;scatter&quot;</span><span class="p">,</span>
         <span class="n">x_axis</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2099,9 +2115,7 @@ a new <code>Embedding</code>.</p>
 </tbody>
 </table>
 <h2 id="whatlies.embeddingset.EmbeddingSet.plot_correlation"><code class="highlight"><span class="n">plot_correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embeddingset.EmbeddingSet.plot_correlation" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>514
-515
-516
+<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>516
 517
 518
 519
@@ -2133,7 +2147,9 @@ a new <code>Embedding</code>.</p>
 545
 546
 547
-548</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot_correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+548
+549
+550</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot_correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Make a correlation plot. Shows you the correlation between all the word embeddings. Can</span>
 <span class="sd">        also be configured to show distances instead.</span>
@@ -2204,9 +2220,7 @@ also be configured to show distances instead.</p>
 
 <p><img alt="" src="https://rasahq.github.io/whatlies/images/corrplot.png" /></p>
 <h2 id="whatlies.embeddingset.EmbeddingSet.plot_interactive"><code class="highlight"><span class="n">plot_interactive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_axis_point</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embeddingset.EmbeddingSet.plot_interactive" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>660
-661
-662
+<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>662
 663
 664
 665
@@ -2285,7 +2299,9 @@ also be configured to show distances instead.</p>
 738
 739
 740
-741</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot_interactive</span><span class="p">(</span>
+741
+742
+743</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot_interactive</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">x_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span>
         <span class="n">y_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span>
@@ -2430,9 +2446,7 @@ also be configured to show distances instead.</p>
 </code></pre></div>
 
 <h2 id="whatlies.embeddingset.EmbeddingSet.plot_interactive_matrix"><code class="highlight"><span class="n">plot_interactive_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">axes</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_axis_point</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embeddingset.EmbeddingSet.plot_interactive_matrix" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>743
-744
-745
+<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>745
 746
 747
 748
@@ -2497,7 +2511,9 @@ also be configured to show distances instead.</p>
 807
 808
 809
-810</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot_interactive_matrix</span><span class="p">(</span>
+810
+811
+812</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot_interactive_matrix</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="n">axes</span><span class="p">,</span>
         <span class="n">annot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -2629,9 +2645,7 @@ also be configured to show distances instead.</p>
 </code></pre></div>
 
 <h2 id="whatlies.embeddingset.EmbeddingSet.plot_movement"><code class="highlight"><span class="n">plot_movement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="p">,</span> <span class="n">first_group_name</span><span class="o">=</span><span class="s1">&#39;before&#39;</span><span class="p">,</span> <span class="n">second_group_name</span><span class="o">=</span><span class="s1">&#39;after&#39;</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embeddingset.EmbeddingSet.plot_movement" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>575
-576
-577
+<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>577
 578
 579
 580
@@ -2712,7 +2726,9 @@ also be configured to show distances instead.</p>
 655
 656
 657
-658</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot_movement</span><span class="p">(</span>
+658
+659
+660</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot_movement</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">other</span><span class="p">,</span>
         <span class="n">x_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span>
@@ -2867,9 +2883,7 @@ between two sets of embeddings.</p>
 </code></pre></div>
 
 <h2 id="whatlies.embeddingset.EmbeddingSet.plot_pixels"><code class="highlight"><span class="n">plot_pixels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embeddingset.EmbeddingSet.plot_pixels" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>550
-551
-552
+<details class="note"><summary>Show source code in <code>whatlies/embeddingset.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>552
 553
 554
 555
@@ -2890,7 +2904,9 @@ between two sets of embeddings.</p>
 570
 571
 572
-573</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot_pixels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+573
+574
+575</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot_pixels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Makes a pixelchart of every embedding in the set.</span>
 
@@ -2990,7 +3006,7 @@ between two sets of embeddings.</p>
 
         <span class="n">vec</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">vector</span>
         <span class="n">queries</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
-        <span class="n">vector_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">w</span><span class="o">.</span><span class="n">vector</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+        <span class="n">vector_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_X</span><span class="p">()</span>
         <span class="n">distances</span> <span class="o">=</span> <span class="n">pairwise_distances</span><span class="p">(</span><span class="n">vector_matrix</span><span class="p">,</span> <span class="n">vec</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">)</span>
         <span class="n">by_similarity</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">queries</span><span class="p">,</span> <span class="n">distances</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
         <span class="k">return</span> <span class="p">[(</span><span class="bp">self</span><span class="p">[</span><span class="n">q</span><span class="p">],</span> <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">by_similarity</span><span class="p">[:</span><span class="n">n</span><span class="p">]]</span>
@@ -3183,7 +3199,7 @@ between two sets of embeddings.</p>
 <span class="sd">        X, y = emb.to_X_y(y_label=&#39;label&#39;)</span>
 <span class="sd">        ```</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">e</span><span class="o">.</span><span class="n">vector</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_X</span><span class="p">()</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">getattr</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">y_label</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
         <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
 </code></pre></div>

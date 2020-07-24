@@ -700,6 +700,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../api/language/convert_lang/" title="ConveRT" class="md-nav__link">
+      ConveRT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../api/language/gensim_lang/" title="Gensim" class="md-nav__link">
       Gensim
     </a>
@@ -883,8 +895,8 @@ save(p, &quot;chart.png&quot;)
 <h3 id="how-do-i-access-nearest-tokens-from-a-language-model">How do I access nearest tokens from a language model?<a class="headerlink" href="#how-do-i-access-nearest-tokens-from-a-language-model" title="Permanent link">&para;</a></h3>
 <p>This depends on the language model, please check the docs, but most 
 language models will have a <code>score_similar</code> method attached. </p>
-<pre><code class="python">from whatlies.language import BytePairLang
-lang = BytePairLang(&quot;en&quot;)
+<pre><code class="python">from whatlies.language import BytePairLanguage
+lang = BytePairLanguage(&quot;en&quot;)
 lang.score_similar(&quot;king&quot;)
 </code></pre>
 
@@ -907,8 +919,8 @@ language model uses internally. Language models using spaCy would use full token
 <p>You can pass this method a string, but also an embedding object. Ths can contain
 a custom vector but you can also construct an embedding via operations. This makes the 
 API a lot more flexible. For example, we can construct this embedding;</p>
-<pre><code class="python">from whatlies.language import BytePairLang
-lang = BytePairLang(&quot;en&quot;)
+<pre><code class="python">from whatlies.language import BytePairLanguage
+lang = BytePairLanguage(&quot;en&quot;)
 kmw = lang[&quot;king&quot;] - lang[&quot;man&quot;] + lang[&quot;woman&quot;]
 # Emb[((king - man) + woman)]
 </code></pre>
@@ -933,8 +945,8 @@ scikit-learn. </p>
 <h3 id="how-do-i-retreive-an-embedding-set-from-language-model-using-similar-tokens">How do I retreive an embedding set from language model using similar tokens?<a class="headerlink" href="#how-do-i-retreive-an-embedding-set-from-language-model-using-similar-tokens" title="Permanent link">&para;</a></h3>
 <p>You can use the same flow we used in the previous two questions to generate an
 embedding set that can be used for plotting.</p>
-<pre><code class="python">from whatlies.language import BytePairLang
-lang = BytePairLang(&quot;en&quot;)
+<pre><code class="python">from whatlies.language import BytePairLanguage
+lang = BytePairLanguage(&quot;en&quot;)
 kmw = lang[&quot;king&quot;] - lang[&quot;man&quot;] + lang[&quot;woman&quot;]
 emb_king = lang.embset_similar(kmw, n=20)
 </code></pre>

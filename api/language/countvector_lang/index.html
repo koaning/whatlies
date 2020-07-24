@@ -620,8 +620,22 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#whatlies.language.countvector_lang.CountVectorLanguage.embset_similar" class="md-nav__link">
+    embset_similar()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#whatlies.language.countvector_lang.CountVectorLanguage.fit_manual" class="md-nav__link">
     fit_manual()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.language.countvector_lang.CountVectorLanguage.score_similar" class="md-nav__link">
+    score_similar()
   </a>
   
 </li>
@@ -645,6 +659,18 @@
   <li class="md-nav__item">
     <a href="../bpemb_lang/" title="BytePair" class="md-nav__link">
       BytePair
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../convert_lang/" title="ConveRT" class="md-nav__link">
+      ConveRT
     </a>
   </li>
 
@@ -711,8 +737,22 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#whatlies.language.countvector_lang.CountVectorLanguage.embset_similar" class="md-nav__link">
+    embset_similar()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#whatlies.language.countvector_lang.CountVectorLanguage.fit_manual" class="md-nav__link">
     fit_manual()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.language.countvector_lang.CountVectorLanguage.score_similar" class="md-nav__link">
+    score_similar()
   </a>
   
 </li>
@@ -830,16 +870,7 @@ yourself or use it in a scikit-learn pipeline.</p>
 </code></pre></div>
 
 <h2 id="whatlies.language.countvector_lang.CountVectorLanguage.__getitem__"><code class="highlight"><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.countvector_lang.CountVectorLanguage.__getitem__" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/countvector_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>100
-101
-102
-103
-104
-105
-106
-107
-108
-109
+<details class="note"><summary>Show source code in <code>language/countvector_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>109
 110
 111
 112
@@ -858,7 +889,20 @@ yourself or use it in a scikit-learn pipeline.</p>
 125
 126
 127
-128</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]):</span>
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retreive a set of embeddings.</span>
 
@@ -875,7 +919,11 @@ yourself or use it in a scikit-learn pipeline.</p>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">orig_str</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">orig_str</span><span class="p">:</span>
-            <span class="n">query</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="p">[</span><span class="n">query</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">query</span><span class="p">]):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;You&#39;ve passed an empty string to the language model which is not allowed.&quot;</span>
+            <span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitted_manual</span><span class="p">:</span>
             <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cv</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
             <span class="n">X_vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">svd</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -917,27 +965,130 @@ yourself or use it in a scikit-learn pipeline.</p>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;pizza&#39;</span><span class="p">,</span> <span class="s1">&#39;pizzas&#39;</span><span class="p">,</span> <span class="s1">&#39;firehouse&#39;</span><span class="p">,</span> <span class="s1">&#39;firehydrant&#39;</span><span class="p">]]</span>
 </code></pre></div>
 
+<h2 id="whatlies.language.countvector_lang.CountVectorLanguage.embset_similar"><code class="highlight"><span class="n">embset_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.countvector_lang.CountVectorLanguage.embset_similar" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>language/countvector_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_similar</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EmbeddingSet</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retreive an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] that are the most similar to the passed query.</span>
+<span class="sd">        Note that we will only consider words that were passed in the `.fit_manual()` step.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            emb: query to use</span>
+<span class="sd">            n: the number of items you&#39;d like to see returned</span>
+<span class="sd">            metric: metric to use to calculate distance, must be scipy or sklearn compatible</span>
+<span class="sd">            lower: only fetch lower case tokens</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            An [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] containing the similar embeddings.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">embs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">score_similar</span><span class="p">(</span><span class="n">emb</span><span class="o">=</span><span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="n">lower</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">EmbeddingSet</span><span class="p">({</span><span class="n">w</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">embs</span><span class="p">})</span>
+</code></pre></div>
+</td></tr></table>
+
+</details>
+<p>Retreive an <a href="/whatlies/api/embeddingset/#whatlies.embeddingset.EmbeddingSet">EmbeddingSet</a> that are the most similar to the passed query.
+Note that we will only consider words that were passed in the <code>.fit_manual()</code> step.</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>emb</code></td>
+<td><code>Union[str, whatlies.embedding.Embedding]</code></td>
+<td>query to use</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td><code>int</code></td>
+<td>the number of items you'd like to see returned</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>metric</code></td>
+<td></td>
+<td>metric to use to calculate distance, must be scipy or sklearn compatible</td>
+<td><code>'cosine'</code></td>
+</tr>
+<tr>
+<td><code>lower</code></td>
+<td></td>
+<td>only fetch lower case tokens</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EmbeddingSet</code></td>
+<td>An <a href="/whatlies/api/embeddingset/#whatlies.embeddingset.EmbeddingSet">EmbeddingSet</a> containing the similar embeddings.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="whatlies.language.countvector_lang.CountVectorLanguage.fit_manual"><code class="highlight"><span class="n">fit_manual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.countvector_lang.CountVectorLanguage.fit_manual" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/countvector_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">fit_manual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+<details class="note"><summary>Show source code in <code>language/countvector_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">fit_manual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Fit the model manually. This way you can call `__getitem__` independantly of training.</span>
 
@@ -953,9 +1104,14 @@ yourself or use it in a scikit-learn pipeline.</p>
 <span class="sd">        &gt; lang[[&#39;piza&#39;, &#39;pizza&#39;, &#39;pizzaz&#39;, &#39;fyrehouse&#39;, &#39;firehouse&#39;, &#39;fyrehidrant&#39;]]</span>
 <span class="sd">        ```</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">query</span><span class="p">]):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;You&#39;ve passed an empty string to the language model which is not allowed.&quot;</span>
+            <span class="p">)</span>
         <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cv</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">svd</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fitted_manual</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">corpus</span> <span class="o">=</span> <span class="n">query</span>
         <span class="k">return</span> <span class="bp">self</span>
 </code></pre></div>
 </td></tr></table>
@@ -987,6 +1143,135 @@ yourself or use it in a scikit-learn pipeline.</p>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="o">.</span><span class="n">fit_manual</span><span class="p">([</span><span class="s1">&#39;pizza&#39;</span><span class="p">,</span> <span class="s1">&#39;pizzas&#39;</span><span class="p">,</span> <span class="s1">&#39;firehouse&#39;</span><span class="p">,</span> <span class="s1">&#39;firehydrant&#39;</span><span class="p">])</span>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;piza&#39;</span><span class="p">,</span> <span class="s1">&#39;pizza&#39;</span><span class="p">,</span> <span class="s1">&#39;pizzaz&#39;</span><span class="p">,</span> <span class="s1">&#39;fyrehouse&#39;</span><span class="p">,</span> <span class="s1">&#39;firehouse&#39;</span><span class="p">,</span> <span class="s1">&#39;fyrehidrant&#39;</span><span class="p">]]</span>
 </code></pre></div>
+
+<h2 id="whatlies.language.countvector_lang.CountVectorLanguage.score_similar"><code class="highlight"><span class="n">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.countvector_lang.CountVectorLanguage.score_similar" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>language/countvector_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">score_similar</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retreive a list of (Embedding, score) tuples that are the most similar to the passed query.</span>
+<span class="sd">        Note that we will only consider words that were passed in the `.fit_manual()` step.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            emb: query to use</span>
+<span class="sd">            n: the number of items you&#39;d like to see returned</span>
+<span class="sd">            metric: metric to use to calculate distance, must be scipy or sklearn compatible</span>
+<span class="sd">            lower: only fetch lower case tokens</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            An list of ([Embedding][whatlies.embedding.Embedding], score) tuples.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">emb</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">emb</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">emb</span><span class="p">]</span>
+
+        <span class="n">queries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_queries</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="n">lower</span><span class="p">)</span>
+        <span class="n">distances</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_distances</span><span class="p">(</span><span class="n">emb</span><span class="o">=</span><span class="n">emb</span><span class="p">,</span> <span class="n">queries</span><span class="o">=</span><span class="n">queries</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">)</span>
+        <span class="n">by_similarity</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">queries</span><span class="p">,</span> <span class="n">distances</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">corpus</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;You&#39;re trying to retreive </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> items while the corpus only trained on </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">corpus</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">queries</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;We could only find </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">queries</span><span class="p">)</span><span class="si">}</span><span class="s2"> feasible words. Consider changing `top_n` or `lower`&quot;</span><span class="p">,</span>
+                <span class="ne">UserWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">[(</span><span class="bp">self</span><span class="p">[</span><span class="n">q</span><span class="p">],</span> <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">by_similarity</span><span class="p">[:</span><span class="n">n</span><span class="p">]]</span>
+</code></pre></div>
+</td></tr></table>
+
+</details>
+<p>Retreive a list of (Embedding, score) tuples that are the most similar to the passed query.
+Note that we will only consider words that were passed in the <code>.fit_manual()</code> step.</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>emb</code></td>
+<td><code>Union[str, whatlies.embedding.Embedding]</code></td>
+<td>query to use</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td><code>int</code></td>
+<td>the number of items you'd like to see returned</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>metric</code></td>
+<td></td>
+<td>metric to use to calculate distance, must be scipy or sklearn compatible</td>
+<td><code>'cosine'</code></td>
+</tr>
+<tr>
+<td><code>lower</code></td>
+<td></td>
+<td>only fetch lower case tokens</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>List</code></td>
+<td>An list of (<a href="/whatlies/api/embedding/#whatlies.embedding.Embedding">Embedding</a>, score) tuples.</td>
+</tr>
+</tbody>
+</table>
                 
                   
                 

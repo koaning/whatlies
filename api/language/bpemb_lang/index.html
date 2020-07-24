@@ -93,7 +93,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#whatlieslanguagebytepairlang" tabindex="0" class="md-skip">
+      <a href="#whatlieslanguagebytepairlanguage" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -625,21 +625,21 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.bpemblang.BytePairLang.9595getitem9595" class="md-nav__link">
+  <a href="#whatlies.language.bpemblang.BytePairLanguage.9595getitem9595" class="md-nav__link">
     __getitem__()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.bpemblang.BytePairLang.embset_similar" class="md-nav__link">
+  <a href="#whatlies.language.bpemblang.BytePairLanguage.embset_similar" class="md-nav__link">
     embset_similar()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.bpemblang.BytePairLang.score_similar" class="md-nav__link">
+  <a href="#whatlies.language.bpemblang.BytePairLanguage.score_similar" class="md-nav__link">
     score_similar()
   </a>
   
@@ -653,6 +653,18 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../convert_lang/" title="ConveRT" class="md-nav__link">
+      ConveRT
+    </a>
   </li>
 
         
@@ -711,21 +723,21 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.bpemblang.BytePairLang.9595getitem9595" class="md-nav__link">
+  <a href="#whatlies.language.bpemblang.BytePairLanguage.9595getitem9595" class="md-nav__link">
     __getitem__()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.bpemblang.BytePairLang.embset_similar" class="md-nav__link">
+  <a href="#whatlies.language.bpemblang.BytePairLanguage.embset_similar" class="md-nav__link">
     embset_similar()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.bpemblang.BytePairLang.score_similar" class="md-nav__link">
+  <a href="#whatlies.language.bpemblang.BytePairLanguage.score_similar" class="md-nav__link">
     score_similar()
   </a>
   
@@ -750,7 +762,7 @@
                   <a href="https://github.com/RasaHQ/whatlies/edit/master/docs/api/language/bpemb_lang.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="whatlieslanguagebytepairlang"><code>whatlies.language.BytePairLang</code><a class="headerlink" href="#whatlieslanguagebytepairlang" title="Permanent link">&para;</a></h1>
+                <h1 id="whatlieslanguagebytepairlanguage"><code>whatlies.language.BytePairLanguage</code><a class="headerlink" href="#whatlieslanguagebytepairlanguage" title="Permanent link">&para;</a></h1>
 <p>This object is used to lazily fetch <a href="/whatlies/api/embedding/#whatlies.embedding.Embedding">Embedding</a>s or
 <a href="/whatlies/api/embeddingset/#whatlies.embeddingset.EmbeddingSet">EmbeddingSet</a>s from a Byte-Pair Encoding
 backend. This object is meant for retreival, not plotting.</p>
@@ -761,16 +773,15 @@ Benjamin Heinzerling and Michael Strube.</p>
 <p>These vectors will auto-download by the <a href="https://nlp.h-its.org/bpemb/">BPEmb package</a>.
 You can also specify "multi" to download multi language embeddings. A full list of available
 languages can be found <a href="https://nlp.h-its.org/bpemb">here</a>. The article that
-belongs to this work can be found <a href="http://www.lrec-conf.org/proceedings/lrec2018/pdf/1049.pdf">here</a>.
+belongs to this work can be found <a href="http://www.lrec-conf.org/proceedings/lrec2018/pdf/1049.pdf">here</a>
+Recognition should be given to Benjamin Heinzerling and Michael Strube for making these available.
 The availability of vocabulary size as well as dimensionality can be varified
 on the project website. See <a href="https://nlp.h-its.org/bpemb/en/">here</a> for an
 example link in English. Please credit the original authors if you use their work.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>These embeddings have been added in v0.4.0 and are still relatively experimental.
-It's the first pure subtoken embedding we've added so we may play around with
-internal behavior. When in doubt; be sure to hard code the version number.</p>
+<p>This class used to be called <code>BytePairLang</code>.</p>
 </div>
 <p><strong>Parameters</strong></p>
 <table>
@@ -813,15 +824,16 @@ internal behavior. When in doubt; be sure to hard code the version number.</p>
 3000, 5000, 10000, 25000, 50000, 100000 or 200000. The available dimensionality
 of the embbeddings typically are 25, 50, 100, 200 and 300.</p>
 <p><strong>Usage</strong>:</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">BytePairLang</span>
-<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">BytePairLang</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">BytePairLanguage</span>
+<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">BytePairLanguage</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;python&#39;</span><span class="p">]</span>
-<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">BytePairLang</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;multi&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">BytePairLanguage</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;multi&quot;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;hund&#39;</span><span class="p">,</span> <span class="s1">&#39;hond&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">]]</span>
 </code></pre></div>
 
-<h2 id="whatlies.language.bpemblang.BytePairLang.__getitem__"><code class="highlight"><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.bpemblang.BytePairLang.__getitem__" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/bpemblang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>61
+<h2 id="whatlies.language.bpemblang.BytePairLanguage.__getitem__"><code class="highlight"><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.bpemblang.BytePairLanguage.__getitem__" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>language/bpemblang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>60
+61
 62
 63
 64
@@ -841,7 +853,8 @@ of the embbeddings typically are 25, 50, 100, 200 and 300.</p>
 78
 79
 80
-81</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+81
+82</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retreive a single embedding or a set of embeddings. If an embedding contains multiple</span>
 <span class="sd">        sub-tokens then we&#39;ll average them before retreival.</span>
@@ -851,14 +864,16 @@ of the embbeddings typically are 25, 50, 100, 200 and 300.</p>
 
 <span class="sd">        **Usage**</span>
 <span class="sd">        ```python</span>
-<span class="sd">        &gt; lang = BytePairLang(lang=&quot;en&quot;)</span>
+<span class="sd">        &gt; lang = BytePairLanguage(lang=&quot;en&quot;)</span>
 <span class="sd">        &gt; lang[&#39;python&#39;]</span>
 <span class="sd">        &gt; lang[[&#39;python&#39;, &#39;snake&#39;]]</span>
 <span class="sd">        &gt; lang[[&#39;nobody expects&#39;, &#39;the spanish inquisition&#39;]]</span>
 <span class="sd">        ```</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+            <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">RuntimeWarning</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">EmbeddingSet</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">item</span><span class="p">])</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Item must be list of string got </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
@@ -888,14 +903,13 @@ sub-tokens then we'll average them before retreival.</p>
 </tbody>
 </table>
 <p><strong>Usage</strong>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">BytePairLang</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">BytePairLanguage</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;python&#39;</span><span class="p">]</span>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;snake&#39;</span><span class="p">]]</span>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;nobody expects&#39;</span><span class="p">,</span> <span class="s1">&#39;the spanish inquisition&#39;</span><span class="p">]]</span>
 </code></pre></div></p>
-<h2 id="whatlies.language.bpemblang.BytePairLang.embset_similar"><code class="highlight"><span class="n">embset_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.bpemblang.BytePairLang.embset_similar" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/bpemblang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>128
-129
+<h2 id="whatlies.language.bpemblang.BytePairLanguage.embset_similar"><code class="highlight"><span class="n">embset_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.bpemblang.BytePairLanguage.embset_similar" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>language/bpemblang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>129
 130
 131
 132
@@ -916,7 +930,8 @@ sub-tokens then we'll average them before retreival.</p>
 147
 148
 149
-150</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_similar</span><span class="p">(</span>
+150
+151</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_similar</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EmbeddingSet</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1001,9 +1016,8 @@ sub-tokens then we'll average them before retreival.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="whatlies.language.bpemblang.BytePairLang.score_similar"><code class="highlight"><span class="n">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.bpemblang.BytePairLang.score_similar" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/bpemblang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 98
- 99
+<h2 id="whatlies.language.bpemblang.BytePairLanguage.score_similar"><code class="highlight"><span class="n">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.bpemblang.BytePairLanguage.score_similar" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>language/bpemblang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 99
 100
 101
 102
@@ -1030,7 +1044,8 @@ sub-tokens then we'll average them before retreival.</p>
 123
 124
 125
-126</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">score_similar</span><span class="p">(</span>
+126
+127</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">score_similar</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1152,13 +1167,13 @@ sub-tokens then we'll average them before retreival.</p>
             </a>
           
           
-            <a href="../gensim_lang/" title="Gensim" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <a href="../convert_lang/" title="ConveRT" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span class="md-footer-nav__direction">
                     Next
                   </span>
-                  Gensim
+                  ConveRT
                 </span>
               </div>
               <div class="md-flex__cell md-flex__cell--shrink">

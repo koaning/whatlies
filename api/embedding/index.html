@@ -436,6 +436,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#whatlies.embedding.Embedding.norm" class="md-nav__link">
+    norm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#whatlies.embedding.Embedding.9595add9595" class="md-nav__link">
     __add__()
   </a>
@@ -471,8 +478,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.embedding.Embedding.plot" class="md-nav__link">
-    plot()
+  <a href="#whatlies.embedding.Embedding.distance" class="md-nav__link">
+    distance()
   </a>
   
 </li>
@@ -681,6 +688,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../language/convert_lang/" title="ConveRT" class="md-nav__link">
+      ConveRT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../language/gensim_lang/" title="Gensim" class="md-nav__link">
       Gensim
     </a>
@@ -730,6 +749,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#whatlies.embedding.Embedding.norm" class="md-nav__link">
+    norm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#whatlies.embedding.Embedding.9595add9595" class="md-nav__link">
     __add__()
   </a>
@@ -765,8 +791,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.embedding.Embedding.plot" class="md-nav__link">
-    plot()
+  <a href="#whatlies.embedding.Embedding.distance" class="md-nav__link">
+    distance()
   </a>
   
 </li>
@@ -833,10 +859,10 @@ foo | bar
 foo - bar + bar
 </code></pre></div>
 
+<h2 id="whatlies.embedding.Embedding.norm"><code class="highlight"><span class="n">norm</span><span class="p">:</span></code> <em>(property, readonly)</em><a class="headerlink" href="#whatlies.embedding.Embedding.norm" title="Permanent link">&para;</a></h2>
+<p>Gives the norm of the vector of the embedding</p>
 <h2 id="whatlies.embedding.Embedding.__add__"><code class="highlight"><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__add__" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>40
-41
-42
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>42
 43
 44
 45
@@ -852,7 +878,9 @@ foo - bar + bar
 55
 56
 57
-58</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Embedding&quot;</span><span class="p">:</span>
+58
+59
+60</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Embedding&quot;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add two embeddings together.</span>
 
@@ -886,9 +914,7 @@ foo + bar
 </code></pre></div>
 
 <h2 id="whatlies.embedding.Embedding.__gt__"><code class="highlight"><span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__gt__" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>80
-81
-82
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>82
 83
 84
 85
@@ -901,7 +927,9 @@ foo + bar
 92
 93
 94
-95</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+95
+96
+97</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Measures the size of one embedding to another one.</span>
 
@@ -932,9 +960,7 @@ foo &gt; bar
 </code></pre></div>
 
 <h2 id="whatlies.embedding.Embedding.__or__"><code class="highlight"><span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__or__" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>122
-123
-124
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>124
 125
 126
 127
@@ -950,7 +976,9 @@ foo &gt; bar
 137
 138
 139
-140</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+140
+141
+142</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Makes one embedding orthogonal to the other one.</span>
 
@@ -984,9 +1012,7 @@ foo | bar
 </code></pre></div>
 
 <h2 id="whatlies.embedding.Embedding.__rshift__"><code class="highlight"><span class="fm">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__rshift__" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 97
- 98
- 99
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 99
 100
 101
 102
@@ -1007,7 +1033,9 @@ foo | bar
 117
 118
 119
-120</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+120
+121
+122</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Maps an embedding unto another one.</span>
 
@@ -1046,9 +1074,7 @@ foo &gt;&gt; bar
 </code></pre></div>
 
 <h2 id="whatlies.embedding.Embedding.__sub__"><code class="highlight"><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.__sub__" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>60
-61
-62
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>62
 63
 64
 65
@@ -1064,7 +1090,9 @@ foo &gt;&gt; bar
 75
 76
 77
-78</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+78
+79
+80</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Subtract two embeddings.</span>
 
@@ -1097,15 +1125,8 @@ bar = Embedding(&quot;bar&quot;, [0.7, 0.2])
 foo - bar
 </code></pre></div>
 
-<h2 id="whatlies.embedding.Embedding.plot"><code class="highlight"><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_ops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.plot" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>148
-149
-150
-151
-152
-153
-154
-155
+<h2 id="whatlies.embedding.Embedding.distance"><code class="highlight"><span class="n">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.distance" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>155
 156
 157
 158
@@ -1125,93 +1146,32 @@ foo - bar
 172
 173
 174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;scatter&quot;</span><span class="p">,</span>
-        <span class="n">x_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;Embedding&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">y_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;Embedding&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">show_ops</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">annot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="p">):</span>
+175</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">metric</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;cosine&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Handles the logic to perform a 2d plot in matplotlib.</span>
+<span class="sd">        Calculates the vector distance between two embeddings.</span>
 
 <span class="sd">        Arguments:</span>
-<span class="sd">            kind: what kind of plot to make, can be `scatter`, `arrow` or `text`</span>
-<span class="sd">            x_axis: the x-axis to be used, must be given when dim &gt; 2</span>
-<span class="sd">            y_axis: the y-axis to be used, must be given when dim &gt; 2</span>
-<span class="sd">            color: the color of the dots</span>
-<span class="sd">            show_ops: setting to also show the applied operations, only works for `text`</span>
-<span class="sd">            annot: should the points be annotated</span>
+<span class="sd">            other: the other embedding you&#39;re comparing against</span>
+<span class="sd">            metric: the distance metric to use, the list of valid options can be found [here](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html)</span>
 
 <span class="sd">        **Usage**</span>
+
 <span class="sd">        ```python</span>
 <span class="sd">        from whatlies.embedding import Embedding</span>
 
-<span class="sd">        foo = Embedding(&quot;foo&quot;, [0.1, 0.3])</span>
-<span class="sd">        bar = Embedding(&quot;bar&quot;, [0.7, 0.2])</span>
+<span class="sd">        foo = Embedding(&quot;foo&quot;, [1.0, 0.0])</span>
+<span class="sd">        bar = Embedding(&quot;bar&quot;, [0.0, 0.5])</span>
 
-<span class="sd">        foo.plot(kind=&quot;arrow&quot;, annot=True)</span>
-<span class="sd">        bar.plot(kind=&quot;arrow&quot;, annot=True)</span>
-<span class="sd">        ```</span>
+<span class="sd">        foo.distance(bar)</span>
+<span class="sd">        foo.distance(bar, metric=&quot;euclidean&quot;)</span>
+<span class="sd">        foo.distance(bar, metric=&quot;cosine&quot;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="n">handle_2d_plot</span><span class="p">(</span>
-                <span class="bp">self</span><span class="p">,</span>
-                <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span>
-                <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-                <span class="n">show_operations</span><span class="o">=</span><span class="n">show_ops</span><span class="p">,</span>
-                <span class="n">xlabel</span><span class="o">=</span><span class="n">x_axis</span><span class="p">,</span>
-                <span class="n">ylabel</span><span class="o">=</span><span class="n">y_axis</span><span class="p">,</span>
-                <span class="n">annot</span><span class="o">=</span><span class="n">annot</span><span class="p">,</span>
-            <span class="p">)</span>
-            <span class="k">return</span> <span class="bp">self</span>
-        <span class="n">x_val</span> <span class="o">=</span> <span class="bp">self</span> <span class="o">&gt;</span> <span class="n">x_axis</span>
-        <span class="n">y_val</span> <span class="o">=</span> <span class="bp">self</span> <span class="o">&gt;</span> <span class="n">y_axis</span>
-        <span class="n">intermediate</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">vector</span><span class="o">=</span><span class="p">[</span><span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">],</span> <span class="n">orig</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">orig</span><span class="p">)</span>
-        <span class="n">handle_2d_plot</span><span class="p">(</span>
-            <span class="n">intermediate</span><span class="p">,</span>
-            <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span>
-            <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-            <span class="n">xlabel</span><span class="o">=</span><span class="n">x_axis</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-            <span class="n">ylabel</span><span class="o">=</span><span class="n">y_axis</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-            <span class="n">show_operations</span><span class="o">=</span><span class="n">show_ops</span><span class="p">,</span>
-            <span class="n">annot</span><span class="o">=</span><span class="n">annot</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span>
+        <span class="k">return</span> <span class="n">pairwise_distances</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">vector</span><span class="p">],</span> <span class="p">[</span><span class="n">other</span><span class="o">.</span><span class="n">vector</span><span class="p">],</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div>
 </td></tr></table>
 
 </details>
-<p>Handles the logic to perform a 2d plot in matplotlib.</p>
+<p>Calculates the vector distance between two embeddings.</p>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -1224,52 +1184,115 @@ foo - bar
 </thead>
 <tbody>
 <tr>
-<td><code>kind</code></td>
+<td><code>other</code></td>
+<td></td>
+<td>the other embedding you're comparing against</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>metric</code></td>
 <td><code>str</code></td>
-<td>what kind of plot to make, can be <code>scatter</code>, <code>arrow</code> or <code>text</code></td>
-<td><code>'scatter'</code></td>
-</tr>
-<tr>
-<td><code>x_axis</code></td>
-<td><code>Union[str, ForwardRef('Embedding')]</code></td>
-<td>the x-axis to be used, must be given when dim &gt; 2</td>
-<td><code>None</code></td>
-</tr>
-<tr>
-<td><code>y_axis</code></td>
-<td><code>Union[str, ForwardRef('Embedding')]</code></td>
-<td>the y-axis to be used, must be given when dim &gt; 2</td>
-<td><code>None</code></td>
-</tr>
-<tr>
-<td><code>color</code></td>
-<td><code>str</code></td>
-<td>the color of the dots</td>
-<td><code>None</code></td>
-</tr>
-<tr>
-<td><code>show_ops</code></td>
-<td><code>bool</code></td>
-<td>setting to also show the applied operations, only works for <code>text</code></td>
-<td><code>False</code></td>
-</tr>
-<tr>
-<td><code>annot</code></td>
-<td><code>bool</code></td>
-<td>should the points be annotated</td>
-<td><code>False</code></td>
+<td>the distance metric to use, the list of valid options can be found <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html">here</a></td>
+<td><code>'cosine'</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Usage</strong>
+<p><strong>Usage</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.embedding</span> <span class="kn">import</span> <span class="n">Embedding</span>
+
+<span class="n">foo</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+<span class="n">bar</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+
+<span class="n">foo</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span>
+<span class="n">foo</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">)</span>
+<span class="n">foo</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">)</span>
+
+<span class="c1">## `:::python plot(self, kind=&#39;scatter&#39;, x_axis=None, y_axis=None, color=None, show_ops=False, annot=False)` {: #whatlies.embedding.Embedding.plot data-toc-label=&#39;plot()&#39; }</span>
+
+<span class="err">???</span> <span class="n">note</span> <span class="s2">&quot;Show source code in `whatlies/embedding.py`&quot;</span>
+    <span class="err">```</span><span class="n">python</span> <span class="n">linenums</span><span class="o">=</span><span class="s2">&quot;177&quot;</span>
+        <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;scatter&quot;</span><span class="p">,</span>
+            <span class="n">x_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;Embedding&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">y_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;Embedding&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">show_ops</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="n">annot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Handles the logic to perform a 2d plot in matplotlib.</span>
+
+<span class="sd">            Arguments:</span>
+<span class="sd">                kind: what kind of plot to make, can be `scatter`, `arrow` or `text`</span>
+<span class="sd">                x_axis: the x-axis to be used, must be given when dim &gt; 2</span>
+<span class="sd">                y_axis: the y-axis to be used, must be given when dim &gt; 2</span>
+<span class="sd">                color: the color of the dots</span>
+<span class="sd">                show_ops: setting to also show the applied operations, only works for `text`</span>
+<span class="sd">                annot: should the points be annotated</span>
+
+<span class="sd">            **Usage**</span>
+<span class="sd">            ```python</span>
+<span class="sd">            from whatlies.embedding import Embedding</span>
+
+<span class="sd">            foo = Embedding(&quot;foo&quot;, [0.1, 0.3])</span>
+<span class="sd">            bar = Embedding(&quot;bar&quot;, [0.7, 0.2])</span>
+
+<span class="sd">            foo.plot(kind=&quot;arrow&quot;, annot=True)</span>
+<span class="sd">            bar.plot(kind=&quot;arrow&quot;, annot=True)</span>
+<span class="sd">            ```</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">handle_2d_plot</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="p">,</span>
+                    <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+                    <span class="n">show_operations</span><span class="o">=</span><span class="n">show_ops</span><span class="p">,</span>
+                    <span class="n">xlabel</span><span class="o">=</span><span class="n">x_axis</span><span class="p">,</span>
+                    <span class="n">ylabel</span><span class="o">=</span><span class="n">y_axis</span><span class="p">,</span>
+                    <span class="n">annot</span><span class="o">=</span><span class="n">annot</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span>
+            <span class="n">x_val</span> <span class="o">=</span> <span class="bp">self</span> <span class="o">&gt;</span> <span class="n">x_axis</span>
+            <span class="n">y_val</span> <span class="o">=</span> <span class="bp">self</span> <span class="o">&gt;</span> <span class="n">y_axis</span>
+            <span class="n">intermediate</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">vector</span><span class="o">=</span><span class="p">[</span><span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">],</span> <span class="n">orig</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">orig</span><span class="p">)</span>
+            <span class="n">handle_2d_plot</span><span class="p">(</span>
+                <span class="n">intermediate</span><span class="p">,</span>
+                <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+                <span class="n">xlabel</span><span class="o">=</span><span class="n">x_axis</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">ylabel</span><span class="o">=</span><span class="n">y_axis</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">show_operations</span><span class="o">=</span><span class="n">show_ops</span><span class="p">,</span>
+                <span class="n">annot</span><span class="o">=</span><span class="n">annot</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="err">```</span>
+
+<span class="n">Handles</span> <span class="n">the</span> <span class="n">logic</span> <span class="n">to</span> <span class="n">perform</span> <span class="n">a</span> <span class="mi">2</span><span class="n">d</span> <span class="n">plot</span> <span class="ow">in</span> <span class="n">matplotlib</span><span class="o">.</span>
+
+<span class="o">**</span><span class="n">Parameters</span><span class="o">**</span>
+
+<span class="o">|</span> <span class="n">Name</span> <span class="o">|</span> <span class="n">Type</span> <span class="o">|</span> <span class="n">Description</span> <span class="o">|</span> <span class="n">Default</span> <span class="o">|</span>
+<span class="o">|</span> <span class="o">----</span> <span class="o">|</span> <span class="o">----</span> <span class="o">|</span> <span class="o">-----------</span> <span class="o">|</span> <span class="o">-------</span> <span class="o">|</span>
+<span class="o">|</span> <span class="err">`</span><span class="n">kind</span><span class="err">`</span> <span class="o">|</span> <span class="err">`</span><span class="nb">str</span><span class="err">`</span> <span class="o">|</span> <span class="n">what</span> <span class="n">kind</span> <span class="n">of</span> <span class="n">plot</span> <span class="n">to</span> <span class="n">make</span><span class="p">,</span> <span class="n">can</span> <span class="n">be</span> <span class="err">`</span><span class="n">scatter</span><span class="err">`</span><span class="p">,</span> <span class="err">`</span><span class="n">arrow</span><span class="err">`</span> <span class="ow">or</span> <span class="err">`</span><span class="n">text</span><span class="err">`</span> <span class="o">|</span> <span class="err">`</span><span class="s1">&#39;scatter&#39;</span><span class="err">`</span> <span class="o">|</span>
+<span class="o">|</span> <span class="err">`</span><span class="n">x_axis</span><span class="err">`</span> <span class="o">|</span> <span class="err">`</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ForwardRef</span><span class="p">(</span><span class="s1">&#39;Embedding&#39;</span><span class="p">)]</span><span class="err">`</span> <span class="o">|</span> <span class="n">the</span> <span class="n">x</span><span class="o">-</span><span class="n">axis</span> <span class="n">to</span> <span class="n">be</span> <span class="n">used</span><span class="p">,</span> <span class="n">must</span> <span class="n">be</span> <span class="n">given</span> <span class="n">when</span> <span class="n">dim</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="o">|</span> <span class="err">`</span><span class="kc">None</span><span class="err">`</span> <span class="o">|</span>
+<span class="o">|</span> <span class="err">`</span><span class="n">y_axis</span><span class="err">`</span> <span class="o">|</span> <span class="err">`</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ForwardRef</span><span class="p">(</span><span class="s1">&#39;Embedding&#39;</span><span class="p">)]</span><span class="err">`</span> <span class="o">|</span> <span class="n">the</span> <span class="n">y</span><span class="o">-</span><span class="n">axis</span> <span class="n">to</span> <span class="n">be</span> <span class="n">used</span><span class="p">,</span> <span class="n">must</span> <span class="n">be</span> <span class="n">given</span> <span class="n">when</span> <span class="n">dim</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="o">|</span> <span class="err">`</span><span class="kc">None</span><span class="err">`</span> <span class="o">|</span>
+<span class="o">|</span> <span class="err">`</span><span class="n">color</span><span class="err">`</span> <span class="o">|</span> <span class="err">`</span><span class="nb">str</span><span class="err">`</span> <span class="o">|</span> <span class="n">the</span> <span class="n">color</span> <span class="n">of</span> <span class="n">the</span> <span class="n">dots</span> <span class="o">|</span> <span class="err">`</span><span class="kc">None</span><span class="err">`</span> <span class="o">|</span>
+<span class="o">|</span> <span class="err">`</span><span class="n">show_ops</span><span class="err">`</span> <span class="o">|</span> <span class="err">`</span><span class="nb">bool</span><span class="err">`</span> <span class="o">|</span> <span class="n">setting</span> <span class="n">to</span> <span class="n">also</span> <span class="n">show</span> <span class="n">the</span> <span class="n">applied</span> <span class="n">operations</span><span class="p">,</span> <span class="n">only</span> <span class="n">works</span> <span class="k">for</span> <span class="err">`</span><span class="n">text</span><span class="err">`</span> <span class="o">|</span> <span class="err">`</span><span class="kc">False</span><span class="err">`</span> <span class="o">|</span>
+<span class="o">|</span> <span class="err">`</span><span class="n">annot</span><span class="err">`</span> <span class="o">|</span> <span class="err">`</span><span class="nb">bool</span><span class="err">`</span> <span class="o">|</span> <span class="n">should</span> <span class="n">the</span> <span class="n">points</span> <span class="n">be</span> <span class="n">annotated</span> <span class="o">|</span> <span class="err">`</span><span class="kc">False</span><span class="err">`</span> <span class="o">|</span>
+
+
+<span class="o">**</span><span class="n">Usage</span><span class="o">**</span>
+<span class="err">```</span><span class="n">python</span>
+<span class="kn">from</span> <span class="nn">whatlies.embedding</span> <span class="kn">import</span> <span class="n">Embedding</span>
 
 <span class="n">foo</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
 <span class="n">bar</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
 
 <span class="n">foo</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">bar</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div></p>
+</code></pre></div>
                 
                   
                 

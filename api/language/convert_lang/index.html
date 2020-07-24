@@ -13,7 +13,7 @@
         <meta name="description" content="A python package to discover "what lies" in word embeddings.">
       
       
-        <link rel="canonical" href="https://rasahq.github.io/whatlies/">
+        <link rel="canonical" href="https://rasahq.github.io/whatlies/api/language/convert_lang/">
       
       
         <meta name="author" content="Vincent D. Warmerdam @ Rasa Research">
@@ -37,18 +37,18 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="images/fig.png">
+      <link rel="shortcut icon" href="../../../images/fig.png">
       <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
     
     
       
-        <title>whatlies</title>
+        <title>ConveRT - whatlies</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/application.adb8469c.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
       
-        <link rel="stylesheet" href="assets/stylesheets/application-palette.a8b3c06d.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
       
       
         
@@ -57,7 +57,7 @@
       
     
     
-      <script src="assets/javascripts/modernizr.86422ebf.js"></script>
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
@@ -66,10 +66,10 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
     
     
-      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="../../../style.css">
     
     
       
@@ -93,7 +93,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#whatlies" tabindex="0" class="md-skip">
+      <a href="#whatlieslanguageconvertlanguage" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -119,7 +119,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Home
+                ConveRT
               
             </span>
           
@@ -187,14 +187,16 @@
       
         
 
-<nav class="md-tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href="." class="md-tabs__link md-tabs__link--active">
+      <a href="../../.." class="md-tabs__link">
         Home
       </a>
     
@@ -206,7 +208,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="tutorial/embeddings/" class="md-tabs__link">
+        <a href="../../../tutorial/embeddings/" class="md-tabs__link">
           Getting Started
         </a>
       
@@ -219,7 +221,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="api/embedding/" class="md-tabs__link">
+        <a href="../../embedding/" class="md-tabs__link md-tabs__link--active">
           API
         </a>
       
@@ -276,111 +278,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Home
-      </label>
-    
-    <a href="." title="Home" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
       Home
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#brief-introduction" class="md-nav__link">
-    Brief Introduction
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#produced" class="md-nav__link">
-    Produced
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-it-does" class="md-nav__link">
-    What it Does
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#similar-projects" class="md-nav__link">
-    Similar Projects
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#julia-bazinska-piotr-migdal-web-app" class="md-nav__link">
-    Julia Bazińska &amp; Piotr Migdal Web App
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tensorflow-projector" class="md-nav__link">
-    Tensorflow Projector
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parallax" class="md-nav__link">
-    Parallax
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#local-development" class="md-nav__link">
-    Local Development
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -409,7 +311,7 @@
 
 
   <li class="md-nav__item">
-    <a href="tutorial/embeddings/" title="What Are Embeddings" class="md-nav__link">
+    <a href="../../../tutorial/embeddings/" title="What Are Embeddings" class="md-nav__link">
       What Are Embeddings
     </a>
   </li>
@@ -421,7 +323,7 @@
 
 
   <li class="md-nav__item">
-    <a href="tutorial/embeddingsets/" title="Interactive Visualisation" class="md-nav__link">
+    <a href="../../../tutorial/embeddingsets/" title="Interactive Visualisation" class="md-nav__link">
       Interactive Visualisation
     </a>
   </li>
@@ -433,7 +335,7 @@
 
 
   <li class="md-nav__item">
-    <a href="tutorial/languages/" title="Language Options" class="md-nav__link">
+    <a href="../../../tutorial/languages/" title="Language Options" class="md-nav__link">
       Language Options
     </a>
   </li>
@@ -445,7 +347,7 @@
 
 
   <li class="md-nav__item">
-    <a href="tutorial/transformations/" title="Transformation Viz" class="md-nav__link">
+    <a href="../../../tutorial/transformations/" title="Transformation Viz" class="md-nav__link">
       Transformation Viz
     </a>
   </li>
@@ -457,7 +359,7 @@
 
 
   <li class="md-nav__item">
-    <a href="tutorial/observations/" title="Observations" class="md-nav__link">
+    <a href="../../../tutorial/observations/" title="Observations" class="md-nav__link">
       Observations
     </a>
   </li>
@@ -469,7 +371,7 @@
 
 
   <li class="md-nav__item">
-    <a href="faq/" title="FAQ" class="md-nav__link">
+    <a href="../../../faq/" title="FAQ" class="md-nav__link">
       FAQ
     </a>
   </li>
@@ -484,10 +386,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       API
@@ -505,7 +409,7 @@
 
 
   <li class="md-nav__item">
-    <a href="api/embedding/" title="Embedding" class="md-nav__link">
+    <a href="../../embedding/" title="Embedding" class="md-nav__link">
       Embedding
     </a>
   </li>
@@ -517,7 +421,7 @@
 
 
   <li class="md-nav__item">
-    <a href="api/embeddingset/" title="EmbeddingSet" class="md-nav__link">
+    <a href="../../embeddingset/" title="EmbeddingSet" class="md-nav__link">
       EmbeddingSet
     </a>
   </li>
@@ -548,7 +452,7 @@
 
 
   <li class="md-nav__item">
-    <a href="api/transformers/pca/" title="Pca" class="md-nav__link">
+    <a href="../../transformers/pca/" title="Pca" class="md-nav__link">
       Pca
     </a>
   </li>
@@ -560,7 +464,7 @@
 
 
   <li class="md-nav__item">
-    <a href="api/transformers/umap/" title="Umap" class="md-nav__link">
+    <a href="../../transformers/umap/" title="Umap" class="md-nav__link">
       Umap
     </a>
   </li>
@@ -572,7 +476,7 @@
 
 
   <li class="md-nav__item">
-    <a href="api/transformers/tsne/" title="Tsne" class="md-nav__link">
+    <a href="../../transformers/tsne/" title="Tsne" class="md-nav__link">
       Tsne
     </a>
   </li>
@@ -584,7 +488,7 @@
 
 
   <li class="md-nav__item">
-    <a href="api/transformers/opentsne/" title="OpenTsne" class="md-nav__link">
+    <a href="../../transformers/opentsne/" title="OpenTsne" class="md-nav__link">
       OpenTsne
     </a>
   </li>
@@ -596,7 +500,7 @@
 
 
   <li class="md-nav__item">
-    <a href="api/transformers/noise/" title="Noise" class="md-nav__link">
+    <a href="../../transformers/noise/" title="Noise" class="md-nav__link">
       Noise
     </a>
   </li>
@@ -608,7 +512,7 @@
 
 
   <li class="md-nav__item">
-    <a href="api/transformers/addrandom/" title="Add Random" class="md-nav__link">
+    <a href="../../transformers/addrandom/" title="Add Random" class="md-nav__link">
       Add Random
     </a>
   </li>
@@ -623,10 +527,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" checked>
     
     <label class="md-nav__link" for="nav-3-4">
       Language
@@ -644,7 +550,7 @@
 
 
   <li class="md-nav__item">
-    <a href="api/language/spacy_lang/" title="spaCy" class="md-nav__link">
+    <a href="../spacy_lang/" title="spaCy" class="md-nav__link">
       spaCy
     </a>
   </li>
@@ -656,7 +562,7 @@
 
 
   <li class="md-nav__item">
-    <a href="api/language/s2v_lang/" title="Sense2Vec" class="md-nav__link">
+    <a href="../s2v_lang/" title="Sense2Vec" class="md-nav__link">
       Sense2Vec
     </a>
   </li>
@@ -668,7 +574,7 @@
 
 
   <li class="md-nav__item">
-    <a href="api/language/fasttext_lang/" title="fasttext" class="md-nav__link">
+    <a href="../fasttext_lang/" title="fasttext" class="md-nav__link">
       fasttext
     </a>
   </li>
@@ -680,7 +586,7 @@
 
 
   <li class="md-nav__item">
-    <a href="api/language/countvector_lang/" title="CountVector" class="md-nav__link">
+    <a href="../countvector_lang/" title="CountVector" class="md-nav__link">
       CountVector
     </a>
   </li>
@@ -692,7 +598,7 @@
 
 
   <li class="md-nav__item">
-    <a href="api/language/bpemb_lang/" title="BytePair" class="md-nav__link">
+    <a href="../bpemb_lang/" title="BytePair" class="md-nav__link">
       BytePair
     </a>
   </li>
@@ -702,11 +608,49 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="api/language/convert_lang/" title="ConveRT" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        ConveRT
+      </label>
+    
+    <a href="./" title="ConveRT" class="md-nav__link md-nav__link--active">
       ConveRT
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.language.convert_lang.ConveRTLanguage.9595getitem9595" class="md-nav__link">
+    __getitem__()
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -716,7 +660,7 @@
 
 
   <li class="md-nav__item">
-    <a href="api/language/gensim_lang/" title="Gensim" class="md-nav__link">
+    <a href="../gensim_lang/" title="Gensim" class="md-nav__link">
       Gensim
     </a>
   </li>
@@ -738,7 +682,7 @@
 
 
   <li class="md-nav__item">
-    <a href="roadmap/" title="Roadmap" class="md-nav__link">
+    <a href="../../../roadmap/" title="Roadmap" class="md-nav__link">
       Roadmap
     </a>
   </li>
@@ -765,70 +709,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#brief-introduction" class="md-nav__link">
-    Brief Introduction
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#produced" class="md-nav__link">
-    Produced
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-it-does" class="md-nav__link">
-    What it Does
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#similar-projects" class="md-nav__link">
-    Similar Projects
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#julia-bazinska-piotr-migdal-web-app" class="md-nav__link">
-    Julia Bazińska &amp; Piotr Migdal Web App
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tensorflow-projector" class="md-nav__link">
-    Tensorflow Projector
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parallax" class="md-nav__link">
-    Parallax
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#local-development" class="md-nav__link">
-    Local Development
+  <a href="#whatlies.language.convert_lang.ConveRTLanguage.9595getitem9595" class="md-nav__link">
+    __getitem__()
   </a>
   
 </li>
@@ -849,89 +731,104 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/RasaHQ/whatlies/edit/master/docs/index.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/RasaHQ/whatlies/edit/master/docs/api/language/convert_lang.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="whatlies">WhatLies<a class="headerlink" href="#whatlies" title="Permanent link">&para;</a></h1>
-<p><img src="logo.png"></p>
-<p>A library that tries help you to understand. "What lies in word embeddings?"</p>
-<h2 id="brief-introduction">Brief Introduction<a class="headerlink" href="#brief-introduction" title="Permanent link">&para;</a></h2>
-<p>If you prefer a video tutorial before reading the getting started guide watch this;</p>
-<iframe width="100%" height=450 src="https://www.youtube-nocookie.com/embed/FwkwC7IJWO0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h1 id="whatlieslanguageconvertlanguage"><code>whatlies.language.ConveRTLanguage</code><a class="headerlink" href="#whatlieslanguageconvertlanguage" title="Permanent link">&para;</a></h1>
+<p>This object is used to lazily fetch <a href="/whatlies/api/embedding/#whatlies.embedding.Embedding">Embedding</a>s or
+<a href="/whatlies/api/embeddingset/#whatlies.embeddingset.EmbeddingSet">EmbeddingSet</a>s from a keyed vector file.
+These files are generated from <a href="https://github.com/PolyAI-LDN/polyai-models">ConveRT</a>.
+This object is meant for retreival, not plotting.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This object will automatically download a large file if it is not cached yet.</p>
+<p>Also note that this language model does not contain a vocabulary so it cannot be used
+to retreive similar tokens. Instead you can create an embedding set and make do the
+similarity query from there.</p>
+</div>
+<p><strong>Usage</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">ConveRTLanguage</span>
+<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">ConveRTLanguage</span><span class="p">()</span>
+<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;bank&#39;</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">ConveRTLanguage</span><span class="p">()</span>
+<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;bank of the river&#39;</span><span class="p">,</span> <span class="s1">&#39;money on the bank&#39;</span><span class="p">,</span> <span class="s1">&#39;bank&#39;</span><span class="p">]]</span>
+</code></pre></div>
 
-<h2 id="produced">Produced<a class="headerlink" href="#produced" title="Permanent link">&para;</a></h2>
-<p><img src="square-logo.svg" width=150 height=150 align="right"></p>
-<p>This project was initiated at <a href="https://rasa.com">Rasa</a> as a fun side project
-that supports the research and developer advocacy teams at Rasa.</p>
-<p>It is maintained by Vincent D. Warmerdam, Research Advocate at Rasa.</p>
-<h2 id="what-it-does">What it Does<a class="headerlink" href="#what-it-does" title="Permanent link">&para;</a></h2>
-<p>This small library offers tools to make visualisation easier of both
-word embeddings as well as operations on them. This should be considered
-an experimental project.</p>
-<p>This library will allow you to make visualisations of transformations
-of word embeddings. Some of these transformations are linear algebra
-operators.</p>
-<script src="https://cdn.jsdelivr.net/npm/vega@5.10.0"></script>
+<h2 id="whatlies.language.convert_lang.ConveRTLanguage.__getitem__"><code class="highlight"><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.convert_lang.ConveRTLanguage.__getitem__" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>language/convert_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retreive a single embedding or a set of embeddings.</span>
 
-<script src="https://cdn.jsdelivr.net/npm/vega-lite@4.6.0"></script>
+<span class="sd">        Arguments:</span>
+<span class="sd">            query: single string or list of strings</span>
 
-<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.3.2"></script>
+<span class="sd">        **Usage**</span>
 
-<p><small>Note that these charts are fully interactive. Click. Drag. Zoom in. Zoom out.</small></p>
-<div id="vis1"></div>
+<span class="sd">        ```python</span>
+<span class="sd">        &gt; from whatlies.language import ConveRTLanguage</span>
+<span class="sd">        &gt; lang = ConveRTLanguage()</span>
+<span class="sd">        &gt; lang[&#39;bank&#39;]</span>
+<span class="sd">        &gt; lang = ConveRTLanguage()</span>
+<span class="sd">        &gt; lang[[&#39;bank of the river&#39;, &#39;money on the bank&#39;, &#39;bank&#39;]]</span>
+<span class="sd">        ```</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">tf_tensor</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">([</span><span class="n">query</span><span class="p">])</span>
+            <span class="n">vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">tf_tensor</span><span class="p">)[</span><span class="s2">&quot;sequence_encoding&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">vec</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">EmbeddingSet</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">tok</span><span class="p">]</span> <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">query</span><span class="p">])</span>
+</code></pre></div>
+</td></tr></table>
 
-<p>But we also support other operations. Like <strong>pca</strong>  and <strong>umap</strong>;</p>
-<p><small>Just like before. Click. Drag. Zoom in. Zoom out.</small></p>
-<div id="vis2"></div>
-
-<script src="interactive1.js"></script>
-
-<script src="interactive2.js"></script>
-
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<p>You can install the package via pip;</p>
-<pre><code class="bash">pip install whatlies
-</code></pre>
-
-<p>This will install dependencies but it <strong>won't</strong> install all the language models you might want to visualise.</p>
-<h2 id="similar-projects">Similar Projects<a class="headerlink" href="#similar-projects" title="Permanent link">&para;</a></h2>
-<p>There are some projects out there who are working on similar tools and we figured it fair to mention and compare them here.</p>
-<h5 id="julia-bazinska-piotr-migdal-web-app">Julia Bazińska &amp; Piotr Migdal Web App<a class="headerlink" href="#julia-bazinska-piotr-migdal-web-app" title="Permanent link">&para;</a></h5>
-<p>The original inspiration for this project came from <a href="https://lamyiowce.github.io/word2viz/">this web app</a> and <a href="https://www.youtube.com/watch?v=AGgCqpouKSs">this pydata talk</a>. It is a web app that takes a while to load
-but it is really fun to play with. The goal of this project is to make it
-easier to make similar charts from jupyter using different language backends.</p>
-<h5 id="tensorflow-projector">Tensorflow Projector<a class="headerlink" href="#tensorflow-projector" title="Permanent link">&para;</a></h5>
-<p>From google there's the <a href="https://projector.tensorflow.org/">tensorflow projector project</a>. It offers
-highly interactive 3d visualisations as well as some transformations via tensorboard.</p>
-<ul>
-<li>The tensorflow projector will create projections in tensorboard, which you can also load
-into jupyter notebook but whatlies makes visualisations directly.</li>
-<li>The tensorflow projector supports interactive 3d visuals, which whatlies currently doesn't.</li>
-<li>Whatlies offers lego bricks that you can chain together to get a visualisation started. This
-also means that you're more flexible when it comes to transforming data before visualising it.</li>
-</ul>
-<h5 id="parallax">Parallax<a class="headerlink" href="#parallax" title="Permanent link">&para;</a></h5>
-<p>From Uber AI Labs there's <a href="https://github.com/uber-research/parallax">parallax</a> which is described
-in a paper <a href="https://arxiv.org/abs/1905.12099">here</a>. There's a common mindset in the two tools;
-the goal is to use arbitrary user defined projections to understand embedding spaces better.
-That said, some differences that are worth to mention.</p>
-<ul>
-<li>It relies on bokeh as a visualisation backend and offers a lot of visualisation types
-(like radar plots). Whatlies uses altair and tries to stick to simple scatter charts.
-Altair can export interactive html/svg but it will not scale as well if you've drawing
-many points at the same time.</li>
-<li>Parallax is meant to be run as a stand-alone app from the command line while Whatlies is
-meant to be run from the jupyter notebook.</li>
-<li>Parallax gives a full user interface while Whatlies offers lego bricks that you can chain
-together to get a visualisation started.</li>
-<li>Whatlies relies on language backends (like spaCy, huggingface) to fetch word embeddings.
-Parallax allows you to instead fetch raw files on disk.</li>
-<li>Parallax has been around for a while, Whatlies is more new and therefore more experimental.</li>
-</ul>
-<h2 id="local-development">Local Development<a class="headerlink" href="#local-development" title="Permanent link">&para;</a></h2>
-<p>If you want to develop locally you can start by running this command after cloning.</p>
-<pre><code class="bash">make develop
-</code></pre>
+</details>
+<p>Retreive a single embedding or a set of embeddings.</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>query</code></td>
+<td><code>Union[str, List[str]]</code></td>
+<td>single string or list of strings</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">ConveRTLanguage</span>
+<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">ConveRTLanguage</span><span class="p">()</span>
+<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;bank&#39;</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">ConveRTLanguage</span><span class="p">()</span>
+<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;bank of the river&#39;</span><span class="p">,</span> <span class="s1">&#39;money on the bank&#39;</span><span class="p">,</span> <span class="s1">&#39;bank&#39;</span><span class="p">]]</span>
+</code></pre></div>
                 
                   
                 
@@ -953,14 +850,28 @@ Parallax allows you to instead fetch raw files on disk.</li>
       <div class="md-footer-nav">
         <nav class="md-footer-nav__inner md-grid">
           
+            <a href="../bpemb_lang/" title="BytePair" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span class="md-footer-nav__direction">
+                    Previous
+                  </span>
+                  BytePair
+                </span>
+              </div>
+            </a>
           
-            <a href="tutorial/embeddings/" title="What Are Embeddings" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          
+            <a href="../gensim_lang/" title="Gensim" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span class="md-footer-nav__direction">
                     Next
                   </span>
-                  What Are Embeddings
+                  Gensim
                 </span>
               </div>
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -993,9 +904,9 @@ Parallax allows you to instead fetch raw files on disk.</li>
       
     </div>
     
-      <script src="assets/javascripts/application.c33a9706.js"></script>
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
       
-      <script>app.initialize({version:"1.1",url:{base:"."}})</script>
+      <script>app.initialize({version:"1.1",url:{base:"../../.."}})</script>
       
     
   </body>

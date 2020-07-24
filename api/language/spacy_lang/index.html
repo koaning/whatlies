@@ -676,6 +676,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../convert_lang/" title="ConveRT" class="md-nav__link">
+      ConveRT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../gensim_lang/" title="Gensim" class="md-nav__link">
       Gensim
     </a>
@@ -847,8 +859,8 @@ backend. This object is meant for retreival, not plotting.</p>
 <span class="sd">        ```python</span>
 <span class="sd">        &gt; lang = SpacyLanguage(&quot;en_core_web_md&quot;)</span>
 <span class="sd">        &gt; lang[&#39;python&#39;]</span>
-<span class="sd">        &gt; lang[[&#39;python&#39;], [&#39;snake&#39;]]</span>
-<span class="sd">        &gt; lang[[&#39;nobody expects&#39;], [&#39;the spanish inquisition&#39;]]</span>
+<span class="sd">        &gt; lang[[&#39;python&#39;, &#39;snake&#39;]]</span>
+<span class="sd">        &gt; lang[[&#39;nobody expects&#39;, &#39;the spanish inquisition&#39;]]</span>
 <span class="sd">        ```</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
@@ -887,8 +899,8 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 <p><strong>Usage</strong>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;python&#39;</span><span class="p">]</span>
-<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;python&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;snake&#39;</span><span class="p">]]</span>
-<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;nobody expects&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;the spanish inquisition&#39;</span><span class="p">]]</span>
+<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;snake&#39;</span><span class="p">]]</span>
+<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;nobody expects&#39;</span><span class="p">,</span> <span class="s1">&#39;the spanish inquisition&#39;</span><span class="p">]]</span>
 </code></pre></div></p>
 <h2 id="whatlies.language.spacy_lang.SpacyLanguage.embset_proximity"><code class="highlight"><span class="n">embset_proximity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">max_proximity</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">prob_limit</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.spacy_lang.SpacyLanguage.embset_proximity" title="Permanent link">&para;</a></h2>
 <details class="note"><summary>Show source code in <code>language/spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>170
@@ -1165,7 +1177,7 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 <span class="sd">        Important:</span>
 <span class="sd">            The fasttext vectors are not given by this library.</span>
 <span class="sd">            You can download the models [here](https://fasttext.cc/docs/en/crawl-vectors.html#models).</span>
-<span class="sd">            Note that these files are big that and loading this in can take a long time.</span>
+<span class="sd">            Note that these files are large and loading them can take a long time.</span>
 
 <span class="sd">        Arguments:</span>
 <span class="sd">            language: name of the language so that spaCy can grab correct tokenizer (example: &quot;en&quot; for english)</span>
@@ -1176,8 +1188,8 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 <span class="sd">        **Usage**:</span>
 
 <span class="sd">        ```python</span>
-<span class="sd">        &gt; lang = SpacyLanguage.from_texttext(&quot;nl&quot;, &quot;/path/spacy/model&quot;, &quot;~/Downloads/cc.nl.300.vec.gz&quot;)</span>
-<span class="sd">        &gt; lang = SpacyLanguage.from_texttext(&quot;en&quot;, &quot;/path/spacy/model&quot;, &quot;~/Downloads/cc.en.300.vec.gz&quot;)</span>
+<span class="sd">        &gt; lang = SpacyLanguage.from_fasttext(&quot;nl&quot;, &quot;/path/spacy/model&quot;, &quot;~/Downloads/cc.nl.300.vec.gz&quot;)</span>
+<span class="sd">        &gt; lang = SpacyLanguage.from_fasttext(&quot;en&quot;, &quot;/path/spacy/model&quot;, &quot;~/Downloads/cc.en.300.vec.gz&quot;)</span>
 <span class="sd">        ```</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">output_dir</span><span class="p">):</span>
@@ -1201,7 +1213,7 @@ is saved on disk and then loaded as a spaCy model.</p>
 <p class="admonition-title">Important</p>
 <p>The fasttext vectors are not given by this library.
 You can download the models <a href="https://fasttext.cc/docs/en/crawl-vectors.html#models">here</a>.
-Note that these files are big that and loading this in can take a long time.</p>
+Note that these files are large and loading them can take a long time.</p>
 </div>
 <p><strong>Parameters</strong></p>
 <table>
@@ -1241,8 +1253,8 @@ Note that these files are big that and loading this in can take a long time.</p>
 </tbody>
 </table>
 <p><strong>Usage</strong>:</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="o">.</span><span class="n">from_texttext</span><span class="p">(</span><span class="s2">&quot;nl&quot;</span><span class="p">,</span> <span class="s2">&quot;/path/spacy/model&quot;</span><span class="p">,</span> <span class="s2">&quot;~/Downloads/cc.nl.300.vec.gz&quot;</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="o">.</span><span class="n">from_texttext</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;/path/spacy/model&quot;</span><span class="p">,</span> <span class="s2">&quot;~/Downloads/cc.en.300.vec.gz&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="o">.</span><span class="n">from_fasttext</span><span class="p">(</span><span class="s2">&quot;nl&quot;</span><span class="p">,</span> <span class="s2">&quot;/path/spacy/model&quot;</span><span class="p">,</span> <span class="s2">&quot;~/Downloads/cc.nl.300.vec.gz&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="o">.</span><span class="n">from_fasttext</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;/path/spacy/model&quot;</span><span class="p">,</span> <span class="s2">&quot;~/Downloads/cc.en.300.vec.gz&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <h2 id="whatlies.language.spacy_lang.SpacyLanguage.score_similar"><code class="highlight"><span class="n">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">prob_limit</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.spacy_lang.SpacyLanguage.score_similar" title="Permanent link">&para;</a></h2>

@@ -8,7 +8,8 @@ from whatlies.transformers.common import embset_to_X, new_embedding_dict
 class OpenTsne:
     """
     This transformer transformers all vectors in an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]
-    by means of tsne. This implementation used [open-tsne](https://opentsne.readthedocs.io/en/latest/tsne_algorithm.html).
+    by means of tsne. This implementation used
+    [open-tsne](https://opentsne.readthedocs.io/en/latest/tsne_algorithm.html).
 
     Important:
         OpenTSNE is a faster variant of TSNE but it only allows for <2 components.
@@ -16,7 +17,8 @@ class OpenTsne:
 
     Arguments:
         n_components: the number of compoments to create/add
-        kwargs: keyword arguments passed to the OpenTsne implementation, includes things like `perplexity` [link](https://opentsne.readthedocs.io/en/latest/api/index.html)
+        kwargs: keyword arguments passed to the OpenTsne implementation, includes things like `perplexity`
+        [link](https://opentsne.readthedocs.io/en/latest/api/index.html)
 
     Usage:
 

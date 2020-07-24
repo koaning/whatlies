@@ -72,7 +72,7 @@ language models will have a `score_similar` method attached.
 
 ```python
 from whatlies.language import BytePairLanguage
-lang = BytePairLang("en")
+lang = BytePairLanguage("en")
 lang.score_similar("king")
 ``` 
 
@@ -102,7 +102,7 @@ API a lot more flexible. For example, we can construct this embedding;
 
 ```python
 from whatlies.language import BytePairLanguage
-lang = BytePairLang("en")
+lang = BytePairLanguage("en")
 kmw = lang["king"] - lang["man"] + lang["woman"]
 # Emb[((king - man) + woman)]
 ```
@@ -136,7 +136,7 @@ embedding set that can be used for plotting.
 
 ```python
 from whatlies.language import BytePairLanguage
-lang = BytePairLang("en")
+lang = BytePairLanguage("en")
 kmw = lang["king"] - lang["man"] + lang["woman"]
 emb_king = lang.embset_similar(kmw, n=20)
 ```

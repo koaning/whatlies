@@ -225,7 +225,7 @@ class EmbeddingSet:
         X, y = emb.to_X_y(y_label='label')
         ```
         """
-        X = np.array([e.vector for e in self.embeddings.values()])
+        X = self.to_X()
         y = np.array([getattr(e, y_label) for e in self.embeddings.values()])
         return X, y
 
@@ -368,7 +368,7 @@ class EmbeddingSet:
         ```
         """
         name = f"{self.name}.average()" if not name else name
-        x = np.array([v.vector for v in self.embeddings.values()])
+        x = self.to_X()
         return Embedding(name, np.mean(x, axis=0))
 
     def embset_similar(self, emb: Union[str, Embedding], n: int = 10, metric="cosine"):
@@ -413,7 +413,7 @@ class EmbeddingSet:
 
         vec = emb.vector
         queries = [w for w in self.embeddings.keys()]
-        vector_matrix = np.array([w.vector for w in self.embeddings.values()])
+        vector_matrix = self.to_X()
         distances = pairwise_distances(vector_matrix, vec.reshape(1, -1), metric=metric)
         by_similarity = sorted(zip(queries, distances), key=lambda z: z[1])
         return [(self[q], float(d)) for q, d in by_similarity[:n]]
@@ -452,7 +452,9 @@ class EmbeddingSet:
         emb1.movement_df(emb2)
         ```
         """
-        overlap = list(set(self.embeddings.keys()).union(set(other.embeddings.keys())))
+        overlap = list(
+            set(self.embeddings.keys()).intersection(set(other.embeddings.keys()))
+        )
         mat1 = np.array([w.vector for w in self[overlap]])
         mat2 = np.array([w.vector for w in other[overlap]])
         return (

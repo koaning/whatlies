@@ -101,8 +101,8 @@ a custom vector but you can also construct an embedding via operations. This mak
 API a lot more flexible. For example, we can construct this embedding;
 
 ```python
-from whatlies.language import BytePairLang
-lang = BytePairLang("en")
+from whatlies.language import BytePairLanguage
+lang = BytePairLanguage("en")
 kmw = lang["king"] - lang["man"] + lang["woman"]
 # Emb[((king - man) + woman)]
 ```
@@ -135,8 +135,8 @@ You can use the same flow we used in the previous two questions to generate an
 embedding set that can be used for plotting.
 
 ```python
-from whatlies.language import BytePairLang
-lang = BytePairLang("en")
+from whatlies.language import BytePairLanguage
+lang = BytePairLanguage("en")
 kmw = lang["king"] - lang["man"] + lang["woman"]
 emb_king = lang.embset_similar(kmw, n=20)
 ```

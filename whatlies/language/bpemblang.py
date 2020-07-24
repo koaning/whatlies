@@ -29,9 +29,7 @@ class BytePairLanguage:
         example link in English. Please credit the original authors if you use their work.
 
     Warning:
-        These embeddings have been added in v0.4.0 and are still relatively experimental.
-        It's the first pure subtoken embedding we've added so we may play around with
-        internal behavior. When in doubt; be sure to hard code the version number.
+        This class used to be called `BytePairLang`.
 
     Arguments:
         lang: name of the model to load
@@ -46,10 +44,10 @@ class BytePairLanguage:
     **Usage**:
 
     ```python
-    > from whatlies.language import BytePairLang
-    > lang = BytePairLang(lang="en")
+    > from whatlies.language import BytePairLanguage
+    > lang = BytePairLanguage(lang="en")
     > lang['python']
-    > lang = BytePairLang(lang="multi")
+    > lang = BytePairLanguage(lang="multi")
     > lang[['hund', 'hond', 'dog']]
     ```
     """
@@ -69,7 +67,7 @@ class BytePairLanguage:
 
         **Usage**
         ```python
-        > lang = BytePairLang(lang="en")
+        > lang = BytePairLanguage(lang="en")
         > lang['python']
         > lang[['python', 'snake']]
         > lang[['nobody expects', 'the spanish inquisition']]

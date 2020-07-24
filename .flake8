@@ -1,0 +1,3 @@
+[flake8]
+per-file-ignores =
+  whatlies/language/convert_lang.py: F401

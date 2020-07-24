@@ -219,6 +219,6 @@ preprocess = FeatureUnion([
 
 There's a few caveats to be aware of though. Fasttext as well as spaCy cannot be directly pickled
 so that means that you won't be able to save a pipeline if there's a whatlies component
-in it. It's also means that you cannot use a gridsearch. Where possible we try to 
+in it. This also means that you cannot use a gridsearch. Where possible we try to 
 test against scikit-learn's testing utilities but for now the usecases should be limited 
 to exploration, not production.

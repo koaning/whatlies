@@ -71,8 +71,8 @@ This depends on the language model, please check the docs, but most
 language models will have a `score_similar` method attached. 
 
 ```python
-from whatlies.language import BytePairLang
-lang = BytePairLang("en")
+from whatlies.language import BytePairLanguage
+lang = BytePairLanguage("en")
 lang.score_similar("king")
 ``` 
 

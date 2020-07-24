@@ -9,7 +9,7 @@ from sklearn.metrics import pairwise_distances
 from whatlies import Embedding, EmbeddingSet
 
 
-class BytePairLang:
+class BytePairLanguage:
     """
     This object is used to lazily fetch [Embedding][whatlies.embedding.Embedding]s or
     [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]s from a Byte-Pair Encoding

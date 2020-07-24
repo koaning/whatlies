@@ -8,7 +8,8 @@ from whatlies.transformers.common import embset_to_X, new_embedding_dict
 class Tsne:
     """
     This transformer transformers all vectors in an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]
-    by means of tsne. This implementation uses [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE).
+    by means of tsne. This implementation uses
+    [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE).
 
     Important:
         TSNE does not allow you to train a transformation and re-use it. It must retrain every time it sees data.
@@ -16,7 +17,8 @@ class Tsne:
 
     Arguments:
         n_components: the number of compoments to create/add
-        kwargs: keyword arguments passed to the Tsne implementation, includes things like `perplexity` [link](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE)
+        kwargs: keyword arguments passed to the Tsne implementation, includes things like `perplexity`
+        [link](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE)
 
     Usage:
 

@@ -158,7 +158,8 @@ class Embedding:
 
         Arguments:
             other: the other embedding you're comparing against
-            metric: the distance metric to use, the list of valid options can be found [here](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html)
+            metric: the distance metric to use, the list of valid options can be found
+            [here](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise_distances.html)
 
         **Usage**
 

@@ -4,6 +4,7 @@ from .fasttext_lang import FasttextLanguage
 from .countvector_lang import CountVectorLanguage
 from .bpemblang import BytePairLanguage
 from .bpemblang import BytePairLanguage as BytePairLang
+from .convert_lang import ConveRTLanguage
 from .gensim_lang import GensimLanguage
 
 __all__ = [
@@ -14,4 +15,5 @@ __all__ = [
     "BytePairLang",
     "BytePairLanguage",
     "GensimLanguage",
+    "ConveRTLanguage",
 ]

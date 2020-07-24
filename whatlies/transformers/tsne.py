@@ -17,8 +17,7 @@ class Tsne:
 
     Arguments:
         n_components: the number of compoments to create/add
-        kwargs: keyword arguments passed to the Tsne implementation, includes things like `perplexity`
-        [link](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE)
+        kwargs: keyword arguments passed to the Tsne implementation, includes things like `perplexity` [link](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE)
 
     Usage:
 

@@ -17,6 +17,7 @@ base_packages = [
     "tensorflow==2.1.0",
     "tensorflow-text==2.1.1",
     "tensorflow-hub>=0.8.0",
+    "transformers>=3.0.0",
 ]
 
 docs_packages = [
@@ -35,6 +36,7 @@ test_packages = [
     "pytest-cov>=2.6.1",
     "nbval>=0.9.5",
     "pre-commit>=2.2.0",
+    "torch>=1.0.0",
 ]
 
 dev_packages = docs_packages + test_packages

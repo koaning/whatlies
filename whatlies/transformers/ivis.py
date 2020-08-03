@@ -37,7 +37,7 @@ class Ivis:
         self.is_fitted = False
         self.n_components = n_components
         self.kwargs = kwargs
-        self.kwargs['verbose'] = 0
+        self.kwargs["verbose"] = 0
         self.tfm = IVIS(embedding_dims=self.n_components, **self.kwargs)
 
     def __call__(self, embset):

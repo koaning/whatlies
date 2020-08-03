@@ -11,11 +11,7 @@ def lang(request):
 @pytest.mark.parametrize(
     "lang, expected_shape",
     [
-        (
-            {"url": "https://tfhub.dev/google/universal-sentence-encoder-large/5"},
-            (512,),
-        ),
-        ({"url": "https://tfhub.dev/google/nnlm-en-dim50/2"}, (50,)),
+        ({"url": "https://tfhub.dev/google/tf2-preview/gnews-swivel-20dim/1"}, (20,),),
         (
             {
                 "url": "https://tfhub.dev/google/tf2-preview/gnews-swivel-20dim-with-oov/1"

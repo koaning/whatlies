@@ -14,8 +14,8 @@ base_packages = [
     "fasttext>=0.9.1",
     "bpemb>=0.3.0",
     "gensim>=3.8.3",
-    "tensorflow==2.1.0",
-    "tensorflow-text==2.1.1",
+    "tensorflow>=2.3.0",
+    "tensorflow-text>=2.3.1",
     "tensorflow-hub>=0.8.0",
 ]
 

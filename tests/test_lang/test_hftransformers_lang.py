@@ -20,12 +20,7 @@ def load_model_and_tokenizer(model_name, tensor_type):
 
 @pytest.mark.parametrize(
     "model_name, expected_shape",
-    [
-        ("bert-base-uncased", (768,)),
-        ("gpt2", (768,)),
-        ("roberta-base", (768,)),
-        ("distilbert-base-uncased", (768,)),
-    ],
+    [("sshleifer/tiny-gpt2", (2,)), ("sshleifer/tiny-distilroberta-base", (2,)),],
 )
 @pytest.mark.parametrize("tensor_type", ["tf", "pt"])
 def test_basic_usage_and_generated_embeddings(model_name, expected_shape, tensor_type):
@@ -34,6 +29,12 @@ def test_basic_usage_and_generated_embeddings(model_name, expected_shape, tensor
         "I'm fine, thanks!",
         "how about you?",
     ]
+
+    lang = HFTransformersLanguage(model_name, framework=tensor_type)
+    # Test for one single query
+    emb = lang[sentences[0]]
+    assert emb.vector.shape == expected_shape
+    assert emb.name == sentences[0]
 
     model, tokenizer = load_model_and_tokenizer(model_name, tensor_type)
     tokens = tokenizer(
@@ -49,9 +50,8 @@ def test_basic_usage_and_generated_embeddings(model_name, expected_shape, tensor
     elif tensor_type == "pt":
         output = model(**tokens)
 
-    lang = HFTransformersLanguage(model_name)
+    # Test for multiple queries
     emb = lang[sentences]
-
     assert len(emb) == len(sentences)
     for i, s in enumerate(sentences):
         if tensor_type == "tf":
@@ -59,4 +59,4 @@ def test_basic_usage_and_generated_embeddings(model_name, expected_shape, tensor
         elif tensor_type == "pt":
             feats = output[0][i][np.logical_not(mask[i])].detach().numpy()
         assert emb[s].vector.shape == expected_shape
-        assert np.allclose(emb[s].vector, feats.sum(axis=0), atol=1e-5)
+        assert np.allclose(emb[s].vector, feats.sum(axis=0))

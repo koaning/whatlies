@@ -1,29 +1,15 @@
 import os
 import warnings
+from typing import Union, List, Tuple
 
 import spacy
 from spacy.language import Language
 import numpy as np
-from typing import Union, List
 from sklearn.metrics import pairwise_distances
 
 from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
 from whatlies.language.common import SklearnTransformerMixin
-
-
-def _selected_idx_spacy(string):
-    if "[" not in string:
-        if "]" not in string:
-            return 0, len(string.split(" "))
-    start, end = 0, -1
-    split_string = string.split(" ")
-    for idx, word in enumerate(split_string):
-        if word[0] == "[":
-            start = idx
-        if word[-1] == "]":
-            end = idx + 1
-    return start, end
 
 
 class SpacyLanguage(SklearnTransformerMixin):
@@ -41,7 +27,6 @@ class SpacyLanguage(SklearnTransformerMixin):
     > lang = SpacyLanguage("en_core_web_md")
     > lang['python']
     > lang[['python', 'snake', 'dog']]
-
     > lang = SpacyLanguage("en_trf_robertabase_lg")
     > lang['programming in [python]']
     ```
@@ -95,13 +80,20 @@ class SpacyLanguage(SklearnTransformerMixin):
         return SpacyLanguage(spacy.load(output_dir))
 
     @staticmethod
-    def _input_str_legal(string):
-        if sum(1 for c in string if c == "[") > 1:
+    def _check_query_format(query: str) -> bool:
+        opening = sum(1 for c in query if c == "[")
+        closing = sum(1 for c in query if c == "]")
+        if opening > 1:
             raise ValueError("Only one opening bracket (`[`) is allowed")
-        if sum(1 for c in string if c == "]") > 1:
+        if closing > 1:
             raise ValueError("Only one closing bracket (`]`) is allowed")
+        if opening != closing:
+            raise ValueError("The brackets should be paired")
+        return opening > 0
 
-    def __getitem__(self, query: Union[str, List[str]]):
+    def __getitem__(
+        self, query: Union[str, List[str]]
+    ) -> Union[Embedding, EmbeddingSet]:
         """
         Retreive a single embedding or a set of embeddings. Depending on the spaCy model
         the strings can support multiple tokens of text but they can also use the Bert DSL.
@@ -116,15 +108,28 @@ class SpacyLanguage(SklearnTransformerMixin):
         > lang['python']
         > lang[['python', 'snake']]
         > lang[['nobody expects', 'the spanish inquisition']]
+        > lang = SpacyLanguage("en_trf_robertabase_lg")
+        > lang['programming in [python]']
         ```
         """
         if isinstance(query, str):
-            self._input_str_legal(query)
-            start, end = _selected_idx_spacy(query)
-            clean_string = query.replace("[", "").replace("]", "")
-            vec = self.model(clean_string)[start:end].vector
+            return self._get_embedding(query)
+        return EmbeddingSet(*[self._get_embedding(q) for q in query])
+
+    def _get_embedding(self, query: str) -> Embedding:
+        has_brackets = self._check_query_format(query)
+        if has_brackets:
+            start_idx, end_idx = self._get_context_pos(query)
+            clean_query = query.replace("[", "").replace("]", "")
+            vec = self.model(clean_query)[start_idx:end_idx].vector
             return Embedding(query, vec)
-        return EmbeddingSet(*[self[tok] for tok in query])
+        return Embedding(query, self.model(query).vector)
+
+    def _get_context_pos(self, query: str) -> Tuple[int, int]:
+        tokens = list(t.text for t in self.model.tokenizer(query))
+        start_idx = tokens.index("[")
+        end_idx = tokens.index("]")
+        return start_idx, end_idx - 1
 
     def _prepare_queries(self, prob_limit, lower):
         queries = [w for w in self.model.vocab]

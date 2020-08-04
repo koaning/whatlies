@@ -17,6 +17,7 @@ base_packages = [
     "tensorflow>=2.3.0",
     "tensorflow-text>=2.3.0",
     "tensorflow-hub>=0.8.0",
+    "ivis[cpu]>=1.8.0",
 ]
 
 docs_packages = [

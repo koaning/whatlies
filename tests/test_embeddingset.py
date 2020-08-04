@@ -70,7 +70,7 @@ def test_embset_similar_simple_len(lang):
 
 def test_embset_similar_simple_contains(lang):
     emb = lang[["red", "blue", "orange", "cat", "dog"]]
-    subset_cat = emb.embset_similar("cat", 2).embeddings.keys()
+    subset_cat = emb.embset_similar("cat", 2, metric="euclidean").embeddings.keys()
     assert "cat" in subset_cat
     assert "dog" in subset_cat
 

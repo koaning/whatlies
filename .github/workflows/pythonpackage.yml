@@ -36,9 +36,9 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
         black --check .
-    - name: Docs can Build
-      run: mkdocs build
     - name: Test with pytest
       run: |
         python tests/prepare_fasttext_tests.py
         pytest --verbose
+    - name: Docs can Build
+      run: mkdocs build

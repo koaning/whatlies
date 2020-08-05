@@ -49,7 +49,6 @@ test_packages = [
     "pytest-cov>=2.6.1",
     "nbval>=0.9.5",
     "pre-commit>=2.2.0",
-    "torch==1.6.0+cpu",
 ]
 
 extra_deps = tf_packages + transformers_dep + ivis_dep + open_tsne_dep

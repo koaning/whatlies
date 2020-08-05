@@ -53,7 +53,7 @@ test_packages = [
 ]
 
 extra_deps = tf_packages + transformers_dep + ivis_dep + open_tsne_dep
-dev_packages = docs_packages + test_packages
+dev_packages = docs_packages + test_packages + extra_deps
 
 setup(
     name="whatlies",

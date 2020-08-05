@@ -23,7 +23,7 @@ jobs:
         pip install flake8 pytest black
     - name: Run Base Install
       run: |
-        python -m pip install -e "."
+        python -m pip install -e ".[base]"
         python tests/check_pip.py missing tensorflow ivis opentsne
         python tests/check_pip.py contains spacy
     - name: Install Tensorflow Dependencies

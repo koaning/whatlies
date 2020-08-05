@@ -55,7 +55,30 @@ You can install the package via pip;
 pip install whatlies
 ```
 
-This will install dependencies but it **won't** install all the language models you might want to visualise.
+This will install the base dependencies. Depending on the
+transformers and language backends that you'll be using you
+may want to install more. Here's all the possible installation
+settings you could go for.
+
+```bash
+pip install whatlies[base]
+pip install whatlies[tfhub]
+pip install whatlies[transformers]
+pip install whatlies[ivis]
+pip install whatlies[opentsne]
+```
+
+If you want it all you can also install via;
+
+```bash
+pip install whatlies[all]
+```
+
+Note that this will install dependencies but it
+**won't** install all the language models you might
+want to visualise. For example, you might still
+need to manually download spaCy models if you intend
+to use that backend.
 
 ## Similar Projects
 

@@ -18,7 +18,7 @@ class Embedding:
 
     Usage:
 
-    ```
+    ```python
     from whatlies.embedding import Embedding
 
     foo = Embedding("foo", [0.1, 0.3])
@@ -45,7 +45,7 @@ class Embedding:
 
         Usage:
 
-        ```
+        ```python
         from whatlies.embedding import Embedding
 
         foo = Embedding("foo", [0.1, 0.3])
@@ -65,7 +65,7 @@ class Embedding:
 
         Usage:
 
-        ```
+        ```python
         from whatlies.embedding import Embedding
 
         foo = Embedding("foo", [0.1, 0.3])
@@ -85,7 +85,7 @@ class Embedding:
 
         Usage:
 
-        ```
+        ```python
         from whatlies.embedding import Embedding
 
         foo = Embedding("foo", [0.1, 0.3])
@@ -102,7 +102,7 @@ class Embedding:
 
         Usage:
 
-        ```
+        ```python
         from whatlies.embedding import Embedding
 
         foo = Embedding("foo", [0.1, 0.3])
@@ -127,7 +127,7 @@ class Embedding:
 
         Usage:
 
-        ```
+        ```python
         from whatlies.embedding import Embedding
 
         foo = Embedding("foo", [0.1, 0.3])
@@ -171,6 +171,7 @@ class Embedding:
         foo.distance(bar)
         foo.distance(bar, metric="euclidean")
         foo.distance(bar, metric="cosine")
+        ```
         """
         return pairwise_distances([self.vector], [other.vector], metric=metric)[0][0]
 

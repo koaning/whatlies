@@ -24,6 +24,7 @@ nav:
       - OpenTsne: api/transformers/opentsne.md
       - Noise: api/transformers/noise.md
       - Add Random: api/transformers/addrandom.md
+      - Ivis: api/transformers/ivis.md
     - Language:
       - spaCy: api/language/spacy_lang.md
       - Sense2Vec: api/language/s2v_lang.md
@@ -32,6 +33,8 @@ nav:
       - BytePair: api/language/bpemb_lang.md
       - ConveRT: api/language/convert_lang.md
       - Gensim: api/language/gensim_lang.md
+      - Huggingface: api/language/transformers.md
+      - TFHub: api/language/tfhub.md
   - Roadmap: roadmap.md
 plugins:
   - mkdocstrings

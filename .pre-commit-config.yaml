@@ -5,6 +5,10 @@ repos:
     rev: v2.4.0
     hooks:
     -   id: check-added-large-files
+    -   id: check-ast
+    -   id: check-yaml
+    -   id: check-json
+    -   id: trailing-whitespace
 -   repo: https://github.com/psf/black
     rev: stable
     hooks:

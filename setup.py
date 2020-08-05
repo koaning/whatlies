@@ -5,7 +5,6 @@ base_packages = [
     "scipy>=1.2.0",
     "scikit-learn>=0.20.2",
     "umap-learn>=0.3.10",
-    "opentsne>=0.4.3",
     "altair>=4.0.1",
     "matplotlib>=3.2.0",
     "spacy>=2.2.3",
@@ -14,11 +13,24 @@ base_packages = [
     "fasttext>=0.9.1",
     "bpemb>=0.3.0",
     "gensim>=3.8.3",
+]
+
+tf_packages = [
     "tensorflow>=2.3.0",
     "tensorflow-text>=2.3.0",
     "tensorflow-hub>=0.8.0",
+]
+
+transformers_dep = [
     "transformers>=3.0.0",
+]
+
+ivis_dep = [
     "ivis[cpu]>=1.8.0",
+]
+
+open_tsne_dep = [
+    "opentsne>=0.4.3",
 ]
 
 docs_packages = [
@@ -37,19 +49,29 @@ test_packages = [
     "pytest-cov>=2.6.1",
     "nbval>=0.9.5",
     "pre-commit>=2.2.0",
-    "torch>=1.0.0",
 ]
 
-dev_packages = docs_packages + test_packages
+extra_deps = tf_packages + transformers_dep + ivis_dep + open_tsne_dep
+dev_packages = docs_packages + test_packages + extra_deps
 
 setup(
     name="whatlies",
-    version="0.4.4",
+    version="0.4.5",
     author="Vincent D. Warmerdam",
     packages=find_packages(exclude=["notebooks", "docs"]),
-    description="Make visualisations to learn `what lies` in word embeddings.",
+    description="Tools to help uncover `what lies` in word embeddings.",
     install_requires=base_packages,
-    extras_require={"docs": docs_packages, "dev": dev_packages, "test": test_packages},
+    extras_require={
+        "base": base_packages,
+        "docs": docs_packages,
+        "dev": dev_packages,
+        "test": test_packages,
+        "tfhub": tf_packages,
+        "transformers": transformers_dep,
+        "ivis": ivis_dep,
+        "opentsne": open_tsne_dep,
+        "all": extra_deps,
+    },
     classifiers=[
         "Intended Audience :: Science/Research",
         "Programming Language :: Python :: 3",

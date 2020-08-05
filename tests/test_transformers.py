@@ -22,7 +22,7 @@ transformers = [
     lambda d: d | (d["man"] - d["woman"]),
     Tsne(2, n_iter=250),
     Tsne(3, n_iter=250),
-    OpenTsne(2, n_iter=100),
+    OpenTsne(2, n_iter=10),
     Ivis(2, k=10, batch_size=10),
     Ivis(3, k=10, batch_size=10),
 ]
@@ -45,7 +45,7 @@ def test_transformations_new_size(transformer, extra_size):
         Pca(2),
         Noise(0.1),
         Tsne(2, n_iter=250),
-        OpenTsne(2, n_iter=100),
+        OpenTsne(2, n_iter=10),
         Ivis(2, k=10, batch_size=10),
         AddRandom(n=4),
         lambda d: d | (d["man"] - d["woman"]),

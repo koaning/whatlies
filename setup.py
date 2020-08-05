@@ -22,7 +22,6 @@ tf_packages = [
 ]
 
 transformers_dep = [
-    "torch>=1.6.0",
     "transformers>=3.0.0",
 ]
 
@@ -50,9 +49,10 @@ test_packages = [
     "pytest-cov>=2.6.1",
     "nbval>=0.9.5",
     "pre-commit>=2.2.0",
+    "torch>=1.6.0",
 ]
 
-all_deps = base_packages + tf_packages + transformers_dep + ivis_dep + open_tsne_dep
+extra_deps = tf_packages + transformers_dep + ivis_dep + open_tsne_dep
 dev_packages = docs_packages + test_packages
 
 setup(
@@ -71,7 +71,7 @@ setup(
         "transformers": transformers_dep,
         "ivis": ivis_dep,
         "opentsne": open_tsne_dep,
-        "all": all_deps,
+        "all": extra_deps,
     },
     classifiers=[
         "Intended Audience :: Science/Research",

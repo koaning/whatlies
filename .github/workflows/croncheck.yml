@@ -1,0 +1,36 @@
+name: Cron Test Dependencies
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        python-version: [3.7]
+        os: [macos-10.15, ubuntu-latest]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Runs a single command using the runners shell
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip setuptools wheel
+        pip install -e ".[dev]"
+        pip install flake8 pytest black
+        pip freeze
+    - name: Test with pytest
+      run: |
+        pip install -e ".[all]"
+        python tests/prepare_fasttext_tests.py
+        pytest --verbose

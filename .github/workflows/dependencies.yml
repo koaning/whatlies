@@ -21,18 +21,22 @@ jobs:
       run: |
         python -m pip install --upgrade pip setuptools wheel
         pip install flake8 pytest black
-    - name: Confirm lightweight install
+    - name: Run Base Install
       run: |
         python -m pip install -e "."
-        python tests/check_pip.py missing tensorflow
+        python tests/check_pip.py missing tensorflow ivis opentsne
         python tests/check_pip.py contains spacy
-    - name: Confirm lightweight install
+    - name: Install Tensorflow Dependencies
       run: |
         python -m pip install -e ".[tfhub]"
-        python tests/check_pip.py missing ivis
+        python tests/check_pip.py missing ivis opentsne
         python tests/check_pip.py contains spacy tensorflow
-    - name: Confirm lightweight install
+    - name: Install IVIS
       run: |
         python -m pip install -e ".[ivis]"
         python tests/check_pip.py missing opentsne
         python tests/check_pip.py contains spacy tensorflow ivis
+    - name: Install All
+      run: |
+        python -m pip install -e ".[all]"
+        python tests/check_pip.py contains spacy tensorflow ivis opentsne ivis

@@ -60,9 +60,10 @@ setup(
     version="0.4.5",
     author="Vincent D. Warmerdam",
     packages=find_packages(exclude=["notebooks", "docs"]),
-    description="Make visualisations to learn `what lies` in word embeddings.",
+    description="Tools to help uncover `what lies` in word embeddings.",
     install_requires=base_packages,
     extras_require={
+        "base": base_packages,
         "docs": docs_packages,
         "dev": dev_packages,
         "test": test_packages,

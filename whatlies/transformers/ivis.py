@@ -8,21 +8,24 @@ import numpy as np
 class Ivis:
     """
     This transformer scales all the vectors in an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]
-    by means of Ivis algorithm. We're using the implementation found in
-    [beringresearch/ivis](https://github.com/beringresearch/ivis)
+    by means of Ivis algorithm. We're using the implementation found
+    [here](https://github.com/beringresearch/ivis).
+
     Arguments:
         n_components: the number of compoments to create/add
-        kwargs: keyword arguments passed to the Ivis implementation
-        [Argument Description](https://bering-ivis.readthedocs.io/en/latest/hyperparameters.html)
- 
+        kwargs: keyword arguments passed to the [Ivis implementation](https://bering-ivis.readthedocs.io/en/latest/hyperparameters.html)
+
     Usage:
+
     ```python
     from whatlies.language import GensimLanguage
     from whatlies.transformers import Ivis
+
     words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
              "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
              "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
              "person", "family", "brother", "sister"]
+
     lang = GensimLanguage("wordvectors.kv")
     emb = lang[words]
     emb.transform(Ivis(3)).plot_interactive_matrix('ivis_0', 'ivis_1', 'ivis_2')

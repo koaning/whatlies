@@ -20,7 +20,7 @@ class HFTransformersLanguage:
         model_name_or_path: A string which is the name or identifier of a model from
             [Hugging Face model repository](https://huggingface.co/models), or is the path to a local directory
             which contains a pre-trained transformer model files.
-        **kwargs: Additional key-value pair argument(s) which is passed to `transformers.pipeline` function.
+        kwargs: Additional key-value pair argument(s) which are passed to `transformers.pipeline` function.
 
     **Usage**:
 

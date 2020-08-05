@@ -518,6 +518,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../transformers/ivis/" title="Ivis" class="md-nav__link">
+      Ivis
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -694,6 +706,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../transformers/" title="Huggingface" class="md-nav__link">
+      Huggingface
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tfhub/" title="TFHub" class="md-nav__link">
+      TFHub
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -817,13 +853,22 @@ backend. This object is meant for retreival, not plotting.</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;python&#39;</span><span class="p">]</span>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;snake&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">]]</span>
-
 <span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_trf_robertabase_lg&quot;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;programming in [python]&#39;</span><span class="p">]</span>
 </code></pre></div>
 
 <h2 id="whatlies.language.spacy_lang.SpacyLanguage.__getitem__"><code class="highlight"><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.spacy_lang.SpacyLanguage.__getitem__" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>104
+<details class="note"><summary>Show source code in <code>language/spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
 105
 106
 107
@@ -836,17 +881,9 @@ backend. This object is meant for retreival, not plotting.</p>
 114
 115
 116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]):</span>
+117</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Embedding</span><span class="p">,</span> <span class="n">EmbeddingSet</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retreive a single embedding or a set of embeddings. Depending on the spaCy model</span>
 <span class="sd">        the strings can support multiple tokens of text but they can also use the Bert DSL.</span>
@@ -861,15 +898,13 @@ backend. This object is meant for retreival, not plotting.</p>
 <span class="sd">        &gt; lang[&#39;python&#39;]</span>
 <span class="sd">        &gt; lang[[&#39;python&#39;, &#39;snake&#39;]]</span>
 <span class="sd">        &gt; lang[[&#39;nobody expects&#39;, &#39;the spanish inquisition&#39;]]</span>
+<span class="sd">        &gt; lang = SpacyLanguage(&quot;en_trf_robertabase_lg&quot;)</span>
+<span class="sd">        &gt; lang[&#39;programming in [python]&#39;]</span>
 <span class="sd">        ```</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_input_str_legal</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-            <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_selected_idx_spacy</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-            <span class="n">clean_string</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-            <span class="n">vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">clean_string</span><span class="p">)[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span>
-            <span class="k">return</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">vec</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">EmbeddingSet</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">tok</span><span class="p">]</span> <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">query</span><span class="p">])</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_embedding</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">EmbeddingSet</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_embedding</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">query</span><span class="p">])</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -901,14 +936,11 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;python&#39;</span><span class="p">]</span>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;snake&#39;</span><span class="p">]]</span>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;nobody expects&#39;</span><span class="p">,</span> <span class="s1">&#39;the spanish inquisition&#39;</span><span class="p">]]</span>
+<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_trf_robertabase_lg&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;programming in [python]&#39;</span><span class="p">]</span>
 </code></pre></div></p>
 <h2 id="whatlies.language.spacy_lang.SpacyLanguage.embset_proximity"><code class="highlight"><span class="n">embset_proximity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">max_proximity</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">prob_limit</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.spacy_lang.SpacyLanguage.embset_proximity" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>170
-171
-172
-173
-174
-175
+<details class="note"><summary>Show source code in <code>language/spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>175
 176
 177
 178
@@ -931,7 +963,12 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 195
 196
 197
-198</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_proximity</span><span class="p">(</span>
+198
+199
+200
+201
+202
+203</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_proximity</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">emb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span>
         <span class="n">max_proximity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
@@ -1024,12 +1061,7 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 </tbody>
 </table>
 <h2 id="whatlies.language.spacy_lang.SpacyLanguage.embset_similar"><code class="highlight"><span class="n">embset_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">prob_limit</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.spacy_lang.SpacyLanguage.embset_similar" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>146
-147
-148
-149
-150
-151
+<details class="note"><summary>Show source code in <code>language/spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>151
 152
 153
 154
@@ -1046,7 +1078,12 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 165
 166
 167
-168</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_similar</span><span class="p">(</span>
+168
+169
+170
+171
+172
+173</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_similar</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">emb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span>
         <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
@@ -1133,7 +1170,22 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 </tbody>
 </table>
 <h2 id="whatlies.language.spacy_lang.SpacyLanguage.from_fasttext"><code class="highlight"><span class="n">from_fasttext</span><span class="p">(</span><span class="n">language</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">vectors_loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code> <em>(classmethod)</em><a class="headerlink" href="#whatlies.language.spacy_lang.SpacyLanguage.from_fasttext" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>61
+<details class="note"><summary>Show source code in <code>language/spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
 62
 63
 64
@@ -1152,22 +1204,7 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 77
 78
 79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="nd">@classmethod</span>
+80</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_fasttext</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">language</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">vectors_loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Will load downloaded fasttext vectors. It will try to load from disk, but if there is no local</span>
@@ -1258,12 +1295,7 @@ Note that these files are large and loading them can take a long time.</p>
 </code></pre></div>
 
 <h2 id="whatlies.language.spacy_lang.SpacyLanguage.score_similar"><code class="highlight"><span class="n">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">prob_limit</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.spacy_lang.SpacyLanguage.score_similar" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>200
-201
-202
-203
-204
-205
+<details class="note"><summary>Show source code in <code>language/spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>205
 206
 207
 208
@@ -1292,7 +1324,12 @@ Note that these files are large and loading them can take a long time.</p>
 231
 232
 233
-234</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">score_similar</span><span class="p">(</span>
+234
+235
+236
+237
+238
+239</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">score_similar</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">emb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span>
         <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
@@ -1411,7 +1448,7 @@ Note that these files are large and loading them can take a long time.</p>
       <div class="md-footer-nav">
         <nav class="md-footer-nav__inner md-grid">
           
-            <a href="../../transformers/addrandom/" title="Add Random" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <a href="../../transformers/ivis/" title="Ivis" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
                 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
               </div>
@@ -1420,7 +1457,7 @@ Note that these files are large and loading them can take a long time.</p>
                   <span class="md-footer-nav__direction">
                     Previous
                   </span>
-                  Add Random
+                  Ivis
                 </span>
               </div>
             </a>

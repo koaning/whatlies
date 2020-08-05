@@ -5,7 +5,6 @@ base_packages = [
     "scipy>=1.2.0",
     "scikit-learn>=0.20.2",
     "umap-learn>=0.3.10",
-    "opentsne>=0.4.3",
     "altair>=4.0.1",
     "matplotlib>=3.2.0",
     "spacy>=2.2.3",
@@ -14,11 +13,25 @@ base_packages = [
     "fasttext>=0.9.1",
     "bpemb>=0.3.0",
     "gensim>=3.8.3",
+]
+
+tf_packages = [
     "tensorflow>=2.3.0",
     "tensorflow-text>=2.3.0",
     "tensorflow-hub>=0.8.0",
+]
+
+transformers_dep = [
+    "torch>=1.0.0",
     "transformers>=3.0.0",
+]
+
+ivis_dep = [
     "ivis[cpu]>=1.8.0",
+]
+
+open_tsne_dep = [
+    "opentsne>=0.4.3",
 ]
 
 docs_packages = [
@@ -37,7 +50,6 @@ test_packages = [
     "pytest-cov>=2.6.1",
     "nbval>=0.9.5",
     "pre-commit>=2.2.0",
-    "torch>=1.0.0",
 ]
 
 dev_packages = docs_packages + test_packages

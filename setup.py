@@ -22,6 +22,7 @@ tf_packages = [
 ]
 
 transformers_dep = [
+    "torch>=1.6.0",
     "transformers>=3.0.0",
 ]
 

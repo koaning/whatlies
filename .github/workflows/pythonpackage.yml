@@ -40,5 +40,3 @@ jobs:
       run: |
         python tests/prepare_fasttext_tests.py
         pytest --verbose
-    - name: Docs can Build
-      run: mkdocs build

@@ -11,11 +11,10 @@ on:
 jobs:
   build:
 
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [macos-10.15, ubuntu-latest]
-        python-version: [3.6, 3.7]
+        python-version: 3.7
 
     steps:
     - uses: actions/checkout@v2
@@ -38,7 +37,7 @@ jobs:
         python tests/check_pip.py missing ivis
         python tests/check_pip.py contains spacy tensorflow
     - name: Confirm lightweight install
-        run: |
-          python -m pip install -e ".[ivis]"
-          python tests/check_pip.py missing opentsne
-          python tests/check_pip.py contains spacy tensorflow ivis
+      run: |
+        python -m pip install -e ".[ivis]"
+        python tests/check_pip.py missing opentsne
+        python tests/check_pip.py contains spacy tensorflow ivis

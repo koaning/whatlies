@@ -52,16 +52,26 @@ test_packages = [
     "pre-commit>=2.2.0",
 ]
 
+all_deps = base_packages + tf_packages + transformers_dep + ivis_dep + open_tsne_dep
 dev_packages = docs_packages + test_packages
 
 setup(
     name="whatlies",
-    version="0.4.4",
+    version="0.5.0",
     author="Vincent D. Warmerdam",
     packages=find_packages(exclude=["notebooks", "docs"]),
     description="Make visualisations to learn `what lies` in word embeddings.",
     install_requires=base_packages,
-    extras_require={"docs": docs_packages, "dev": dev_packages, "test": test_packages},
+    extras_require={
+        "docs": docs_packages,
+        "dev": dev_packages,
+        "test": test_packages,
+        "tfhub": tf_packages,
+        "transformers": transformers_dep,
+        "ivis": ivis_dep,
+        "opentsne": open_tsne_dep,
+        "all": all_deps,
+    },
     classifiers=[
         "Intended Audience :: Science/Research",
         "Programming Language :: Python :: 3",

@@ -7,6 +7,8 @@ from .bpemblang import BytePairLanguage as BytePairLang
 from .convert_lang import ConveRTLanguage
 from .gensim_lang import GensimLanguage
 from .tfhub_lang import TFHubLanguage
+from .hftransformers_lang import HFTransformersLanguage
+
 
 __all__ = [
     "SpacyLanguage",
@@ -18,4 +20,5 @@ __all__ = [
     "GensimLanguage",
     "ConveRTLanguage",
     "TFHubLanguage",
+    "HFTransformersLanguage",
 ]

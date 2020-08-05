@@ -23,18 +23,18 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install dependencies MacOS
+    - name: Install dependencies Ubuntu
       if: ${{matrix.os == 'ubuntu-latest'}}
       run: |
         python -m pip install --upgrade pip setuptools wheel
         pip install -e ".[dev]"
         pip install flake8 pytest black
-        pip install torch>=1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
-    - name: Install dependencies Ubuntu
+        pip install torch>=1.6.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+    - name: Install dependencies MacOS
       if: ${{matrix.os == 'macos-10.15'}}
       run: |
         python -m pip install --upgrade pip setuptools wheel
-        pip install -e ".[all]"
+        pip install -e ".[dev]"
         pip install flake8 pytest black
     - name: Style Check
       run: |

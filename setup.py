@@ -57,7 +57,7 @@ dev_packages = docs_packages + test_packages
 
 setup(
     name="whatlies",
-    version="0.5.0",
+    version="0.4.5",
     author="Vincent D. Warmerdam",
     packages=find_packages(exclude=["notebooks", "docs"]),
     description="Make visualisations to learn `what lies` in word embeddings.",

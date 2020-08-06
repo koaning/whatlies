@@ -75,7 +75,7 @@ pip install whatlies[all]
 ```
 
 Note that this will install dependencies but it
-**won't** install all the language models you might
+**will not** install all the language models you might
 want to visualise. For example, you might still
 need to manually download spaCy models if you intend
 to use that backend.

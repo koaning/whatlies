@@ -14,6 +14,7 @@ def handle_2d_plot(
     ylabel=None,
     show_operations=False,
     annot=False,
+    axis_option=None,
 ):
     """
     Handles the logic to perform a 2d plot in matplotlib.
@@ -26,6 +27,7 @@ def handle_2d_plot(
     - xlabel: manually override the xlabel
     - ylabel: manually override the ylabel
     - show_operations: setting to also show the applied operations, only works for `text`
+    - axis_option: a string which is passed to `matplotlib.pyplot.axis` function.
     """
     name = embedding.name if show_operations else embedding.orig
     if kind == "scatter":
@@ -50,6 +52,8 @@ def handle_2d_plot(
 
     plt.xlabel("x" if not xlabel else xlabel)
     plt.ylabel("y" if not ylabel else ylabel)
+    if axis_option is not None:
+        plt.axis(axis_option)
 
 
 def plot_graph_layout(embedding_set, kind="cosine", **kwargs):

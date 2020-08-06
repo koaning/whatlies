@@ -497,6 +497,7 @@ class EmbeddingSet:
             y_axis: the y-axis to be used, must be given when dim > 2
             color: the color of the dots
             show_ops: setting to also show the applied operations, only works for `text`
+            kwargs: additional key-value pair arguments which are passed to `plot` method of `Embedding` class
         """
         for k, token in self.embeddings.items():
             token.plot(

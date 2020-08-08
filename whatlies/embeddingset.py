@@ -403,12 +403,11 @@ class EmbeddingSet:
                 f"You cannot retreive (n={n}) more items than exist in the Embeddingset (len={len(self)})"
             )
 
-        if str(emb) not in self.embeddings.keys():
-            raise ValueError(
-                f"Embedding for `{str(emb)}` does not exist in this EmbeddingSet"
-            )
-
         if isinstance(emb, str):
+            if emb not in self.embeddings.keys():
+                raise ValueError(
+                    f"Embedding for `{emb}` does not exist in this EmbeddingSet"
+                )
             emb = self[emb]
 
         vec = emb.vector

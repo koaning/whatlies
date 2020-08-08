@@ -8,6 +8,7 @@ base_packages = [
     "altair>=4.0.1",
     "matplotlib>=3.2.0",
     "spacy>=2.2.3",
+    "spacy-lookups-data>=0.3.2",
     "networkx>=2.4",
     "sense2vec>=1.0.2",
     "fasttext>=0.9.1",

@@ -42,6 +42,13 @@ class SpacyLanguage(SklearnTransformerMixin):
             raise ValueError(
                 "Language must be started with `str` or spaCy-language object."
             )
+        # Remove the lexeme prob table if it exists and is empty
+        if (
+            hasattr(self.model.vocab, "lookups_extra")
+            and self.model.vocab.lookups_extra.has_table("lexeme_prob")
+            and len(self.model.vocab.lookups_extra.get_table("lexeme_prob")) == 0
+        ):
+            self.model.vocab.lookups_extra.remove_table("lexeme_prob")
 
     @classmethod
     def from_fasttext(cls, language, output_dir, vectors_loc=None, force=False):
@@ -132,6 +139,7 @@ class SpacyLanguage(SklearnTransformerMixin):
         return start_idx, end_idx - 1
 
     def _prepare_queries(self, prob_limit, lower):
+        self._load_vocab()
         queries = [w for w in self.model.vocab]
         if prob_limit is not None:
             queries = [w for w in queries if w.prob >= prob_limit]
@@ -142,6 +150,13 @@ class SpacyLanguage(SklearnTransformerMixin):
                 f"No tokens left for this setting. Consider raising prob_limit={prob_limit}"
             )
         return queries
+
+    def _load_vocab(self):
+        """This method must always be called before iterting over `model.vocab`."""
+        # Load all the vocab only if they have not been loaded yet.
+        if len(self.model.vocab) < len(self.model.vocab.vectors.keys()):
+            for orth in self.model.vocab.vectors:
+                self.model.vocab[orth]
 
     def _calculate_distances(self, emb, queries, metric):
         vec = emb.vector

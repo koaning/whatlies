@@ -12,8 +12,7 @@ A library that tries help you to understand (note the pun).
 > "What lies in word embeddings?"
 
 This small library offers tools to make visualisation easier of both
-word embeddings as well as operations on them. This should be considered
-an experimental project that is in preview mode.
+word embeddings as well as operations on them. 
 
 Feedback is welcome.
 

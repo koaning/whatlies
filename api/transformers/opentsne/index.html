@@ -744,7 +744,13 @@ by means of tsne. This implementation used
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>OpenTSNE is a faster variant of TSNE but it only allows for &lt;2 components.
-You may also notice that it is relatively slow. This unfortunately is a fact of life.</p>
+You may also notice that it is relatively slow. This unfortunately is a fact of TSNE.</p>
+<p>This embedding transformation might require you to manually install extra dependencies
+unless you installed via either;</p>
+<div class="highlight"><pre><span></span><code>pip install whatlies[opentsne]
+pip install whatlies[all]
+</code></pre></div>
+
 </div>
 <p><strong>Parameters</strong></p>
 <table>

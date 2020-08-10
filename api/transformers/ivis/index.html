@@ -741,6 +741,15 @@
 <p>This transformer scales all the vectors in an <a href="/whatlies/api/embeddingset/#whatlies.embeddingset.EmbeddingSet">EmbeddingSet</a>
 by means of Ivis algorithm. We're using the implementation found
 <a href="https://github.com/beringresearch/ivis">here</a>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This language backend might require you to manually install extra dependencies
+unless you installed via either;</p>
+<div class="highlight"><pre><span></span><code>pip install whatlies[ivis]
+pip install whatlies[all]
+</code></pre></div>
+
+</div>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>

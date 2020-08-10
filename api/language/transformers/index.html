@@ -789,6 +789,14 @@ representation of input string(s) as <a href="/whatlies/api/embedding/#whatlies.
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>To use this language class, either of TensorFlow or PyTorch should be installed.</p>
+<p>This language model does not contain a vocabulary, so it cannot be used
+to retreive similar tokens. Use an <code>EmbeddingSet</code> instead.</p>
+<p>This language backend might require you to manually install extra dependencies
+unless you installed via either;</p>
+<div class="highlight"><pre><span></span><code>pip install whatlies[transformers]
+pip install whatlies[all]
+</code></pre></div>
+
 </div>
 <p><strong>Parameters</strong></p>
 <table>
@@ -824,18 +832,7 @@ representation of input string(s) as <a href="/whatlies/api/embedding/#whatlies.
 </code></pre></div>
 
 <h2 id="whatlies.language.hftransformers_lang.HFTransformersLanguage.__getitem__"><code class="highlight"><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.hftransformers_lang.HFTransformersLanguage.__getitem__" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/hftransformers_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
+<details class="note"><summary>Show source code in <code>language/hftransformers_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>53
 54
 55
 56
@@ -849,7 +846,18 @@ representation of input string(s) as <a href="/whatlies/api/embedding/#whatlies.
 64
 65
 66
-67</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]):</span>
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Retreive a single embedding or a set of embeddings.</span>
 

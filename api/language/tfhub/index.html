@@ -793,9 +793,14 @@ are also supported.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>This object will automatically download a large file if it is not cached yet.</p>
-<p>Also note that this language model does not contain a vocabulary, so it cannot be used
-to retreive similar tokens. Instead, you can create an embedding set by using this model
-and then perform similarity queries from there.</p>
+<p>This language model does not contain a vocabulary, so it cannot be used
+to retreive similar tokens. Use an <code>EmbeddingSet</code> instead.</p>
+<p>This language backend might require you to manually install extra dependencies
+unless you installed via either;</p>
+<div class="highlight"><pre><span></span><code>pip install whatlies[tfhub]
+pip install whatlies[all]
+</code></pre></div>
+
 <p>Further, consider that this language model mainly supports TensorFlow 2.x models (i.e. TF2 <code>SavedModel</code> format);
 although, TensorFlow 1.x models might be supported to some extent as well (see
 <a href="https://www.tensorflow.org/hub/api_docs/python/hub/load"><code>hub.load</code></a> documentation as well as
@@ -841,14 +846,7 @@ although, TensorFlow 1.x models might be supported to some extent as well (see
 </code></pre></div>
 
 <h2 id="whatlies.language.tfhub_lang.TFHubLanguage.__getitem__"><code class="highlight"><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.tfhub_lang.TFHubLanguage.__getitem__" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/tfhub_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>62
-63
-64
-65
-66
-67
-68
-69
+<details class="note"><summary>Show source code in <code>language/tfhub_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>69
 70
 71
 72
@@ -862,7 +860,14 @@ although, TensorFlow 1.x models might be supported to some extent as well (see
 80
 81
 82
-83</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span>
+83
+84
+85
+86
+87
+88
+89
+90</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Embedding</span><span class="p">,</span> <span class="n">EmbeddingSet</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;</span>

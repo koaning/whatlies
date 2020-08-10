@@ -17,6 +17,17 @@ class HFTransformersLanguage(SklearnTransformerMixin):
     Important:
         To use this language class, either of TensorFlow or PyTorch should be installed.
 
+        This language model does not contain a vocabulary, so it cannot be used
+        to retreive similar tokens. Use an `EmbeddingSet` instead.
+
+        This language backend might require you to manually install extra dependencies
+        unless you installed via either;
+
+        ```
+        pip install whatlies[transformers]
+        pip install whatlies[all]
+        ```
+
     Arguments:
         model_name_or_path: A string which is the name or identifier of a model from
             [Hugging Face model repository](https://huggingface.co/models), or is the path to a local directory

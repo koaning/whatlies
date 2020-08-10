@@ -11,6 +11,15 @@ class Ivis:
     by means of Ivis algorithm. We're using the implementation found
     [here](https://github.com/beringresearch/ivis).
 
+    Important:
+        This language backend might require you to manually install extra dependencies
+        unless you installed via either;
+
+        ```
+        pip install whatlies[ivis]
+        pip install whatlies[all]
+        ```
+
     Arguments:
         n_components: the number of compoments to create/add
         kwargs: keyword arguments passed to the [Ivis implementation](https://bering-ivis.readthedocs.io/en/latest/hyperparameters.html)

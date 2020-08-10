@@ -1,3 +1,4 @@
+import pathlib
 from setuptools import setup, find_packages
 
 base_packages = [
@@ -55,12 +56,21 @@ test_packages = [
 extra_deps = tf_packages + transformers_dep + ivis_dep + open_tsne_dep
 dev_packages = docs_packages + test_packages + extra_deps
 
+
 setup(
     name="whatlies",
     version="0.4.6",
     author="Vincent D. Warmerdam",
     packages=find_packages(exclude=["notebooks", "docs"]),
-    description="Tools to help uncover `what lies` in word embeddings.",
+    description="Tools to help uncover `whatlies` in word embeddings.",
+    long_description=pathlib.Path("readme.md").read_text(),
+    long_description_content_type="text/markdown",
+    url="https://rasahq.github.io/whatlies/",
+    project_urls={
+        "Documentation": "https://rasahq.github.io/whatlies/",
+        "Source Code": "https://github.com/RasaHQ/whatlies/",
+        "Issue Tracker": "https://github.com/RasaHQ/whatlies/issues",
+    },
     install_requires=base_packages,
     extras_require={
         "base": base_packages,

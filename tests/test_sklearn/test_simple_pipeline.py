@@ -6,12 +6,32 @@ from sklearn.pipeline import FeatureUnion
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer
 
-from whatlies.language import CountVectorLanguage
+from whatlies.language import (
+    FasttextLanguage,
+    CountVectorLanguage,
+    SpacyLanguage,
+    GensimLanguage,
+    BytePairLanguage,
+    TFHubLanguage,
+    ConveRTLanguage,
+    HFTransformersLanguage,
+)
 
 
-@pytest.mark.parametrize("components", range(1, 6))
-def test_sklearn_pipeline_works(components):
-    lang = CountVectorLanguage(n_components=components)
+backends = [
+    SpacyLanguage("tests/custom_test_lang/"),
+    FasttextLanguage("tests/custom_fasttext_model.bin"),
+    CountVectorLanguage(n_components=10),
+    BytePairLanguage("en"),
+    GensimLanguage("tests/cache/custom_gensim_vectors.kv"),
+    ConveRTLanguage(),
+    HFTransformersLanguage("sshleifer/tiny-gpt2", framework="tf"),
+    TFHubLanguage("https://tfhub.dev/google/tf2-preview/gnews-swivel-20dim/1"),
+]
+
+
+@pytest.mark.parametrize("lang", backends)
+def test_sklearn_pipeline_works(lang):
     pipe = Pipeline([("embed", lang), ("model", LogisticRegression())])
 
     X = [
@@ -26,18 +46,6 @@ def test_sklearn_pipeline_works(components):
 
     pipe.fit(X, y)
     assert pipe.predict(X).shape[0] == 6
-
-
-def test_sklearn_feature_union_works():
-    lang = CountVectorLanguage(n_components=2)
-    X = [
-        "i really like this post",
-        "thanks for that comment",
-        "i enjoy this friendly forum",
-        "this is a bad post",
-        "i dislike this article",
-        "this is not well written",
-    ]
 
     preprocess = FeatureUnion([("dense", lang), ("sparse", CountVectorizer())])
 

@@ -5,9 +5,10 @@ import tensorflow_hub as tfhub
 
 from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
+from whatlies.language.common import SklearnTransformerMixin
 
 
-class TFHubLanguage:
+class TFHubLanguage(SklearnTransformerMixin):
     """
     This class provides the abitilty to load and use text-embedding models of Tensorflow Hub to
     retrieve [Embedding][whatlies.embedding.Embedding]s or [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]s from them.

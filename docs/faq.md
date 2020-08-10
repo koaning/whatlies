@@ -1,13 +1,13 @@
-# F.A.Q. 
+# F.A.Q.
 
 ## Plotting
 
-### How do I save an interactive chart? 
+### How do I save an interactive chart?
 
-The interactive charts that our library produces are made with [altair](https://altair-viz.github.io/). 
+The interactive charts that our library produces are made with [altair](https://altair-viz.github.io/).
 These charts use javascript for the interactivity and they are based on [vega](https://vega.github.io/vega-lite/).
-You can represent the entire chart (including the data) as a json object. This means that you can always 
-save a visluatisation as an html page or as a json file. 
+You can represent the entire chart (including the data) as a json object. This means that you can always
+save a visluatisation as an html page or as a json file.
 
 ```python
 from whatlies.language import SpacyLanguage
@@ -27,9 +27,9 @@ p.to_json("plot.json")
 
 A tutorial on how this works exactly can be found [here](https://calmcode.io/altair/json.html).
 
-### How do I save an interactive chart for publication? 
+### How do I save an interactive chart for publication?
 
-You can also choose to save an interactive chart as an svg/png/pdf if you're interested 
+You can also choose to save an interactive chart as an svg/png/pdf if you're interested
 in using an [altair](https://altair-viz.github.io/) visualisation in a publication. More
 details are listed on their [documentation page](https://altair-viz.github.io/user_guide/saving_charts.html?highlight=save%20svg#png-svg-and-pdf-format)
 in short you'll need to install the `altair_saver` package for this functionality.
@@ -41,7 +41,7 @@ dependencies though. To install them locally in your project run;
 npm install vega-lite vega-cli canvas
 ```
 
-Once these are all installed, the following code snippet will work; 
+Once these are all installed, the following code snippet will work;
 
 ```python
 from whatlies.language import SpacyLanguage
@@ -67,14 +67,14 @@ This saves the following chart on disk;
 
 ### How do I access nearest tokens from a language model?
 
-This depends on the language model, please check the docs, but most 
-language models will have a `score_similar` method attached. 
+This depends on the language model, please check the docs, but most
+language models will have a `score_similar` method attached.
 
 ```python
 from whatlies.language import BytePairLanguage
 lang = BytePairLanguage("en")
 lang.score_similar("king")
-``` 
+```
 
 This code snippet will return yield;
 
@@ -94,10 +94,10 @@ This code snippet will return yield;
 In this case you'll see subword embeddings being return because that is what this
 language model uses internally. Language models using spaCy would use full tokens.
 
-### How do I access nearest tokens from a language model using an embedding? 
+### How do I access nearest tokens from a language model using an embedding?
 
 You can pass this method a string, but also an embedding object. Ths can contain
-a custom vector but you can also construct an embedding via operations. This makes the 
+a custom vector but you can also construct an embedding via operations. This makes the
 API a lot more flexible. For example, we can construct this embedding;
 
 ```python
@@ -113,7 +113,7 @@ And use this embedding in our language model to retreive similar items.
 lang.score_similar(kmw, n=7)
 ```
 
-This yields. 
+This yields.
 
 ```python
 [(Emb[king], 0.2620711370759745),
@@ -125,11 +125,11 @@ This yields.
  (Emb[mary], 0.4771824121946612)]
 ```
 
-Note that in general we're using cosine distance here but you can also pass the 
+Note that in general we're using cosine distance here but you can also pass the
 `.score_similar` method a `metric` so select other metrics that are compatible with
-scikit-learn. 
+scikit-learn.
 
-### How do I retreive an embedding set from language model using similar tokens? 
+### How do I retreive an embedding set from language model using similar tokens?
 
 You can use the same flow we used in the previous two questions to generate an
 embedding set that can be used for plotting.
@@ -140,3 +140,15 @@ lang = BytePairLanguage("en")
 kmw = lang["king"] - lang["man"] + lang["woman"]
 emb_king = lang.embset_similar(kmw, n=20)
 ```
+
+## Compatibility
+
+This project depends on a lot of backends so there's a risk of breaking changes whenever
+we upgrade to a new version of a backend. The goal of this table is to list keep track of
+compatible versions.
+
+
+| whatlies | spaCy  |  tensorflow |
+|----------|-------:|------------:|
+|  0.4.5   |  2.2.4 |       2.3.0 |
+|  0.4.6   |  2.3.2 |       2.3.0 |

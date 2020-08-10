@@ -19,9 +19,16 @@ class ConveRTLanguage(SklearnTransformerMixin):
     Important:
         This object will automatically download a large file if it is not cached yet.
 
-        Also note that this language model does not contain a vocabulary, so it cannot be used
-        to retreive similar tokens. Instead, you can create an embedding set by using this model
-        and then perform similarity queries from there.
+        This language model does not contain a vocabulary, so it cannot be used
+        to retreive similar tokens. Use an `EmbeddingSet` instead.
+
+        This language backend might require you to manually install extra dependencies
+        unless you installed via either;
+
+        ```
+        pip install whatlies[tfhub]
+        pip install whatlies[all]
+        ```
 
     Arguments:
         model_id: identifier used for loading the corresponding TFHub module, which could be one of `'convert`, `'convert-multi-context'` or `'convert-ubuntu'`.

@@ -13,7 +13,15 @@ class OpenTsne:
 
     Important:
         OpenTSNE is a faster variant of TSNE but it only allows for <2 components.
-        You may also notice that it is relatively slow. This unfortunately is a fact of life.
+        You may also notice that it is relatively slow. This unfortunately is a fact of TSNE.
+
+        This embedding transformation might require you to manually install extra dependencies
+        unless you installed via either;
+
+        ```
+        pip install whatlies[opentsne]
+        pip install whatlies[all]
+        ```
 
     Arguments:
         n_components: the number of compoments to create/add

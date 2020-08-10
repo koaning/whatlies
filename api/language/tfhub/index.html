@@ -359,6 +359,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../../tutorial/scikit-learn/" title="Scikit-Learn Compatibility" class="md-nav__link">
+      Scikit-Learn Compatibility
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../../tutorial/observations/" title="Observations" class="md-nav__link">
       Observations
     </a>
@@ -829,8 +841,7 @@ although, TensorFlow 1.x models might be supported to some extent as well (see
 </code></pre></div>
 
 <h2 id="whatlies.language.tfhub_lang.TFHubLanguage.__getitem__"><code class="highlight"><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.tfhub_lang.TFHubLanguage.__getitem__" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/tfhub_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>61
-62
+<details class="note"><summary>Show source code in <code>language/tfhub_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>62
 63
 64
 65
@@ -850,7 +861,8 @@ although, TensorFlow 1.x models might be supported to some extent as well (see
 79
 80
 81
-82</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span>
+82
+83</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Embedding</span><span class="p">,</span> <span class="n">EmbeddingSet</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;</span>

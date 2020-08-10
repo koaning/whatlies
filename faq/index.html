@@ -361,6 +361,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../tutorial/scikit-learn/" title="Scikit-Learn Compatibility" class="md-nav__link">
+      Scikit-Learn Compatibility
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../tutorial/observations/" title="Observations" class="md-nav__link">
       Observations
     </a>
@@ -457,6 +469,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatibility" class="md-nav__link">
+    Compatibility
+  </a>
   
 </li>
       
@@ -857,6 +876,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#compatibility" class="md-nav__link">
+    Compatibility
+  </a>
+  
+</li>
+      
       
       
       
@@ -879,10 +905,10 @@
                 <h1 id="faq">F.A.Q.<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h1>
 <h2 id="plotting">Plotting<a class="headerlink" href="#plotting" title="Permanent link">&para;</a></h2>
 <h3 id="how-do-i-save-an-interactive-chart">How do I save an interactive chart?<a class="headerlink" href="#how-do-i-save-an-interactive-chart" title="Permanent link">&para;</a></h3>
-<p>The interactive charts that our library produces are made with <a href="https://altair-viz.github.io/">altair</a>. 
+<p>The interactive charts that our library produces are made with <a href="https://altair-viz.github.io/">altair</a>.
 These charts use javascript for the interactivity and they are based on <a href="https://vega.github.io/vega-lite/">vega</a>.
-You can represent the entire chart (including the data) as a json object. This means that you can always 
-save a visluatisation as an html page or as a json file. </p>
+You can represent the entire chart (including the data) as a json object. This means that you can always
+save a visluatisation as an html page or as a json file.</p>
 <pre><code class="python">from whatlies.language import SpacyLanguage
 
 words = [&quot;prince&quot;, &quot;princess&quot;, &quot;nurse&quot;, &quot;doctor&quot;, &quot;banker&quot;, &quot;man&quot;, &quot;woman&quot;,
@@ -900,7 +926,7 @@ p.to_json(&quot;plot.json&quot;)
 
 <p>A tutorial on how this works exactly can be found <a href="https://calmcode.io/altair/json.html">here</a>.</p>
 <h3 id="how-do-i-save-an-interactive-chart-for-publication">How do I save an interactive chart for publication?<a class="headerlink" href="#how-do-i-save-an-interactive-chart-for-publication" title="Permanent link">&para;</a></h3>
-<p>You can also choose to save an interactive chart as an svg/png/pdf if you're interested 
+<p>You can also choose to save an interactive chart as an svg/png/pdf if you're interested
 in using an <a href="https://altair-viz.github.io/">altair</a> visualisation in a publication. More
 details are listed on their <a href="https://altair-viz.github.io/user_guide/saving_charts.html?highlight=save%20svg#png-svg-and-pdf-format">documentation page</a>
 in short you'll need to install the <code>altair_saver</code> package for this functionality.</p>
@@ -909,7 +935,7 @@ dependencies though. To install them locally in your project run;</p>
 <pre><code>npm install vega-lite vega-cli canvas
 </code></pre>
 
-<p>Once these are all installed, the following code snippet will work; </p>
+<p>Once these are all installed, the following code snippet will work;</p>
 <pre><code class="python">from whatlies.language import SpacyLanguage
 from altair_saver import save
 
@@ -929,8 +955,8 @@ save(p, &quot;chart.png&quot;)
 <p><img alt="" src="../images/chart.png" /></p>
 <h2 id="languages">Languages<a class="headerlink" href="#languages" title="Permanent link">&para;</a></h2>
 <h3 id="how-do-i-access-nearest-tokens-from-a-language-model">How do I access nearest tokens from a language model?<a class="headerlink" href="#how-do-i-access-nearest-tokens-from-a-language-model" title="Permanent link">&para;</a></h3>
-<p>This depends on the language model, please check the docs, but most 
-language models will have a <code>score_similar</code> method attached. </p>
+<p>This depends on the language model, please check the docs, but most
+language models will have a <code>score_similar</code> method attached.</p>
 <pre><code class="python">from whatlies.language import BytePairLanguage
 lang = BytePairLanguage(&quot;en&quot;)
 lang.score_similar(&quot;king&quot;)
@@ -953,7 +979,7 @@ lang.score_similar(&quot;king&quot;)
 language model uses internally. Language models using spaCy would use full tokens.</p>
 <h3 id="how-do-i-access-nearest-tokens-from-a-language-model-using-an-embedding">How do I access nearest tokens from a language model using an embedding?<a class="headerlink" href="#how-do-i-access-nearest-tokens-from-a-language-model-using-an-embedding" title="Permanent link">&para;</a></h3>
 <p>You can pass this method a string, but also an embedding object. Ths can contain
-a custom vector but you can also construct an embedding via operations. This makes the 
+a custom vector but you can also construct an embedding via operations. This makes the
 API a lot more flexible. For example, we can construct this embedding;</p>
 <pre><code class="python">from whatlies.language import BytePairLanguage
 lang = BytePairLanguage(&quot;en&quot;)
@@ -965,7 +991,7 @@ kmw = lang[&quot;king&quot;] - lang[&quot;man&quot;] + lang[&quot;woman&quot;]
 <pre><code class="python">lang.score_similar(kmw, n=7)
 </code></pre>
 
-<p>This yields. </p>
+<p>This yields.</p>
 <pre><code class="python">[(Emb[king], 0.2620711370759745),
  (Emb[mother], 0.36575381150291),
  (Emb[father], 0.39737356910585997),
@@ -975,9 +1001,9 @@ kmw = lang[&quot;king&quot;] - lang[&quot;man&quot;] + lang[&quot;woman&quot;]
  (Emb[mary], 0.4771824121946612)]
 </code></pre>
 
-<p>Note that in general we're using cosine distance here but you can also pass the 
+<p>Note that in general we're using cosine distance here but you can also pass the
 <code>.score_similar</code> method a <code>metric</code> so select other metrics that are compatible with
-scikit-learn. </p>
+scikit-learn.</p>
 <h3 id="how-do-i-retreive-an-embedding-set-from-language-model-using-similar-tokens">How do I retreive an embedding set from language model using similar tokens?<a class="headerlink" href="#how-do-i-retreive-an-embedding-set-from-language-model-using-similar-tokens" title="Permanent link">&para;</a></h3>
 <p>You can use the same flow we used in the previous two questions to generate an
 embedding set that can be used for plotting.</p>
@@ -986,6 +1012,32 @@ lang = BytePairLanguage(&quot;en&quot;)
 kmw = lang[&quot;king&quot;] - lang[&quot;man&quot;] + lang[&quot;woman&quot;]
 emb_king = lang.embset_similar(kmw, n=20)
 </code></pre>
+
+<h2 id="compatibility">Compatibility<a class="headerlink" href="#compatibility" title="Permanent link">&para;</a></h2>
+<p>This project depends on a lot of backends so there's a risk of breaking changes whenever
+we upgrade to a new version of a backend. The goal of this table is to list keep track of
+compatible versions.</p>
+<table>
+<thead>
+<tr>
+<th>whatlies</th>
+<th align="right">spaCy</th>
+<th align="right">tensorflow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.4.5</td>
+<td align="right">2.2.4</td>
+<td align="right">2.3.0</td>
+</tr>
+<tr>
+<td>0.4.6</td>
+<td align="right">2.3.2</td>
+<td align="right">2.3.0</td>
+</tr>
+</tbody>
+</table>
                 
                   
                 

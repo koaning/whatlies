@@ -5,9 +5,10 @@ import transformers as trf
 
 from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
+from whatlies.language.common import SklearnTransformerMixin
 
 
-class HFTransformersLanguage:
+class HFTransformersLanguage(SklearnTransformerMixin):
     """
     This language class can be used to load Hugging Face Transformer models and use them to obtain
     representation of input string(s) as [Embedding][whatlies.embedding.Embedding] or

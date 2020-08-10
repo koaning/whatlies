@@ -6,11 +6,6 @@ from spacy.vocab import Vocab
 from spacy.language import Language
 from whatlies.language import SpacyLanguage
 
-from sklearn.pipeline import Pipeline
-from sklearn.linear_model import LogisticRegression
-from sklearn.pipeline import FeatureUnion
-from sklearn.feature_extraction.text import CountVectorizer
-
 
 @pytest.fixture()
 def color_lang():
@@ -60,35 +55,3 @@ checks = (
 @pytest.mark.parametrize("test_fn", checks)
 def test_estimator_checks(test_fn):
     test_fn("spacy_lang", SpacyLanguage("tests/custom_test_lang/"))
-
-
-def test_sklearn_pipeline_works(color_lang):
-    pipe = Pipeline([("embed", color_lang), ("model", LogisticRegression())])
-
-    X = [
-        "i really like this post",
-        "thanks for that comment",
-        "i enjoy this friendly forum",
-        "this is a bad post",
-        "i dislike this article",
-        "this is not well written",
-    ]
-    y = np.array([1, 1, 1, 0, 0, 0])
-
-    pipe.fit(X, y)
-    assert pipe.predict(X).shape[0] == 6
-
-
-def test_sklearn_feature_union_works(color_lang):
-    X = [
-        "i really like this post",
-        "thanks for that comment",
-        "i enjoy this friendly forum",
-        "this is a bad post",
-        "i dislike this article",
-        "this is not well written",
-    ]
-
-    preprocess = FeatureUnion([("dense", color_lang), ("sparse", CountVectorizer())])
-
-    assert preprocess.fit_transform(X).shape[0] == 6

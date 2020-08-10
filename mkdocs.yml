@@ -12,6 +12,7 @@ nav:
     - Interactive Visualisation: tutorial/embeddingsets/index.md
     - Language Options: tutorial/languages/index.md
     - Transformation Viz: tutorial/transformations/index.md
+    - Scikit-Learn Compatibility: tutorial/scikit-learn.md
     - Observations: tutorial/observations/index.md
     - FAQ: faq.md
   - API:

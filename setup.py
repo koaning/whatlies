@@ -57,7 +57,7 @@ dev_packages = docs_packages + test_packages + extra_deps
 
 setup(
     name="whatlies",
-    version="0.4.5",
+    version="0.4.6",
     author="Vincent D. Warmerdam",
     packages=find_packages(exclude=["notebooks", "docs"]),
     description="Tools to help uncover `what lies` in word embeddings.",

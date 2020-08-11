@@ -549,6 +549,42 @@ class EmbeddingSet:
         plt.setp(ax.get_xticklabels(), rotation=90, ha="right", rotation_mode="anchor")
         plt.show()
 
+    def plot_distance(self, metric=None):
+        """
+        Make a correlation plot. Shows you the correlation between all the word embeddings. Can
+        also be configured to show distances instead.
+
+        Arguments:
+            metric: don't plot correlation but a distance measure, must be scipy compatible (cosine, euclidean, etc)
+
+        Usage:
+
+        ```python
+        from whatlies.language import SpacyLanguage
+        lang = SpacyLanguage("en_core_web_md")
+
+        names = ['red', 'blue', 'green', 'yellow', 'cat', 'dog', 'mouse', 'rat', 'bike', 'car']
+        emb = lang[names]
+        emb.plot_distance()
+        ```
+
+        ![](https://rasahq.github.io/whatlies/images/corrplot.png)
+        """
+        df = self.to_dataframe().T
+        corr_df = (
+            pairwise_distances(self.to_matrix(), metric=metric) if metric else df.corr()
+        )
+
+        fig, ax = plt.subplots()
+        plt.imshow(corr_df, cmap=plt.cm.get_cmap().reversed())
+        plt.xticks(range(len(df.columns)), df.columns)
+        plt.yticks(range(len(df.columns)), df.columns)
+        plt.colorbar()
+
+        # Rotate the tick labels and set their alignment.
+        plt.setp(ax.get_xticklabels(), rotation=90, ha="right", rotation_mode="anchor")
+        plt.show()
+
     def plot_pixels(self):
         """
         Makes a pixelchart of every embedding in the set.

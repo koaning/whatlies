@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, Optional
 from copy import deepcopy
 
 import numpy as np
@@ -183,6 +183,7 @@ class Embedding:
         color: str = None,
         show_ops: bool = False,
         annot: bool = False,
+        axis_option: Optional[str] = None,
     ):
         """
         Handles the logic to perform a 2d plot in matplotlib.
@@ -194,6 +195,11 @@ class Embedding:
             color: the color of the dots
             show_ops: setting to also show the applied operations, only works for `text`
             annot: should the points be annotated
+            axis_option: a string which is passed as `option` argument to `matplotlib.pyplot.axis` in order to control
+                axis properties (e.g. using `'equal'` make circles shown circular in the plot). This might be useful
+                for preserving geometric relationships (e.g. orthogonality) in the generated plot. See `matplotlib.pyplot.axis`
+                [documentation](https://matplotlib.org/3.1.0/api/_as_gen/matplotlib.pyplot.axis.html#matplotlib-pyplot-axis)
+                for possible values and their description.
 
         **Usage**
         ```python
@@ -215,6 +221,7 @@ class Embedding:
                 xlabel=x_axis,
                 ylabel=y_axis,
                 annot=annot,
+                axis_option=axis_option,
             )
             return self
         x_val = self > x_axis
@@ -228,5 +235,6 @@ class Embedding:
             ylabel=y_axis.name,
             show_operations=show_ops,
             annot=annot,
+            axis_option=axis_option,
         )
         return self

@@ -7,10 +7,14 @@ import pandas as pd
 import matplotlib.pylab as plt
 import altair as alt
 from sklearn.metrics import pairwise_distances
-from sklearn.metrics.pairwise import paired_distances
+from sklearn.metrics.pairwise import (
+    paired_distances,
+    cosine_similarity,
+    cosine_distances,
+)
 
 from whatlies.embedding import Embedding
-from whatlies.common import plot_graph_layout
+from whatlies.common import plot_graph_layout, normalize
 
 
 class EmbeddingSet:
@@ -181,7 +185,7 @@ class EmbeddingSet:
         if mapping == "direct":
             return [v > other for k, v in self.embeddings.items()]
 
-    def to_X(self):
+    def to_X(self, norm=False):
         """
         Takes every vector in each embedding and turns it into a scikit-learn compatible `X` matrix.
 
@@ -199,7 +203,12 @@ class EmbeddingSet:
         X = emb.to_X()
         ```
         """
-        X = np.array([i.vector for i in self.embeddings.values()])
+        X = np.array(
+            [
+                normalize(i.vector) if norm else i.vector
+                for i in self.embeddings.values()
+            ]
+        )
         return X
 
     def to_X_y(self, y_label):
@@ -549,13 +558,12 @@ class EmbeddingSet:
         plt.setp(ax.get_xticklabels(), rotation=90, ha="right", rotation_mode="anchor")
         plt.show()
 
-    def plot_distance(self, metric=None):
+    def plot_similarity(self, metric="cosine", norm=True):
         """
-        Make a correlation plot. Shows you the correlation between all the word embeddings. Can
-        also be configured to show distances instead.
+        Make a similarity plot. Shows you the similarity between all the word embeddings in the set.
 
         Arguments:
-            metric: don't plot correlation but a distance measure, must be scipy compatible (cosine, euclidean, etc)
+            metric: cosine or euclidean
 
         Usage:
 
@@ -571,12 +579,52 @@ class EmbeddingSet:
         ![](https://rasahq.github.io/whatlies/images/corrplot.png)
         """
         df = self.to_dataframe().T
-        corr_df = (
-            pairwise_distances(self.to_matrix(), metric=metric) if metric else df.corr()
-        )
+        vmin, vmax = None, None
+        X = self.to_X(norm=norm)
+        if metric == "cosine":
+            similarity = cosine_similarity(X)
+            vmin, vmax = 0, 1
 
         fig, ax = plt.subplots()
-        plt.imshow(corr_df, cmap=plt.cm.get_cmap().reversed())
+        plt.imshow(similarity, cmap=plt.cm.get_cmap().reversed(), vmin=-vmin, vmax=vmax)
+        plt.xticks(range(len(df.columns)), df.columns)
+        plt.yticks(range(len(df.columns)), df.columns)
+        plt.colorbar()
+
+        # Rotate the tick labels and set their alignment.
+        plt.setp(ax.get_xticklabels(), rotation=90, ha="right", rotation_mode="anchor")
+        plt.show()
+
+    def plot_distance(self, metric="cosine", norm=True):
+        """
+        Make a similarity plot. Shows you the similarity between all the word embeddings in the set.
+
+        Arguments:
+            metric: `cosine` or `euclidean`
+            norm: normalise the vectors before calculating the distances
+
+        Usage:
+
+        ```python
+        from whatlies.language import SpacyLanguage
+        lang = SpacyLanguage("en_core_web_md")
+
+        names = ['red', 'blue', 'green', 'yellow', 'cat', 'dog', 'mouse', 'rat', 'bike', 'car']
+        emb = lang[names]
+        emb.plot_distance()
+        ```
+
+        ![](https://rasahq.github.io/whatlies/images/corrplot.png)
+        """
+        df = self.to_dataframe().T
+        vmin, vmax = None, None
+        X = self.to_X(norm=norm)
+        if metric == "cosine":
+            distances = cosine_distances(X)
+            vmin, vmax = 0, 1
+
+        fig, ax = plt.subplots()
+        plt.imshow(distances, cmap=plt.cm.get_cmap().reversed(), vmin=vmin, vmax=vmax)
         plt.xticks(range(len(df.columns)), df.columns)
         plt.yticks(range(len(df.columns)), df.columns)
         plt.colorbar()

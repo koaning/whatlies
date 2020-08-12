@@ -181,6 +181,15 @@ class EmbeddingSet:
         if mapping == "direct":
             return [v > other for k, v in self.embeddings.items()]
 
+    def pipe(self, func, *args, **kwargs):
+        """
+        Applies a function to the embedding set. Useful for method chaining.
+        :param func: The function to apply
+        :param args: Any arguments to pass along
+        :param kwargs: Any keyword arguments to pass along
+        """
+        return func(self, *args, **kwargs)
+
     def to_X(self):
         """
         Takes every vector in each embedding and turns it into a scikit-learn compatible `X` matrix.

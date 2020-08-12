@@ -181,6 +181,16 @@ class EmbeddingSet:
         new_embeddings = {k: emb >> other for k, emb in self.embeddings.items()}
         return EmbeddingSet(new_embeddings, name=f"({self.name} >> {other.name})")
 
+    def pipe(self, func, *args, **kwargs):
+        """
+        Applies a function to the embedding set. Useful for method chaining.
+
+        :param func: The function to apply
+        :param args: Any arguments to pass along
+        :param kwargs: Any keyword arguments to pass along
+        """
+        return func(self, *args, **kwargs)
+
     def compare_against(self, other, mapping="direct"):
         if mapping == "direct":
             return [v > other for k, v in self.embeddings.items()]

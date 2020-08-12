@@ -46,8 +46,8 @@ def test_sklearn_pipeline_works(lang):
     y = np.array([1, 1, 1, 0, 0, 0, 0])
 
     pipe.fit(X, y)
-    assert pipe.predict(X).shape[0] == 6
+    assert pipe.predict(X).shape[0] == 7
 
     preprocess = FeatureUnion([("dense", lang), ("sparse", CountVectorizer())])
 
-    assert preprocess.fit_transform(X).shape[0] == 6
+    assert preprocess.fit_transform(X).shape[0] == 7

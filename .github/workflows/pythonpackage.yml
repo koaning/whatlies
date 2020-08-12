@@ -46,4 +46,4 @@ jobs:
     - name: Test with pytest
       run: |
         python tests/prepare_fasttext_tests.py
-        pytest --verbose
+        pytest --verbose --durations 0

@@ -6,17 +6,19 @@ from .bpemblang import BytePairLanguage
 from .bpemblang import BytePairLanguage as BytePairLang
 from .gensim_lang import GensimLanguage
 
+from whatlies.error import NotInstalled
+
 try:
     from .convert_lang import ConveRTLanguage
     from .tfhub_lang import TFHubLanguage
 except ModuleNotFoundError as e:
-    ConveRTLanguage = None
-    TFHubLanguage = None
+    TFHubLanguage = NotInstalled("TFHubLanguage", "tfhub")
+    ConveRTLanguage = NotInstalled("ConveRTLanguage", "tfhub")
 
 try:
     from .hftransformers_lang import HFTransformersLanguage
 except ModuleNotFoundError as e:
-    HFTransformersLanguage = None
+    OpenTsne = NotInstalled("HFTransformersLanguage", "transformers")
 
 
 __all__ = [

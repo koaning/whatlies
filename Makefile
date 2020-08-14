@@ -8,9 +8,9 @@ develop:
 	python -m pip install --upgrade pip wheel setuptools twine
 	python -m pip install -e ".[dev]"
 	pre-commit install
-	python tests/prepare_fasttext_tests.py
-	python tests/prepare_gensim_kv.py
-	python tests/prepare_spacy_tests.py
+	python tests/scripts/prepare_fasttext_tests.py
+	python tests/scripts/prepare_gensim_kv.py
+	python tests/scripts/prepare_spacy_tests.py
 
 download:
 	python -m spacy download en_core_web_md

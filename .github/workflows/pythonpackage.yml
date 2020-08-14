@@ -45,5 +45,5 @@ jobs:
         black --check .
     - name: Test with pytest
       run: |
-        python tests/prepare_fasttext_tests.py
+        python tests/scripts/prepare_fasttext_tests.py
         pytest --verbose --durations 0

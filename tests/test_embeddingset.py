@@ -41,7 +41,7 @@ def test_merge_basic(lang):
 def test_average(lang):
     emb = lang[["red", "blue", "orange"]]
     av = emb.average()
-    assert av.name == "Emb.average()"
+    assert av.name == "EmbSet.average()"
     v1 = av.vector
     v2 = (lang["red"].vector + lang["blue"].vector + lang["orange"].vector) / 3
     assert np.array_equal(v1, v2)

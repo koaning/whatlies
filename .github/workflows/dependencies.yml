@@ -28,8 +28,9 @@ jobs:
       run: |
         python tests/check_pip.py missing tensorflow ivis opentsne
         python tests/check_pip.py contains spacy
-        python -c "from whatlies.language import SpacyLanguage"
-        python -c "from whatlies.transformers import Pca"
+        python tests/test_import_all.py
+    - name: Show Pretty Error
+      run: python -c "from whatlies.language import ConveRTLanguage; ConveRTLanguage()"
     - name: Install Tensorflow Dependencies
       run: |
         python -m pip install -e ".[tfhub]"
@@ -37,7 +38,7 @@ jobs:
       run: |
         python tests/check_pip.py missing ivis opentsne
         python tests/check_pip.py contains spacy tensorflow
-        python -c "from whatlies.transformers import Pca"
+        python tests/test_import_all.py
     - name: Install IVIS
       run: |
         python -m pip install -e ".[ivis]"
@@ -45,6 +46,7 @@ jobs:
       run: |
         python tests/check_pip.py missing opentsne
         python tests/check_pip.py contains spacy tensorflow ivis
+        python tests/test_import_all.py
     - name: Install All
       run: |
         python -m pip install -e ".[all]"

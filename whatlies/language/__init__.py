@@ -4,10 +4,19 @@ from .fasttext_lang import FasttextLanguage
 from .countvector_lang import CountVectorLanguage
 from .bpemblang import BytePairLanguage
 from .bpemblang import BytePairLanguage as BytePairLang
-from .convert_lang import ConveRTLanguage
 from .gensim_lang import GensimLanguage
-from .tfhub_lang import TFHubLanguage
-from .hftransformers_lang import HFTransformersLanguage
+
+try:
+    from .convert_lang import ConveRTLanguage
+    from .tfhub_lang import TFHubLanguage
+except ModuleNotFoundError as e:
+    ConveRTLanguage = None
+    TFHubLanguage = None
+
+try:
+    from .hftransformers_lang import HFTransformersLanguage
+except ModuleNotFoundError as e:
+    from .hftransformers_lang import HFTransformersLanguage
 
 
 __all__ = [

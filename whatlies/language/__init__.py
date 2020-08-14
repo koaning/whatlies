@@ -18,7 +18,7 @@ except ModuleNotFoundError as e:
 try:
     from .hftransformers_lang import HFTransformersLanguage
 except ModuleNotFoundError as e:
-    OpenTsne = NotInstalled("HFTransformersLanguage", "transformers")
+    HFTransformersLanguage = NotInstalled("HFTransformersLanguage", "transformers")
 
 
 __all__ = [

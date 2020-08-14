@@ -63,6 +63,34 @@ This saves the following chart on disk;
 
 ![](images/chart.png)
 
+### How do I change the title/size of the interactive chart?
+
+The interactive charts are [Altair](https://altair-viz.github.io/index.html) charts
+and that means that you could do something like this;
+
+```python
+from whatlies.language import SpacyLanguage
+
+words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
+         "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
+         "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+         "person", "family", "brother", "sister"]
+
+lang = SpacyLanguage("en_core_web_md")
+emb = lang[words]
+
+p = emb.plot_interactive('man', 'woman')
+
+p.properties(title="spaCy", height=200, width=200)
+```
+
+One common feature is that you might set the `width` to the container size
+in order to achieve 100% width.
+
+```
+p.properties(title="spaCy", height=200, width="container")
+```
+
 ## Languages
 
 ### How do I access nearest tokens from a language model?

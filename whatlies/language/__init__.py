@@ -16,7 +16,7 @@ except ModuleNotFoundError as e:
 try:
     from .hftransformers_lang import HFTransformersLanguage
 except ModuleNotFoundError as e:
-    from .hftransformers_lang import HFTransformersLanguage
+    HFTransformersLanguage = None
 
 
 __all__ = [

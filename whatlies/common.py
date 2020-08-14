@@ -12,6 +12,7 @@ def handle_2d_plot(
     color=None,
     xlabel=None,
     ylabel=None,
+    title=None,
     show_operations=False,
     annot=False,
     axis_option=None,
@@ -26,6 +27,7 @@ def handle_2d_plot(
     - color: the color to apply, only works for `scatter` and `arrow`
     - xlabel: manually override the xlabel
     - ylabel: manually override the ylabel
+    - title: optional title used for the plot
     - show_operations: setting to also show the applied operations, only works for `text`
     - axis_option: a string which is passed to `matplotlib.pyplot.axis` function.
     """
@@ -50,8 +52,10 @@ def handle_2d_plot(
     if (kind == "text") or annot:
         plt.text(embedding.vector[0] + 0.01, embedding.vector[1], name)
 
-    plt.xlabel("x" if not xlabel else xlabel)
-    plt.ylabel("y" if not ylabel else ylabel)
+    plt.xlabel("x" if xlabel is None else xlabel)
+    plt.ylabel("y" if ylabel is None else ylabel)
+    if title is not None:
+        plt.title(title)
     if axis_option is not None:
         plt.axis(axis_option)
 

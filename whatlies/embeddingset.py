@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, Optional
 from copy import deepcopy
 from functools import reduce
 
@@ -513,8 +513,11 @@ class EmbeddingSet:
     def plot(
         self,
         kind: str = "scatter",
-        x_axis: str = None,
-        y_axis: str = None,
+        x_axis: Union[int, str, Embedding] = None,
+        y_axis: Union[int, str, Embedding] = None,
+        x_label: Optional[str] = None,
+        y_label: Optional[str] = None,
+        title: Optional[str] = None,
         color: str = None,
         show_ops: str = False,
         **kwargs,
@@ -524,17 +527,29 @@ class EmbeddingSet:
 
         Arguments:
             kind: what kind of plot to make, can be `scatter`, `arrow` or `text`
-            x_axis: the x-axis to be used, must be given when dim > 2
-            y_axis: the y-axis to be used, must be given when dim > 2
+            x_axis: the x-axis to be used, must be given when dim > 2; if an integer, the corresponding
+                dimension of embedding is used.
+            y_axis: the y-axis to be used, must be given when dim > 2; if an integer, the corresponding
+                dimension of embedding is used.
+            x_label: an optional label used for x-axis; if not given, it is set based on value of `x_axis`.
+            y_label: an optional label used for y-axis; if not given, it is set based on value of `y_axis`.
+            title: an optional title for the plot.
             color: the color of the dots
             show_ops: setting to also show the applied operations, only works for `text`
             kwargs: additional key-value pair arguments which are passed to `plot` method of `Embedding` class
         """
+        if isinstance(x_axis, str):
+            x_axis = self[x_axis]
+        if isinstance(y_axis, str):
+            y_axis = self[y_axis]
         for k, token in self.embeddings.items():
             token.plot(
                 kind=kind,
                 x_axis=x_axis,
                 y_axis=y_axis,
+                x_label=x_label,
+                y_label=y_label,
+                title=title,
                 color=color,
                 show_ops=show_ops,
                 **kwargs,

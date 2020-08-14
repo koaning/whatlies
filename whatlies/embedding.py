@@ -178,8 +178,11 @@ class Embedding:
     def plot(
         self,
         kind: str = "scatter",
-        x_axis: Union[str, "Embedding"] = None,
-        y_axis: Union[str, "Embedding"] = None,
+        x_axis: Union[int, "Embedding"] = None,
+        y_axis: Union[int, "Embedding"] = None,
+        x_label: Optional[str] = None,
+        y_label: Optional[str] = None,
+        title: Optional[str] = None,
         color: str = None,
         show_ops: bool = False,
         annot: bool = False,
@@ -190,8 +193,13 @@ class Embedding:
 
         Arguments:
             kind: what kind of plot to make, can be `scatter`, `arrow` or `text`
-            x_axis: the x-axis to be used, must be given when dim > 2
-            y_axis: the y-axis to be used, must be given when dim > 2
+            x_axis: the x-axis to be used, must be given when dim > 2; if an integer, the corresponding
+                dimension of embedding is used.
+            y_axis: the y-axis to be used, must be given when dim > 2; if an integer, the corresponding
+                dimension of embedding is used.
+            x_label: an optional label used for x-axis; if not given, it is set based on `x_axis` value.
+            y_label: an optional label used for y-axis; if not given, it is set based on `y_axis` value.
+            title: an optional title for the plot.
             color: the color of the dots
             show_ops: setting to also show the applied operations, only works for `text`
             annot: should the points be annotated
@@ -212,29 +220,32 @@ class Embedding:
         bar.plot(kind="arrow", annot=True)
         ```
         """
-        if len(self.vector) == 2:
-            handle_2d_plot(
-                self,
-                kind=kind,
-                color=color,
-                show_operations=show_ops,
-                xlabel=x_axis,
-                ylabel=y_axis,
-                annot=annot,
-                axis_option=axis_option,
-            )
-            return self
-        x_val = self > x_axis
-        y_val = self > y_axis
-        intermediate = Embedding(name=self.name, vector=[x_val, y_val], orig=self.orig)
+        x_val, x_lab = self._get_plot_axis_value_and_label(x_axis, dir="x")
+        y_val, y_lab = self._get_plot_axis_value_and_label(y_axis, dir="y")
+        x_label = x_lab if x_label is None else x_label
+        y_label = y_lab if y_label is None else y_label
+        emb_plot = Embedding(name=self.name, vector=[x_val, y_val], orig=self.orig)
         handle_2d_plot(
-            intermediate,
+            emb_plot,
             kind=kind,
             color=color,
-            xlabel=x_axis.name,
-            ylabel=y_axis.name,
+            xlabel=x_label,
+            ylabel=y_label,
+            title=title,
             show_operations=show_ops,
             annot=annot,
             axis_option=axis_option,
         )
         return self
+
+    def _get_plot_axis_value_and_label(self, axis, dir):
+        if isinstance(axis, int):
+            return self.vector[axis], "Dimension " + str(axis)
+        if isinstance(axis, Embedding):
+            return self > axis, axis.name
+        if axis is None:
+            if len(self.vector) > 2:
+                raise ValueError(
+                    f"The `{dir}_axis` value cannot be None for a {len(self.vector)}D embedding"
+                )
+            return self.vector[0 if dir == "x" else 1], axis

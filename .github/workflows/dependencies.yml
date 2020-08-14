@@ -30,7 +30,7 @@ jobs:
         python tests/check_pip.py contains spacy
         python tests/test_import_all.py
     - name: Show Pretty Error
-      run: python -c "from whatlies.language import ConveRTLanguage; ConveRTLanguage()"
+      run: python tests/import_demo.py
     - name: Install Tensorflow Dependencies
       run: |
         python -m pip install -e ".[tfhub]"

@@ -66,7 +66,7 @@ This saves the following chart on disk;
 ### How do I change the title/size of the interactive chart?
 
 The interactive charts are [Altair](https://altair-viz.github.io/index.html) charts
-and that means that you could do something like this;
+and that means that you could do something like this:
 
 ```python
 from whatlies.language import SpacyLanguage

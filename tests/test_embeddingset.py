@@ -24,6 +24,22 @@ def lang():
     return SpacyLanguage(nlp)
 
 
+def test_embeddingset_creation():
+    foo = Embedding("foo", [0, 1])
+    bar = Embedding("bar", [1, 1])
+
+    emb = EmbeddingSet(foo)
+    assert len(emb) == 1
+    assert "foo" in emb
+    emb = EmbeddingSet(foo, bar)
+    assert len(emb) == 2
+    assert "foo" in emb
+    assert "bar" in emb
+    emb = EmbeddingSet({"foo": foo})
+    assert len(emb) == 1
+    assert "foo" in emb
+
+
 @pytest.mark.parametrize("operator", [add, rshift, sub, or_])
 def test_artificial_embset(lang, operator):
     emb = lang[["red", "blue", "orange"]]

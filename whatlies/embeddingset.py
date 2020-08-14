@@ -21,7 +21,7 @@ class EmbeddingSet:
 
     **Parameters**
 
-    - **embeddings**: list of embeddings or dictionary with name: embedding.md pairs
+    - **embeddings**: list of `Embedding`, or a single dictionary containing name:`Embedding` pairs
     - **name**: custom name of embeddingset
 
     Usage:
@@ -41,11 +41,11 @@ class EmbeddingSet:
         if not name:
             name = "EmbSet"
         self.name = name
-        if len(embeddings) == 1:
-            # we assume it is a dictionary here
+        if isinstance(embeddings[0], dict):
+            # Assume it's a single dictionary.
             self.embeddings = embeddings[0]
         else:
-            # we assume it is a tuple of tokens
+            # Assume it's a list of `Embedding` instances.
             self.embeddings = {t.name: t for t in embeddings}
 
     def __contains__(self, item):

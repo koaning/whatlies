@@ -181,6 +181,38 @@ class EmbeddingSet:
         if mapping == "direct":
             return [v > other for k, v in self.embeddings.items()]
 
+    def pipe(self, func, *args, **kwargs):
+        """
+        Applies a function to the embedding set. Useful for method chaining and
+        chunks of code that repeat.
+
+        Arguments:
+             func: callable that accepts an `EmbeddingSet` set as its first argument
+             args: arguments to also pass to the function
+             kwargs: keyword arguments to also pass to the function
+
+        ```python
+        from whatlies.Language import SpacyLanguage
+        from whatlies.transformers import Umap
+
+        lang_md = SpacyLanguage("en_core_web_md")
+        lang_lg = SpacyLanguage("en_core_web_lg")
+
+        text = ["cat", "dog", "rat", "blue", "red", "yellow"]
+
+        def make_plot(embset):
+            return (embset
+                    .transform(Umap(2))
+                    .plot_interactive("umap_0", "umap_1", annot=False)
+                    .properties(height=200, width=200))
+
+        p1 = lang_md[text].pipe(make_plot)
+        p2 = lang_lg[text].pipe(make_plot)
+        p1 | p2
+        ```
+        """
+        return func(self, *args, **kwargs)
+
     def to_X(self):
         """
         Takes every vector in each embedding and turns it into a scikit-learn compatible `X` matrix.

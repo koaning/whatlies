@@ -120,3 +120,8 @@ def test_filter(lang):
     assert len(emb) == 6
     assert len(emb.filter(lambda e: "pink" not in e.name)) == 5
     assert len(emb.filter(lambda e: "pink" in e.name)) == 1
+
+
+def test_pipe(lang):
+    embset = lang[["red", "blue", "orange", "pink", "purple", "brown"]]
+    assert embset.pipe(len) == 6

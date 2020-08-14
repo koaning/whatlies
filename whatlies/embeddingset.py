@@ -187,7 +187,7 @@ class EmbeddingSet:
         chunks of code that repeat.
 
         Arguments:
-             func: callable that accepts an embedding set as it's first argument
+             func: callable that accepts an `EmbeddingSet` set as its first argument
              args: arguments to also pass to the function
              kwargs: keyword arguments to also pass to the function
 

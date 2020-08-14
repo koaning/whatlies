@@ -24,21 +24,34 @@ jobs:
     - name: Run Base Install
       run: |
         python -m pip install -e ".[base]"
+    - name: Run Checks
+      run: |
         python tests/check_pip.py missing tensorflow ivis opentsne
         python tests/check_pip.py contains spacy
+        python tests/import_all.py
+    - name: Show Pretty Error
+      run: python tests/import_msg_demo.py
     - name: Install Tensorflow Dependencies
       run: |
         python -m pip install -e ".[tfhub]"
+    - name: Run Checks
+      run: |
         python tests/check_pip.py missing ivis opentsne
         python tests/check_pip.py contains spacy tensorflow
+        python tests/import_all.py
     - name: Install IVIS
       run: |
         python -m pip install -e ".[ivis]"
+    - name: Run Checks
+      run: |
         python tests/check_pip.py missing opentsne
         python tests/check_pip.py contains spacy tensorflow ivis
+        python tests/import_all.py
     - name: Install All
       run: |
         python -m pip install -e ".[all]"
+    - name: Run Checks
+      run: |
         python tests/check_pip.py contains spacy tensorflow ivis opentsne transformers
     - name: Docs can Build
       run: |

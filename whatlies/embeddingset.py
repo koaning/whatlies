@@ -39,7 +39,7 @@ class EmbeddingSet:
 
     def __init__(self, *embeddings, name=None):
         if not name:
-            name = "Emb"
+            name = "EmbSet"
         self.name = name
         if len(embeddings) == 1:
             # we assume it is a dictionary here

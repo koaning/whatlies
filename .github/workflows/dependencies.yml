@@ -26,11 +26,14 @@ jobs:
         python -m pip install -e ".[base]"
         python tests/check_pip.py missing tensorflow ivis opentsne
         python tests/check_pip.py contains spacy
+        python -c "from whatlies.language import SpacyLanguage"
+        python -c "from whatlies.transformer import Pca"
     - name: Install Tensorflow Dependencies
       run: |
         python -m pip install -e ".[tfhub]"
         python tests/check_pip.py missing ivis opentsne
         python tests/check_pip.py contains spacy tensorflow
+        python -c "from whatlies.transformer import Pca"
     - name: Install IVIS
       run: |
         python -m pip install -e ".[ivis]"

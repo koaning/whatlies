@@ -45,6 +45,7 @@ docs_packages = [
 ]
 
 test_packages = [
+    "torch>=1.6.0",
     "flake8>=3.6.0",
     "pytest>=4.0.2",
     "black>=19.3b0",

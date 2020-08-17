@@ -13,7 +13,7 @@
         <meta name="description" content="A python package to discover "what lies" in word embeddings.">
       
       
-        <link rel="canonical" href="https://rasahq.github.io/whatlies/roadmap/">
+        <link rel="canonical" href="https://rasahq.github.io/whatlies/releases/">
       
       
         <meta name="author" content="Vincent D. Warmerdam @ Rasa Research">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Roadmap - whatlies</title>
+        <title>Releases - whatlies</title>
       
     
     
@@ -115,7 +115,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Roadmap
+                Releases
               
             </span>
           
@@ -682,6 +682,18 @@
       
       
 
+
+  <li class="md-nav__item">
+    <a href="../roadmap/" title="Roadmap" class="md-nav__link">
+      Roadmap
+    </a>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
@@ -690,22 +702,10 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
-    <a href="./" title="Roadmap" class="md-nav__link md-nav__link--active">
-      Roadmap
-    </a>
-    
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../releases/" title="Releases" class="md-nav__link">
+    <a href="./" title="Releases" class="md-nav__link md-nav__link--active">
       Releases
     </a>
+    
   </li>
 
     
@@ -721,36 +721,47 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/RasaHQ/whatlies/edit/master/docs/roadmap.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/RasaHQ/whatlies/edit/master/docs/releases.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>Roadmap</h1>
+                  <h1>Releases</h1>
                 
-                <p>There's a few things that would be nice to have. Feel free to start
-a discussion on these topics in github.</p>
-<p><strong>Curated Word Lists</strong></p>
-<p>If people want to investigate <code>bias</code> in word embeddings then
-it would help if they had word-lists at the ready. But you
-can also imagine that it would be nice to have a word list
-of words that have multiple meanings. It'd be especially nice
-if we can support these word lists in many languages.</p>
-<p><strong>Multiple Plot Metrics</strong></p>
-<p>At the moment we only project onto axes to get x/y coordinates.
-It might make sense to show the cosine distance to these
-axes instead.</p>
-<p>And if we're allowing cosine distance ... we might allow for
-flexible distance metrics in general.</p>
-<p><strong>Table Summaries</strong></p>
-<p>We've got a focus on charts now, but one imagines that calculating
-tables with summary statistics is also relevant.</p>
-<p><strong>Languages</strong></p>
-<p>It might be nice if we could help the user automatically
-download embedding files for supported backends.</p>
-<p><strong>Testing</strong></p>
+                <p>v0.4.7</p>
 <ul>
-<li>it would be nice to have a good way of testing the charts</li>
-<li>it would be nice to be able to test multiple models without
-having to download gigabytes into github actions</li>
+<li>Fixed bugs relating to conditional imports.</li>
+<li>Added a new <code>pipe</code> method.</li>
+</ul>
+<p>v0.4.6</p>
+<ul>
+<li>Fixed bugs to become spaCy 2.3 compatible.</li>
+<li>Added scikit-learn pipeline compatibility for all models.</li>
+</ul>
+<p>v0.4.5</p>
+<ul>
+<li>Created support for tfhub and huggingface backends.</li>
+<li>Added the <code>ivis</code> transformer.</li>
+</ul>
+<p>v0.4.4</p>
+<ul>
+<li>Added support for ConveRT Embeddings.</li>
+</ul>
+<p>v0.4.3</p>
+<ul>
+<li>Added support for similarity retreival for <code>CountVectorLang</code></li>
+<li>Added more methods for <code>Embedding</code> objects: <code>distance</code>, <code>norm</code></li>
+</ul>
+<p>v0.4.2</p>
+<ul>
+<li>Added support the <code>gensim</code> language backend.</li>
+</ul>
+<p>v0.4.1</p>
+<ul>
+<li>Added support for <code>TSNE</code></li>
+</ul>
+<p>v0.4.0</p>
+<ul>
+<li>Many small updates to improve documentation</li>
+<li>Fixed many small bugs for the <code>BytePairLanguage</code></li>
 </ul>
                 
                   
@@ -773,7 +784,7 @@ having to download gigabytes into github actions</li>
       <div class="md-footer-nav">
         <nav class="md-footer-nav__inner md-grid">
           
-            <a href="../api/language/tfhub/" title="TFHub" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <a href="../roadmap/" title="Roadmap" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
                 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
               </div>
@@ -782,25 +793,11 @@ having to download gigabytes into github actions</li>
                   <span class="md-footer-nav__direction">
                     Previous
                   </span>
-                  TFHub
+                  Roadmap
                 </span>
               </div>
             </a>
           
-          
-            <a href="../releases/" title="Releases" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-                <span class="md-flex__ellipsis">
-                  <span class="md-footer-nav__direction">
-                    Next
-                  </span>
-                  Releases
-                </span>
-              </div>
-              <div class="md-flex__cell md-flex__cell--shrink">
-                <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-              </div>
-            </a>
           
         </nav>
       </div>

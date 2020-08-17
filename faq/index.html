@@ -231,6 +231,8 @@
       
         
       
+        
+      
     </ul>
   </div>
 </nav>
@@ -429,6 +431,13 @@
           <li class="md-nav__item">
   <a href="#how-do-i-save-an-interactive-chart-for-publication" class="md-nav__link">
     How do I save an interactive chart for publication?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-change-the-titlesize-of-the-interactive-chart" class="md-nav__link">
+    How do I change the title/size of the interactive chart?
   </a>
   
 </li>
@@ -795,6 +804,18 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../releases/" title="Releases" class="md-nav__link">
+      Releases
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -833,6 +854,13 @@
           <li class="md-nav__item">
   <a href="#how-do-i-save-an-interactive-chart-for-publication" class="md-nav__link">
     How do I save an interactive chart for publication?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-change-the-titlesize-of-the-interactive-chart" class="md-nav__link">
+    How do I change the title/size of the interactive chart?
   </a>
   
 </li>
@@ -953,6 +981,29 @@ save(p, &quot;chart.png&quot;)
 
 <p>This saves the following chart on disk;</p>
 <p><img alt="" src="../images/chart.png" /></p>
+<h3 id="how-do-i-change-the-titlesize-of-the-interactive-chart">How do I change the title/size of the interactive chart?<a class="headerlink" href="#how-do-i-change-the-titlesize-of-the-interactive-chart" title="Permanent link">&para;</a></h3>
+<p>The interactive charts are <a href="https://altair-viz.github.io/index.html">Altair</a> charts
+and that means that you could do something like this:</p>
+<pre><code class="python">from whatlies.language import SpacyLanguage
+
+words = [&quot;prince&quot;, &quot;princess&quot;, &quot;nurse&quot;, &quot;doctor&quot;, &quot;banker&quot;, &quot;man&quot;, &quot;woman&quot;,
+         &quot;cousin&quot;, &quot;neice&quot;, &quot;king&quot;, &quot;queen&quot;, &quot;dude&quot;, &quot;guy&quot;, &quot;gal&quot;, &quot;fire&quot;,
+         &quot;dog&quot;, &quot;cat&quot;, &quot;mouse&quot;, &quot;red&quot;, &quot;bluee&quot;, &quot;green&quot;, &quot;yellow&quot;, &quot;water&quot;,
+         &quot;person&quot;, &quot;family&quot;, &quot;brother&quot;, &quot;sister&quot;]
+
+lang = SpacyLanguage(&quot;en_core_web_md&quot;)
+emb = lang[words]
+
+p = emb.plot_interactive('man', 'woman')
+
+p.properties(title=&quot;spaCy&quot;, height=200, width=200)
+</code></pre>
+
+<p>One common feature is that you might set the <code>width</code> to the container size
+in order to achieve 100% width.</p>
+<pre><code>p.properties(title=&quot;spaCy&quot;, height=200, width=&quot;container&quot;)
+</code></pre>
+
 <h2 id="languages">Languages<a class="headerlink" href="#languages" title="Permanent link">&para;</a></h2>
 <h3 id="how-do-i-access-nearest-tokens-from-a-language-model">How do I access nearest tokens from a language model?<a class="headerlink" href="#how-do-i-access-nearest-tokens-from-a-language-model" title="Permanent link">&para;</a></h3>
 <p>This depends on the language model, please check the docs, but most

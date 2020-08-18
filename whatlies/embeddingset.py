@@ -25,7 +25,7 @@ class EmbeddingSet:
 
     **Parameters**
 
-    - **embeddings**: list of embeddings or dictionary with name: embedding.md pairs
+    - **embeddings**: list of `Embedding`, or a single dictionary containing name:`Embedding` pairs
     - **name**: custom name of embeddingset
 
     Usage:
@@ -43,13 +43,13 @@ class EmbeddingSet:
 
     def __init__(self, *embeddings, name=None):
         if not name:
-            name = "Emb"
+            name = "EmbSet"
         self.name = name
-        if len(embeddings) == 1:
-            # we assume it is a dictionary here
+        if isinstance(embeddings[0], dict):
+            # Assume it's a single dictionary.
             self.embeddings = embeddings[0]
         else:
-            # we assume it is a tuple of tokens
+            # Assume it's a list of `Embedding` instances.
             self.embeddings = {t.name: t for t in embeddings}
 
     def __contains__(self, item):
@@ -195,7 +195,37 @@ class EmbeddingSet:
         if mapping == "direct":
             return [v > other for k, v in self.embeddings.items()]
 
-    def to_X(self, norm=False):
+    def pipe(self, func, *args, **kwargs):
+        """
+        Applies a function to the embedding set. Useful for method chaining and
+        chunks of code that repeat.
+
+        Arguments:
+             func: callable that accepts an `EmbeddingSet` set as its first argument
+             args: arguments to also pass to the function
+             kwargs: keyword arguments to also pass to the function
+
+        ```python
+        from whatlies.language import SpacyLanguage, BytePairLanguage
+
+        lang_sp = SpacyLanguage("en_core_web_sm")
+        lang_bp = BytePairLanguage("en", dim=25, vs=1000)
+
+        text = ["cat", "dog", "rat", "blue", "red", "yellow"]
+
+        def make_plot(embset):
+            return (embset
+                    .plot_interactive("dog", "blue")
+                    .properties(height=200, width=200))
+
+        p1 = lang_sp[text].pipe(make_plot)
+        p2 = lang_bp[text].pipe(make_plot)
+        p1 | p2
+        ```
+        """
+        return func(self, *args, **kwargs)
+
+    def to_X(self):
         """
         Takes every vector in each embedding and turns it into a scikit-learn compatible `X` matrix.
 
@@ -336,7 +366,7 @@ class EmbeddingSet:
         emb1 = EmbeddingSet(foo, bar)
         emb2 = EmbeddingSet(xyz, buz)
 
-        both = em1.merge(emb2)
+        both = emb1.merge(emb2)
         ```
         """
         return EmbeddingSet({**self.embeddings, **other.embeddings})
@@ -461,13 +491,13 @@ class EmbeddingSet:
 
         ```python
         from whatlies.language import SpacyLanguage
-        lang1 = SpacyLanguage("en_core_web_sm")
-        lang2 = SpacyLanguage("en_core_web_md")
+
+        lang = SpacyLanguage("en_core_web_sm")
 
         names = ['red', 'blue', 'green', 'yellow', 'cat', 'dog', 'mouse', 'rat', 'bike', 'car']
-        emb1 = lang1[names]
-        emb2 = lang2[names]
-        emb1.movement_df(emb2)
+        emb = lang[names]
+        emb_ort = lang[names] | lang['cat']
+        emb.movement_df(emb_ort)
         ```
         """
         overlap = list(
@@ -544,7 +574,9 @@ class EmbeddingSet:
 
         ```python
         from whatlies.language import SpacyLanguage
-        lang = SpacyLanguage("en_core_web_md")
+        import matplotlib.pyplot as plt
+
+        lang = SpacyLanguage("en_core_web_sm")
 
         names = ['red', 'blue', 'green', 'yellow', 'cat', 'dog', 'mouse', 'rat', 'bike', 'car']
         emb = lang[names]
@@ -566,7 +598,6 @@ class EmbeddingSet:
 
         # Rotate the tick labels and set their alignment.
         plt.setp(ax.get_xticklabels(), rotation=90, ha="right", rotation_mode="anchor")
-        plt.show()
 
     def plot_similarity(self, metric="cosine", norm=True):
         """
@@ -651,7 +682,9 @@ class EmbeddingSet:
 
         ```python
         from whatlies.language import SpacyLanguage
-        lang = SpacyLanguage("en_core_web_md")
+        from whatlies.transformers import Pca
+
+        lang = SpacyLanguage("en_core_web_sm")
 
         names = ['red', 'blue', 'green', 'yellow',
                  'cat', 'dog', 'mouse', 'rat',
@@ -699,11 +732,11 @@ class EmbeddingSet:
                  "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
                  "person", "family", "brother", "sister"]
 
-        lang = SpacyLanguage("en_core_web_md")
+        lang = SpacyLanguage("en_core_web_sm")
         emb = lang[words]
         emb_new = emb - emb['king']
 
-        emb.plot_difference(emb_new, 'man', 'woman')
+        emb.plot_movement(emb_new, 'man', 'woman')
         ```
         """
         if isinstance(x_axis, str):
@@ -781,7 +814,7 @@ class EmbeddingSet:
                  "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
                  "person", "family", "brother", "sister"]
 
-        lang = SpacyLanguage("en_core_web_md")
+        lang = SpacyLanguage("en_core_web_sm")
         emb = lang[words]
 
         emb.plot_interactive('man', 'woman')
@@ -865,7 +898,7 @@ class EmbeddingSet:
                  "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
                  "person", "family", "brother", "sister"]
 
-        lang = SpacyLanguage("en_core_web_md")
+        lang = SpacyLanguage("en_core_web_sm")
         emb = lang[words]
 
         emb.transform(Pca(3)).plot_interactive_matrix('pca_0', 'pca_1', 'pca_2')

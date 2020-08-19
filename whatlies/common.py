@@ -14,7 +14,7 @@ def handle_2d_plot(
     ylabel=None,
     title=None,
     show_operations=False,
-    annot=False,
+    annot=True,
     axis_option=None,
 ):
     """
@@ -31,26 +31,30 @@ def handle_2d_plot(
     - show_operations: setting to also show the applied operations, only works for `text`
     - axis_option: a string which is passed to `matplotlib.pyplot.axis` function.
     """
-    name = embedding.name if show_operations else embedding.orig
+    if not isinstance(embedding, list):
+        # It's a single Embedding instance
+        embedding = [embedding]
+    vectors = np.array([e.vector for e in embedding])
+    names = [e.name if show_operations else e.orig for e in embedding]
     if kind == "scatter":
         if color is None:
             color = "steelblue"
-        plt.scatter([embedding.vector[0]], [embedding.vector[1]], c=color)
+        plt.scatter(vectors[:, 0], vectors[:, 1], c=color)
     if kind == "arrow":
-        plt.scatter([embedding.vector[0]], [embedding.vector[1]], c="white", s=0.01)
+        plt.scatter(vectors[:, 0], vectors[:, 1], c="white", s=0.01)
         plt.quiver(
-            [0],
-            [0],
-            [embedding.vector[0]],
-            [embedding.vector[1]],
+            np.zeros_like(vectors[:, 0]),
+            np.zeros_like(vectors[:, 1]),
+            vectors[:, 0],
+            vectors[:, 1],
             color=color,
             angles="xy",
             scale_units="xy",
             scale=1,
         )
-        plt.text(embedding.vector[0] + 0.01, embedding.vector[1], name)
     if (kind == "text") or annot:
-        plt.text(embedding.vector[0] + 0.01, embedding.vector[1], name)
+        for vec, name in zip(vectors, names):
+            plt.text(vec[0] + 0.01, vec[1], name)
 
     plt.xlabel("x" if xlabel is None else xlabel)
     plt.ylabel("y" if ylabel is None else ylabel)

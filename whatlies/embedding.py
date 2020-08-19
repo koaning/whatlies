@@ -185,7 +185,7 @@ class Embedding:
         title: Optional[str] = None,
         color: str = None,
         show_ops: bool = False,
-        annot: bool = False,
+        annot: bool = True,
         axis_option: Optional[str] = None,
     ):
         """

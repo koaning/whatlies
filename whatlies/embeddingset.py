@@ -11,10 +11,13 @@ from sklearn.metrics.pairwise import (
     paired_distances,
     cosine_similarity,
     cosine_distances,
+    euclidean_distances,
 )
+from sklearn.preprocessing import normalize
 
+from sklearn.utils import deprecated
 from whatlies.embedding import Embedding
-from whatlies.common import plot_graph_layout, normalize
+from whatlies.common import plot_graph_layout
 
 
 class EmbeddingSet:
@@ -213,12 +216,8 @@ class EmbeddingSet:
         X = emb.to_X()
         ```
         """
-        X = np.array(
-            [
-                normalize(i.vector) if norm else i.vector
-                for i in self.embeddings.values()
-            ]
-        )
+        X = np.array([i.vector for i in self.embeddings.values()])
+        X = normalize(X) if norm else X
         return X
 
     def to_X_y(self, y_label):
@@ -532,6 +531,9 @@ class EmbeddingSet:
         plot_graph_layout(self.embeddings, kind, **kwargs)
         return self
 
+    @deprecated(
+        "This method will be deprecated in v0.6.0 in favor of `plot_distance` and `plot_similarity`"
+    )
     def plot_correlation(self, metric=None):
         """
         Make a correlation plot. Shows you the correlation between all the word embeddings. Can
@@ -539,6 +541,9 @@ class EmbeddingSet:
 
         Arguments:
             metric: don't plot correlation but a distance measure, must be scipy compatible (cosine, euclidean, etc)
+
+        Warning:
+            This method will be deprecated in version 0.6.0 in favor of `plot_distance` and `plot_similarity`.
 
         Usage:
 
@@ -550,8 +555,6 @@ class EmbeddingSet:
         emb = lang[names]
         emb.plot_correlation()
         ```
-
-        ![](https://rasahq.github.io/whatlies/images/corrplot.png)
         """
         df = self.to_dataframe().T
         corr_df = (
@@ -568,12 +571,13 @@ class EmbeddingSet:
         plt.setp(ax.get_xticklabels(), rotation=90, ha="right", rotation_mode="anchor")
         plt.show()
 
-    def plot_similarity(self, metric="cosine", norm=True):
+    def plot_similarity(self, metric="cosine", norm=False):
         """
         Make a similarity plot. Shows you the similarity between all the word embeddings in the set.
 
         Arguments:
-            metric: cosine or euclidean
+            metric: `cosine` or `correlation`
+            norm: normalise the embeddings before calculating the distance
 
         Usage:
 
@@ -583,34 +587,39 @@ class EmbeddingSet:
 
         names = ['red', 'blue', 'green', 'yellow', 'cat', 'dog', 'mouse', 'rat', 'bike', 'car']
         emb = lang[names]
-        emb.plot_distance()
+        emb.plot_similarity()
+        emb.plot_similarity(metric='correlation')
         ```
-
-        ![](https://rasahq.github.io/whatlies/images/corrplot.png)
         """
-        df = self.to_dataframe().T
-        vmin, vmax = None, None
+        allowed_metrics = ["cosine", "correlation"]
+        if metric not in allowed_metrics:
+            raise ValueError(
+                f"The `metric` argument must be in {allowed_metrics}, got: {metric}."
+            )
+
+        vmin, vmax = 0, 1
         X = self.to_X(norm=norm)
         if metric == "cosine":
             similarity = cosine_similarity(X)
-            vmin, vmax = 0, 1
+        if metric == "correlation":
+            similarity = np.corrcoef(self.to_X())
 
         fig, ax = plt.subplots()
-        plt.imshow(similarity, cmap=plt.cm.get_cmap().reversed(), vmin=-vmin, vmax=vmax)
-        plt.xticks(range(len(df.columns)), df.columns)
-        plt.yticks(range(len(df.columns)), df.columns)
+        plt.imshow(similarity, cmap=plt.cm.get_cmap(), vmin=-vmin, vmax=vmax)
+        plt.xticks(range(len(self)), self.embeddings.keys())
+        plt.yticks(range(len(self)), self.embeddings.keys())
         plt.colorbar()
 
         # Rotate the tick labels and set their alignment.
         plt.setp(ax.get_xticklabels(), rotation=90, ha="right", rotation_mode="anchor")
         plt.show()
 
-    def plot_distance(self, metric="cosine", norm=True):
+    def plot_distance(self, metric="cosine", norm=False):
         """
         Make a similarity plot. Shows you the similarity between all the word embeddings in the set.
 
         Arguments:
-            metric: `cosine` or `euclidean`
+            metric: `cosine`, `correlation` or `euclidean`
             norm: normalise the vectors before calculating the distances
 
         Usage:
@@ -621,22 +630,31 @@ class EmbeddingSet:
 
         names = ['red', 'blue', 'green', 'yellow', 'cat', 'dog', 'mouse', 'rat', 'bike', 'car']
         emb = lang[names]
-        emb.plot_distance()
+        emb.plot_distance(metric='cosine')
+        emb.plot_distance(metric='euclidean')
+        emb.plot_distance(metric='correlation')
         ```
-
-        ![](https://rasahq.github.io/whatlies/images/corrplot.png)
         """
-        df = self.to_dataframe().T
-        vmin, vmax = None, None
+        allowed_metrics = ["cosine", "correlation", "euclidean"]
+        if metric not in allowed_metrics:
+            raise ValueError(
+                f"The `metric` argument must be in {allowed_metrics}, got: {metric}."
+            )
+
+        vmin, vmax = 0, 1
         X = self.to_X(norm=norm)
         if metric == "cosine":
             distances = cosine_distances(X)
-            vmin, vmax = 0, 1
+        if metric == "correlation":
+            distances = 1 - np.corrcoef(self.to_X())
+        if metric == "euclidean":
+            distances = euclidean_distances(X)
+            vmin, vmax = 0, np.max(distances)
 
         fig, ax = plt.subplots()
         plt.imshow(distances, cmap=plt.cm.get_cmap().reversed(), vmin=vmin, vmax=vmax)
-        plt.xticks(range(len(df.columns)), df.columns)
-        plt.yticks(range(len(df.columns)), df.columns)
+        plt.xticks(range(len(self)), self.embeddings.keys())
+        plt.yticks(range(len(self)), self.embeddings.keys())
         plt.colorbar()
 
         # Rotate the tick labels and set their alignment.

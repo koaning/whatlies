@@ -78,11 +78,3 @@ def plot_graph_layout(embedding_set, kind="cosine", **kwargs):
     # Draw nodes and labels
     nx.draw_networkx_nodes(graph, pos, node_color="b", alpha=0.5)
     nx.draw_networkx_labels(graph, pos, labels=label_dict, **kwargs)
-
-
-def normalize(word_vec):
-    """Normalises a vector"""
-    norm = np.linalg.norm(word_vec)
-    if norm == 0:
-        return word_vec
-    return word_vec / norm

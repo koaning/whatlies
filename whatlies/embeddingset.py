@@ -228,7 +228,7 @@ class EmbeddingSet:
         """
         return func(self, *args, **kwargs)
 
-    def to_X(self):
+    def to_X(self, norm=False):
         """
         Takes every vector in each embedding and turns it into a scikit-learn compatible `X` matrix.
 

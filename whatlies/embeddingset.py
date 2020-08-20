@@ -604,7 +604,7 @@ class EmbeddingSet:
 
         ```python
         from whatlies.language import SpacyLanguage
-        lang = SpacyLanguage("en_core_web_md")
+        lang = SpacyLanguage("en_core_web_sm")
 
         names = ['red', 'blue', 'green', 'yellow', 'cat', 'dog', 'mouse', 'rat', 'bike', 'car']
         emb = lang[names]
@@ -647,7 +647,7 @@ class EmbeddingSet:
 
         ```python
         from whatlies.language import SpacyLanguage
-        lang = SpacyLanguage("en_core_web_md")
+        lang = SpacyLanguage("en_core_web_sm")
 
         names = ['red', 'blue', 'green', 'yellow', 'cat', 'dog', 'mouse', 'rat', 'bike', 'car']
         emb = lang[names]

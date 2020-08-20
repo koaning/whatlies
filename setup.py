@@ -45,6 +45,7 @@ docs_packages = [
 ]
 
 test_packages = [
+    "torch>=1.6.0",
     "flake8>=3.6.0",
     "pytest>=4.0.2",
     "black>=19.3b0",
@@ -59,7 +60,7 @@ dev_packages = docs_packages + test_packages + extra_deps
 
 setup(
     name="whatlies",
-    version="0.4.6",
+    version="0.4.7",
     author="Vincent D. Warmerdam",
     packages=find_packages(exclude=["notebooks", "docs"]),
     description="Tools to help uncover `whatlies` in word embeddings.",

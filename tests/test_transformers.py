@@ -46,7 +46,7 @@ def test_transformations_new_size(transformer, extra_size):
         Noise(0.1),
         Tsne(2, n_iter=250),
         OpenTsne(2, n_iter=1),
-        Ivis(2, k=10, batch_size=10),
+        Ivis(2, k=10, batch_size=10, epochs=10),
         AddRandom(n=4),
         lambda d: d | (d["man"] - d["woman"]),
     ],

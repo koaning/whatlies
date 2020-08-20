@@ -1,6 +1,14 @@
 There's a few things that would be nice to have. Feel free to start
 a discussion on these topics in github.
 
+**Curated Word Lists**
+
+If people want to investigate `bias` in word embeddings then
+it would help if they had word-lists at the ready. But you
+can also imagine that it would be nice to have a word list
+of words that have multiple meanings. It'd be especially nice
+if we can support these word lists in many languages.
+
 **Multiple Plot Metrics**
 
 At the moment we only project onto axes to get x/y coordinates.
@@ -17,11 +25,8 @@ tables with summary statistics is also relevant.
 
 **Languages**
 
-It would be nice to have other language backends, given that we do not
-download all backends. We want this package to be light and users should
-download manually.
-
-- language backends for huggingface models
+It might be nice if we could help the user automatically
+download embedding files for supported backends.
 
 **Testing**
 

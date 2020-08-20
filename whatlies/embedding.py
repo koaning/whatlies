@@ -177,7 +177,7 @@ class Embedding:
 
     def plot(
         self,
-        kind: str = "scatter",
+        kind: str = "arrow",
         x_axis: Union[int, "Embedding"] = None,
         y_axis: Union[int, "Embedding"] = None,
         x_label: Optional[str] = None,

@@ -633,7 +633,6 @@ class EmbeddingSet:
 
         # Rotate the tick labels and set their alignment.
         plt.setp(ax.get_xticklabels(), rotation=90, ha="right", rotation_mode="anchor")
-        plt.show()
 
     def plot_distance(self, metric="cosine", norm=False):
         """
@@ -680,7 +679,6 @@ class EmbeddingSet:
 
         # Rotate the tick labels and set their alignment.
         plt.setp(ax.get_xticklabels(), rotation=90, ha="right", rotation_mode="anchor")
-        plt.show()
 
     def plot_pixels(self):
         """

@@ -597,7 +597,7 @@ class EmbeddingSet:
         Make a similarity plot. Shows you the similarity between all the word embeddings in the set.
 
         Arguments:
-            metric: 'cosine' or 'correlation'
+            metric: `'cosine'` or `'correlation'`
             norm: normalise the embeddings before calculating the similarity
 
         Usage:
@@ -640,7 +640,7 @@ class EmbeddingSet:
         Make a distance plot. Shows you the distance between all the word embeddings in the set.
 
         Arguments:
-            metric: 'cosine', 'correlation' or 'euclidean'
+            metric: `'cosine'`, `'correlation'` or `'euclidean'`
             norm: normalise the vectors before calculating the distances
 
         Usage:

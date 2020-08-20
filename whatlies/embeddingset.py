@@ -597,8 +597,8 @@ class EmbeddingSet:
         Make a similarity plot. Shows you the similarity between all the word embeddings in the set.
 
         Arguments:
-            metric: `cosine` or `correlation`
-            norm: normalise the embeddings before calculating the distance
+            metric: 'cosine' or 'correlation'
+            norm: normalise the embeddings before calculating the similarity
 
         Usage:
 
@@ -623,7 +623,8 @@ class EmbeddingSet:
         if metric == "cosine":
             similarity = cosine_similarity(X)
         if metric == "correlation":
-            similarity = np.corrcoef(self.to_X())
+            similarity = np.corrcoef(X)
+            vmin, vmax = -1, 1
 
         fig, ax = plt.subplots()
         plt.imshow(similarity, cmap=plt.cm.get_cmap(), vmin=-vmin, vmax=vmax)
@@ -636,10 +637,10 @@ class EmbeddingSet:
 
     def plot_distance(self, metric="cosine", norm=False):
         """
-        Make a similarity plot. Shows you the similarity between all the word embeddings in the set.
+        Make a distance plot. Shows you the distance between all the word embeddings in the set.
 
         Arguments:
-            metric: `cosine`, `correlation` or `euclidean`
+            metric: 'cosine', 'correlation' or 'euclidean'
             norm: normalise the vectors before calculating the distances
 
         Usage:
@@ -666,7 +667,8 @@ class EmbeddingSet:
         if metric == "cosine":
             distances = cosine_distances(X)
         if metric == "correlation":
-            distances = 1 - np.corrcoef(self.to_X())
+            distances = 1 - np.corrcoef(X)
+            vmin, vmax = -1, 1
         if metric == "euclidean":
             distances = euclidean_distances(X)
             vmin, vmax = 0, np.max(distances)

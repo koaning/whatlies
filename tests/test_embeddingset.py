@@ -24,6 +24,22 @@ def lang():
     return SpacyLanguage(nlp)
 
 
+def test_embeddingset_creation():
+    foo = Embedding("foo", [0, 1])
+    bar = Embedding("bar", [1, 1])
+
+    emb = EmbeddingSet(foo)
+    assert len(emb) == 1
+    assert "foo" in emb
+    emb = EmbeddingSet(foo, bar)
+    assert len(emb) == 2
+    assert "foo" in emb
+    assert "bar" in emb
+    emb = EmbeddingSet({"foo": foo})
+    assert len(emb) == 1
+    assert "foo" in emb
+
+
 @pytest.mark.parametrize("operator", [add, rshift, sub, or_])
 def test_artificial_embset(lang, operator):
     emb = lang[["red", "blue", "orange"]]
@@ -41,7 +57,7 @@ def test_merge_basic(lang):
 def test_average(lang):
     emb = lang[["red", "blue", "orange"]]
     av = emb.average()
-    assert av.name == "Emb.average()"
+    assert av.name == "EmbSet.average()"
     v1 = av.vector
     v2 = (lang["red"].vector + lang["blue"].vector + lang["orange"].vector) / 3
     assert np.array_equal(v1, v2)
@@ -104,3 +120,8 @@ def test_filter(lang):
     assert len(emb) == 6
     assert len(emb.filter(lambda e: "pink" not in e.name)) == 5
     assert len(emb.filter(lambda e: "pink" in e.name)) == 1
+
+
+def test_pipe(lang):
+    embset = lang[["red", "blue", "orange", "pink", "purple", "brown"]]
+    assert embset.pipe(len) == 6

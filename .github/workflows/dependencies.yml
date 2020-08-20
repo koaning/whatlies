@@ -24,22 +24,35 @@ jobs:
     - name: Run Base Install
       run: |
         python -m pip install -e ".[base]"
-        python tests/check_pip.py missing tensorflow ivis opentsne
-        python tests/check_pip.py contains spacy
+    - name: Run Checks
+      run: |
+        python tests/scripts/check_pip.py missing tensorflow ivis opentsne
+        python tests/scripts/check_pip.py contains spacy
+        python tests/scripts/import_all.py
+    - name: Show Pretty Error
+      run: python tests/scripts/import_msg_demo.py
     - name: Install Tensorflow Dependencies
       run: |
         python -m pip install -e ".[tfhub]"
-        python tests/check_pip.py missing ivis opentsne
-        python tests/check_pip.py contains spacy tensorflow
+    - name: Run Checks
+      run: |
+        python tests/scripts/check_pip.py missing ivis opentsne
+        python tests/scripts/check_pip.py contains spacy tensorflow
+        python tests/scripts/import_all.py
     - name: Install IVIS
       run: |
         python -m pip install -e ".[ivis]"
-        python tests/check_pip.py missing opentsne
-        python tests/check_pip.py contains spacy tensorflow ivis
+    - name: Run Checks
+      run: |
+        python tests/scripts/check_pip.py missing opentsne
+        python tests/scripts/check_pip.py contains spacy tensorflow ivis
+        python tests/scripts/import_all.py
     - name: Install All
       run: |
         python -m pip install -e ".[all]"
-        python tests/check_pip.py contains spacy tensorflow ivis opentsne transformers
+    - name: Run Checks
+      run: |
+        python tests/scripts/check_pip.py contains spacy tensorflow ivis opentsne transformers
     - name: Docs can Build
       run: |
         python -m pip install -e ".[docs]"

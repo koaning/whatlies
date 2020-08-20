@@ -39,14 +39,15 @@ def test_sklearn_pipeline_works(lang):
         "thanks for that comment",
         "i enjoy this friendly forum",
         "this is a bad post",
+        "this is a bad post",
         "i dislike this article",
         "this is not well written",
     ]
-    y = np.array([1, 1, 1, 0, 0, 0])
+    y = np.array([1, 1, 1, 0, 0, 0, 0])
 
     pipe.fit(X, y)
-    assert pipe.predict(X).shape[0] == 6
+    assert pipe.predict(X).shape[0] == 7
 
     preprocess = FeatureUnion([("dense", lang), ("sparse", CountVectorizer())])
 
-    assert preprocess.fit_transform(X).shape[0] == 6
+    assert preprocess.fit_transform(X).shape[0] == 7

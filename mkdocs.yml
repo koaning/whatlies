@@ -37,6 +37,7 @@ nav:
       - Huggingface: api/language/transformers.md
       - TFHub: api/language/tfhub.md
   - Roadmap: roadmap.md
+  - Releases: releases.md
 plugins:
   - mkdocstrings
   - search

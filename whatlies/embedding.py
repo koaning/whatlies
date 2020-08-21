@@ -239,6 +239,15 @@ class Embedding:
         return self
 
     def _get_plot_axis_value_and_label(self, axis, dir):
+        """
+        A helper function to get the projected value of this embedding on x- and y-axis,
+        as well as the default label of axis.
+
+        Arguments:
+            axis: the axis value used for projection. It could be None, an integer or
+                an `Embedding` instance.
+            dir: the axis direction which could be either of `'x'` or `'y'`.
+        """
         if isinstance(axis, int):
             return self.vector[axis], "Dimension " + str(axis)
         if isinstance(axis, Embedding):

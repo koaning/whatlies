@@ -3,6 +3,8 @@ import numpy as np
 import matplotlib as mpl
 
 from whatlies import Embedding, EmbeddingSet
+from common import validate_plot_general_properties
+
 
 """
 *Guide*
@@ -21,153 +23,12 @@ for a particular plot):
 """
 
 
-def validate_plot_general_properties(ax, props):
-    assert ax.xaxis.get_label_text() == props["x_label"]
-    assert ax.yaxis.get_label_text() == props["y_label"]
-    assert ax.get_title() == props["title"]
-    assert ax.get_aspect() == props["aspect"]
-
-
 @pytest.fixture
 def embset():
     names = ["red", "blue", "green", "yellow", "white"]
     vectors = np.random.rand(5, 3)
     embeddings = [Embedding(name, vector) for name, vector in zip(names, vectors)]
     return EmbeddingSet(*embeddings)
-
-
-## ===> Embedding.plot tests <=============================================== ##
-
-
-def test_embedding_plot_scatter_integer_axis(embset):
-    emb = embset["red"]
-    fig, ax = mpl.pyplot.subplots()
-    emb.plot(kind="scatter", x_axis=0, y_axis=1)
-    props = {
-        "type": mpl.collections.PathCollection,
-        "data": emb.vector[0:2],
-        "x_label": "Dimension 0",
-        "y_label": "Dimension 1",
-        "title": "",
-        "color": mpl.colors.to_rgba_array("steelblue"),
-        "label": "red",
-        "aspect": "auto",
-    }
-    assert np.array_equal(ax.collections[0].get_offsets()[0], props["data"])
-    assert isinstance(ax.collections[0], props["type"])
-    assert np.array_equal(ax.collections[0].get_facecolor(), props["color"])
-    assert ax.texts[0].get_text() == props["label"]
-    validate_plot_general_properties(ax, props)
-
-
-def test_embedding_plot_arrow_integer_axis(embset):
-    emb = embset["red"]
-    fig, ax = mpl.pyplot.subplots()
-    emb.plot(
-        kind="arrow",
-        x_axis=0,
-        y_axis=2,
-        color="blue",
-        x_label="xlabel",
-        y_label="ylabel",
-        title="test plot",
-        annot=False,
-    )
-    props = {
-        "type": mpl.collections.PolyCollection,
-        "data": np.concatenate((emb.vector[0:1], emb.vector[2:3])),
-        "x_label": "xlabel",
-        "y_label": "ylabel",
-        "title": "test plot",
-        "color": mpl.colors.to_rgba_array("blue"),
-        "aspect": "auto",
-        # Not applicable: label
-    }
-    UV = np.concatenate((ax.collections[1].U, ax.collections[1].V))
-    assert isinstance(ax.collections[1], props["type"])
-    assert np.array_equal(UV, props["data"])
-    assert np.array_equal(ax.collections[1].get_facecolor(), props["color"])
-    assert ax.texts == []
-    validate_plot_general_properties(ax, props)
-
-
-def test_embedding_plot_text_integer_axis(embset):
-    emb = embset["red"]
-    fig, ax = mpl.pyplot.subplots()
-    emb.plot(kind="text", x_axis=1, y_axis=2)
-    props = {
-        "data": np.concatenate((emb.vector[1:2] + 0.01, emb.vector[2:3])),
-        "x_label": "Dimension 1",
-        "y_label": "Dimension 2",
-        "title": "",
-        "label": "red",
-        "aspect": "auto",
-        # Not applicable: type, color
-    }
-    assert np.array_equal(ax.texts[0].get_position(), props["data"])
-    assert ax.collections == []
-    assert ax.texts[0].get_text() == props["label"]
-    validate_plot_general_properties(ax, props)
-
-
-def test_embedding_plot_scatter_emb_axis(embset):
-    emb = embset["red"]
-    fig, ax = mpl.pyplot.subplots()
-    emb.plot(kind="scatter", x_axis=embset["blue"], y_axis=embset["green"])
-    props = {
-        "type": mpl.collections.PathCollection,
-        "data": np.array([emb > embset["blue"], emb > embset["green"]]),
-        "x_label": "blue",
-        "y_label": "green",
-        "color": mpl.colors.to_rgba_array("steelblue"),
-        "title": "",
-        "label": "red",
-        "aspect": "auto",
-    }
-    assert np.array_equal(ax.collections[0].get_offsets()[0], props["data"])
-    assert isinstance(ax.collections[0], props["type"])
-    assert ax.texts[0].get_text() == props["label"]
-    validate_plot_general_properties(ax, props)
-
-
-def test_embedding_plot_arrow_emb_axis(embset):
-    emb = embset["red"] + embset["yellow"]
-    fig, ax = mpl.pyplot.subplots()
-    emb.plot(
-        kind="arrow",
-        x_axis=embset["blue"],
-        y_axis=embset["green"],
-        color="yellow",
-        show_ops=True,
-        axis_option="equal",
-    )
-    props = {
-        "type": mpl.collections.PolyCollection,
-        "data": np.array([emb > embset["blue"], emb > embset["green"]]),
-        "x_label": "blue",
-        "y_label": "green",
-        "color": mpl.colors.to_rgba_array("yellow"),
-        "title": "",
-        "label": "(red + yellow)",
-        "aspect": 1.0,
-    }
-    UV = np.concatenate((ax.collections[1].U, ax.collections[1].V))
-    assert isinstance(ax.collections[1], props["type"])
-    assert np.array_equal(UV, props["data"])
-    assert np.array_equal(ax.collections[1].get_facecolor(), props["color"])
-    assert ax.texts[0].get_text() == props["label"]
-    validate_plot_general_properties(ax, props)
-
-
-def test_embedding_plot_raises_error_when_no_axis(embset):
-    emb = embset["red"]
-    with pytest.raises(ValueError, match="The `x_axis` value cannot be None"):
-        emb.plot()
-    with pytest.raises(ValueError, match="The `y_axis` value cannot be None"):
-        emb.plot(x_axis=0)
-
-
-## ===> EmbeddingSet.plot tests <============================================ ##
 
 
 def test_embeddingset_plot_scatter_str_axis(embset):
@@ -195,6 +56,7 @@ def test_embeddingset_plot_scatter_str_axis(embset):
     assert [t.get_text() for t in ax.texts] == props["label"]
     assert np.array_equal(ax.collections[0].get_facecolors(), props["color"])
     validate_plot_general_properties(ax, props)
+    mpl.pyplot.close(fig)
 
 
 def test_embeddingset_plot_arrow_str_axis(embset):
@@ -233,6 +95,7 @@ def test_embeddingset_plot_arrow_str_axis(embset):
     assert [t.get_text() for t in ax.texts] == props["label"]
     assert np.array_equal(ax.collections[1].get_facecolors(), props["color"])
     validate_plot_general_properties(ax, props)
+    mpl.pyplot.close(fig)
 
 
 def test_embeddingset_plot_scatter_integer_axis(embset):
@@ -254,6 +117,7 @@ def test_embeddingset_plot_scatter_integer_axis(embset):
     assert ax.texts == []
     assert np.array_equal(ax.collections[0].get_facecolors(), props["color"])
     validate_plot_general_properties(ax, props)
+    mpl.pyplot.close(fig)
 
 
 def test_embeddingset_plot_arrow_integer_axis(embset):
@@ -286,6 +150,7 @@ def test_embeddingset_plot_arrow_integer_axis(embset):
     assert [t.get_text() for t in ax.texts] == props["label"]
     assert np.array_equal(ax.collections[1].get_facecolors(), props["color"])
     validate_plot_general_properties(ax, props)
+    mpl.pyplot.close(fig)
 
 
 def test_embeddingset_plot_scatter_emb_axis(embset):
@@ -313,6 +178,7 @@ def test_embeddingset_plot_scatter_emb_axis(embset):
     assert [t.get_text() for t in ax.texts] == props["label"]
     assert np.array_equal(ax.collections[0].get_facecolors(), props["color"])
     validate_plot_general_properties(ax, props)
+    mpl.pyplot.close(fig)
 
 
 def test_embeddingset_plot_arrow_emb_axis(embset):
@@ -349,6 +215,7 @@ def test_embeddingset_plot_arrow_emb_axis(embset):
     assert [t.get_text() for t in ax.texts] == props["label"]
     assert np.array_equal(ax.collections[1].get_facecolors(), props["color"])
     validate_plot_general_properties(ax, props)
+    mpl.pyplot.close(fig)
 
 
 def test_embeddingset_plot_scatter_mixed_axis(embset):
@@ -376,6 +243,7 @@ def test_embeddingset_plot_scatter_mixed_axis(embset):
     assert [t.get_text() for t in ax.texts] == props["label"]
     assert np.array_equal(ax.collections[0].get_facecolors(), props["color"])
     validate_plot_general_properties(ax, props)
+    mpl.pyplot.close(fig)
 
 
 def test_embeddingset_plot_arrow_mixed_axis(embset):
@@ -406,6 +274,7 @@ def test_embeddingset_plot_arrow_mixed_axis(embset):
     assert [t.get_text() for t in ax.texts] == props["label"]
     assert np.array_equal(ax.collections[1].get_facecolors(), props["color"])
     validate_plot_general_properties(ax, props)
+    mpl.pyplot.close(fig)
 
 
 def test_embeddingset_plot_raises_error_when_str_axis_not_exists(embset):

@@ -510,7 +510,7 @@ class EmbeddingSet:
 
     def plot(
         self,
-        kind: str = "scatter",
+        kind: str = "arrow",
         x_axis: str = None,
         y_axis: str = None,
         color: str = None,

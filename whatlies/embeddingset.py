@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, Optional
 from copy import deepcopy
 from functools import reduce
 
@@ -17,7 +17,7 @@ from sklearn.preprocessing import normalize
 
 from sklearn.utils import deprecated
 from whatlies.embedding import Embedding
-from whatlies.common import plot_graph_layout
+from whatlies.common import plot_graph_layout, handle_2d_plot
 
 
 class EmbeddingSet:
@@ -519,32 +519,60 @@ class EmbeddingSet:
     def plot(
         self,
         kind: str = "scatter",
-        x_axis: str = None,
-        y_axis: str = None,
+        x_axis: Union[int, str, Embedding] = None,
+        y_axis: Union[int, str, Embedding] = None,
+        x_label: Optional[str] = None,
+        y_label: Optional[str] = None,
+        title: Optional[str] = None,
         color: str = None,
-        show_ops: str = False,
-        **kwargs,
+        show_ops: bool = False,
+        annot: bool = True,
+        axis_option: Optional[str] = None,
     ):
         """
         Makes (perhaps inferior) matplotlib plot. Consider using `plot_interactive` instead.
 
         Arguments:
             kind: what kind of plot to make, can be `scatter`, `arrow` or `text`
-            x_axis: the x-axis to be used, must be given when dim > 2
-            y_axis: the y-axis to be used, must be given when dim > 2
+            x_axis: the x-axis to be used, must be given when dim > 2; if an integer, the corresponding
+                dimension of embedding is used.
+            y_axis: the y-axis to be used, must be given when dim > 2; if an integer, the corresponding
+                dimension of embedding is used.
+            x_label: an optional label used for x-axis; if not given, it is set based on value of `x_axis`.
+            y_label: an optional label used for y-axis; if not given, it is set based on value of `y_axis`.
+            title: an optional title for the plot.
             color: the color of the dots
             show_ops: setting to also show the applied operations, only works for `text`
-            kwargs: additional key-value pair arguments which are passed to `plot` method of `Embedding` class
+            annot: should the points be annotated
+            axis_option: a string which is passed as `option` argument to `matplotlib.pyplot.axis` in order to control
+                axis properties (e.g. using `'equal'` make circles shown circular in the plot). This might be useful
+                for preserving geometric relationships (e.g. orthogonality) in the generated plot. See `matplotlib.pyplot.axis`
+                [documentation](https://matplotlib.org/3.1.0/api/_as_gen/matplotlib.pyplot.axis.html#matplotlib-pyplot-axis)
+                for possible values and their description.
         """
-        for k, token in self.embeddings.items():
-            token.plot(
-                kind=kind,
-                x_axis=x_axis,
-                y_axis=y_axis,
-                color=color,
-                show_ops=show_ops,
-                **kwargs,
-            )
+        if isinstance(x_axis, str):
+            x_axis = self[x_axis]
+        if isinstance(y_axis, str):
+            y_axis = self[y_axis]
+        embeddings = []
+        for emb in self.embeddings.values():
+            x_val, x_lab = emb._get_plot_axis_value_and_label(x_axis, dir="x")
+            y_val, y_lab = emb._get_plot_axis_value_and_label(y_axis, dir="y")
+            emb_plot = Embedding(name=emb.name, vector=[x_val, y_val], orig=emb.orig)
+            embeddings.append(emb_plot)
+        x_label = x_lab if x_label is None else x_label
+        y_label = y_lab if y_label is None else y_label
+        handle_2d_plot(
+            embeddings,
+            kind=kind,
+            color=color,
+            xlabel=x_label,
+            ylabel=y_label,
+            title=title,
+            show_operations=show_ops,
+            annot=annot,
+            axis_option=axis_option,
+        )
         return self
 
     def plot_graph_layout(self, kind="cosine", **kwargs):

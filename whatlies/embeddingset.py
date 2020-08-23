@@ -518,7 +518,7 @@ class EmbeddingSet:
 
     def plot(
         self,
-        kind: str = "scatter",
+        kind: str = "arrow",
         x_axis: Union[int, str, Embedding] = None,
         y_axis: Union[int, str, Embedding] = None,
         x_label: Optional[str] = None,

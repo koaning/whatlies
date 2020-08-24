@@ -1,10 +1,11 @@
 import numpy as np
 
+from whatlies.transformers import Transformer
 from whatlies import Embedding, EmbeddingSet
 from whatlies.transformers.common import embset_to_X
 
 
-class AddRandom:
+class AddRandom(Transformer):
     """
     This transformer adds random embeddings to the embeddingset.
 
@@ -30,15 +31,10 @@ class AddRandom:
     """
 
     def __init__(self, n=1, sigma=0.1, seed=42):
+        super().__init__()
         self.n = n
         self.sigma = sigma
         self.seed = seed
-        self.is_fitted = False
-
-    def __call__(self, embset):
-        if not self.is_fitted:
-            self.fit(embset)
-        return self.transform(embset)
 
     def fit(self, embset):
         embset_to_X(embset=embset)

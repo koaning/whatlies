@@ -1,11 +1,12 @@
 import numpy as np
 from sklearn.manifold import TSNE
 
+from whatlies.transformers import Transformer
 from whatlies import EmbeddingSet
 from whatlies.transformers.common import embset_to_X, new_embedding_dict
 
 
-class Tsne:
+class Tsne(Transformer):
     """
     This transformer transformers all vectors in an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]
     by means of tsne. This implementation uses
@@ -38,15 +39,10 @@ class Tsne:
     """
 
     def __init__(self, n_components=2, **kwargs):
-        self.is_fitted = False
+        super().__init__()
         self.n_components = n_components
         self.kwargs = kwargs
         self.tfm = TSNE(n_components=n_components, **kwargs)
-
-    def __call__(self, embset):
-        if not self.is_fitted:
-            self.fit(embset)
-        return self.transform(embset)
 
     def fit(self, embset):
         names, X = embset_to_X(embset=embset)

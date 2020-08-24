@@ -4,11 +4,12 @@ from umap import UMAP
 import numpy as np
 from numba import NumbaPerformanceWarning
 
+from whatlies.transformers import Transformer
 from whatlies import EmbeddingSet
 from whatlies.transformers.common import embset_to_X, new_embedding_dict
 
 
-class Umap:
+class Umap(Transformer):
     """
     This transformer transformers all vectors in an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]
     by means of umap. We're using the implementation in [umap-learn](https://umap-learn.readthedocs.io/en/latest/).
@@ -36,15 +37,10 @@ class Umap:
     """
 
     def __init__(self, n_components=2, **kwargs):
-        self.is_fitted = False
+        super().__init__()
         self.n_components = n_components
         self.kwargs = kwargs
         self.tfm = UMAP(n_components=n_components, **kwargs)
-
-    def __call__(self, embset):
-        if not self.is_fitted:
-            self.fit(embset)
-        return self.transform(embset)
 
     def fit(self, embset):
         names, X = embset_to_X(embset=embset)

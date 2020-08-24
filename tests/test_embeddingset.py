@@ -125,3 +125,24 @@ def test_filter(lang):
 def test_pipe(lang):
     embset = lang[["red", "blue", "orange", "pink", "purple", "brown"]]
     assert embset.pipe(len) == 6
+
+
+def test_to_names_X(lang):
+    words = ["red", "blue", "dog"]
+    embset = lang[words]
+    names, X = embset.to_names_X()
+    assert names == words
+    assert np.array_equal(X, embset.to_X())
+
+
+def test_from_names_X():
+    names = ["foo", "bar", "buz"]
+    X = [
+        [1.0, 2],
+        [3, 4.0],
+        [0.5, 0.6],
+    ]
+    embset = EmbeddingSet.from_names_X(names, X)
+    assert "foo" in embset
+    assert len(embset) == 3
+    assert np.array_equal(embset.to_X(), np.array(X))

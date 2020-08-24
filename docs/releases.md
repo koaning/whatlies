@@ -1,3 +1,9 @@
+v0.5.0
+
+- Added some robustness tot he `matplotlib` based arrow and scatter charts.
+- Started deprecating the `plot_correlation` method in favor
+of the new `plot_distance` and `plot_similarity` methods.
+
 v0.4.7
 
 - Fixed bugs relating to conditional imports.

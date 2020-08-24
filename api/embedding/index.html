@@ -1286,7 +1286,7 @@
 <span class="n">foo</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">)</span>
 </code></pre></div>
 
-<h2 id="whatlies.embedding.Embedding.plot"><code class="highlight"><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_ops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">axis_option</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.plot" title="Permanent link">&para;</a></h2>
+<h2 id="whatlies.embedding.Embedding.plot"><code class="highlight"><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;arrow&#39;</span><span class="p">,</span> <span class="n">x_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_ops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis_option</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.embedding.Embedding.plot" title="Permanent link">&para;</a></h2>
 <details class="note"><summary>Show source code in <code>whatlies/embedding.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>178
 179
 180
@@ -1348,15 +1348,17 @@
 236
 237
 238
-239
-240</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span>
+239</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;scatter&quot;</span><span class="p">,</span>
-        <span class="n">x_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;Embedding&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">y_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;Embedding&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;arrow&quot;</span><span class="p">,</span>
+        <span class="n">x_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;Embedding&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">y_axis</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;Embedding&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">x_label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">y_label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">title</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">show_ops</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">annot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">annot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">axis_option</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1364,8 +1366,13 @@
 
 <span class="sd">        Arguments:</span>
 <span class="sd">            kind: what kind of plot to make, can be `scatter`, `arrow` or `text`</span>
-<span class="sd">            x_axis: the x-axis to be used, must be given when dim &gt; 2</span>
-<span class="sd">            y_axis: the y-axis to be used, must be given when dim &gt; 2</span>
+<span class="sd">            x_axis: the x-axis to be used, must be given when dim &gt; 2; if an integer, the corresponding</span>
+<span class="sd">                dimension of embedding is used.</span>
+<span class="sd">            y_axis: the y-axis to be used, must be given when dim &gt; 2; if an integer, the corresponding</span>
+<span class="sd">                dimension of embedding is used.</span>
+<span class="sd">            x_label: an optional label used for x-axis; if not given, it is set based on `x_axis` value.</span>
+<span class="sd">            y_label: an optional label used for y-axis; if not given, it is set based on `y_axis` value.</span>
+<span class="sd">            title: an optional title for the plot.</span>
 <span class="sd">            color: the color of the dots</span>
 <span class="sd">            show_ops: setting to also show the applied operations, only works for `text`</span>
 <span class="sd">            annot: should the points be annotated</span>
@@ -1386,27 +1393,18 @@
 <span class="sd">        bar.plot(kind=&quot;arrow&quot;, annot=True)</span>
 <span class="sd">        ```</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="n">handle_2d_plot</span><span class="p">(</span>
-                <span class="bp">self</span><span class="p">,</span>
-                <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span>
-                <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-                <span class="n">show_operations</span><span class="o">=</span><span class="n">show_ops</span><span class="p">,</span>
-                <span class="n">xlabel</span><span class="o">=</span><span class="n">x_axis</span><span class="p">,</span>
-                <span class="n">ylabel</span><span class="o">=</span><span class="n">y_axis</span><span class="p">,</span>
-                <span class="n">annot</span><span class="o">=</span><span class="n">annot</span><span class="p">,</span>
-                <span class="n">axis_option</span><span class="o">=</span><span class="n">axis_option</span><span class="p">,</span>
-            <span class="p">)</span>
-            <span class="k">return</span> <span class="bp">self</span>
-        <span class="n">x_val</span> <span class="o">=</span> <span class="bp">self</span> <span class="o">&gt;</span> <span class="n">x_axis</span>
-        <span class="n">y_val</span> <span class="o">=</span> <span class="bp">self</span> <span class="o">&gt;</span> <span class="n">y_axis</span>
-        <span class="n">intermediate</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">vector</span><span class="o">=</span><span class="p">[</span><span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">],</span> <span class="n">orig</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">orig</span><span class="p">)</span>
+        <span class="n">x_val</span><span class="p">,</span> <span class="n">x_lab</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_plot_axis_value_and_label</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+        <span class="n">y_val</span><span class="p">,</span> <span class="n">y_lab</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_plot_axis_value_and_label</span><span class="p">(</span><span class="n">y_axis</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+        <span class="n">x_label</span> <span class="o">=</span> <span class="n">x_lab</span> <span class="k">if</span> <span class="n">x_label</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">x_label</span>
+        <span class="n">y_label</span> <span class="o">=</span> <span class="n">y_lab</span> <span class="k">if</span> <span class="n">y_label</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">y_label</span>
+        <span class="n">emb_plot</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">vector</span><span class="o">=</span><span class="p">[</span><span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">],</span> <span class="n">orig</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">orig</span><span class="p">)</span>
         <span class="n">handle_2d_plot</span><span class="p">(</span>
-            <span class="n">intermediate</span><span class="p">,</span>
+            <span class="n">emb_plot</span><span class="p">,</span>
             <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span>
             <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-            <span class="n">xlabel</span><span class="o">=</span><span class="n">x_axis</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-            <span class="n">ylabel</span><span class="o">=</span><span class="n">y_axis</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">xlabel</span><span class="o">=</span><span class="n">x_label</span><span class="p">,</span>
+            <span class="n">ylabel</span><span class="o">=</span><span class="n">y_label</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
             <span class="n">show_operations</span><span class="o">=</span><span class="n">show_ops</span><span class="p">,</span>
             <span class="n">annot</span><span class="o">=</span><span class="n">annot</span><span class="p">,</span>
             <span class="n">axis_option</span><span class="o">=</span><span class="n">axis_option</span><span class="p">,</span>
@@ -1432,18 +1430,36 @@
 <td><code>kind</code></td>
 <td><code>str</code></td>
 <td>what kind of plot to make, can be <code>scatter</code>, <code>arrow</code> or <code>text</code></td>
-<td><code>'scatter'</code></td>
+<td><code>'arrow'</code></td>
 </tr>
 <tr>
 <td><code>x_axis</code></td>
-<td><code>Union[str, ForwardRef('Embedding')]</code></td>
-<td>the x-axis to be used, must be given when dim &gt; 2</td>
+<td><code>Union[int, ForwardRef('Embedding')]</code></td>
+<td>the x-axis to be used, must be given when dim &gt; 2; if an integer, the corresponding dimension of embedding is used.</td>
 <td><code>None</code></td>
 </tr>
 <tr>
 <td><code>y_axis</code></td>
-<td><code>Union[str, ForwardRef('Embedding')]</code></td>
-<td>the y-axis to be used, must be given when dim &gt; 2</td>
+<td><code>Union[int, ForwardRef('Embedding')]</code></td>
+<td>the y-axis to be used, must be given when dim &gt; 2; if an integer, the corresponding dimension of embedding is used.</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>x_label</code></td>
+<td><code>Optional[str]</code></td>
+<td>an optional label used for x-axis; if not given, it is set based on <code>x_axis</code> value.</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>y_label</code></td>
+<td><code>Optional[str]</code></td>
+<td>an optional label used for y-axis; if not given, it is set based on <code>y_axis</code> value.</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>Optional[str]</code></td>
+<td>an optional title for the plot.</td>
 <td><code>None</code></td>
 </tr>
 <tr>
@@ -1462,7 +1478,7 @@
 <td><code>annot</code></td>
 <td><code>bool</code></td>
 <td>should the points be annotated</td>
-<td><code>False</code></td>
+<td><code>True</code></td>
 </tr>
 <tr>
 <td><code>axis_option</code></td>

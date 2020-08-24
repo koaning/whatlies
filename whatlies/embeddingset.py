@@ -298,7 +298,6 @@ class EmbeddingSet:
         Usage:
 
         ```python
-        from whatlies.embedding import Embedding
         from whatlies.embeddingset import EmbeddingSet
 
         names = ["foo", "bar", "buz"]

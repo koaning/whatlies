@@ -33,7 +33,7 @@ class Noise(Transformer):
     """
 
     def __init__(self, sigma=0.1, seed=42):
-        self.is_fitted = False
+        super().__init__()
         self.seed = seed
         self.tfm = FunctionTransformer(
             lambda X: X + np.random.normal(0, sigma, X.shape)

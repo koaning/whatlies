@@ -31,10 +31,10 @@ class AddRandom(Transformer):
     """
 
     def __init__(self, n=1, sigma=0.1, seed=42):
+        super().__init__()
         self.n = n
         self.sigma = sigma
         self.seed = seed
-        self.is_fitted = False
 
     def fit(self, embset):
         embset_to_X(embset=embset)

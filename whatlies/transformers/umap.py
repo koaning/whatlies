@@ -37,7 +37,7 @@ class Umap(Transformer):
     """
 
     def __init__(self, n_components=2, **kwargs):
-        self.is_fitted = False
+        super().__init__()
         self.n_components = n_components
         self.kwargs = kwargs
         self.tfm = UMAP(n_components=n_components, **kwargs)

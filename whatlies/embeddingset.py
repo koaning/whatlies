@@ -310,6 +310,10 @@ class EmbeddingSet:
         emb = EmbeddingSet.from_names_X(names, vecs)
         """
         X = np.array(X)
+        if len(X) != len(names):
+            raise ValueError(
+                f"The number of given names ({len(names)}) and vectors ({len(X)}) should be the same."
+            )
         return cls({n: Embedding(n, v) for n, v in zip(names, X)})
 
     def transform(self, transformer):

@@ -146,3 +146,7 @@ def test_from_names_X():
     assert "foo" in embset
     assert len(embset) == 3
     assert np.array_equal(embset.to_X(), np.array(X))
+
+    names = names[:2]
+    with pytest.raises(ValueError, match="The number of names"):
+        EmbeddingSet.from_names_X(names, X)

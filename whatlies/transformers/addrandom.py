@@ -39,6 +39,7 @@ class AddRandom(Transformer):
     def fit(self, embset):
         embset_to_X(embset=embset)
         self.is_fitted = True
+        return self
 
     def transform(self, embset):
         names, X = embset_to_X(embset=embset)

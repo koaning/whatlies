@@ -53,6 +53,7 @@ class Ivis(Transformer):
         names, X = embset_to_X(embset=embset)
         self.tfm.fit(X)
         self.is_fitted = True
+        return self
 
     def transform(self, embset):
         names, X = embset_to_X(embset=embset)

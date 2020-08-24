@@ -148,5 +148,5 @@ def test_from_names_X():
     assert np.array_equal(embset.to_X(), np.array(X))
 
     names = names[:2]
-    with pytest.raises(ValueError, match="The number of names"):
+    with pytest.raises(ValueError, match="The number of given names"):
         EmbeddingSet.from_names_X(names, X)

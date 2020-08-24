@@ -2,7 +2,16 @@ import pytest
 from spacy.vocab import Vocab
 from spacy.language import Language
 from whatlies.language import SpacyLanguage
-from whatlies.transformers import Umap, Pca, Noise, AddRandom, Tsne, OpenTsne, Ivis
+from whatlies.transformers import (
+    Transformer,
+    Umap,
+    Pca,
+    Noise,
+    AddRandom,
+    Tsne,
+    OpenTsne,
+    Ivis,
+)
 
 
 vocab = Vocab().from_disk("tests/custom_test_vocab/")
@@ -55,3 +64,24 @@ def test_transformations_keep_props(transformer):
     emb_new = emb.add_property("group", lambda d: "one").transform(transformer)
     for w in words:
         assert hasattr(emb_new[w], "group")
+
+
+@pytest.mark.parametrize(
+    "transformer",
+    [
+        Umap(2),
+        Pca(2),
+        Noise(0.1),
+        AddRandom(n=4),
+        Tsne(2, n_iter=250),
+        OpenTsne(2, n_iter=2),
+        Ivis(2, k=10, batch_size=10, epochs=10),
+    ],
+)
+def test_transformers_are_subclassed_properly(transformer):
+    assert isinstance(transformer, Transformer)
+
+
+def test_transformer_base_class():
+    with pytest.raises(TypeError, match="Can't instantiate abstract class Transformer"):
+        Transformer()

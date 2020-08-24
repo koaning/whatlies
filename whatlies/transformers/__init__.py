@@ -1,3 +1,4 @@
+from whatlies.transformers.transformer import Transformer
 from whatlies.transformers.pca import Pca
 from whatlies.transformers.umap import Umap
 from whatlies.transformers.noise import Noise
@@ -15,4 +16,13 @@ try:
 except ModuleNotFoundError:
     Ivis = NotInstalled("Ivis", "ivis")
 
-__all__ = ["Pca", "Umap", "Noise", "AddRandom", "Tsne", "OpenTsne", "Ivis"]
+__all__ = [
+    "Transformer",
+    "Pca",
+    "Umap",
+    "Noise",
+    "AddRandom",
+    "Tsne",
+    "OpenTsne",
+    "Ivis",
+]

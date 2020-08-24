@@ -1,3 +1,4 @@
+from whatlies.transformers import Transformer
 from whatlies import EmbeddingSet
 from whatlies.transformers.common import embset_to_X, new_embedding_dict
 
@@ -5,7 +6,7 @@ from ivis import Ivis as IVIS
 import numpy as np
 
 
-class Ivis:
+class Ivis(Transformer):
     """
     This transformer scales all the vectors in an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]
     by means of Ivis algorithm. We're using the implementation found
@@ -47,11 +48,6 @@ class Ivis:
         self.kwargs = kwargs
         self.kwargs["verbose"] = 0
         self.tfm = IVIS(embedding_dims=self.n_components, **self.kwargs)
-
-    def __call__(self, embset):
-        if not self.is_fitted:
-            self.fit(embset)
-        return self.transform(embset)
 
     def fit(self, embset):
         names, X = embset_to_X(embset=embset)

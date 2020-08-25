@@ -21,6 +21,12 @@ except ModuleNotFoundError as e:
     HFTransformersLanguage = NotInstalled("HFTransformersLanguage", "transformers")
 
 
+try:
+    from .sense2vec_lang import Sense2VecLanguage
+except ModuleNotFoundError as e:
+    Sense2VecLanguage = NotInstalled("Sense2VecLanguage", "sense2vec")
+
+
 __all__ = [
     "SpacyLanguage",
     "Sense2VecLanguage",

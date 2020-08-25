@@ -68,9 +68,15 @@ context of `store this in the drawer please`.
 
 ## Sense to Vec
 
-We also have support for the [sense2vec model](https://github.com/explosion/sense2vec). To
-get it to work you first need to download and unzip the pretrained vectors
-found [here](https://github.com/explosion/sense2vec#pretrained-vectors) but after
+We also have support for the [sense2vec model](https://github.com/explosion/sense2vec). To use
+them you'll need to make sure that you install via:
+
+```
+pip install whatlies[sense2vec]
+```
+
+Once the dependency is installed you can download and unzip the pretrained vectors
+found [here](https://github.com/explosion/sense2vec#pretrained-vectors). After
 that you should be able to retreive tokens with context. They way you fetch these
 tokens is a bit ... different though.
 
@@ -85,6 +91,8 @@ words = ["bank|NOUN", "bank|VERB", "duck|NOUN", "duck|VERB",
          "chicken|NOUN", "puppy|NOUN", "kitten|NOUN", "carrot|NOUN"]
 emb = lang[words]
 ```
+
+You're able to distinguish the verb "duck" from the animal "duck".
 From here one we're back to normal embeddingsets though. So we can
 plot whatever we feel like.
 

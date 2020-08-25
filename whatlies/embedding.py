@@ -39,6 +39,13 @@ class Embedding:
         setattr(result, name, func(result))
         return result
 
+    @property
+    def ndim(self):
+        """
+        Return the dimension of embedding vector.
+        """
+        return self.vector.shape[0]
+
     def __add__(self, other) -> "Embedding":
         """
         Add two embeddings together.

@@ -76,3 +76,8 @@ def test_emb_plot_no_err_3d():
 def test_emb_str_method(emb):
     for char in "xyz":
         assert str(emb[char]) == char
+
+
+def test_emb_ndim():
+    foo = Embedding("foo", [0, 1, 0.2])
+    assert foo.ndim == 3

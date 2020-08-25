@@ -3,7 +3,7 @@ from sklearn.manifold import TSNE
 
 from whatlies.transformers import Transformer
 from whatlies import EmbeddingSet
-from whatlies.transformers.common import embset_to_X, new_embedding_dict
+from whatlies.transformers.common import new_embedding_dict
 
 
 class Tsne(Transformer):
@@ -45,13 +45,13 @@ class Tsne(Transformer):
         self.tfm = TSNE(n_components=n_components, **kwargs)
 
     def fit(self, embset):
-        names, X = embset_to_X(embset=embset)
+        names, X = embset.to_names_X()
         self.tfm.fit(X)
         self.is_fitted = True
         return self
 
     def transform(self, embset):
-        names, X = embset_to_X(embset=embset)
+        names, X = embset.to_names_X()
         new_vecs = self.tfm.fit_transform(X)
         names_out = names + [f"tsne_{i}" for i in range(self.n_components)]
         vectors_out = np.concatenate([new_vecs, np.eye(self.n_components)])

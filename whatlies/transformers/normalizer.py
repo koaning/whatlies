@@ -2,7 +2,7 @@ from sklearn.preprocessing import normalize
 
 from whatlies.transformers import Transformer
 from whatlies import EmbeddingSet
-from whatlies.transformers.common import embset_to_X, new_embedding_dict
+from whatlies.transformers.common import new_embedding_dict
 
 
 class Normalizer(Transformer):
@@ -43,7 +43,7 @@ class Normalizer(Transformer):
         return self
 
     def transform(self, embset: EmbeddingSet) -> EmbeddingSet:
-        names, X = embset_to_X(embset)
+        names, X = embset.to_names_X()
         axis = 0 if self.feature else 1
         X = normalize(X, norm=self.norm, axis=axis)
         new_dict = new_embedding_dict(names, X, embset)

@@ -2,7 +2,6 @@ import numpy as np
 
 from whatlies.transformers import Transformer
 from whatlies import Embedding, EmbeddingSet
-from whatlies.transformers.common import embset_to_X
 
 
 class AddRandom(Transformer):
@@ -37,12 +36,11 @@ class AddRandom(Transformer):
         self.seed = seed
 
     def fit(self, embset):
-        embset_to_X(embset=embset)
         self.is_fitted = True
         return self
 
     def transform(self, embset):
-        names, X = embset_to_X(embset=embset)
+        names, X = embset.to_names_X()
         np.random.seed(self.seed)
         orig_dict = embset.embeddings.copy()
         new_dict = {

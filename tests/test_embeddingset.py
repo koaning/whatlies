@@ -40,6 +40,22 @@ def test_embeddingset_creation():
     assert "foo" in emb
 
 
+def test_embset_creation_error():
+    foo = Embedding("foo", [0, 1])
+    # This vector has a different dimension. No bueno.
+    bar = Embedding("bar", [1, 1, 2])
+    with pytest.raises(ValueError):
+        EmbeddingSet(foo, bar)
+
+
+def test_embset_creation_warning():
+    foo = Embedding("foo", [0, 1])
+    # This vector has the same name dimension. Dangerzone.
+    bar = Embedding("foo", [1, 2])
+    with pytest.raises(Warning):
+        EmbeddingSet(foo, bar)
+
+
 @pytest.mark.parametrize("operator", [add, rshift, sub, or_])
 def test_artificial_embset(lang, operator):
     emb = lang[["red", "blue", "orange"]]

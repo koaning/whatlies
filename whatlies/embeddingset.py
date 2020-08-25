@@ -1,11 +1,14 @@
-from typing import Union, Optional
 from copy import deepcopy
 from functools import reduce
+from collections import Counter
+from typing import Union, Optional
 
 import numpy as np
 import pandas as pd
 import matplotlib.pylab as plt
 import altair as alt
+from sklearn.utils import deprecated
+from sklearn.preprocessing import normalize
 from sklearn.metrics import pairwise_distances
 from sklearn.metrics.pairwise import (
     paired_distances,
@@ -13,9 +16,7 @@ from sklearn.metrics.pairwise import (
     cosine_distances,
     euclidean_distances,
 )
-from sklearn.preprocessing import normalize
 
-from sklearn.utils import deprecated
 from whatlies.embedding import Embedding
 from whatlies.common import plot_graph_layout, handle_2d_plot
 
@@ -53,7 +54,18 @@ class EmbeddingSet:
             self.embeddings = embeddings[0]
         else:
             # Assume it's a list of `Embedding` instances.
+            names = [t.name for t in embeddings]
+            if len(names) != len(set(names)):
+                double_names = [k for k, v in Counter(names).items() if v > 1]
+                raise Warning(
+                    f"Some embeddings given to `EmbeddingSet` have the same name: {double_names}."
+                )
             self.embeddings = {t.name: t for t in embeddings}
+
+        # We cannot allow for different shapes because that will break many operations later.
+        uniq_shapes = set(v.vector.shape for k, v in self.embeddings.items())
+        if len(uniq_shapes) > 1:
+            raise ValueError("Not all vectors have the same shape.")
 
     def __contains__(self, item):
         """

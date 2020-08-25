@@ -100,12 +100,12 @@ def test_normalizer_transformer():
     X = emb.to_X()
     normalized_emb = emb.transform(Normalizer())
     assert set(emb.embeddings.keys()) == set(normalized_emb.embeddings.keys())
-    assert np.array_equal(normalized_emb.to_X(), normalize(X))
-
-    normalized_emb = emb.transform(Normalizer(norm="l1"))
-    assert set(emb.embeddings.keys()) == set(normalized_emb.embeddings.keys())
     assert np.array_equal(normalized_emb.to_X(), normalize(X, norm="l1"))
+
+    normalized_emb = emb.transform(Normalizer(norm="l2"))
+    assert set(emb.embeddings.keys()) == set(normalized_emb.embeddings.keys())
+    assert np.array_equal(normalized_emb.to_X(), normalize(X))
 
     normalized_emb = emb.transform(Normalizer(feature=True))
     assert set(emb.embeddings.keys()) == set(normalized_emb.embeddings.keys())
-    assert np.array_equal(normalized_emb.to_X(), normalize(X, axis=0))
+    assert np.array_equal(normalized_emb.to_X(), normalize(X, norm="l1", axis=0))

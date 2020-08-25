@@ -4,6 +4,7 @@ from whatlies.transformers.umap import Umap
 from whatlies.transformers.noise import Noise
 from whatlies.transformers.addrandom import AddRandom
 from whatlies.transformers.tsne import Tsne
+from whatlies.transformers.normalizer import Normalizer
 from whatlies.error import NotInstalled
 
 try:
@@ -25,4 +26,5 @@ __all__ = [
     "Tsne",
     "OpenTsne",
     "Ivis",
+    "Normalizer",
 ]

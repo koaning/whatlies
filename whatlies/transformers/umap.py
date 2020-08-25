@@ -6,7 +6,7 @@ from numba import NumbaPerformanceWarning
 
 from whatlies.transformers import Transformer
 from whatlies import EmbeddingSet
-from whatlies.transformers.common import embset_to_X, new_embedding_dict
+from whatlies.transformers.common import new_embedding_dict
 
 
 class Umap(Transformer):
@@ -43,7 +43,7 @@ class Umap(Transformer):
         self.tfm = UMAP(n_components=n_components, **kwargs)
 
     def fit(self, embset):
-        names, X = embset_to_X(embset=embset)
+        names, X = embset.to_names_X()
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", category=UserWarning)
             warnings.simplefilter("ignore", category=NumbaPerformanceWarning)
@@ -52,7 +52,7 @@ class Umap(Transformer):
         return self
 
     def transform(self, embset):
-        names, X = embset_to_X(embset=embset)
+        names, X = embset.to_names_X()
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", category=NumbaPerformanceWarning)
             new_vecs = self.tfm.transform(X)

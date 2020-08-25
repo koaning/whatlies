@@ -1,14 +1,6 @@
 from copy import deepcopy
 
-import numpy as np
-
 from whatlies import Embedding
-
-
-def embset_to_X(embset):
-    names = list(embset.embeddings.keys())
-    embs = np.array([i.vector for i in embset.embeddings.values()])
-    return names, embs
 
 
 def new_embedding_dict(names_new, vectors_new, old_embset):

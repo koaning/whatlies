@@ -166,3 +166,8 @@ def test_from_names_X():
     names = names[:2]
     with pytest.raises(ValueError, match="The number of given names"):
         EmbeddingSet.from_names_X(names, X)
+
+
+def test_ndim(lang):
+    embset = lang[["red", "blue", "dog"]]
+    assert embset.ndim == 2

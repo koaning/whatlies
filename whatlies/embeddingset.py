@@ -67,6 +67,13 @@ class EmbeddingSet:
         if len(uniq_shapes) > 1:
             raise ValueError("Not all vectors have the same shape.")
 
+    @property
+    def ndim(self):
+        """
+        Return dimension of embedding vectors in embeddingset.
+        """
+        return next(iter(self.embeddings.values())).ndim
+
     def __contains__(self, item):
         """
         Checks if an item is in the embeddingset.

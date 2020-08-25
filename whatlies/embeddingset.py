@@ -267,6 +267,55 @@ class EmbeddingSet:
         y = np.array([getattr(e, y_label) for e in self.embeddings.values()])
         return X, y
 
+    def to_names_X(self):
+        """
+        Get the list of names as well as an array of vectors of all embeddings.
+
+        Usage:
+
+        ```python
+        from whatlies.embedding import Embedding
+        from whatlies.embeddingset import EmbeddingSet
+
+        foo = Embedding("foo", [0.1, 0.3])
+        bar = Embedding("bar", [0.7, 0.2])
+        buz = Embedding("buz", [0.1, 0.9])
+        emb = EmbeddingSet(foo, bar, buz)
+
+        names, X = emb.to_names_X()
+        """
+        return list(self.embeddings.keys()), self.to_X()
+
+    @classmethod
+    def from_names_X(cls, names, X):
+        """
+        Constructs an `EmbeddingSet` instance from the given embedding names and vectors.
+
+        Arguments:
+            names: an iterable containing the names of embeddings
+            X: an iterable of 1D vectors, or a 2D numpy array; it should have the same length as `names`
+
+        Usage:
+
+        ```python
+        from whatlies.embeddingset import EmbeddingSet
+
+        names = ["foo", "bar", "buz"]
+        vecs = [
+            [0.1, 0.3],
+            [0.7, 0.2],
+            [0.1, 0.9],
+        ]
+
+        emb = EmbeddingSet.from_names_X(names, vecs)
+        """
+        X = np.array(X)
+        if len(X) != len(names):
+            raise ValueError(
+                f"The number of given names ({len(names)}) and vectors ({len(X)}) should be the same."
+            )
+        return cls({n: Embedding(n, v) for n, v in zip(names, X)})
+
     def transform(self, transformer):
         """
         Applies a transformation on the entire set.

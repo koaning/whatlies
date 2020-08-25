@@ -66,7 +66,7 @@ pip install whatlies[tfhub]
 pip install whatlies[transformers]
 pip install whatlies[ivis]
 pip install whatlies[opentsne]
-pip install whatlies[s2v]
+pip install whatlies[sense2vec]
 ```
 
 If you want it all you can also install via;

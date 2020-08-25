@@ -11,10 +11,13 @@ base_packages = [
     "spacy>=2.2.3",
     "spacy-lookups-data>=0.3.2",
     "networkx>=2.4",
-    "sense2vec>=1.0.2",
     "fasttext>=0.9.1",
     "bpemb>=0.3.0",
     "gensim>=3.8.3",
+]
+
+s2v_packages = [
+    "sense2vec>=1.0.2",
 ]
 
 tf_packages = [
@@ -54,7 +57,7 @@ test_packages = [
     "pre-commit>=2.2.0",
 ]
 
-extra_deps = tf_packages + transformers_dep + ivis_dep + open_tsne_dep
+extra_deps = tf_packages + transformers_dep + ivis_dep + open_tsne_dep + s2v_packages
 dev_packages = docs_packages + test_packages + extra_deps
 
 
@@ -79,6 +82,7 @@ setup(
         "dev": dev_packages,
         "test": test_packages,
         "tfhub": tf_packages,
+        "sense2vec": s2v_packages,
         "transformers": transformers_dep,
         "ivis": ivis_dep,
         "opentsne": open_tsne_dep,

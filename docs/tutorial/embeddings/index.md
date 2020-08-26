@@ -1,6 +1,6 @@
 ## Imaginary Tokens
 
-Let's make a few word-embeddings. The basic object for this is a `Token` object.
+Let's make a few word-embeddings. The basic object for this is an `Embedding` object.
 
 ```python 
 from whatlies import Embedding

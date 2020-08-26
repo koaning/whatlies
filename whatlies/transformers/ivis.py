@@ -57,7 +57,7 @@ class Ivis(Transformer):
 
     def transform(self, embset):
         names, X = embset.to_names_X()
-        new_vecs = self.tfm.fit_transform(X)
+        new_vecs = self.tfm.transform(X)
         names_out = names + [f"ivis_{i}" for i in range(self.n_components)]
         vectors_out = np.concatenate([new_vecs, np.eye(self.n_components)])
         new_dict = new_embedding_dict(names_out, vectors_out, embset)

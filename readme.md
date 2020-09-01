@@ -21,12 +21,12 @@ Feedback is welcome.
 ## Produced
 
 This project was initiated at [Rasa](https://rasa.com) as a by-product of
-our efforts in the developer advocacy and research teams. It's an open project
+our efforts in the developer advocacy and research teams. It's an open source project
 and community contributions are very welcome!
 
 ## Features
 
-This library has tools to help you understand what lies in word embeddings. This includes;
+This library has tools to help you understand what lies in word embeddings. This includes:
 
 - simple tools to create (interactive) visualisations
 - an api for vector arithmetic that you can visualise

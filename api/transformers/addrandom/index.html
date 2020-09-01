@@ -230,6 +230,19 @@
 
       
         
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../examples/lipstick-pig/" class="md-tabs__link">
+          Examples
+        </a>
+      
+    </li>
+  
+
+      
+        
       
         
       
@@ -536,9 +549,45 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Add Random
+      </label>
+    
     <a href="./" title="Add Random" class="md-nav__link md-nav__link--active">
       Add Random
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.transformers.addrandom.AddRandom.fit" class="md-nav__link">
+    fit()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.transformers.addrandom.AddRandom.transform" class="md-nav__link">
+    transform()
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -702,6 +751,42 @@
       
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Examples
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../examples/lipstick-pig/" title="Debiasing Projections" class="md-nav__link">
+      Debiasing Projections
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
   <li class="md-nav__item">
     <a href="../../../roadmap/" title="Roadmap" class="md-nav__link">
       Roadmap
@@ -737,6 +822,29 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.transformers.addrandom.AddRandom.fit" class="md-nav__link">
+    fit()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whatlies.transformers.addrandom.AddRandom.transform" class="md-nav__link">
+    transform()
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
   
 </nav>
                   </div>
@@ -786,6 +894,84 @@
 
 <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">AddRandom</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive_matrix</span><span class="p">(</span><span class="s1">&#39;rand_0&#39;</span><span class="p">,</span> <span class="s1">&#39;rand_1&#39;</span><span class="p">,</span> <span class="s1">&#39;rand_2&#39;</span><span class="p">)</span>
 </code></pre></div>
+
+<h2 id="whatlies.transformers.addrandom.AddRandom.fit"><code class="highlight"><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embset</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.transformers.addrandom.AddRandom.fit" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>transformers/addrandom.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>38
+39
+40</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embset</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_fitted</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="bp">self</span>
+</code></pre></div>
+</td></tr></table>
+
+</details>
+<p>Fit the transformer on the given <code>EmbeddingSet</code> instance (if neccessary). This method should
+set the <code>is_fitted</code> flag to <code>True</code>.</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>embset</code></td>
+<td></td>
+<td>an <code>EmbeddingSet</code> instance used for fitting the transformer.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="whatlies.transformers.addrandom.AddRandom.transform"><code class="highlight"><span class="n">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embset</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.transformers.addrandom.AddRandom.transform" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>transformers/addrandom.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embset</span><span class="p">):</span>
+        <span class="n">names</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">embset</span><span class="o">.</span><span class="n">to_names_X</span><span class="p">()</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">orig_dict</span> <span class="o">=</span> <span class="n">embset</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">new_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="sa">f</span><span class="s2">&quot;rand_</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">Embedding</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;rand_</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">EmbeddingSet</span><span class="p">({</span><span class="o">**</span><span class="n">orig_dict</span><span class="p">,</span> <span class="o">**</span><span class="n">new_dict</span><span class="p">})</span>
+</code></pre></div>
+</td></tr></table>
+
+</details>
+<p>Transform the given <code>EmbeddingSet</code> instance.</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>embset</code></td>
+<td></td>
+<td>an <code>EmbeddingSet</code> instance to be transformed.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
                 
                   
                 
@@ -864,6 +1050,12 @@
       <script src="../../../assets/javascripts/application.c33a9706.js"></script>
       
       <script>app.initialize({version:"1.1",url:{base:"../../.."}})</script>
+      
+        <script src="../../../js/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

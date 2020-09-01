@@ -230,6 +230,19 @@
 
       
         
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../examples/lipstick-pig/" class="md-tabs__link">
+          Examples
+        </a>
+      
+    </li>
+  
+
+      
+        
       
         
       
@@ -807,6 +820,42 @@
       
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Examples
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../examples/lipstick-pig/" title="Debiasing Projections" class="md-nav__link">
+      Debiasing Projections
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
   <li class="md-nav__item">
     <a href="../../roadmap/" title="Roadmap" class="md-nav__link">
       Roadmap
@@ -955,7 +1004,7 @@
                   <h1>What Are Embeddings</h1>
                 
                 <h2 id="imaginary-tokens">Imaginary Tokens<a class="headerlink" href="#imaginary-tokens" title="Permanent link">&para;</a></h2>
-<p>Let's make a few word-embeddings. The basic object for this is a <code>Token</code> object.</p>
+<p>Let's make a few word-embeddings. The basic object for this is an <code>Embedding</code> object.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies</span> <span class="kn">import</span> <span class="n">Embedding</span>
 
 <span class="n">foo</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span> 
@@ -1227,6 +1276,12 @@ to deal with collections of embeddings.</p>
       <script src="../../assets/javascripts/application.c33a9706.js"></script>
       
       <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
+      
+        <script src="../../js/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

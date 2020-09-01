@@ -230,6 +230,19 @@
 
       
         
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../examples/lipstick-pig/" class="md-tabs__link">
+          Examples
+        </a>
+      
+    </li>
+  
+
+      
+        
       
         
       
@@ -752,6 +765,42 @@
       
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Examples
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../examples/lipstick-pig/" title="Debiasing Projections" class="md-nav__link">
+      Debiasing Projections
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
   <li class="md-nav__item">
     <a href="../../roadmap/" title="Roadmap" class="md-nav__link">
       Roadmap
@@ -902,12 +951,16 @@ two embeddings selected with context.</p>
 <code>Going to the store</code> while in the second case we have <code>store</code> in the
 context of <code>store this in the drawer please</code>.</p>
 <h2 id="sense-to-vec">Sense to Vec<a class="headerlink" href="#sense-to-vec" title="Permanent link">&para;</a></h2>
-<p>We also have support for the <a href="https://github.com/explosion/sense2vec">sense2vec model</a>. To
-get it to work you first need to download and unzip the pretrained vectors
-found <a href="https://github.com/explosion/sense2vec#pretrained-vectors">here</a> but after
+<p>We also have support for the <a href="https://github.com/explosion/sense2vec">sense2vec model</a>. To use
+them you'll need to make sure that you install via:</p>
+<div class="highlight"><pre><span></span><code>pip install whatlies[sense2vec]
+</code></pre></div>
+
+<p>Once the dependency is installed you can download and unzip the pretrained vectors
+found <a href="https://github.com/explosion/sense2vec#pretrained-vectors">here</a>. After
 that you should be able to retreive tokens with context. They way you fetch these
 tokens is a bit ... different though.</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language.language</span> <span class="kn">import</span> <span class="n">Sense2VecLanguage</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language.language</span> <span class="kn">import</span> <span class="n">Sense2VecLanguage</span>
 <span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">Pca</span>
 
 <span class="n">lang</span> <span class="o">=</span> <span class="n">Sense2VecLanguage</span><span class="p">(</span><span class="s2">&quot;path/downloaded/s2v&quot;</span><span class="p">)</span>
@@ -917,6 +970,8 @@ tokens is a bit ... different though.</p>
          <span class="s2">&quot;chicken|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;puppy|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;kitten|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;carrot|NOUN&quot;</span><span class="p">]</span>
 <span class="n">emb</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">words</span><span class="p">]</span>
 </code></pre></div>
+
+<p>You're able to distinguish the verb "duck" from the animal "duck".
 From here one we're back to normal embeddingsets though. So we can
 plot whatever we feel like.</p>
 <div class="highlight"><pre><span></span><code><span class="n">p1</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s2">&quot;dog|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;jump|VERB&quot;</span><span class="p">)</span>
@@ -1056,6 +1111,12 @@ fetch('sense2vec-2.json')
       <script src="../../assets/javascripts/application.c33a9706.js"></script>
       
       <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
+      
+        <script src="../../js/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

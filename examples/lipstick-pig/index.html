@@ -1,0 +1,1326 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="A python package to discover "what lies" in word embeddings.">
+      
+      
+        <link rel="canonical" href="https://rasahq.github.io/whatlies/examples/lipstick-pig/">
+      
+      
+        <meta name="author" content="Vincent D. Warmerdam @ Rasa Research">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../images/fig.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>Debiasing Projections - whatlies</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../style.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="purple">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#meaning" tabindex="0" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://rasahq.github.io/whatlies/" title="whatlies" aria-label="whatlies" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">album</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              whatlies
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Debiasing Projections
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/RasaHQ/whatlies/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../tutorial/embeddings/" class="md-tabs__link">
+          Getting Started
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../api/embedding/" class="md-tabs__link">
+          API
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="./" class="md-tabs__link md-tabs__link--active">
+          Examples
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://rasahq.github.io/whatlies/" title="whatlies" class="md-nav__button md-logo">
+      
+        <i class="md-icon">album</i>
+      
+    </a>
+    whatlies
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/RasaHQ/whatlies/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Getting Started
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Getting Started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/embeddings/" title="What Are Embeddings" class="md-nav__link">
+      What Are Embeddings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/embeddingsets/" title="Interactive Visualisation" class="md-nav__link">
+      Interactive Visualisation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/languages/" title="Language Options" class="md-nav__link">
+      Language Options
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/transformations/" title="Transformation Viz" class="md-nav__link">
+      Transformation Viz
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/scikit-learn/" title="Scikit-Learn Compatibility" class="md-nav__link">
+      Scikit-Learn Compatibility
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/observations/" title="Observations" class="md-nav__link">
+      Observations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/embedding/" title="Embedding" class="md-nav__link">
+      Embedding
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/embeddingset/" title="EmbeddingSet" class="md-nav__link">
+      EmbeddingSet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Transformers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        Transformers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/transformers/pca/" title="Pca" class="md-nav__link">
+      Pca
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/transformers/umap/" title="Umap" class="md-nav__link">
+      Umap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/transformers/tsne/" title="Tsne" class="md-nav__link">
+      Tsne
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/transformers/opentsne/" title="OpenTsne" class="md-nav__link">
+      OpenTsne
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/transformers/noise/" title="Noise" class="md-nav__link">
+      Noise
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/transformers/addrandom/" title="Add Random" class="md-nav__link">
+      Add Random
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/transformers/ivis/" title="Ivis" class="md-nav__link">
+      Ivis
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Language
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/spacy_lang/" title="spaCy" class="md-nav__link">
+      spaCy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/s2v_lang/" title="Sense2Vec" class="md-nav__link">
+      Sense2Vec
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/fasttext_lang/" title="fasttext" class="md-nav__link">
+      fasttext
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/countvector_lang/" title="CountVector" class="md-nav__link">
+      CountVector
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/bpemb_lang/" title="BytePair" class="md-nav__link">
+      BytePair
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/convert_lang/" title="ConveRT" class="md-nav__link">
+      ConveRT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/gensim_lang/" title="Gensim" class="md-nav__link">
+      Gensim
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/transformers/" title="Huggingface" class="md-nav__link">
+      Huggingface
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/tfhub/" title="TFHub" class="md-nav__link">
+      TFHub
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Examples
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Debiasing Projections
+      </label>
+    
+    <a href="./" title="Debiasing Projections" class="md-nav__link md-nav__link--active">
+      Debiasing Projections
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#meaning" class="md-nav__link">
+    Meaning
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#similarity" class="md-nav__link">
+    Similarity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projections" class="md-nav__link">
+    Projections
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-processing" class="md-nav__link">
+    Post-Processing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#across-languages" class="md-nav__link">
+    Across Languages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relative-distances" class="md-nav__link">
+    Relative Distances
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method-i-biased-embedding-biased-model" class="md-nav__link">
+    Method I: Biased Embedding, Biased Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-ii-unbiased-embedding-biased-model" class="md-nav__link">
+    Method II: UnBiased Embedding, Biased Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-iii-unbiased-embedding-unbiased-model" class="md-nav__link">
+    Method III: UnBiased Embedding, UnBiased Model
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../roadmap/" title="Roadmap" class="md-nav__link">
+      Roadmap
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../releases/" title="Releases" class="md-nav__link">
+      Releases
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#meaning" class="md-nav__link">
+    Meaning
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#similarity" class="md-nav__link">
+    Similarity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projections" class="md-nav__link">
+    Projections
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-processing" class="md-nav__link">
+    Post-Processing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#across-languages" class="md-nav__link">
+    Across Languages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relative-distances" class="md-nav__link">
+    Relative Distances
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method-i-biased-embedding-biased-model" class="md-nav__link">
+    Method I: Biased Embedding, Biased Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-ii-unbiased-embedding-biased-model" class="md-nav__link">
+    Method II: UnBiased Embedding, Biased Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-iii-unbiased-embedding-unbiased-model" class="md-nav__link">
+    Method III: UnBiased Embedding, UnBiased Model
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/RasaHQ/whatlies/edit/master/docs/examples/lipstick-pig.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Debiasing Projections</h1>
+                
+                <p>In this example we'd like to discuss the effectiveness of debiasing techniques in word embeddings.
+This example is heavily inspired by the <a href="https://arxiv.org/pdf/1903.03862.pdf">"Lipstick on a Pig"</a> paper
+by Hila Gonen and Yoav Goldberg.</p>
+<h2 id="meaning">Meaning<a class="headerlink" href="#meaning" title="Permanent link">&para;</a></h2>
+<p>In word embedding space you might wonder if a direction in embedding space might represent meaning.</p>
+<ul>
+<li><span class="arithmatex">\(v_{man}\)</span> represents the word embedding for "man" .</li>
+<li><span class="arithmatex">\(v_{woman}\)</span> represents the word embedding for "woman" .</li>
+<li>You could argue that the axis <span class="arithmatex">\(v_{man} - v_{woman}\)</span> might represent "gender".</li>
+</ul>
+<p>One side of the "gender" axis would represent the male gender while the other end represents the female gender. This spectrum might allow you to guess if words are more "male" or more "female". It can also be used as a measurement for bias in language.</p>
+<h2 id="similarity">Similarity<a class="headerlink" href="#similarity" title="Permanent link">&para;</a></h2>
+<p>There are some axes that we might come up with that should be similar to this gender axis, like:</p>
+<ul>
+<li><span class="arithmatex">\(v_{he} - v_{she}\)</span></li>
+<li><span class="arithmatex">\(v_{king} - v_{queen}\)</span></li>
+<li><span class="arithmatex">\(v_{brother} - v_{sister}\)</span></li>
+</ul>
+<p>It would be highly unfortunate though if the following pairs of words would display similarity:</p>
+<ul>
+<li><span class="arithmatex">\(v_{nurse} - v_{physician}\)</span></li>
+<li><span class="arithmatex">\(v_{nurse} - v_{surgeon}\)</span></li>
+<li><span class="arithmatex">\(v_{nurse} - v_{doctor}\)</span></li>
+</ul>
+<p>Being a nurse should not imply that you are a woman just like that being a surgeon should not imply that you are a man. It'd be a shame if we were using embeddings where such stereotypical bias is present. Unfortunately, it's likely in the embeddings. Historically, women have not gotten the same opportunities as men. This is bound to be reflected on websites like Wikipedia which are a common source of data to train word embeddings. So let's make a distance chart to confirm if this is the case.</p>
+<details>
+  <summary><b>Word Pairs</b></summary>
+<div class="highlight"><pre><span></span><code><span class="n">stereotype_pairs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;sewing&#39;</span><span class="p">,</span> <span class="s1">&#39;carpentry&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;nurse&#39;</span><span class="p">,</span> <span class="s1">&#39;physician&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;nurse&#39;</span><span class="p">,</span> <span class="s1">&#39;surgeon&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;nurse&#39;</span><span class="p">,</span> <span class="s1">&#39;doctor&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">appropriate_pairs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;woman&#39;</span><span class="p">,</span> <span class="s1">&#39;man&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;she&#39;</span><span class="p">,</span> <span class="s1">&#39;he&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;her&#39;</span><span class="p">,</span> <span class="s1">&#39;him&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;girl&#39;</span><span class="p">,</span> <span class="s1">&#39;boy&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">random_pairs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;firehydrant&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;carpet&#39;</span><span class="p">,</span> <span class="s1">&#39;leg&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;hot&#39;</span><span class="p">,</span> <span class="s1">&#39;cold&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">all_pairs</span> <span class="o">=</span> <span class="p">[</span><span class="n">stereotype_pairs</span><span class="p">,</span> <span class="n">appropriate_pairs</span><span class="p">,</span> <span class="n">random_pairs</span><span class="p">]</span>
+</code></pre></div>
+</details>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies</span> <span class="kn">import</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">EmbeddingSet</span>
+<span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">FasttextLanguage</span>
+
+<span class="n">lang_ft</span> <span class="o">=</span> <span class="n">FasttextLanguage</span><span class="p">(</span><span class="s2">&quot;cc.en.300.bin&quot;</span><span class="p">)</span>
+
+<span class="n">flatten</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">l</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">calc_axis</span><span class="p">(</span><span class="n">pair_list</span><span class="p">,</span> <span class="n">language_model</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">language_model</span><span class="p">[</span><span class="n">t1</span><span class="p">]</span> <span class="o">-</span> <span class="n">language_model</span><span class="p">[</span><span class="n">t2</span><span class="p">]</span> <span class="k">for</span> <span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span> <span class="ow">in</span> <span class="n">pair_list</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">make_correlation_plot</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="n">language_model</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">):</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="n">calc_axis</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">language_model</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">]</span>
+    <span class="n">emb_pairs</span> <span class="o">=</span> <span class="n">EmbeddingSet</span><span class="p">(</span><span class="o">*</span><span class="n">flatten</span><span class="p">(</span><span class="n">axes</span><span class="p">))</span>
+    <span class="n">emb_pairs</span><span class="o">.</span><span class="n">plot_distance</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">)</span>
+
+<span class="n">make_correlation_plot</span><span class="p">(</span><span class="n">pairs</span><span class="o">=</span><span class="n">all_pairs</span><span class="p">,</span> <span class="n">language_model</span><span class="o">=</span><span class="n">lang_ft</span><span class="p">)</span>
+</code></pre></div>
+
+<p>This code generates a similarity chart for fasttext embeddings, shown below.</p>
+<p><img alt="" src="../imgs/bias.png" /></p>
+<p>Notice, that we indeed see correlation. The "gender" direction seems to correlate with the "doctor-nurse" direction. We'd prefer if it simply were zero.</p>
+<h2 id="projections">Projections<a class="headerlink" href="#projections" title="Permanent link">&para;</a></h2>
+<p>We observe bias that we do not want to have. So it's natural to ask: can we remove it?</p>
+<p>There is a popular technique that proposes to filter out the "gender"-direction. If we can quantify the gender direction then we might also be able to project all the vectors in our set away from it. The 2D plot below demonstrates this idea.</p>
+<details>
+  <summary><b>Plot Code</b></summary>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies</span> <span class="kn">import</span> <span class="n">Embedding</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">man</span>   <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;man&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+<span class="n">woman</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;woman&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">])</span>
+<span class="n">king</span>  <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;king&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">])</span>
+<span class="n">queen</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="s2">&quot;queen&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">])</span>
+
+<span class="n">man</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">woman</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">king</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">queen</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">queen</span> <span class="o">-</span> <span class="n">king</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;pink&quot;</span><span class="p">,</span> <span class="n">show_ops</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">(</span><span class="n">man</span> <span class="o">|</span> <span class="p">(</span><span class="n">queen</span> <span class="o">-</span> <span class="n">king</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;pink&quot;</span><span class="p">,</span> <span class="n">show_ops</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+</code></pre></div>
+</details>
+
+<p><img alt="" src="../imgs/logo.png" /></p>
+<p>In this example you can see that if we project <span class="arithmatex">\(v_{man}\)</span> away from the <span class="arithmatex">\(v_{queen} - v_{king}\)</span> axis we get a new vector <span class="arithmatex">\(v_{man} | (v_{queen} - v_{king})\)</span>.</p>
+<p>The 2D example also demonstrates that we might achieve:</p>
+<div class="arithmatex">\[v_{man} | (v_{queen} - v_{king}) \approx v_{woman} | (v_{queen} - v_{king})\]</div>
+<p>This suggests that we can use linear algebra to "filter" away the gender information as well as the gender bias.</p>
+<h2 id="post-processing">Post-Processing<a class="headerlink" href="#post-processing" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">make_debias_correlation_plot</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="n">language_model</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">):</span>
+    <span class="c1"># Calculate the embeddings just like before.</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="n">calc_axis</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">language_model</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">]</span>
+    <span class="n">emb_pairs</span> <span class="o">=</span> <span class="n">EmbeddingSet</span><span class="p">(</span><span class="o">*</span><span class="n">flatten</span><span class="p">(</span><span class="n">axes</span><span class="p">))</span>
+
+    <span class="c1"># Calculate the &quot;gender&quot;-direction</span>
+    <span class="n">norm_emb</span> <span class="o">=</span> <span class="n">EmbeddingSet</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">language_model</span><span class="p">[</span><span class="s1">&#39;man&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">language_model</span><span class="p">[</span><span class="s1">&#39;woman&#39;</span><span class="p">]),</span>
+        <span class="p">(</span><span class="n">language_model</span><span class="p">[</span><span class="s1">&#39;king&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">language_model</span><span class="p">[</span><span class="s1">&#39;queen&#39;</span><span class="p">]),</span>
+        <span class="p">(</span><span class="n">language_model</span><span class="p">[</span><span class="s1">&#39;father&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">language_model</span><span class="p">[</span><span class="s1">&#39;mother&#39;</span><span class="p">])</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">average</span><span class="p">()</span>
+
+    <span class="c1"># Project all embeddings away from this axis.</span>
+    <span class="n">emb_pairs</span> <span class="o">=</span> <span class="n">emb_pairs</span> <span class="o">|</span> <span class="n">norm_emb</span>
+
+    <span class="c1"># Plot the result.</span>
+    <span class="n">emb_pairs</span><span class="o">.</span><span class="n">plot_distance</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">)</span>
+
+<span class="n">make_debias_correlation_plot</span><span class="p">(</span><span class="n">pairs</span><span class="o">=</span><span class="n">all_pairs</span><span class="p">,</span> <span class="n">language_model</span><span class="o">=</span><span class="n">lang_ft</span><span class="p">)</span>
+</code></pre></div>
+
+<p>We'll now display the "before" as well as "after" chart.</p>
+<p><img alt="" src="../imgs/before-after.png" /></p>
+<p>It's not a perfect removal of the similarity. But we can confirm that at least visually, it seems "less".</p>
+<h2 id="across-languages">Across Languages<a class="headerlink" href="#across-languages" title="Permanent link">&para;</a></h2>
+<p>One benefit of this library is that it is fairly easy to repeat this exercise for different language backends. Just replace the <code>language_model</code> with a different backend. Here's the results for three backends; a large English spaCy model, FastText and a large English BytePair model.</p>
+<p><img alt="" src="../imgs/many.png" /></p>
+<h2 id="relative-distances">Relative Distances<a class="headerlink" href="#relative-distances" title="Permanent link">&para;</a></h2>
+<p>The results look promising but we need to be very careful here. We're able to
+show that on one bias-metric we're performing better now. But we should not
+assume that this solves all issues related to gender in word embeddings.
+To demonstrate why, let's try and use a debiased space to predict gender using
+standard algorithms in scikit-learn.</p>
+<p>As a data source we'll take two gendered word-lists. You can download the same
+word-lists <a href="../data/female-words.txt">here</a> and <a href="../data/male-words.txt">here</a>. These
+wordlists are subsets of the wordlists used in the
+<a href="https://arxiv.org/abs/1809.01496">Learning Gender - Neutral Word Embeddings</a> paper.
+The original, and larger, datasets can be found <a href="https://github.com/uclanlp/gn_glove/tree/master/wordlist">here</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">Pca</span><span class="p">,</span> <span class="n">Umap</span>
+<span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">SpacyLanguage</span><span class="p">,</span> <span class="n">FasttextLanguage</span>
+
+<span class="n">male_word</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;male-words.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">female_word</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;female-words.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">lang</span> <span class="o">=</span> <span class="n">FasttextLanguage</span><span class="p">(</span><span class="s2">&quot;cc.en.300.bin&quot;</span><span class="p">)</span>
+
+<span class="n">e1</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">male_word</span><span class="p">]</span><span class="o">.</span><span class="n">add_property</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="s2">&quot;male&quot;</span><span class="p">)</span>
+<span class="n">e2</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">female_word</span><span class="p">]</span><span class="o">.</span><span class="n">add_property</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="s2">&quot;female&quot;</span><span class="p">)</span>
+
+<span class="n">emb_debias</span> <span class="o">=</span> <span class="n">e1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">e2</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">lang</span><span class="p">[</span><span class="s1">&#39;man&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;woman&#39;</span><span class="p">])</span>
+</code></pre></div>
+
+<p>Next, we'll use the fasttext language backend as a scikit-learn featurizer.
+You can read more on this feature <a href="https://rasahq.github.io/whatlies/tutorial/scikit-learn/">here</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+
+<span class="c1"># There is overlap in the word-lists which we remove via `set`.</span>
+<span class="n">words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">male_word</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">female_word</span><span class="p">)</span>
+<span class="n">words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">words</span><span class="p">))</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="ow">in</span> <span class="n">male_word</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">]</span>
+
+<span class="c1"># We use our language backend as a transformer in scikit-learn.</span>
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">&quot;embed&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">())</span>
+<span class="p">])</span>
+</code></pre></div>
+
+<p>This pipeline can now be used to make predictions. Currently we do not perform any debiasing,
+so let's have a look at how well we can predict gender now.</p>
+<h3 id="method-i-biased-embedding-biased-model">Method I: Biased Embedding, Biased Model<a class="headerlink" href="#method-i-biased-embedding-biased-model" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../imgs/bias-bias-pipeline.png" /></p>
+<p>The code below runs the schematic drawn above.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">words</span><span class="p">,</span>
+                                                    <span class="n">labels</span><span class="p">,</span>
+                                                    <span class="n">train_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+                                                    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</code></pre></div>
+
+<p>This gives us the following result:</p>
+<div class="highlight"><pre><span></span><code>              precision    recall  f1-score   support
+
+       False       0.87      0.92      0.90        93
+        True       0.94      0.89      0.91       116
+
+    accuracy                           0.90       209
+   macro avg       0.90      0.91      0.90       209
+weighted avg       0.91      0.90      0.90       209
+</code></pre></div>
+
+<p>It seems that the information that is in the embeddings now give us a 90%
+accuracy on our test set.</p>
+<h3 id="method-ii-unbiased-embedding-biased-model">Method II: UnBiased Embedding, Biased Model<a class="headerlink" href="#method-ii-unbiased-embedding-biased-model" title="Permanent link">&para;</a></h3>
+<p>If we now apply debiasing on the vectors then one might expect the old model
+to no longer be able to predict the gender.</p>
+<p><img alt="" src="../imgs/bias-debias-pipeline.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">emb_debias</span><span class="o">.</span><span class="n">to_X_y</span><span class="p">(</span><span class="s1">&#39;group&#39;</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
+                                                    <span class="n">train_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+                                                    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">==</span> <span class="s1">&#39;male&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<p>This gives the following result:</p>
+<div class="highlight"><pre><span></span><code>              precision    recall  f1-score   support
+
+       False       0.97      0.73      0.83       131
+        True       0.68      0.96      0.79        78
+
+    accuracy                           0.81       209
+   macro avg       0.82      0.84      0.81       209
+weighted avg       0.86      0.81      0.82       209
+</code></pre></div>
+
+<p>We're using the same model as before, but now we're giving it the debiased
+vectors to predict on. Despite being trained on a different dataset, we're still
+able to predict 81% of the cases accurately. This does not bode well for our debiasing
+technique.</p>
+<h3 id="method-iii-unbiased-embedding-unbiased-model">Method III: UnBiased Embedding, UnBiased Model<a class="headerlink" href="#method-iii-unbiased-embedding-unbiased-model" title="Permanent link">&para;</a></h3>
+<p>We can also try to create a model that is both trained and applied on
+the unbiased vectors.</p>
+<p><img alt="" src="../imgs/debias-debias-pipeline.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="n">y_pred</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>              precision    recall  f1-score   support
+
+      female       0.80      0.83      0.81        94
+        male       0.86      0.83      0.84       115
+
+    accuracy                           0.83       209
+   macro avg       0.83      0.83      0.83       209
+weighted avg       0.83      0.83      0.83       209
+</code></pre></div>
+
+<p>If we train a model on the debiased embeddings and also apply it to another
+debiased set we're able to get 83% of the cases right. We were hoping more
+around 50% here.</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>If seems that after using linear projections as a debiasing technique
+we're able to remove the gender information of the word embeddings. This is based
+on cosine distance. However, if we use the debiased embeddings to predict
+gender it seems that we still have a reasonable amount of predictive power.</p>
+<p>This demonstrates that the debiasing technique has a limited effect and that
+there's plenty of reasons to remain careful when applying word embeddings.</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+  <footer class="md-footer">
+    
+      <div class="md-footer-nav">
+        <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="../../api/language/tfhub/" title="TFHub" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span class="md-footer-nav__direction">
+                    Previous
+                  </span>
+                  TFHub
+                </span>
+              </div>
+            </a>
+          
+          
+            <a href="../../roadmap/" title="Roadmap" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span class="md-footer-nav__direction">
+                    Next
+                  </span>
+                  Roadmap
+                </span>
+              </div>
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+              </div>
+            </a>
+          
+        </nav>
+      </div>
+    
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          
+            <div class="md-footer-copyright__highlight">
+              Copyright &copy; 2020 <a href="https://twitter.com/Rasa_HQ">Rasa</a>, Maintained by <a href="https://twitter.com/fishnets88">Vincent</a>.
+            </div>
+          
+          powered by
+          <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+          and
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs</a>
+        </div>
+        
+      </div>
+    </div>
+    <script async defer data-domain="rasahq.github.io/whatlies" src="https://plausible.io/js/plausible.js"></script>
+  </footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      
+      <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
+      
+        <script src="../../js/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

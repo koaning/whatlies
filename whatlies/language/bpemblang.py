@@ -98,7 +98,11 @@ class BytePairLanguage(SklearnTransformerMixin):
         return pairwise_distances(vector_matrix, vec.reshape(1, -1), metric=metric)
 
     def score_similar(
-        self, emb: Union[str, Embedding], n: int = 10, metric="cosine", lower=False,
+        self,
+        emb: Union[str, Embedding],
+        n: int = 10,
+        metric="cosine",
+        lower=False,
     ) -> List:
         """
         Retreive a list of (Embedding, score) tuples that are the most similar to the passed query.
@@ -128,7 +132,11 @@ class BytePairLanguage(SklearnTransformerMixin):
         return [(self[q], float(d)) for q, d in by_similarity[:n]]
 
     def embset_similar(
-        self, emb: Union[str, Embedding], n: int = 10, lower=False, metric="cosine",
+        self,
+        emb: Union[str, Embedding],
+        n: int = 10,
+        lower=False,
+        metric="cosine",
     ) -> EmbeddingSet:
         """
         Retreive an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet] that are the most similar to the passed query.

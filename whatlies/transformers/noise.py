@@ -48,4 +48,7 @@ class Noise(Transformer):
         np.random.seed(self.seed)
         new_vecs = self.tfm.transform(X)
         new_dict = new_embedding_dict(names, new_vecs, embset)
-        return EmbeddingSet(new_dict, name=f"{embset.name}",)
+        return EmbeddingSet(
+            new_dict,
+            name=f"{embset.name}",
+        )

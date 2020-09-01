@@ -20,7 +20,10 @@ def load_model_and_tokenizer(model_name, tensor_type):
 
 @pytest.mark.parametrize(
     "model_name, expected_shape",
-    [("sshleifer/tiny-gpt2", (2,)), ("sshleifer/tiny-distilroberta-base", (2,)),],
+    [
+        ("sshleifer/tiny-gpt2", (2,)),
+        ("sshleifer/tiny-distilroberta-base", (2,)),
+    ],
 )
 @pytest.mark.parametrize("tensor_type", ["tf", "pt"])
 def test_basic_usage_and_generated_embeddings(model_name, expected_shape, tensor_type):

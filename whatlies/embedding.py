@@ -189,8 +189,8 @@ class Embedding:
     def plot(
         self,
         kind: str = "arrow",
-        x_axis: Union[int, "Embedding"] = None,
-        y_axis: Union[int, "Embedding"] = None,
+        x_axis: Union[int, "Embedding"] = 0,
+        y_axis: Union[int, "Embedding"] = 1,
         x_label: Optional[str] = None,
         y_label: Optional[str] = None,
         title: Optional[str] = None,
@@ -255,17 +255,15 @@ class Embedding:
         as well as the default label of axis.
 
         Arguments:
-            axis: the axis value used for projection. It could be None, an integer or
+            axis: the axis value used for projection. It could be an integer or
                 an `Embedding` instance.
             dir: the axis direction which could be either of `'x'` or `'y'`.
         """
         if isinstance(axis, int):
             return self.vector[axis], "Dimension " + str(axis)
-        if isinstance(axis, Embedding):
+        elif isinstance(axis, Embedding):
             return self > axis, axis.name
-        if axis is None:
-            if len(self.vector) > 2:
-                raise ValueError(
-                    f"The `{dir}_axis` value cannot be None for a {len(self.vector)}D embedding"
-                )
-            return self.vector[0 if dir == "x" else 1], axis
+        else:
+            raise ValueError(
+                f"The `{dir}_axis` value should be an integer or Embedding instance, given: {type(axis)}"
+            )

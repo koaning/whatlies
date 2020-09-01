@@ -26,7 +26,7 @@ It would be highly unfortunate though if the following pairs of words would disp
 - $v_{nurse} - v_{surgeon}$
 - $v_{nurse} - v_{doctor}$
 
-Being a nurse should not imply that you are a woman just like that being a surgeon should not imply that you are a man. It'd be a shame if we were using embeddings where such stereotypical bias is present. Unfortunately, it's likely in the embeddings. Historically, women have not gotten the same opportunities as men. This is bound to be reflected on websites like Wikipedia which are a common source of data to train word embeddings. So let's make a similarity chart to confirm if this is the case.
+Being a nurse should not imply that you are a woman just like that being a surgeon should not imply that you are a man. It'd be a shame if we were using embeddings where such stereotypical bias is present. Unfortunately, it's likely in the embeddings. Historically, women have not gotten the same opportunities as men. This is bound to be reflected on websites like Wikipedia which are a common source of data to train word embeddings. So let's make a distance chart to confirm if this is the case.
 
 <details>
   <summary><b>Word Pairs</b></summary>

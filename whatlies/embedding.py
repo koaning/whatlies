@@ -35,7 +35,11 @@ class Embedding:
         self.vector = np.array(vector)
 
     def add_property(self, name, func):
-        result = Embedding(name=self.name, vector=self.vector, orig=self.orig,)
+        result = Embedding(
+            name=self.name,
+            vector=self.vector,
+            orig=self.orig,
+        )
         setattr(result, name, func(result))
         return result
 

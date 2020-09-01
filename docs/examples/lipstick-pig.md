@@ -1,4 +1,6 @@
-In this example we'd like to discuss the effectiveness of debiasing techniques in word embeddings. This example is heavily inspired by the [lipstick on a pig paper](https://arxiv.org/pdf/1903.03862.pdf) by Hila Gonen and Yoav Goldberg.
+In this example we'd like to discuss the effectiveness of debiasing techniques in word embeddings.
+This example is heavily inspired by the [lipstick on a pig paper](https://arxiv.org/pdf/1903.03862.pdf)
+by Hila Gonen and Yoav Goldberg.
 
 ## Meaning
 
@@ -74,7 +76,7 @@ make_correlation_plot(pairs=all_pairs, language_model=lang_ft)
 
 This code generates a similarity chart for fasttext embeddings, shown below.
 
-![](bias.png)
+![](imgs/bias.png)
 
 Notice, that we indeed see correlation. The "gender" direction seems to correlate with the "doctor-nurse" direction as well. This does not bode well.
 
@@ -105,7 +107,7 @@ plt.axis('off');
 ```
 </details>
 
-![](logo.png)
+![](imgs/logo.png)
 
 In this example you can see what might happen if we project $v_{man}$ away from the $v_{queen} - v_{king}$ axis we get a new vector $v_{man} | (v_{queen} - v_{king})$.
 
@@ -141,7 +143,7 @@ make_debias_correlation_plot(pairs=all_pairs, language_model=lang_ft)
 
 We'll now display the "before" as well as "after" chart.
 
-![](before-after.png)
+![](imgs/before-after.png)
 
 It's not a perfect removal of the similarity. But we can confirm that at least visually, it seems "less".
 
@@ -149,11 +151,22 @@ It's not a perfect removal of the similarity. But we can confirm that at least v
 
 One benefit of this library is that it is fairly easy to repeat this exercise for different language backends. Just replace the `language_model` with a different backend. Here's the results for three backends; a large English spaCy model, FastText and a large English BytePair model.
 
-![](many.png)
+![](imgs/many.png)
 
 ## Relative Distances
 
-The results look promising but we need to be very careful here. We're able to show that on one bias-metric we're performing better now. But we should not assume that this solves all issues related to gender in word embeddings. To demonstrate why, let's try and use a debiased space to predict gender using standard algorithms in scikit-learn.
+The results look promising but we need to be very careful here. We're able to
+show that on one bias-metric we're performing better now. But we should not
+assume that this solves all issues related to gender in word embeddings.
+To demonstrate why, let's try and use a debiased space to predict gender using
+standard algorithms in scikit-learn.
+
+As a data source we'll take two gendered word-lists. You can download the same
+word-lists [here](data/female-words.txt) and [here](data/male-words.txt). These
+wordlists are subsets of the wordlists used in the
+[Learning Gender - Neutral Word Embeddings](https://arxiv.org/abs/1809.01496) paper.
+The original, and larger, datasets can be found [here](https://github.com/uclanlp/gn_glove/tree/master/wordlist).
+
 
 ```python
 import pathlib
@@ -171,9 +184,10 @@ e2 = lang[female_word].add_property("group", lambda d: "female")
 emb_debias = e1.merge(e2) | (lang['man'] - lang['woman'])
 ```
 
+Next, we'll use the fasttext language backend as a scikit-learn featurizer.
+You can read more on this feature [here](https://rasahq.github.io/whatlies/tutorial/scikit-learn/).
+
 ```python
-import numpy as np
-import pandas as pd
 from sklearn.svm import SVC
 from sklearn.pipeline import Pipeline
 
@@ -189,20 +203,102 @@ pipe = Pipeline([
 ])
 ```
 
-
 ### Method I: Biased Embedding, Biased Model
+
+This pipeline can now be used to make predictions. Currently we do not perform any debiasing,
+so let's have a look at how well we can predict gender now.
 
 ```python
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import classification_report
 
-X_train, X_test, y_train, y_test = train_test_split(words, labels, train_size=200, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(words,
+                                                    labels,
+                                                    train_size=200,
+                                                    random_state=42)
 y_pred = pipe.fit(X_train, y_train).predict(X_test)
 
 print(classification_report(y_pred, y_test))
 ```
 
+This gives us the following result:
+
+```
+              precision    recall  f1-score   support
+
+       False       0.87      0.92      0.90        93
+        True       0.94      0.89      0.91       116
+
+    accuracy                           0.90       209
+   macro avg       0.90      0.91      0.90       209
+weighted avg       0.91      0.90      0.90       209
+```
+
+It seems that the information that is in the embeddings now give us a 90%
+accuracy on our test set.
+
 ### Method II: UnBiased Embedding, UnBiased Model
+
+If we now apply debiasing on the vectors then one might expect the old model
+to no longer be able to predict the gender.
+
+```python
+X, y = emb_debias.to_X_y('group')
+X_train, X_test, y_train, y_test = train_test_split(X, y,
+                                                    train_size=200,
+                                                    random_state=42)
+
+y_pred = pipe.steps[1][1].predict(X_test)
+print(classification_report(y_pred, y_test == 'male'))
+```
+
+This gives the following result:
+
+```
+              precision    recall  f1-score   support
+
+       False       0.97      0.73      0.83       131
+        True       0.68      0.96      0.79        78
+
+    accuracy                           0.81       209
+   macro avg       0.82      0.84      0.81       209
+weighted avg       0.86      0.81      0.82       209
+```
+
+We're using the same model as before, but now we're giving it a the debiased
+vectors to predict on. Despite being trained on a different dataset, we're still
+able to predict 81% of the cases accurately! This does not bode well for our debiasing
+technique.
 
 ### Method III: UnBiased Embedding, Biased Model
 
+```python
+y_pred = SVC().fit(X_train, y_train).predict(X_test)
+
+print(classification_report(y_pred, y_test))
+```
+
+```
+              precision    recall  f1-score   support
+
+      female       0.80      0.83      0.81        94
+        male       0.86      0.83      0.84       115
+
+    accuracy                           0.83       209
+   macro avg       0.83      0.83      0.83       209
+weighted avg       0.83      0.83      0.83       209
+```
+
+If we train a model on the debiased embeddings and also apply it to another
+debiased set we're able to get 83% of the cases right. We were hoping more
+around 50% here.
+
+## Conclusion
+
+If seems that after using linear projections as a debiasing technique that
+we're able to remove the gender information of the word embeddings. This is based
+on cosine distance. However, if we use the debiased embeddings to predict
+gender it seems that we still have a reasonable amount of predictive power.
+
+This demonstrates that the debiasing technique has a limited effect and that
+there's plenty of reasons to remain careful when applying word embeddings.

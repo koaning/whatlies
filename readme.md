@@ -20,9 +20,19 @@ Feedback is welcome.
 
 ## Produced
 
-This project was initiated at [Rasa](https://rasa.com) as a fun side project
-that supports the research and developer advocacy teams at Rasa.
-It is maintained by Vincent D. Warmerdam, Research Advocate at Rasa.
+This project was initiated at [Rasa](https://rasa.com) as a by-product of
+our efforts in the developer advocacy and research teams. It's an open project
+and community contributions are very welcome!
+
+## Features
+
+This library has tools to help you understand what lies in word embeddings. This includes;
+
+- simple tools to create (interactive) visualisations
+- an api for vector arithmetic that you can visualise
+- support for many dimensionality reduction techniques like pca, umap and tsne
+- support for many language backends including spaCy, fasttext, tfhub, huggingface and bpemb
+- lightweight scikit-learn featurizer support for all these backends
 
 ## Getting Started
 
@@ -30,7 +40,7 @@ For a quick overview, check out our introductory video on
 [youtube](https://www.youtube.com/watch?v=FwkwC7IJWO0&list=PL75e0qA87dlG-za8eLI6t0_Pbxafk-cxb&index=9&t=0s). More
 in depth getting started guides can be found on the [documentation page](https://rasahq.github.io/whatlies/).
 
-## Features
+## Examples 
 
 The idea is that you can load embeddings from a language backend
 and use mathematical operations on it.

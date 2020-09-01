@@ -1,10 +1,10 @@
 In this example we'd like to discuss the effectiveness of debiasing techniques in word embeddings.
-This example is heavily inspired by the [lipstick on a pig paper](https://arxiv.org/pdf/1903.03862.pdf)
+This example is heavily inspired by the ["Lipstick on a Pig"](https://arxiv.org/pdf/1903.03862.pdf) paper
 by Hila Gonen and Yoav Goldberg.
 
 ## Meaning
 
-In word embedding space you might wonder if a direction in embedding space might represents meaning.
+In word embedding space you might wonder if a direction in embedding space might represent meaning.
 
 - $v_{man}$ represents the word embedding for "man" .
 - $v_{woman}$ represents the word embedding for "woman" .
@@ -14,22 +14,22 @@ One side of the "gender" axis would represent the male gender while the other en
 
 ## Similarity
 
-There are some axes that we might come up with that should be similar to this gender axis.
+There are some axes that we might come up with that should be similar to this gender axis, like:
 
 - $v_{he} - v_{she}$
 - $v_{king} - v_{queen}$
 - $v_{brother} - v_{sister}$
 
-It would be highly unfortunate though if the following pairs of words would display similarity.
+It would be highly unfortunate though if the following pairs of words would display similarity:
 
 - $v_{nurse} - v_{physician}$
 - $v_{nurse} - v_{surgeon}$
 - $v_{nurse} - v_{doctor}$
 
-Being a woman should not imply that you are a nurse just like that being a man should not imply that you are a surgeon. It'd be a shame if we were using embeddings where such stereotypical bias present. Unfortunately, it's likely in the embeddings. Historically woman have not gotten the same opportunities as men. This is bound to be reflected on websites like Wikipedia which are a common source of data to train word embeddings. So let's make a similarity chart to confirm if this is the case.
+Being a nurse should not imply that you are a woman just like that being a surgeon should not imply that you are a man. It'd be a shame if we were using embeddings where such stereotypical bias is present. Unfortunately, it's likely in the embeddings. Historically, women have not gotten the same opportunities as men. This is bound to be reflected on websites like Wikipedia which are a common source of data to train word embeddings. So let's make a similarity chart to confirm if this is the case.
 
 <details>
-  <summary><b>Word Pairs.</b></summary>
+  <summary><b>Word Pairs</b></summary>
 ```python
 stereotype_pairs = [
     ('sewing', 'carpentry'),
@@ -78,7 +78,7 @@ This code generates a similarity chart for fasttext embeddings, shown below.
 
 ![](imgs/bias.png)
 
-Notice, that we indeed see correlation. The "gender" direction seems to correlate with the "doctor-nurse" direction as well. This does not bode well.
+Notice, that we indeed see correlation. The "gender" direction seems to correlate with the "doctor-nurse" direction. We'd prefer if it simply were zero.
 
 ## Projections
 
@@ -90,6 +90,7 @@ There is a popular technique that proposes to filter out the "gender"-direction.
   <summary><b>Plot Code</b></summary>
 ```python
 from whatlies import Embedding
+import matplotlib.pylab as plt
 
 man   = Embedding("man", [0.5, 0.1])
 woman = Embedding("woman", [0.5, 0.6])
@@ -109,9 +110,9 @@ plt.axis('off');
 
 ![](imgs/logo.png)
 
-In this example you can see what might happen if we project $v_{man}$ away from the $v_{queen} - v_{king}$ axis we get a new vector $v_{man} | (v_{queen} - v_{king})$.
+In this example you can see that if we project $v_{man}$ away from the $v_{queen} - v_{king}$ axis we get a new vector $v_{man} | (v_{queen} - v_{king})$.
 
-You can even see that if in this 2D example;
+The 2D example also demonstrates that we might achieve:
 
 $$v_{man} | (v_{queen} - v_{king}) \approx v_{woman} | (v_{queen} - v_{king})$$
 
@@ -271,7 +272,7 @@ This gives the following result:
 weighted avg       0.86      0.81      0.82       209
 ```
 
-We're using the same model as before, but now we're giving it a the debiased
+We're using the same model as before, but now we're giving it the debiased
 vectors to predict on. Despite being trained on a different dataset, we're still
 able to predict 81% of the cases accurately. This does not bode well for our debiasing
 technique.
@@ -306,7 +307,7 @@ around 50% here.
 
 ## Conclusion
 
-If seems that after using linear projections as a debiasing technique that
+If seems that after using linear projections as a debiasing technique
 we're able to remove the gender information of the word embeddings. This is based
 on cosine distance. However, if we use the debiased embeddings to predict
 gender it seems that we still have a reasonable amount of predictive power.

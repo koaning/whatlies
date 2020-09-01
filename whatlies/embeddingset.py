@@ -892,8 +892,11 @@ class EmbeddingSet:
 
     def plot_interactive(
         self,
-        x_axis: Union[str, Embedding],
-        y_axis: Union[str, Embedding],
+        x_axis: Union[int, str, Embedding],
+        y_axis: Union[int, str, Embedding],
+        x_label: Optional[str] = None,
+        y_label: Optional[str] = None,
+        title: Optional[str] = None,
         annot: bool = True,
         show_axis_point: bool = False,
         color: Union[None, str] = None,
@@ -902,8 +905,13 @@ class EmbeddingSet:
         Makes highly interactive plot of the set of embeddings.
 
         Arguments:
-            x_axis: the x-axis to be used, must be given when dim > 2
-            y_axis: the y-axis to be used, must be given when dim > 2
+            x_axis: the x-axis to be used, must be given when dim > 2; if an integer, the corresponding
+                dimension of embedding is used.
+            y_axis: the y-axis to be used, must be given when dim > 2; if an integer, the corresponding
+                dimension of embedding is used.
+            x_label: an optional label used for x-axis; if not given, it is set based on `x_axis` value.
+            y_label: an optional label used for y-axis; if not given, it is set based on `y_axis` value.
+            title: an optional title for the plot; if not given, it is set based on `x_axis` and `y_axis` values.
             annot: drawn points should be annotated
             show_axis_point: ensure that the axis are drawn
             color: a property that will be used for plotting
@@ -929,10 +937,28 @@ class EmbeddingSet:
         if isinstance(y_axis, str):
             y_axis = self[y_axis]
 
+        # Determine axes values and labels
+        if isinstance(x_axis, int):
+            x_val = self.to_X()[:, x_axis]
+            x_lab = "Dimension " + str(x_axis)
+        else:
+            x_val = self.compare_against(x_axis)
+            x_lab = x_axis.name
+
+        if isinstance(y_axis, int):
+            y_val = self.to_X()[:, y_axis]
+            y_lab = "Dimension " + str(y_axis)
+        else:
+            y_val = self.compare_against(y_axis)
+            y_lab = y_axis.name
+        x_label = x_label if x_label is not None else x_lab
+        y_label = y_label if y_label is not None else y_lab
+        title = title if title is not None else f"{x_lab} vs. {y_lab}"
+
         plot_df = pd.DataFrame(
             {
-                "x_axis": self.compare_against(x_axis),
-                "y_axis": self.compare_against(y_axis),
+                "x_axis": x_val,
+                "y_axis": y_val,
                 "name": [v.name for v in self.embeddings.values()],
                 "original": [v.orig for v in self.embeddings.values()],
             }
@@ -945,18 +971,18 @@ class EmbeddingSet:
             ]
 
         if not show_axis_point:
-            plot_df = plot_df.loc[lambda d: ~d["name"].isin([x_axis.name, y_axis.name])]
+            plot_df = plot_df.loc[lambda d: ~d["name"].isin([x_lab, y_lab])]
 
         result = (
             alt.Chart(plot_df)
             .mark_circle(size=60)
             .encode(
-                x=alt.X("x_axis", axis=alt.Axis(title=x_axis.name)),
-                y=alt.X("y_axis", axis=alt.Axis(title=y_axis.name)),
+                x=alt.X("x_axis", axis=alt.Axis(title=x_label)),
+                y=alt.X("y_axis", axis=alt.Axis(title=y_label)),
                 tooltip=["name", "original"],
                 color=alt.Color(":N", legend=None) if not color else alt.Color(color),
             )
-            .properties(title=f"{x_axis.name} vs. {y_axis.name}")
+            .properties(title=title)
             .interactive()
         )
 
@@ -965,8 +991,8 @@ class EmbeddingSet:
                 alt.Chart(plot_df)
                 .mark_text(dx=-15, dy=3, color="black")
                 .encode(
-                    x=alt.X("x_axis", axis=alt.Axis(title=x_axis.name)),
-                    y=alt.X("y_axis", axis=alt.Axis(title=y_axis.name)),
+                    x=alt.X("x_axis", axis=alt.Axis(title=x_label)),
+                    y=alt.X("y_axis", axis=alt.Axis(title=y_label)),
                     text="original",
                 )
             )

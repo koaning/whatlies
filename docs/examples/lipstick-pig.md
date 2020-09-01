@@ -307,10 +307,11 @@ around 50% here.
 
 ## Conclusion
 
-If seems that after using linear projections as a debiasing technique
-we're able to remove the gender "direction" of the word embeddings. This is based
-on cosine distance. However, if we use the debiased embeddings to predict
-gender it seems that we still have a reasonable amount of predictive power.
+Based on just cosine distance it seems that we're able to remove the gender
+"direction" from our embeddings by using linear projections as a debiasing technique.
+However, if we use the debiased embeddings to predict gender it seems that we still
+have a reasonable amount of predictive power.
 
 This demonstrates that the debiasing technique has a limited effect and that
-there's plenty of reasons to remain careful when applying word embeddings.
+there's plenty of reasons to remain careful and critical when applying word embeddings
+in practice.

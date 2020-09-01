@@ -203,10 +203,14 @@ pipe = Pipeline([
 ])
 ```
 
-### Method I: Biased Embedding, Biased Model
-
 This pipeline can now be used to make predictions. Currently we do not perform any debiasing,
 so let's have a look at how well we can predict gender now.
+
+### Method I: Biased Embedding, Biased Model
+
+![](imgs/bias-bias-pipeline.png)
+
+The code below runs the schematic drawn above.
 
 ```python
 from sklearn.model_selection import train_test_split, GridSearchCV
@@ -237,10 +241,12 @@ weighted avg       0.91      0.90      0.90       209
 It seems that the information that is in the embeddings now give us a 90%
 accuracy on our test set.
 
-### Method II: UnBiased Embedding, UnBiased Model
+### Method II: UnBiased Embedding, Biased Model
 
 If we now apply debiasing on the vectors then one might expect the old model
 to no longer be able to predict the gender.
+
+![](imgs/bias-debias-pipeline.png)
 
 ```python
 X, y = emb_debias.to_X_y('group')
@@ -267,10 +273,15 @@ weighted avg       0.86      0.81      0.82       209
 
 We're using the same model as before, but now we're giving it a the debiased
 vectors to predict on. Despite being trained on a different dataset, we're still
-able to predict 81% of the cases accurately! This does not bode well for our debiasing
+able to predict 81% of the cases accurately. This does not bode well for our debiasing
 technique.
 
-### Method III: UnBiased Embedding, Biased Model
+### Method III: UnBiased Embedding, UnBiased Model
+
+We can also try to create a model that is both trained and applied on
+the unbiased vectors.
+
+![](imgs/debias-debias-pipeline.png)
 
 ```python
 y_pred = SVC().fit(X_train, y_train).predict(X_test)

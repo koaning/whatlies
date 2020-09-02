@@ -36,6 +36,8 @@ nav:
       - Gensim: api/language/gensim_lang.md
       - Huggingface: api/language/transformers.md
       - TFHub: api/language/tfhub.md
+  - Examples:
+    - Debiasing Projections: examples/lipstick-pig.md
   - Roadmap: roadmap.md
   - Releases: releases.md
 plugins:
@@ -56,3 +58,9 @@ theme:
 markdown_extensions:
   - toc:
       permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+extra_javascript:
+  - js/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

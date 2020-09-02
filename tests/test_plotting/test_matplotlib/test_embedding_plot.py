@@ -156,9 +156,9 @@ def test_embedding_plot_arrow_emb_axis(embset):
     mpl.pyplot.close(fig)
 
 
-def test_embedding_plot_raises_error_when_no_axis(embset):
+def test_embedding_plot_raises_error_when_incorret_axis_type(embset):
     emb = embset["red"]
-    with pytest.raises(ValueError, match="The `x_axis` value cannot be None"):
-        emb.plot()
-    with pytest.raises(ValueError, match="The `y_axis` value cannot be None"):
-        emb.plot(x_axis=0)
+    with pytest.raises(ValueError, match="The `x_axis` value should be"):
+        emb.plot(x_axis=1.0)
+    with pytest.raises(ValueError, match="The `y_axis` value should be"):
+        emb.plot(y_axis="blue")

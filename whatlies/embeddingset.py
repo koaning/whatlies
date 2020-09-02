@@ -587,8 +587,8 @@ class EmbeddingSet:
     def plot(
         self,
         kind: str = "arrow",
-        x_axis: Union[int, str, Embedding] = None,
-        y_axis: Union[int, str, Embedding] = None,
+        x_axis: Union[int, str, Embedding] = 0,
+        y_axis: Union[int, str, Embedding] = 1,
         x_label: Optional[str] = None,
         y_label: Optional[str] = None,
         title: Optional[str] = None,
@@ -892,8 +892,8 @@ class EmbeddingSet:
 
     def plot_interactive(
         self,
-        x_axis: Union[int, str, Embedding],
-        y_axis: Union[int, str, Embedding],
+        x_axis: Union[int, str, Embedding] = 0,
+        y_axis: Union[int, str, Embedding] = 1,
         x_label: Optional[str] = None,
         y_label: Optional[str] = None,
         title: Optional[str] = None,

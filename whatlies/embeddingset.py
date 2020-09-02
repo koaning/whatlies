@@ -1001,7 +1001,7 @@ class EmbeddingSet:
 
     def plot_interactive_matrix(
         self,
-        *axes,
+        *axes: Union[int, str, Embedding],
         annot: bool = True,
         show_axis_point: bool = False,
         width: int = 200,
@@ -1011,7 +1011,8 @@ class EmbeddingSet:
         Makes highly interactive plot of the set of embeddings.
 
         Arguments:
-            axes: the axes that we wish to plot, these should be in the embeddingset
+            axes: the axes that we wish to plot; each could be either an integer, the name of
+                an existing embedding, or an `Embedding` instance (default: `0, 1`).
             annot: drawn points should be annotated
             show_axis_point: ensure that the axis are drawn
             width: width of the visual
@@ -1034,12 +1035,30 @@ class EmbeddingSet:
         emb.transform(Pca(3)).plot_interactive_matrix('pca_0', 'pca_1', 'pca_2')
         ```
         """
-        plot_df = pd.DataFrame({ax: self.compare_against(self[ax]) for ax in axes})
+        # Set default value of axes, if not given.
+        if len(axes) == 0:
+            axes = [0, 1]
+
+        # Get values of each axis according to their type.
+        axes_vals = {}
+        X = self.to_X()
+        for axis in axes:
+            if isinstance(axis, int):
+                vals = X[:, axis]
+                axes_vals["Dimension " + str(axis)] = vals
+            else:
+                if isinstance(axis, str):
+                    axis = self[axis]
+                vals = self.compare_against(axis)
+                axes_vals[axis.name] = vals
+
+        plot_df = pd.DataFrame(axes_vals)
         plot_df["name"] = [v.name for v in self.embeddings.values()]
         plot_df["original"] = [v.orig for v in self.embeddings.values()]
+        axes_names = list(axes_vals.keys())
 
         if not show_axis_point:
-            plot_df = plot_df.loc[lambda d: ~d["name"].isin(axes)]
+            plot_df = plot_df.loc[lambda d: ~d["name"].isin(axes_names)]
 
         result = (
             alt.Chart(plot_df)
@@ -1062,7 +1081,7 @@ class EmbeddingSet:
 
         result = (
             result.properties(width=width, height=height)
-            .repeat(row=axes[::-1], column=axes)
+            .repeat(row=axes_names[::-1], column=axes_names)
             .interactive()
         )
 

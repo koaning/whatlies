@@ -95,6 +95,28 @@ class EmbeddingSet:
         """
         return item in self.embeddings.keys()
 
+    def __getitem__(self, thing):
+        """
+        Retreive a single embedding from the embeddingset.
+
+        Usage:
+        ```python
+        from whatlies.embeddingset import EmbeddingSet
+
+        foo = Embedding("foo", [0.1, 0.3, 0.10])
+        bar = Embedding("bar", [0.7, 0.2, 0.11])
+        buz = Embedding("buz", [0.1, 0.9, 0.12])
+        emb = EmbeddingSet(foo, bar, buz)
+
+        emb["buz"]
+        ```
+        """
+        if isinstance(thing, str):
+            return self.embeddings[thing]
+        new_embeddings = {t: self[t] for t in thing}
+        names = ",".join(thing)
+        return EmbeddingSet(new_embeddings, name=f"{self.name}.subset({names})")
+
     def __iter__(self):
         """
         Iterate over all the embeddings in the embeddingset.
@@ -159,7 +181,7 @@ class EmbeddingSet:
         new_embeddings = {k: emb - other for k, emb in self.embeddings.items()}
         return EmbeddingSet(new_embeddings, name=f"({self.name} - {other.name})")
 
-    def __or__(self, other):
+    def __or__(self, other: Union["Embedding", "EmbeddingSet"]) -> "EmbeddingSet":
         """
         Makes every element in the embeddingset othogonal to the passed embedding.
 
@@ -178,7 +200,25 @@ class EmbeddingSet:
         (emb | buz).plot(kind="arrow")
         ```
         """
-        new_embeddings = {k: emb | other for k, emb in self.embeddings.items()}
+        if isinstance(other, Embedding):
+            new_embeddings = {k: emb | other for k, emb in self.embeddings.items()}
+        elif isinstance(other, EmbeddingSet):
+            # Apply Gram-Schmidt to project away from a hyperplane instead of an axis
+            new_set = EmbeddingSet(self.embeddings.copy())
+
+            # Create orthogonal vectors that span the space to project away from
+            orth_away = [other[w] for w in other]
+            for i in range(len(orth_away)):
+                orth_away[i] = reduce(lambda a, b: b | a, orth_away[: i + 1])
+
+            # Use all of these vectors to project away from
+            for e in orth_away:
+                new_set = new_set | e
+            return new_set
+        else:
+            raise ValueError(
+                f"You must project away from either an Embedding or an Embeddingset. Got={type(other)}"
+            )
         return EmbeddingSet(new_embeddings, name=f"({self.name} | {other.name})")
 
     def __rshift__(self, other):
@@ -352,28 +392,6 @@ class EmbeddingSet:
         ```
         """
         return transformer(self)
-
-    def __getitem__(self, thing):
-        """
-        Retreive a single embedding from the embeddingset.
-
-        Usage:
-        ```python
-        from whatlies.embeddingset import EmbeddingSet
-
-        foo = Embedding("foo", [0.1, 0.3, 0.10])
-        bar = Embedding("bar", [0.7, 0.2, 0.11])
-        buz = Embedding("buz", [0.1, 0.9, 0.12])
-        emb = EmbeddingSet(foo, bar, buz)
-
-        emb["buz"]
-        ```
-        """
-        if isinstance(thing, str):
-            return self.embeddings[thing]
-        new_embeddings = {t: self[t] for t in thing}
-        names = ",".join(thing)
-        return EmbeddingSet(new_embeddings, name=f"{self.name}.subset({names})")
 
     def __repr__(self):
         return self.name

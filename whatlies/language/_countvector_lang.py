@@ -8,7 +8,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
-from whatlies.language.common import SklearnTransformerMixin
+from whatlies.language._common import SklearnTransformerMixin
 
 
 class CountVectorLanguage(SklearnTransformerMixin):

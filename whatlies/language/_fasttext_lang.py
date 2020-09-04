@@ -10,7 +10,7 @@ import fasttext.util
 from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
 
-from whatlies.language.common import SklearnTransformerMixin, HiddenPrints
+from whatlies.language._common import SklearnTransformerMixin, HiddenPrints
 
 
 class FasttextLanguage(SklearnTransformerMixin):

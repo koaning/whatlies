@@ -6,7 +6,7 @@ import tensorflow_hub as tfhub
 
 from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
-from whatlies.language.common import SklearnTransformerMixin, HiddenPrints
+from whatlies.language._common import SklearnTransformerMixin, HiddenPrints
 
 
 class ConveRTLanguage(SklearnTransformerMixin):

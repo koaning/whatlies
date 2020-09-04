@@ -204,14 +204,13 @@ class EmbeddingSet:
             new_embeddings = {k: emb | other for k, emb in self.embeddings.items()}
         elif isinstance(other, EmbeddingSet):
             # Apply Gram-Schmidt to project away from a hyperplane instead of an axis
-            new_set = EmbeddingSet(self.embeddings.copy())
-
-            # Create orthogonal vectors that span the space to project away from
+            # First, create orthogonal vectors that span the space to project away from
             orth_away = [other[w] for w in other]
             for i in range(len(orth_away)):
                 orth_away[i] = reduce(lambda a, b: b | a, orth_away[: i + 1])
 
-            # Use all of these vectors to project away from
+            # Next, use all of these vectors to project away from
+            new_set = EmbeddingSet(self.embeddings.copy())
             for e in orth_away:
                 new_set = new_set | e
             return new_set

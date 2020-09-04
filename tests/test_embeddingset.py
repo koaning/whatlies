@@ -171,3 +171,10 @@ def test_from_names_X():
 def test_ndim(lang):
     embset = lang[["red", "blue", "dog"]]
     assert embset.ndim == 2
+
+
+def test_projections_embset(lang):
+    embset = lang[["red", "blue", "dog"]]
+    proj_emb = embset["red"] | embset["blue"] | (embset["dog"] | embset["blue"])
+    proj_set = embset | embset["blue"] | (embset["dog"] | embset["blue"])
+    assert np.array_equal(proj_emb.vector, proj_set["red"].vector)

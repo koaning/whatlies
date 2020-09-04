@@ -203,17 +203,24 @@ class EmbeddingSet:
         if isinstance(other, Embedding):
             new_embeddings = {k: emb | other for k, emb in self.embeddings.items()}
         elif isinstance(other, EmbeddingSet):
-            # Apply Gram-Schmidt to project away from a hyperplane instead of an axis
-            # First, create orthogonal vectors that span the space to project away from
-            orth_away = [w for w in other]
-            for i in range(len(orth_away)):
-                orth_away[i] = reduce(lambda a, b: b | a, orth_away[: i + 1])
+            # Apply QR factorization here. Note that Q is orthonormal.
+            A = other.to_X().T
+            Q, R = np.linalg.qr(A)
 
-            # Next, use all of these vectors to project away from
-            new_set = EmbeddingSet(self.embeddings.copy())
-            for e in orth_away:
-                new_set = new_set | e
-            return new_set
+            # Create a new set that has the correct vectors.
+            emb_new = self
+            for e in [Embedding(str(idx), v) for idx, v in enumerate(Q.T)]:
+                emb_new = emb_new | e
+
+            new_embeddings = {}
+            # Take an effort to keep the names intact for these new embeddings.
+            old_names = [e.name for e in self]
+            for i, (k, v) in enumerate(self.embeddings.items()):
+                new_embeddings[k] = Embedding(
+                    name=f"{old_names[i]} | {other.name}",
+                    vector=emb_new[v.orig].vector,
+                    orig=v.orig,
+                )
         else:
             raise ValueError(
                 f"You must project away from either an Embedding or an Embeddingset. Got={type(other)}"

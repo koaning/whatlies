@@ -173,12 +173,58 @@ def test_ndim(lang):
     assert embset.ndim == 2
 
 
-def test_projections_embset(lang):
+def test_projections_embset_same(lang):
     embset = lang[["red", "blue", "dog"]]
     proj_emb = embset["red"] | embset["blue"] | (embset["dog"] | embset["blue"])
     proj_set = embset | lang[["blue", "dog"]]
     # The resulting array should be the same if done individually or via set.
     assert np.array_equal(proj_emb.vector, proj_set["red"].vector)
-    # The resulting array should be orthogonal.
-    assert np.isclose(proj_set["red"].vector @ lang["blue"].vector, 0.0, atol=1e-5)
-    assert np.isclose(proj_set["red"].vector @ lang["dog"].vector, 0.0, atol=1e-5)
+
+
+def test_projections_orthogonal():
+    lang = SpacyLanguage("en_core_web_md")
+
+    # These are the tokens in our original embeddingset.
+    words = [
+        "prince",
+        "princess",
+        "nurse",
+        "doctor",
+        "banker",
+        "man",
+        "woman",
+        "cousin",
+        "neice",
+        "king",
+        "queen",
+        "dude",
+        "guy",
+        "gal",
+        "fire",
+        "dog",
+        "cat",
+        "mouse",
+        "red",
+        "bluee",
+        "green",
+        "yellow",
+        "water",
+        "person",
+        "family",
+        "brother",
+        "sister",
+    ]
+
+    # These are the tokens we want to project away from. Note that dinosaur is
+    # not part of the original embedding.
+    away_words = ["man", "woman", "yellow", "dinosaur"]
+
+    # This gives us an embeddingset that could potentially be "debiased" of sorts.
+    embset = lang[words] | lang[away_words]
+
+    # We can now check if everything is orthogonal.
+    for e1 in embset:
+        for w in away_words:
+            e2 = lang[w]
+            print(f"{e1.orig} x {e2.orig} = {e1.vector @ e2.vector}")
+            assert np.isclose(e1.vector @ e2.vector, 0.0, atol=1e-5)

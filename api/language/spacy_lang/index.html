@@ -616,35 +616,35 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.spacy_lang.SpacyLanguage.9595getitem9595" class="md-nav__link">
+  <a href="#whatlies.language._spacy_lang.SpacyLanguage.9595getitem9595" class="md-nav__link">
     __getitem__()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.spacy_lang.SpacyLanguage.embset_proximity" class="md-nav__link">
+  <a href="#whatlies.language._spacy_lang.SpacyLanguage.embset_proximity" class="md-nav__link">
     embset_proximity()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.spacy_lang.SpacyLanguage.embset_similar" class="md-nav__link">
+  <a href="#whatlies.language._spacy_lang.SpacyLanguage.embset_similar" class="md-nav__link">
     embset_similar()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.spacy_lang.SpacyLanguage.from_fasttext" class="md-nav__link">
+  <a href="#whatlies.language._spacy_lang.SpacyLanguage.from_fasttext" class="md-nav__link">
     from_fasttext()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.spacy_lang.SpacyLanguage.score_similar" class="md-nav__link">
+  <a href="#whatlies.language._spacy_lang.SpacyLanguage.score_similar" class="md-nav__link">
     score_similar()
   </a>
   
@@ -848,35 +848,35 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.spacy_lang.SpacyLanguage.9595getitem9595" class="md-nav__link">
+  <a href="#whatlies.language._spacy_lang.SpacyLanguage.9595getitem9595" class="md-nav__link">
     __getitem__()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.spacy_lang.SpacyLanguage.embset_proximity" class="md-nav__link">
+  <a href="#whatlies.language._spacy_lang.SpacyLanguage.embset_proximity" class="md-nav__link">
     embset_proximity()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.spacy_lang.SpacyLanguage.embset_similar" class="md-nav__link">
+  <a href="#whatlies.language._spacy_lang.SpacyLanguage.embset_similar" class="md-nav__link">
     embset_similar()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.spacy_lang.SpacyLanguage.from_fasttext" class="md-nav__link">
+  <a href="#whatlies.language._spacy_lang.SpacyLanguage.from_fasttext" class="md-nav__link">
     from_fasttext()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whatlies.language.spacy_lang.SpacyLanguage.score_similar" class="md-nav__link">
+  <a href="#whatlies.language._spacy_lang.SpacyLanguage.score_similar" class="md-nav__link">
     score_similar()
   </a>
   
@@ -932,8 +932,8 @@ backend. This object is meant for retreival, not plotting.</p>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;programming in [python]&#39;</span><span class="p">]</span>
 </code></pre></div>
 
-<h2 id="whatlies.language.spacy_lang.SpacyLanguage.__getitem__"><code class="highlight"><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.spacy_lang.SpacyLanguage.__getitem__" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>101
+<h2 id="whatlies.language._spacy_lang.SpacyLanguage.__getitem__"><code class="highlight"><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language._spacy_lang.SpacyLanguage.__getitem__" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>language/_spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>101
 102
 103
 104
@@ -1014,8 +1014,8 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 <span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_trf_robertabase_lg&quot;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;programming in [python]&#39;</span><span class="p">]</span>
 </code></pre></div></p>
-<h2 id="whatlies.language.spacy_lang.SpacyLanguage.embset_proximity"><code class="highlight"><span class="n">embset_proximity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">max_proximity</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">prob_limit</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.spacy_lang.SpacyLanguage.embset_proximity" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>190
+<h2 id="whatlies.language._spacy_lang.SpacyLanguage.embset_proximity"><code class="highlight"><span class="n">embset_proximity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">max_proximity</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">prob_limit</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language._spacy_lang.SpacyLanguage.embset_proximity" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>language/_spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>190
 191
 192
 193
@@ -1135,8 +1135,8 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 </tr>
 </tbody>
 </table>
-<h2 id="whatlies.language.spacy_lang.SpacyLanguage.embset_similar"><code class="highlight"><span class="n">embset_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">prob_limit</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.spacy_lang.SpacyLanguage.embset_similar" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>166
+<h2 id="whatlies.language._spacy_lang.SpacyLanguage.embset_similar"><code class="highlight"><span class="n">embset_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">prob_limit</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language._spacy_lang.SpacyLanguage.embset_similar" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>language/_spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>166
 167
 168
 169
@@ -1244,8 +1244,8 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 </tr>
 </tbody>
 </table>
-<h2 id="whatlies.language.spacy_lang.SpacyLanguage.from_fasttext"><code class="highlight"><span class="n">from_fasttext</span><span class="p">(</span><span class="n">language</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">vectors_loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code> <em>(classmethod)</em><a class="headerlink" href="#whatlies.language.spacy_lang.SpacyLanguage.from_fasttext" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>53
+<h2 id="whatlies.language._spacy_lang.SpacyLanguage.from_fasttext"><code class="highlight"><span class="n">from_fasttext</span><span class="p">(</span><span class="n">language</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">vectors_loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code> <em>(classmethod)</em><a class="headerlink" href="#whatlies.language._spacy_lang.SpacyLanguage.from_fasttext" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>language/_spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>53
 54
 55
 56
@@ -1369,8 +1369,8 @@ Note that these files are large and loading them can take a long time.</p>
 <span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="o">.</span><span class="n">from_fasttext</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;/path/spacy/model&quot;</span><span class="p">,</span> <span class="s2">&quot;~/Downloads/cc.en.300.vec.gz&quot;</span><span class="p">)</span>
 </code></pre></div>
 
-<h2 id="whatlies.language.spacy_lang.SpacyLanguage.score_similar"><code class="highlight"><span class="n">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">prob_limit</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language.spacy_lang.SpacyLanguage.score_similar" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>220
+<h2 id="whatlies.language._spacy_lang.SpacyLanguage.score_similar"><code class="highlight"><span class="n">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">prob_limit</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language._spacy_lang.SpacyLanguage.score_similar" title="Permanent link">&para;</a></h2>
+<details class="note"><summary>Show source code in <code>language/_spacy_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>220
 221
 222
 223

@@ -775,7 +775,20 @@
                 
                   <h1>Releases</h1>
                 
-                <p>v0.5.0</p>
+                <p>v0.5.1</p>
+<ul>
+<li>Added a guide on debiasing on the docs.</li>
+<li>You can now specify the plot axes and title.</li>
+<li>We've added sensible default values to "plot_interactive".
+We now assume that you want to plot the first two elements of a vector.</li>
+</ul>
+<pre><code class="python"># Before
+emb.transform(Pca(2)).plot_interactive('pca_0', 'pca_1')
+# After
+emb.transform(Pca(2)).plot_interactive()
+</code></pre>
+
+<p>v0.5.0</p>
 <ul>
 <li>Added some robustness tot he <code>matplotlib</code> based arrow and scatter charts.</li>
 <li>Started deprecating the <code>plot_correlation</code> method in favor

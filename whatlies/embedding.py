@@ -1,7 +1,8 @@
-from typing import Union, Optional
+from typing import Union, Optional, Sequence, Callable
 from copy import deepcopy
 
 import numpy as np
+import scipy.spatial.distance as scipy_distance
 from sklearn.metrics import pairwise_distances
 
 from whatlies.common import handle_2d_plot
@@ -191,6 +192,7 @@ class Embedding:
         kind: str = "arrow",
         x_axis: Union[int, "Embedding"] = 0,
         y_axis: Union[int, "Embedding"] = 1,
+        axis_metric: Optional[Union[str, Callable, Sequence]] = None,
         x_label: Optional[str] = None,
         y_label: Optional[str] = None,
         title: Optional[str] = None,
@@ -208,6 +210,11 @@ class Embedding:
                 dimension of embedding is used.
             y_axis: the y-axis to be used, must be given when dim > 2; if an integer, the corresponding
                 dimension of embedding is used.
+            axis_metric: the metric used to project an embedding on the axes; only used when the corresponding
+                axis (i.e. `x_axis` or `y_axis`) is an `Embedding` instance. It could be a string
+                (`'cosine_similarity'`, `'cosine_distance'` or `'euclidean'`), or a callable that takes two vectors as input
+                and returns a scalar value as output. To set different metrics for x- and y-axis, a list or a tuple of
+                two elements could be given. By default (`None`), normalized scalar projection (i.e. `>` operator) is used.
             x_label: an optional label used for x-axis; if not given, it is set based on `x_axis` value.
             y_label: an optional label used for y-axis; if not given, it is set based on `y_axis` value.
             title: an optional title for the plot.
@@ -231,8 +238,18 @@ class Embedding:
         bar.plot(kind="arrow", annot=True)
         ```
         """
-        x_val, x_lab = self._get_plot_axis_value_and_label(x_axis, dir="x")
-        y_val, y_lab = self._get_plot_axis_value_and_label(y_axis, dir="y")
+        if isinstance(axis_metric, (list, tuple)):
+            x_axis_metric = axis_metric[0]
+            y_axis_metric = axis_metric[1]
+        else:
+            x_axis_metric = axis_metric
+            y_axis_metric = axis_metric
+        x_val, x_lab = self._get_plot_axis_value_and_label(
+            x_axis, x_axis_metric, dir="x"
+        )
+        y_val, y_lab = self._get_plot_axis_value_and_label(
+            y_axis, y_axis_metric, dir="y"
+        )
         x_label = x_lab if x_label is None else x_label
         y_label = y_lab if y_label is None else y_label
         emb_plot = Embedding(name=self.name, vector=[x_val, y_val], orig=self.orig)
@@ -249,7 +266,7 @@ class Embedding:
         )
         return self
 
-    def _get_plot_axis_value_and_label(self, axis, dir):
+    def _get_plot_axis_value_and_label(self, axis, axis_metric, dir) -> tuple:
         """
         A helper function to get the projected value of this embedding on x- and y-axis,
         as well as the default label of axis.
@@ -257,13 +274,44 @@ class Embedding:
         Arguments:
             axis: the axis value used for projection. It could be an integer or
                 an `Embedding` instance.
+            axis_metric: metric used for projection of embedding on axis (see `plot`
+                method documentation).
             dir: the axis direction which could be either of `'x'` or `'y'`.
         """
         if isinstance(axis, int):
             return self.vector[axis], "Dimension " + str(axis)
         elif isinstance(axis, Embedding):
-            return self > axis, axis.name
+            if axis_metric is None:
+                return self > axis, axis.name
+            else:
+                metric = self._get_plot_axis_metric_callable(axis_metric)
+                return metric(self.vector, axis.vector), axis.name
         else:
             raise ValueError(
                 f"The `{dir}_axis` value should be an integer or Embedding instance, given: {type(axis)}"
+            )
+
+    @staticmethod
+    def _get_plot_axis_metric_callable(axis_metric) -> Optional[Callable]:
+        """
+        A helper function to retrieve a callable based on the given axis metric value.
+        """
+        if axis_metric is None:
+            return None
+        elif isinstance(axis_metric, str):
+            if axis_metric == "cosine_similarity":
+                return lambda x, y: 1.0 - scipy_distance.cosine(x, y)
+            elif axis_metric == "cosine_distance":
+                return scipy_distance.cosine
+            elif axis_metric == "euclidean":
+                return scipy_distance.euclidean
+            else:
+                raise ValueError(
+                    f"The given axis metric is not supported: {axis_metric}"
+                )
+        elif callable(axis_metric):
+            return axis_metric
+        else:
+            raise ValueError(
+                f"The given axis metric type is not supported: {type(axis_metric)}"
             )

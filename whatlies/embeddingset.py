@@ -1,7 +1,7 @@
 from copy import deepcopy
 from functools import reduce
 from collections import Counter
-from typing import Union, Optional
+from typing import Union, Optional, Callable, Sequence
 
 import numpy as np
 import pandas as pd
@@ -589,6 +589,7 @@ class EmbeddingSet:
         kind: str = "arrow",
         x_axis: Union[int, str, Embedding] = 0,
         y_axis: Union[int, str, Embedding] = 1,
+        axis_metric: Optional[Union[str, Callable, Sequence]] = None,
         x_label: Optional[str] = None,
         y_label: Optional[str] = None,
         title: Optional[str] = None,
@@ -606,6 +607,11 @@ class EmbeddingSet:
                 dimension of embedding is used.
             y_axis: the y-axis to be used, must be given when dim > 2; if an integer, the corresponding
                 dimension of embedding is used.
+            axis_metric: the metric used to project each embedding on the axes; only used when the corresponding
+                axis (i.e. `x_axis` or `y_axis`) is a string or an `Embedding` instance. It could be a string
+                (`'cosine_similarity'`, `'cosine_distance'` or `'euclidean'`), or a callable that takes two vectors as input
+                and returns a scalar value as output. To set different metrics for x- and y-axis, a list or a tuple of
+                two elements could be given. By default (`None`), normalized scalar projection (i.e. `>` operator) is used.
             x_label: an optional label used for x-axis; if not given, it is set based on value of `x_axis`.
             y_label: an optional label used for y-axis; if not given, it is set based on value of `y_axis`.
             title: an optional title for the plot.
@@ -622,10 +628,22 @@ class EmbeddingSet:
             x_axis = self[x_axis]
         if isinstance(y_axis, str):
             y_axis = self[y_axis]
+
+        if isinstance(axis_metric, (list, tuple)):
+            x_axis_metric = axis_metric[0]
+            y_axis_metric = axis_metric[1]
+        else:
+            x_axis_metric = axis_metric
+            y_axis_metric = axis_metric
+
         embeddings = []
         for emb in self.embeddings.values():
-            x_val, x_lab = emb._get_plot_axis_value_and_label(x_axis, dir="x")
-            y_val, y_lab = emb._get_plot_axis_value_and_label(y_axis, dir="y")
+            x_val, x_lab = emb._get_plot_axis_value_and_label(
+                x_axis, x_axis_metric, dir="x"
+            )
+            y_val, y_lab = emb._get_plot_axis_value_and_label(
+                y_axis, y_axis_metric, dir="y"
+            )
             emb_plot = Embedding(name=emb.name, vector=[x_val, y_val], orig=emb.orig)
             embeddings.append(emb_plot)
         x_label = x_lab if x_label is None else x_label

@@ -173,14 +173,6 @@ def test_ndim(lang):
     assert embset.ndim == 2
 
 
-def test_projections_embset_same(lang):
-    embset = lang[["red", "blue", "dog"]]
-    proj_emb = embset["red"] | embset["blue"] | (embset["dog"] | embset["blue"])
-    proj_set = embset | lang[["blue", "dog"]]
-    # The resulting array should be the same if done individually or via set.
-    assert np.array_equal(proj_emb.vector, proj_set["red"].vector)
-
-
 def test_projections_orthogonal():
     lang = SpacyLanguage("en_core_web_md")
 

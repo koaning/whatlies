@@ -76,11 +76,11 @@ new_chart = new_ts.plot_interactive('man', 'woman')
 There's also things like **pca** and **umap**.
 
 ```python
-from whatlies.transformers import _pca, _umap
+from whatlies.transformers import Pca, Umap
 
 orig_chart = emb.plot_interactive('man', 'woman')
-pca_plot = emb.transform(_pca(2)).plot_interactive('pca_0', 'pca_1')
-umap_plot = emb.transform(_umap(2)).plot_interactive('umap_0', 'umap_1')
+pca_plot = emb.transform(Pca(2)).plot_interactive('pca_0', 'pca_1')
+umap_plot = emb.transform(Umap(2)).plot_interactive('umap_0', 'umap_1')
 
 pca_plot | umap_plot
 ```

@@ -176,5 +176,9 @@ def test_ndim(lang):
 def test_projections_embset(lang):
     embset = lang[["red", "blue", "dog"]]
     proj_emb = embset["red"] | embset["blue"] | (embset["dog"] | embset["blue"])
-    proj_set = embset | embset["blue"] | (embset["dog"] | embset["blue"])
+    proj_set = embset | lang[["blue", "dog"]]
+    # The resulting array should be the same if done individually or via set.
     assert np.array_equal(proj_emb.vector, proj_set["red"].vector)
+    # The resulting array should be orthogonal.
+    assert np.isclose(proj_set["red"].vector @ lang["blue"].vector, 0.0, atol=1e-5)
+    assert np.isclose(proj_set["red"].vector @ lang["dog"].vector, 0.0, atol=1e-5)

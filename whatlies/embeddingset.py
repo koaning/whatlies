@@ -205,7 +205,7 @@ class EmbeddingSet:
         elif isinstance(other, EmbeddingSet):
             # Apply Gram-Schmidt to project away from a hyperplane instead of an axis
             # First, create orthogonal vectors that span the space to project away from
-            orth_away = [other[w] for w in other]
+            orth_away = [w for w in other]
             for i in range(len(orth_away)):
                 orth_away[i] = reduce(lambda a, b: b | a, orth_away[: i + 1])
 

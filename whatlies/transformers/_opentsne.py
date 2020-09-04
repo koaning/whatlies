@@ -3,7 +3,7 @@ from openTSNE import TSNE
 
 from whatlies.transformers import Transformer
 from whatlies import EmbeddingSet
-from whatlies.transformers.common import new_embedding_dict
+from whatlies.transformers._common import new_embedding_dict
 
 
 class OpenTsne(Transformer):

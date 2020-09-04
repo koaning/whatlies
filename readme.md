@@ -12,7 +12,7 @@ A library that tries help you to understand (note the pun).
 > "What lies in word embeddings?"
 
 This small library offers tools to make visualisation easier of both
-word embeddings as well as operations on them. 
+word embeddings as well as operations on them.
 
 Feedback is welcome.
 
@@ -40,7 +40,7 @@ For a quick overview, check out our introductory video on
 [youtube](https://www.youtube.com/watch?v=FwkwC7IJWO0&list=PL75e0qA87dlG-za8eLI6t0_Pbxafk-cxb&index=9&t=0s). More
 in depth getting started guides can be found on the [documentation page](https://rasahq.github.io/whatlies/).
 
-## Examples 
+## Examples
 
 The idea is that you can load embeddings from a language backend
 and use mathematical operations on it.
@@ -76,11 +76,11 @@ new_chart = new_ts.plot_interactive('man', 'woman')
 There's also things like **pca** and **umap**.
 
 ```python
-from whatlies.transformers import pca, umap
+from whatlies.transformers import Pca, Umap
 
 orig_chart = emb.plot_interactive('man', 'woman')
-pca_plot = emb.transform(pca(2)).plot_interactive('pca_0', 'pca_1')
-umap_plot = emb.transform(umap(2)).plot_interactive('umap_0', 'umap_1')
+pca_plot = emb.transform(Pca(2)).plot_interactive('pca_0', 'pca_1')
+umap_plot = emb.transform(Umap(2)).plot_interactive('umap_0', 'umap_1')
 
 pca_plot | umap_plot
 ```

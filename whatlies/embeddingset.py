@@ -1,7 +1,7 @@
 from copy import deepcopy
 from functools import reduce
 from collections import Counter
-from typing import Union, Optional, Callable, Sequence
+from typing import Union, Optional, Callable, Sequence, List
 
 import numpy as np
 import pandas as pd
@@ -203,12 +203,27 @@ class EmbeddingSet:
         new_embeddings = {k: emb >> other for k, emb in self.embeddings.items()}
         return EmbeddingSet(new_embeddings, name=f"({self.name} >> {other.name})")
 
-    def compare_against(self, other, mapping="direct", func=None):
-        if mapping == "direct":
-            if func is None:
-                return [v > other for v in self.embeddings.values()]
-            else:
-                return [func(v.vector, other.vector) for v in self.embeddings.values()]
+    def compare_against(
+        self, other: Union[str, Embedding], mapping: Optional[Callable] = None
+    ) -> List:
+        """
+        Compare (or map) the embeddigns in the embeddingset to a given embedding, optionally using
+        a custom mapping function.
+
+        Arguments:
+            other: an `Embedding` instance, or name of an existing embedding; it is used for
+                comparison with each embedding in the embeddingset.
+            mapping: an optional callable used for for comparison that takes two 1D vector arrays as
+                input; if not given, the normalized scalar projection (i.e. `>` operator) is used.
+        """
+        if isinstance(other, str):
+            other = self[other]
+        if mapping is None:
+            return [v > other for v in self.embeddings.values()]
+        elif callable(mapping):
+            return [mapping(v.vector, other.vector) for v in self.embeddings.values()]
+        else:
+            raise ValueError(f"Unrecognized mapping value/type, got: {mapping}")
 
     def pipe(self, func, *args, **kwargs):
         """
@@ -977,7 +992,7 @@ class EmbeddingSet:
             x_lab = "Dimension " + str(x_axis)
         else:
             x_axis_metric = Embedding._get_plot_axis_metric_callable(x_axis_metric)
-            x_val = self.compare_against(x_axis, func=x_axis_metric)
+            x_val = self.compare_against(x_axis, mapping=x_axis_metric)
             x_lab = x_axis.name
 
         if isinstance(y_axis, int):
@@ -985,7 +1000,7 @@ class EmbeddingSet:
             y_lab = "Dimension " + str(y_axis)
         else:
             y_axis_metric = Embedding._get_plot_axis_metric_callable(y_axis_metric)
-            y_val = self.compare_against(y_axis, func=y_axis_metric)
+            y_val = self.compare_against(y_axis, mapping=y_axis_metric)
             y_lab = y_axis.name
         x_label = x_label if x_label is not None else x_lab
         y_label = y_label if y_label is not None else y_lab
@@ -1099,7 +1114,7 @@ class EmbeddingSet:
                 if isinstance(axis, str):
                     axis = self[axis]
                 metric = Embedding._get_plot_axis_metric_callable(metric)
-                vals = self.compare_against(axis, func=metric)
+                vals = self.compare_against(axis, mapping=metric)
                 axes_vals[axis.name] = vals
 
         plot_df = pd.DataFrame(axes_vals)

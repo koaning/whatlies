@@ -164,3 +164,16 @@ This is generated via
 ```
 make docs
 ```
+
+### Citation
+Please use the following citation when you found `whatlies` helpful for any of your work (find the `whatlies` paper [here](http://arxiv.org/abs/2009.02113)):
+```
+@misc{Warmerdam2020whatlies,
+	Archiveprefix = {arXiv},
+	Author = {Vincent D. Warmerdam and Thomas Kober and Rachael Tatman},
+	Eprint = {2009.02113},
+	Primaryclass = {cs.CL},
+	Title = {Going Beyond T-SNE: Exposing \texttt{whatlies} in Text Embeddings},
+	Year = {2020}
+}
+```

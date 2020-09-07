@@ -1,7 +1,7 @@
 from copy import deepcopy
 from functools import reduce
 from collections import Counter
-from typing import Union, Optional, Callable, Sequence
+from typing import Union, Optional, Callable, Sequence, List
 
 import numpy as np
 import pandas as pd
@@ -203,9 +203,27 @@ class EmbeddingSet:
         new_embeddings = {k: emb >> other for k, emb in self.embeddings.items()}
         return EmbeddingSet(new_embeddings, name=f"({self.name} >> {other.name})")
 
-    def compare_against(self, other, mapping="direct"):
-        if mapping == "direct":
-            return [v > other for k, v in self.embeddings.items()]
+    def compare_against(
+        self, other: Union[str, Embedding], mapping: Optional[Callable] = None
+    ) -> List:
+        """
+        Compare (or map) the embeddigns in the embeddingset to a given embedding, optionally using
+        a custom mapping function.
+
+        Arguments:
+            other: an `Embedding` instance, or name of an existing embedding; it is used for
+                comparison with each embedding in the embeddingset.
+            mapping: an optional callable used for for comparison that takes two 1D vector arrays as
+                input; if not given, the normalized scalar projection (i.e. `>` operator) is used.
+        """
+        if isinstance(other, str):
+            other = self[other]
+        if mapping is None:
+            return [v > other for v in self.embeddings.values()]
+        elif callable(mapping):
+            return [mapping(v.vector, other.vector) for v in self.embeddings.values()]
+        else:
+            raise ValueError(f"Unrecognized mapping value/type, got: {mapping}")
 
     def pipe(self, func, *args, **kwargs):
         """
@@ -912,6 +930,7 @@ class EmbeddingSet:
         self,
         x_axis: Union[int, str, Embedding] = 0,
         y_axis: Union[int, str, Embedding] = 1,
+        axis_metric: Optional[Union[str, Callable, Sequence]] = None,
         x_label: Optional[str] = None,
         y_label: Optional[str] = None,
         title: Optional[str] = None,
@@ -927,6 +946,11 @@ class EmbeddingSet:
                 dimension of embedding is used.
             y_axis: the y-axis to be used, must be given when dim > 2; if an integer, the corresponding
                 dimension of embedding is used.
+            axis_metric: the metric used to project each embedding on the axes; only used when the corresponding
+                axis (i.e. `x_axis` or `y_axis`) is a string or an `Embedding` instance. It could be a string
+                (`'cosine_similarity'`, `'cosine_distance'` or `'euclidean'`), or a callable that takes two vectors as input
+                and returns a scalar value as output. To set different metrics for x- and y-axis, a list or a tuple of
+                two elements could be given. By default (`None`), normalized scalar projection (i.e. `>` operator) is used.
             x_label: an optional label used for x-axis; if not given, it is set based on `x_axis` value.
             y_label: an optional label used for y-axis; if not given, it is set based on `y_axis` value.
             title: an optional title for the plot; if not given, it is set based on `x_axis` and `y_axis` values.
@@ -955,19 +979,28 @@ class EmbeddingSet:
         if isinstance(y_axis, str):
             y_axis = self[y_axis]
 
+        if isinstance(axis_metric, (list, tuple)):
+            x_axis_metric = axis_metric[0]
+            y_axis_metric = axis_metric[1]
+        else:
+            x_axis_metric = axis_metric
+            y_axis_metric = axis_metric
+
         # Determine axes values and labels
         if isinstance(x_axis, int):
             x_val = self.to_X()[:, x_axis]
             x_lab = "Dimension " + str(x_axis)
         else:
-            x_val = self.compare_against(x_axis)
+            x_axis_metric = Embedding._get_plot_axis_metric_callable(x_axis_metric)
+            x_val = self.compare_against(x_axis, mapping=x_axis_metric)
             x_lab = x_axis.name
 
         if isinstance(y_axis, int):
             y_val = self.to_X()[:, y_axis]
             y_lab = "Dimension " + str(y_axis)
         else:
-            y_val = self.compare_against(y_axis)
+            y_axis_metric = Embedding._get_plot_axis_metric_callable(y_axis_metric)
+            y_val = self.compare_against(y_axis, mapping=y_axis_metric)
             y_lab = y_axis.name
         x_label = x_label if x_label is not None else x_lab
         y_label = y_label if y_label is not None else y_lab
@@ -1020,6 +1053,7 @@ class EmbeddingSet:
     def plot_interactive_matrix(
         self,
         *axes: Union[int, str, Embedding],
+        axes_metric: Optional[Union[str, Callable, Sequence]] = None,
         annot: bool = True,
         show_axis_point: bool = False,
         width: int = 200,
@@ -1031,6 +1065,11 @@ class EmbeddingSet:
         Arguments:
             axes: the axes that we wish to plot; each could be either an integer, the name of
                 an existing embedding, or an `Embedding` instance (default: `0, 1`).
+            axes_metric: the metric used to project each embedding on the axes; only used when the corresponding
+                axis is a string or an `Embedding` instance. It could be a string (`'cosine_similarity'`,
+                `'cosine_distance'` or `'euclidean'`), or a callable that takes two vectors as input and
+                returns a scalar value as output. To set different metrics for different axes, a list or a tuple of
+                the same length as `axes` could be given. By default (`None`), normalized scalar projection (i.e. `>` operator) is used.
             annot: drawn points should be annotated
             show_axis_point: ensure that the axis are drawn
             width: width of the visual
@@ -1057,17 +1096,25 @@ class EmbeddingSet:
         if len(axes) == 0:
             axes = [0, 1]
 
+        if isinstance(axes_metric, (list, tuple)) and len(axes_metric) != len(axes):
+            raise ValueError(
+                f"The number of given axes metrics should be the same as the number of given axes. Got {len(axes)} axes vs. {len(axes_metric)} metrics."
+            )
+        if not isinstance(axes_metric, (list, tuple)):
+            axes_metric = [axes_metric] * len(axes)
+
         # Get values of each axis according to their type.
         axes_vals = {}
         X = self.to_X()
-        for axis in axes:
+        for axis, metric in zip(axes, axes_metric):
             if isinstance(axis, int):
                 vals = X[:, axis]
                 axes_vals["Dimension " + str(axis)] = vals
             else:
                 if isinstance(axis, str):
                     axis = self[axis]
-                vals = self.compare_against(axis)
+                metric = Embedding._get_plot_axis_metric_callable(metric)
+                vals = self.compare_against(axis, mapping=metric)
                 axes_vals[axis.name] = vals
 
         plot_df = pd.DataFrame(axes_vals)

@@ -1,19 +1,19 @@
-from whatlies.transformers.transformer import Transformer
-from whatlies.transformers.pca import Pca
-from whatlies.transformers.umap import Umap
-from whatlies.transformers.noise import Noise
-from whatlies.transformers.addrandom import AddRandom
-from whatlies.transformers.tsne import Tsne
-from whatlies.transformers.normalizer import Normalizer
+from whatlies.transformers._transformer import Transformer
+from whatlies.transformers._pca import Pca
+from whatlies.transformers._umap import Umap
+from whatlies.transformers._noise import Noise
+from whatlies.transformers._addrandom import AddRandom
+from whatlies.transformers._tsne import Tsne
+from whatlies.transformers._normalizer import Normalizer
 from whatlies.error import NotInstalled
 
 try:
-    from whatlies.transformers.opentsne import OpenTsne
+    from whatlies.transformers._opentsne import OpenTsne
 except ModuleNotFoundError:
     OpenTsne = NotInstalled("OpenTsne", "opentsne")
 
 try:
-    from whatlies.transformers.ivis import Ivis
+    from whatlies.transformers._ivis import Ivis
 except ModuleNotFoundError:
     Ivis = NotInstalled("Ivis", "ivis")
 

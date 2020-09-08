@@ -1,3 +1,17 @@
+v0.5.1
+
+- Added a guide on debiasing on the docs.
+- You can now specify the plot axes and title.
+- We've added sensible default values to "plot_interactive".
+We now assume that you want to plot the first two elements of a vector.
+
+```python
+# Before
+emb.transform(Pca(2)).plot_interactive('pca_0', 'pca_1')
+# After
+emb.transform(Pca(2)).plot_interactive()
+```
+
 v0.5.0
 
 - Added some robustness tot he `matplotlib` based arrow and scatter charts.

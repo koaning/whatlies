@@ -7,7 +7,7 @@ from bpemb import BPEmb
 from sklearn.metrics import pairwise_distances
 
 from whatlies import Embedding, EmbeddingSet
-from whatlies.language.common import SklearnTransformerMixin
+from whatlies.language._common import SklearnTransformerMixin
 
 
 class BytePairLanguage(SklearnTransformerMixin):

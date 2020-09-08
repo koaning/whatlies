@@ -22,7 +22,7 @@ backends = [
     SpacyLanguage("tests/custom_test_lang/"),
     FasttextLanguage("tests/custom_fasttext_model.bin"),
     CountVectorLanguage(n_components=10),
-    BytePairLanguage("en"),
+    BytePairLanguage("en", vs=1000, dim=25, cache_dir="tests/cache"),
     GensimLanguage("tests/cache/custom_gensim_vectors.kv"),
     ConveRTLanguage(),
     HFTransformersLanguage("sshleifer/tiny-gpt2", framework="tf"),

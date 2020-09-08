@@ -220,3 +220,34 @@ def test_projections_orthogonal():
             e2 = lang[w]
             print(f"{e1.orig} x {e2.orig} = {e1.vector @ e2.vector}")
             assert np.isclose(e1.vector @ e2.vector, 0.0, atol=1e-5)
+
+
+def test_compare_against(lang):
+    embset = lang[["red", "blue", "cat"]]
+    compared = embset.compare_against(lang["green"])
+    true_values = np.array(
+        [
+            embset["red"] > lang["green"],
+            embset["blue"] > lang["green"],
+            embset["cat"] > lang["green"],
+        ]
+    )
+    assert np.array_equal(compared, true_values)
+
+    # Test with custom mapping function
+    compared = embset.compare_against("cat", mapping=np.dot)
+    true_values = np.array(
+        [
+            np.dot(embset["red"].vector, lang["cat"].vector),
+            np.dot(embset["blue"].vector, lang["cat"].vector),
+            np.dot(embset["cat"].vector, lang["cat"].vector),
+        ]
+    )
+    assert np.array_equal(compared, true_values)
+
+    # Test with non-existent name or invalid mapping
+    with pytest.raises(KeyError):
+        embset.compare_against("purple")
+    with pytest.raises(ValueError, match="Unrecognized mapping value/type."):
+        embset.compare_against(lang["green"], mapping="cosine")
+

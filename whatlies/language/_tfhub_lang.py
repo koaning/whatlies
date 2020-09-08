@@ -5,7 +5,7 @@ import tensorflow_hub as tfhub
 
 from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
-from whatlies.language.common import SklearnTransformerMixin
+from whatlies.language._common import SklearnTransformerMixin
 
 
 class TFHubLanguage(SklearnTransformerMixin):

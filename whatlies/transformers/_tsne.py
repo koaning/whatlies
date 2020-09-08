@@ -34,7 +34,7 @@ class Tsne(Transformer):
     lang = SpacyLanguage("en_core_web_md")
     emb = lang[words]
 
-    emb.transform(Tsne(3)).plot_interactive_matrix('tsne_0', 'tsne_1', 'tsne_2')
+    emb.transform(Tsne(3)).plot_interactive_matrix(0, 1, 2)
     ```
     """
 
@@ -53,7 +53,5 @@ class Tsne(Transformer):
     def transform(self, embset):
         names, X = embset.to_names_X()
         new_vecs = self.tfm.fit_transform(X)
-        names_out = names + [f"tsne_{i}" for i in range(self.n_components)]
-        vectors_out = np.concatenate([new_vecs, np.eye(self.n_components)])
-        new_dict = new_embedding_dict(names_out, vectors_out, embset)
+        new_dict = new_embedding_dict(names, new_vecs, embset)
         return EmbeddingSet(new_dict, name=f"{embset.name}.tsne_{self.n_components}()")

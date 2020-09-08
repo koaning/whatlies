@@ -30,7 +30,7 @@ class Pca(Transformer):
     lang = SpacyLanguage("en_core_web_md")
     emb = lang[words]
 
-    emb.transform(Pca(3)).plot_interactive_matrix('pca_0', 'pca_1', 'pca_2')
+    emb.transform(Pca(3)).plot_interactive_matrix(0, 1, 2)
     ```
     """
 
@@ -49,7 +49,5 @@ class Pca(Transformer):
     def transform(self, embset):
         names, X = embset.to_names_X()
         new_vecs = self.tfm.transform(X)
-        names_out = names + [f"pca_{i}" for i in range(self.n_components)]
-        vectors_out = np.concatenate([new_vecs, np.eye(self.n_components)])
-        new_dict = new_embedding_dict(names_out, vectors_out, embset)
+        new_dict = new_embedding_dict(names, new_vecs, embset)
         return EmbeddingSet(new_dict, name=f"{embset.name}.pca_{self.n_components}()")

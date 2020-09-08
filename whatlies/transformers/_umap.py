@@ -32,7 +32,7 @@ class Umap(Transformer):
     lang = SpacyLanguage("en_core_web_md")
     emb = lang[words]
 
-    emb.transform(Umap(3)).plot_interactive_matrix('umap_0', 'umap_1', 'umap_2')
+    emb.transform(Umap(3)).plot_interactive_matrix(0, 1, 2)
     ```
     """
 
@@ -56,7 +56,5 @@ class Umap(Transformer):
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", category=NumbaPerformanceWarning)
             new_vecs = self.tfm.transform(X)
-        names_out = names + [f"umap_{i}" for i in range(self.n_components)]
-        vectors_out = np.concatenate([new_vecs, np.eye(self.n_components)])
-        new_dict = new_embedding_dict(names_out, vectors_out, embset)
+        new_dict = new_embedding_dict(names, new_vecs, embset)
         return EmbeddingSet(new_dict, name=f"{embset.name}.umap_{self.n_components}()")

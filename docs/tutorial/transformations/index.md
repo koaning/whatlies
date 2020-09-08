@@ -28,7 +28,7 @@ We use the `.add_property` helper to indicate from which set the embeddings came
 This way we can use it as a color in an interactive plot.
 
 ```python
-both.plot_interactive('umap_0', 'umap_1', color='set')
+both.plot_interactive(color='set')
 ```
 
 <div id="vis1"></div>

@@ -23,7 +23,7 @@ contexts = ["i am super duper happy",
             "boo and hiss",]
 
 emb = lang[contexts]
-emb.transform(Pca(2)).plot_interactive('pca_0', 'pca_1')
+emb.transform(Pca(2)).plot_interactive()
 ```
 
 <div id="c1"></div>
@@ -98,7 +98,7 @@ plot whatever we feel like.
 
 ```python
 p1 = emb.plot_interactive("dog|NOUN", "jump|VERB")
-p2 = emb.transform(Pca(2)).plot_interactive("pca_0", "pca_1")
+p2 = emb.transform(Pca(2)).plot_interactive()
 p1 | p2
 ```
 
@@ -152,7 +152,7 @@ emb_bank_noun = lang.embset_similar("bank|NOUN", n=10)
  .merge(emb_bank_verb)
  .merge(emb_bank_noun)
  .transform(Pca(2))
- .plot_interactive("pca_0", "pca_1"))
+ .plot_interactive())
 ```
 
 <div id="sense2"></div>

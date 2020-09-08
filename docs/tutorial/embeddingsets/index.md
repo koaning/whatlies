@@ -135,8 +135,8 @@ also add two embeddings which represent the principal components. This is nice b
 that means that we can plot along those axes.
 
 ```python
-plot_pca = pca_emb.plot_interactive('pca_0', 'pca_1')
-plot_umap = umap_emb.plot_interactive('umap_0', 'umap_1')
+plot_pca = pca_emb.plot_interactive()
+plot_umap = umap_emb.plot_interactive()
 plot_pca | plot_umap
 ```
 
@@ -167,8 +167,8 @@ Suppose now that we'd like to visualise three principal components. We could do 
 
 ```python
 pca_emb = emb.transform(Pca(3))
-p1 = pca_emb.plot_interactive('pca_0', 'pca_1')
-p2 = pca_emb.plot_interactive('pca_2', 'pca_1')
+p1 = pca_emb.plot_interactive()
+p2 = pca_emb.plot_interactive(2, 1)
 p1 | p2
 ```
 
@@ -188,7 +188,7 @@ fetch('tut2-chart5.json')
 Let's not draw two components at a time, let's draw all of them.
 
 ```python
-pca_emb.plot_interactive_matrix('pca_0', 'pca_1', 'pca_2')
+pca_emb.plot_interactive_matrix(0, 1, 2)
 ```
 <div id="vis6"></div>
 

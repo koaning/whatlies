@@ -679,6 +679,119 @@ class EmbeddingSet:
         )
         return self
 
+    def plot_3d(
+        self,
+        x_axis: Union[int, str, Embedding] = 0,
+        y_axis: Union[int, str, Embedding] = 1,
+        z_axis: Union[int, str, Embedding] = 2,
+        color: str = None,
+        axes_metric: Optional[Union[str, Callable, Sequence]] = None,
+        annot: bool = True,
+    ):
+        """
+        Creates a 3d visualisation of the embedding.
+
+        Arguments:
+            x_axis: the x-axis to be used, must be given when dim > 3; if an integer, the corresponding
+                dimension of embedding is used.
+            y_axis: the y-axis to be used, must be given when dim > 3; if an integer, the corresponding
+                dimension of embedding is used.
+            z_axis: the z-axis to be used, must be given when dim > 3; if an integer, the corresponding
+                dimension of embedding is used.
+            color: the property to user for the color
+            axes_metric: the metric used to project each embedding on the axes; only used when the corresponding
+                axis is a string or an `Embedding` instance. It could be a string (`'cosine_similarity'`,
+                `'cosine_distance'` or `'euclidean'`), or a callable that takes two vectors as input and
+                returns a scalar value as output. To set different metrics for different axes, a list or a tuple of
+                the same length as `axes` could be given. By default (`None`), normalized scalar projection (i.e. `>` operator) is used.
+            annot: drawn points should be annotated
+
+        **Usage**
+
+        ```python
+        from whatlies.language import SpacyLanguage
+        from whatlies.transformers import Pca
+
+        words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
+                 "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
+                 "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+                 "person", "family", "brother", "sister"]
+
+        lang = SpacyLanguage("en_core_web_sm")
+        emb = lang[words]
+
+        emb.transform(Pca(3)).plot_3d()
+        ```
+        """
+        if isinstance(x_axis, str):
+            x_axis = self[x_axis]
+        if isinstance(y_axis, str):
+            y_axis = self[y_axis]
+        if isinstance(z_axis, str):
+            z_axis = self[z_axis]
+
+        if isinstance(axes_metric, (list, tuple)):
+            x_axis_metric = axes_metric[0]
+            y_axis_metric = axes_metric[1]
+            z_axis_metric = axes_metric[2]
+        else:
+            x_axis_metric = axes_metric
+            y_axis_metric = axes_metric
+            z_axis_metric = axes_metric
+
+        # Determine axes values and labels
+        if isinstance(x_axis, int):
+            x_val = self.to_X()[:, x_axis]
+            x_lab = "Dimension " + str(x_axis)
+        else:
+            x_axis_metric = Embedding._get_plot_axis_metric_callable(x_axis_metric)
+            x_val = self.compare_against(x_axis, mapping=x_axis_metric)
+            x_lab = x_axis.name
+
+        if isinstance(y_axis, int):
+            y_val = self.to_X()[:, y_axis]
+            y_lab = "Dimension " + str(y_axis)
+        else:
+            y_axis_metric = Embedding._get_plot_axis_metric_callable(y_axis_metric)
+            y_val = self.compare_against(y_axis, mapping=y_axis_metric)
+            y_lab = y_axis.name
+
+        if isinstance(z_axis, int):
+            z_val = self.to_X()[:, z_axis]
+            z_lab = "Dimension " + str(z_axis)
+        else:
+            z_axis_metric = Embedding._get_plot_axis_metric_callable(z_axis_metric)
+            z_val = self.compare_against(z_axis, mapping=z_axis_metric)
+            z_lab = z_axis.name
+
+        plot_df = pd.DataFrame(
+            {
+                "x_axis": x_val,
+                "y_axis": y_val,
+                "z_axis": z_val,
+                "name": [v.name for v in self.embeddings.values()],
+                "original": [v.orig for v in self.embeddings.values()],
+            }
+        )
+
+        if color:
+            plot_df[color] = [
+                getattr(v, color) if hasattr(v, color) else ""
+                for v in self.embeddings.values()
+            ]
+
+        ax = plt.axes(projection="3d")
+        ax.scatter3D(plot_df["x_axis"], plot_df["y_axis"], plot_df["z_axis"], s=25)
+        ax.set_xlabel(x_lab)
+        ax.set_ylabel(y_lab)
+        ax.set_zlabel(z_lab)
+        if annot:
+            for i, row in plot_df.iterrows():
+                ax.text(
+                    row["x_axis"], row["y_axis"], row["z_axis"] + 0.2, row["original"]
+                )
+        return ax
+
     def plot_graph_layout(self, kind="cosine", **kwargs):
         plot_graph_layout(self.embeddings, kind, **kwargs)
         return self

@@ -38,7 +38,7 @@ words = ['piza', 'pizza', 'pizzza', 'italian', 'sushi', 'japan', 'burger',
 def mk_plot(lang):
     return (lang[words]
             .transform(Pca(2))
-            .plot_interactive("pca_0", "pca_1")
+            .plot_interactive()
             .properties(height=250, width=250, title=lang.__class__.__name__))
 
 (mk_plot(lang_spacy) & mk_plot(lang_fasttext) & mk_plot(lang_cv))

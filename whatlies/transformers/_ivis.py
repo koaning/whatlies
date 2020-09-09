@@ -38,7 +38,7 @@ class Ivis(Transformer):
 
     lang = GensimLanguage("wordvectors.kv")
     emb = lang[words]
-    emb.transform(Ivis(3)).plot_interactive_matrix('ivis_0', 'ivis_1', 'ivis_2')
+    emb.transform(Ivis(3)).plot_interactive_matrix(0, 1, 2)
     ```
     """
 
@@ -58,7 +58,5 @@ class Ivis(Transformer):
     def transform(self, embset):
         names, X = embset.to_names_X()
         new_vecs = self.tfm.transform(X)
-        names_out = names + [f"ivis_{i}" for i in range(self.n_components)]
-        vectors_out = np.concatenate([new_vecs, np.eye(self.n_components)])
-        new_dict = new_embedding_dict(names_out, vectors_out, embset)
+        new_dict = new_embedding_dict(names, new_vecs, embset)
         return EmbeddingSet(new_dict, name=f"{embset.name}.ivis_{self.n_components}()")

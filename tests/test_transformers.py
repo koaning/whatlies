@@ -42,7 +42,7 @@ transformers = [
     Normalizer(),
     Normalizer(feature=True),
 ]
-extra_sizes = [2, 3, 2, 3, 0, 0, 4, 1, 0, 2, 3, 2, 2, 3, 0, 0]
+extra_sizes = [0, 0, 0, 0, 0, 0, 4, 1, 0, 0, 0, 0, 0, 0, 0, 0]
 tfm_ids = [_.__class__.__name__ for _ in transformers]
 
 

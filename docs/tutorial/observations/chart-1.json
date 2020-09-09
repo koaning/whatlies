@@ -310,14 +310,14 @@
             ],
             "x": {
               "axis": {
-                "title": "pca_0"
+                "title": "Dimension 0"
               },
               "field": "x_axis",
               "type": "quantitative"
             },
             "y": {
               "axis": {
-                "title": "pca_1"
+                "title": "Dimension 1"
               },
               "field": "y_axis",
               "type": "quantitative"
@@ -337,7 +337,7 @@
               "type": "interval"
             }
           },
-          "title": "pca_0 vs. pca_1"
+          "title": "Dimension 0 vs. Dimension 1"
         },
         {
           "encoding": {
@@ -347,14 +347,14 @@
             },
             "x": {
               "axis": {
-                "title": "pca_0"
+                "title": "Dimension 0"
               },
               "field": "x_axis",
               "type": "quantitative"
             },
             "y": {
               "axis": {
-                "title": "pca_1"
+                "title": "Dimension 1"
               },
               "field": "y_axis",
               "type": "quantitative"
@@ -396,14 +396,14 @@
             ],
             "x": {
               "axis": {
-                "title": "pca_0"
+                "title": "Dimension 0"
               },
               "field": "x_axis",
               "type": "quantitative"
             },
             "y": {
               "axis": {
-                "title": "pca_1"
+                "title": "Dimension 1"
               },
               "field": "y_axis",
               "type": "quantitative"
@@ -423,7 +423,7 @@
               "type": "interval"
             }
           },
-          "title": "pca_0 vs. pca_1"
+          "title": "Dimension 0 vs. Dimension 1"
         },
         {
           "encoding": {
@@ -433,14 +433,14 @@
             },
             "x": {
               "axis": {
-                "title": "pca_0"
+                "title": "Dimension 0"
               },
               "field": "x_axis",
               "type": "quantitative"
             },
             "y": {
               "axis": {
-                "title": "pca_1"
+                "title": "Dimension 1"
               },
               "field": "y_axis",
               "type": "quantitative"
@@ -482,14 +482,14 @@
             ],
             "x": {
               "axis": {
-                "title": "pca_0"
+                "title": "Dimension 0"
               },
               "field": "x_axis",
               "type": "quantitative"
             },
             "y": {
               "axis": {
-                "title": "pca_1"
+                "title": "Dimension 1"
               },
               "field": "y_axis",
               "type": "quantitative"
@@ -509,7 +509,7 @@
               "type": "interval"
             }
           },
-          "title": "pca_0 vs. pca_1"
+          "title": "Dimension 0 vs. Dimension 1"
         },
         {
           "encoding": {
@@ -519,14 +519,14 @@
             },
             "x": {
               "axis": {
-                "title": "pca_0"
+                "title": "Dimension 0"
               },
               "field": "x_axis",
               "type": "quantitative"
             },
             "y": {
               "axis": {
-                "title": "pca_1"
+                "title": "Dimension 1"
               },
               "field": "y_axis",
               "type": "quantitative"

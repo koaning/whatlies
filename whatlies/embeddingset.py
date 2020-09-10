@@ -684,8 +684,12 @@ class EmbeddingSet:
         x_axis: Union[int, str, Embedding] = 0,
         y_axis: Union[int, str, Embedding] = 1,
         z_axis: Union[int, str, Embedding] = 2,
+        x_label: Optional[str] = None,
+        y_label: Optional[str] = None,
+        z_label: Optional[str] = None,
+        title: Optional[str] = None,
         color: str = None,
-        axes_metric: Optional[Union[str, Callable, Sequence]] = None,
+        axis_metric: Optional[Union[str, Callable, Sequence]] = None,
         annot: bool = True,
     ):
         """
@@ -698,12 +702,17 @@ class EmbeddingSet:
                 dimension of embedding is used.
             z_axis: the z-axis to be used, must be given when dim > 3; if an integer, the corresponding
                 dimension of embedding is used.
+            x_label: an optional label used for x-axis; if not given, it is set based on value of `x_axis`.
+            y_label: an optional label used for y-axis; if not given, it is set based on value of `y_axis`.
+            z_label: an optional label used for z-axis; if not given, it is set based on value of `z_axis`.
+            title: an optional title for the plot.
             color: the property to user for the color
-            axes_metric: the metric used to project each embedding on the axes; only used when the corresponding
+            axis_metric: the metric used to project each embedding on the axes; only used when the corresponding
                 axis is a string or an `Embedding` instance. It could be a string (`'cosine_similarity'`,
                 `'cosine_distance'` or `'euclidean'`), or a callable that takes two vectors as input and
-                returns a scalar value as output. To set different metrics for different axes, a list or a tuple of
-                the same length as `axes` could be given. By default (`None`), normalized scalar projection (i.e. `>` operator) is used.
+                returns a scalar value as output. To set different metrics of the three different axes,
+                a list or a tuple of the same length as `axes` could be given. By default (`None`),
+                normalized scalar projection (i.e. `>` operator) is used.
             annot: drawn points should be annotated
 
         **Usage**
@@ -730,14 +739,14 @@ class EmbeddingSet:
         if isinstance(z_axis, str):
             z_axis = self[z_axis]
 
-        if isinstance(axes_metric, (list, tuple)):
-            x_axis_metric = axes_metric[0]
-            y_axis_metric = axes_metric[1]
-            z_axis_metric = axes_metric[2]
+        if isinstance(axis_metric, (list, tuple)):
+            x_axis_metric = axis_metric[0]
+            y_axis_metric = axis_metric[1]
+            z_axis_metric = axis_metric[2]
         else:
-            x_axis_metric = axes_metric
-            y_axis_metric = axes_metric
-            z_axis_metric = axes_metric
+            x_axis_metric = axis_metric
+            y_axis_metric = axis_metric
+            z_axis_metric = axis_metric
 
         # Determine axes values and labels
         if isinstance(x_axis, int):
@@ -746,7 +755,7 @@ class EmbeddingSet:
         else:
             x_axis_metric = Embedding._get_plot_axis_metric_callable(x_axis_metric)
             x_val = self.compare_against(x_axis, mapping=x_axis_metric)
-            x_lab = x_axis.name
+            x_lab = x_label if x_label else x_axis.name
 
         if isinstance(y_axis, int):
             y_val = self.to_X()[:, y_axis]
@@ -754,7 +763,7 @@ class EmbeddingSet:
         else:
             y_axis_metric = Embedding._get_plot_axis_metric_callable(y_axis_metric)
             y_val = self.compare_against(y_axis, mapping=y_axis_metric)
-            y_lab = y_axis.name
+            y_lab = y_label if y_label else y_axis.name
 
         if isinstance(z_axis, int):
             z_val = self.to_X()[:, z_axis]
@@ -762,7 +771,7 @@ class EmbeddingSet:
         else:
             z_axis_metric = Embedding._get_plot_axis_metric_callable(z_axis_metric)
             z_val = self.compare_against(z_axis, mapping=z_axis_metric)
-            z_lab = z_axis.name
+            z_lab = z_label if z_label else z_axis.name
 
         plot_df = pd.DataFrame(
             {
@@ -788,8 +797,10 @@ class EmbeddingSet:
         if annot:
             for i, row in plot_df.iterrows():
                 ax.text(
-                    row["x_axis"], row["y_axis"], row["z_axis"] + 0.2, row["original"]
+                    row["x_axis"], row["y_axis"], row["z_axis"] + 0.05, row["original"]
                 )
+        if title:
+            ax.set_title(title=title)
         return ax
 
     def plot_graph_layout(self, kind="cosine", **kwargs):

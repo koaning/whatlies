@@ -1033,8 +1033,8 @@ class EmbeddingSet:
                 alt.Chart(plot_df)
                 .mark_text(dx=-15, dy=3, color="black")
                 .encode(
-                    x=alt.X("x_axis", axis=alt.Axis(title=x_label)),
-                    y=alt.X("y_axis", axis=alt.Axis(title=y_label)),
+                    x="x_axis",
+                    y="y_axis",
                     text="original",
                 )
             )
@@ -1123,9 +1123,6 @@ class EmbeddingSet:
         )
         if annot:
             text_stuff = result.mark_text(dx=-15, dy=3, color="black").encode(
-                x=alt.X(alt.repeat("column"), type="quantitative"),
-                y=alt.Y(alt.repeat("row"), type="quantitative"),
-                tooltip=["name", "original"],
                 text="original",
             )
             result = result + text_stuff

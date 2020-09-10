@@ -45,6 +45,11 @@ def embset():
     return lang[words]
 
 
+def test_set_title_works(embset):
+    ax = embset.plot_3d(annot=True, title="foobar")
+    assert ax.title._text == "foobar"
+
+
 def test_correct_points_plotted(embset):
     embset_plt = embset.transform(Pca(3))
     ax = embset_plt.plot_3d(annot=True)
@@ -65,7 +70,7 @@ def test_correct_points_plotted_mapped(embset):
 
 def test_basic_dimensions_3d_chart(embset):
     embset_plt = embset.transform(Pca(3))
-    ax = embset_plt.plot_3d(annot=True)
+    ax = embset_plt.plot_3d(annot=True, title="foobar")
     assert ax.xaxis.get_label_text() == "Dimension 0"
     assert ax.yaxis.get_label_text() == "Dimension 1"
     assert ax.zaxis.get_label_text() == "Dimension 2"
@@ -76,5 +81,15 @@ def test_named_dimensions_3d_chart(embset):
     ax = embset.transform(Pca(3)).plot_3d("king", "queen", "prince", annot=True)
     assert ax.xaxis.get_label_text() == "king"
     assert ax.yaxis.get_label_text() == "queen"
+    assert ax.zaxis.get_label_text() == "prince"
+    assert [t.get_text() for t in ax.texts] == words
+
+
+def test_named_dimensions_3d_chart_rename(embset):
+    ax = embset.transform(Pca(3)).plot_3d(
+        "king", "queen", "prince", annot=True, x_label="x", y_label="y"
+    )
+    assert ax.xaxis.get_label_text() == "x"
+    assert ax.yaxis.get_label_text() == "y"
     assert ax.zaxis.get_label_text() == "prince"
     assert [t.get_text() for t in ax.texts] == words

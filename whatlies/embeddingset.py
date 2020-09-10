@@ -711,8 +711,8 @@ class EmbeddingSet:
                 axis is a string or an `Embedding` instance. It could be a string (`'cosine_similarity'`,
                 `'cosine_distance'` or `'euclidean'`), or a callable that takes two vectors as input and
                 returns a scalar value as output. To set different metrics of the three different axes,
-                a list or a tuple of the same length as `axes` could be given. By default (`None`),
-                normalized scalar projection (i.e. `>` operator) is used.
+                you can pass a list/tuple of size three that describes the metrics you're interested in.
+                By default (`None`), normalized scalar projection (i.e. `>` operator) is used.
             annot: drawn points should be annotated
 
         **Usage**
@@ -729,7 +729,9 @@ class EmbeddingSet:
         lang = SpacyLanguage("en_core_web_sm")
         emb = lang[words]
 
-        emb.transform(Pca(3)).plot_3d()
+        emb.transform(Pca(3)).plot_3d(annot=True)
+        emb.transform(Pca(3)).plot_3d("king", "dog", "red")
+        emb.transform(Pca(3)).plot_3d("king", "dog", "red", axis_metric="cosine_distance")
         ```
         """
         if isinstance(x_axis, str):
@@ -755,7 +757,8 @@ class EmbeddingSet:
         else:
             x_axis_metric = Embedding._get_plot_axis_metric_callable(x_axis_metric)
             x_val = self.compare_against(x_axis, mapping=x_axis_metric)
-            x_lab = x_label if x_label else x_axis.name
+            x_lab = x_axis.name
+        x_lab = x_label if x_label is not None else x_lab
 
         if isinstance(y_axis, int):
             y_val = self.to_X()[:, y_axis]
@@ -763,7 +766,8 @@ class EmbeddingSet:
         else:
             y_axis_metric = Embedding._get_plot_axis_metric_callable(y_axis_metric)
             y_val = self.compare_against(y_axis, mapping=y_axis_metric)
-            y_lab = y_label if y_label else y_axis.name
+            y_lab = y_axis.name
+        y_lab = y_label if y_label is not None else y_lab
 
         if isinstance(z_axis, int):
             z_val = self.to_X()[:, z_axis]
@@ -771,8 +775,10 @@ class EmbeddingSet:
         else:
             z_axis_metric = Embedding._get_plot_axis_metric_callable(z_axis_metric)
             z_val = self.compare_against(z_axis, mapping=z_axis_metric)
-            z_lab = z_label if z_label else z_axis.name
+            z_lab = z_axis.name
+        z_lab = z_label if z_label is not None else z_lab
 
+        # Save relevant information in a dataframe for plotting later.
         plot_df = pd.DataFrame(
             {
                 "x_axis": x_val,
@@ -783,24 +789,38 @@ class EmbeddingSet:
             }
         )
 
+        # Deal with the colors of the dots.
         if color:
-            plot_df[color] = [
+            plot_df["color"] = [
                 getattr(v, color) if hasattr(v, color) else ""
                 for v in self.embeddings.values()
             ]
 
+            color_map = {k: v for v, k in enumerate(set(plot_df["color"]))}
+            color_val = [
+                color_map[k] if not isinstance(k, float) else k
+                for k in plot_df["color"]
+            ]
+        else:
+            color_val = None
+
         ax = plt.axes(projection="3d")
-        ax.scatter3D(plot_df["x_axis"], plot_df["y_axis"], plot_df["z_axis"], s=25)
+        ax.scatter3D(
+            plot_df["x_axis"], plot_df["y_axis"], plot_df["z_axis"], c=color_val, s=25
+        )
+
+        # Set the labels, titles, text annotations.
         ax.set_xlabel(x_lab)
         ax.set_ylabel(y_lab)
         ax.set_zlabel(z_lab)
+
         if annot:
             for i, row in plot_df.iterrows():
                 ax.text(
                     row["x_axis"], row["y_axis"], row["z_axis"] + 0.05, row["original"]
                 )
         if title:
-            ax.set_title(title=title)
+            ax.set_title(label=title)
         return ax
 
     def plot_graph_layout(self, kind="cosine", **kwargs):

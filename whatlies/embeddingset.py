@@ -320,6 +320,7 @@ class EmbeddingSet:
         emb = EmbeddingSet(foo, bar, buz)
 
         names, X = emb.to_names_X()
+        ```
         """
         return list(self.embeddings.keys()), self.to_X()
 
@@ -345,6 +346,7 @@ class EmbeddingSet:
         ]
 
         emb = EmbeddingSet.from_names_X(names, vecs)
+        ```
         """
         X = np.array(X)
         if len(X) != len(names):

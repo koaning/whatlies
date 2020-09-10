@@ -913,16 +913,12 @@ class EmbeddingSet:
         p1 = (
             deepcopy(self)
             .add_property("group", lambda d: first_group_name)
-            .plot_interactive(
-                x_axis, y_axis, annot=annot, show_axis_point=True, color="group"
-            )
+            .plot_interactive(x_axis, y_axis, annot=annot, color="group")
         )
         p2 = (
             deepcopy(other)
             .add_property("group", lambda d: second_group_name)
-            .plot_interactive(
-                x_axis, y_axis, annot=annot, show_axis_point=True, color="group"
-            )
+            .plot_interactive(x_axis, y_axis, annot=annot, color="group")
         )
         return p0 + p1 + p2
 
@@ -935,7 +931,6 @@ class EmbeddingSet:
         y_label: Optional[str] = None,
         title: Optional[str] = None,
         annot: bool = True,
-        show_axis_point: bool = False,
         color: Union[None, str] = None,
     ):
         """
@@ -955,7 +950,6 @@ class EmbeddingSet:
             y_label: an optional label used for y-axis; if not given, it is set based on `y_axis` value.
             title: an optional title for the plot; if not given, it is set based on `x_axis` and `y_axis` values.
             annot: drawn points should be annotated
-            show_axis_point: ensure that the axis are drawn
             color: a property that will be used for plotting
 
         **Usage**
@@ -1021,9 +1015,6 @@ class EmbeddingSet:
                 for v in self.embeddings.values()
             ]
 
-        if not show_axis_point:
-            plot_df = plot_df.loc[lambda d: ~d["name"].isin([x_lab, y_lab])]
-
         result = (
             alt.Chart(plot_df)
             .mark_circle(size=60)
@@ -1055,7 +1046,6 @@ class EmbeddingSet:
         *axes: Union[int, str, Embedding],
         axes_metric: Optional[Union[str, Callable, Sequence]] = None,
         annot: bool = True,
-        show_axis_point: bool = False,
         width: int = 200,
         height: int = 200,
     ):
@@ -1071,7 +1061,6 @@ class EmbeddingSet:
                 returns a scalar value as output. To set different metrics for different axes, a list or a tuple of
                 the same length as `axes` could be given. By default (`None`), normalized scalar projection (i.e. `>` operator) is used.
             annot: drawn points should be annotated
-            show_axis_point: ensure that the axis are drawn
             width: width of the visual
             height: height of the visual
 
@@ -1121,9 +1110,6 @@ class EmbeddingSet:
         plot_df["name"] = [v.name for v in self.embeddings.values()]
         plot_df["original"] = [v.orig for v in self.embeddings.values()]
         axes_names = list(axes_vals.keys())
-
-        if not show_axis_point:
-            plot_df = plot_df.loc[lambda d: ~d["name"].isin(axes_names)]
 
         result = (
             alt.Chart(plot_df)

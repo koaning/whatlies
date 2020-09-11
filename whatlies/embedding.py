@@ -299,7 +299,11 @@ class Embedding:
         if axis_metric is None:
             return None
         elif isinstance(axis_metric, str):
-            if axis_metric == "cosine_similarity":
+            if axis_metric == "cosine":
+                raise ValueError(
+                    "Please be specific, do you want `cosine_distance` or `cosine_similarity`?"
+                )
+            elif axis_metric == "cosine_similarity":
                 return lambda x, y: 1.0 - scipy_distance.cosine(x, y)
             elif axis_metric == "cosine_distance":
                 return scipy_distance.cosine

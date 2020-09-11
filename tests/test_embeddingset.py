@@ -201,3 +201,22 @@ def test_compare_against(lang):
         embset.compare_against("purple")
     with pytest.raises(ValueError, match="Unrecognized mapping value/type."):
         embset.compare_against(lang["green"], mapping="cosine")
+
+
+def test_add_property():
+    foo = Embedding("foo", [0.1, 0.3, 0.10])
+    bar = Embedding("bar", [0.7, 0.2, 0.11])
+    emb = EmbeddingSet(foo, bar)
+    emb_with_property = emb.add_property("prop_a", lambda d: "prop-one")
+    assert all([e.prop_a == "prop-one" for e in emb_with_property])
+
+
+def test_assign():
+    foo = Embedding("foo", [0.1, 0.3, 0.10])
+    bar = Embedding("bar", [0.7, 0.2, 0.11])
+    emb = EmbeddingSet(foo, bar)
+    emb_with_property = emb.assign(
+        prop_a=lambda d: "prop-one", prop_b=lambda d: "prop-two"
+    )
+    assert all([e.prop_a == "prop-one" for e in emb_with_property])
+    assert all([e.prop_b == "prop-two" for e in emb_with_property])

@@ -1264,7 +1264,6 @@ class EmbeddingSet:
                 x=alt.X(alt.repeat("column"), type="quantitative"),
                 y=alt.Y(alt.repeat("row"), type="quantitative"),
                 tooltip=["name", "original"],
-                text="original",
             )
         )
         if annot:

@@ -4,7 +4,7 @@ import matplotlib as mpl
 import scipy.spatial.distance as scipy_distance
 
 from whatlies import Embedding, EmbeddingSet
-from common import validate_plot_general_properties
+from .common import validate_plot_general_properties
 
 
 """

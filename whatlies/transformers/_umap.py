@@ -1,7 +1,6 @@
 import warnings
 
 from umap import UMAP
-import numpy as np
 from numba import NumbaPerformanceWarning
 
 from whatlies.transformers import Transformer

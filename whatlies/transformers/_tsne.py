@@ -1,4 +1,3 @@
-import numpy as np
 from sklearn.manifold import TSNE
 
 from whatlies.transformers import Transformer

@@ -1,6 +1,6 @@
 from typing import Union, List, Optional
 
-import tensorflow_text
+import tensorflow_text  # noqa: F401
 import tensorflow_hub as tfhub
 
 from whatlies.embedding import Embedding

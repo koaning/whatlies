@@ -3,7 +3,6 @@ from whatlies import EmbeddingSet
 from whatlies.transformers._common import new_embedding_dict
 
 from ivis import Ivis as IVIS
-import numpy as np
 
 
 class Ivis(Transformer):

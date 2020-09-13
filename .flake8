@@ -1,6 +1,5 @@
 [flake8]
 per-file-ignores =
-  whatlies/language/convert_lang.py: F401
-  whatlies/language/tfhub_lang.py: F401
+  tests/scripts/import_all.py: F401, F403
 max-line-length = 160
 ignore = E501

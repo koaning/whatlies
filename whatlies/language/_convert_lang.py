@@ -1,6 +1,6 @@
 from typing import Union, List
 
-import tensorflow_text
+import tensorflow_text  # noqa: F401
 import tensorflow as tf
 import tensorflow_hub as tfhub
 

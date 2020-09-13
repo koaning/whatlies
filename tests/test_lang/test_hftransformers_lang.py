@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-from transformers import AutoTokenizer, is_tf_available, is_torch_available
+from transformers import AutoTokenizer
 
 from whatlies.language import HFTransformersLanguage
 

@@ -1,4 +1,3 @@
-import numpy as np
 from sklearn.decomposition import PCA
 
 from whatlies.transformers import Transformer

@@ -456,6 +456,7 @@ class EmbeddingSet:
 
         Arguments:
             kwargs: (name, func)-pairs that describe the name of the property as well as a function on how to calculate it
+            The function expects an `Embedding` object as input.
 
         Usage:
 
@@ -472,7 +473,7 @@ class EmbeddingSet:
         """
         new_set = {}
         for k, e in self.embeddings.items():
-            new_emb = e.copy()
+            new_emb = e
             for name, func in kwargs.items():
                 new_emb = new_emb.add_property(name, func)
             new_set[k] = new_emb

@@ -1,3 +1,11 @@
+v0.5.2
+
+- Added tests for `matplotlib` and `altair`.
+- Added `plot_3d`, allowing you to make some 3d visualisations.
+- Added `assign` as a nicer alternative for `add_property`.
+- Added a citation to an research paper on this library.
+- Removed the "helper vectors" from our transformers.
+
 v0.5.1
 
 - Added a guide on debiasing on the docs.

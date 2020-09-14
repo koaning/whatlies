@@ -170,8 +170,7 @@ var spec2 = {
           "y_axis": -0.16567137837409973,
           "name": "sister",
           "original": "sister"
-        },
-        {"x_axis": 0, "y_axis": 0, "name": "pca_2", "original": "pca_2"}
+        }
       ]
     },
     {
@@ -390,7 +389,7 @@ var spec2 = {
     {
       "type": "group",
       "name": "concat_0_group",
-      "title": {"text": "pca_0 vs. pca_1", "frame": "group"},
+      "title": {"text": "Dimension 0 vs. Dimension 1", "frame": "group"},
       "style": "cell",
       "encode": {
         "update": {
@@ -586,7 +585,7 @@ var spec2 = {
           "scale": "concat_0_x",
           "orient": "bottom",
           "grid": false,
-          "title": "pca_0",
+          "title": "Dimension 0",
           "labelFlush": true,
           "labelOverlap": true,
           "tickCount": {"signal": "ceil(concat_0_width/40)"},
@@ -596,7 +595,7 @@ var spec2 = {
           "scale": "concat_0_y",
           "orient": "left",
           "grid": false,
-          "title": "pca_1",
+          "title": "Dimension 1",
           "labelOverlap": true,
           "tickCount": {"signal": "ceil(height/40)"},
           "zindex": 0
@@ -606,7 +605,7 @@ var spec2 = {
     {
       "type": "group",
       "name": "concat_1_group",
-      "title": {"text": "umap_0 vs. umap_1", "frame": "group"},
+      "title": {"text": "Dimension 0 vs. Dimension 1", "frame": "group"},
       "style": "cell",
       "encode": {
         "update": {
@@ -802,7 +801,7 @@ var spec2 = {
           "scale": "concat_1_x",
           "orient": "bottom",
           "grid": false,
-          "title": "umap_0",
+          "title": "Dimension 0",
           "labelFlush": true,
           "labelOverlap": true,
           "tickCount": {"signal": "ceil(concat_1_width/40)"},
@@ -812,7 +811,7 @@ var spec2 = {
           "scale": "concat_1_y",
           "orient": "left",
           "grid": false,
-          "title": "umap_1",
+          "title": "Dimension 1",
           "labelOverlap": true,
           "tickCount": {"signal": "ceil(height/40)"},
           "zindex": 0

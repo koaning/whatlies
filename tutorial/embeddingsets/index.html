@@ -1100,8 +1100,8 @@ hosted on the web.</p>
 the embeddings in the set. It might also create new embeddings. In case of <code>pca(2)</code> it will
 also add two embeddings which represent the principal components. This is nice because
 that means that we can plot along those axes.</p>
-<div class="highlight"><pre><span></span><code><span class="n">plot_pca</span> <span class="o">=</span> <span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;pca_0&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">)</span>
-<span class="n">plot_umap</span> <span class="o">=</span> <span class="n">umap_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;umap_0&#39;</span><span class="p">,</span> <span class="s1">&#39;umap_1&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">plot_pca</span> <span class="o">=</span> <span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">()</span>
+<span class="n">plot_umap</span> <span class="o">=</span> <span class="n">umap_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">()</span>
 <span class="n">plot_pca</span> <span class="o">|</span> <span class="n">plot_umap</span>
 </code></pre></div>
 
@@ -1126,8 +1126,8 @@ transformation pipeline.</p>
 <h3 id="more-components">More Components<a class="headerlink" href="#more-components" title="Permanent link">&para;</a></h3>
 <p>Suppose now that we'd like to visualise three principal components. We could do this.</p>
 <div class="highlight"><pre><span></span><code><span class="n">pca_emb</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-<span class="n">p1</span> <span class="o">=</span> <span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;pca_0&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">)</span>
-<span class="n">p2</span> <span class="o">=</span> <span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;pca_2&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">)</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">()</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">p1</span> <span class="o">|</span> <span class="n">p2</span>
 </code></pre></div>
 
@@ -1144,7 +1144,7 @@ fetch('tut2-chart5.json')
 
 <h3 id="more-charts">More Charts<a class="headerlink" href="#more-charts" title="Permanent link">&para;</a></h3>
 <p>Let's not draw two components at a time, let's draw all of them.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive_matrix</span><span class="p">(</span><span class="s1">&#39;pca_0&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_2&#39;</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><span class="n">pca_emb</span><span class="o">.</span><span class="n">plot_interactive_matrix</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 <div id="vis6"></div></p>
 <script>

@@ -911,7 +911,7 @@ pip install whatlies[all]
 <span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
 <span class="n">emb</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">words</span><span class="p">]</span>
 
-<span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">OpenTsne</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive_matrix</span><span class="p">(</span><span class="s1">&#39;tsne_0&#39;</span><span class="p">,</span> <span class="s1">&#39;tsne_1&#39;</span><span class="p">)</span>
+<span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">OpenTsne</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive_matrix</span><span class="p">()</span>
 </code></pre></div>
 
 <h2 id="whatlies.transformers._opentsne.OpenTsne.fit"><code class="highlight"><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embset</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.transformers._opentsne.OpenTsne.fit" title="Permanent link">&para;</a></h2>
@@ -954,14 +954,10 @@ set the <code>is_fitted</code> flag to <code>True</code>.</p>
 62
 63
 64
-65
-66
-67</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embset</span><span class="p">):</span>
+65</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embset</span><span class="p">):</span>
         <span class="n">names</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">embset</span><span class="o">.</span><span class="n">to_names_X</span><span class="p">()</span>
         <span class="n">new_vecs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
-        <span class="n">names_out</span> <span class="o">=</span> <span class="n">names</span> <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;tsne_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_components</span><span class="p">)]</span>
-        <span class="n">vectors_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">new_vecs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_components</span><span class="p">)])</span>
-        <span class="n">new_dict</span> <span class="o">=</span> <span class="n">new_embedding_dict</span><span class="p">(</span><span class="n">names_out</span><span class="p">,</span> <span class="n">vectors_out</span><span class="p">,</span> <span class="n">embset</span><span class="p">)</span>
+        <span class="n">new_dict</span> <span class="o">=</span> <span class="n">new_embedding_dict</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">new_vecs</span><span class="p">,</span> <span class="n">embset</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">EmbeddingSet</span><span class="p">(</span><span class="n">new_dict</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">embset</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">.tsne_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n_components</span><span class="si">}</span><span class="s2">()&quot;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>

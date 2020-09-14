@@ -851,35 +851,35 @@
 
 <h1 id="observations">Observations<a class="headerlink" href="#observations" title="Permanent link">&para;</a></h1>
 <p>This document will demonstrate some observations of embeddings. The goal of this document
-is to two-fold. </p>
+is to two-fold.</p>
 <ol>
-<li>It hopes to explain how to use <code>whatlies</code>. </li>
-<li>It hopes to explain interesting elements of different embeddings. </li>
+<li>It hopes to explain how to use <code>whatlies</code>.</li>
+<li>It hopes to explain interesting elements of different embeddings.</li>
 </ol>
 <h2 id="spelling-errors">Spelling Errors<a class="headerlink" href="#spelling-errors" title="Permanent link">&para;</a></h2>
-<p>Especially when you're designing a chatbot, spelling errors occur all the time. So 
+<p>Especially when you're designing a chatbot, spelling errors occur all the time. So
 how do different embeddings deal with this? Let's compare three different language
-backends here. </p>
+backends here.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">FasttextLanguage</span><span class="p">,</span> <span class="n">SpacyLanguage</span><span class="p">,</span> <span class="n">CountVectorLanguage</span>
 
 <span class="n">lang_spacy</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
 <span class="n">lang_fasttext</span> <span class="o">=</span> <span class="n">FasttextLanguage</span><span class="p">(</span><span class="s2">&quot;cc.en.300.bin&quot;</span><span class="p">)</span>
 <span class="n">lang_cv</span> <span class="o">=</span> <span class="n">CountVectorLanguage</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">analyzer</span><span class="o">=</span><span class="s2">&quot;char&quot;</span><span class="p">)</span>
-<span class="n">lang_cv</span><span class="o">.</span><span class="n">fit_manual</span><span class="p">([</span><span class="s1">&#39;pizza&#39;</span><span class="p">,</span> <span class="s1">&#39;pizzas&#39;</span><span class="p">,</span> <span class="s1">&#39;firehouse&#39;</span><span class="p">,</span> <span class="s1">&#39;firehydrant&#39;</span><span class="p">,</span> 
+<span class="n">lang_cv</span><span class="o">.</span><span class="n">fit_manual</span><span class="p">([</span><span class="s1">&#39;pizza&#39;</span><span class="p">,</span> <span class="s1">&#39;pizzas&#39;</span><span class="p">,</span> <span class="s1">&#39;firehouse&#39;</span><span class="p">,</span> <span class="s1">&#39;firehydrant&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;pikachu&#39;</span><span class="p">,</span> <span class="s1">&#39;pokemon&#39;</span><span class="p">])</span>
 </code></pre></div>
 
-<p>Besides fetching a fasttext and spaCy model you'll notice that we're 
+<p>Besides fetching a fasttext and spaCy model you'll notice that we're
 also manually fitting the <code>CountVectorLanguage</code>. Take a note
 of this because this fact will be meaningful later.</p>
-<div class="highlight"><pre><span></span><code><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;piza&#39;</span><span class="p">,</span> <span class="s1">&#39;pizza&#39;</span><span class="p">,</span> <span class="s1">&#39;pizzza&#39;</span><span class="p">,</span> <span class="s1">&#39;italian&#39;</span><span class="p">,</span> <span class="s1">&#39;sushi&#39;</span><span class="p">,</span> <span class="s1">&#39;japan&#39;</span><span class="p">,</span> <span class="s1">&#39;burger&#39;</span><span class="p">,</span> 
+<div class="highlight"><pre><span></span><code><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;piza&#39;</span><span class="p">,</span> <span class="s1">&#39;pizza&#39;</span><span class="p">,</span> <span class="s1">&#39;pizzza&#39;</span><span class="p">,</span> <span class="s1">&#39;italian&#39;</span><span class="p">,</span> <span class="s1">&#39;sushi&#39;</span><span class="p">,</span> <span class="s1">&#39;japan&#39;</span><span class="p">,</span> <span class="s1">&#39;burger&#39;</span><span class="p">,</span>
          <span class="s1">&#39;fyrehouse&#39;</span><span class="p">,</span> <span class="s1">&#39;firehouse&#39;</span><span class="p">,</span> <span class="s1">&#39;fyrehidrant&#39;</span><span class="p">,</span>
          <span class="s1">&#39;house&#39;</span><span class="p">,</span> <span class="s1">&#39;tree&#39;</span><span class="p">,</span> <span class="s1">&#39;elephant&#39;</span><span class="p">,</span> <span class="s1">&#39;pikachu&#39;</span><span class="p">,</span> <span class="s1">&#39;pokemon&#39;</span><span class="p">]</span>
 
 <span class="k">def</span> <span class="nf">mk_plot</span><span class="p">(</span><span class="n">lang</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">lang</span><span class="p">[</span><span class="n">words</span><span class="p">]</span>
             <span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-            <span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s2">&quot;pca_0&quot;</span><span class="p">,</span> <span class="s2">&quot;pca_1&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">plot_interactive</span><span class="p">()</span>
             <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">lang</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
 
 <span class="p">(</span><span class="n">mk_plot</span><span class="p">(</span><span class="n">lang_spacy</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">mk_plot</span><span class="p">(</span><span class="n">lang_fasttext</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">mk_plot</span><span class="p">(</span><span class="n">lang_cv</span><span class="p">))</span>
@@ -896,28 +896,28 @@ fetch('chart-1.json')
 .catch(err => { throw err });
 </script>
 
-<p>You may notice a few things here. </p>
+<p>You may notice a few things here.</p>
 <ul>
 <li>The <code>CountVectorLanguage</code> only looks at character similarities which it is why
 it feels that "piza", "pizza" and "pizzza" are all very similar. Notice how spaCy
 disagrees with this. You may also note that fasttext is "in between". That is because
-these embeddings also encode the subtokens. </li>
-<li>The fasttext embeddings seem to do a better job at catching certain forms of meaning. 
+these embeddings also encode the subtokens.</li>
+<li>The fasttext embeddings seem to do a better job at catching certain forms of meaning.
 It understands that pikachu, pokemon and japan are related while also associating
-burger/sushi with pizza. The spaCy model also captures this but the clustering is 
+burger/sushi with pizza. The spaCy model also captures this but the clustering is
 less appearant. This can be due to the dimensionality reduction though.</li>
-<li>You'll notice that the two clearly misspelled words, fyrehouse and fyrehidrant, 
+<li>You'll notice that the two clearly misspelled words, fyrehouse and fyrehidrant,
 are mapped to the same point in the spaCy embedding. When you check the embeddings
-for both you'll confirm why. SpaCy maps a token to a vector of zeros is it is not 
-available in the vocabulary. SpaCy may occasionally also map two different tokens 
-to the same embedding in an attempt to save on disk space. Fasttext is able to recover 
-more context because of the subtoken embeddings but also because the embeddings are 
-<strong>way bigger</strong>. The fasttext embeddings unzipped can be 7GB on disk while spaCy 
-model is on 115MB on disk. </li>
-<li>Notice how the <code>CountVectorLanguage</code> has a cluster with lots of things in it. 
+for both you'll confirm why. SpaCy maps a token to a vector of zeros is it is not
+available in the vocabulary. SpaCy may occasionally also map two different tokens
+to the same embedding in an attempt to save on disk space. Fasttext is able to recover
+more context because of the subtoken embeddings but also because the embeddings are
+<strong>way bigger</strong>. The fasttext embeddings unzipped can be 7GB on disk while spaCy
+model is on 115MB on disk.</li>
+<li>Notice how the <code>CountVectorLanguage</code> has a cluster with lots of things in it.
 It clusters together "house", "elephant", "sushi" and "pokemon". This isn't because
 of shared meaning. It because these words contain combinations of characters that
-weren't there in the training set that we gave to the <code>fit_manual</code> method in the beginning. 
+weren't there in the training set that we gave to the <code>fit_manual</code> method in the beginning.
 Note that "picachu" is similar to "pizza" for a similar reason.</li>
 </ul>
                 

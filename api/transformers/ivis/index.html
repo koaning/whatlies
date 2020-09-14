@@ -908,15 +908,15 @@ pip install whatlies[all]
 
 <span class="n">lang</span> <span class="o">=</span> <span class="n">GensimLanguage</span><span class="p">(</span><span class="s2">&quot;wordvectors.kv&quot;</span><span class="p">)</span>
 <span class="n">emb</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">words</span><span class="p">]</span>
-<span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Ivis</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive_matrix</span><span class="p">(</span><span class="s1">&#39;ivis_0&#39;</span><span class="p">,</span> <span class="s1">&#39;ivis_1&#39;</span><span class="p">,</span> <span class="s1">&#39;ivis_2&#39;</span><span class="p">)</span>
+<span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Ivis</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive_matrix</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 
 <h2 id="whatlies.transformers._ivis.Ivis.fit"><code class="highlight"><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embset</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.transformers._ivis.Ivis.fit" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>transformers/_ivis.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>52
+<details class="note"><summary>Show source code in <code>transformers/_ivis.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>51
+52
 53
 54
-55
-56</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embset</span><span class="p">):</span>
+55</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embset</span><span class="p">):</span>
         <span class="n">names</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">embset</span><span class="o">.</span><span class="n">to_names_X</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tfm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">is_fitted</span> <span class="o">=</span> <span class="kc">True</span>
@@ -947,18 +947,14 @@ set the <code>is_fitted</code> flag to <code>True</code>.</p>
 </tbody>
 </table>
 <h2 id="whatlies.transformers._ivis.Ivis.transform"><code class="highlight"><span class="n">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embset</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.transformers._ivis.Ivis.transform" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>transformers/_ivis.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>58
+<details class="note"><summary>Show source code in <code>transformers/_ivis.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>57
+58
 59
 60
-61
-62
-63
-64</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embset</span><span class="p">):</span>
+61</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embset</span><span class="p">):</span>
         <span class="n">names</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">embset</span><span class="o">.</span><span class="n">to_names_X</span><span class="p">()</span>
         <span class="n">new_vecs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tfm</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-        <span class="n">names_out</span> <span class="o">=</span> <span class="n">names</span> <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;ivis_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_components</span><span class="p">)]</span>
-        <span class="n">vectors_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">new_vecs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_components</span><span class="p">)])</span>
-        <span class="n">new_dict</span> <span class="o">=</span> <span class="n">new_embedding_dict</span><span class="p">(</span><span class="n">names_out</span><span class="p">,</span> <span class="n">vectors_out</span><span class="p">,</span> <span class="n">embset</span><span class="p">)</span>
+        <span class="n">new_dict</span> <span class="o">=</span> <span class="n">new_embedding_dict</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">new_vecs</span><span class="p">,</span> <span class="n">embset</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">EmbeddingSet</span><span class="p">(</span><span class="n">new_dict</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">embset</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">.ivis_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n_components</span><span class="si">}</span><span class="s2">()&quot;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>

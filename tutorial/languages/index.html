@@ -915,7 +915,7 @@ depending on the language backend you may get slightly different behavior.</p>
             <span class="s2">&quot;boo and hiss&quot;</span><span class="p">,]</span>
 
 <span class="n">emb</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">contexts</span><span class="p">]</span>
-<span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s1">&#39;pca_0&#39;</span><span class="p">,</span> <span class="s1">&#39;pca_1&#39;</span><span class="p">)</span>
+<span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">()</span>
 </code></pre></div>
 
 <div id="c1"></div>
@@ -975,7 +975,7 @@ tokens is a bit ... different though.</p>
 From here one we're back to normal embeddingsets though. So we can
 plot whatever we feel like.</p>
 <div class="highlight"><pre><span></span><code><span class="n">p1</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s2">&quot;dog|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;jump|VERB&quot;</span><span class="p">)</span>
-<span class="n">p2</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s2">&quot;pca_0&quot;</span><span class="p">,</span> <span class="s2">&quot;pca_1&quot;</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">()</span>
 <span class="n">p1</span> <span class="o">|</span> <span class="n">p2</span>
 </code></pre></div>
 
@@ -1020,7 +1020,7 @@ we visualise it.</p>
  <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">emb_bank_verb</span><span class="p">)</span>
  <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">emb_bank_noun</span><span class="p">)</span>
  <span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
- <span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s2">&quot;pca_0&quot;</span><span class="p">,</span> <span class="s2">&quot;pca_1&quot;</span><span class="p">))</span>
+ <span class="o">.</span><span class="n">plot_interactive</span><span class="p">())</span>
 </code></pre></div>
 
 <div id="sense2"></div>

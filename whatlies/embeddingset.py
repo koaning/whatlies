@@ -448,6 +448,39 @@ class EmbeddingSet:
         """
         return EmbeddingSet({**self.embeddings, **other.embeddings})
 
+    def assign(self, **kwargs):
+        """
+        Adds properties to every embedding in the set based on the keyword arguments.
+
+        This is very useful for plotting because a property can be used to assign colors. This method is very
+        similar to `.add_property` but it might be more convenient when you want to assign multiple properties
+        in one single statement.
+
+        Arguments:
+            kwargs: (name, func)-pairs that describe the name of the property as well as a function on how to calculate it
+            The function expects an `Embedding` object as input.
+
+        Usage:
+
+        ```python
+        from whatlies.embeddingset import EmbeddingSet
+
+        foo = Embedding("foo", [0.1, 0.3, 0.10])
+        bar = Embedding("bar", [0.7, 0.2, 0.11])
+        emb = EmbeddingSet(foo, bar)
+        emb_with_property = emb.assign(dim0=lambda d: d.vector[0],
+                                       dim1=lambda d: d.vector[1],
+                                       dim2=lambda d: d.vector[2])
+        ```
+        """
+        new_set = {}
+        for k, e in self.embeddings.items():
+            new_emb = e
+            for name, func in kwargs.items():
+                new_emb = new_emb.add_property(name, func)
+            new_set[k] = new_emb
+        return EmbeddingSet(new_set)
+
     def add_property(self, name, func):
         """
         Adds a property to every embedding in the set. Very useful for plotting because

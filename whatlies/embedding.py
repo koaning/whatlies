@@ -36,11 +36,7 @@ class Embedding:
         self.vector = np.array(vector)
 
     def add_property(self, name, func):
-        result = Embedding(
-            name=self.name,
-            vector=self.vector,
-            orig=self.orig,
-        )
+        result = self.copy()
         setattr(result, name, func(result))
         return result
 
@@ -50,6 +46,12 @@ class Embedding:
         Return the dimension of embedding vector.
         """
         return self.vector.shape[0]
+
+    def copy(self):
+        """
+        Returns a deepcopy of the embdding.
+        """
+        return deepcopy(self)
 
     def __add__(self, other) -> "Embedding":
         """

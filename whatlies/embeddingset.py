@@ -457,8 +457,8 @@ class EmbeddingSet:
         in one single statement.
 
         Arguments:
-            kwargs: (name, func)-pairs that describe the name of the property as well as a function on how to calculate it
-            The function expects an `Embedding` object as input.
+            kwargs: (name, func)-pairs that describe the name of the property as well as a function on how to calculate it.
+                The function expects an `Embedding` object as input.
 
         Usage:
 

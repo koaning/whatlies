@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
 from whatlies import EmbeddingSet
+from whatlies.transformers._common import new_embedding_dict
 
 
 class Transformer(ABC):
@@ -37,3 +38,29 @@ class Transformer(ABC):
             embset: an `EmbeddingSet` instance to be transformed.
         """
         raise NotImplementedError
+
+
+class SklearnTransformer(Transformer):
+    """
+    This class is a wrapper around scikit-learn. Since many of our transformers follow
+    the scikit-learn API we might be able to save a whole lot of code this way.
+    """
+
+    def __init__(self, tfm, name, *args, **kwargs):
+        super().__init__()
+        self.tfm = tfm(*args, **kwargs)
+        self.name = name
+
+    def fit(self, embset: EmbeddingSet) -> "SklearnTransformer":
+        if not self.is_fitted:
+            self.tfm.fit(embset.to_X())
+        self.is_fitted = True
+        return self
+
+    def transform(self, embset: EmbeddingSet):
+        names, X = embset.to_names_X()
+        if not self.is_fitted:
+            self.tfm.fit(X)
+        new_vecs = self.tfm.transform(X)
+        new_dict = new_embedding_dict(names, new_vecs, embset)
+        return EmbeddingSet(new_dict, name=f"{embset.name}.{self.name}()")

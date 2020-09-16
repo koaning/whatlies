@@ -1,5 +1,6 @@
 from typing import Union, Optional, Sequence, Callable
 from copy import deepcopy
+import warnings
 
 import numpy as np
 import scipy.spatial.distance as scipy_distance
@@ -240,6 +241,13 @@ class Embedding:
         bar.plot(kind="arrow", annot=True)
         ```
         """
+        if isinstance(x_axis, int) and isinstance(y_axis, int):
+            if axis_metric is not None:
+                warnings.warn(
+                    f"Ignoring axis_metric={axis_metric} because x_axis/y_axis don't refer to an embedding.",
+                    UserWarning,
+                )
+
         if isinstance(axis_metric, (list, tuple)):
             x_axis_metric = axis_metric[0]
             y_axis_metric = axis_metric[1]

@@ -309,3 +309,9 @@ def test_embedding_plot_raises_error_when_incorrect_axis_metric(embset):
         emb.plot(x_axis=embset["blue"], axis_metric="correlation")
     with pytest.raises(ValueError, match="The given axis metric type is not"):
         emb.plot(y_axis=embset["blue"], axis_metric=1)
+
+
+def test_embeddingset_plot3d_raises_warning_axis_metric_no_emb(embset):
+    emb = embset["red"]
+    with pytest.warns(UserWarning):
+        emb.plot(axis_metric="cosine_distance")

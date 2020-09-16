@@ -2,6 +2,7 @@ from copy import deepcopy
 from functools import reduce
 from collections import Counter
 from typing import Union, Optional, Callable, Sequence, List
+import warnings
 
 import numpy as np
 import pandas as pd
@@ -677,6 +678,13 @@ class EmbeddingSet:
                 [documentation](https://matplotlib.org/3.1.0/api/_as_gen/matplotlib.pyplot.axis.html#matplotlib-pyplot-axis)
                 for possible values and their description.
         """
+        if isinstance(x_axis, int) and isinstance(y_axis, int):
+            if axis_metric is not None:
+                warnings.warn(
+                    f"Ignoring axis_metric={axis_metric} because x_axis/y_axis don't refer to an embedding.",
+                    UserWarning,
+                )
+
         if isinstance(x_axis, str):
             x_axis = self[x_axis]
         if isinstance(y_axis, str):
@@ -769,6 +777,17 @@ class EmbeddingSet:
         emb.transform(Pca(3)).plot_3d("king", "dog", "red", axis_metric="cosine_distance")
         ```
         """
+        if (
+            isinstance(x_axis, int)
+            and isinstance(y_axis, int)
+            and isinstance(z_axis, int)
+        ):
+            if axis_metric is not None:
+                warnings.warn(
+                    f"Ignoring axis_metric={axis_metric} because x_axis/y_axis/z_axis don't refer to an embedding.",
+                    UserWarning,
+                )
+
         if isinstance(x_axis, str):
             x_axis = self[x_axis]
         if isinstance(y_axis, str):
@@ -1147,6 +1166,13 @@ class EmbeddingSet:
         emb.plot_interactive('man', 'woman')
         ```
         """
+        if isinstance(x_axis, int) and isinstance(y_axis, int):
+            if axis_metric is not None:
+                warnings.warn(
+                    f"Ignoring axis_metric={axis_metric} because x_axis/y_axis don't refer to an embedding.",
+                    UserWarning,
+                )
+
         if isinstance(x_axis, str):
             x_axis = self[x_axis]
         if isinstance(y_axis, str):

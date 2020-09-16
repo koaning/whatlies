@@ -392,3 +392,18 @@ def test_embeddingset_plot_raises_error_when_str_axis_not_exists(embset):
         embset.plot(x_axis="bnb", y_axis="blue")
     with pytest.raises(KeyError):
         embset.plot(x_axis="red", y_axis="clk")
+
+
+def test_embeddingset_plot_raises_warning_axis_metric_no_emb(embset):
+    with pytest.warns(UserWarning):
+        embset.plot(axis_metric="cosine_distance")
+
+
+def test_embeddingset_plot3d_raises_warning_axis_metric_no_emb(embset):
+    with pytest.warns(UserWarning):
+        embset.plot_3d(axis_metric="cosine_distance")
+
+
+def test_embeddingset_plo_interactive_raises_warning_axis_metric_no_emb(embset):
+    with pytest.warns(UserWarning):
+        embset.plot_interactive(axis_metric="cosine_distance")

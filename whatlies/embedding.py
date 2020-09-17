@@ -93,6 +93,25 @@ class Embedding:
         copied.vector = self.vector - other.vector
         return copied
 
+    def __neg__(self):
+        """
+        Negate an embedding.
+
+        Usage:
+
+        ```python
+        from whatlies.embedding import Embedding
+
+        foo = Embedding("foo", [0.1, 0.3])
+
+        assert (- foo).vector == - foo.vector
+        ```
+        """
+        copied = deepcopy(self)
+        copied.name = f"(-{self.name})"
+        copied.vector = -self.vector
+        return copied
+
     def __gt__(self, other):
         """
         Measures the size of one embedding to another one.

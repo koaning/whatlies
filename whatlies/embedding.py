@@ -95,7 +95,7 @@ class Embedding:
 
     def __neg__(self):
         """
-        Negate a embedding.
+        Negate an embedding.
 
         Usage:
 
@@ -108,7 +108,7 @@ class Embedding:
         ```
         """
         copied = deepcopy(self)
-        copied.name = f"(- {self.name})"
+        copied.name = f"(-{self.name})"
         copied.vector = -self.vector
         return copied
 

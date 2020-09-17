@@ -85,4 +85,4 @@ def test_emb_ndim():
 
 def test_negation():
     foo = Embedding("foo", [0.1, 0.3])
-    assert np.all(np.isclose((-foo).vector, -np.array([0.1, 0.3])))
+    assert np.allclose((-foo).vector, -np.array([0.1, 0.3]))

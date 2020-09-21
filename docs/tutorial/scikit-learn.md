@@ -1,7 +1,7 @@
 ## Scikit-Learn
 
 Many of the language-backends inside of this package can be used in scikit-learn pipelines.
-We've implemented a compatible `.fit()` and `.transform()` which means that 
+We've implemented a compatible `.fit()` and `.transform()` API which means that
 you could write scikit-learn pipelines like this:
 
 ```python
@@ -74,6 +74,6 @@ There's a few caveats to be aware of though. Fasttext as well as spaCy cannot be
 so that means that you won't be able to save a pipeline if there's a whatlies component
 in it. This also means that you cannot use a gridsearch. Where possible we try to
 test against scikit-learn's testing utilities but for now the usecases should assume that you
-cannot use `GridSearchCV` and that you cannot pickle to disk. 
+cannot use `GridSearchCV` and that you cannot pickle to disk.
 
-If you see a way to properly support this in general; let us know on github by creating an [issue](https://github.com/RasaHQ/whatlies/issues). 
+If you see a way to properly support this in general, let us know on github by creating an [issue](https://github.com/RasaHQ/whatlies/issues).

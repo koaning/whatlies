@@ -53,11 +53,13 @@ class SklearnTransformer(Transformer):
 
     def fit(self, embset: EmbeddingSet) -> "SklearnTransformer":
         if not self.is_fitted:
-            self.tfm.fit(embset.to_X())
+            # This is a bit of an anti-pattern. You should not need to `self.tfm`. However, there are
+            # some packages like OpenTSNE that return a different kind of estimator once an estimator has been fitted.
+            self.tfm = self.tfm.fit(embset.to_X())
         self.is_fitted = True
         return self
 
-    def transform(self, embset: EmbeddingSet):
+    def transform(self, embset: EmbeddingSet) -> EmbeddingSet:
         names, X = embset.to_names_X()
         if not self.is_fitted:
             self.tfm.fit(X)

@@ -7,7 +7,6 @@ from spacy.language import Language
 
 from whatlies.language import SpacyLanguage
 from whatlies.transformers import (
-    Transformer,
     Umap,
     Pca,
     Noise,
@@ -17,6 +16,7 @@ from whatlies.transformers import (
     Ivis,
     Normalizer,
 )
+from whatlies.transformers._transformer import Transformer, SklearnTransformer
 
 
 vocab = Vocab().from_disk("tests/custom_test_vocab/")
@@ -89,6 +89,20 @@ def test_transformations_keep_props(transformer):
 )
 def test_transformers_are_subclassed_properly(transformer):
     assert isinstance(transformer, Transformer)
+
+
+@pytest.mark.parametrize(
+    "transformer",
+    [
+        Umap(2),
+        Pca(2),
+        Tsne(2, n_iter=250),
+        OpenTsne(2, n_iter=2),
+        Ivis(2, k=10, batch_size=10, epochs=10),
+    ],
+)
+def test_sklearn_transformers_are_subclassed_properly(transformer):
+    assert isinstance(transformer, SklearnTransformer)
 
 
 def test_transformer_base_class():

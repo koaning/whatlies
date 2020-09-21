@@ -1,7 +1,7 @@
 import numpy as np
 from sklearn.preprocessing import FunctionTransformer
 
-from whatlies.transformers import Transformer
+from ._transformer import Transformer
 from whatlies import EmbeddingSet
 from whatlies.transformers._common import new_embedding_dict
 

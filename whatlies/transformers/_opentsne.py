@@ -1,12 +1,12 @@
 import numpy as np
 from openTSNE import TSNE
 
-from whatlies.transformers import Transformer
+from ._transformer import SklearnTransformer
 from whatlies import EmbeddingSet
 from whatlies.transformers._common import new_embedding_dict
 
 
-class OpenTsne(Transformer):
+class OpenTsne(SklearnTransformer):
     """
     This transformer transformers all vectors in an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]
     by means of tsne. This implementation used
@@ -47,19 +47,6 @@ class OpenTsne(Transformer):
     """
 
     def __init__(self, n_components=2, **kwargs):
-        super().__init__()
-        self.n_components = n_components
-        self.kwargs = kwargs
-        self.tfm = TSNE(n_components=n_components, **kwargs)
-
-    def fit(self, embset):
-        names, X = embset.to_names_X()
-        self.emb = self.tfm.fit(X)
-        self.is_fitted = True
-        return self
-
-    def transform(self, embset):
-        names, X = embset.to_names_X()
-        new_vecs = np.array(self.emb.transform(X))
-        new_dict = new_embedding_dict(names, new_vecs, embset)
-        return EmbeddingSet(new_dict, name=f"{embset.name}.tsne_{self.n_components}()")
+        super().__init__(
+            TSNE, f"opentsne_{n_components}", n_components=n_components, **kwargs
+        )

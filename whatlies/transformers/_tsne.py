@@ -1,11 +1,11 @@
 from sklearn.manifold import TSNE
 
-from whatlies.transformers import Transformer
+from ._transformer import SklearnTransformer
 from whatlies import EmbeddingSet
 from whatlies.transformers._common import new_embedding_dict
 
 
-class Tsne(Transformer):
+class Tsne(SklearnTransformer):
     """
     This transformer transformers all vectors in an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]
     by means of tsne. This implementation uses
@@ -38,10 +38,9 @@ class Tsne(Transformer):
     """
 
     def __init__(self, n_components=2, **kwargs):
-        super().__init__()
-        self.n_components = n_components
-        self.kwargs = kwargs
-        self.tfm = TSNE(n_components=n_components, **kwargs)
+        super().__init__(
+            TSNE, f"tsne_{n_components}", n_components=n_components, **kwargs
+        )
 
     def fit(self, embset):
         names, X = embset.to_names_X()
@@ -51,6 +50,8 @@ class Tsne(Transformer):
 
     def transform(self, embset):
         names, X = embset.to_names_X()
+        # We are re-writing the transform method here because TSNE cannot .fit().transform().
+        # Check the docs here: https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE
         new_vecs = self.tfm.fit_transform(X)
         new_dict = new_embedding_dict(names, new_vecs, embset)
-        return EmbeddingSet(new_dict, name=f"{embset.name}.tsne_{self.n_components}()")
+        return EmbeddingSet(new_dict, name=f"{embset.name}.tsne()")

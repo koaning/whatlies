@@ -29,6 +29,7 @@ jobs:
         pip install flake8 pytest black
         python -m spacy download en_core_web_sm
         python -m spacy download en_core_web_md
+        pip install --upgrade tqdm==4.48.2
     - name: Style Check
       run: |
         # stop the build if there are Python syntax errors or undefined names

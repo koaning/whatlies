@@ -1,5 +1,9 @@
 v0.5.2
 
+- Fixed the `ConveRTLanguage` backend. The original source changed their download url.
+
+v0.5.2
+
 - Added tests for `matplotlib` and `altair`.
 - Added `plot_3d`, allowing you to make some 3d visualisations.
 - Added `assign` as a nicer alternative for `add_property`.

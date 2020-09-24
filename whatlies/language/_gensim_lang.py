@@ -32,6 +32,19 @@ class GensimLanguage(SklearnTransformerMixin):
         model.wv.save("wordvectors.kv")
         ```
 
+        You can also download pre-trained embeddings that are hosted by the gensim project.
+
+        ```
+        import gensim.downloader as api
+        # To check what models are available
+        api.info()['models'].keys()
+        # To download the vectors
+        wv = api.load('glove-twitter-25')
+        # This is typically saved in `~/gensim/data` but you can also edit these
+        # vectors and save them someplace else if you'd like.
+        wv.save("glove-twitter-25.kv")
+        ```
+
         Note that if a word is not available in the keyed vectors file then we'll assume
         a zero vector. If you pass a sentence then we'll add together the embeddings vectors
         of the seperate words.

@@ -10,8 +10,13 @@ class NotInstalled:
         self.tool = tool
         self.dep = dep
 
-    def __call__(self, *args, **kwargs):
         msg = f"In order to use {self.tool} you'll need to install via;\n\n"
         msg += f"pip install whatlies[{self.dep}]\n\n"
         msg += "See installation guide here: https://rasahq.github.io/whatlies/#installation."
-        raise ModuleNotFoundError(msg)
+        self.msg = msg
+
+    def __getattr__(self, *args, **kwargs):
+        raise ModuleNotFoundError(self.msg)
+
+    def __call__(self, *args, **kwargs):
+        raise ModuleNotFoundError(self.msg)

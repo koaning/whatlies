@@ -48,9 +48,9 @@ class ConveRTLanguage(SklearnTransformerMixin):
     """
 
     MODEL_URL = {
-        "convert": "http://models.poly-ai.com/convert/v1/model.tar.gz",
-        "convert-multi-context": "http://models.poly-ai.com/multi_context_convert/v1/model.tar.gz",
-        "convert-ubuntu": "http://models.poly-ai.com/ubuntu_convert/v1/model.tar.gz",
+        "convert": "https://github.com/PolyAI-LDN/polyai-models/releases/download/v1.0/model.tar.gz",
+        "convert-multi-context": "https://github.com/PolyAI-LDN/polyai-models/releases/download/v1.0/model_multicontext.tar.gz",
+        "convert-ubuntu": "https://github.com/PolyAI-LDN/polyai-models/releases/download/v1.0/model_ubuntu.tar.gz",
     }
 
     MODEL_SIGNATURES = [

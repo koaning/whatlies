@@ -880,9 +880,9 @@
                   <h1>Scikit-Learn Compatibility</h1>
                 
                 <h2 id="scikit-learn">Scikit-Learn<a class="headerlink" href="#scikit-learn" title="Permanent link">&para;</a></h2>
-<p>Some of the languages inside of this package can be used in scikit-learn pipelines.
-The spaCy and fasttext pipelines have compatible <code>.fit()</code> and <code>.transform()</code> methods
-implemented. That means that you could write code like this:</p>
+<p>Many of the language-backends inside of this package can be used in scikit-learn pipelines.
+We've implemented a compatible <code>.fit()</code> and <code>.transform()</code> API which means that
+you could write scikit-learn pipelines like this:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">SpacyLanguage</span>
 <span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
@@ -947,6 +947,7 @@ so that means that you won't be able to save a pipeline if there's a whatlies co
 in it. This also means that you cannot use a gridsearch. Where possible we try to
 test against scikit-learn's testing utilities but for now the usecases should assume that you
 cannot use <code>GridSearchCV</code> and that you cannot pickle to disk.</p>
+<p>If you see a way to properly support this in general, let us know on github by creating an <a href="https://github.com/RasaHQ/whatlies/issues">issue</a>.</p>
                 
                   
                 

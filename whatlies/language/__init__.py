@@ -4,15 +4,20 @@ from ._countvector_lang import CountVectorLanguage
 from ._bpemblang import BytePairLanguage
 from ._bpemblang import BytePairLanguage as BytePairLang
 from ._gensim_lang import GensimLanguage
+from ._convert_lang import ConveRTLanguage
+from ._sentence_encode_lang import UniversalSentenceLanguage
 
 from whatlies.error import NotInstalled
 
 try:
-    from ._convert_lang import ConveRTLanguage
     from ._tfhub_lang import TFHubLanguage
 except ModuleNotFoundError as e:
     TFHubLanguage = NotInstalled("TFHubLanguage", "tfhub")
-    ConveRTLanguage = NotInstalled("ConveRTLanguage", "tfhub")
+
+try:
+    from ._tfhub_lang import TFHubLanguage
+except ModuleNotFoundError as e:
+    UniversalSentenceLang = NotInstalled("UniversalSentenceLang", "tfhub")
 
 try:
     from ._hftransformers_lang import HFTransformersLanguage
@@ -37,4 +42,5 @@ __all__ = [
     "ConveRTLanguage",
     "TFHubLanguage",
     "HFTransformersLanguage",
+    "UniversalSentenceLang",
 ]

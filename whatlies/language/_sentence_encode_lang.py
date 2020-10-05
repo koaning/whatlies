@@ -28,29 +28,19 @@ def UniversalSentenceLanguage(variant: str = "base", version: Union[int, None] =
     urls = {
         "base": "https://tfhub.dev/google/universal-sentence-encoder/",
         "large": "https://tfhub.dev/google/universal-sentence-encoder-large/",
-        "lite": "https://tfhub.dev/google/universal-sentence-encoder-lite/",
         "qa": "https://tfhub.dev/google/universal-sentence-encoder-qa/",
         "multi": "https://tfhub.dev/google/universal-sentence-encoder-multilingual/",
         "multi-large": "https://tfhub.dev/google/universal-sentence-encoder-multilingual-large/",
         "multi-qa": "https://tfhub.dev/google/universal-sentence-encoder-multilingual-qa/3",
-        "many-xling": "https://tfhub.dev/google/universal-sentence-encoder-xling-many/1",
-        "en-de-xling": "https://tfhub.dev/google/universal-sentence-encoder-xling/en-de/1",
-        "en-es-xling": "https://tfhub.dev/google/universal-sentence-encoder-xling/en-es/1",
-        "en-fr-xling": "https://tfhub.dev/google/universal-sentence-encoder-xling/en-fr/1",
     }
 
     versions = {
         "base": 4,
         "large": 5,
-        "lite": 2,
         "qa": 3,
         "multi": 3,
         "multi-large": 3,
         "multi-qa": 3,
-        "many-xling": 1,
-        "en-de-xling": 1,
-        "en-es-xling": 1,
-        "en-fr-xling": 1,
     }
 
     version = versions[variant] if not version else version

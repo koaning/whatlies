@@ -17,7 +17,7 @@ except ModuleNotFoundError as e:
 try:
     from ._tfhub_lang import TFHubLanguage
 except ModuleNotFoundError as e:
-    UniversalSentenceLang = NotInstalled("UniversalSentenceLang", "tfhub")
+    UniversalSentenceLang = NotInstalled("UniversalSentenceLanguage", "tfhub")
 
 try:
     from ._hftransformers_lang import HFTransformersLanguage
@@ -42,5 +42,5 @@ __all__ = [
     "ConveRTLanguage",
     "TFHubLanguage",
     "HFTransformersLanguage",
-    "UniversalSentenceLang",
+    "UniversalSentenceLanguage",
 ]

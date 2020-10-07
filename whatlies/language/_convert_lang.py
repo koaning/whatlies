@@ -18,6 +18,9 @@ class ConveRTLanguage:
     ]
 
     def __init__(self, model_id: str = "convert", signature: str = "default") -> None:
+        pass
+
+    def __getitem__(self, item):
         raise DeprecationWarning(
             "This model has been deprecated. The original authors took the embeddings down."
         )

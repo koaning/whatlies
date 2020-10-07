@@ -8,12 +8,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 from whatlies.language import (
     FasttextLanguage,
-    CountVectorLanguage,
     SpacyLanguage,
     GensimLanguage,
     BytePairLanguage,
     TFHubLanguage,
-    ConveRTLanguage,
     HFTransformersLanguage,
 )
 
@@ -21,10 +19,8 @@ from whatlies.language import (
 backends = [
     SpacyLanguage("tests/custom_test_lang/"),
     FasttextLanguage("tests/custom_fasttext_model.bin"),
-    CountVectorLanguage(n_components=10),
     BytePairLanguage("en", vs=1000, dim=25, cache_dir="tests/cache"),
     GensimLanguage("tests/cache/custom_gensim_vectors.kv"),
-    ConveRTLanguage(),
     HFTransformersLanguage("sshleifer/tiny-gpt2", framework="tf"),
     TFHubLanguage("https://tfhub.dev/google/tf2-preview/gnews-swivel-20dim/1"),
 ]

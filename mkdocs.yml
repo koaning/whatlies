@@ -36,6 +36,7 @@ nav:
       - Gensim: api/language/gensim_lang.md
       - Huggingface: api/language/transformers.md
       - TFHub: api/language/tfhub.md
+      - Universal Sentence Encoder: api/language/universal_sentence.md
   - Examples:
     - Debiasing Projections: examples/lipstick-pig.md
   - Roadmap: roadmap.md

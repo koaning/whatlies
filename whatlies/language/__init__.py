@@ -15,15 +15,14 @@ except ModuleNotFoundError as e:
     TFHubLanguage = NotInstalled("TFHubLanguage", "tfhub")
 
 try:
-    from ._tfhub_lang import TFHubLanguage
+    from ._tfhub_lang import UniversalSentenceLanguage
 except ModuleNotFoundError as e:
-    UniversalSentenceLang = NotInstalled("UniversalSentenceLanguage", "tfhub")
+    UniversalSentenceLanguage = NotInstalled("UniversalSentenceLanguage", "tfhub")
 
 try:
     from ._hftransformers_lang import HFTransformersLanguage
 except ModuleNotFoundError as e:
     HFTransformersLanguage = NotInstalled("HFTransformersLanguage", "transformers")
-
 
 try:
     from ._sense2vec_lang import Sense2VecLanguage

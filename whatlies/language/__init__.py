@@ -2,10 +2,8 @@ from ._spacy_lang import SpacyLanguage
 from ._fasttext_lang import FasttextLanguage
 from ._countvector_lang import CountVectorLanguage
 from ._bpemblang import BytePairLanguage
-from ._bpemblang import BytePairLanguage as BytePairLang
 from ._gensim_lang import GensimLanguage
 from ._convert_lang import ConveRTLanguage
-from ._sentence_encode_lang import UniversalSentenceLanguage
 
 from whatlies.error import NotInstalled
 
@@ -35,7 +33,6 @@ __all__ = [
     "Sense2VecLanguage",
     "FasttextLanguage",
     "CountVectorLanguage",
-    "BytePairLang",
     "BytePairLanguage",
     "GensimLanguage",
     "ConveRTLanguage",

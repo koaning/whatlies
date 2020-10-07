@@ -1,9 +1,5 @@
 from typing import Union
 
-# We need to import these to trigger the correct error in CI.
-import tensorflow_hub as tfhub  # noqa: F401
-import tensorflow_text  # noqa: F401
-
 from ._tfhub_lang import TFHubLanguage
 
 

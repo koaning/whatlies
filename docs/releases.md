@@ -1,9 +1,9 @@
-v0.5.3
+v0.5.4
 
 - Deprecated the `ConveRTLanguage` backend. The original authors removed the embeddings.
 - Added the support for the Universal Sentence Encoder.
 
-v0.5.2
+v0.5.3
 
 - Fixed the `ConveRTLanguage` backend. The original source changed their download url.
 

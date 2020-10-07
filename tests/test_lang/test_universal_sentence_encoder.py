@@ -8,4 +8,4 @@ def test_same_results():
     tf_lang = TFHubLanguage(
         "https://tfhub.dev/google/universal-sentence-encoder-multilingual/3"
     )
-    assert np.allclose(use_lang["hello world"], tf_lang["hello world"])
+    assert np.allclose(use_lang["hello world"].vector, tf_lang["hello world"].vector)

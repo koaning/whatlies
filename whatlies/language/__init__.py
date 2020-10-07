@@ -15,7 +15,7 @@ except ModuleNotFoundError as e:
     TFHubLanguage = NotInstalled("TFHubLanguage", "tfhub")
 
 try:
-    from ._tfhub_lang import UniversalSentenceLanguage
+    from ._sentence_encode_lang import UniversalSentenceLanguage
 except ModuleNotFoundError as e:
     UniversalSentenceLanguage = NotInstalled("UniversalSentenceLanguage", "tfhub")
 

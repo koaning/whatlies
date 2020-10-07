@@ -19,8 +19,6 @@ def UniversalSentenceLanguage(variant: str = "base", version: Union[int, None] =
     TFHub reports that the multi-language models support Arabic, Chinese-simplified, Chinese-traditional,
     English, French, German, Italian, Japanese, Korean, Dutch, Polish, Portuguese, Spanish, Thai, Turkish and Russian.
 
-    The many-language models support only English, French, German, Spanish, Italian, Chinese, Korean, and Japanese.
-
     Arguments:
         variant: select a specific variant
         version: select a specific version, if kept `None` we'll assume the most recent version

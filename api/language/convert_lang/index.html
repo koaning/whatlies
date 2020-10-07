@@ -657,38 +657,9 @@
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        ConveRT
-      </label>
-    
     <a href="./" title="ConveRT" class="md-nav__link md-nav__link--active">
       ConveRT
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#whatlies.language._convert_lang.ConveRTLanguage.9595getitem9595" class="md-nav__link">
-    __getitem__()
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
     
   </li>
 
@@ -725,6 +696,18 @@
   <li class="md-nav__item">
     <a href="../tfhub/" title="TFHub" class="md-nav__link">
       TFHub
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../universal_sentence/" title="Universal Sentence Encoder" class="md-nav__link">
+      Universal Sentence Encoder
     </a>
   </li>
 
@@ -816,22 +799,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#whatlies.language._convert_lang.ConveRTLanguage.9595getitem9595" class="md-nav__link">
-    __getitem__()
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -846,142 +813,10 @@
                 
                 
                 <h1 id="whatlieslanguageconvertlanguage"><code>whatlies.language.ConveRTLanguage</code><a class="headerlink" href="#whatlieslanguageconvertlanguage" title="Permanent link">&para;</a></h1>
-<p>This object is used to fetch <a href="/whatlies/api/embedding/#whatlies.embedding.Embedding">Embedding</a>s or
-<a href="/whatlies/api/embeddingset/#whatlies.embeddingset.EmbeddingSet">EmbeddingSet</a>s from a
-<a href="https://github.com/PolyAI-LDN/polyai-models">ConveRT</a> model.
-This object is meant for retreival, not plotting.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>This object will automatically download a large file if it is not cached yet.</p>
-<p>This language model does not contain a vocabulary, so it cannot be used
-to retreive similar tokens. Use an <code>EmbeddingSet</code> instead.</p>
-<p>This language backend might require you to manually install extra dependencies
-unless you installed via either;</p>
-<div class="highlight"><pre><span></span><code>pip install whatlies[tfhub]
-pip install whatlies[all]
-</code></pre></div>
-
+<p>This model has been deprecated. The original authors took the embeddings down.</p>
 </div>
-<p><strong>Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>model_id</code></td>
-<td><code>str</code></td>
-<td>identifier used for loading the corresponding TFHub module, which could be one of <code>'convert</code>, <code>'convert-multi-context'</code> or <code>'convert-ubuntu'</code>. Each one of these correspond to a different model as described in <a href="https://github.com/PolyAI-LDN/polyai-models#models">ConveRT manual</a>.</td>
-<td><code>'convert'</code></td>
-</tr>
-<tr>
-<td><code>signature</code></td>
-<td><code>str</code></td>
-<td>the TFHub signature of the model, which could be one of <code>'default'</code>, <code>'encode_context'</code>, <code>'encode_response'</code> or <code>'encode_sequence'</code>. Note that <code>'encode_context'</code> is not currently supported with <code>'convert-multi-context'</code> or <code>'convert-ubuntu'</code> models.</td>
-<td><code>'default'</code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Usage</strong>:</p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">ConveRTLanguage</span>
-<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">ConveRTLanguage</span><span class="p">()</span>
-<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;bank&#39;</span><span class="p">]</span>
-<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">ConveRTLanguage</span><span class="p">(</span><span class="n">model_id</span><span class="o">=</span><span class="s1">&#39;convert-multi-context&#39;</span><span class="p">,</span> <span class="n">signature</span><span class="o">=</span><span class="s1">&#39;encode_sequence&#39;</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;bank of the river&#39;</span><span class="p">,</span> <span class="s1">&#39;money on the bank&#39;</span><span class="p">,</span> <span class="s1">&#39;bank&#39;</span><span class="p">]]</span>
-</code></pre></div>
-
-<h2 id="whatlies.language._convert_lang.ConveRTLanguage.__getitem__"><code class="highlight"><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language._convert_lang.ConveRTLanguage.__getitem__" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/_convert_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 86
- 87
- 88
- 89
- 90
- 91
- 92
- 93
- 94
- 95
- 96
- 97
- 98
- 99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Embedding</span><span class="p">,</span> <span class="n">EmbeddingSet</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Retreive a single embedding or a set of embeddings.</span>
-
-<span class="sd">        Arguments:</span>
-<span class="sd">            query: single string or list of strings</span>
-
-<span class="sd">        **Usage**</span>
-
-<span class="sd">        ```python</span>
-<span class="sd">        &gt; from whatlies.language import ConveRTLanguage</span>
-<span class="sd">        &gt; lang = ConveRTLanguage()</span>
-<span class="sd">        &gt; lang[&#39;bank&#39;]</span>
-<span class="sd">        &gt; lang = ConveRTLanguage()</span>
-<span class="sd">        &gt; lang[[&#39;bank of the river&#39;, &#39;money on the bank&#39;, &#39;bank&#39;]]</span>
-<span class="sd">        ```</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">query_tensor</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">([</span><span class="n">query</span><span class="p">])</span>
-            <span class="n">encoding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">query_tensor</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">signature</span> <span class="o">==</span> <span class="s2">&quot;encode_sequence&quot;</span><span class="p">:</span>
-                <span class="n">vec</span> <span class="o">=</span> <span class="n">encoding</span><span class="p">[</span><span class="s2">&quot;sequence_encoding&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">vec</span> <span class="o">=</span> <span class="n">encoding</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="k">return</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">vec</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">EmbeddingSet</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">tok</span><span class="p">]</span> <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">query</span><span class="p">])</span>
-</code></pre></div>
-</td></tr></table>
-
-</details>
-<p>Retreive a single embedding or a set of embeddings.</p>
-<p><strong>Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>query</code></td>
-<td><code>Union[str, List[str]]</code></td>
-<td>single string or list of strings</td>
-<td><em>required</em></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Usage</strong></p>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">ConveRTLanguage</span>
-<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">ConveRTLanguage</span><span class="p">()</span>
-<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;bank&#39;</span><span class="p">]</span>
-<span class="o">&gt;</span> <span class="n">lang</span> <span class="o">=</span> <span class="n">ConveRTLanguage</span><span class="p">()</span>
-<span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;bank of the river&#39;</span><span class="p">,</span> <span class="s1">&#39;money on the bank&#39;</span><span class="p">,</span> <span class="s1">&#39;bank&#39;</span><span class="p">]]</span>
-</code></pre></div>
                 
                   
                 

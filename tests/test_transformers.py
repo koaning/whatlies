@@ -98,7 +98,7 @@ def test_transformers_are_subclassed_properly(transformer):
         Pca(2),
         Tsne(2, n_iter=250),
         OpenTsne(2, n_iter=2),
-        Ivis(2, k=10, batch_size=10, epochs=10),
+        # Ivis(2, k=10, batch_size=10, epochs=10),
     ],
 )
 def test_sklearn_transformers_are_subclassed_properly(transformer):

@@ -1,9 +1,6 @@
-import numpy as np
 from openTSNE import TSNE
 
 from ._transformer import SklearnTransformer
-from whatlies import EmbeddingSet
-from whatlies.transformers._common import new_embedding_dict
 
 
 class OpenTsne(SklearnTransformer):

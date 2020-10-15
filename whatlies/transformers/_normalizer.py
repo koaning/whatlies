@@ -1,18 +1,18 @@
-from sklearn.preprocessing import normalize
+from sklearn.preprocessing import normalize, FunctionTransformer
 
-from ._transformer import Transformer
+from ._transformer import SklearnTransformer
 from whatlies import EmbeddingSet
 from whatlies.transformers._common import new_embedding_dict
 
 
-class Normalizer(Transformer):
+class Normalizer(SklearnTransformer):
     """
     This transformer normalizes the embeddings in an `EmbeddingSet` instance.
 
     Arguments:
         norm: the normalization value, could be either of `'l1'`, `'l2'` or `'max'`.
         feature: if `True` each feature (i.e. dimension) of embeddings would be normalized
-            independently to unit norm; otheriwse, each embedding vector would be normazlied to unit norm.
+            independently to unit norm; otherwise, each embedding vector would be normalized to unit norm.
 
     Usage:
 
@@ -34,9 +34,14 @@ class Normalizer(Transformer):
     """
 
     def __init__(self, norm: str = "l1", feature: bool = False) -> None:
-        super().__init__()
         self.norm = norm
         self.feature = feature
+        super().__init__(
+            FunctionTransformer,
+            f"norm_{norm}",
+            func=lambda X: normalize(X, norm=self.norm, axis=0 if self.feature else 1),
+            **kwargs,
+        )
 
     def fit(self, embset: EmbeddingSet) -> "Normalizer":
         self.is_fitted = True

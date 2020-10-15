@@ -38,15 +38,10 @@ class Tsne(SklearnTransformer):
     """
 
     def __init__(self, n_components=2, **kwargs):
+        self.n_components = n_components
         super().__init__(
             TSNE, f"tsne_{n_components}", n_components=n_components, **kwargs
         )
-
-    def fit(self, embset):
-        names, X = embset.to_names_X()
-        self.tfm.fit(X)
-        self.is_fitted = True
-        return self
 
     def transform(self, embset):
         names, X = embset.to_names_X()
@@ -54,4 +49,4 @@ class Tsne(SklearnTransformer):
         # Check the docs here: https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE
         new_vecs = self.tfm.fit_transform(X)
         new_dict = new_embedding_dict(names, new_vecs, embset)
-        return EmbeddingSet(new_dict, name=f"{embset.name}.tsne()")
+        return EmbeddingSet(new_dict, name=f"{embset.name}.tsne({self.n_components})")

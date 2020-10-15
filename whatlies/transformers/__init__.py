@@ -4,10 +4,8 @@ from whatlies.transformers._noise import Noise
 from whatlies.transformers._addrandom import AddRandom
 from whatlies.transformers._tsne import Tsne
 from whatlies.transformers._normalizer import Normalizer
+from whatlies.transformers._transformer import SklearnTransformer, Transformer
 from whatlies.error import NotInstalled
-
-
-from whatlies.transformers._transformer import SklearnTransformer
 
 
 try:
@@ -21,6 +19,8 @@ except ModuleNotFoundError:
     Ivis = NotInstalled("Ivis", "ivis")
 
 __all__ = [
+    "SklearnTransformer",
+    "Transformer",
     "Pca",
     "Umap",
     "Noise",

@@ -7,7 +7,7 @@
 
 # whatlies
 
-A library that tries help you to understand (note the pun).
+A library that tries to help you to understand (note the pun).
 
 > "What lies in word embeddings?"
 

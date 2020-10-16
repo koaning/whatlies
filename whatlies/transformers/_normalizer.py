@@ -33,7 +33,7 @@ class Normalizer(SklearnTransformer):
     ```
     """
 
-    def __init__(self, norm: str = "l1", feature: bool = False) -> None:
+    def __init__(self, norm: str = "l1", feature: bool = False, **kwargs) -> None:
         self.norm = norm
         self.feature = feature
         super().__init__(

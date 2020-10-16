@@ -42,14 +42,3 @@ class Normalizer(SklearnTransformer):
             func=lambda X: normalize(X, norm=self.norm, axis=0 if self.feature else 1),
             **kwargs,
         )
-
-    def fit(self, embset: EmbeddingSet) -> "Normalizer":
-        self.is_fitted = True
-        return self
-
-    def transform(self, embset: EmbeddingSet) -> EmbeddingSet:
-        names, X = embset.to_names_X()
-        axis = 0 if self.feature else 1
-        X = normalize(X, norm=self.norm, axis=axis)
-        new_dict = new_embedding_dict(names, X, embset)
-        return EmbeddingSet(new_dict, name=embset.name)

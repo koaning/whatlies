@@ -1,6 +1,6 @@
 import numpy as np
 
-from whatlies.transformers import Transformer
+from ._transformer import Transformer
 from whatlies import Embedding, EmbeddingSet
 
 

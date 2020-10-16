@@ -1,11 +1,9 @@
 from sklearn.decomposition import PCA
 
-from whatlies.transformers import Transformer
-from whatlies import EmbeddingSet
-from whatlies.transformers._common import new_embedding_dict
+from ._transformer import SklearnTransformer
 
 
-class Pca(Transformer):
+class Pca(SklearnTransformer):
     """
     This transformer scales all the vectors in an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]
     by means of principal component analysis. We're using the implementation found in
@@ -33,20 +31,7 @@ class Pca(Transformer):
     ```
     """
 
-    def __init__(self, n_components=2, **kwargs):
-        super().__init__()
-        self.n_components = n_components
-        self.kwargs = kwargs
-        self.tfm = PCA(n_components=n_components)
-
-    def fit(self, embset):
-        names, X = embset.to_names_X()
-        self.tfm.fit(X)
-        self.is_fitted = True
-        return self
-
-    def transform(self, embset):
-        names, X = embset.to_names_X()
-        new_vecs = self.tfm.transform(X)
-        new_dict = new_embedding_dict(names, new_vecs, embset)
-        return EmbeddingSet(new_dict, name=f"{embset.name}.pca_{self.n_components}()")
+    def __init__(self, n_components, **kwargs):
+        super().__init__(
+            PCA, f"pca_{n_components}", n_components=n_components, **kwargs
+        )

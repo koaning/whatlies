@@ -1,12 +1,10 @@
 import numpy as np
 from sklearn.preprocessing import FunctionTransformer
 
-from whatlies.transformers import Transformer
-from whatlies import EmbeddingSet
-from whatlies.transformers._common import new_embedding_dict
+from ._transformer import SklearnTransformer
 
 
-class Noise(Transformer):
+class Noise(SklearnTransformer):
     """
     This transformer adds gaussian noise to an embeddingset.
 
@@ -32,23 +30,11 @@ class Noise(Transformer):
     ```
     """
 
-    def __init__(self, sigma=0.1, seed=42):
-        super().__init__()
-        self.seed = seed
-        self.tfm = FunctionTransformer(
-            lambda X: X + np.random.normal(0, sigma, X.shape)
-        )
-
-    def fit(self, embset):
-        self.is_fitted = True
-        return self
-
-    def transform(self, embset):
-        names, X = embset.to_names_X()
-        np.random.seed(self.seed)
-        new_vecs = self.tfm.transform(X)
-        new_dict = new_embedding_dict(names, new_vecs, embset)
-        return EmbeddingSet(
-            new_dict,
-            name=f"{embset.name}",
+    def __init__(self, sigma=0.1, seed=42, **kwargs):
+        np.random.seed(seed)
+        super().__init__(
+            FunctionTransformer,
+            f"noise_{sigma}",
+            func=lambda X: X + np.random.normal(0, sigma, X.shape),
+            **kwargs,
         )

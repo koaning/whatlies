@@ -1,11 +1,9 @@
-from whatlies.transformers import Transformer
-from whatlies import EmbeddingSet
-from whatlies.transformers._common import new_embedding_dict
+from ._transformer import SklearnTransformer
 
 from ivis import Ivis as IVIS
 
 
-class Ivis(Transformer):
+class Ivis(SklearnTransformer):
     """
     This transformer scales all the vectors in an [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]
     by means of Ivis algorithm. We're using the implementation found
@@ -27,7 +25,7 @@ class Ivis(Transformer):
     Usage:
 
     ```python
-    from whatlies.language import GensimLanguage
+    from whatlies.language import SpacyLanguage
     from whatlies.transformers import Ivis
 
     words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
@@ -35,27 +33,15 @@ class Ivis(Transformer):
              "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
              "person", "family", "brother", "sister"]
 
-    lang = GensimLanguage("wordvectors.kv")
+    lang = SpacyLanguage("en_core_web_md")
     emb = lang[words]
     emb.transform(Ivis(3)).plot_interactive_matrix(0, 1, 2)
     ```
     """
 
     def __init__(self, n_components=2, **kwargs):
-        super().__init__()
-        self.n_components = n_components
-        self.kwargs = kwargs
-        self.kwargs["verbose"] = 0
-        self.tfm = IVIS(embedding_dims=self.n_components, **self.kwargs)
-
-    def fit(self, embset):
-        names, X = embset.to_names_X()
-        self.tfm.fit(X)
-        self.is_fitted = True
-        return self
-
-    def transform(self, embset):
-        names, X = embset.to_names_X()
-        new_vecs = self.tfm.transform(X)
-        new_dict = new_embedding_dict(names, new_vecs, embset)
-        return EmbeddingSet(new_dict, name=f"{embset.name}.ivis_{self.n_components}()")
+        # Our API keeps referring to `n_components` to keep things standard but IVIS calls it
+        # `embedding_dims` internally.
+        super().__init__(
+            IVIS, f"ivis_{n_components}", embedding_dims=n_components, **kwargs
+        )

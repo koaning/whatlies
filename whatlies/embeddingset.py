@@ -457,8 +457,8 @@ class EmbeddingSet:
         in one single statement.
 
         Arguments:
-            kwargs: (name, func)-pairs that describe the name of the property as well as a function on how to calculate it.
-                The function expects an `Embedding` object as input.
+            kwargs: (name, func)-pairs that describe the name of the property as well as a value to assign.
+                The value can be a single value, iterable or a function. The function expects an `Embedding` object as input.
 
         Usage:
 
@@ -468,16 +468,31 @@ class EmbeddingSet:
         foo = Embedding("foo", [0.1, 0.3, 0.10])
         bar = Embedding("bar", [0.7, 0.2, 0.11])
         emb = EmbeddingSet(foo, bar)
-        emb_with_property = emb.assign(dim0=lambda d: d.vector[0],
-                                       dim1=lambda d: d.vector[1],
-                                       dim2=lambda d: d.vector[2])
+        emb_with_property1 = emb.assign(dim0=lambda d: d.vector[0],
+                                        dim1=lambda d: d.vector[1],
+                                        dim2=lambda d: d.vector[2])
+
+        emb_with_property2 = emb.assign(group=["foo_grp", "bar_grp"])
+
+        emb_with_property3 = emb.assign(constant=1)
         ```
         """
         new_set = {}
-        for k, e in self.embeddings.items():
+        for idx, (k, e) in enumerate(self.embeddings.items()):
             new_emb = e
-            for name, func in kwargs.items():
-                new_emb = new_emb.add_property(name, func)
+            for name, val in kwargs.items():
+                if callable(val):
+                    new_emb = new_emb.add_property(name, val)
+                elif hasattr(val, "__iter__") and not isinstance(val, str):
+                    # We want to support lists, tuples, numpy arrays but not strings
+                    # those need to be handle as if they're literals.
+                    if len(val) != len(self):
+                        raise ValueError(
+                            f"If you're passing an iterable to `.assign` then it must have the same length as the `EmbeddingSet`.\nGot: {len(val)}. Expected: {len(self)}."
+                        )
+                    new_emb = new_emb.add_property(name, lambda d: val[idx])
+                else:
+                    new_emb = new_emb.add_property(name, lambda d: val)
             new_set[k] = new_emb
         return EmbeddingSet(new_set)
 

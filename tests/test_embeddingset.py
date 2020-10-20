@@ -211,7 +211,7 @@ def test_add_property():
     assert all([e.prop_a == "prop-one" for e in emb_with_property])
 
 
-def test_assign():
+def test_assign_base():
     foo = Embedding("foo", [0.1, 0.3, 0.10])
     bar = Embedding("bar", [0.7, 0.2, 0.11])
     emb = EmbeddingSet(foo, bar)
@@ -220,3 +220,31 @@ def test_assign():
     )
     assert all([e.prop_a == "prop-one" for e in emb_with_property])
     assert all([e.prop_b == "prop-two" for e in emb_with_property])
+
+
+def test_assign_literal_values():
+    foo = Embedding("foo", [0.1, 0.3, 0.10])
+    bar = Embedding("bar", [0.7, 0.2, 0.11])
+    emb = EmbeddingSet(foo, bar)
+    emb_with_property = emb.assign(prop_a="prop-one", prop_b=1)
+    assert all([e.prop_a == "prop-one" for e in emb_with_property])
+    assert all([e.prop_b == 1 for e in emb_with_property])
+
+
+def test_assign_arrays():
+    foo = Embedding("foo", [0.1, 0.3, 0.10])
+    bar = Embedding("bar", [0.7, 0.2, 0.11])
+    emb = EmbeddingSet(foo, bar)
+    emb_with_property = emb.assign(prop_a=["a", "b"], prop_b=np.array([1, 2]))
+    assert emb_with_property["foo"].prop_a == "a"
+    assert emb_with_property["bar"].prop_a == "b"
+    assert emb_with_property["foo"].prop_b == 1
+    assert emb_with_property["bar"].prop_b == 2
+
+
+def test_assign_arrays_raise_error():
+    foo = Embedding("foo", [0.1, 0.3, 0.10])
+    bar = Embedding("bar", [0.7, 0.2, 0.11])
+    emb = EmbeddingSet(foo, bar)
+    with pytest.raises(ValueError):
+        emb_with_property = emb.assign(prop_a=["a", "b"], prop_b=np.array([1, 2, 3]))

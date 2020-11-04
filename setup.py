@@ -59,7 +59,14 @@ test_packages = [
     "pre-commit>=2.2.0",
 ]
 
-extra_deps = tf_packages + transformers_dep + ivis_dep + open_tsne_dep + s2v_packages
+extra_deps = (
+    tf_packages
+    + transformers_dep
+    + ivis_dep
+    + open_tsne_dep
+    + s2v_packages
+    + sentence_tfm_dep
+)
 dev_packages = docs_packages + test_packages + extra_deps
 
 

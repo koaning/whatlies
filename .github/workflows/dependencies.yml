@@ -36,7 +36,7 @@ jobs:
         python -m pip install -e ".[tfhub]"
     - name: Run Checks
       run: |
-        python tests/scripts/check_pip.py missing ivis opentsne sense2vec
+        python tests/scripts/check_pip.py missing ivis opentsne sense2vec sentence-transformers
         python tests/scripts/check_pip.py contains spacy tensorflow
         python tests/scripts/import_all.py
     - name: Install IVIS
@@ -44,7 +44,7 @@ jobs:
         python -m pip install -e ".[ivis]"
     - name: Run Checks
       run: |
-        python tests/scripts/check_pip.py missing opentsne
+        python tests/scripts/check_pip.py missing opentsne sentence-transformers
         python tests/scripts/check_pip.py contains spacy tensorflow ivis
         python tests/scripts/import_all.py
     - name: Install All
@@ -52,7 +52,7 @@ jobs:
         python -m pip install -e ".[all]"
     - name: Run Checks
       run: |
-        python tests/scripts/check_pip.py contains spacy tensorflow ivis opentsne transformers sense2vec
+        python tests/scripts/check_pip.py contains spacy tensorflow ivis opentsne transformers sense2vec sentence-transformers
     - name: Docs can Build
       run: |
         python -m pip install -e ".[docs]"

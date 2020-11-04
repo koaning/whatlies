@@ -27,6 +27,11 @@ try:
 except ModuleNotFoundError as e:
     Sense2VecLanguage = NotInstalled("Sense2VecLanguage", "sense2vec")
 
+try:
+    from ._sentencetfm_lang import SentenceTFMLanguage
+except ModuleNotFoundError as e:
+    SentenceTFMLanguage = NotInstalled("SentenceTFMLanguage", "sentence_tfm")
+
 
 __all__ = [
     "SpacyLanguage",

@@ -30,6 +30,8 @@ transformers_dep = [
     "transformers>=3.0.0",
 ]
 
+sentence_tfm_dep = ["sentence-transformers>=0.3.8"]
+
 ivis_dep = [
     "ivis[cpu]>=1.8.0",
 ]
@@ -57,13 +59,20 @@ test_packages = [
     "pre-commit>=2.2.0",
 ]
 
-extra_deps = tf_packages + transformers_dep + ivis_dep + open_tsne_dep + s2v_packages
+extra_deps = (
+    tf_packages
+    + transformers_dep
+    + ivis_dep
+    + open_tsne_dep
+    + s2v_packages
+    + sentence_tfm_dep
+)
 dev_packages = docs_packages + test_packages + extra_deps
 
 
 setup(
     name="whatlies",
-    version="0.5.4",
+    version="0.5.5",
     author="Vincent D. Warmerdam",
     packages=find_packages(exclude=["notebooks", "docs"]),
     description="Tools to help uncover `whatlies` in word embeddings.",
@@ -86,6 +95,7 @@ setup(
         "transformers": transformers_dep,
         "ivis": ivis_dep,
         "opentsne": open_tsne_dep,
+        "sentence_tfm": sentence_tfm_dep,
         "all": extra_deps,
     },
     classifiers=[

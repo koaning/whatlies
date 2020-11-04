@@ -63,17 +63,18 @@ The following language backends can be used as scikit-learn feature transformati
 - `whatlies.language.FasttextLanguage`
 - `whatlies.language.CountVectorLanguage`
 - `whatlies.language.BytePairLanguage`
-- `whatlies.language.ConveRTLanguage`
 - `whatlies.language.GensimLanguage`
 - `whatlies.language.HFTransformersLanguage`
 - `whatlies.language.TFHubLanguage`
+- `whatlies.language.UniversalSentenceLanguage`
+- `whatlies.language.SentenceTFMLanguage`
 
 ### Caveats
 
 There's a few caveats to be aware of though. Fasttext as well as spaCy cannot be directly pickled
 so that means that you won't be able to save a pipeline if there's a whatlies component
 in it. This also means that you cannot use a gridsearch. Where possible we try to
-test against scikit-learn's testing utilities but for now the usecases should assume that you
-cannot use `GridSearchCV` and that you cannot pickle to disk.
+test against scikit-learn's testing utilities but for now the use-case is limited for use in
+a `Pipeline`. You should assume that you cannot use `GridSearchCV` and that you cannot pickle to disk.
 
 If you see a way to properly support this in general, let us know on github by creating an [issue](https://github.com/RasaHQ/whatlies/issues).

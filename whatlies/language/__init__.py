@@ -44,4 +44,5 @@ __all__ = [
     "TFHubLanguage",
     "HFTransformersLanguage",
     "UniversalSentenceLanguage",
+    "SentenceTFMLanguage",
 ]

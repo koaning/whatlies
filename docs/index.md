@@ -121,6 +121,22 @@ together to get a visualisation started.
 Parallax allows you to instead fetch raw files on disk.
 - Parallax has been around for a while, Whatlies is more new and therefore more experimental.
 
+## Citation
+
+Please use the following citation when you found `whatlies` helpful for any of your work (find the `whatlies` paper [here](http://arxiv.org/abs/2009.02113)):
+
+```
+@misc{Warmerdam2020whatlies,
+	Archiveprefix = {arXiv},
+	Author = {Vincent D. Warmerdam and Thomas Kober and Rachael Tatman},
+	Eprint = {2009.02113},
+	Primaryclass = {cs.CL},
+	Title = {Going Beyond T-SNE: Exposing \texttt{whatlies} in Text Embeddings},
+	Year = {2020}
+}
+```
+
+
 ## Local Development
 
 If you want to develop locally you can start by running this command after cloning.

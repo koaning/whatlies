@@ -1,6 +1,7 @@
 from ._spacy_lang import SpacyLanguage
 from ._fasttext_lang import FasttextLanguage
 from ._countvector_lang import CountVectorLanguage
+from ._tfidf_lang import TFIDFVectorLanguage
 from ._bpemblang import BytePairLanguage
 from ._gensim_lang import GensimLanguage
 from ._convert_lang import ConveRTLanguage
@@ -38,6 +39,7 @@ __all__ = [
     "Sense2VecLanguage",
     "FasttextLanguage",
     "CountVectorLanguage",
+    "TFIDFVectorLanguage",
     "BytePairLanguage",
     "GensimLanguage",
     "ConveRTLanguage",

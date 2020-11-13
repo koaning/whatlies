@@ -31,6 +31,7 @@ nav:
       - Sense2Vec: api/language/s2v_lang.md
       - fasttext: api/language/fasttext_lang.md
       - CountVector: api/language/countvector_lang.md
+      - TFIDFVector: api/language/tfidf_lang.md
       - BytePair: api/language/bpemb_lang.md
       - ConveRT: api/language/convert_lang.md
       - Gensim: api/language/gensim_lang.md

@@ -1,0 +1,755 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "background": "white",
+  "padding": 5,
+  "data": [
+    {"name": "selector015_store"},
+    {"name": "selector016_store"},
+    {
+      "name": "data-6881502b3be2c76f01a506ceb1827739",
+      "values": [
+        {
+          "x_axis": -0.44396570324897766,
+          "y_axis": 0.4840516149997711,
+          "name": "man",
+          "original": "man"
+        },
+        {
+          "x_axis": -0.14888693392276764,
+          "y_axis": 0.662758469581604,
+          "name": "woman",
+          "original": "woman"
+        },
+        {
+          "x_axis": 1.2012442350387573,
+          "y_axis": 4.329179763793945,
+          "name": "king",
+          "original": "king"
+        },
+        {
+          "x_axis": 1.1597709655761719,
+          "y_axis": 3.570744037628174,
+          "name": "queen",
+          "original": "queen"
+        },
+        {
+          "x_axis": 0.48432502150535583,
+          "y_axis": 1.8424705266952515,
+          "name": "brother",
+          "original": "brother"
+        },
+        {
+          "x_axis": 0.5113064050674438,
+          "y_axis": 1.4234222173690796,
+          "name": "sister",
+          "original": "sister"
+        },
+        {
+          "x_axis": -2.522710084915161,
+          "y_axis": -0.7334731221199036,
+          "name": "cat",
+          "original": "cat"
+        },
+        {
+          "x_axis": -3.1172127723693848,
+          "y_axis": -1.0046052932739258,
+          "name": "dog",
+          "original": "dog"
+        },
+        {
+          "x_axis": -1.484498381614685,
+          "y_axis": 1.247635841369629,
+          "name": "lion",
+          "original": "lion"
+        },
+        {
+          "x_axis": -4.053700923919678,
+          "y_axis": -2.2446482181549072,
+          "name": "puppy",
+          "original": "puppy"
+        },
+        {
+          "x_axis": 1.4429430961608887,
+          "y_axis": -1.3073339462280273,
+          "name": "male student",
+          "original": "male student"
+        },
+        {
+          "x_axis": 1.6246622800827026,
+          "y_axis": -1.3688344955444336,
+          "name": "female student",
+          "original": "female student"
+        },
+        {
+          "x_axis": 4.659463882446289,
+          "y_axis": -2.6264119148254395,
+          "name": "university",
+          "original": "university"
+        },
+        {
+          "x_axis": 4.200511932373047,
+          "y_axis": -2.7934672832489014,
+          "name": "school",
+          "original": "school"
+        },
+        {
+          "x_axis": -3.513251543045044,
+          "y_axis": -1.4814879894256592,
+          "name": "kitten",
+          "original": "kitten"
+        }
+      ]
+    },
+    {
+      "name": "data-da67ee223390cd67909869329cde24a8",
+      "values": [
+        {
+          "x_axis": 6.336426734924316,
+          "y_axis": 17.32382583618164,
+          "name": "man",
+          "original": "man"
+        },
+        {
+          "x_axis": 7.092407703399658,
+          "y_axis": 17.05576515197754,
+          "name": "woman",
+          "original": "woman"
+        },
+        {
+          "x_axis": 8.655640602111816,
+          "y_axis": 17.076183319091797,
+          "name": "king",
+          "original": "king"
+        },
+        {
+          "x_axis": 8.341507911682129,
+          "y_axis": 16.2941951751709,
+          "name": "queen",
+          "original": "queen"
+        },
+        {
+          "x_axis": 8.010128021240234,
+          "y_axis": 17.119396209716797,
+          "name": "brother",
+          "original": "brother"
+        },
+        {
+          "x_axis": 7.758755207061768,
+          "y_axis": 16.565479278564453,
+          "name": "sister",
+          "original": "sister"
+        },
+        {
+          "x_axis": 6.852066993713379,
+          "y_axis": 17.80592918395996,
+          "name": "cat",
+          "original": "cat"
+        },
+        {
+          "x_axis": 6.600313663482666,
+          "y_axis": 18.259136199951172,
+          "name": "dog",
+          "original": "dog"
+        },
+        {
+          "x_axis": 7.467406272888184,
+          "y_axis": 17.743974685668945,
+          "name": "lion",
+          "original": "lion"
+        },
+        {
+          "x_axis": 7.304412364959717,
+          "y_axis": 18.755386352539062,
+          "name": "puppy",
+          "original": "puppy"
+        },
+        {
+          "x_axis": 7.086732387542725,
+          "y_axis": 16.355175018310547,
+          "name": "male student",
+          "original": "male student"
+        },
+        {
+          "x_axis": 6.395895957946777,
+          "y_axis": 16.42926025390625,
+          "name": "female student",
+          "original": "female student"
+        },
+        {
+          "x_axis": 6.924182415008545,
+          "y_axis": 15.679752349853516,
+          "name": "university",
+          "original": "university"
+        },
+        {
+          "x_axis": 6.499971866607666,
+          "y_axis": 15.811290740966797,
+          "name": "school",
+          "original": "school"
+        },
+        {
+          "x_axis": 7.6975274085998535,
+          "y_axis": 18.33302116394043,
+          "name": "kitten",
+          "original": "kitten"
+        }
+      ]
+    },
+    {
+      "name": "data_1",
+      "source": "data-6881502b3be2c76f01a506ceb1827739",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+        }
+      ]
+    },
+    {
+      "name": "data_2",
+      "source": "data-6881502b3be2c76f01a506ceb1827739",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+        }
+      ]
+    },
+    {
+      "name": "data_4",
+      "source": "data-da67ee223390cd67909869329cde24a8",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+        }
+      ]
+    },
+    {
+      "name": "data_5",
+      "source": "data-da67ee223390cd67909869329cde24a8",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"x_axis\"]) && isFinite(+datum[\"x_axis\"]) && isValid(datum[\"y_axis\"]) && isFinite(+datum[\"y_axis\"])"
+        }
+      ]
+    }
+  ],
+  "signals": [
+    {"name": "childWidth", "value": 220},
+    {"name": "childHeight", "value": 220},
+    {
+      "name": "unit",
+      "value": {},
+      "on": [
+        {"events": "mousemove", "update": "isTuple(group()) ? group() : unit"}
+      ]
+    },
+    {
+      "name": "selector015",
+      "update": "{\"x_axis\": selector015_x_axis, \"y_axis\": selector015_y_axis}"
+    },
+    {"name": "selector015_x_axis"},
+    {"name": "selector015_y_axis"},
+    {
+      "name": "selector016",
+      "update": "{\"x_axis\": selector016_x_axis, \"y_axis\": selector016_y_axis}"
+    },
+    {"name": "selector016_x_axis"},
+    {"name": "selector016_y_axis"}
+  ],
+  "layout": {"padding": 20, "bounds": "full", "align": "each"},
+  "marks": [
+    {
+      "type": "group",
+      "name": "concat_0_group",
+      "title": {"text": "pca", "frame": "group"},
+      "style": "cell",
+      "encode": {
+        "update": {
+          "width": {"signal": "childWidth"},
+          "height": {"signal": "childHeight"}
+        }
+      },
+      "signals": [
+        {
+          "name": "selector015_x_axis",
+          "on": [
+            {
+              "events": {"signal": "selector015_translate_delta"},
+              "update": "panLinear(selector015_translate_anchor.extent_x, -selector015_translate_delta.x / childWidth)"
+            },
+            {
+              "events": {"signal": "selector015_zoom_delta"},
+              "update": "zoomLinear(domain(\"concat_0_x\"), selector015_zoom_anchor.x, selector015_zoom_delta)"
+            },
+            {
+              "events": [{"source": "scope", "type": "dblclick"}],
+              "update": "null"
+            }
+          ],
+          "push": "outer"
+        },
+        {
+          "name": "selector015_y_axis",
+          "on": [
+            {
+              "events": {"signal": "selector015_translate_delta"},
+              "update": "panLinear(selector015_translate_anchor.extent_y, selector015_translate_delta.y / childHeight)"
+            },
+            {
+              "events": {"signal": "selector015_zoom_delta"},
+              "update": "zoomLinear(domain(\"concat_0_y\"), selector015_zoom_anchor.y, selector015_zoom_delta)"
+            },
+            {
+              "events": [{"source": "scope", "type": "dblclick"}],
+              "update": "null"
+            }
+          ],
+          "push": "outer"
+        },
+        {
+          "name": "selector015_tuple",
+          "on": [
+            {
+              "events": [
+                {"signal": "selector015_x_axis || selector015_y_axis"}
+              ],
+              "update": "selector015_x_axis && selector015_y_axis ? {unit: \"concat_0_layer_0\", fields: selector015_tuple_fields, values: [selector015_x_axis,selector015_y_axis]} : null"
+            }
+          ]
+        },
+        {
+          "name": "selector015_tuple_fields",
+          "value": [
+            {"field": "x_axis", "channel": "x", "type": "R"},
+            {"field": "y_axis", "channel": "y", "type": "R"}
+          ]
+        },
+        {
+          "name": "selector015_translate_anchor",
+          "value": {},
+          "on": [
+            {
+              "events": [{"source": "scope", "type": "mousedown"}],
+              "update": "{x: x(unit), y: y(unit), extent_x: domain(\"concat_0_x\"), extent_y: domain(\"concat_0_y\")}"
+            }
+          ]
+        },
+        {
+          "name": "selector015_translate_delta",
+          "value": {},
+          "on": [
+            {
+              "events": [
+                {
+                  "source": "window",
+                  "type": "mousemove",
+                  "consume": true,
+                  "between": [
+                    {"source": "scope", "type": "mousedown"},
+                    {"source": "window", "type": "mouseup"}
+                  ]
+                }
+              ],
+              "update": "{x: selector015_translate_anchor.x - x(unit), y: selector015_translate_anchor.y - y(unit)}"
+            }
+          ]
+        },
+        {
+          "name": "selector015_zoom_anchor",
+          "on": [
+            {
+              "events": [{"source": "scope", "type": "wheel", "consume": true}],
+              "update": "{x: invert(\"concat_0_x\", x(unit)), y: invert(\"concat_0_y\", y(unit))}"
+            }
+          ]
+        },
+        {
+          "name": "selector015_zoom_delta",
+          "on": [
+            {
+              "events": [{"source": "scope", "type": "wheel", "consume": true}],
+              "force": true,
+              "update": "pow(1.001, event.deltaY * pow(16, event.deltaMode))"
+            }
+          ]
+        },
+        {
+          "name": "selector015_modify",
+          "on": [
+            {
+              "events": {"signal": "selector015_tuple"},
+              "update": "modify(\"selector015_store\", selector015_tuple, true)"
+            }
+          ]
+        }
+      ],
+      "marks": [
+        {
+          "name": "concat_0_layer_0_marks",
+          "type": "symbol",
+          "clip": true,
+          "style": ["circle"],
+          "interactive": true,
+          "from": {"data": "data_1"},
+          "encode": {
+            "update": {
+              "opacity": {"value": 0.7},
+              "size": {"value": 60},
+              "fill": {"value": "#4c78a8"},
+              "tooltip": {
+                "signal": "{\"name\": ''+datum[\"name\"], \"original\": ''+datum[\"original\"]}"
+              },
+              "x": {"scale": "concat_0_x", "field": "x_axis"},
+              "y": {"scale": "concat_0_y", "field": "y_axis"},
+              "shape": {"value": "circle"}
+            }
+          }
+        },
+        {
+          "name": "concat_0_layer_1_marks",
+          "type": "text",
+          "clip": true,
+          "style": ["text"],
+          "interactive": false,
+          "from": {"data": "data_2"},
+          "encode": {
+            "update": {
+              "dx": {"value": -15},
+              "dy": {"value": 3},
+              "fill": {"value": "black"},
+              "x": {"scale": "concat_0_x", "field": "x_axis"},
+              "y": {"scale": "concat_0_y", "field": "y_axis"},
+              "text": {"signal": "''+datum[\"original\"]"},
+              "align": {"value": "center"},
+              "baseline": {"value": "middle"}
+            }
+          }
+        }
+      ],
+      "axes": [
+        {
+          "scale": "concat_0_x",
+          "orient": "bottom",
+          "gridScale": "concat_0_y",
+          "grid": true,
+          "tickCount": {"signal": "ceil(childWidth/40)"},
+          "domain": false,
+          "labels": false,
+          "maxExtent": 0,
+          "minExtent": 0,
+          "ticks": false,
+          "zindex": 0
+        },
+        {
+          "scale": "concat_0_y",
+          "orient": "left",
+          "gridScale": "concat_0_x",
+          "grid": true,
+          "tickCount": {"signal": "ceil(childHeight/40)"},
+          "domain": false,
+          "labels": false,
+          "maxExtent": 0,
+          "minExtent": 0,
+          "ticks": false,
+          "zindex": 0
+        },
+        {
+          "scale": "concat_0_x",
+          "orient": "bottom",
+          "grid": false,
+          "title": "Dimension 0",
+          "labelFlush": true,
+          "labelOverlap": true,
+          "tickCount": {"signal": "ceil(childWidth/40)"},
+          "zindex": 0
+        },
+        {
+          "scale": "concat_0_y",
+          "orient": "left",
+          "grid": false,
+          "title": "Dimension 1",
+          "labelOverlap": true,
+          "tickCount": {"signal": "ceil(childHeight/40)"},
+          "zindex": 0
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "concat_1_group",
+      "title": {"text": "umap", "frame": "group"},
+      "style": "cell",
+      "encode": {
+        "update": {
+          "width": {"signal": "childWidth"},
+          "height": {"signal": "childHeight"}
+        }
+      },
+      "signals": [
+        {
+          "name": "selector016_x_axis",
+          "on": [
+            {
+              "events": {"signal": "selector016_translate_delta"},
+              "update": "panLinear(selector016_translate_anchor.extent_x, -selector016_translate_delta.x / childWidth)"
+            },
+            {
+              "events": {"signal": "selector016_zoom_delta"},
+              "update": "zoomLinear(domain(\"concat_1_x\"), selector016_zoom_anchor.x, selector016_zoom_delta)"
+            },
+            {
+              "events": [{"source": "scope", "type": "dblclick"}],
+              "update": "null"
+            }
+          ],
+          "push": "outer"
+        },
+        {
+          "name": "selector016_y_axis",
+          "on": [
+            {
+              "events": {"signal": "selector016_translate_delta"},
+              "update": "panLinear(selector016_translate_anchor.extent_y, selector016_translate_delta.y / childHeight)"
+            },
+            {
+              "events": {"signal": "selector016_zoom_delta"},
+              "update": "zoomLinear(domain(\"concat_1_y\"), selector016_zoom_anchor.y, selector016_zoom_delta)"
+            },
+            {
+              "events": [{"source": "scope", "type": "dblclick"}],
+              "update": "null"
+            }
+          ],
+          "push": "outer"
+        },
+        {
+          "name": "selector016_tuple",
+          "on": [
+            {
+              "events": [
+                {"signal": "selector016_x_axis || selector016_y_axis"}
+              ],
+              "update": "selector016_x_axis && selector016_y_axis ? {unit: \"concat_1_layer_0\", fields: selector016_tuple_fields, values: [selector016_x_axis,selector016_y_axis]} : null"
+            }
+          ]
+        },
+        {
+          "name": "selector016_tuple_fields",
+          "value": [
+            {"field": "x_axis", "channel": "x", "type": "R"},
+            {"field": "y_axis", "channel": "y", "type": "R"}
+          ]
+        },
+        {
+          "name": "selector016_translate_anchor",
+          "value": {},
+          "on": [
+            {
+              "events": [{"source": "scope", "type": "mousedown"}],
+              "update": "{x: x(unit), y: y(unit), extent_x: domain(\"concat_1_x\"), extent_y: domain(\"concat_1_y\")}"
+            }
+          ]
+        },
+        {
+          "name": "selector016_translate_delta",
+          "value": {},
+          "on": [
+            {
+              "events": [
+                {
+                  "source": "window",
+                  "type": "mousemove",
+                  "consume": true,
+                  "between": [
+                    {"source": "scope", "type": "mousedown"},
+                    {"source": "window", "type": "mouseup"}
+                  ]
+                }
+              ],
+              "update": "{x: selector016_translate_anchor.x - x(unit), y: selector016_translate_anchor.y - y(unit)}"
+            }
+          ]
+        },
+        {
+          "name": "selector016_zoom_anchor",
+          "on": [
+            {
+              "events": [{"source": "scope", "type": "wheel", "consume": true}],
+              "update": "{x: invert(\"concat_1_x\", x(unit)), y: invert(\"concat_1_y\", y(unit))}"
+            }
+          ]
+        },
+        {
+          "name": "selector016_zoom_delta",
+          "on": [
+            {
+              "events": [{"source": "scope", "type": "wheel", "consume": true}],
+              "force": true,
+              "update": "pow(1.001, event.deltaY * pow(16, event.deltaMode))"
+            }
+          ]
+        },
+        {
+          "name": "selector016_modify",
+          "on": [
+            {
+              "events": {"signal": "selector016_tuple"},
+              "update": "modify(\"selector016_store\", selector016_tuple, true)"
+            }
+          ]
+        }
+      ],
+      "marks": [
+        {
+          "name": "concat_1_layer_0_marks",
+          "type": "symbol",
+          "clip": true,
+          "style": ["circle"],
+          "interactive": true,
+          "from": {"data": "data_4"},
+          "encode": {
+            "update": {
+              "opacity": {"value": 0.7},
+              "size": {"value": 60},
+              "fill": {"value": "#4c78a8"},
+              "tooltip": {
+                "signal": "{\"name\": ''+datum[\"name\"], \"original\": ''+datum[\"original\"]}"
+              },
+              "x": {"scale": "concat_1_x", "field": "x_axis"},
+              "y": {"scale": "concat_1_y", "field": "y_axis"},
+              "shape": {"value": "circle"}
+            }
+          }
+        },
+        {
+          "name": "concat_1_layer_1_marks",
+          "type": "text",
+          "clip": true,
+          "style": ["text"],
+          "interactive": false,
+          "from": {"data": "data_5"},
+          "encode": {
+            "update": {
+              "dx": {"value": -15},
+              "dy": {"value": 3},
+              "fill": {"value": "black"},
+              "x": {"scale": "concat_1_x", "field": "x_axis"},
+              "y": {"scale": "concat_1_y", "field": "y_axis"},
+              "text": {"signal": "''+datum[\"original\"]"},
+              "align": {"value": "center"},
+              "baseline": {"value": "middle"}
+            }
+          }
+        }
+      ],
+      "axes": [
+        {
+          "scale": "concat_1_x",
+          "orient": "bottom",
+          "gridScale": "concat_1_y",
+          "grid": true,
+          "tickCount": {"signal": "ceil(childWidth/40)"},
+          "domain": false,
+          "labels": false,
+          "maxExtent": 0,
+          "minExtent": 0,
+          "ticks": false,
+          "zindex": 0
+        },
+        {
+          "scale": "concat_1_y",
+          "orient": "left",
+          "gridScale": "concat_1_x",
+          "grid": true,
+          "tickCount": {"signal": "ceil(childHeight/40)"},
+          "domain": false,
+          "labels": false,
+          "maxExtent": 0,
+          "minExtent": 0,
+          "ticks": false,
+          "zindex": 0
+        },
+        {
+          "scale": "concat_1_x",
+          "orient": "bottom",
+          "grid": false,
+          "title": "Dimension 0",
+          "labelFlush": true,
+          "labelOverlap": true,
+          "tickCount": {"signal": "ceil(childWidth/40)"},
+          "zindex": 0
+        },
+        {
+          "scale": "concat_1_y",
+          "orient": "left",
+          "grid": false,
+          "title": "Dimension 1",
+          "labelOverlap": true,
+          "tickCount": {"signal": "ceil(childHeight/40)"},
+          "zindex": 0
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "concat_0_x",
+      "type": "linear",
+      "domain": {
+        "fields": [
+          {"data": "data_1", "field": "x_axis"},
+          {"data": "data_2", "field": "x_axis"}
+        ]
+      },
+      "domainRaw": {"signal": "selector015[\"x_axis\"]"},
+      "range": [0, {"signal": "childWidth"}],
+      "nice": true,
+      "zero": true
+    },
+    {
+      "name": "concat_0_y",
+      "type": "linear",
+      "domain": {
+        "fields": [
+          {"data": "data_1", "field": "y_axis"},
+          {"data": "data_2", "field": "y_axis"}
+        ]
+      },
+      "domainRaw": {"signal": "selector015[\"y_axis\"]"},
+      "range": [{"signal": "childHeight"}, 0],
+      "nice": true,
+      "zero": true
+    },
+    {
+      "name": "concat_1_x",
+      "type": "linear",
+      "domain": {
+        "fields": [
+          {"data": "data_4", "field": "x_axis"},
+          {"data": "data_5", "field": "x_axis"}
+        ]
+      },
+      "domainRaw": {"signal": "selector016[\"x_axis\"]"},
+      "range": [0, {"signal": "childWidth"}],
+      "nice": true,
+      "zero": true
+    },
+    {
+      "name": "concat_1_y",
+      "type": "linear",
+      "domain": {
+        "fields": [
+          {"data": "data_4", "field": "y_axis"},
+          {"data": "data_5", "field": "y_axis"}
+        ]
+      },
+      "domainRaw": {"signal": "selector016[\"y_axis\"]"},
+      "range": [{"signal": "childHeight"}, 0],
+      "nice": true,
+      "zero": true
+    }
+  ]
+}

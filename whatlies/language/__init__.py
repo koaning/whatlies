@@ -4,7 +4,6 @@ from ._countvector_lang import CountVectorLanguage
 from ._tfidf_lang import TFIDFVectorLanguage
 from ._bpemblang import BytePairLanguage
 from ._gensim_lang import GensimLanguage
-from ._convert_lang import ConveRTLanguage
 
 from whatlies.error import NotInstalled
 

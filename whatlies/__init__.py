@@ -1,6 +1,7 @@
 """
 Whatlies library
 """
+
 __version__ = "0.5.7"
 
 from whatlies.embeddingset import EmbeddingSet

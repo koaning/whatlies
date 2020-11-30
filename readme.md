@@ -34,6 +34,36 @@ This library has tools to help you understand what lies in word embeddings. This
 - support for many language backends including spaCy, fasttext, tfhub, huggingface and bpemb
 - lightweight scikit-learn featurizer support for all these backends
 
+## Installation
+
+You can install the package via pip;
+
+```bash
+pip install whatlies
+```
+
+This will install the base dependencies. Depending on the
+transformers and language backends that you'll be using you
+may want to install more. Here's all the possible installation
+settings you could go for.
+
+```bash
+pip install whatlies[tfhub]
+pip install whatlies[transformers]
+```
+
+If you want it all you can also install via;
+
+```bash
+pip install whatlies[all]
+```
+
+Note that this will install dependencies but it
+**will not** install all the language models you might
+want to visualise. For example, you might still
+need to manually download spaCy models if you intend
+to use that backend.
+
 ## Getting Started
 
 For a quick overview, check out our introductory video on
@@ -99,14 +129,6 @@ You'll now get the embedding for the token "python" but in context of "programmi
 ## Documentation
 
 To learn more and for a getting started guide, check out the [documentation](https://rasahq.github.io/whatlies/).
-
-## Installation
-
-To install the package as well as all the dependencies, simply run;
-
-```bash
-pip install whatlies
-```
 
 ## Similar Projects
 

@@ -64,6 +64,7 @@ class GensimLanguage(SklearnTransformerMixin):
     """
 
     def __init__(self, keyedfile):
+        self.keyedfile = keyedfile
         self.kv = KeyedVectors.load(keyedfile)
 
     def __getitem__(self, query: Union[str, List[str]]):

@@ -67,6 +67,15 @@ class TFIDFVectorLanguage(SklearnTransformerMixin):
         strip_accents: str = None,
         random_state: int = 42,
     ):
+        self.n_components = n_components
+        self.lowercase = lowercase
+        self.analyzer = analyzer
+        self.ngram_range = ngram_range
+        self.min_df = min_df
+        self.max_df = max_df
+        self.binary = binary
+        self.strip_accents = strip_accents
+        self.random_state = random_state
         self.svd = TruncatedSVD(n_components=n_components, random_state=random_state)
         self.cv = TfidfVectorizer(
             lowercase=lowercase,

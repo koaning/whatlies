@@ -64,6 +64,8 @@ class TFHubLanguage(SklearnTransformerMixin):
         if signature:
             model = model.signatures[signature]
         self.signature = signature
+        self.url = url
+        self.tags = tags
         self.model = model
 
     def __getitem__(

@@ -29,6 +29,7 @@ class Sense2VecLanguage:
     """
 
     def __init__(self, sense2vec_path):
+        self.sense2vec_path = sense2vec_path
         self.s2v = Sense2Vec().from_disk(sense2vec_path)
 
     def __getitem__(self, query):

@@ -56,6 +56,10 @@ class BytePairLanguage(SklearnTransformerMixin):
     def __init__(
         self, lang, vs=10000, dim=100, cache_dir=Path.home() / Path(".cache/bpemb")
     ):
+        self.lang = lang
+        self.vs = vs
+        self.dim = dim
+        self.cache_dir = cache_dir
         self.module = BPEmb(lang=lang, vs=vs, dim=dim, cache_dir=cache_dir)
 
     def __getitem__(self, item):

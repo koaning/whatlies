@@ -46,6 +46,8 @@ class HFTransformersLanguage(SklearnTransformerMixin):
     """
 
     def __init__(self, model_name_or_path: str, **kwargs: Any) -> None:
+        self.model_name_or_path = model_name_or_path
+        self.kwargs = kwargs
         self.model = trf.pipeline(
             task="feature-extraction", model=model_name_or_path, **kwargs
         )

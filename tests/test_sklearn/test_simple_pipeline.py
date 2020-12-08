@@ -13,7 +13,6 @@ from whatlies.language import (
     BytePairLanguage,
     TFHubLanguage,
     HFTransformersLanguage,
-    SentenceTFMLanguage,
 )
 
 
@@ -24,7 +23,6 @@ backends = [
     GensimLanguage("tests/cache/custom_gensim_vectors.kv"),
     HFTransformersLanguage("sshleifer/tiny-gpt2", framework="tf"),
     TFHubLanguage("https://tfhub.dev/google/tf2-preview/gnews-swivel-20dim/1"),
-    SentenceTFMLanguage("distilbert-base-nli-stsb-mean-tokens"),
 ]
 
 

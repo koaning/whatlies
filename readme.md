@@ -117,15 +117,6 @@ pca_plot | umap_plot
 
 ![](docs/gif-two.gif)
 
-We even allow for BERT-style embeddings. Just use the square brackets.
-
-```python
-lang = SpacyLanguage("en_trf_robertabase_lg")
-lang['programming in [python]']
-```
-
-You'll now get the embedding for the token "python" but in context of "programming in python".
-
 ## Documentation
 
 To learn more and for a getting started guide, check out the [documentation](https://rasahq.github.io/whatlies/).

@@ -4,7 +4,6 @@ repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.2.0
     hooks:
-    -   id: check-added-large-files
     -   id: check-ast
     -   id: check-yaml
     -   id: check-json

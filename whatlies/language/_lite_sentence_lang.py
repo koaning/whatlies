@@ -5,9 +5,6 @@ import sentencepiece as spm
 
 from whatlies import Embedding, EmbeddingSet
 from whatlies.language._common import SklearnTransformerMixin
-import tensorflow.compat.v1 as tf  # noqa: F811
-
-tf.disable_v2_behavior()
 
 
 class LiteSentenceEncoder(SklearnTransformerMixin):
@@ -45,6 +42,11 @@ class LiteSentenceEncoder(SklearnTransformerMixin):
     """
 
     def __init__(self, version=2):
+        # This is a huge anti-pattern but we don't want to disable v2 behavior for
+        # any of the other models. Hence, this ugly import here.
+        import tensorflow.compat.v1 as tf  # noqa: F811
+
+        tf.disable_v2_behavior()
         if version not in [1, 2]:
             raise ValueError("Only model version 1 or 2 are available.")
         self.version = version

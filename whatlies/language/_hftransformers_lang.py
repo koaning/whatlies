@@ -15,7 +15,7 @@ class HFTransformersLanguage(SklearnTransformerMixin):
     [EmbeddingSet][whatlies.embeddingset.EmbeddingSet].
 
     Important:
-        To use this language class, either of TensorFlow or PyTorch should be installed.
+        To use this language class, either of TenpysorFlow or PyTorch should be installed.
 
         This language model does not contain a vocabulary, so it cannot be used
         to retreive similar tokens. Use an `EmbeddingSet` instead.

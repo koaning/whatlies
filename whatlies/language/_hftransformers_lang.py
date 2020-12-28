@@ -86,3 +86,27 @@ class HFTransformersLanguage(SklearnTransformerMixin):
         )["special_tokens_mask"][0]
         vec = features[np.logical_not(special_tokens_mask)].sum(axis=0)
         return Embedding(query, vec)
+
+
+def LaBSELanguage():
+    """
+    Retreive a [Language Agnostic Bert](https://ai.googleblog.com/2020/08/language-agnostic-bert-sentence.html) model from huggingface.
+
+    The model is suggested to support 109 languages. You can see the language list in the apendix of the original paper
+    found [here](https://arxiv.org/pdf/2007.01852.pdf).
+
+    Important:
+        This object will automatically download a large file if it is not cached yet.
+
+        This language model does not contain a vocabulary, so it cannot be used
+        to retreive similar tokens. Use an `EmbeddingSet` instead.
+
+        This language backend might require you to manually install extra dependencies
+        unless you installed via either;
+
+        ```
+        pip install whatlies[transformers]
+        pip install whatlies[all]
+        ```
+    """
+    return HFTransformersLanguage("sentence-transformers/LaBSE")

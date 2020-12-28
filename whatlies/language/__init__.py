@@ -20,9 +20,10 @@ except ModuleNotFoundError as e:
     UniversalSentenceLanguage = NotInstalled("UniversalSentenceLanguage", "tfhub")
 
 try:
-    from ._hftransformers_lang import HFTransformersLanguage
+    from ._hftransformers_lang import HFTransformersLanguage, LaBSELanguage
 except ModuleNotFoundError as e:
     HFTransformersLanguage = NotInstalled("HFTransformersLanguage", "transformers")
+    LaBSELanguage = NotInstalled("LaBSELanguage", "transformers")
 
 try:
     from ._sense2vec_lang import Sense2VecLanguage
@@ -48,4 +49,6 @@ __all__ = [
     "HFTransformersLanguage",
     "UniversalSentenceLanguage",
     "SentenceTFMLanguage",
+    "LiteSentenceEncoder",
+    "LaBSELanguage",
 ]

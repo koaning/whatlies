@@ -72,7 +72,7 @@ dev_packages = docs_packages + test_packages + extra_deps
 
 setup(
     name="whatlies",
-    version="0.5.8",
+    version="0.5.9",
     author="Vincent D. Warmerdam",
     packages=find_packages(exclude=["notebooks", "docs"]),
     description="Tools to help uncover `whatlies` in word embeddings.",

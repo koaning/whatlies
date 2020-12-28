@@ -11,11 +11,9 @@ from whatlies.error import NotInstalled
 try:
     from ._tfhub_lang import TFHubLanguage
     from ._convert_lang import ConveRTLanguage
-    from ._lite_sentence_lang import LiteSentenceEncoder
     from ._sentence_encode_lang import UniversalSentenceLanguage
 except ModuleNotFoundError as e:
     TFHubLanguage = NotInstalled("TFHubLanguage", "tfhub")
-    LiteSentenceEncoder = NotInstalled("LiteSentenceEncoder", "tfhub")
     ConveRTLanguage = NotInstalled("ConveRTLanguage", "tfhub")
     UniversalSentenceLanguage = NotInstalled("UniversalSentenceLanguage", "tfhub")
 

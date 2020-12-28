@@ -1,6 +1,7 @@
 import pathlib
 from setuptools import setup, find_packages
 
+
 base_packages = [
     "numpy>=1.16.0",
     "scipy>=1.2.0",

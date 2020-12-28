@@ -37,6 +37,7 @@ nav:
       - ConveRT: api/language/convert_lang.md
       - Gensim: api/language/gensim_lang.md
       - Huggingface: api/language/transformers.md
+      - LaBSE: api/language/labse.md
       - TFHub: api/language/tfhub.md
       - USE: api/language/universal_sentence.md
       - Sent TFM: api/language/sentence_tfm.md

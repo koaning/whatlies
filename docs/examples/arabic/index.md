@@ -46,7 +46,7 @@ import pandas as pd
 
 from whatlies.transformers import Umap
 
-# Read in the dataframes from Kaggle
+## Read in the dataframes from Kaggle
 df = pd.concat([
     pd.read_csv("test_Arabic_tweets_negative_20190413.tsv", sep="\t"),
     pd.read_csv("test_Arabic_tweets_positive_20190413.tsv", sep="\t")
@@ -54,7 +54,7 @@ df = pd.concat([
 df.columns = ["label", "text"]
 
 
-# Sample a small list such that the interactive charts render swiftly.
+## Sample a small list such that the interactive charts render swiftly.
 small_text_list = list(set(df[:1000]['text']))
 
 def mk_plot(lang, title=""):
@@ -95,14 +95,14 @@ from sklearn.model_selection import train_test_split
 
 from memo import grid, memfile, time_taken
 
-# Split dataframe into a train/test set.
+## Split dataframe into a train/test set.
 X_train, X_test, y_train, y_test = train_test_split(
     list(df['text']),
     df['label'],
     test_size=1000
 )
 
-# Create a dictionary with all of our embedding settings.
+## Create a dictionary with all of our embedding settings.
 embedders = {
     'nada': 'drop',
     'bp1': lang_bp1,
@@ -113,28 +113,28 @@ embedders = {
 @memfile("arabic-sentences-benchmark.jsonl")
 @time_taken()
 def run_experiment(embedder="nada", train_size=1000, smooth=1, ngram=True):
-    # This featurizers step is a list that is used in a scikit-learn pipeline.
+    ## This featurizers step is a list that is used in a scikit-learn pipeline.
     featurizers = [
         ('cv-base', CountVectorizer()),
         ('cv-ngram', CountVectorizer(ngram_range=(2, 4)) if ngram else 'drop'),
         ('emb', embedders[embedder])
     ]
 
-    # After featurization we apply a Logistic Regression
+    ## After featurization we apply a Logistic Regression
     pipe = Pipeline([
         ("feat", FeatureUnion(featurizers)),
         ("mod", LogisticRegression(C=smooth, max_iter=500))
     ])
 
-    # The trained pipeline is used to make a prediction.
+    ## The trained pipeline is used to make a prediction.
     y_pred = pipe.fit(X_train[:train_size], y_train[:train_size]).predict(X_test)
 
-    # By returning a dictionary `memo` will be able to properly log this.
+    ## By returning a dictionary `memo` will be able to properly log this.
     return {"valid_accuracy": float(np.mean(y_test == y_pred)),
             "train": float(np.mean(y_train == pipe.predict(X_train)))}
 
-# The grid will loop over all the options and generate a progress bar
-# that means it's easy to run from the command line in the background.
+## The grid will loop over all the options and generate a progress bar
+## that means it's easy to run from the command line in the background.
 for setting in grid(embedder=['nada', 'bp1', 'bp2', 'hf'],
                     smooth=[1, 0.1],
                     ngram=[True, False],
@@ -154,7 +154,7 @@ as a reasonable lower bound of what we could expect.
 3. Besides testing the effect of the embedding we'll also have a look at the effect of training set size (`train_size`),
 parameter smoothing (`smooth`) on the logistic regression and the effect of adding subword countvectors (`ngram`).
 
-# Results
+## Results
 
 You can play with the full dataset by exploring the parallel coordinates chart
 in a seperate tab [here](hiplot-results.html) but we'll focus on the most important

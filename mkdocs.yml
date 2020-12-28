@@ -40,7 +40,6 @@ nav:
       - LaBSE: api/language/labse.md
       - TFHub: api/language/tfhub.md
       - USE: api/language/universal_sentence.md
-      - USE-lite: api/language/universal_lite.md
       - Sent TFM: api/language/sentence_tfm.md
   - Examples:
     - Debiasing Projections: examples/lipstick-pig.md

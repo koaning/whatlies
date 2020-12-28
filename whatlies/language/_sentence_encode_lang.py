@@ -19,6 +19,20 @@ def UniversalSentenceLanguage(variant: str = "base", version: Union[int, None] =
     TFHub reports that the multi-language models support Arabic, Chinese-simplified, Chinese-traditional,
     English, French, German, Italian, Japanese, Korean, Dutch, Polish, Portuguese, Spanish, Thai, Turkish and Russian.
 
+    Important:
+        This object will automatically download a large file if it is not cached yet.
+
+        This language model does not contain a vocabulary, so it cannot be used
+        to retreive similar tokens. Use an `EmbeddingSet` instead.
+
+        This language backend might require you to manually install extra dependencies
+        unless you installed via either;
+
+        ```
+        pip install whatlies[tfhub]
+        pip install whatlies[all]
+        ```
+
     Arguments:
         variant: select a specific variant
         version: select a specific version, if kept `None` we'll assume the most recent version

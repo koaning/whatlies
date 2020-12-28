@@ -43,6 +43,7 @@ nav:
       - Sent TFM: api/language/sentence_tfm.md
   - Examples:
     - Debiasing Projections: examples/lipstick-pig.md
+    - Arabic Benchmarks: examples/arabic/index.md
   - Roadmap: roadmap.md
   - Releases: releases.md
 plugins:

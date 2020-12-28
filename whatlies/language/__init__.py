@@ -47,6 +47,5 @@ __all__ = [
     "HFTransformersLanguage",
     "UniversalSentenceLanguage",
     "SentenceTFMLanguage",
-    "LiteSentenceEncoder",
     "LaBSELanguage",
 ]

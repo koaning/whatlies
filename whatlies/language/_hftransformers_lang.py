@@ -108,5 +108,15 @@ def LaBSELanguage():
         pip install whatlies[transformers]
         pip install whatlies[all]
         ```
+
+    **Usage**:
+
+    ```python
+    > from whatlies.language import LaBSELanguage
+    > lang = LaBSELanguage()
+    > lang['today is a nice day']
+    > lang = LaBSELanguage()
+    > lang[['i like cats and dogs', 'ik vind honden en katten leuk', 'me gusta peros y gatos']]
+    ```
     """
     return HFTransformersLanguage("sentence-transformers/LaBSE")

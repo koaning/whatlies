@@ -168,10 +168,12 @@ won't give us an upper limit of what we might be able to achieve after fine-tuni
 as a reasonable lower bound of what we could expect.
 3. Besides testing the effect of the embedding we'll also have a look at the effect of training set size (`train_size`),
 parameter smoothing (`smooth`) on the logistic regression and the effect of adding subword countvectors (`ngram`).
+4. The benchmark will take a while! You migth even think it gets stuck when it hits the 75% mark. If this
+happens to you; it's likely not stuck. You're experiencing the compute time required for transformer models.
 
 ## Results
 
-You can play with the full dataset by exploring the parallel coordinates chart
+You can play with the full benchmark dataset by exploring the parallel coordinates chart
 in a seperate tab [here](hiplot-results.html) but we'll focus on the most important
 observations below.
 

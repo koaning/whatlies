@@ -41,6 +41,15 @@ Let's first make a visualisation that helps us explore the embeddings. We'll
 look at a few examples by embedding them and reducing their dimensionality via
 Umap.
 
+df = pd.concat([
+    pd.read_csv("test_Arabic_tweets_negative_20190413.tsv", sep="\t", names=["label", "text"]),
+    pd.read_csv("test_Arabic_tweets_positive_20190413.tsv", sep="\t", names=["label", "text"])
+], axis=0).loc[lambda d: d['text'].str.len() < 200].sample(frac=1).reset_index(drop=True).drop_duplicates()
+
+small_text_list = list(set(df[:500]['text']))
+small_labels = df[:800]['label']
+
+len(small_text_list), len(small_labels)
 ```python
 import pandas as pd
 
@@ -53,6 +62,12 @@ df = pd.concat([
 ], axis=0).sample(frac=1).reset_index(drop=True)
 df.columns = ["label", "text"]
 
+# Next we clean the dataset
+df = (df
+  .loc[lambda d: d['text'].str.len() < 200]
+  .drop_duplicates()
+  .sample(frac=1)
+  .reset_index(drop=True))
 
 # Sample a small list such that the interactive charts render swiftly.
 small_text_list = list(set(df[:1000]['text']))

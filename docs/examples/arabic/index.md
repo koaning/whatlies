@@ -225,8 +225,9 @@ fetch('details-2.json')
 .catch(err => { throw err });
 </script>
 
-The huggingface embeddings are *much* slower. Notice the log-scale on the y-axis. These
-results ran on a modern laptop and it can take up to 8 minutes to train/process only 8000
+The huggingface embeddings are *much* slower. Notice the log-scale on the y-axis and note how
+the there's a big upfront calculation cost even for only 100 training examples. These
+results ran on a modern server and it can take up to 8 minutes to train/process only 8000
 datapoints. This pales in comparison to the other approaches. That said, we're rapid prototyping
 here so we should keep in mind that we might be able to the compute time down if we build directly
 on top of hugginface.

@@ -11,10 +11,8 @@ nav:
     - Quickstart: tutorial/quickstart/index.md
     - What Are Embeddings: tutorial/embeddings/index.md
     - Interactive Visualisation: tutorial/embeddingsets/index.md
-    - Language Options: tutorial/languages/index.md
-    - Transformation Viz: tutorial/transformations/index.md
     - Scikit-Learn Compatibility: tutorial/scikit-learn.md
-    - Observations: tutorial/observations/index.md
+    - Transformation Viz: tutorial/transformations/index.md
     - FAQ: faq.md
   - API:
     - Embedding: api/embedding.md

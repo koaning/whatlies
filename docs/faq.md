@@ -95,8 +95,9 @@ p.properties(title="spaCy", height=200, width="container")
 
 ### How do I access nearest tokens from a language model?
 
-This depends on the language model, please check the docs, but most
-language models will have a `score_similar` method attached.
+This depends on the language model. If a language model isn't based on a vocabulary
+ then we won't be able to retreive embeddings for it. Please check the docs if a
+  language model has a `score_similar` method attached. For those that do, you can do:
 
 ```python
 from whatlies.language import BytePairLanguage
@@ -104,7 +105,7 @@ lang = BytePairLanguage("en")
 lang.score_similar("king")
 ```
 
-This code snippet will return yield;
+This code snippet will return:
 
 ```python
 [(Emb[king], 1.1102230246251565e-16),

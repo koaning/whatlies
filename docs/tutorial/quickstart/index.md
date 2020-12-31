@@ -39,9 +39,10 @@ words = ['man', 'woman', 'king', 'queen', 'brother', 'sister',
 embset = bp_lang[words]
 ```
 
-This embeddingset is a collection of embeddings. Where a dataframe is a container for
-tabular data, this embeddingset is a container for a set of embeddings. This container
-has many utility methods implemented. You can for example turn it into a numpy array.
+This `embset` resembles an embeddingset which is a collection of embeddings.
+Where a dataframe is a container for tabular data, this embeddingset is a container
+for a set of embeddings. This container has many utility methods implemented. You can
+for example turn it into a numpy array.
 
 ```python
 embset.to_X()
@@ -84,7 +85,7 @@ These charts are fully interactive. You can zoom and drag with your cursor.
 
 ## Compatibility
 
-The goal of this project is to make more projects compatible with each-other. We offer support
+The goal of this project is to have a single API for many different backends. We offer support
 for:
 
 - [spaCy](https://spacy.io/)
@@ -92,7 +93,8 @@ for:
 - [tensorflow hub](https://www.tensorflow.org/hub)
 - [gensim](https://radimrehurek.com/gensim/)
 - [bytepair](https://nlp.h-its.org/bpemb/)
-- [fasttext](https://fasttext.cc/).
+- [fasttext](https://fasttext.cc/)
+- [sentence transformers](https://www.sbert.net/index.html)
 
 Note that you're not just limited to word embeddings, our API deals with text in general and
 can also fetch embeddings for contextualized language models.

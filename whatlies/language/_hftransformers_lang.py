@@ -112,11 +112,17 @@ def LaBSELanguage():
     **Usage**:
 
     ```python
-    > from whatlies.language import LaBSELanguage
-    > lang = LaBSELanguage()
-    > lang['today is a nice day']
-    > lang = LaBSELanguage()
-    > lang[['i like cats and dogs', 'ik vind honden en katten leuk', 'me gusta peros y gatos']]
+    from whatlies.language import LaBSELanguage
+    lang = LaBSELanguage()
+
+    texts = ['ik vind honden leuk', 'i really like dogs', 'me gusta los perros!',
+             'let us talk about money', 'laten we over geld praten', 'hablemos de dinero',
+             'los stroopwafels son impresionantes', 'stroopwafels zijn heerlijk',
+             'give me more stroopwafels']
+
+    lang[texts].plot_similarity()
     ```
+
+    ![](https://rasahq.github.io/whatlies/images/labse.png)
     """
     return HFTransformersLanguage("sentence-transformers/LaBSE")

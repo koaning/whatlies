@@ -5,7 +5,21 @@
 One of the goals of this package is to make it simple to explore embeddings.
 This includes embeddings that are Non-English. In this guide we'll demonstrate how you might be
 able to use this library to run simple Arabic classification benchmark
-using scikit-learn and this library.
+using scikit-learn and this library. This benchmark was part of discussion
+on [github](https://github.com/RasaHQ/whatlies/issues/262).
+
+If you want to follow along, make sure that this tool is installed.
+
+```
+pip install whatlies
+```
+
+If you'd like to also try out the heavy transformer model, you'll also
+want to install extra dependencies.
+
+```
+pip install "whatlies[transformers]"
+```
 
 ## Finding Embeddings
 
@@ -21,24 +35,30 @@ There's also support for the Egyptian dialect but we'll ignore these for now.
 ## The Task
 
 The task we'll benchmark is sentiment analysis for
-[arabic tweets](https://www.kaggle.com/mksaad/arabic-sentiment-twitter-corpus). This benchmark
-was part of discussion on [github](https://github.com/RasaHQ/whatlies/issues/262). We'll explore
-the following benchmarks.
+[arabic tweets](https://www.kaggle.com/mksaad/arabic-sentiment-twitter-corpus). It's a simple classification problem with
+two classes; positive and negative. We'll assume the labels for the dataset are accurate but we should
+remind ourselves to check correctness later if we intend to use this dataset for a real life use-case. For
+more info on this topic [watch here](https://www.youtube.com/watch?v=Czto6GzJah8&list=PL75e0qA87dlG-za8eLI6t0_Pbxafk-cxb&index=32&ab_channel=Rasa).
 
 ## Explore
 
-To start exploring the embeddings, we'll first need to load them.
+Before you run the big benchmark, it makes sense to explore the embeddings first.
+
+Let's start by loading them in.
 
 ```python
 from whatlies.language import BytePairLanguage, HFTransformersLanguage
 
 lang_bp1 = BytePairLanguage("ar", vs=10000, dim=300)
 lang_bp2 = BytePairLanguage("ar", vs=200000, dim=300)
+
+# Feel free to remove `lang_hf` from the benchmark if you want want quick results.
+# These BERT-style embeddings are very compute heavy and can take a while to benchmark.
 lang_hf = HFTransformersLanguage("asafaya/bert-base-arabic")
 ```
 
-Let's first make a visualisation that helps us explore the embeddings. We'll
-look at a few examples by embedding them and reducing their dimensionality via
+A popular method of visualising embeddings is to make a scatterplot of clusters. We'll
+look at a few text examples by embedding them and reducing their dimensionality via
 Umap.
 
 ```python
@@ -53,6 +73,12 @@ df = pd.concat([
 ], axis=0).sample(frac=1).reset_index(drop=True)
 df.columns = ["label", "text"]
 
+# Next we clean the dataset
+df = (df
+  .loc[lambda d: d['text'].str.len() < 200]
+  .drop_duplicates()
+  .sample(frac=1)
+  .reset_index(drop=True))
 
 # Sample a small list such that the interactive charts render swiftly.
 small_text_list = list(set(df[:1000]['text']))
@@ -65,6 +91,9 @@ def mk_plot(lang, title=""):
 
 mk_plot(lang_bp2, "bp_big") | mk_plot(lang_hf, "huggingface")
 ```
+
+The results of this code are viewable below. Note that these charts are fully interactive
+and they'll show the text containing the tweets when you hover over them.
 
 <div id="vis1"></div>
 
@@ -103,11 +132,12 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 # Create a dictionary with all of our embedding settings.
+# Note that we've removed lang_hf in order to make it easy to run on a laptop.
 embedders = {
     'nada': 'drop',
     'bp1': lang_bp1,
     'bp2': lang_bp2,
-    'hf': lang_hf
+    # 'hf': lang_hf
 }
 
 @memfile("arabic-sentences-benchmark.jsonl")
@@ -153,10 +183,12 @@ won't give us an upper limit of what we might be able to achieve after fine-tuni
 as a reasonable lower bound of what we could expect.
 3. Besides testing the effect of the embedding we'll also have a look at the effect of training set size (`train_size`),
 parameter smoothing (`smooth`) on the logistic regression and the effect of adding subword countvectors (`ngram`).
+4. The benchmark will take a while! We've turned off the huggingface model so that you can get quick results
+ locally but we will show our results below.
 
-# Results
+## Results
 
-You can play with the full dataset by exploring the parallel coordinates chart
+You can play with the full benchmark dataset by exploring the parallel coordinates chart
 in a seperate tab [here](hiplot-results.html) but we'll focus on the most important
 observations below.
 
@@ -193,8 +225,9 @@ fetch('details-2.json')
 .catch(err => { throw err });
 </script>
 
-The huggingface embeddings are *much* slower. Notice the log-scale on the y-axis. These
-results ran on a modern laptop and it can take up to 8 minutes to train/process only 8000
+The huggingface embeddings are *much* slower. Notice the log-scale on the y-axis and note how
+the there's a big upfront calculation cost even for only 100 training examples. These
+results ran on a modern server and it can take up to 8 minutes to train/process only 8000
 datapoints. This pales in comparison to the other approaches. That said, we're rapid prototyping
 here so we should keep in mind that we might be able to the compute time down if we build directly
 on top of hugginface.
@@ -209,7 +242,9 @@ Maybe the huggingface results look promising, maybe the compute time is a concer
 maybe you've got a use-case where you need even more predictive power. Either way, we hope you
 see the potential for this library when it comes to rapid prototyping. The goal here wasn't to
 be "state of the art". Rather; whatlies allows you to try out a whole bunch of embeddings relatively
-quickly so you don't need to worry about integrating with all sorts of embedding backends.
+quickly so you don't need to worry about integrating with all sorts of embedding backends when
+you're just starting out. This benchmark alone should not be considered as "enough" evidence to
+put a model into production, but it might be enough evidence to continue iterating.
 
 If you're curious about extending this benchmark; feel absolutely free! You might want to try
 out the `LaBSELanguage`. It's a multi-language model that should support 100+ languages. We'd also

@@ -51,13 +51,15 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 preprocess = FeatureUnion([
     ("dense", SpacyLanguage("en_core_web_md")),
-    ("sparse", CountVectorizer())
+    ("sparse_word", CountVectorizer()),
+    ("sparse_subword", CountVectorizer(analyzer="char", ngram_range=(2, 4)))
 ])
 ```
 
 ### Supported Models
 
-The following language backends can be used as scikit-learn feature transformations.
+Every language backend that this library offers is compatible for use in a scikit-learn
+pipeline. This includes the following;
 
 - `whatlies.language.SpacyLanguage`
 - `whatlies.language.FasttextLanguage`
@@ -68,13 +70,17 @@ The following language backends can be used as scikit-learn feature transformati
 - `whatlies.language.TFHubLanguage`
 - `whatlies.language.UniversalSentenceLanguage`
 - `whatlies.language.SentenceTFMLanguage`
+- `whatlies.language.UniversalSentenceLanguage`
+- `whatlies.language.LaBSELanguage`
 
 ### Caveats
 
-There's a few caveats to be aware of though. Fasttext as well as spaCy cannot be directly pickled
-so that means that you won't be able to save a pipeline if there's a whatlies component
-in it. This also means that you cannot use a gridsearch. Where possible we try to
+There's a few caveats to be aware of though. In general these language backends cannot be
+directly pickled so that means that you won't be able to save a pipeline if there's a whatlies
+component in it. This also means that you cannot use a gridsearch. Where possible we try to
 test against scikit-learn's testing utilities but for now the use-case is limited for use in
-a `Pipeline`. You should assume that you cannot use `GridSearchCV` and that you cannot pickle to disk.
+a `Pipeline`. You should assume that you cannot use `GridSearchCV` and that you cannot pickle
+to disk.
 
-If you see a way to properly support this in general, let us know on github by creating an [issue](https://github.com/RasaHQ/whatlies/issues).
+If you see a way to properly support this in general, let us know on github by
+creating an [issue](https://github.com/RasaHQ/whatlies/issues).

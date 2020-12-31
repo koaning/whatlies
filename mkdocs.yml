@@ -11,10 +11,8 @@ nav:
     - Quickstart: tutorial/quickstart/index.md
     - What Are Embeddings: tutorial/embeddings/index.md
     - Interactive Visualisation: tutorial/embeddingsets/index.md
-    - Language Options: tutorial/languages/index.md
-    - Transformation Viz: tutorial/transformations/index.md
     - Scikit-Learn Compatibility: tutorial/scikit-learn.md
-    - Observations: tutorial/observations/index.md
+    - Transformation Viz: tutorial/transformations/index.md
     - FAQ: faq.md
   - API:
     - Embedding: api/embedding.md
@@ -42,7 +40,7 @@ nav:
       - USE: api/language/universal_sentence.md
       - Sent TFM: api/language/sentence_tfm.md
   - Examples:
-    - Debiasing Projections: examples/lipstick-pig.md
+    - Debiasing Projections: examples/lipstick-pig/index.md
     - Arabic Benchmarks: examples/arabic/index.md
   - Roadmap: roadmap.md
   - Releases: releases.md

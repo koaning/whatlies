@@ -1,3 +1,10 @@
+v0.5.10
+
+- Added a helper to reverse strings for Arabic matplotlib charts.
+- Put back ConveRT. It seems we only need a new hosting link.
+- Added docs example for an Arabic benchmark.
+- Added direct support for LaBSE.
+
 v0.5.4
 
 - Deprecated the `ConveRTLanguage` backend. The original authors removed the embeddings.
@@ -31,7 +38,7 @@ emb.transform(Pca(2)).plot_interactive()
 
 v0.5.0
 
-- Added some robustness tot he `matplotlib` based arrow and scatter charts.
+- Added some robustness to the `matplotlib` based arrow and scatter charts.
 - Started deprecating the `plot_correlation` method in favor
 of the new `plot_distance` and `plot_similarity` methods.
 

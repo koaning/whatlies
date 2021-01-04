@@ -17,6 +17,7 @@ nav:
   - API:
     - Embedding: api/embedding.md
     - EmbeddingSet: api/embeddingset.md
+    - Helpers: api/helpers.md
     - Transformers:
       - Pca: api/transformers/pca.md
       - Umap: api/transformers/umap.md

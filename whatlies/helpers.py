@@ -33,10 +33,10 @@ def reverse_strings(embset):
        "university":"جامعة",
        "school":"مدرسة",
        "kitten":" قطة صغيرة",
-        "apple" : "تفاحة",
-        "orange" : "برتقال",
-        "cabbage" : "كرنب",
-        "carrot" : "جزرة"
+       "apple" : "تفاحة",
+       "orange" : "برتقال",
+       "cabbage" : "كرنب",
+       "carrot" : "جزرة"
     }
 
     lang_cv  = BytePairLanguage("ar")

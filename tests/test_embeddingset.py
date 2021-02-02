@@ -247,4 +247,4 @@ def test_assign_arrays_raise_error():
     bar = Embedding("bar", [0.7, 0.2, 0.11])
     emb = EmbeddingSet(foo, bar)
     with pytest.raises(ValueError):
-        emb_with_property = emb.assign(prop_a=["a", "b"], prop_b=np.array([1, 2, 3]))
+        emb.assign(prop_a=["a", "b"], prop_b=np.array([1, 2, 3]))

@@ -17,7 +17,6 @@ from whatlies.transformers import (
 from whatlies.transformers._transformer import Transformer, SklearnTransformer
 
 
-vocab = Vocab().from_disk("tests/custom_test_vocab/")
 words = [
     "prince",
     "princess",

@@ -17,7 +17,7 @@ from whatlies.language import (
 
 
 backends = [
-    SpacyLanguage("tests/custom_test_lang/"),
+    SpacyLanguage("en_core_web_sm"),
     FasttextLanguage("tests/custom_fasttext_model.bin"),
     BytePairLanguage("en", vs=1000, dim=25, cache_dir="tests/cache"),
     GensimLanguage("tests/cache/custom_gensim_vectors.kv"),

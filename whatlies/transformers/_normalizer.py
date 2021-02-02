@@ -1,8 +1,6 @@
 from sklearn.preprocessing import normalize, FunctionTransformer
 
 from ._transformer import SklearnTransformer
-from whatlies import EmbeddingSet
-from whatlies.transformers._common import new_embedding_dict
 
 
 class Normalizer(SklearnTransformer):

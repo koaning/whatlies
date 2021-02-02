@@ -1,4 +1,3 @@
-import os
 import warnings
 from typing import Union, List, Tuple
 
@@ -27,8 +26,6 @@ class SpacyLanguage(SklearnTransformerMixin):
     > lang = SpacyLanguage("en_core_web_md")
     > lang['python']
     > lang[['python', 'snake', 'dog']]
-    > lang = SpacyLanguage("en_trf_robertabase_lg")
-    > lang['programming in [python]']
     ```
     """
 
@@ -49,54 +46,6 @@ class SpacyLanguage(SklearnTransformerMixin):
             and len(self.model.vocab.lookups_extra.get_table("lexeme_prob")) == 0
         ):
             self.model.vocab.lookups_extra.remove_table("lexeme_prob")
-
-    @classmethod
-    def from_fasttext(cls, language, output_dir, vectors_loc=None, force=False):
-        """
-        Will load downloaded fasttext vectors. It will try to load from disk, but if there is no local
-        spaCy model then we will first convert from the vec.gz file into a spaCy model. This
-        is saved on disk and then loaded as a spaCy model.
-
-        Important:
-            The fasttext vectors are not given by this library.
-            You can download the models [here](https://fasttext.cc/docs/en/crawl-vectors.html#models).
-            Note that these files are large and loading them can take a long time.
-
-        Arguments:
-            language: name of the language so that spaCy can grab correct tokenizer (example: "en" for english)
-            output_dir: directory to save spaCy model
-            vectors_loc: file containing the fasttext vectors
-            force: with this flag raised we will always recreate the model from the vec.gz file
-
-        **Usage**:
-
-        ```python
-        > lang = SpacyLanguage.from_fasttext("nl", "/path/spacy/model", "~/Downloads/cc.nl.300.vec.gz")
-        > lang = SpacyLanguage.from_fasttext("en", "/path/spacy/model", "~/Downloads/cc.en.300.vec.gz")
-        ```
-        """
-        if not os.path.exists(output_dir):
-            spacy.cli.init_model(
-                lang=language, output_dir=output_dir, vectors_loc=vectors_loc
-            )
-        else:
-            if force:
-                spacy.cli.init_model(
-                    lang=language, output_dir=output_dir, vectors_loc=vectors_loc
-                )
-        return SpacyLanguage(spacy.load(output_dir))
-
-    @staticmethod
-    def _check_query_format(query: str) -> bool:
-        opening = sum(1 for c in query if c == "[")
-        closing = sum(1 for c in query if c == "]")
-        if opening > 1:
-            raise ValueError("Only one opening bracket (`[`) is allowed")
-        if closing > 1:
-            raise ValueError("Only one closing bracket (`]`) is allowed")
-        if opening != closing:
-            raise ValueError("The brackets should be paired")
-        return opening > 0
 
     def __getitem__(
         self, query: Union[str, List[str]]
@@ -124,12 +73,6 @@ class SpacyLanguage(SklearnTransformerMixin):
         return EmbeddingSet(*[self._get_embedding(q) for q in query])
 
     def _get_embedding(self, query: str) -> Embedding:
-        has_brackets = self._check_query_format(query)
-        if has_brackets:
-            start_idx, end_idx = self._get_context_pos(query)
-            clean_query = query.replace("[", "").replace("]", "")
-            vec = self.model(clean_query)[start_idx:end_idx].vector
-            return Embedding(query, vec)
         return Embedding(query, self.model(query).vector)
 
     def _get_context_pos(self, query: str) -> Tuple[int, int]:

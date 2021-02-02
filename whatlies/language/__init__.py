@@ -12,31 +12,30 @@ try:
     from ._tfhub_lang import TFHubLanguage
     from ._convert_lang import ConveRTLanguage
     from ._sentence_encode_lang import UniversalSentenceLanguage
-except ModuleNotFoundError as e:
+except ModuleNotFoundError:
     TFHubLanguage = NotInstalled("TFHubLanguage", "tfhub")
     ConveRTLanguage = NotInstalled("ConveRTLanguage", "tfhub")
     UniversalSentenceLanguage = NotInstalled("UniversalSentenceLanguage", "tfhub")
 
 try:
     from ._hftransformers_lang import HFTransformersLanguage, LaBSELanguage
-except ModuleNotFoundError as e:
+except ModuleNotFoundError:
     HFTransformersLanguage = NotInstalled("HFTransformersLanguage", "transformers")
     LaBSELanguage = NotInstalled("LaBSELanguage", "transformers")
 
-try:
-    from ._sense2vec_lang import Sense2VecLanguage
-except ModuleNotFoundError as e:
-    Sense2VecLanguage = NotInstalled("Sense2VecLanguage", "sense2vec")
+# try:
+#     from ._sense2vec_lang import Sense2VecLanguage
+# except ModuleNotFoundError:
+#     Sense2VecLanguage = NotInstalled("Sense2VecLanguage", "sense2vec")
 
 try:
     from ._sentencetfm_lang import SentenceTFMLanguage
-except ModuleNotFoundError as e:
+except ModuleNotFoundError:
     SentenceTFMLanguage = NotInstalled("SentenceTFMLanguage", "sentence_tfm")
 
 
 __all__ = [
     "SpacyLanguage",
-    "Sense2VecLanguage",
     "FasttextLanguage",
     "CountVectorLanguage",
     "TFIDFVectorLanguage",

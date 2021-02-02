@@ -26,6 +26,9 @@ class Sense2VecLanguage:
         The reddit vectors are not given by this library.
         You can find the download link [here](https://github.com/explosion/sense2vec#pretrained-vectors).
 
+    Warning:
+        This tool is temporarily not supported because sense2vec isn't supported by spaCy v3 just yet.
+
     """
 
     def __init__(self, sense2vec_path):

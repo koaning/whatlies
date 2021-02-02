@@ -3,7 +3,6 @@ import pytest
 import numpy as np
 from sklearn.preprocessing import normalize
 from spacy.vocab import Vocab
-from spacy.language import Language
 
 from whatlies.language import SpacyLanguage
 from whatlies.transformers import (
@@ -13,15 +12,42 @@ from whatlies.transformers import (
     AddRandom,
     Tsne,
     OpenTsne,
-    # Ivis,
     Normalizer,
 )
 from whatlies.transformers._transformer import Transformer, SklearnTransformer
 
 
 vocab = Vocab().from_disk("tests/custom_test_vocab/")
-words = list(vocab.strings)
-lang = SpacyLanguage(nlp=Language(vocab=vocab, meta={"lang": "en"}))
+words = [
+    "prince",
+    "princess",
+    "nurse",
+    "doctor",
+    "banker",
+    "man",
+    "woman",
+    "cousin",
+    "neice",
+    "king",
+    "queen",
+    "dude",
+    "guy",
+    "gal",
+    "fire",
+    "dog",
+    "cat",
+    "mouse",
+    "red",
+    "bluee",
+    "green",
+    "yellow",
+    "water",
+    "person",
+    "family",
+    "brother",
+    "sister",
+]
+lang = SpacyLanguage("en_core_web_sm")
 emb = lang[words]
 
 transformers = [

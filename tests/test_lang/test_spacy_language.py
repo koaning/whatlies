@@ -15,7 +15,7 @@ def color_lang():
         "purple": np.array([0.0, 1.0]),
     }
 
-    vocab = Vocab(strings=vector_data.keys())
+    vocab = Vocab(strings=list(vector_data.keys()))
     for word, vector in vector_data.items():
         vocab.set_vector(word, vector)
     nlp = Language(vocab=vocab)
@@ -96,9 +96,3 @@ def test_lang_retreival(color_lang, string, array):
 def test_single_token_words(color_lang):
     # test for issue here: https://github.com/RasaHQ/whatlies/issues/5
     assert len(color_lang["red"].vector) > 0
-
-
-def test_raise_warning(color_lang):
-    print([w for w in color_lang.nlp.vocab])
-    with pytest.warns(UserWarning):
-        color_lang.score_similar("red", 100, prob_limit=None, lower=False)

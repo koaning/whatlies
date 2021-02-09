@@ -2,6 +2,7 @@ import pytest
 
 import numpy as np
 from sklearn.preprocessing import normalize
+from spacy.vocab import Vocab
 
 from whatlies.language import SpacyLanguage
 from whatlies.transformers import (

@@ -53,8 +53,7 @@ theme:
   name: material
   custom_dir: theme/
   favicon: images/fig.png
-  logo:
-    icon: album
+  logo: arrow.png
   feature:
     tabs: true
   palette:

@@ -2,7 +2,6 @@ import pytest
 
 import numpy as np
 from sklearn.preprocessing import normalize
-from spacy.vocab import Vocab
 
 from whatlies.language import SpacyLanguage
 from whatlies.transformers import (
@@ -15,7 +14,6 @@ from whatlies.transformers import (
     Normalizer,
 )
 from whatlies.transformers._transformer import Transformer, SklearnTransformer
-
 
 words = [
     "prince",
@@ -46,6 +44,7 @@ words = [
     "brother",
     "sister",
 ]
+
 lang = SpacyLanguage("en_core_web_sm")
 emb = lang[words]
 

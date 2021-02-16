@@ -57,6 +57,7 @@ extra_deps = (
     + transformers_dep
     + s2v_packages
     + sentence_tfm_dep
+    + fasttext_packages
 )
 dev_packages = docs_packages + test_packages + extra_deps
 

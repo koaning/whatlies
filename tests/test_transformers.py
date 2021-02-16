@@ -4,14 +4,7 @@ import numpy as np
 from sklearn.preprocessing import normalize
 
 from whatlies.language import SpacyLanguage
-from whatlies.transformers import (
-    Noise,
-    AddRandom,
-    Normalizer,
-    Umap,
-    Tsne,
-    Pca
-)
+from whatlies.transformers import Noise, AddRandom, Normalizer, Umap, Tsne, Pca
 from whatlies.transformers._transformer import Transformer, SklearnTransformer
 
 words = [

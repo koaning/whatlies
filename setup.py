@@ -3,23 +3,20 @@ from setuptools import setup, find_packages
 
 
 base_packages = [
-    "numpy>=1.16.0",
-    "scipy>=1.2.0",
-    "scikit-learn>=0.20.2",
-    "umap-learn>=0.3.10",
+    "scikit-learn>=0.24.2",
     "altair>=4.0.1",
     "matplotlib>=3.2.0",
-    "spacy>=2.2.3",
-    "spacy-lookups-data>=0.3.2",
-    "networkx>=2.4",
     "fasttext>=0.9.1",
     "bpemb>=0.3.0",
     "gensim>=3.8.3",
 ]
 
-s2v_packages = [
-    "sense2vec>=1.0.2",
+spacy_packages =[
+    "spacy>=3.0.1",
+    "spacy-lookups-data>=0.3.2",
 ]
+
+s2v_packages = ["sense2vec>=1.0.2"] + spacy_packages
 
 tf_packages = [
     "tensorflow>=2.3.0",
@@ -32,14 +29,6 @@ transformers_dep = [
 ]
 
 sentence_tfm_dep = ["sentence-transformers>=0.3.8"]
-
-ivis_dep = [
-    "ivis[cpu]>=1.8.0",
-]
-
-open_tsne_dep = [
-    "opentsne>=0.4.3",
-]
 
 docs_packages = [
     "mkdocs==1.1",
@@ -63,8 +52,6 @@ test_packages = [
 extra_deps = (
     tf_packages
     + transformers_dep
-    + ivis_dep
-    + open_tsne_dep
     + s2v_packages
     + sentence_tfm_dep
 )
@@ -93,9 +80,8 @@ setup(
         "test": test_packages,
         "tfhub": tf_packages,
         "sense2vec": s2v_packages,
+        "spacy": spacy_packages,
         "transformers": transformers_dep,
-        "ivis": ivis_dep,
-        "opentsne": open_tsne_dep,
         "sentence_tfm": sentence_tfm_dep,
         "all": extra_deps,
     },

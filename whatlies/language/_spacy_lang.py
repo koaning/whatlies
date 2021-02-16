@@ -75,12 +75,6 @@ class SpacyLanguage(SklearnTransformerMixin):
     def _get_embedding(self, query: str) -> Embedding:
         return Embedding(query, self.model(query).vector)
 
-    def _get_context_pos(self, query: str) -> Tuple[int, int]:
-        tokens = list(t.text for t in self.model.tokenizer(query))
-        start_idx = tokens.index("[")
-        end_idx = tokens.index("]")
-        return start_idx, end_idx - 1
-
     def _prepare_queries(self, prob_limit, lower):
         self._load_vocab()
         queries = [w for w in self.model.vocab]

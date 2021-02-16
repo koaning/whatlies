@@ -16,7 +16,6 @@ from whatlies.transformers import (
 )
 from whatlies.transformers._transformer import Transformer, SklearnTransformer
 
-
 words = [
     "prince",
     "princess",
@@ -46,6 +45,7 @@ words = [
     "brother",
     "sister",
 ]
+
 lang = SpacyLanguage("en_core_web_sm")
 emb = lang[words]
 

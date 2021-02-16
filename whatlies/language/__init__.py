@@ -1,4 +1,3 @@
-from ._fasttext_lang import FasttextLanguage
 from ._countvector_lang import CountVectorLanguage
 from ._tfidf_lang import TFIDFVectorLanguage
 from ._bpemblang import BytePairLanguage

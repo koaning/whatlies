@@ -6,9 +6,12 @@ base_packages = [
     "scikit-learn>=0.24.0",
     "altair>=4.0.1",
     "matplotlib>=3.2.0",
-    "fasttext>=0.9.1",
     "bpemb>=0.3.0",
     "gensim>=3.8.3",
+]
+
+fasttext_packages = [
+    "fasttext>=0.9.1",
 ]
 
 spacy_packages =[
@@ -60,7 +63,7 @@ dev_packages = docs_packages + test_packages + extra_deps
 
 setup(
     name="whatlies",
-    version="0.5.10",
+    version="0.6.0",
     author="Vincent D. Warmerdam",
     packages=find_packages(exclude=["notebooks", "docs"]),
     description="Tools to help uncover `whatlies` in word embeddings.",

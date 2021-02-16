@@ -14,7 +14,7 @@ fasttext_packages = [
     "fasttext>=0.9.1",
 ]
 
-spacy_packages =[
+spacy_packages = [
     "spacy>=3.0.1",
     "spacy-lookups-data>=0.3.2",
 ]
@@ -53,11 +53,7 @@ test_packages = [
 ]
 
 extra_deps = (
-    tf_packages
-    + transformers_dep
-    + s2v_packages
-    + sentence_tfm_dep
-    + fasttext_packages
+    tf_packages + transformers_dep + s2v_packages + sentence_tfm_dep + fasttext_packages
 )
 dev_packages = docs_packages + test_packages + extra_deps
 

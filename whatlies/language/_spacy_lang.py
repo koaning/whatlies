@@ -1,5 +1,5 @@
 import warnings
-from typing import Union, List, Tuple
+from typing import Union, List
 
 import spacy
 from spacy.language import Language

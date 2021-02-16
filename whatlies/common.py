@@ -1,5 +1,4 @@
 import matplotlib.pylab as plt
-import networkx as nx
 
 import numpy as np
 import pandas as pd
@@ -62,27 +61,3 @@ def handle_2d_plot(
         plt.title(title)
     if axis_option is not None:
         plt.axis(axis_option)
-
-
-def plot_graph_layout(embedding_set, kind="cosine", **kwargs):
-    """
-    Handles the plotting of a layout graph using the embeddings in an embeddingset as input.
-
-    **Input**
-
-    - embeddings: a set of `whatlies.Embedding` objects to plot
-    - kind: distance metric options: 'cityblock', 'cosine', 'euclidean', 'l2', 'l1', 'manhattan',
-    """
-
-    vectors = [token.vector for k, token in embedding_set.items()]
-    label_dict = {i: w for i, (w, _) in enumerate(embedding_set.items())}
-    dist_fnc = distance_metrics()[kind]
-    dist = dist_fnc(np.array(vectors), np.array(vectors))
-    # Greate graph
-    graph = nx.from_numpy_matrix(dist)
-    distance = pd.DataFrame(dist).to_dict()
-    # Chhange layout positions of the graph
-    pos = nx.kamada_kawai_layout(graph, dist=distance)
-    # Draw nodes and labels
-    nx.draw_networkx_nodes(graph, pos, node_color="b", alpha=0.5)
-    nx.draw_networkx_labels(graph, pos, labels=label_dict, **kwargs)

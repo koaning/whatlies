@@ -25,6 +25,15 @@ class FasttextLanguage(SklearnTransformerMixin):
         Note: you'll want the `bin` file, **not** the `text` file.
         To train your own fasttext model see the guide [here](https://fasttext.cc/docs/en/python-module.html#word-representation-model).
 
+        This language backend might require you to manually install extra dependencies
+        unless you installed via either;
+
+        ```
+        pip install whatlies[fasttext]
+        pip install whatlies[all]
+        ```
+
+
     Warning:
         You could theoretically use fasttext to train your own models with this code;
 

@@ -20,6 +20,15 @@ class SpacyLanguage(SklearnTransformerMixin):
     Arguments:
         nlp: name of the model to load, be sure that it's downloaded beforehand
 
+    Important:
+        This language backend might require you to manually install extra dependencies
+        unless you installed via either;
+
+        ```
+        pip install whatlies[spacy]
+        pip install whatlies[all]
+        ```
+
     **Usage**:
 
     ```python

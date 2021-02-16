@@ -10,6 +10,10 @@ base_packages = [
     "gensim>=3.8.3",
 ]
 
+umap_packages = [
+    "umap-learn>=0.4.0",
+]
+
 fasttext_packages = [
     "fasttext>=0.9.1",
 ]
@@ -53,7 +57,12 @@ test_packages = [
 ]
 
 extra_deps = (
-    tf_packages + transformers_dep + s2v_packages + sentence_tfm_dep + fasttext_packages
+    tf_packages
+    + transformers_dep
+    + s2v_packages
+    + sentence_tfm_dep
+    + fasttext_packages
+    + umap_packages
 )
 dev_packages = docs_packages + test_packages + extra_deps
 
@@ -78,6 +87,7 @@ setup(
         "docs": docs_packages,
         "dev": dev_packages,
         "test": test_packages,
+        "umap": umap_packages,
         "tfhub": tf_packages,
         "sense2vec": s2v_packages,
         "spacy": spacy_packages,

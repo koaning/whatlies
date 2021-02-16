@@ -62,10 +62,10 @@ settings you could go for.
 
 ```bash
 pip install whatlies[base]
+pip install whatlies[umap]
+pip install whatlies[spacy]
 pip install whatlies[tfhub]
 pip install whatlies[transformers]
-pip install whatlies[ivis]
-pip install whatlies[opentsne]
 pip install whatlies[sense2vec]
 ```
 

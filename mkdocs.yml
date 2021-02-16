@@ -12,7 +12,6 @@ nav:
     - What Are Embeddings: tutorial/embeddings/index.md
     - Interactive Visualisation: tutorial/embeddingsets/index.md
     - Scikit-Learn Compatibility: tutorial/scikit-learn.md
-    - Transformation Viz: tutorial/transformations/index.md
     - FAQ: faq.md
   - API:
     - Embedding: api/embedding.md

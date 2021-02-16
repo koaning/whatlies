@@ -18,7 +18,7 @@ from sklearn.metrics.pairwise import (
 )
 
 from whatlies.embedding import Embedding
-from whatlies.common import plot_graph_layout, handle_2d_plot
+from whatlies.common import handle_2d_plot
 
 
 class EmbeddingSet:
@@ -872,10 +872,6 @@ class EmbeddingSet:
         if title:
             ax.set_title(label=title)
         return ax
-
-    def plot_graph_layout(self, kind="cosine", **kwargs):
-        plot_graph_layout(self.embeddings, kind, **kwargs)
-        return self
 
     @deprecated(
         "This method will be deprecated in v0.6.0 in favor of `plot_distance` and `plot_similarity`"

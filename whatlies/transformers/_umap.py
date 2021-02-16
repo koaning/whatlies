@@ -1,6 +1,6 @@
 from umap import UMAP
 
-from ._transformer import SklearnTransformer
+from whatlies.transformers._transformer import SklearnTransformer
 
 
 class Umap(SklearnTransformer):

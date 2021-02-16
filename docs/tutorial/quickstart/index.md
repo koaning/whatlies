@@ -63,6 +63,8 @@ These can be useful to show how points are clustered. Before plotting this, it m
 to apply a dimensionality reduction technique first.
 
 ```python
+# To use the Umap feature you will need to install an extra dependency.
+# pip install whatlies[umap]
 from whatlies.transformers import Pca, Umap
 
 p1 = embset.transform(Pca(2)).plot_interactive(title="pca")
@@ -80,6 +82,7 @@ fetch('chart.json')
 })
 .catch(err => { throw err });
 </script>
+
 
 These charts are fully interactive. You can zoom and drag with your cursor.
 

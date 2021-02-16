@@ -1,5 +1,3 @@
-from ._spacy_lang import SpacyLanguage
-from ._fasttext_lang import FasttextLanguage
 from ._countvector_lang import CountVectorLanguage
 from ._tfidf_lang import TFIDFVectorLanguage
 from ._bpemblang import BytePairLanguage
@@ -23,10 +21,20 @@ except ModuleNotFoundError:
     HFTransformersLanguage = NotInstalled("HFTransformersLanguage", "transformers")
     LaBSELanguage = NotInstalled("LaBSELanguage", "transformers")
 
-# try:
-#     from ._sense2vec_lang import Sense2VecLanguage
-# except ModuleNotFoundError:
-#     Sense2VecLanguage = NotInstalled("Sense2VecLanguage", "sense2vec")
+try:
+    from ._sense2vec_lang import Sense2VecLanguage
+except ModuleNotFoundError:
+    Sense2VecLanguage = NotInstalled("Sense2VecLanguage", "sense2vec")
+
+try:
+    from ._fasttext_lang import FasttextLanguage
+except ModuleNotFoundError:
+    FasttextLanguage = NotInstalled("FasttextLanguage", "fasttext")
+
+try:
+    from ._spacy_lang import SpacyLanguage
+except ModuleNotFoundError:
+    SpacyLanguage = NotInstalled("SpacyLanguage", "spacy")
 
 try:
     from ._sentencetfm_lang import SentenceTFMLanguage

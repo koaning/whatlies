@@ -117,6 +117,35 @@ pca_plot | umap_plot
 
 ![](docs/gif-two.gif)
 
+## Scikit-Learn Support 
+
+Every language backend in this video is available as a scikit-learn featurizer as well. 
+
+```python
+import numpy as np
+from whatlies.language import BytePairLanguage
+from sklearn.pipeline import Pipeline
+from sklearn.linear_model import LogisticRegression
+
+pipe = Pipeline([
+    ("embed", BytePairLanguage("en")),
+    ("model", LogisticRegression())
+])
+
+X = [
+    "i really like this post",
+    "thanks for that comment",
+    "i enjoy this friendly forum",
+    "this is a bad post",
+    "i dislike this article",
+    "this is not well written"
+]
+
+y = np.array([1, 1, 1, 0, 0, 0])
+
+pipe.fit(X, y)
+```
+
 ## Documentation
 
 To learn more and for a getting started guide, check out the [documentation](https://rasahq.github.io/whatlies/).

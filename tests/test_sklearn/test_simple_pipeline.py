@@ -1,5 +1,6 @@
-import pytest
+from pathlib import Path
 
+import pytest
 import numpy as np
 from sklearn.pipeline import Pipeline
 from sklearn.pipeline import FeatureUnion
@@ -13,6 +14,7 @@ from whatlies.language import (
     BytePairLanguage,
     TFHubLanguage,
     HFTransformersLanguage,
+    DIETLanguage,
 )
 
 
@@ -23,6 +25,7 @@ backends = [
     GensimLanguage("tests/cache/custom_gensim_vectors.kv"),
     HFTransformersLanguage("sshleifer/tiny-gpt2", framework="tf"),
     TFHubLanguage("https://tfhub.dev/google/tf2-preview/gnews-swivel-20dim/1"),
+    DIETLanguage(model_path=next(Path("tests/rasa-test-demo/models").glob("*.tar.gz"))),
 ]
 
 

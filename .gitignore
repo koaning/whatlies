@@ -146,4 +146,4 @@ tests/*.bin
 
 /package-lock.json
 /node_modules/
-
+rasa-test-demo

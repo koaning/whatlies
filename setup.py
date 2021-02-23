@@ -14,6 +14,10 @@ umap_packages = [
     "umap-learn>=0.4.0",
 ]
 
+rasa_packages = [
+    "rasa>=2.3.0",
+]
+
 fasttext_packages = [
     "fasttext>=0.9.1",
 ]
@@ -32,7 +36,7 @@ tf_packages = [
 ]
 
 transformers_dep = [
-    "transformers>=3.0.0",
+    "transformers>=4.3.0",
 ]
 
 sentence_tfm_dep = ["sentence-transformers>=0.3.8"]
@@ -56,20 +60,21 @@ test_packages = [
     "pre-commit>=2.2.0",
 ]
 
-extra_deps = (
+all_deps = (
     tf_packages
     + transformers_dep
     + s2v_packages
     + sentence_tfm_dep
     + fasttext_packages
     + umap_packages
+    + rasa_packages
 )
-dev_packages = docs_packages + test_packages + extra_deps
+dev_packages = docs_packages + test_packages + all_deps
 
 
 setup(
     name="whatlies",
-    version="0.6.0",
+    version="0.6.1",
     author="Vincent D. Warmerdam",
     packages=find_packages(exclude=["notebooks", "docs"]),
     description="Tools to help uncover `whatlies` in word embeddings.",
@@ -87,13 +92,14 @@ setup(
         "docs": docs_packages,
         "dev": dev_packages,
         "test": test_packages,
-        "umap": umap_packages,
-        "tfhub": tf_packages,
-        "sense2vec": s2v_packages,
-        "spacy": spacy_packages,
-        "transformers": transformers_dep,
-        "sentence_tfm": sentence_tfm_dep,
-        "all": extra_deps,
+        "umap": base_packages + umap_packages,
+        "tfhub": base_packages + tf_packages,
+        "sense2vec": base_packages + s2v_packages,
+        "spacy": base_packages + spacy_packages,
+        "transformers": base_packages + transformers_dep,
+        "sentence_tfm": base_packages + sentence_tfm_dep,
+        "rasa": base_packages + rasa_packages,
+        "all": all_deps,
     },
     classifiers=[
         "Intended Audience :: Science/Research",

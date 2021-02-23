@@ -41,6 +41,11 @@ try:
 except ModuleNotFoundError:
     SentenceTFMLanguage = NotInstalled("SentenceTFMLanguage", "sentence_tfm")
 
+try:
+    from ._diet_lang import DIETLanguage
+except ModuleNotFoundError:
+    DIETLanguage = NotInstalled("DIETLanguage", "rasa")
+
 
 __all__ = [
     "SpacyLanguage",
@@ -55,4 +60,5 @@ __all__ = [
     "UniversalSentenceLanguage",
     "SentenceTFMLanguage",
     "LaBSELanguage",
+    "DIETLanguage",
 ]

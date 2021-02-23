@@ -26,6 +26,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip setuptools wheel
         pip install -e ".[rasa]"
+        pip install -e pytest
     - name: Run Basic Rasa Model for Unit Test Later
       run: |
         cd tests/rasa-test-demo

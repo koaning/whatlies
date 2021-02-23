@@ -67,7 +67,6 @@ all_deps = (
     + sentence_tfm_dep
     + fasttext_packages
     + umap_packages
-    + rasa_packages
 )
 dev_packages = docs_packages + test_packages + all_deps
 

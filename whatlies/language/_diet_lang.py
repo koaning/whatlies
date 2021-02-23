@@ -21,12 +21,26 @@ def load_interpreter(model_dir, model):
 
 class DIETLanguage(SklearnTransformerMixin):
     """
+    This language represents the transformer output of a Rasa pipeline. You can use it for debugging.
+
+    Important:
+        This language model does not contain a vocabulary, so it cannot be used
+        to retreive similar tokens. Use an `EmbeddingSet` instead.
+
+        This language backend might require you to manually install extra dependencies
+        unless you installed via either;
+
+        ```
+        pip install whatlies[rasa]
+        ```
+
+        Note that we only support Rasa > 2.3.
+
     **Usage**:
 
     ```python
-    from whatlies.language import DIETLangauge
-    lang = TFIDFVectorLanguage(n_components=2, ngram_range=(1, 2), analyzer="char")
-    lang[['pizza', 'pizzas', 'firehouse', 'firehydrant']]
+    from whatlies.language import DIETLangauge("path/to/model.tar.gz")
+    lang[['hi', 'hello', 'greetings']]
     ```
     """
 
@@ -49,10 +63,8 @@ class DIETLanguage(SklearnTransformerMixin):
 
         **Usage**
         ```python
-        > lang = BytePairLanguage(lang="en")
-        > lang['python']
-        > lang[['python', 'snake']]
-        > lang[['nobody expects', 'the spanish inquisition']]
+        from whatlies.language import DIETLangauge("path/to/model.tar.gz")
+        lang[['hi', 'hello', 'greetings']]
         ```
         """
         if isinstance(item, str):

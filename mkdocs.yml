@@ -37,6 +37,7 @@ nav:
       - TFHub: api/language/tfhub.md
       - USE: api/language/universal_sentence.md
       - Sent TFM: api/language/sentence_tfm.md
+      - DIET: api/language/diet.md
   - Examples:
     - Debiasing Projections: examples/lipstick-pig/index.md
     - Arabic Benchmarks: examples/arabic/index.md

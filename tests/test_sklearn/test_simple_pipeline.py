@@ -1,5 +1,3 @@
-from pathlib import Path
-
 import pytest
 import numpy as np
 from sklearn.pipeline import Pipeline

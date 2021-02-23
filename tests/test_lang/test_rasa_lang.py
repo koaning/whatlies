@@ -12,10 +12,8 @@ from whatlies.language import DIETLanguage
 
 @pytest.mark.rasa
 def test_sklearn_pipeline_works():
-    lang = (
-        DIETLanguage(
-            model_path=next(Path("tests/rasa-test-demo/models").glob("*.tar.gz"))
-        ),
+    lang = DIETLanguage(
+        model_path=next(Path("tests/rasa-test-demo/models").glob("*.tar.gz"))
     )
     pipe = Pipeline([("embed", lang), ("model", LogisticRegression())])
 

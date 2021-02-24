@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pytest
 import numpy as np
 from sklearn.pipeline import Pipeline
@@ -5,28 +7,14 @@ from sklearn.pipeline import FeatureUnion
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer
 
-from whatlies.language import (
-    FasttextLanguage,
-    SpacyLanguage,
-    GensimLanguage,
-    BytePairLanguage,
-    TFHubLanguage,
-    HFTransformersLanguage,
-)
+from whatlies.language import DIETLanguage
 
 
-backends = [
-    SpacyLanguage("en_core_web_sm"),
-    FasttextLanguage("tests/custom_fasttext_model.bin"),
-    BytePairLanguage("en", vs=1000, dim=25, cache_dir="tests/cache"),
-    GensimLanguage("tests/cache/custom_gensim_vectors.kv"),
-    HFTransformersLanguage("sshleifer/tiny-gpt2", framework="tf"),
-    TFHubLanguage("https://tfhub.dev/google/tf2-preview/gnews-swivel-20dim/1"),
-]
-
-
-@pytest.mark.parametrize("lang", backends)
-def test_sklearn_pipeline_works(lang):
+@pytest.mark.rasa
+def test_sklearn_pipeline_works():
+    lang = DIETLanguage(
+        model_path=next(Path("tests/rasa-test-demo/models").glob("*.tar.gz"))
+    )
     pipe = Pipeline([("embed", lang), ("model", LogisticRegression())])
 
     X = [

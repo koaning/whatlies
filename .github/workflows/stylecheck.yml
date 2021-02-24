@@ -1,15 +1,19 @@
-name: Cron Test Dependencies
+name: Style Check
 
 on:
-  schedule:
-    - cron: "0 0 * * *"
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
 
 jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-10.15, ubuntu-latest]
+        os: [ubuntu-latest]
         python-version: [3.7]
 
     steps:
@@ -21,10 +25,7 @@ jobs:
     - name: Install General Dependencies
       run: |
         python -m pip install --upgrade pip setuptools wheel
-        pip install -e ".[dev]"
         pip install flake8 pytest black
-        python -m spacy download en_core_web_sm
-        python -m spacy download en_core_web_md
     - name: Style Check
       run: |
         # stop the build if there are Python syntax errors or undefined names
@@ -32,7 +33,3 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
         black --check .
-    - name: Test with pytest
-      run: |
-        python tests/scripts/prepare_fasttext_tests.py
-        pytest --verbose

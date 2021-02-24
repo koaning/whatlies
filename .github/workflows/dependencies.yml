@@ -45,7 +45,3 @@ jobs:
     - name: Run Checks
       run: |
         python tests/scripts/check_pip.py contains spacy tensorflow transformers sense2vec sentence-transformers umap
-    - name: Docs can Build
-      run: |
-        python -m pip install -e ".[docs]"
-        mkdocs build

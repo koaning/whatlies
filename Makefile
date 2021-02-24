@@ -12,6 +12,8 @@ develop:
 	python tests/scripts/prepare_fasttext_tests.py
 	python tests/scripts/prepare_gensim_kv.py
 	python tests/scripts/prepare_spacy_tests.py
+	mkdir tests/rasa-test-demo
+	rasa init --init-dir tests/rasa-test-demo --no-prompt
 
 flake:
 	flake8 setup.py --count --statistics --max-complexity=10 --max-line-length=127

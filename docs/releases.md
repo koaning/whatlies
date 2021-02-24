@@ -1,3 +1,17 @@
+v0.6.2
+
+- Made each sklearn compatible language also apply `.partial_fit`
+
+v0.6.1
+
+- Added support for DIET embeddings
+- Added support for spaCy 3.0
+- Dropped support for BERT queries
+
+v0.6.0
+
+- Removed all transformers besides the ones in sklearn and umap
+
 v0.5.10
 
 - Added a helper to reverse strings for Arabic matplotlib charts.

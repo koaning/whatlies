@@ -17,6 +17,15 @@ class SklearnTransformerMixin(BaseEstimator, TransformerMixin):
         self.fitted_ = True
         return self
 
+    def partial_fit(self, X, y=None):
+        """
+        No-op.
+        """
+        if not np.array(X).dtype.type is np.str_:
+            raise ValueError("You must give this preprocessor text as input.")
+        self.fitted_ = True
+        return self
+
     def transform(self, X):
         """
         Will apply the transformer as if it is a scikit-learn text feature extractor.

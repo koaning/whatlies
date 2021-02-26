@@ -39,7 +39,7 @@ class DIETLanguage(SklearnTransformerMixin):
     **Usage**:
 
     ```python
-    from whatlies.language import DIETLangauge("path/to/model.tar.gz")
+    from whatlies.language import DIETLanguage("path/to/model.tar.gz")
     lang[['hi', 'hello', 'greetings']]
     ```
     """
@@ -63,7 +63,7 @@ class DIETLanguage(SklearnTransformerMixin):
 
         **Usage**
         ```python
-        from whatlies.language import DIETLangauge("path/to/model.tar.gz")
+        from whatlies.language import DIETLanguage("path/to/model.tar.gz")
         lang[['hi', 'hello', 'greetings']]
         ```
         """

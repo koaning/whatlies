@@ -125,12 +125,6 @@ def test_embset_raise_value_error_emb(lang):
         emb.score_similar("dinosaurhead", 1)
 
 
-def test_corrplot_raise_error(lang):
-    with pytest.raises(ValueError):
-        emb = lang[["red", "blue", "orange", "pink", "purple", "brown"]]
-        emb.plot_correlation(metric="dinosaurhead")
-
-
 def test_filter(lang):
     emb = lang[["red", "blue", "orange", "pink", "purple", "brown"]]
     assert len(emb) == 6

@@ -229,7 +229,16 @@ fetch('tut-chart-hover.json')
 If you're up for it, you can draw large matrices of charts too.
 
 ```python
-pca_emb.plot_interactive_matrix(0, 1, 2)
+from whatlies.language import SpacyLanguage
+from whatlies.transformers import Pca
+
+words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
+         "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
+         "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+         "person", "family", "brother", "sister"]
+
+lang = SpacyLanguage("en_core_web_md")
+lang[words].transform(Pca(2)).plot_interactive_matrix(0, 1, 2)
 ```
 <div id="vis6"></div>
 

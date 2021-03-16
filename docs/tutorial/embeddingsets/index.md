@@ -151,44 +151,94 @@ fetch('tut2-chart4.json')
 .catch(err => { throw err });
 </script>
 
-### Operators
+### Adding Color to the Charts
 
-Note that the operators that we've seen before can also be added to a
-transformation pipeline.
-
-```python
-emb.transform(lambda e: e | (e["man"] - e["woman"]))
-# (Emb | (Emb[man] - Emb[woman])).pca_2()
-```
-
-### More Components
-
-Suppose now that we'd like to visualise three principal components. We could do this.
+Sometimes it might be helpful to add color to the charts. In these situations we first need
+to add a property to the embeddings in the embeddingset. This property can then be picked up
+by a chart in order to make a subset stand out from the rest of the group.
 
 ```python
-pca_emb = emb.transform(Pca(3))
-p1 = pca_emb.plot_interactive()
-p2 = pca_emb.plot_interactive(2, 1)
-p1 | p2
+from whatlies.language import SpacyLanguage
+from whatlies.transformers import Pca
+
+words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
+         "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
+         "dog", "cat", "mouse", "red", "blue", "green", "yellow", "water",
+         "person", "family", "brother", "sister"]
+
+colors = ["red", "blue",  "green", "yellow"]
+
+lang = SpacyLanguage("en_core_web_md")
+
+# Notice the `assign` method, this is where we assign the `is_color` property
+# to each embedding in the embeddingset based on the "name".
+embset = (lang[words]
+            .transform(Pca(2))
+            .assign(is_color=lambda e: e.name in colors))
+embset.plot_interactive(color="is_color")
 ```
 
-<div id="vis5"></div>
+<div id="vis-color"></div>
 
 <script>
-fetch('tut2-chart5.json')
+fetch('tut-chart-color.json')
 .then(res => res.json())
 .then((out) => {
-  vegaEmbed('#vis5', out);
+  vegaEmbed('#vis-color', out);
 })
 .catch(err => { throw err });
 </script>
 
-### More Charts
+### Using an Interactive Brush
 
-Let's not draw two components at a time, let's draw all of them.
+We can also choose to use `plot_hover` instead of `plot_interactive`. The hover chart cannot
+zoom in/out but it does allow you to draw a box to make a subselection. This can be very useful
+when you're trying to get an overview of a cluster of embeddings.
 
 ```python
-pca_emb.plot_interactive_matrix(0, 1, 2)
+from whatlies.language import SpacyLanguage
+from whatlies.transformers import Pca
+
+words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
+         "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
+         "dog", "cat", "mouse", "red", "blue", "green", "yellow", "water",
+         "person", "family", "brother", "sister"]
+
+colors = ["red", "blue",  "green", "yellow"]
+
+lang = SpacyLanguage("en_core_web_md")
+embset = (lang[words]
+            .transform(Pca(2))
+            .assign(is_color=lambda e: e.name in colors))
+embset.plot_brush(n_show=15, color="is_color")
+```
+
+<div id="vis-hover"></div>
+
+<script>
+fetch('tut-chart-hover.json')
+.then(res => res.json())
+.then((out) => {
+  vegaEmbed('#vis-hover', out);
+})
+.catch(err => { throw err });
+</script>
+
+### Large Matrix Visualisations
+
+If you're up for it, you can draw large matrices of charts too.
+
+```python
+from whatlies.language import SpacyLanguage
+from whatlies.transformers import Pca
+
+words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
+         "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
+         "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+         "person", "family", "brother", "sister"]
+
+lang = SpacyLanguage("en_core_web_md")
+lang[words].transform(Pca(2)).plot_interactive_matrix(0, 1, 2)
 ```
 <div id="vis6"></div>
 

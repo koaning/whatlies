@@ -1,3 +1,8 @@
+v0.6.3
+
+- Removed the deprecated `plot_correlation`
+- Added the `plot_brush` tool.
+
 v0.6.2
 
 - Made each sklearn compatible language also apply `.partial_fit`

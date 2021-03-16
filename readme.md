@@ -155,7 +155,7 @@ To learn more and for a getting started guide, check out the [documentation](htt
 There are some similar projects out and we figured it fair to mention and compare them here.
 
 <details>
-  <summary>Julia Bazińska & Piotr Migdal Web App</summary>
+  <summary><b>Julia Bazińska & Piotr Migdal Web App</b></summary>
     <p>The original inspiration for this project came from <a href="https://lamyiowce.github.io/word2viz/">this web app</a>
     and <a href="https://www.youtube.com/watch?v=AGgCqpouKSs">this pydata talk</a>. It is a web app that takes a
     while to load but it is really fun to play with. The goal of this project is to make it easier to make similar
@@ -163,7 +163,7 @@ There are some similar projects out and we figured it fair to mention and compar
 </details>
 
 <details>
-    <summary>Tensorflow Projector</summary>
+    <summary><b>Tensorflow Projector</b></summary>
     <p>From google there's the <a href="https://projector.tensorflow.org/">tensorflow projector project</a>. It offers
     highly interactive 3d visualisations as well as some transformations via tensorboard.</p>
     <ul>
@@ -176,7 +176,7 @@ There are some similar projects out and we figured it fair to mention and compar
 </details>
 
 <details>
-    <summary>Parallax</summary>
+    <summary><b>Parallax</b></summary>
     <p>From Uber AI Labs there's <a href="https://github.com/uber-research/parallax">parallax</a> which is described
     in a paper <a href="https://arxiv.org/abs/1905.12099">here</a>. There's a common mindset in the two tools;
     the goal is to use arbitrary user defined projections to understand embedding spaces better.

@@ -1081,6 +1081,7 @@ class EmbeddingSet:
         title: Optional[str] = None,
         annot: bool = True,
         color: Union[None, str] = None,
+        interactive: bool = True,
     ):
         """
         Makes highly interactive plot of the set of embeddings.
@@ -1100,6 +1101,7 @@ class EmbeddingSet:
             title: an optional title for the plot; if not given, it is set based on `x_axis` and `y_axis` values.
             annot: drawn points should be annotated
             color: a property that will be used for plotting
+            interactive: turn on/off the zoom/panning feature
 
         **Usage**
 
@@ -1174,8 +1176,9 @@ class EmbeddingSet:
                 color=alt.Color(":N", legend=None) if not color else alt.Color(color),
             )
             .properties(title=title)
-            .interactive()
         )
+        if interactive:
+            result = result.interactive()
 
         if annot:
             text = (
@@ -1189,6 +1192,144 @@ class EmbeddingSet:
             )
             result = result + text
         return result
+
+    def plot_hover(
+        self,
+        x_axis: Union[int, str, Embedding] = 0,
+        y_axis: Union[int, str, Embedding] = 1,
+        axis_metric: Optional[Union[str, Callable, Sequence]] = None,
+        x_label: Optional[str] = None,
+        y_label: Optional[str] = None,
+        title: Optional[str] = None,
+        annot: bool = False,
+        color: Union[None, str] = None,
+        n_show: int = 15,
+    ):
+        """
+        Makes an interactive plot with a hover element.
+
+        Arguments:
+            x_axis: the x-axis to be used, must be given when dim > 2; if an integer, the corresponding
+                dimension of embedding is used.
+            y_axis: the y-axis to be used, must be given when dim > 2; if an integer, the corresponding
+                dimension of embedding is used.
+            axis_metric: the metric used to project each embedding on the axes; only used when the corresponding
+                axis (i.e. `x_axis` or `y_axis`) is a string or an `Embedding` instance. It could be a string
+                (`'cosine_similarity'`, `'cosine_distance'` or `'euclidean'`), or a callable that takes two vectors as input
+                and returns a scalar value as output. To set different metrics for x- and y-axis, a list or a tuple of
+                two elements could be given. By default (`None`), normalized scalar projection (i.e. `>` operator) is used.
+            x_label: an optional label used for x-axis; if not given, it is set based on `x_axis` value.
+            y_label: an optional label used for y-axis; if not given, it is set based on `y_axis` value.
+            title: an optional title for the plot; if not given, it is set based on `x_axis` and `y_axis` values.
+            annot: drawn points should be annotated
+            color: a property that will be used for plotting
+            n_show: number of points to show in text selection
+
+        **Usage**
+
+        ```python
+        from whatlies.language import SpacyLanguage
+        from whatlies.transformers import Pca
+
+        words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
+                 "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
+                 "dog", "cat", "mouse", "red", "blue", "green", "yellow", "water",
+                 "person", "family", "brother", "sister"]
+
+        lang = SpacyLanguage("en_core_web_sm")
+        emb = lang[words].transform(Pca(2))
+
+        emb.plot_hover()
+        ```
+        """
+        if isinstance(x_axis, str):
+            x_axis = self[x_axis]
+        if isinstance(y_axis, str):
+            y_axis = self[y_axis]
+
+        if isinstance(axis_metric, (list, tuple)):
+            x_axis_metric = axis_metric[0]
+            y_axis_metric = axis_metric[1]
+        else:
+            x_axis_metric = axis_metric
+            y_axis_metric = axis_metric
+
+        # Determine axes values and labels
+        if isinstance(x_axis, int):
+            x_val = self.to_X()[:, x_axis]
+            x_lab = "Dimension " + str(x_axis)
+        else:
+            x_axis_metric = Embedding._get_plot_axis_metric_callable(x_axis_metric)
+            x_val = self.compare_against(x_axis, mapping=x_axis_metric)
+            x_lab = x_axis.name
+
+        if isinstance(y_axis, int):
+            y_val = self.to_X()[:, y_axis]
+            y_lab = "Dimension " + str(y_axis)
+        else:
+            y_axis_metric = Embedding._get_plot_axis_metric_callable(y_axis_metric)
+            y_val = self.compare_against(y_axis, mapping=y_axis_metric)
+            y_lab = y_axis.name
+        x_label = x_label if x_label is not None else x_lab
+        y_label = y_label if y_label is not None else y_lab
+        title = title if title is not None else f"Click and Drag Here"
+
+        plot_df = pd.DataFrame(
+            {
+                "x_axis": x_val,
+                "y_axis": y_val,
+                "name": [v.name for v in self.embeddings.values()],
+                "original": [v.orig for v in self.embeddings.values()],
+            }
+        )
+
+        if color:
+            plot_df[color] = [
+                getattr(v, color) if hasattr(v, color) else ""
+                for v in self.embeddings.values()
+            ]
+
+        result = (
+            alt.Chart(plot_df)
+            .mark_circle(size=60)
+            .encode(
+                x=alt.X("x_axis", axis=alt.Axis(title=x_label)),
+                y=alt.X("y_axis", axis=alt.Axis(title=y_label)),
+                tooltip=["name", "original"],
+                color=alt.Color(":N", legend=None) if not color else alt.Color(color),
+            )
+            .properties(title=title)
+        )
+
+        if annot:
+            text = (
+                alt.Chart(plot_df)
+                .mark_text(dx=-15, dy=3, color="black")
+                .encode(
+                    x="x_axis",
+                    y="y_axis",
+                    text="original",
+                )
+            )
+            result = result + text
+
+        brush = alt.selection(type="interval")
+
+        ranked_text = (
+            alt.Chart(plot_df)
+            .mark_text()
+            .encode(y=alt.Y("row_number:O", axis=None))
+            .transform_window(row_number="row_number()")
+            .transform_filter(brush)
+            .transform_window(rank="rank(row_number)")
+            .transform_filter(alt.datum.rank < n_show)
+        )
+
+        text_plt = ranked_text.encode(text="original:N").properties(
+            width=250, title="Text Selection"
+        )
+
+        return result.add_selection(brush) | text_plt
 
     def plot_interactive_matrix(
         self,

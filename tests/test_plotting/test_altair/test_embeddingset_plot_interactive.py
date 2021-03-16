@@ -364,3 +364,10 @@ def test_mixed_axis(embset):
     assert chart["layer"][1]["encoding"]["text"]["field"] == props["label_field"]
     assert np.array_equal(chart_data["original"].values, props["label"])
     validate_plot_general_properties(chart["layer"][0], props)
+
+
+def test_hover_plot_basic(embset):
+    """This is but a mere smoke test."""
+    p = embset.plot_interactive(x_axis=3, y_axis="white")
+    chart = json.loads(p.to_json())
+    assert "hconcat" in chart.keys()

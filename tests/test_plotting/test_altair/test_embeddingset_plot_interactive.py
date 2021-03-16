@@ -368,6 +368,6 @@ def test_mixed_axis(embset):
 
 def test_hover_plot_basic(embset):
     """This is but a mere smoke test."""
-    p = embset.plot_interactive(x_axis=3, y_axis="white")
+    p = embset.plot_brush(x_axis=3, y_axis="white")
     chart = json.loads(p.to_json())
     assert "hconcat" in chart.keys()

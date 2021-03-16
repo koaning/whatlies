@@ -1193,7 +1193,7 @@ class EmbeddingSet:
             result = result + text
         return result
 
-    def plot_hover(
+    def plot_brush(
         self,
         x_axis: Union[int, str, Embedding] = 0,
         y_axis: Union[int, str, Embedding] = 1,
@@ -1206,7 +1206,7 @@ class EmbeddingSet:
         n_show: int = 15,
     ):
         """
-        Makes an interactive plot with a hover element.
+        Makes an interactive plot with a brush element.
 
         Arguments:
             x_axis: the x-axis to be used, must be given when dim > 2; if an integer, the corresponding
@@ -1239,7 +1239,7 @@ class EmbeddingSet:
         lang = SpacyLanguage("en_core_web_sm")
         emb = lang[words].transform(Pca(2))
 
-        emb.plot_hover()
+        emb.plot_brush()
         ```
         """
         if isinstance(x_axis, str):

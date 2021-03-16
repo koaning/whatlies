@@ -873,47 +873,6 @@ class EmbeddingSet:
             ax.set_title(label=title)
         return ax
 
-    @deprecated(
-        "This method will be deprecated in v0.6.0 in favor of `plot_distance` and `plot_similarity`"
-    )
-    def plot_correlation(self, metric=None):
-        """
-        Make a correlation plot. Shows you the correlation between all the word embeddings. Can
-        also be configured to show distances instead.
-
-        Arguments:
-            metric: don't plot correlation but a distance measure, must be scipy compatible (cosine, euclidean, etc)
-
-        Warning:
-            This method will be deprecated in version 0.6.0 in favor of `plot_distance` and `plot_similarity`.
-
-        Usage:
-
-        ```python
-        from whatlies.language import SpacyLanguage
-        import matplotlib.pyplot as plt
-
-        lang = SpacyLanguage("en_core_web_sm")
-
-        names = ['red', 'blue', 'green', 'yellow', 'cat', 'dog', 'mouse', 'rat', 'bike', 'car']
-        emb = lang[names]
-        emb.plot_correlation()
-        ```
-        """
-        df = self.to_dataframe().T
-        corr_df = (
-            pairwise_distances(self.to_matrix(), metric=metric) if metric else df.corr()
-        )
-
-        fig, ax = plt.subplots()
-        plt.imshow(corr_df)
-        plt.xticks(range(len(df.columns)), df.columns)
-        plt.yticks(range(len(df.columns)), df.columns)
-        plt.colorbar()
-
-        # Rotate the tick labels and set their alignment.
-        plt.setp(ax.get_xticklabels(), rotation=90, ha="right", rotation_mode="anchor")
-
     def plot_similarity(self, metric="cosine", norm=False):
         """
         Make a similarity plot. Shows you the similarity between all the word embeddings in the set.

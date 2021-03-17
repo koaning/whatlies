@@ -213,14 +213,21 @@ make docs
 ```
 
 ### Citation
-Please use the following citation when you found `whatlies` helpful for any of your work (find the `whatlies` paper [here](http://arxiv.org/abs/2009.02113)):
+Please use the following citation when you found `whatlies` helpful for any of your work (find the `whatlies` paper [here](https://www.aclweb.org/anthology/2020.nlposs-1.8)):
 ```
-@misc{Warmerdam2020whatlies,
-	Archiveprefix = {arXiv},
-	Author = {Vincent D. Warmerdam and Thomas Kober and Rachael Tatman},
-	Eprint = {2009.02113},
-	Primaryclass = {cs.CL},
-	Title = {Going Beyond T-SNE: Exposing \texttt{whatlies} in Text Embeddings},
-	Year = {2020}
+@inproceedings{warmerdam-etal-2020-going,
+    title = "Going Beyond {T}-{SNE}: Exposing whatlies in Text Embeddings",
+    author = "Warmerdam, Vincent  and
+      Kober, Thomas  and
+      Tatman, Rachael",
+    booktitle = "Proceedings of Second Workshop for NLP Open Source Software (NLP-OSS)",
+    month = nov,
+    year = "2020",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/2020.nlposs-1.8",
+    doi = "10.18653/v1/2020.nlposs-1.8",
+    pages = "52--60",
+    abstract = "We introduce whatlies, an open source toolkit for visually inspecting word and sentence embeddings. The project offers a unified and extensible API with current support for a range of popular embedding backends including spaCy, tfhub, huggingface transformers, gensim, fastText and BytePair embeddings. The package combines a domain specific language for vector arithmetic with visualisation tools that make exploring word embeddings more intuitive and concise. It offers support for many popular dimensionality reduction techniques as well as many interactive visualisations that can either be statically exported or shared via Jupyter notebooks. The project documentation is available from https://rasahq.github.io/whatlies/.",
 }
 ```

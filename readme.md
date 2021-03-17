@@ -213,6 +213,7 @@ make docs
 ```
 
 ### Citation
+
 Please use the following citation when you found `whatlies` helpful for any of your work (find the `whatlies` paper [here](https://www.aclweb.org/anthology/2020.nlposs-1.8)):
 ```
 @inproceedings{warmerdam-etal-2020-going,

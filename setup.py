@@ -7,7 +7,7 @@ base_packages = [
     "altair>=4.0.1",
     "matplotlib>=3.2.0",
     "bpemb>=0.3.0",
-    "gensim>=3.8.3",
+    "gensim~=3.8.3",
 ]
 
 umap_packages = [
@@ -19,7 +19,7 @@ rasa_packages = [
 ]
 
 fasttext_packages = [
-    "fasttext>=0.9.1",
+    "fasttext~=0.9.1",
 ]
 
 spacy_packages = [

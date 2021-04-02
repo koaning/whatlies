@@ -1204,6 +1204,7 @@ class EmbeddingSet:
         annot: bool = False,
         color: Union[None, str] = None,
         n_show: int = 15,
+        interactive: bool = True,
     ):
         """
         Makes an interactive plot with a brush element.
@@ -1224,6 +1225,7 @@ class EmbeddingSet:
             annot: drawn points should be annotated
             color: a property that will be used for plotting
             n_show: number of points to show in text selection
+            interactive: turn on/off the zoom/panning feature; if turned on, zoom/pan can be triggered when shift key is held
 
         **Usage**
 
@@ -1313,7 +1315,10 @@ class EmbeddingSet:
             )
             result = result + text
 
-        brush = alt.selection(type="interval")
+        brush = alt.selection_interval(
+            on="[mousedown[!event.shiftKey], mouseup] > mousemove",
+            translate="[mousedown[!event.shiftKey], mouseup] > mousemove!",
+        )
 
         ranked_text = (
             alt.Chart(plot_df)
@@ -1329,7 +1334,17 @@ class EmbeddingSet:
             width=250, title="Text Selection"
         )
 
-        return result.add_selection(brush) | text_plt
+        if interactive:
+            zoom = alt.selection_interval(
+                bind="scales",
+                on="[mousedown[event.shiftKey], mouseup] > mousemove",
+                translate="[mousedown[event.shiftKey], mouseup] > mousemove!",
+            )
+            result = result.add_selection(zoom, brush)
+        else:
+            result = result.add_selection(brush)
+
+        return result | text_plt
 
     def plot_interactive_matrix(
         self,

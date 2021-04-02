@@ -1204,7 +1204,7 @@ class EmbeddingSet:
         annot: bool = False,
         color: Union[None, str] = None,
         n_show: int = 15,
-        interactive: bool = True,
+        interactive: bool = False,
     ):
         """
         Makes an interactive plot with a brush element.

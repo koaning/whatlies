@@ -21,7 +21,7 @@ nlp = spacy.load("en_core_web_md")
 
 words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
          "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
-         "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+         "dog", "cat", "mouse", "red", "blue", "green", "yellow", "water",
          "person", "family", "brother", "sister"]
 
 emb = EmbeddingSet({t.text: Embedding(t.text, t.vector) for t in nlp.pipe(words)})
@@ -40,7 +40,7 @@ from whatlies.language import SpacyLanguage
 
 words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
          "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
-         "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+         "dog", "cat", "mouse", "red", "blue", "green", "yellow", "water",
          "person", "family", "brother", "sister"]
 
 lang = SpacyLanguage("en_core_web_md")
@@ -234,7 +234,7 @@ from whatlies.transformers import Pca
 
 words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
          "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
-         "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+         "dog", "cat", "mouse", "red", "blue", "green", "yellow", "water",
          "person", "family", "brother", "sister"]
 
 lang = SpacyLanguage("en_core_web_md")

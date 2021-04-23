@@ -773,7 +773,7 @@ class EmbeddingSet:
 
         words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
                  "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
-                 "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+                 "dog", "cat", "mouse", "red", "blue", "green", "yellow", "water",
                  "person", "family", "brother", "sister"]
 
         lang = SpacyLanguage("en_core_web_sm")
@@ -1018,7 +1018,7 @@ class EmbeddingSet:
 
         words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
                  "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
-                 "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+                 "dog", "cat", "mouse", "red", "blue", "green", "yellow", "water",
                  "person", "family", "brother", "sister"]
 
         lang = SpacyLanguage("en_core_web_sm")
@@ -1110,7 +1110,7 @@ class EmbeddingSet:
 
         words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
                  "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
-                 "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+                 "dog", "cat", "mouse", "red", "blue", "green", "yellow", "water",
                  "person", "family", "brother", "sister"]
 
         lang = SpacyLanguage("en_core_web_sm")
@@ -1377,7 +1377,7 @@ class EmbeddingSet:
 
         words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
                  "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
-                 "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+                 "dog", "cat", "mouse", "red", "blue", "green", "yellow", "water",
                  "person", "family", "brother", "sister"]
 
         lang = SpacyLanguage("en_core_web_sm")

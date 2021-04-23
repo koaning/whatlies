@@ -27,7 +27,7 @@ words = [
     "cat",
     "mouse",
     "red",
-    "bluee",
+    "blue",
     "green",
     "yellow",
     "water",

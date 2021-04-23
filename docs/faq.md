@@ -14,7 +14,7 @@ from whatlies.language import SpacyLanguage
 
 words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
          "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
-         "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+         "dog", "cat", "mouse", "red", "blue", "green", "yellow", "water",
          "person", "family", "brother", "sister"]
 
 lang = SpacyLanguage("en_core_web_md")
@@ -49,7 +49,7 @@ from altair_saver import save
 
 words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
          "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
-         "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+         "dog", "cat", "mouse", "red", "blue", "green", "yellow", "water",
          "person", "family", "brother", "sister"]
 
 lang = SpacyLanguage("en_core_web_md")
@@ -73,7 +73,7 @@ from whatlies.language import SpacyLanguage
 
 words = ["prince", "princess", "nurse", "doctor", "banker", "man", "woman",
          "cousin", "neice", "king", "queen", "dude", "guy", "gal", "fire",
-         "dog", "cat", "mouse", "red", "bluee", "green", "yellow", "water",
+         "dog", "cat", "mouse", "red", "blue", "green", "yellow", "water",
          "person", "family", "brother", "sister"]
 
 lang = SpacyLanguage("en_core_web_md")

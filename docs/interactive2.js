@@ -126,8 +126,8 @@ var spec2 = {
         {
           "x_axis": 0.6217125654220581,
           "y_axis": -0.011615407653152943,
-          "name": "bluee",
-          "original": "bluee"
+          "name": "blue",
+          "original": "blue"
         },
         {
           "x_axis": 4.070711135864258,
@@ -293,8 +293,8 @@ var spec2 = {
         {
           "x_axis": -4.6628098487854,
           "y_axis": 1.299612283706665,
-          "name": "bluee",
-          "original": "bluee"
+          "name": "blue",
+          "original": "blue"
         },
         {
           "x_axis": -3.5633227825164795,

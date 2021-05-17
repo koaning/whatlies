@@ -30,7 +30,7 @@ spacy_packages = [
 s2v_packages = ["sense2vec>=1.0.2"] + spacy_packages
 
 tf_packages = [
-    "tensorflow>=2.3.0",
+    "tensorflow>=2.3.0,<2.5",
     "tensorflow-text>=2.3.0",
     "tensorflow-hub>=0.8.0",
 ]

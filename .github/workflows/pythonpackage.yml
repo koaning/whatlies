@@ -25,6 +25,7 @@ jobs:
     - name: Install General Dependencies for Unit Tests
       run: |
         python -m pip install --upgrade setuptools wheel
+        python -m pip install --upgrade pip==21.0.0
         pip install -e ".[dev]"
         python -m spacy download en_core_web_sm
         python -m spacy download en_core_web_md

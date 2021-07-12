@@ -7,7 +7,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pylab as plt
 import altair as alt
-from sklearn.utils import deprecated
 from sklearn.preprocessing import normalize
 from sklearn.metrics import pairwise_distances
 from sklearn.metrics.pairwise import (
@@ -1274,7 +1273,7 @@ class EmbeddingSet:
             y_lab = y_axis.name
         x_label = x_label if x_label is not None else x_lab
         y_label = y_label if y_label is not None else y_lab
-        title = title if title is not None else f"Click and Drag Here"
+        title = title if title is not None else "Click and Drag Here"
 
         plot_df = pd.DataFrame(
             {

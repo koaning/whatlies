@@ -15,7 +15,7 @@ umap_packages = [
 ]
 
 rasa_packages = [
-    "rasa>=2.3.0",
+    "rasa>=2.7.0",
 ]
 
 fasttext_packages = [

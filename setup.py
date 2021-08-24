@@ -30,7 +30,7 @@ spacy_packages = [
 s2v_packages = ["sense2vec>=1.0.2"] + spacy_packages
 
 tf_packages = [
-    "tensorflow>=2.3.0,<2.5",
+    "tensorflow>=2.4.3,<2.5",
     "tensorflow-text>=2.3.0",
     "tensorflow-hub>=0.8.0",
 ]
@@ -45,7 +45,7 @@ docs_packages = [
     "mkdocs==1.1",
     "mkdocs-material==4.6.3",
     "mkdocstrings==0.8.0",
-    "jupyterlab>=0.35.4",
+    "jupyterlab>=3.1.0",
     "nbstripout>=0.3.7",
     "nbval>=0.9.5",
 ]

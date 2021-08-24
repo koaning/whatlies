@@ -11,7 +11,7 @@ base_packages = [
 ]
 
 umap_packages = [
-    "umap-learn>=0.4.0",
+    "umap-learn>=0.5.1",
 ]
 
 rasa_packages = [

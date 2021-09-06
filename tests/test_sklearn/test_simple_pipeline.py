@@ -46,3 +46,18 @@ def test_sklearn_pipeline_works(lang):
     preprocess = FeatureUnion([("dense", lang), ("sparse", CountVectorizer())])
 
     assert preprocess.fit_transform(X).shape[0] == 7
+
+
+zero_ready_backends = [
+    SpacyLanguage("en_core_web_sm"),
+    FasttextLanguage("tests/custom_fasttext_model.bin"),
+    BytePairLanguage("en", vs=1000, dim=25, cache_dir="tests/cache"),
+    GensimLanguage("tests/cache/custom_gensim_vectors.kv"),
+    TFHubLanguage("https://tfhub.dev/google/tf2-preview/gnews-swivel-20dim/1"),
+]
+
+
+@pytest.mark.parametrize("lang", zero_ready_backends)
+def test_empty_output_equals_zeros(lang):
+    print(lang.fit_transform([""]))
+    assert (lang.fit(["foo", "bar"]).transform([""]) == 0).all()

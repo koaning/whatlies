@@ -34,7 +34,7 @@ class SklearnTransformerMixin(BaseEstimator, TransformerMixin):
         check_is_fitted(self, "fitted_")
         if not np.array(X).dtype.type is np.str_:
             raise ValueError("You must give this preprocessor text as input.")
-        return np.array([self[x].vector for x in X])
+        return np.array([np.nan_to_num(self[x].vector) for x in X])
 
 
 class HiddenPrints:

@@ -631,7 +631,10 @@ class EmbeddingSet:
         mat2 = np.array([w.vector for w in other[overlap]])
         return (
             pd.DataFrame(
-                {"name": overlap, "movement": paired_distances(mat1, mat2, metric=metric)}
+                {
+                    "name": overlap,
+                    "movement": paired_distances(mat1, mat2, metric=metric),
+                }
             )
             .sort_values(["movement"], ascending=False)
             .reset_index()

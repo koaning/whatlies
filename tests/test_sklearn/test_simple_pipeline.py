@@ -12,14 +12,12 @@ from whatlies.language import (
     BytePairLanguage,
     TFHubLanguage,
     HFTransformersLanguage,
-    FloretLanguage,
 )
 
 
 backends = [
     SpacyLanguage("en_core_web_sm"),
     FasttextLanguage("tests/custom_fasttext_model.bin"),
-    FloretLanguage("tests/custom_fasttext_model.bin"),
     BytePairLanguage("en", vs=1000, dim=25, cache_dir="tests/cache"),
     GensimLanguage("tests/cache/custom_gensim_vectors.kv"),
     HFTransformersLanguage("sshleifer/tiny-gpt2", framework="tf"),
@@ -53,7 +51,6 @@ def test_sklearn_pipeline_works(lang):
 zero_ready_backends = [
     SpacyLanguage("en_core_web_sm"),
     FasttextLanguage("tests/custom_fasttext_model.bin"),
-    FloretLanguage("tests/custom_fasttext_model.bin"),
     BytePairLanguage("en", vs=1000, dim=25, cache_dir="tests/cache"),
     GensimLanguage("tests/cache/custom_gensim_vectors.kv"),
     TFHubLanguage("https://tfhub.dev/google/tf2-preview/gnews-swivel-20dim/1"),

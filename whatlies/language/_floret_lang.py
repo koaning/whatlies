@@ -56,6 +56,7 @@ class FloretLanguage(SklearnTransformerMixin):
 
     def __init__(self, path, size=None):
         self.size = size
+        self.path = path
         # we have to use this class to prevent the warning hidden as a print statement from the fasttext lib
         with HiddenPrints():
             if isinstance(path, str):
@@ -83,7 +84,6 @@ class FloretLanguage(SklearnTransformerMixin):
         ```
         """
         if isinstance(query, str):
-            self._input_str_legal(query)
             vec = self.model.get_word_vector(query)
             return Embedding(query, vec)
         return EmbeddingSet(*[self[tok] for tok in query])

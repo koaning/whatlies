@@ -21,9 +21,9 @@ class FloretLanguage(SklearnTransformerMixin):
 
     Important:
         The vectors are not given by this library they must be on disk upfront.
-        
+
         To train your own floret vectors see the guide [here](https://github.com/explosion/floret/tree/main/python).
-        In short, you can train your model via; 
+        In short, you can train your model via;
 
         ```python
         import floret
@@ -63,9 +63,7 @@ class FloretLanguage(SklearnTransformerMixin):
             elif isinstance(path, pathlib.Path):
                 self.model = floret.load_model(str(path))
             else:
-                raise ValueError(
-                    "Path must be `str` or `pathlib.Path`."
-                )
+                raise ValueError("Path must be `str` or `pathlib.Path`.")
 
     def __getitem__(self, query: Union[str, List[str]]):
         """

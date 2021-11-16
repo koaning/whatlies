@@ -12,7 +12,7 @@ from whatlies.language import (
     BytePairLanguage,
     TFHubLanguage,
     HFTransformersLanguage,
-    FloretLanguage
+    FloretLanguage,
 )
 
 

@@ -22,8 +22,10 @@ fasttext_packages = [
     "fasttext~=0.9.1",
 ]
 
+floret_packages = fasttext_packages + ["floret>=0.10.1"]
+
 spacy_packages = [
-    "spacy>=3.0.1",
+    "spacy>=3.2.0",
     "spacy-lookups-data>=0.3.2",
 ]
 
@@ -67,13 +69,14 @@ all_deps = (
     + sentence_tfm_dep
     + fasttext_packages
     + umap_packages
+    + floret_packages
 )
 dev_packages = docs_packages + test_packages + all_deps
 
 
 setup(
     name="whatlies",
-    version="0.6.4",
+    version="0.6.5",
     author="Vincent D. Warmerdam",
     packages=find_packages(exclude=["notebooks", "docs"]),
     description="Tools to help uncover `whatlies` in word embeddings.",
@@ -91,6 +94,7 @@ setup(
         "docs": docs_packages,
         "dev": dev_packages,
         "test": test_packages,
+        "floret": floret_packages,
         "umap": base_packages + umap_packages,
         "tfhub": base_packages + tf_packages,
         "sense2vec": base_packages + s2v_packages,
@@ -103,8 +107,9 @@ setup(
     classifiers=[
         "Intended Audience :: Science/Research",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "License :: OSI Approved :: MIT License",
         "Topic :: Scientific/Engineering",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",

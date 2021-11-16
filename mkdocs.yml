@@ -26,6 +26,7 @@ nav:
     - Language:
       - spaCy: api/language/spacy_lang.md
       - Sense2Vec: api/language/s2v_lang.md
+      - floret: api/language/floret_lang.md
       - fasttext: api/language/fasttext_lang.md
       - CountVector: api/language/countvector_lang.md
       - TFIDFVector: api/language/tfidf_lang.md
@@ -37,7 +38,6 @@ nav:
       - TFHub: api/language/tfhub.md
       - USE: api/language/universal_sentence.md
       - Sent TFM: api/language/sentence_tfm.md
-      - DIET: api/language/diet.md
   - Examples:
     - Debiasing Projections: examples/lipstick-pig/index.md
     - Arabic Benchmarks: examples/arabic/index.md

@@ -27,10 +27,10 @@ jobs:
         python -m pip install --upgrade pip setuptools wheel
         pip install -e ".[rasa]"
         pip install pytest
-    - name: Run Basic Rasa Model for Unit Test Later
-      run: |
-        cd tests/rasa-test-demo
-        rasa train nlu
-    - name: Test with pytest
-      run: |
-        pytest --verbose -m "rasa" tests/test_lang/test_rasa_lang.py
+    # - name: Run Basic Rasa Model for Unit Test Later
+    #   run: |
+    #     cd tests/rasa-test-demo
+    #     rasa train nlu
+    # - name: Test with pytest
+    #   run: |
+    #     pytest --verbose -m "rasa" tests/test_lang/test_rasa_lang.py

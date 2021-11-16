@@ -81,7 +81,7 @@ def test_embedding_plot_arrow_integer_axis(embset):
     assert isinstance(ax.collections[1], props["type"])
     assert np.array_equal(UV, props["data"])
     assert np.array_equal(ax.collections[1].get_facecolor(), props["color"])
-    assert ax.texts == []
+    assert len(ax.texts) == 0
     validate_plot_general_properties(ax, props)
     mpl.pyplot.close(fig)
 
@@ -100,7 +100,7 @@ def test_embedding_plot_text_integer_axis(embset):
         # Not applicable: type, color
     }
     assert np.array_equal(ax.texts[0].get_position(), props["data"])
-    assert ax.collections == []
+    assert len(ax.collections) == 0
     assert ax.texts[0].get_text() == props["label"]
     validate_plot_general_properties(ax, props)
     mpl.pyplot.close(fig)
@@ -185,7 +185,7 @@ def test_embedding_plot_arrow_integer_axis_with_str_axis_metric(embset):
     assert isinstance(ax.collections[1], props["type"])
     assert np.array_equal(UV, props["data"])
     assert np.array_equal(ax.collections[1].get_facecolor(), props["color"])
-    assert ax.texts == []
+    assert len(ax.texts) == 0
     validate_plot_general_properties(ax, props)
     mpl.pyplot.close(fig)
 

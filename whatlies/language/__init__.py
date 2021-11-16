@@ -32,6 +32,11 @@ except ModuleNotFoundError:
     FasttextLanguage = NotInstalled("FasttextLanguage", "fasttext")
 
 try:
+    from ._floret_lang import FloretLanguage
+except ModuleNotFoundError:
+    FloretLanguage = NotInstalled("FloretLanguage", "floret")
+
+try:
     from ._spacy_lang import SpacyLanguage
 except ModuleNotFoundError:
     SpacyLanguage = NotInstalled("SpacyLanguage", "spacy")
@@ -61,4 +66,5 @@ __all__ = [
     "SentenceTFMLanguage",
     "LaBSELanguage",
     "DIETLanguage",
+    "FloretLanguage",
 ]

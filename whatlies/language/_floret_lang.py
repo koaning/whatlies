@@ -1,11 +1,11 @@
+import pathlib
 import warnings
 
 import numpy as np
 from typing import Union, List
 from sklearn.metrics import pairwise_distances
 
-import fasttext
-import fasttext.util
+import floret
 
 from whatlies.embedding import Embedding
 from whatlies.embeddingset import EmbeddingSet
@@ -13,58 +13,40 @@ from whatlies.embeddingset import EmbeddingSet
 from whatlies.language._common import SklearnTransformerMixin, HiddenPrints
 
 
-class FasttextLanguage(SklearnTransformerMixin):
+class FloretLanguage(SklearnTransformerMixin):
     """
     This object is used to lazily fetch [Embedding][whatlies.embedding.Embedding]s or
-    [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]s from a fasttext language
-    backend. This object is meant for retreival, not plotting.
+    [EmbeddingSet][whatlies.embeddingset.EmbeddingSet]s from a floret language
+    backend.
 
     Important:
-        The vectors are not given by this library they must be downloaded upfront.
-        You can find the download links [here](https://fasttext.cc/docs/en/crawl-vectors.html).
-        Note: you'll want the `bin` file, **not** the `text` file.
-        To train your own fasttext model see the guide [here](https://fasttext.cc/docs/en/python-module.html#word-representation-model).
+        The vectors are not given by this library they must be on disk upfront.
+        
+        To train your own floret vectors see the guide [here](https://github.com/explosion/floret/tree/main/python).
+        In short, you can train your model via; 
+
+        ```python
+        import floret
+
+        model = floret.train_unsupervised("data.txt")
+        model.save_model("vectors.bin")
+        ```
 
         This language backend might require you to manually install extra dependencies
         unless you installed via either;
 
         ```
-        pip install whatlies[fasttext]
+        pip install whatlies[floret]
         pip install whatlies[all]
         ```
 
-
-    Warning:
-        You could theoretically use fasttext to train your own models with this code;
-
-        ```
-        > import fasttext
-        > model = fasttext.train_unsupervised('data.txt',
-                                              model='cbow',
-                                              dim=10)
-        > model = fasttext.train_unsupervised('data.txt',
-                                              model='skipgram',
-                                              dim=20,
-                                              epoch=20,
-                                              lr=0.1,
-                                              min_count=1)
-        > lang = FasttextLanguage(model)
-        > lang['python']
-        > model.save_model("result/data-skipgram-20.bin")
-        > lang = FasttextLanguage("result/data-skipgram-20.bin")
-        ```
-
-        But you need to be aware that the fasttext library from facebook has gone stale.
-        Last update on pypi was June 2019. Our preferred usecase for it is to use the pretrained vectors.
-        Note that you can also import these via spaCy but this requires a packaging step.
-
     Arguments:
-        model: name of the model to load, be sure that it's downloaded or trained beforehand
+        path: path to the vectors on disk, be sure that it's on disk beforehand
 
     **Usage**:
 
     ```python
-    > from whatlies.language import FasttextLanguage
+    > from whatlies.language import FloretLanguage
     > lang = FasttextLanguage("cc.en.300.bin")
     > lang['python']
     > lang = FasttextLanguage("cc.en.300.bin", size=10)
@@ -72,27 +54,18 @@ class FasttextLanguage(SklearnTransformerMixin):
     ```
     """
 
-    def __init__(self, model, size=None):
+    def __init__(self, path, size=None):
         self.size = size
         # we have to use this class to prevent the warning hidden as a print statement from the fasttext lib
         with HiddenPrints():
-            if isinstance(model, str):
-                self.model = fasttext.load_model(model)
-            elif isinstance(model, fasttext.FastText._FastText):
-                self.model = model
+            if isinstance(path, str):
+                self.model = floret.load_model(path)
+            elif isinstance(path, pathlib.Path):
+                self.model = floret.load_model(str(path))
             else:
                 raise ValueError(
-                    "Language must be started with `str` or fasttext.FastText._FastText object."
+                    "Path must be `str` or `pathlib.Path`."
                 )
-        if self.size:
-            fasttext.util.reduce_model(self.model, self.size)
-
-    @staticmethod
-    def _input_str_legal(string):
-        if sum(1 for c in string if c == "[") > 1:
-            raise ValueError("only one opener `[` allowed ")
-        if sum(1 for c in string if c == "]") > 1:
-            raise ValueError("only one opener `]` allowed ")
 
     def __getitem__(self, query: Union[str, List[str]]):
         """

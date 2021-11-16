@@ -1,0 +1,1266 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="A python package to discover "what lies" in word embeddings.">
+      
+      
+        <link rel="canonical" href="https://rasahq.github.io/whatlies/examples/arabic/">
+      
+      
+        <meta name="author" content="Vincent D. Warmerdam @ Rasa Research">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../images/fig.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>Arabic Benchmarks - whatlies</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../style.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="purple">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#finding-embeddings" tabindex="0" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://rasahq.github.io/whatlies/" title="whatlies" aria-label="whatlies" class="md-header-nav__button md-logo">
+          
+            <img alt="logo" src="../../arrow.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              whatlies
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Arabic Benchmarks
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/RasaHQ/whatlies/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../tutorial/quickstart/" class="md-tabs__link">
+          Getting Started
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../api/embedding/" class="md-tabs__link">
+          API
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../lipstick-pig/" class="md-tabs__link md-tabs__link--active">
+          Examples
+        </a>
+      
+    </li>
+  
+
+      
+        
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://rasahq.github.io/whatlies/" title="whatlies" class="md-nav__button md-logo">
+      
+        <img alt="logo" src="../../arrow.png" width="48" height="48">
+      
+    </a>
+    whatlies
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/RasaHQ/whatlies/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Getting Started
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Getting Started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/quickstart/" title="Quickstart" class="md-nav__link">
+      Quickstart
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/embeddings/" title="What Are Embeddings" class="md-nav__link">
+      What Are Embeddings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/embeddingsets/" title="Interactive Visualisation" class="md-nav__link">
+      Interactive Visualisation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/scikit-learn/" title="Scikit-Learn Compatibility" class="md-nav__link">
+      Scikit-Learn Compatibility
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/embedding/" title="Embedding" class="md-nav__link">
+      Embedding
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/embeddingset/" title="EmbeddingSet" class="md-nav__link">
+      EmbeddingSet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/helpers/" title="Helpers" class="md-nav__link">
+      Helpers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Transformers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        Transformers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/transformers/pca/" title="Pca" class="md-nav__link">
+      Pca
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/transformers/umap/" title="Umap" class="md-nav__link">
+      Umap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/transformers/tsne/" title="Tsne" class="md-nav__link">
+      Tsne
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/transformers/noise/" title="Noise" class="md-nav__link">
+      Noise
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/transformers/addrandom/" title="Add Random" class="md-nav__link">
+      Add Random
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5">
+    
+    <label class="md-nav__link" for="nav-3-5">
+      Language
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-5">
+        Language
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/spacy_lang/" title="spaCy" class="md-nav__link">
+      spaCy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/s2v_lang/" title="Sense2Vec" class="md-nav__link">
+      Sense2Vec
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/floret_lang/" title="floret" class="md-nav__link">
+      floret
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/fasttext_lang/" title="fasttext" class="md-nav__link">
+      fasttext
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/countvector_lang/" title="CountVector" class="md-nav__link">
+      CountVector
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/tfidf_lang/" title="TFIDFVector" class="md-nav__link">
+      TFIDFVector
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/bpemb_lang/" title="BytePair" class="md-nav__link">
+      BytePair
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/convert_lang/" title="ConveRT" class="md-nav__link">
+      ConveRT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/gensim_lang/" title="Gensim" class="md-nav__link">
+      Gensim
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/transformers/" title="Huggingface" class="md-nav__link">
+      Huggingface
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/labse/" title="LaBSE" class="md-nav__link">
+      LaBSE
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/tfhub/" title="TFHub" class="md-nav__link">
+      TFHub
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/universal_sentence/" title="USE" class="md-nav__link">
+      USE
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/sentence_tfm/" title="Sent TFM" class="md-nav__link">
+      Sent TFM
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Examples
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lipstick-pig/" title="Debiasing Projections" class="md-nav__link">
+      Debiasing Projections
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Arabic Benchmarks
+      </label>
+    
+    <a href="./" title="Arabic Benchmarks" class="md-nav__link md-nav__link--active">
+      Arabic Benchmarks
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#finding-embeddings" class="md-nav__link">
+    Finding Embeddings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-task" class="md-nav__link">
+    The Task
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explore" class="md-nav__link">
+    Explore
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benchmark" class="md-nav__link">
+    Benchmark
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    Results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../roadmap/" title="Roadmap" class="md-nav__link">
+      Roadmap
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../releases/" title="Releases" class="md-nav__link">
+      Releases
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#finding-embeddings" class="md-nav__link">
+    Finding Embeddings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-task" class="md-nav__link">
+    The Task
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explore" class="md-nav__link">
+    Explore
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benchmark" class="md-nav__link">
+    Benchmark
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    Results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/RasaHQ/whatlies/edit/master/docs/examples/arabic/index.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Arabic Benchmarks</h1>
+                
+                <script src="https://cdn.jsdelivr.net/npm/vega@5.10.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@4.6.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.3.2"></script>
+
+<p>One of the goals of this package is to make it simple to explore embeddings.
+This includes embeddings that are Non-English. In this guide we'll demonstrate how you might be
+able to use this library to run simple Arabic classification benchmark
+using scikit-learn and this library. This benchmark was part of discussion
+on <a href="https://github.com/RasaHQ/whatlies/issues/262">github</a>.</p>
+<p>If you want to follow along, make sure that this tool is installed.</p>
+<div class="highlight"><pre><span></span><code>pip install whatlies
+</code></pre></div>
+<p>If you'd like to also try out the heavy transformer model, you'll also
+want to install extra dependencies.</p>
+<div class="highlight"><pre><span></span><code>pip install &quot;whatlies[transformers]&quot;
+</code></pre></div>
+<h2 id="finding-embeddings">Finding Embeddings<a class="headerlink" href="#finding-embeddings" title="Permanent link">&para;</a></h2>
+<p>For Arabic there are many sources of embeddings. In this benchmark we'll
+limit ourselves to <a href="https://nlp.h-its.org/bpemb/ar/">BytePair</a>
+embeddings and pretrained <a href="https://github.com/alisafaya/Arabic-BERT">BERT</a>.</p>
+<p>There are also plenty of other embeddings out there. There's gensim
+embeddings available via <a href="https://github.com/bakrianoo/aravec">AraVec</a> and
+there's also pretrained subword-embeddings in <a href="https://fasttext.cc/docs/en/crawl-vectors.html#models">fasttext</a>.
+There's also support for the Egyptian dialect but we'll ignore these for now.</p>
+<h2 id="the-task">The Task<a class="headerlink" href="#the-task" title="Permanent link">&para;</a></h2>
+<p>The task we'll benchmark is sentiment analysis for
+<a href="https://www.kaggle.com/mksaad/arabic-sentiment-twitter-corpus">arabic tweets</a>. It's a simple classification problem with
+two classes; positive and negative. We'll assume the labels for the dataset are accurate but we should
+remind ourselves to check correctness later if we intend to use this dataset for a real life use-case. For
+more info on this topic <a href="https://www.youtube.com/watch?v=Czto6GzJah8&amp;list=PL75e0qA87dlG-za8eLI6t0_Pbxafk-cxb&amp;index=32&amp;ab_channel=Rasa">watch here</a>.</p>
+<h2 id="explore">Explore<a class="headerlink" href="#explore" title="Permanent link">&para;</a></h2>
+<p>Before you run the big benchmark, it makes sense to explore the embeddings first.</p>
+<p>Let's start by loading them in.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">BytePairLanguage</span><span class="p">,</span> <span class="n">HFTransformersLanguage</span>
+
+<span class="n">lang_bp1</span> <span class="o">=</span> <span class="n">BytePairLanguage</span><span class="p">(</span><span class="s2">&quot;ar&quot;</span><span class="p">,</span> <span class="n">vs</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">lang_bp2</span> <span class="o">=</span> <span class="n">BytePairLanguage</span><span class="p">(</span><span class="s2">&quot;ar&quot;</span><span class="p">,</span> <span class="n">vs</span><span class="o">=</span><span class="mi">200000</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="c1"># Feel free to remove `lang_hf` from the benchmark if you want want quick results.</span>
+<span class="c1"># These BERT-style embeddings are very compute heavy and can take a while to benchmark.</span>
+<span class="n">lang_hf</span> <span class="o">=</span> <span class="n">HFTransformersLanguage</span><span class="p">(</span><span class="s2">&quot;asafaya/bert-base-arabic&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>A popular method of visualising embeddings is to make a scatterplot of clusters. We'll
+look at a few text examples by embedding them and reducing their dimensionality via
+Umap.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">Umap</span>
+
+<span class="c1"># Read in the dataframes from Kaggle</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;test_Arabic_tweets_negative_20190413.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">),</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;test_Arabic_tweets_positive_20190413.tsv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">]</span>
+
+<span class="c1"># Next we clean the dataset</span>
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span>
+  <span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">200</span><span class="p">]</span>
+  <span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+  <span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="c1"># Sample a small list such that the interactive charts render swiftly.</span>
+<span class="n">small_text_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="p">[:</span><span class="mi">1000</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">]))</span>
+
+<span class="k">def</span> <span class="nf">mk_plot</span><span class="p">(</span><span class="n">lang</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">lang</span><span class="p">[</span><span class="n">small_text_list</span><span class="p">]</span>
+            <span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Umap</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+            <span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="n">annot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">))</span>
+
+<span class="n">mk_plot</span><span class="p">(</span><span class="n">lang_bp2</span><span class="p">,</span> <span class="s2">&quot;bp_big&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">mk_plot</span><span class="p">(</span><span class="n">lang_hf</span><span class="p">,</span> <span class="s2">&quot;huggingface&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>The results of this code are viewable below. Note that these charts are fully interactive
+and they'll show the text containing the tweets when you hover over them.</p>
+<div id="vis1"></div>
+
+<script>
+fetch('charts.json')
+.then(res => res.json())
+.then((out) => {
+  vegaEmbed('#vis1', out);
+})
+.catch(err => { throw err });
+</script>
+
+<p>You might recognize some clusters, which is nice, but it's no benchmark yet.</p>
+<h2 id="benchmark">Benchmark<a class="headerlink" href="#benchmark" title="Permanent link">&para;</a></h2>
+<p>The code below will actually run the actual benchmark. What's important to note is that
+we'll train on 7829 examples and we'll test on a holdout set of 1000 examples. In the
+interest of time we won't do a k-fold validation. After all, the main goal is to show
+how you might quickly prototype a solution using whatlies.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span><span class="p">,</span> <span class="n">FeatureUnion</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="kn">from</span> <span class="nn">memo</span> <span class="kn">import</span> <span class="n">grid</span><span class="p">,</span> <span class="n">memfile</span><span class="p">,</span> <span class="n">time_taken</span>
+
+<span class="c1"># Split dataframe into a train/test set.</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]),</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">],</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mi">1000</span>
+<span class="p">)</span>
+
+<span class="c1"># Create a dictionary with all of our embedding settings.</span>
+<span class="c1"># Note that we&#39;ve removed lang_hf in order to make it easy to run on a laptop.</span>
+<span class="n">embedders</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;nada&#39;</span><span class="p">:</span> <span class="s1">&#39;drop&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bp1&#39;</span><span class="p">:</span> <span class="n">lang_bp1</span><span class="p">,</span>
+    <span class="s1">&#39;bp2&#39;</span><span class="p">:</span> <span class="n">lang_bp2</span><span class="p">,</span>
+    <span class="c1"># &#39;hf&#39;: lang_hf</span>
+<span class="p">}</span>
+
+<span class="nd">@memfile</span><span class="p">(</span><span class="s2">&quot;arabic-sentences-benchmark.jsonl&quot;</span><span class="p">)</span>
+<span class="nd">@time_taken</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">run_experiment</span><span class="p">(</span><span class="n">embedder</span><span class="o">=</span><span class="s2">&quot;nada&quot;</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">smooth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ngram</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="c1"># This featurizers step is a list that is used in a scikit-learn pipeline.</span>
+    <span class="n">featurizers</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;cv-base&#39;</span><span class="p">,</span> <span class="n">CountVectorizer</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s1">&#39;cv-ngram&#39;</span><span class="p">,</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="k">if</span> <span class="n">ngram</span> <span class="k">else</span> <span class="s1">&#39;drop&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;emb&#39;</span><span class="p">,</span> <span class="n">embedders</span><span class="p">[</span><span class="n">embedder</span><span class="p">])</span>
+    <span class="p">]</span>
+
+    <span class="c1"># After featurization we apply a Logistic Regression</span>
+    <span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+        <span class="p">(</span><span class="s2">&quot;feat&quot;</span><span class="p">,</span> <span class="n">FeatureUnion</span><span class="p">(</span><span class="n">featurizers</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">&quot;mod&quot;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="n">smooth</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
+    <span class="p">])</span>
+
+    <span class="c1"># The trained pipeline is used to make a prediction.</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:</span><span class="n">train_size</span><span class="p">],</span> <span class="n">y_train</span><span class="p">[:</span><span class="n">train_size</span><span class="p">])</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+    <span class="c1"># By returning a dictionary `memo` will be able to properly log this.</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;valid_accuracy&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_test</span> <span class="o">==</span> <span class="n">y_pred</span><span class="p">)),</span>
+            <span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_train</span> <span class="o">==</span> <span class="n">pipe</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)))}</span>
+
+<span class="c1"># The grid will loop over all the options and generate a progress bar</span>
+<span class="c1"># that means it&#39;s easy to run from the command line in the background.</span>
+<span class="k">for</span> <span class="n">setting</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">(</span><span class="n">embedder</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;nada&#39;</span><span class="p">,</span> <span class="s1">&#39;bp1&#39;</span><span class="p">,</span> <span class="s1">&#39;bp2&#39;</span><span class="p">,</span> <span class="s1">&#39;hf&#39;</span><span class="p">],</span>
+                    <span class="n">smooth</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
+                    <span class="n">ngram</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+                    <span class="n">train_size</span><span class="o">=</span><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span>
+                                <span class="mi">3000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">6000</span><span class="p">,</span> <span class="mi">7000</span><span class="p">]):</span>
+    <span class="n">run_experiment</span><span class="p">(</span><span class="o">**</span><span class="n">setting</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">setting</span><span class="p">)</span>
+</code></pre></div>
+<p>There's a few things to observe.</p>
+<ol>
+<li>We're using <a href="https://koaning.github.io/memo/">memo</a> to handle the logging. The <code>memfile</code> decorator grabs
+app the keyword arguments and logs it together with the dictionary output.</li>
+<li>We're first embedding the text numerically, after which we apply a logistic regression. A logistic regression
+won't give us an upper limit of what we might be able to achieve after fine-tuning but it should serve
+as a reasonable lower bound of what we could expect.</li>
+<li>Besides testing the effect of the embedding we'll also have a look at the effect of training set size (<code>train_size</code>),
+parameter smoothing (<code>smooth</code>) on the logistic regression and the effect of adding subword countvectors (<code>ngram</code>).</li>
+<li>The benchmark will take a while! We've turned off the huggingface model so that you can get quick results
+ locally but we will show our results below.</li>
+</ol>
+<h2 id="results">Results<a class="headerlink" href="#results" title="Permanent link">&para;</a></h2>
+<p>You can play with the full benchmark dataset by exploring the parallel coordinates chart
+in a seperate tab <a href="hiplot-results.html">here</a> but we'll focus on the most important
+observations below.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>It seems that smoothing and adding countvectors for the subwords doesn't contribute
+the most substantial predictive power. They can be tuned to add that 1% extra boost
+but the most substaintial gain in validation accuracy is contributed by a large
+training set and by chosing the huggingface embeddings.</p>
+<p>Feel free to play around with the charts below, they are fully interactive.</p>
+<div id="vis2"></div>
+
+<script>
+fetch('details-1.json')
+.then(res => res.json())
+.then((out) => {
+  vegaEmbed('#vis2', out);
+})
+.catch(err => { throw err });
+</script>
+
+<p>The huggingface embeddings do come with a downside however.</p>
+<div id="vis3"></div>
+
+<script>
+fetch('details-2.json')
+.then(res => res.json())
+.then((out) => {
+  vegaEmbed('#vis3', out);
+})
+.catch(err => { throw err });
+</script>
+
+<p>The huggingface embeddings are <em>much</em> slower. Notice the log-scale on the y-axis and note how
+the there's a big upfront calculation cost even for only 100 training examples. These
+results ran on a modern server and it can take up to 8 minutes to train/process only 8000
+datapoints. This pales in comparison to the other approaches. That said, we're rapid prototyping
+here so we should keep in mind that we might be able to the compute time down if we build directly
+on top of hugginface.</p>
+<p>We also see that the train performance keeps increasing while the test performance
+starts to flatten. If we were to increase the train set further we might need to keep
+beware of overfitting.</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>Maybe the huggingface results look promising, maybe the compute time is a concern for you or
+maybe you've got a use-case where you need even more predictive power. Either way, we hope you
+see the potential for this library when it comes to rapid prototyping. The goal here wasn't to
+be "state of the art". Rather; whatlies allows you to try out a whole bunch of embeddings relatively
+quickly so you don't need to worry about integrating with all sorts of embedding backends when
+you're just starting out. This benchmark alone should not be considered as "enough" evidence to
+put a model into production, but it might be enough evidence to continue iterating.</p>
+<p>If you're curious about extending this benchmark; feel absolutely free! You might want to try
+out the <code>LaBSELanguage</code>. It's a multi-language model that should support 100+ languages. We'd also
+love to hear if there's useful tricks we're missing out on. We're especially keen to hear if there's
+tools missing for Non-English language.</p>
+<p>If you're interested in running this notebook yourself, you can download it <a href="arabic-tweets-exercise.ipynb">here</a>.</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+  <footer class="md-footer">
+    
+      <div class="md-footer-nav">
+        <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="../lipstick-pig/" title="Debiasing Projections" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span class="md-footer-nav__direction">
+                    Previous
+                  </span>
+                  Debiasing Projections
+                </span>
+              </div>
+            </a>
+          
+          
+            <a href="../../roadmap/" title="Roadmap" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span class="md-footer-nav__direction">
+                    Next
+                  </span>
+                  Roadmap
+                </span>
+              </div>
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+              </div>
+            </a>
+          
+        </nav>
+      </div>
+    
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          
+            <div class="md-footer-copyright__highlight">
+              Copyright &copy; 2020 <a href="https://twitter.com/Rasa_HQ">Rasa</a>, Maintained by <a href="https://twitter.com/fishnets88">Vincent</a>.
+            </div>
+          
+          powered by
+          <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+          and
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs</a>
+        </div>
+        
+      </div>
+    </div>
+    <script async defer data-domain="rasahq.github.io/whatlies" src="https://plausible.io/js/plausible.js"></script>
+  </footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
+      
+      <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
+      
+        <script src="../../js/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

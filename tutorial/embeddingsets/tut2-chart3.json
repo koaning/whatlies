@@ -207,7 +207,7 @@
         "name": "red",
         "original": "red"
       },
-      {"x_axis": 0, "y_axis": 0, "name": "bluee", "original": "bluee"},
+      {"x_axis": 0, "y_axis": 0, "name": "blue", "original": "blue"},
       {
         "x_axis": 0.25164204835891724,
         "y_axis": 0.215010866522789,
@@ -357,8 +357,8 @@
       {
         "x_axis": 0,
         "y_axis": 0,
-        "name": "(bluee | (king - queen))",
-        "original": "bluee"
+        "name": "(blue | (king - queen))",
+        "original": "blue"
       },
       {
         "x_axis": 0.26152005791664124,

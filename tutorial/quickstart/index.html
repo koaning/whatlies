@@ -13,7 +13,7 @@
         <meta name="description" content="A python package to discover "what lies" in word embeddings.">
       
       
-        <link rel="canonical" href="https://rasahq.github.io/whatlies/tutorial/observations/">
+        <link rel="canonical" href="https://rasahq.github.io/whatlies/tutorial/quickstart/">
       
       
         <meta name="author" content="Vincent D. Warmerdam @ Rasa Research">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Observations - whatlies</title>
+        <title>Quickstart - whatlies</title>
       
     
     
@@ -93,7 +93,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#observations" tabindex="0" class="md-skip">
+      <a href="#installation" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -104,7 +104,7 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href="https://rasahq.github.io/whatlies/" title="whatlies" aria-label="whatlies" class="md-header-nav__button md-logo">
           
-            <i class="md-icon">album</i>
+            <img alt="logo" src="../../arrow.png" width="24" height="24">
           
         </a>
       </div>
@@ -119,7 +119,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Observations
+                Quickstart
               
             </span>
           
@@ -208,7 +208,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../embeddings/" class="md-tabs__link md-tabs__link--active">
+        <a href="./" class="md-tabs__link md-tabs__link--active">
           Getting Started
         </a>
       
@@ -261,7 +261,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="https://rasahq.github.io/whatlies/" title="whatlies" class="md-nav__button md-logo">
       
-        <i class="md-icon">album</i>
+        <img alt="logo" src="../../arrow.png" width="48" height="48">
       
     </a>
     whatlies
@@ -326,6 +326,70 @@
           
           
 
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Quickstart
+      </label>
+    
+    <a href="./" title="Quickstart" class="md-nav__link md-nav__link--active">
+      Quickstart
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fetching-embeddings" class="md-nav__link">
+    Fetching Embeddings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualisation" class="md-nav__link">
+    Visualisation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatibility" class="md-nav__link">
+    Compatibility
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
 
   <li class="md-nav__item">
     <a href="../embeddings/" title="What Are Embeddings" class="md-nav__link">
@@ -352,83 +416,9 @@
 
 
   <li class="md-nav__item">
-    <a href="../languages/" title="Language Options" class="md-nav__link">
-      Language Options
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../transformations/" title="Transformation Viz" class="md-nav__link">
-      Transformation Viz
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../scikit-learn/" title="Scikit-Learn Compatibility" class="md-nav__link">
       Scikit-Learn Compatibility
     </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Observations
-      </label>
-    
-    <a href="./" title="Observations" class="md-nav__link md-nav__link--active">
-      Observations
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#spelling-errors" class="md-nav__link">
-    Spelling Errors
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -497,15 +487,27 @@
           
 
 
+  <li class="md-nav__item">
+    <a href="../../api/helpers/" title="Helpers" class="md-nav__link">
+      Helpers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
     
-    <label class="md-nav__link" for="nav-3-3">
+    <label class="md-nav__link" for="nav-3-4">
       Transformers
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-3">
+      <label class="md-nav__title" for="nav-3-4">
         Transformers
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -553,18 +555,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/transformers/opentsne/" title="OpenTsne" class="md-nav__link">
-      OpenTsne
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../api/transformers/noise/" title="Noise" class="md-nav__link">
       Noise
     </a>
@@ -583,18 +573,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../api/transformers/ivis/" title="Ivis" class="md-nav__link">
-      Ivis
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -607,13 +585,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5">
     
-    <label class="md-nav__link" for="nav-3-4">
+    <label class="md-nav__link" for="nav-3-5">
       Language
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-4">
+      <label class="md-nav__title" for="nav-3-5">
         Language
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -649,6 +627,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../api/language/floret_lang/" title="floret" class="md-nav__link">
+      floret
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../api/language/fasttext_lang/" title="fasttext" class="md-nav__link">
       fasttext
     </a>
@@ -663,6 +653,18 @@
   <li class="md-nav__item">
     <a href="../../api/language/countvector_lang/" title="CountVector" class="md-nav__link">
       CountVector
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/tfidf_lang/" title="TFIDFVector" class="md-nav__link">
+      TFIDFVector
     </a>
   </li>
 
@@ -721,6 +723,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../api/language/labse/" title="LaBSE" class="md-nav__link">
+      LaBSE
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../api/language/tfhub/" title="TFHub" class="md-nav__link">
       TFHub
     </a>
@@ -733,8 +747,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/language/universal_sentence/" title="Universal Sentence Encoder" class="md-nav__link">
-      Universal Sentence Encoder
+    <a href="../../api/language/universal_sentence/" title="USE" class="md-nav__link">
+      USE
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/language/sentence_tfm/" title="Sent TFM" class="md-nav__link">
+      Sent TFM
     </a>
   </li>
 
@@ -776,6 +802,18 @@
   <li class="md-nav__item">
     <a href="../../examples/lipstick-pig/" title="Debiasing Projections" class="md-nav__link">
       Debiasing Projections
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../examples/arabic/" title="Arabic Benchmarks" class="md-nav__link">
+      Arabic Benchmarks
     </a>
   </li>
 
@@ -830,8 +868,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#spelling-errors" class="md-nav__link">
-    Spelling Errors
+  <a href="#fetching-embeddings" class="md-nav__link">
+    Fetching Embeddings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualisation" class="md-nav__link">
+    Visualisation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatibility" class="md-nav__link">
+    Compatibility
   </a>
   
 </li>
@@ -852,86 +904,110 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/RasaHQ/whatlies/edit/master/docs/tutorial/observations/index.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/RasaHQ/whatlies/edit/master/docs/tutorial/quickstart/index.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
                 <script src="https://cdn.jsdelivr.net/npm/vega@5.10.0"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.6.0"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.3.2"></script>
 
-<h1 id="observations">Observations<a class="headerlink" href="#observations" title="Permanent link">&para;</a></h1>
-<p>This document will demonstrate some observations of embeddings. The goal of this document
-is to two-fold.</p>
-<ol>
-<li>It hopes to explain how to use <code>whatlies</code>.</li>
-<li>It hopes to explain interesting elements of different embeddings.</li>
-</ol>
-<h2 id="spelling-errors">Spelling Errors<a class="headerlink" href="#spelling-errors" title="Permanent link">&para;</a></h2>
-<p>Especially when you're designing a chatbot, spelling errors occur all the time. So
-how do different embeddings deal with this? Let's compare three different language
-backends here.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">FasttextLanguage</span><span class="p">,</span> <span class="n">SpacyLanguage</span><span class="p">,</span> <span class="n">CountVectorLanguage</span>
-
-<span class="n">lang_spacy</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_md&quot;</span><span class="p">)</span>
-<span class="n">lang_fasttext</span> <span class="o">=</span> <span class="n">FasttextLanguage</span><span class="p">(</span><span class="s2">&quot;cc.en.300.bin&quot;</span><span class="p">)</span>
-<span class="n">lang_cv</span> <span class="o">=</span> <span class="n">CountVectorLanguage</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">analyzer</span><span class="o">=</span><span class="s2">&quot;char&quot;</span><span class="p">)</span>
-<span class="n">lang_cv</span><span class="o">.</span><span class="n">fit_manual</span><span class="p">([</span><span class="s1">&#39;pizza&#39;</span><span class="p">,</span> <span class="s1">&#39;pizzas&#39;</span><span class="p">,</span> <span class="s1">&#39;firehouse&#39;</span><span class="p">,</span> <span class="s1">&#39;firehydrant&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;pikachu&#39;</span><span class="p">,</span> <span class="s1">&#39;pokemon&#39;</span><span class="p">])</span>
+<h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h1>
+<p>Whatlies is a library that tries to make it easy for you to play around with
+text embeddings. To quickly get started with it, you can install via pip;</p>
+<div class="highlight"><pre><span></span><code>python -m pip install whatlies
 </code></pre></div>
+<h2 id="fetching-embeddings">Fetching Embeddings<a class="headerlink" href="#fetching-embeddings" title="Permanent link">&para;</a></h2>
+<p>To fetch embeddings from a language backend you will first need to import a backend.
+We'll use <a href="https://www.youtube.com/watch?v=-0IjF-7OB3s&amp;ab_channel=Rasa">byte pair embeddings</a> now.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">BytePairLanguage</span>
 
-<p>Besides fetching a fasttext and spaCy model you'll notice that we're
-also manually fitting the <code>CountVectorLanguage</code>. Take a note
-of this because this fact will be meaningful later.</p>
-<div class="highlight"><pre><span></span><code><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;piza&#39;</span><span class="p">,</span> <span class="s1">&#39;pizza&#39;</span><span class="p">,</span> <span class="s1">&#39;pizzza&#39;</span><span class="p">,</span> <span class="s1">&#39;italian&#39;</span><span class="p">,</span> <span class="s1">&#39;sushi&#39;</span><span class="p">,</span> <span class="s1">&#39;japan&#39;</span><span class="p">,</span> <span class="s1">&#39;burger&#39;</span><span class="p">,</span>
-         <span class="s1">&#39;fyrehouse&#39;</span><span class="p">,</span> <span class="s1">&#39;firehouse&#39;</span><span class="p">,</span> <span class="s1">&#39;fyrehidrant&#39;</span><span class="p">,</span>
-         <span class="s1">&#39;house&#39;</span><span class="p">,</span> <span class="s1">&#39;tree&#39;</span><span class="p">,</span> <span class="s1">&#39;elephant&#39;</span><span class="p">,</span> <span class="s1">&#39;pikachu&#39;</span><span class="p">,</span> <span class="s1">&#39;pokemon&#39;</span><span class="p">]</span>
-
-<span class="k">def</span> <span class="nf">mk_plot</span><span class="p">(</span><span class="n">lang</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">lang</span><span class="p">[</span><span class="n">words</span><span class="p">]</span>
-            <span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-            <span class="o">.</span><span class="n">plot_interactive</span><span class="p">()</span>
-            <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">lang</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
-
-<span class="p">(</span><span class="n">mk_plot</span><span class="p">(</span><span class="n">lang_spacy</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">mk_plot</span><span class="p">(</span><span class="n">lang_fasttext</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">mk_plot</span><span class="p">(</span><span class="n">lang_cv</span><span class="p">))</span>
+<span class="n">bp_lang</span> <span class="o">=</span> <span class="n">BytePairLanguage</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
 </code></pre></div>
+<p>You can use this language backend to fetch an embedding of a single word.</p>
+<div class="highlight"><pre><span></span><code><span class="n">emb_king</span> <span class="o">=</span> <span class="n">bp_lang</span><span class="p">[</span><span class="s2">&quot;king&quot;</span><span class="p">]</span>
+<span class="n">emb_king</span><span class="o">.</span><span class="n">vector</span>
+</code></pre></div>
+<p>This is a single embedding, but you can also fetch many embeddings at the same time.</p>
+<div class="highlight"><pre><span></span><code><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;man&#39;</span><span class="p">,</span> <span class="s1">&#39;woman&#39;</span><span class="p">,</span> <span class="s1">&#39;king&#39;</span><span class="p">,</span> <span class="s1">&#39;queen&#39;</span><span class="p">,</span> <span class="s1">&#39;brother&#39;</span><span class="p">,</span> <span class="s1">&#39;sister&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;lion&#39;</span><span class="p">,</span> <span class="s1">&#39;puppy&#39;</span><span class="p">,</span> <span class="s1">&#39;male student&#39;</span><span class="p">,</span> <span class="s1">&#39;female student&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;university&#39;</span><span class="p">,</span> <span class="s1">&#39;school&#39;</span><span class="p">,</span> <span class="s1">&#39;kitten&#39;</span><span class="p">]</span>
 
-<div id="c1"></div>
+<span class="n">embset</span> <span class="o">=</span> <span class="n">bp_lang</span><span class="p">[</span><span class="n">words</span><span class="p">]</span>
+</code></pre></div>
+<p>This <code>embset</code> resembles an embeddingset which is a collection of embeddings.
+Where a dataframe is a container for tabular data, this embeddingset is a container
+for a set of embeddings. This container has many utility methods implemented. You can
+for example turn it into a numpy array.</p>
+<div class="highlight"><pre><span></span><code><span class="n">embset</span><span class="o">.</span><span class="n">to_X</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="visualisation">Visualisation<a class="headerlink" href="#visualisation" title="Permanent link">&para;</a></h2>
+<p>But you can also use it for visualisation.</p>
+<div class="highlight"><pre><span></span><code><span class="n">embset</span><span class="o">.</span><span class="n">plot_similarity</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="similarity-guide.png" /></p>
+<p>There are many visualisations implemented. In particular we offer interactive altair charts.
+These can be useful to show how points are clustered. Before plotting this, it might be common
+to apply a dimensionality reduction technique first.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># To use the Umap feature you will need to install an extra dependency.</span>
+<span class="c1"># pip install whatlies[umap]</span>
+<span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">Pca</span><span class="p">,</span> <span class="n">Umap</span>
+
+<span class="n">p1</span> <span class="o">=</span> <span class="n">embset</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;pca&quot;</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">embset</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Umap</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;umap&quot;</span><span class="p">)</span>
+<span class="n">p1</span> <span class="o">|</span> <span class="n">p2</span>
+</code></pre></div>
+<div id="vis"></div>
 
 <script>
-fetch('chart-1.json')
+fetch('chart.json')
 .then(res => res.json())
 .then((out) => {
-  vegaEmbed('#c1', out);
+  vegaEmbed('#vis', out);
 })
 .catch(err => { throw err });
 </script>
 
-<p>You may notice a few things here.</p>
+<p>These charts are fully interactive. You can zoom and drag with your cursor.</p>
+<h2 id="compatibility">Compatibility<a class="headerlink" href="#compatibility" title="Permanent link">&para;</a></h2>
+<p>The goal of this project is to have a single API for many different backends. We offer support
+for:</p>
 <ul>
-<li>The <code>CountVectorLanguage</code> only looks at character similarities which it is why
-it feels that "piza", "pizza" and "pizzza" are all very similar. Notice how spaCy
-disagrees with this. You may also note that fasttext is "in between". That is because
-these embeddings also encode the subtokens.</li>
-<li>The fasttext embeddings seem to do a better job at catching certain forms of meaning.
-It understands that pikachu, pokemon and japan are related while also associating
-burger/sushi with pizza. The spaCy model also captures this but the clustering is
-less appearant. This can be due to the dimensionality reduction though.</li>
-<li>You'll notice that the two clearly misspelled words, fyrehouse and fyrehidrant,
-are mapped to the same point in the spaCy embedding. When you check the embeddings
-for both you'll confirm why. SpaCy maps a token to a vector of zeros is it is not
-available in the vocabulary. SpaCy may occasionally also map two different tokens
-to the same embedding in an attempt to save on disk space. Fasttext is able to recover
-more context because of the subtoken embeddings but also because the embeddings are
-<strong>way bigger</strong>. The fasttext embeddings unzipped can be 7GB on disk while spaCy
-model is on 115MB on disk.</li>
-<li>Notice how the <code>CountVectorLanguage</code> has a cluster with lots of things in it.
-It clusters together "house", "elephant", "sushi" and "pokemon". This isn't because
-of shared meaning. It because these words contain combinations of characters that
-weren't there in the training set that we gave to the <code>fit_manual</code> method in the beginning.
-Note that "picachu" is similar to "pizza" for a similar reason.</li>
+<li><a href="https://spacy.io/">spaCy</a></li>
+<li><a href="https://huggingface.co/">huggingface</a>,</li>
+<li><a href="https://www.tensorflow.org/hub">tensorflow hub</a></li>
+<li><a href="https://radimrehurek.com/gensim/">gensim</a></li>
+<li><a href="https://nlp.h-its.org/bpemb/">bytepair</a></li>
+<li><a href="https://fasttext.cc/">fasttext</a></li>
+<li><a href="https://www.sbert.net/index.html">sentence transformers</a></li>
 </ul>
+<p>Note that you're not just limited to word embeddings, our API deals with text in general and
+can also fetch embeddings for contextualized language models.</p>
+<p>We also do our best to be compatible with popular tools like scikit-learn. Since we standardise
+the output of our language backends we can give a familiar API to scikit-learn pipelines too.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">BytePairLanguage</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">&quot;embed&quot;</span><span class="p">,</span> <span class="n">BytePairLanguage</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">())</span>
+<span class="p">])</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;i really like this post&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;thanks for that comment&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;i enjoy this friendly forum&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;this is a bad post&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;i dislike this article&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;this is not well written&quot;</span>
+<span class="p">]</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+<p>We hope this tools makes it easier for you to explore word-embeddings.</p>
                 
                   
                 
@@ -953,7 +1029,7 @@ Note that "picachu" is similar to "pizza" for a similar reason.</li>
       <div class="md-footer-nav">
         <nav class="md-footer-nav__inner md-grid">
           
-            <a href="../scikit-learn/" title="Scikit-Learn Compatibility" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <a href="../.." title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
                 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
               </div>
@@ -962,19 +1038,19 @@ Note that "picachu" is similar to "pizza" for a similar reason.</li>
                   <span class="md-footer-nav__direction">
                     Previous
                   </span>
-                  Scikit-Learn Compatibility
+                  Home
                 </span>
               </div>
             </a>
           
           
-            <a href="../../faq/" title="FAQ" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <a href="../embeddings/" title="What Are Embeddings" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span class="md-footer-nav__direction">
                     Next
                   </span>
-                  FAQ
+                  What Are Embeddings
                 </span>
               </div>
               <div class="md-flex__cell md-flex__cell--shrink">

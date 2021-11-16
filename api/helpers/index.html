@@ -13,7 +13,7 @@
         <meta name="description" content="A python package to discover "what lies" in word embeddings.">
       
       
-        <link rel="canonical" href="https://rasahq.github.io/whatlies/tutorial/languages/">
+        <link rel="canonical" href="https://rasahq.github.io/whatlies/api/helpers/">
       
       
         <meta name="author" content="Vincent D. Warmerdam @ Rasa Research">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Language Options - whatlies</title>
+        <title>Helpers - whatlies</title>
       
     
     
@@ -93,7 +93,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#multiple-tokens" tabindex="0" class="md-skip">
+      <a href="#reverse_strings" tabindex="0" class="md-skip">
         Skip to content
       </a>
     
@@ -104,7 +104,7 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href="https://rasahq.github.io/whatlies/" title="whatlies" aria-label="whatlies" class="md-header-nav__button md-logo">
           
-            <i class="md-icon">album</i>
+            <img alt="logo" src="../../arrow.png" width="24" height="24">
           
         </a>
       </div>
@@ -119,7 +119,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Language Options
+                Helpers
               
             </span>
           
@@ -208,7 +208,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../embeddings/" class="md-tabs__link md-tabs__link--active">
+        <a href="../../tutorial/quickstart/" class="md-tabs__link">
           Getting Started
         </a>
       
@@ -221,7 +221,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../api/embedding/" class="md-tabs__link">
+        <a href="../embedding/" class="md-tabs__link md-tabs__link--active">
           API
         </a>
       
@@ -261,7 +261,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="https://rasahq.github.io/whatlies/" title="whatlies" class="md-nav__button md-logo">
       
-        <i class="md-icon">album</i>
+        <img alt="logo" src="../../arrow.png" width="48" height="48">
       
     </a>
     whatlies
@@ -305,12 +305,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       Getting Started
@@ -328,7 +326,19 @@
 
 
   <li class="md-nav__item">
-    <a href="../embeddings/" title="What Are Embeddings" class="md-nav__link">
+    <a href="../../tutorial/quickstart/" title="Quickstart" class="md-nav__link">
+      Quickstart
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/embeddings/" title="What Are Embeddings" class="md-nav__link">
       What Are Embeddings
     </a>
   </li>
@@ -340,7 +350,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../embeddingsets/" title="Interactive Visualisation" class="md-nav__link">
+    <a href="../../tutorial/embeddingsets/" title="Interactive Visualisation" class="md-nav__link">
       Interactive Visualisation
     </a>
   </li>
@@ -350,107 +360,10 @@
           
           
 
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Language Options
-      </label>
-    
-    <a href="./" title="Language Options" class="md-nav__link md-nav__link--active">
-      Language Options
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#multiple-tokens" class="md-nav__link">
-    Multiple Tokens
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bert-style" class="md-nav__link">
-    Bert Style
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sense-to-vec" class="md-nav__link">
-    Sense to Vec
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#similarity" class="md-nav__link">
-    Similarity
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
-  </li>
-
-        
-          
-          
-          
-
 
   <li class="md-nav__item">
-    <a href="../transformations/" title="Transformation Viz" class="md-nav__link">
-      Transformation Viz
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../scikit-learn/" title="Scikit-Learn Compatibility" class="md-nav__link">
+    <a href="../../tutorial/scikit-learn/" title="Scikit-Learn Compatibility" class="md-nav__link">
       Scikit-Learn Compatibility
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../observations/" title="Observations" class="md-nav__link">
-      Observations
     </a>
   </li>
 
@@ -476,10 +389,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       API
@@ -497,7 +412,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/embedding/" title="Embedding" class="md-nav__link">
+    <a href="../embedding/" title="Embedding" class="md-nav__link">
       Embedding
     </a>
   </li>
@@ -509,9 +424,30 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/embeddingset/" title="EmbeddingSet" class="md-nav__link">
+    <a href="../embeddingset/" title="EmbeddingSet" class="md-nav__link">
       EmbeddingSet
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="Helpers" class="md-nav__link md-nav__link--active">
+      Helpers
+    </a>
+    
   </li>
 
         
@@ -522,13 +458,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
     
-    <label class="md-nav__link" for="nav-3-3">
+    <label class="md-nav__link" for="nav-3-4">
       Transformers
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-3">
+      <label class="md-nav__title" for="nav-3-4">
         Transformers
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -540,7 +476,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/transformers/pca/" title="Pca" class="md-nav__link">
+    <a href="../transformers/pca/" title="Pca" class="md-nav__link">
       Pca
     </a>
   </li>
@@ -552,7 +488,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/transformers/umap/" title="Umap" class="md-nav__link">
+    <a href="../transformers/umap/" title="Umap" class="md-nav__link">
       Umap
     </a>
   </li>
@@ -564,7 +500,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/transformers/tsne/" title="Tsne" class="md-nav__link">
+    <a href="../transformers/tsne/" title="Tsne" class="md-nav__link">
       Tsne
     </a>
   </li>
@@ -576,19 +512,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/transformers/opentsne/" title="OpenTsne" class="md-nav__link">
-      OpenTsne
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../api/transformers/noise/" title="Noise" class="md-nav__link">
+    <a href="../transformers/noise/" title="Noise" class="md-nav__link">
       Noise
     </a>
   </li>
@@ -600,20 +524,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/transformers/addrandom/" title="Add Random" class="md-nav__link">
+    <a href="../transformers/addrandom/" title="Add Random" class="md-nav__link">
       Add Random
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../api/transformers/ivis/" title="Ivis" class="md-nav__link">
-      Ivis
     </a>
   </li>
 
@@ -630,13 +542,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5">
     
-    <label class="md-nav__link" for="nav-3-4">
+    <label class="md-nav__link" for="nav-3-5">
       Language
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-4">
+      <label class="md-nav__title" for="nav-3-5">
         Language
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -648,7 +560,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/language/spacy_lang/" title="spaCy" class="md-nav__link">
+    <a href="../language/spacy_lang/" title="spaCy" class="md-nav__link">
       spaCy
     </a>
   </li>
@@ -660,7 +572,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/language/s2v_lang/" title="Sense2Vec" class="md-nav__link">
+    <a href="../language/s2v_lang/" title="Sense2Vec" class="md-nav__link">
       Sense2Vec
     </a>
   </li>
@@ -672,7 +584,19 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/language/fasttext_lang/" title="fasttext" class="md-nav__link">
+    <a href="../language/floret_lang/" title="floret" class="md-nav__link">
+      floret
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../language/fasttext_lang/" title="fasttext" class="md-nav__link">
       fasttext
     </a>
   </li>
@@ -684,7 +608,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/language/countvector_lang/" title="CountVector" class="md-nav__link">
+    <a href="../language/countvector_lang/" title="CountVector" class="md-nav__link">
       CountVector
     </a>
   </li>
@@ -696,7 +620,19 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/language/bpemb_lang/" title="BytePair" class="md-nav__link">
+    <a href="../language/tfidf_lang/" title="TFIDFVector" class="md-nav__link">
+      TFIDFVector
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../language/bpemb_lang/" title="BytePair" class="md-nav__link">
       BytePair
     </a>
   </li>
@@ -708,7 +644,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/language/convert_lang/" title="ConveRT" class="md-nav__link">
+    <a href="../language/convert_lang/" title="ConveRT" class="md-nav__link">
       ConveRT
     </a>
   </li>
@@ -720,7 +656,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/language/gensim_lang/" title="Gensim" class="md-nav__link">
+    <a href="../language/gensim_lang/" title="Gensim" class="md-nav__link">
       Gensim
     </a>
   </li>
@@ -732,7 +668,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/language/transformers/" title="Huggingface" class="md-nav__link">
+    <a href="../language/transformers/" title="Huggingface" class="md-nav__link">
       Huggingface
     </a>
   </li>
@@ -744,7 +680,19 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/language/tfhub/" title="TFHub" class="md-nav__link">
+    <a href="../language/labse/" title="LaBSE" class="md-nav__link">
+      LaBSE
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../language/tfhub/" title="TFHub" class="md-nav__link">
       TFHub
     </a>
   </li>
@@ -756,8 +704,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../api/language/universal_sentence/" title="Universal Sentence Encoder" class="md-nav__link">
-      Universal Sentence Encoder
+    <a href="../language/universal_sentence/" title="USE" class="md-nav__link">
+      USE
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../language/sentence_tfm/" title="Sent TFM" class="md-nav__link">
+      Sent TFM
     </a>
   </li>
 
@@ -799,6 +759,18 @@
   <li class="md-nav__item">
     <a href="../../examples/lipstick-pig/" title="Debiasing Projections" class="md-nav__link">
       Debiasing Projections
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../examples/arabic/" title="Arabic Benchmarks" class="md-nav__link">
+      Arabic Benchmarks
     </a>
   </li>
 
@@ -846,49 +818,8 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#multiple-tokens" class="md-nav__link">
-    Multiple Tokens
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bert-style" class="md-nav__link">
-    Bert Style
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sense-to-vec" class="md-nav__link">
-    Sense to Vec
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#similarity" class="md-nav__link">
-    Similarity
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
   
 </nav>
                   </div>
@@ -900,151 +831,69 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/RasaHQ/whatlies/edit/master/docs/tutorial/languages/index.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/RasaHQ/whatlies/edit/master/docs/api/helpers.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>Language Options</h1>
-                
-                <script src="https://cdn.jsdelivr.net/npm/vega@5.10.0"></script>
+                <h1 id="reverse_strings"><code>reverse_strings</code><a class="headerlink" href="#reverse_strings" title="Permanent link">&para;</a></h1>
+<p>This helper will reverse the strings in the embeddingset. This can be useful
+for making matplotlib plots with Arabic texts.</p>
+<p>This helper is meant to be used via <code>EmbeddingSet.pipe()</code>.</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>embset</code></td>
+<td></td>
+<td>EmbeddingSet to adapt</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p>Usage:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.helpers</span> <span class="kn">import</span> <span class="n">reverse_strings</span>
+<span class="kn">from</span> <span class="nn">whatlies.language</span> <span class="kn">import</span> <span class="n">BytePairLanguage</span>
 
-<script src="https://cdn.jsdelivr.net/npm/vega-lite@4.6.0"></script>
+<span class="n">translation</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s2">&quot;man&quot;</span><span class="p">:</span><span class="s2">&quot;رجل&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;woman&quot;</span><span class="p">:</span><span class="s2">&quot;امرأة&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;king&quot;</span><span class="p">:</span><span class="s2">&quot;ملك&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;queen&quot;</span><span class="p">:</span><span class="s2">&quot;ملكة&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;brother&quot;</span><span class="p">:</span><span class="s2">&quot;أخ&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;sister&quot;</span><span class="p">:</span><span class="s2">&quot;أخت&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;cat&quot;</span><span class="p">:</span><span class="s2">&quot;قطة&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;dog&quot;</span><span class="p">:</span><span class="s2">&quot;كلب&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;lion&quot;</span><span class="p">:</span><span class="s2">&quot;أسد&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;puppy&quot;</span><span class="p">:</span><span class="s2">&quot;جرو&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;male student&quot;</span><span class="p">:</span><span class="s2">&quot;طالب&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;female student&quot;</span><span class="p">:</span><span class="s2">&quot;طالبة&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;university&quot;</span><span class="p">:</span><span class="s2">&quot;جامعة&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;school&quot;</span><span class="p">:</span><span class="s2">&quot;مدرسة&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;kitten&quot;</span><span class="p">:</span><span class="s2">&quot; قطة صغيرة&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;apple&quot;</span> <span class="p">:</span> <span class="s2">&quot;تفاحة&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;orange&quot;</span> <span class="p">:</span> <span class="s2">&quot;برتقال&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;cabbage&quot;</span> <span class="p">:</span> <span class="s2">&quot;كرنب&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;carrot&quot;</span> <span class="p">:</span> <span class="s2">&quot;جزرة&quot;</span>
+<span class="p">}</span>
 
-<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.3.2"></script>
+<span class="n">lang_cv</span>  <span class="o">=</span> <span class="n">BytePairLanguage</span><span class="p">(</span><span class="s2">&quot;ar&quot;</span><span class="p">)</span>
 
-<p>In this tool we have support for different language backends and
-depending on the language backend you may get slightly different behavior.</p>
-<h2 id="multiple-tokens">Multiple Tokens<a class="headerlink" href="#multiple-tokens" title="Permanent link">&para;</a></h2>
-<p>We can have spaCy summerize multiple tokens if we'd like.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language.language</span> <span class="kn">import</span> <span class="n">SpacyLanguage</span>
-<span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">Pca</span>
+<span class="n">arabic_words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">words</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
-<span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_core_web_sm&quot;</span><span class="p">)</span>
+<span class="c1"># before</span>
+<span class="n">lang_cv</span><span class="p">[</span><span class="n">translation</span><span class="p">]</span><span class="o">.</span><span class="n">plot_similarity</span><span class="p">()</span>
 
-<span class="n">contexts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;i am super duper happy&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;happy happy joy joy&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;programming is super fun!&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;i am going crazy i hate it&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;boo and hiss&quot;</span><span class="p">,]</span>
-
-<span class="n">emb</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">contexts</span><span class="p">]</span>
-<span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">()</span>
+<span class="c1"># after</span>
+<span class="n">lang_cv</span><span class="p">[</span><span class="n">translation</span><span class="p">]</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">reverse_strings</span><span class="p">)</span><span class="o">.</span><span class="n">plot_similarity</span><span class="p">()</span>
 </code></pre></div>
-
-<div id="c1"></div>
-
-<script>
-fetch('spacyvec-1.json')
-.then(res => res.json())
-.then((out) => {
-  vegaEmbed('#c1', out);
-})
-.catch(err => { throw err });
-</script>
-
-<p>Under the hood it will be calculating the averages of the
-embeddings but we can still plot these.</p>
-<h2 id="bert-style">Bert Style<a class="headerlink" href="#bert-style" title="Permanent link">&para;</a></h2>
-<p>But spaCy also offers transformers these days, which means that
-we can play with a extra bit of context.</p>
-<div class="highlight"><pre><span></span><code>pip install spacy-transformers
-python -m spacy download en_trf_robertabase_lg
-</code></pre></div>
-
-<p>With these installed we can now use the same spaCy language
-backend to play with transformers. Here's an example of
-two embeddings selected with context.</p>
-<div class="highlight"><pre><span></span><code><span class="n">lang</span> <span class="o">=</span> <span class="n">SpacyLanguage</span><span class="p">(</span><span class="s2">&quot;en_trf_robertabase_lg&quot;</span><span class="p">)</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">lang</span><span class="p">[</span><span class="s1">&#39;Going to the [store]&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span><span class="p">,</span>
-               <span class="n">lang</span><span class="p">[</span><span class="s1">&#39;[store] this in the drawer please.&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span>  <span class="c1"># False</span>
-</code></pre></div>
-
-<p>In the first case we get the embedding for <code>store</code> in the context of
-<code>Going to the store</code> while in the second case we have <code>store</code> in the
-context of <code>store this in the drawer please</code>.</p>
-<h2 id="sense-to-vec">Sense to Vec<a class="headerlink" href="#sense-to-vec" title="Permanent link">&para;</a></h2>
-<p>We also have support for the <a href="https://github.com/explosion/sense2vec">sense2vec model</a>. To use
-them you'll need to make sure that you install via:</p>
-<div class="highlight"><pre><span></span><code>pip install whatlies[sense2vec]
-</code></pre></div>
-
-<p>Once the dependency is installed you can download and unzip the pretrained vectors
-found <a href="https://github.com/explosion/sense2vec#pretrained-vectors">here</a>. After
-that you should be able to retreive tokens with context. They way you fetch these
-tokens is a bit ... different though.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">whatlies.language.language</span> <span class="kn">import</span> <span class="n">Sense2VecLanguage</span>
-<span class="kn">from</span> <span class="nn">whatlies.transformers</span> <span class="kn">import</span> <span class="n">Pca</span>
-
-<span class="n">lang</span> <span class="o">=</span> <span class="n">Sense2VecLanguage</span><span class="p">(</span><span class="s2">&quot;path/downloaded/s2v&quot;</span><span class="p">)</span>
-
-<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;bank|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;bank|VERB&quot;</span><span class="p">,</span> <span class="s2">&quot;duck|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;duck|VERB&quot;</span><span class="p">,</span>
-         <span class="s2">&quot;dog|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;cat|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;jump|VERB&quot;</span><span class="p">,</span> <span class="s2">&quot;run|VERB&quot;</span><span class="p">,</span>
-         <span class="s2">&quot;chicken|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;puppy|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;kitten|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;carrot|NOUN&quot;</span><span class="p">]</span>
-<span class="n">emb</span> <span class="o">=</span> <span class="n">lang</span><span class="p">[</span><span class="n">words</span><span class="p">]</span>
-</code></pre></div>
-
-<p>You're able to distinguish the verb "duck" from the animal "duck".
-From here one we're back to normal embeddingsets though. So we can
-plot whatever we feel like.</p>
-<div class="highlight"><pre><span></span><code><span class="n">p1</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">(</span><span class="s2">&quot;dog|NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;jump|VERB&quot;</span><span class="p">)</span>
-<span class="n">p2</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">plot_interactive</span><span class="p">()</span>
-<span class="n">p1</span> <span class="o">|</span> <span class="n">p2</span>
-</code></pre></div>
-
-<div id="s1"></div>
-
-<script>
-fetch('sense2vec-1.json')
-.then(res => res.json())
-.then((out) => {
-  vegaEmbed('#s1', out);
-})
-.catch(err => { throw err });
-</script>
-
-<p>Notice how <code>duck|VERB</code> is certainly different from <code>duck|NOUN</code>.</p>
-<h3 id="similarity">Similarity<a class="headerlink" href="#similarity" title="Permanent link">&para;</a></h3>
-<p>Another nice feature of <code>sense2vec</code> is the ability to find
-tokens that are nearby. We could do the following.</p>
-<div class="highlight"><pre><span></span><code><span class="n">lang</span><span class="o">.</span><span class="n">score_similar</span><span class="p">(</span><span class="s2">&quot;duck|VERB&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-<p>This will result in a long list with embedding-score tuples.</p>
-<div class="highlight"><pre><span></span><code>[(Emb[crouch|VERB], 0.8064),
- (Emb[ducking|VERB], 0.7877),
- (Emb[sprint|VERB], 0.7653),
- (Emb[scoot|VERB], 0.7647),
- (Emb[dart|VERB], 0.7621),
- (Emb[jump|VERB], 0.7528),
- (Emb[peek|VERB], 0.7518),
- (Emb[ducked|VERB], 0.7504),
- (Emb[bonk|VERB], 0.7495),
- (Emb[backflip|VERB], 0.746)]
-</code></pre></div>
-
-<p>We can also ask it to return an <code>EmbeddingSet</code> instead. That's what we're doing
-below. We take our original embeddingset and we merge it with two more before
-we visualise it.</p>
-<div class="highlight"><pre><span></span><code><span class="n">emb_bank_verb</span> <span class="o">=</span> <span class="n">lang</span><span class="o">.</span><span class="n">embset_similar</span><span class="p">(</span><span class="s2">&quot;bank|VERB&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">emb_bank_noun</span> <span class="o">=</span> <span class="n">lang</span><span class="o">.</span><span class="n">embset_similar</span><span class="p">(</span><span class="s2">&quot;bank|NOUN&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="p">(</span><span class="n">emb</span>
- <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">emb_bank_verb</span><span class="p">)</span>
- <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">emb_bank_noun</span><span class="p">)</span>
- <span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Pca</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
- <span class="o">.</span><span class="n">plot_interactive</span><span class="p">())</span>
-</code></pre></div>
-
-<div id="sense2"></div>
-
-<script>
-fetch('sense2vec-2.json')
-.then(res => res.json())
-.then((out) => {
-  vegaEmbed('#sense2', out);
-})
-.catch(err => { throw err });
-</script>
+<p><img alt="" src="https://rasahq.github.io/whatlies/images/arabic-before-after.png" /></p>
                 
                   
                 
@@ -1066,7 +915,7 @@ fetch('sense2vec-2.json')
       <div class="md-footer-nav">
         <nav class="md-footer-nav__inner md-grid">
           
-            <a href="../embeddingsets/" title="Interactive Visualisation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <a href="../embeddingset/" title="EmbeddingSet" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
                 <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
               </div>
@@ -1075,19 +924,19 @@ fetch('sense2vec-2.json')
                   <span class="md-footer-nav__direction">
                     Previous
                   </span>
-                  Interactive Visualisation
+                  EmbeddingSet
                 </span>
               </div>
             </a>
           
           
-            <a href="../transformations/" title="Transformation Viz" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <a href="../transformers/pca/" title="Pca" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span class="md-footer-nav__direction">
                     Next
                   </span>
-                  Transformation Viz
+                  Pca
                 </span>
               </div>
               <div class="md-flex__cell md-flex__cell--shrink">

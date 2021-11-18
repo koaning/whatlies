@@ -32,4 +32,4 @@ jobs:
       run: |
         python tests/scripts/prepare_fasttext_tests.py
         python tests/scripts/prepare_floret.py
-        pytest --verbose -m "not rasa"
+        pytest --verbose -m "not rasa" --color=yes

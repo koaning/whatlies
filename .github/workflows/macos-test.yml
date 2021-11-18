@@ -1,4 +1,4 @@
-name: Python Ubuntu Tests
+name: Python MasOS Tests
 
 on:
   push:
@@ -13,8 +13,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        python-version: [3.7, 3.8]
+        os: [macos-10.15]
+        python-version: [3.7]
 
     steps:
     - uses: actions/checkout@v2
@@ -32,4 +32,4 @@ jobs:
       run: |
         python tests/scripts/prepare_fasttext_tests.py
         python tests/scripts/prepare_floret.py
-        pytest --verbose -m "not rasa" --color=yes
+        pytest --verbose -m "not rasa"

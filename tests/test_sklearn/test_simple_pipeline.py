@@ -12,11 +12,13 @@ from whatlies.language import (
     BytePairLanguage,
     TFHubLanguage,
     HFTransformersLanguage,
+    FloretLanguage,
 )
 
 
 backends = [
     SpacyLanguage("en_core_web_sm"),
+    FloretLanguage("tests/floret_vectors.bin"),
     FasttextLanguage("tests/custom_fasttext_model.bin"),
     BytePairLanguage("en", vs=1000, dim=25, cache_dir="tests/cache"),
     GensimLanguage("tests/cache/custom_gensim_vectors.kv"),

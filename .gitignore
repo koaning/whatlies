@@ -147,3 +147,4 @@ tests/*.bin
 /package-lock.json
 /node_modules/
 tests/rasa-test-demo/models/*.tar.gz
+notebooks/*

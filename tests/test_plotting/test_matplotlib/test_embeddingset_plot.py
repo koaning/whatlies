@@ -115,7 +115,7 @@ def test_embeddingset_plot_scatter_integer_axis(embset):
     }
     assert isinstance(ax.collections[0], props["type"])
     assert np.array_equal(ax.collections[0].get_offsets(), props["data"])
-    assert ax.texts == []
+    assert len(ax.texts) == 0
     assert np.array_equal(ax.collections[0].get_facecolors(), props["color"])
     validate_plot_general_properties(ax, props)
     mpl.pyplot.close(fig)

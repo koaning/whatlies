@@ -3,7 +3,7 @@
 ![](https://img.shields.io/github/license/rasahq/whatlies)
 [![Downloads](https://pepy.tech/badge/whatlies)](https://pepy.tech/project/whatlies)
 
-<img src="docs/logo.png" width=255 height=255 align="right">
+<img src="docs/square-logo.svg" width=225 height=225 align="right">
 
 # whatlies
 
@@ -15,8 +15,6 @@ This small library offers tools to make visualisation easier of both
 word embeddings as well as operations on them.
 
 Feedback is welcome.
-
-<img src="docs/square-logo.svg" width=200 height=200 align="right">
 
 ## Produced
 

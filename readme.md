@@ -42,10 +42,11 @@ pip install whatlies
 
 This will install the base dependencies. Depending on the
 transformers and language backends that you'll be using you
-may want to install more. Here's all the possible installation
+may want to install more. Here's some of the possible installation
 settings you could go for.
 
 ```bash
+pip install whatlies[spacy]
 pip install whatlies[tfhub]
 pip install whatlies[transformers]
 ```

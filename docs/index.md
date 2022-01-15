@@ -9,8 +9,6 @@ A library that tries help you to understand. "What lies in word embeddings?"
 This project was initiated at [Rasa](https://rasa.com) as a fun side project
 that supports the research and developer advocacy teams at Rasa.
 
-It is maintained by Vincent D. Warmerdam, Research Advocate at Rasa.
-
 ## What it Does
 
 This small library offers tools to make visualisation easier of both

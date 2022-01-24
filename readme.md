@@ -3,8 +3,6 @@
 ![](https://img.shields.io/github/license/rasahq/whatlies)
 [![Downloads](https://pepy.tech/badge/whatlies)](https://pepy.tech/project/whatlies)
 
-<img src="docs/square-logo.svg" width=225 height=225 align="right">
-
 # whatlies
 
 A library that tries to help you to understand (note the pun).
@@ -15,6 +13,8 @@ This small library offers tools to make visualisation easier of both
 word embeddings as well as operations on them.
 
 ## Produced
+
+<img src="docs/square-logo.svg" width=75 height=75 align="right">
 
 This project was initiated at [Rasa](https://rasa.com) as a by-product of
 our efforts in the developer advocacy and research teams. 

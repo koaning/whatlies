@@ -18,7 +18,7 @@ word embeddings as well as operations on them.
 
 This project was initiated at [Rasa](https://rasa.com) as a by-product of
 our efforts in the developer advocacy and research teams. The project is 
-maintained by Vincent D. Warmerdam in order to support wider use-cases. 
+maintained by [koaning](https://github.com/koaning) in order to support more use-cases. 
 
 ## Features
 

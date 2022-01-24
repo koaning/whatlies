@@ -17,7 +17,8 @@ word embeddings as well as operations on them.
 <img src="docs/square-logo.svg" width=75 height=75 align="right">
 
 This project was initiated at [Rasa](https://rasa.com) as a by-product of
-our efforts in the developer advocacy and research teams. 
+our efforts in the developer advocacy and research teams. The project is 
+maintained by Vincent D. Warmerdam in order to support wider use-cases. 
 
 ## Features
 

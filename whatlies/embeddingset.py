@@ -985,7 +985,7 @@ class EmbeddingSet:
         emb.plot_pixels()
         ```
 
-        ![](https://rasahq.github.io/whatlies/images/pixels.png)
+        ![](https://koaning.github.io/whatlies/images/pixels.png)
         """
         names = self.embeddings.keys()
         df = self.to_dataframe()

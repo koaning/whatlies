@@ -68,9 +68,7 @@ class FloretLanguage(SklearnTransformerMixin):
 
     def __getitem__(self, query: Union[str, List[str]]):
         """
-        Retreive a single embedding or a set of embeddings. Depending on the spaCy model
-        the strings can support multiple tokens of text but they can also use the Bert DSL.
-        See the Language Options documentation: https://rasahq.github.io/whatlies/tutorial/languages/#bert-style.
+        Retreive a single embedding or a set of embeddings.
 
         Arguments:
             query: single string or list of strings

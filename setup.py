@@ -14,10 +14,6 @@ umap_packages = [
     "umap-learn>=0.4.0",
 ]
 
-rasa_packages = [
-    "rasa>=2.7.0",
-]
-
 fasttext_packages = [
     "fasttext~=0.9.1",
 ]
@@ -82,11 +78,11 @@ setup(
     description="Tools to help uncover `whatlies` in word embeddings.",
     long_description=pathlib.Path("readme.md").read_text(),
     long_description_content_type="text/markdown",
-    url="https://rasahq.github.io/whatlies/",
+    url="https://koaning.github.io/whatlies/",
     project_urls={
-        "Documentation": "https://rasahq.github.io/whatlies/",
-        "Source Code": "https://github.com/RasaHQ/whatlies/",
-        "Issue Tracker": "https://github.com/RasaHQ/whatlies/issues",
+        "Documentation": "https://koaning.github.io/whatlies/",
+        "Source Code": "https://github.com/koaning/whatlies/",
+        "Issue Tracker": "https://github.com/koaning/whatlies/issues",
     },
     install_requires=base_packages,
     extras_require={
@@ -101,7 +97,6 @@ setup(
         "spacy": base_packages + spacy_packages,
         "transformers": base_packages + transformers_dep,
         "sentence_tfm": base_packages + sentence_tfm_dep,
-        "rasa": base_packages + rasa_packages,
         "all": all_deps,
     },
     classifiers=[

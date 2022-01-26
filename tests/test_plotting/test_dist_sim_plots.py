@@ -5,7 +5,7 @@ import pytest
 
 @pytest.fixture()
 def embset():
-    lang = SpacyLanguage("en_core_web_md")
+    lang = SpacyLanguage("en_core_web_sm")
     names = [
         "red",
         "blue",

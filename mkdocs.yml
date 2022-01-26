@@ -1,7 +1,7 @@
 site_name: whatlies
 extra_css: [style.css]
-repo_url: https://github.com/RasaHQ/whatlies
-site_url: https://rasahq.github.io/whatlies/
+repo_url: https://github.com/koaning/whatlies
+site_url: https://koaning.github.io/whatlies/
 site_description: A python package to discover "what lies" in word embeddings.
 site_author: Vincent D. Warmerdam @ Rasa Research
 
@@ -46,7 +46,7 @@ nav:
 plugins:
   - mkdocstrings
   - search
-copyright: Copyright &copy; 2020 <a href="https://twitter.com/Rasa_HQ">Rasa</a>, Maintained by <a href="https://twitter.com/fishnets88">Vincent</a>.
+copyright: Copyright &copy; 2020 Maintained by <a href="https://twitter.com/fishnets88">Vincent</a>.
 theme:
   name: material
   custom_dir: theme/

@@ -62,7 +62,7 @@ class SpacyLanguage(SklearnTransformerMixin):
         """
         Retreive a single embedding or a set of embeddings. Depending on the spaCy model
         the strings can support multiple tokens of text but they can also use the Bert DSL.
-        See the Language Options documentation: https://rasahq.github.io/whatlies/tutorial/languages/#bert-style.
+        See the Language Options documentation: https://koaning.github.io/whatlies/tutorial/languages/#bert-style.
 
         Arguments:
             query: single string or list of strings

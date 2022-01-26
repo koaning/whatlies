@@ -186,7 +186,7 @@ emb_debias = e1.merge(e2) | (lang['man'] - lang['woman'])
 ```
 
 Next, we'll use the fasttext language backend as a scikit-learn featurizer.
-You can read more on this feature [here](https://rasahq.github.io/whatlies/tutorial/scikit-learn/).
+You can read more on this feature [here](https://koaning.github.io/whatlies/tutorial/scikit-learn/).
 
 ```python
 from sklearn.svm import SVC

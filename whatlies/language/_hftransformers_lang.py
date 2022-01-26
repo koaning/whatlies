@@ -123,6 +123,6 @@ def LaBSELanguage():
     lang[texts].plot_similarity()
     ```
 
-    ![](https://rasahq.github.io/whatlies/images/labse.png)
+    ![](https://koaning.github.io/whatlies/images/labse.png)
     """
     return HFTransformersLanguage("sentence-transformers/LaBSE")

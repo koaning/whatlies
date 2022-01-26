@@ -27,7 +27,6 @@ jobs:
         python -m pip install --upgrade pip setuptools wheel
         pip install -e ".[dev]"
         python -m spacy download en_core_web_sm
-        python -m spacy download en_core_web_md
     - name: Test with pytest
       run: |
         python tests/scripts/prepare_fasttext_tests.py

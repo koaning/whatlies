@@ -6,7 +6,7 @@ One of the goals of this package is to make it simple to explore embeddings.
 This includes embeddings that are Non-English. In this guide we'll demonstrate how you might be
 able to use this library to run simple Arabic classification benchmark
 using scikit-learn and this library. This benchmark was part of discussion
-on [github](https://github.com/RasaHQ/whatlies/issues/262).
+on [github](https://github.com/koaning/whatlies/issues/262).
 
 If you want to follow along, make sure that this tool is installed.
 

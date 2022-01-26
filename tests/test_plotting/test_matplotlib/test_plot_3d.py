@@ -37,7 +37,7 @@ words = [
 ]
 
 # I'm loading in the spaCy model globally because it is much faster this way.
-lang = SpacyLanguage("en_core_web_md")
+lang = SpacyLanguage("en_core_web_sm")
 
 
 @pytest.fixture

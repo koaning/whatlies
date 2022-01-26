@@ -3,8 +3,6 @@
 ![](https://img.shields.io/github/license/koaning/whatlies)
 [![Downloads](https://pepy.tech/badge/whatlies)](https://pepy.tech/project/whatlies)
 
-<img src="docs/logo.png" width=255 height=255 align="right">
-
 # whatlies
 
 A library that tries to help you to understand (note the pun).
@@ -14,23 +12,19 @@ A library that tries to help you to understand (note the pun).
 This small library offers tools to make visualisation easier of both
 word embeddings as well as operations on them.
 
-Feedback is welcome.
-
-<img src="docs/square-logo.svg" width=200 height=200 align="right">
-
 ## Produced
 
+<img src="docs/square-logo.svg" width=75 height=75 align="right">
+
 This project was initiated at [Rasa](https://rasa.com) as a by-product of
-our efforts in the developer advocacy and research teams. It's an open source project
-and community contributions are very welcome!
+our efforts in the developer advocacy and research teams. The project is 
+maintained by [koaning](https://github.com/koaning) in order to support more use-cases. 
 
 ## Features
 
 This library has tools to help you understand what lies in word embeddings. This includes:
 
 - simple tools to create (interactive) visualisations
-- an api for vector arithmetic that you can visualise
-- support for many dimensionality reduction techniques like pca, umap and tsne
 - support for many language backends including spaCy, fasttext, tfhub, huggingface and bpemb
 - lightweight scikit-learn featurizer support for all these backends
 
@@ -44,10 +38,11 @@ pip install whatlies
 
 This will install the base dependencies. Depending on the
 transformers and language backends that you'll be using you
-may want to install more. Here's all the possible installation
+may want to install more. Here's some of the possible installation
 settings you could go for.
 
 ```bash
+pip install whatlies[spacy]
 pip install whatlies[tfhub]
 pip install whatlies[transformers]
 ```
@@ -66,9 +61,7 @@ to use that backend.
 
 ## Getting Started
 
-For a quick overview, check out our introductory video on
-[youtube](https://www.youtube.com/watch?v=FwkwC7IJWO0&list=PL75e0qA87dlG-za8eLI6t0_Pbxafk-cxb&index=9&t=0s). More
-in depth getting started guides can be found on the [documentation page](https://koaning.github.io/whatlies/).
+More in depth getting started guides can be found on the [documentation page](https://koaning.github.io/whatlies/).
 
 ## Examples
 

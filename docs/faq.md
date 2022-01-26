@@ -34,7 +34,7 @@ in using an [altair](https://altair-viz.github.io/) visualisation in a publicati
 details are listed on their [documentation page](https://altair-viz.github.io/user_guide/saving_charts.html?highlight=save%20svg#png-svg-and-pdf-format)
 in short you'll need to install the `altair_saver` package for this functionality.
 
-To get this code to work you [may](https://github.com/RasaHQ/whatlies/issues/58) need to install some node
+To get this code to work you [may](https://github.com/koaning/whatlies/issues/58) need to install some node
 dependencies though. To install them locally in your project run;
 
 ```

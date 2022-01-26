@@ -83,4 +83,4 @@ a `Pipeline`. You should assume that you cannot use `GridSearchCV` and that you 
 to disk.
 
 If you see a way to properly support this in general, let us know on github by
-creating an [issue](https://github.com/RasaHQ/whatlies/issues).
+creating an [issue](https://github.com/koaning/whatlies/issues).

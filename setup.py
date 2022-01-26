@@ -14,10 +14,6 @@ umap_packages = [
     "umap-learn>=0.4.0",
 ]
 
-rasa_packages = [
-    "rasa>=2.7.0",
-]
-
 fasttext_packages = [
     "fasttext~=0.9.1",
 ]
@@ -101,7 +97,6 @@ setup(
         "spacy": base_packages + spacy_packages,
         "transformers": base_packages + transformers_dep,
         "sentence_tfm": base_packages + sentence_tfm_dep,
-        "rasa": base_packages + rasa_packages,
         "all": all_deps,
     },
     classifiers=[

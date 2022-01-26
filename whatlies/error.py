@@ -12,7 +12,7 @@ class NotInstalled:
 
         msg = f"In order to use {self.tool} you'll need to install via;\n\n"
         msg += f"pip install whatlies[{self.dep}]\n\n"
-        msg += "See installation guide here: https://rasahq.github.io/whatlies/#installation."
+        msg += "See installation guide here: https://koaning.github.io/whatlies/#installation."
         self.msg = msg
 
     def __getattr__(self, *args, **kwargs):

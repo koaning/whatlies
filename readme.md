@@ -1,6 +1,6 @@
 ![](https://img.shields.io/pypi/v/whatlies)
 ![](https://img.shields.io/pypi/pyversions/whatlies)
-![](https://img.shields.io/github/license/rasahq/whatlies)
+![](https://img.shields.io/github/license/koaning/whatlies)
 [![Downloads](https://pepy.tech/badge/whatlies)](https://pepy.tech/project/whatlies)
 
 <img src="docs/logo.png" width=255 height=255 align="right">
@@ -68,7 +68,7 @@ to use that backend.
 
 For a quick overview, check out our introductory video on
 [youtube](https://www.youtube.com/watch?v=FwkwC7IJWO0&list=PL75e0qA87dlG-za8eLI6t0_Pbxafk-cxb&index=9&t=0s). More
-in depth getting started guides can be found on the [documentation page](https://rasahq.github.io/whatlies/).
+in depth getting started guides can be found on the [documentation page](https://koaning.github.io/whatlies/).
 
 ## Examples
 
@@ -148,7 +148,7 @@ pipe.fit(X, y)
 
 ## Documentation
 
-To learn more and for a getting started guide, check out the [documentation](https://rasahq.github.io/whatlies/).
+To learn more and for a getting started guide, check out the [documentation](https://koaning.github.io/whatlies/).
 
 ## Similar Projects
 
@@ -229,6 +229,6 @@ Please use the following citation when you found `whatlies` helpful for any of y
     url = "https://www.aclweb.org/anthology/2020.nlposs-1.8",
     doi = "10.18653/v1/2020.nlposs-1.8",
     pages = "52--60",
-    abstract = "We introduce whatlies, an open source toolkit for visually inspecting word and sentence embeddings. The project offers a unified and extensible API with current support for a range of popular embedding backends including spaCy, tfhub, huggingface transformers, gensim, fastText and BytePair embeddings. The package combines a domain specific language for vector arithmetic with visualisation tools that make exploring word embeddings more intuitive and concise. It offers support for many popular dimensionality reduction techniques as well as many interactive visualisations that can either be statically exported or shared via Jupyter notebooks. The project documentation is available from https://rasahq.github.io/whatlies/.",
+    abstract = "We introduce whatlies, an open source toolkit for visually inspecting word and sentence embeddings. The project offers a unified and extensible API with current support for a range of popular embedding backends including spaCy, tfhub, huggingface transformers, gensim, fastText and BytePair embeddings. The package combines a domain specific language for vector arithmetic with visualisation tools that make exploring word embeddings more intuitive and concise. It offers support for many popular dimensionality reduction techniques as well as many interactive visualisations that can either be statically exported or shared via Jupyter notebooks. The project documentation is available from https://koaning.github.io/whatlies/.",
 }
 ```

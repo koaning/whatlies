@@ -82,11 +82,11 @@ setup(
     description="Tools to help uncover `whatlies` in word embeddings.",
     long_description=pathlib.Path("readme.md").read_text(),
     long_description_content_type="text/markdown",
-    url="https://rasahq.github.io/whatlies/",
+    url="https://koaning.github.io/whatlies/",
     project_urls={
-        "Documentation": "https://rasahq.github.io/whatlies/",
-        "Source Code": "https://github.com/RasaHQ/whatlies/",
-        "Issue Tracker": "https://github.com/RasaHQ/whatlies/issues",
+        "Documentation": "https://koaning.github.io/whatlies/",
+        "Source Code": "https://github.com/koaning/whatlies/",
+        "Issue Tracker": "https://github.com/koaning/whatlies/issues",
     },
     install_requires=base_packages,
     extras_require={

@@ -50,7 +50,7 @@ def reverse_strings(embset):
     lang_cv[translation].pipe(reverse_strings).plot_similarity()
     ```
 
-    ![](https://rasahq.github.io/whatlies/images/arabic-before-after.png)
+    ![](https://koaning.github.io/whatlies/images/arabic-before-after.png)
     """
     return EmbeddingSet(
         *[Embedding(name=e.name[::-1], vector=e.vector) for e in embset]

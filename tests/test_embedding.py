@@ -55,8 +55,8 @@ def test_emb_proj_away2(emb):
 
 
 def test_emb_gt(emb):
-    assert pytest.approx(emb["z"] > emb["x"], 1.0)
-    assert pytest.approx(emb["x"] > emb["z"], 0.5)
+    assert (emb["z"] > emb["x"]) == pytest.approx(0.5)
+    assert (emb["x"] > emb["z"]) == pytest.approx(1.0)
 
 
 def test_emb_plot_no_err_2d(emb):

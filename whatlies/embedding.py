@@ -116,6 +116,8 @@ class Embedding:
         """
         Measures the size of one embedding to another one.
 
+        The `>` is meant to indicate the "unto" operation.
+
         Usage:
 
         ```python

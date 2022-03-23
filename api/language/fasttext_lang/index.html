@@ -1007,13 +1007,9 @@ Note that you can also import these via spaCy but this requires a packaging step
 <span class="normal">113</span>
 <span class="normal">114</span>
 <span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]):</span>
+<span class="normal">116</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Retreive a single embedding or a set of embeddings. Depending on the spaCy model</span>
-<span class="sd">        the strings can support multiple tokens of text but they can also use the Bert DSL.</span>
-<span class="sd">        See the Language Options documentation: https://rasahq.github.io/whatlies/tutorial/languages/#bert-style.</span>
+<span class="sd">        Retreive a single embedding or a set of embeddings.</span>
 
 <span class="sd">        Arguments:</span>
 <span class="sd">            query: single string or list of strings</span>
@@ -1034,9 +1030,7 @@ Note that you can also import these via spaCy but this requires a packaging step
 </code></pre></div>
 </td></tr></table>
 </details>
-<p>Retreive a single embedding or a set of embeddings. Depending on the spaCy model
-the strings can support multiple tokens of text but they can also use the Bert DSL.
-See the Language Options documentation: https://rasahq.github.io/whatlies/tutorial/languages/#bert-style.</p>
+<p>Retreive a single embedding or a set of embeddings.</p>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -1063,7 +1057,9 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 <span class="o">&gt;</span> <span class="n">lang</span><span class="p">[[</span><span class="s1">&#39;nobody expects&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;the spanish inquisition&#39;</span><span class="p">]]</span>
 </code></pre></div></p>
 <h2 id="whatlies.language._fasttext_lang.FasttextLanguage.embset_proximity"><code class="highlight"><span class="n">embset_proximity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">max_proximity</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language._fasttext_lang.FasttextLanguage.embset_proximity" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/_fasttext_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">137</span>
+<details class="note"><summary>Show source code in <code>language/_fasttext_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
 <span class="normal">138</span>
 <span class="normal">139</span>
 <span class="normal">140</span>
@@ -1089,9 +1085,7 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 <span class="normal">160</span>
 <span class="normal">161</span>
 <span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_proximity</span><span class="p">(</span>
+<span class="normal">163</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_proximity</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">emb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span>
         <span class="n">max_proximity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
@@ -1183,7 +1177,9 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 </tbody>
 </table>
 <h2 id="whatlies.language._fasttext_lang.FasttextLanguage.embset_similar"><code class="highlight"><span class="n">embset_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language._fasttext_lang.FasttextLanguage.embset_similar" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/_fasttext_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">167</span>
+<details class="note"><summary>Show source code in <code>language/_fasttext_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
 <span class="normal">168</span>
 <span class="normal">169</span>
 <span class="normal">170</span>
@@ -1207,9 +1203,7 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 <span class="normal">188</span>
 <span class="normal">189</span>
 <span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_similar</span><span class="p">(</span>
+<span class="normal">191</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">embset_similar</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">emb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span>
         <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
@@ -1304,7 +1298,9 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 </tbody>
 </table>
 <h2 id="whatlies.language._fasttext_lang.FasttextLanguage.score_similar"><code class="highlight"><span class="n">score_similar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emb</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span></code><a class="headerlink" href="#whatlies.language._fasttext_lang.FasttextLanguage.score_similar" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Show source code in <code>language/_fasttext_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">195</span>
+<details class="note"><summary>Show source code in <code>language/_fasttext_lang.py</code></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
 <span class="normal">196</span>
 <span class="normal">197</span>
 <span class="normal">198</span>
@@ -1340,9 +1336,7 @@ See the Language Options documentation: https://rasahq.github.io/whatlies/tutori
 <span class="normal">228</span>
 <span class="normal">229</span>
 <span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">score_similar</span><span class="p">(</span>
+<span class="normal">231</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">score_similar</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">emb</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">],</span>
         <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
@@ -1506,7 +1500,7 @@ to <a href="https://github.com/facebookresearch/fastText/issues/1040">this bug</
         <div class="md-footer-copyright">
           
             <div class="md-footer-copyright__highlight">
-              Copyright &copy; 2020 <a href="https://twitter.com/Rasa_HQ">Rasa</a>, Maintained by <a href="https://twitter.com/fishnets88">Vincent</a>.
+              Copyright &copy; 2020 Maintained by <a href="https://twitter.com/fishnets88">Vincent</a>.
             </div>
           
           powered by
@@ -1518,7 +1512,6 @@ to <a href="https://github.com/facebookresearch/fastText/issues/1040">this bug</
         
       </div>
     </div>
-    <script async defer data-domain="rasahq.github.io/whatlies" src="https://plausible.io/js/plausible.js"></script>
   </footer>
       
     </div>

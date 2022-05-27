@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 
 base_packages = [
-    "scikit-learn>=1.1.0",
+    "scikit-learn>=1.0.0",
     "altair>=4.2.0",
     "matplotlib>=3.5.0",
     "bpemb>=0.3.0",

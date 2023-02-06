@@ -3,7 +3,9 @@
 ![](https://img.shields.io/github/license/koaning/whatlies)
 [![Downloads](https://pepy.tech/badge/whatlies)](https://pepy.tech/project/whatlies)
 
-# whatlies
+# archival notice
+
+This was a fun project for a while, but it's become a pain to maintain all the different backends. If you're looking for visualisation tools, check https://github.com/koaning/cluestar and consider https://github.com/koaning/cluestar if you're interested in the embeddings going forward. 
 
 A library that tries to help you to understand (note the pun).
 
